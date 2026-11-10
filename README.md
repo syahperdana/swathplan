@@ -5,7 +5,7 @@ Draw the area, set your sonar, get the lines, check them against IHO S-44, and e
 
 ![SwathPlan planner](docs/screenshot-planner.png)
 
-▶ **Live app:** `https://syahperdana.github.io/swathplan/`
+▶ **Live app:** https://syahperdana.github.io/swathplan/
 🎬 **Demo video (84 s):** [docs/demo.mp4](docs/demo.mp4)
 
 ---
@@ -81,7 +81,7 @@ Some features need internet when you use them: map background tiles, global bath
 
 ## Browser support
 
-Tested in Chromium (Chrome, Edge). It is also designed for Firefox and Safari, but report anything odd you see.
+Tested in Chromium (Chrome, Edge) and Firefox. It is also designed for Safari, but report anything odd you see.
 
 ## Feedback
 
