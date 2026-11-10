@@ -5,7 +5,7 @@ Draw the area, set your sonar, get the lines, check them against IHO S-44, and e
 
 ![SwathPlan planner](docs/screenshot-planner.png)
 
-▶ **Live app:** `https://<your-github-username>.github.io/swathplan/`
+▶ **Live app:** `https://syahperdana.github.io/swathplan/`
 🎬 **Demo video (84 s):** [docs/demo.mp4](docs/demo.mp4)
 
 ---
