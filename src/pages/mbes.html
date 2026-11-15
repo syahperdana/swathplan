@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwathPlan – MBES Survey Line Planner (Offline)</title>
+<meta name="author" content="Aldwin Syahperdana"><meta name="copyright" content="© 2026 Aldwin Syahperdana">
+<!-- SwathPlan · © 2026 Aldwin Syahperdana. All rights reserved. -->
+<style>
+<!--@include css/swathplan.css-->
+</style></head><body>
+<header><div class="brand"><span id="logoWrap"><svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SwathPlan logo"><defs><linearGradient id="lgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16c4b4"/><stop offset="1" stop-color="#0a2f4d"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#lgA)"/><path d="M32 13 L8 52 Q32 60 56 52 Z" fill="#fff" fill-opacity=".16"/><path d="M32 13 L14 47 M32 13 L23 50 M32 13 L32 52 M32 13 L41 50 M32 13 L50 47" stroke="#fff" stroke-opacity=".75" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M6 53 Q19 46 32 53 T58 53" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M45 20 C54 20 54 31 46 31 C41 31 41 25 47 25" stroke="#ff4fb0" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="32" cy="13" r="4.4" fill="#ff4fb0" stroke="#fff" stroke-width="1.5"/></svg></span><div><h1>Swath<span>Plan</span></h1><small>MBES survey line planner · IHO S-44 · Williamson turns</small></div></div><div class="pj"><button id="spSave" type="button" title="Save the project (settings, boundary and map view) as a .SPL text file">Save .SPL</button><label class="lbtn" title="Open a .SPL project file">Open .SPL<input type="file" id="spImp" hidden></label><button id="spReset" type="button" title="Forget the automatically saved settings and restart with defaults">Reset</button></div><div class="lang"><select id="langSel" data-i18n="off" aria-label="Language" title="Language"></select><button id="langTpl" type="button" title="Download a blank language template (JSON) to add another language">⇩ JSON</button><label class="lbtn" title="Import a language pack (JSON)">⇧ JSON<input type="file" id="langImp" accept=".json,application/json" hidden></label></div>
+<nav><button id="tabP" class="on">Planner</button><button id="tabG">Guide &amp; science</button></nav>
+<span>Depth: <b id="hD">-</b></span><span>Lines: <b id="hL">0</b></span><span>Estimated project time: <b id="hT">0h 00m</b></span></header>
+<main id="mainP">
+<aside>
+<div id="jump"><button type="button" id="jExp" class="x">Expand all</button><button type="button" id="jCol" class="x">Collapse all</button></div>
+<details open><summary>1. Sensor &amp; design depth</summary><div>
+<label>MBES model</label><select id="sens"></select>
+<div class="kv"><span>Manufacturer</span><b id="sMk">-</b></div><div class="kv"><span>Beams</span><b id="sBm">-</b></div>
+<div class="kv"><span>Frequency</span><b id="sFq">-</b></div><div class="kv"><span>Max swath half-angle</span><b id="sAn">-</b></div>
+<p class="note">Catalogue values are approximate (compiled from memory and public lists; "n/a" = not known; "Generic" = brand placeholder). Always verify against the manufacturer datasheet. Angles below stay editable.</p>
+<label>Add a model: Model, Maker, beams, frequency, max half-angle</label><input id="mAdd" type="text" placeholder="EM 2040D, Kongsberg, 800, 200–400 kHz, 65"><button id="mBtn">Add</button>
+<label>or import a catalogue (CSV, same columns)</label><input type="file" id="mF" accept=".csv,.txt">
+<label>Design depth (m)</label><input type="number" id="depth" value="25" min="0.5" step="0.5">
+</div></details>
+<details open><summary>2. Swath &amp; overlap</summary><div>
+<div class="r2"><div><label>Port angle (°)</label><input type="number" id="ap" value="60" min="5" max="85"></div>
+<div><label>Starboard angle (°)</label><input type="number" id="as" value="60" min="5" max="85"></div></div>
+<label>Lateral overlap: <b id="ovT">30</b>%</label><input type="range" id="ov" min="0" max="80" value="30">
+<div class="kv"><span>Total swath width (W)</span><b id="W">-</b></div><div class="kv"><span>Line spacing (S), at design depth</span><b id="S">-</b></div>
+<label><input type="checkbox" id="adp"> Adaptive line spacing from loaded bathymetry (wider lines in deeper water)</label>
+<div class="r2"><div><label>Max line spacing (m, 0 = auto)</label><input type="number" id="mxS" value="0" min="0"></div><div><label>Max swath width (m, 0 = none)</label><input type="number" id="mxW" value="0" min="0"></div></div>
+<div class="kv"><span>Actual spacing (min – max, mean)</span><b id="spR">-</b></div>
+<p class="note">Adaptive mode needs depth data: global bathymetry (section 10) or your own XYZ soundings (section 11). Each line is placed as far from the previous one as the local depth allows while keeping the chosen overlap along its whole length. The swath is assumed to see flat seabed at the depth under the line, and the lines alternate direction (port/starboard angles swap).</p>
+</div></details>
+<details open><summary>3. Line direction</summary><div>
+<label>Azimuth: <b id="azT">0.000</b>°</label><input type="range" id="az" min="0" max="179.999" step="0.001" value="0">
+<input type="number" id="azN" value="0" min="0" max="179.999" step="0.001">
+<button data-az="0">N-S 0°</button><button data-az="90">E-W 90°</button><button data-az="45">45°</button><button data-az="135">135°</button>
+<button id="auto">Auto optimal (fewest lines)</button>
+<label>Main line name prefix</label><input type="text" id="pre" value="L">
+<label><input type="checkbox" id="cross" checked> Cross lines (perpendicular to main lines)</label>
+<label>Number of cross lines (evenly spaced across the area)</label><input type="number" id="nx" value="2" min="1" max="99" step="1">
+<label>Cross line name prefix</label><input type="text" id="crossPre" value="X">
+</div></details>
+<details><summary>4. Williamson turn</summary><div>
+<label>Turning radius R (m)</label><input type="number" id="R" value="35" min="1" step="1">
+<div class="kv"><span>Turning diameter (2R)</span><b id="dia">-</b></div>
+<label>Vessel LOA (m)</label><input type="number" id="loa" value="14" min="1"><button id="loaR">Recommend R from LOA</button>
+<label><input type="checkbox" id="slow" checked> Reduce speed in turns by 2 kts</label>
+<p class="note">If 2R &gt; S an outward bulb (Williamson) turn is generated; otherwise a plain U-turn.</p>
+</div></details>
+<details><summary>5. IHO S-44 &amp; speed</summary><div>
+<label>Survey order</label><select id="ord"></select>
+<div class="kv"><span>Ping-rate limit (slant range)</span><b id="ping">-</b></div><div class="kv"><span>TVU max</span><b id="tvu">-</b></div>
+<div class="r2"><div><label>Survey speed (kts)</label><input type="number" id="spd" value="6" min="1" step="0.5"></div>
+<div><label>Turn speed (kts)</label><input type="number" id="tsp" value="4" disabled></div></div>
+<p class="note" id="spdHint"></p>
+</div></details>
+<details><summary>Project &amp; operations (summary, cost and report)</summary><div>
+<label>Project / area name</label><input id="prjN" type="text" placeholder="e.g. Port approach channel survey"><label>Client</label><input id="prjC" type="text"><label>Vessel</label><input id="prjV" type="text"><label>Surveyor / party chief</label><input id="prjS" type="text"><label>Remarks / scope (printed in the PDF report)</label><textarea id="prjNote" rows="2" placeholder="Survey purpose, special requirements, restrictions…"></textarea>
+<div class="r2"><div><label>Start date</label><input type="date" id="sdate"></div><div><label>Operating hours per day</label><input id="opH" type="number" value="24" min="1" max="24"></div>
+<div><label>Weather / downtime allowance (%)</label><input id="wx" type="number" value="20" min="0" max="80"></div><div><label>Mob / demob (h)</label><input id="mob" type="number" value="0" min="0"></div>
+<div><label>Patch test / calibration (h)</label><input id="cal" type="number" value="0" min="0"></div><div><label>SVP cast every (h, 0 = none)</label><input id="svpI" type="number" value="4" min="0"></div>
+<div><label>SVP cast duration (min)</label><input id="svpD" type="number" value="15" min="0"></div><div><label>Vessel day rate (optional)</label><input id="rate" type="number" value="0" min="0"></div>
+<div><label>Ping rate (Hz, 0 = auto)</label><input id="pingU" type="number" value="0" min="0"></div><div><label>Along-track beamwidth (°)</label><input id="bwA" type="number" value="1" step="0.1" min="0.1"></div></div>
+<button class="p" id="rep">Create printable report</button><p class="note">The report is a self-contained HTML page with the map and all statistics. Open it and use Print → Save as PDF.</p>
+</div></details>
+<details><summary>6. Map background &amp; search</summary><div>
+<label>Survey location: place name, port or "lat, lon" (name search needs internet)</label>
+<div class="r2"><input id="goT" type="text" placeholder="Type the survey location, e.g. a port name, a bay, or coordinates like 51.95, 4.10"><button id="goB">Go</button></div>
+<label>Basemap (online tiles; falls back to grid when offline)</label>
+<select id="bm"><option value="none">None (grid only)</option><option value="esristreet">Esri World Street Map</option><option value="esritopo">Esri World Topographic</option><option value="esrigray">Esri Light Gray Canvas</option><option value="osmfr">OpenStreetMap France (may be blocked on local files)</option><option value="osm">OpenStreetMap standard (blocks pages opened from a local file)</option><option value="topo">OpenTopoMap</option><option value="sat">Esri World Imagery (satellite)</option><option value="ocean">Esri Ocean Basemap</option><option value="custom">Custom tile URL (Google / Bing / other)</option></select>
+<input id="bmU" type="text" placeholder="https://.../{z}/{x}/{y}?key=YOUR_KEY" style="margin-top:4px">
+<label><input type="checkbox" id="sea"> OpenSeaMap seamark overlay</label>
+<p class="note">Google and Bing have no free keyless tile URL. Paste the tile URL from your own API account into Custom. Placeholders: {z} {x} {y}, {q} = Bing quadkey, {s} = subdomain a–c.</p>
+</div></details>
+<details><summary>7. Coastline &amp; land avoidance</summary><div>
+<label>Safety clearance from coast (m)</label><input type="number" id="clr" value="30" min="0">
+<label><input type="checkbox" id="trim" checked> Trim survey and cross lines to navigable water</label>
+<button id="cOSM">Load OSM coastline for area (online)</button>
+<label>Or load land polygons / coastline lines (GeoJSON, WGS84 lon/lat)</label><input type="file" id="cF" accept=".geojson,.json"><button id="cClr">Remove coastline</button>
+<div id="cSt" class="note">No coastline loaded. Close an area first.</div>
+<p class="note">OSM coastline is worldwide, full detail, user-contributed, so check it against official charts. For offline work, export GSHHG (full), Natural Earth 10m or OSM land polygons to GeoJSON and load the file. Turn paths are not checked against land.</p>
+</div></details>
+<details><summary>8. Coordinate system for imported files</summary><div>
+<label>Coordinate system</label><select id="xcrs"><option value="geo">Geographic lon/lat (degrees)</option><option value="utmN">UTM north</option><option value="utmS">UTM south</option><option value="tm">Custom (Transverse Mercator)</option><option value="epsg">EPSG database / pasted definition</option></select>
+<div id="epBox" hidden>
+<div id="epSt" class="note">No EPSG CRS loaded.</div>
+<div class="r2"><input id="epC" type="text" placeholder="EPSG code, e.g. 32652"><button id="epB">Load code</button><input id="epQ" type="text" placeholder="Search name, e.g. UTM 52N"><button id="epS">Search</button></div>
+<select id="epR" style="display:none"></select>
+<textarea id="epT" rows="2" placeholder="…or paste a PROJ string or WKT" style="margin-top:4px"></textarea><button id="epA">Use pasted definition</button>
+<label>Offline helpers: definitions file (JSON {"32652":"+proj=…"} or lines "32652 TAB +proj=…"), and proj4.js</label><input type="file" id="epF"><input type="file" id="p4f" accept=".js" style="margin-top:4px">
+<p class="note">Lookups use epsg.io or spatialreference.org and are cached in this browser, so codes you have used work offline later. The full EPSG dataset is not embedded. Datum grid files (NTv2 etc.) are not supported.</p></div>
+<label>Projection</label><input type="text" id="pjN" readonly>
+<div class="r2"><div><label>UTM zone</label><input type="text" id="zone" value="52" readonly></div><div><label>Central meridian (°)</label><input type="text" id="tl0" readonly></div>
+<div><label>Latitude of origin (°)</label><input type="text" id="tp0" readonly></div><div><label>Scale factor k0</label><input type="text" id="tk" readonly></div>
+<div><label>False easting (m)</label><input type="text" id="tfe" readonly></div><div><label>False northing (m)</label><input type="text" id="tfn" readonly></div>
+<div><label>Ellipsoid a (m)</label><input type="text" id="da" readonly></div><div><label>Inverse flattening</label><input type="text" id="dif" readonly></div>
+<div><label>Datum shift ΔX (m)</label><input type="text" id="dx" readonly></div><div><label>ΔY (m)</label><input type="text" id="dy" readonly></div><div><label>ΔZ (m)</label><input type="text" id="dz" readonly></div></div>
+<div id="qfBox" hidden><label>Quick-fill ellipsoid / datum (Custom only)</label><select id="qf"><option value="">Choose…</option><option value="wgs">WGS84</option><option value="grs80">GRS80 (NAD83, ETRS89)</option><option value="tokyo">Tokyo (Bessel + 3-param shift)</option><option value="nad27">NAD27 CONUS (Clarke 1866 + shift)</option><option value="bessel">Bessel 1841</option><option value="clrk66">Clarke 1866</option><option value="intl">International 1924</option><option value="krass">Krassovsky 1940</option><option value="airy">Airy 1830</option></select></div>
+<label>X / Y order in imported files</label><select id="xord"><option value="xy">X Y (easting, northing or lon, lat)</option><option value="yx">Y X (northing first, or lat first)</option></select>
+<p class="note">Values in the grey boxes come from the selected system; choose Custom to edit them. Shifts use a 3-parameter Molodensky transform (about a metre).</p>
+</div></details>
+<details><summary>9. Survey boundary import</summary><div>
+<input type="file" id="bF" multiple accept=".dxf,.dwg,.shp,.prj,.dbf,.shx,.kml,.kmz,.gpx,.geojson,.json,.csv,.txt,.wkt,.zip">
+<button class="p" id="bB">Import boundary</button>
+<textarea id="bT" rows="2" placeholder="…or paste WKT (POLYGON((x y, …))) or one 'x y' vertex per line" style="margin-top:4px"></textarea><button id="bP">Use pasted text</button>
+<div id="bSt" class="note">Supported: SHP (+PRJ, or a ZIP), DXF, KML, KMZ, GPX, GeoJSON, WKT, CSV/TXT vertex lists. Select the .shp and .prj together.</div>
+<p class="note">CRS: KML, KMZ, GPX and GeoJSON are WGS84 by specification. SHP uses its .prj file when present. DXF, WKT and text lists carry no CRS, so they use the coordinate system in section 8. DWG is a closed binary format and cannot be read in a browser: save it as DXF first (AutoCAD, BricsCAD, ODA File Converter or LibreDWG). If several shapes are found, the largest closed one becomes the boundary.</p>
+</div></details>
+<details><summary>10. Global bathymetry (online, free)</summary><div>
+<label>Source</label><select id="gbSrc"><option value="gmrt">GMRT – multibeam synthesis, up to ~100 m, global (GEBCO fills gaps)</option><option value="ncei">NOAA NCEI – best-available DEM mosaic (coastal DEMs + ETOPO 2022)</option><option value="emod">EMODnet Bathymetry – European seas, ~115 m</option><option value="gebco">GEBCO 2020 via OpenTopoData – global, ~450 m</option></select>
+<label>Target resolution</label><select id="gbRes"><option value="100">Finest available (~100 m)</option><option value="250">250 m</option><option value="500">500 m</option><option value="1000">1000 m</option></select>
+<button class="p" id="gbB">Fetch depths for the survey area</button>
+<div id="gbSt" class="note">Close an area first (draw, preset or import), then fetch.</div><div id="gbLink" class="note"></div>
+<label>Or load a downloaded grid: GeoTIFF (.tif) or ESRI ASCII (.asc), e.g. from GEBCO, EMODnet or GMRT</label>
+<div class="r2"><input type="file" id="gbF" accept=".tif,.tiff,.asc,.txt"><select id="gbZ"><option value="elev">Values = elevation (negative = depth)</option><option value="depth">Values = depth (positive down)</option><option value="auto">Detect automatically</option></select></div>
+<p class="note">The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section 11 or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).</p>
+</div></details>
+<details><summary>11. Bathymetry from XYZ file (your own data)</summary><div>
+<input type="file" id="xf" accept=".xyz,.txt,.csv,.dat,.pts"><textarea id="snd" rows="3" placeholder="…or paste X Y Z rows here" style="margin-top:4px"></textarea>
+<div class="r2"><div><label>Header lines to skip</label><input type="number" id="hdr" value="0" min="0"></div><div><label>Z convention</label><select id="zsg"><option value="down">Positive down (depth)</option><option value="up">Negative down (elevation)</option></select></div>
+<div><label>Z unit</label><select id="zun"><option value="1">metres</option><option value="0.3048">feet</option><option value="1.8288">fathoms</option></select></div><div><label>Vertical offset (m)</label><input type="number" id="zoff" value="0" step="0.01"></div></div>
+<p class="note">Horizontal coordinates use the system chosen in section 8. Soundings loaded here replace any global data.</p>
+<button class="p" id="xl">Load XYZ</button><label><input type="checkbox" id="sb" checked> Show soundings on map</label>
+<div id="sndR" class="note"></div><button id="sMin">Apply shallowest</button><button id="sP5">Apply 5th percentile</button><button id="sMean">Apply mean</button>
+</div></details>
+<details><summary>12. Quick profile calculator</summary><div>
+<div class="r2"><div><label>Half angle (°)</label><input type="number" id="qa" value="60"></div><div><label>Depth (m)</label><input type="number" id="qd" value="25"></div>
+<div><label>Overlap (%)</label><input type="number" id="qo" value="30"></div><div><label>Lines</label><input type="number" id="qn" value="10"></div>
+<div><label>Line length (NM)</label><input type="number" id="ql" value="2" step="0.1"></div><div><label>Speed (kts)</label><input type="number" id="qs" value="6"></div>
+<div><label>Ship LOA (m)</label><input type="number" id="qL" value="14"></div></div>
+<button class="p" id="qb">Calculate</button><div id="qr"></div>
+</div></details>
+<details><summary>13. Export</summary><div>
+<label>Coordinate system</label><select id="crs"><option value="utm">UTM (m)</option><option value="geo">WGS84 (deg)</option><option value="epsg">Loaded EPSG / custom CRS</option></select>
+<label><input type="checkbox" id="inclT" checked> Include Williamson turn trajectories</label>
+<label>USV acceptance radius (m)</label><input type="number" id="acc" value="5">
+<button id="eLnx">HYPACK (.LNX)</button><button id="eDxf">AutoCAD DXF</button><button id="eShp">Shapefile (.zip)</button><button id="eEiva">EIVA RLN</button><button id="eQin">Qinsy QGF line (.qgfline)</button><button id="eKml">KML</button><label>More formats</label><select id="xfmt"><option value="gpxR">GPX – routes (one per line)</option><option value="gpxS">GPX – single route (full sequence with turns)</option><option value="gpxT">GPX – tracks</option><option value="gpxW">GPX – waypoints (line start/end)</option><option value="csvL">CSV – line list (start, end, azimuth, length)</option><option value="csvV">CSV – all vertices</option><option value="txtV">TXT – vertices (tab-delimited)</option><option value="txtSE">TXT – start/end per line (space-delimited)</option><option value="txtDM">TXT – waypoint list (degrees, decimal minutes)</option><option value="wkt">WKT (CSV with LINESTRING)</option><option value="gml">GML 2 (WGS84)</option><option value="mif">MapInfo MIF/MID (.zip)</option><option value="lnw">HYPACK LNW (legacy text)</option><option value="nmea">NMEA 0183 waypoints ($GPWPL)</option></select><button class="p" id="xBtn">Export selected format</button><button id="eGj">GeoJSON</button>
+<button id="eQgc">QGroundControl (.plan)</button><button id="eMp">Mission Planner (.waypoints)</button>
+<h4 style="margin:16px 0 4px;color:var(--ac)">Map sheet, PDF report and images</h4>
+<p class="note">A hydrographic-style plan sheet with graticule, scale bar, north arrow, legend and title block. Printed at 100 % the scale bar is true.</p>
+<div class="r2"><div><label>Paper</label><select id="xpPaper"><option value="A4">A4</option><option value="A3">A3</option></select></div><div><label>Orientation</label><select id="xpOri"><option value="auto">Auto</option><option value="land">Landscape</option><option value="port">Portrait</option></select></div>
+<div><label>Resolution</label><select id="xpDpi"><option value="300">300 dpi (print)</option><option value="200">200 dpi</option><option value="150">150 dpi (screen)</option></select></div><div><label>Scale 1: (0 = auto fit)</label><input type="number" id="xpScale" value="0" min="0"></div></div>
+<label>Grid labels on the map sheet</label><select id="xpGrid"><option value="auto">Follow the coordinate system above</option><option value="geo">Latitude / longitude (degrees)</option><option value="both">Both: projected grid + lat/lon</option></select>
+<label><input type="checkbox" id="xpBase" checked> Include basemap (needs internet)</label><label><input type="checkbox" id="xpSnd" checked> Include soundings</label><label><input type="checkbox" id="xpNames" checked> Line names and direction arrows</label>
+<button class="p" id="xpPdf">PDF report (map sheet + statistics pages)</button>
+<label>Map image format</label><select id="xpFmt"><option value="png">PNG (sheet, 300 dpi tagged)</option><option value="jpg">JPEG (sheet)</option><option value="webp">WebP (sheet)</option><option value="tif">TIFF (sheet, compressed)</option><option value="bmp">BMP (sheet, uncompressed, large)</option><option value="svg">SVG (sheet, vector, no basemap)</option><option value="pdfmap">PDF (map sheet only)</option><option value="gtif">GeoTIFF (map frame only, georeferenced WGS 84)</option><option value="pngw">PNG + world file + .prj (map frame, .zip)</option><option value="jpgw">JPEG + world file + .prj (map frame, .zip)</option></select>
+<button id="xpImg">Export map image</button><div id="xpSt" class="note"></div>
+<p class="note">GPX, KML, GML and NMEA are always WGS84 lat/lon. CSV, TXT, WKT, MIF and LNW follow the coordinate system chosen above. The HYPACK LNW layout is written from memory, so test-import it. DWG cannot be written from a browser: open the DXF in AutoCAD or BricsCAD and Save As DWG (or use ODA File Converter). The .LNX layout is written from memory of the HYPACK format; test-import before field use.</p>
+<p class="note">EIVA RLN follows the Helmsman runline format (E, N, KP). The Qinsy .qgfline file is rebuilt from a single sample file, so test-import it first. It uses WGS84 UTM (zone from the area centre) and straight lines only. Qinsy also reads DXF, DWG and KML.</p>
+</div></details>
+</aside>
+<section>
+<div id="mapwrap"><canvas id="cv"></canvas>
+<div id="tools"><button id="bDraw" class="p">Draw area</button><button id="bClose">Close polygon</button><button id="bClr">Clear</button><button id="bFit">Fit</button><button id="bLoc" title="Go to the area preset nearest to my location">My location</button>
+<select id="pre2" style="width:auto;max-width:210px;margin:4px 0 0"></select></div>
+<div id="leg"><div><i style="background:#0b6f6a"></i>Survey lines</div><div><i style="background:#b0237a"></i>Williamson turns</div><div><i style="background:#d98a00"></i>Cross lines</div></div>
+<div id="attr"></div><div id="hud">Drag to pan · wheel to zoom · click to add vertices</div></div>
+<div class="grid" id="sumWrap">
+<div class="card"><h3>Time analysis</h3>
+<h4>Production</h4><div class="kv"><span>On-line time (survey + cross lines)</span><b id="tO">-</b></div><div class="kv"><span>Turns &amp; transits</span><b id="tR">-</b></div><div class="kv"><span>Productive time</span><b id="tT">-</b></div>
+<div class="kv"><span>On-line efficiency</span><b id="tEff">-</b></div><div class="kv"><span>Coverage rate (on-line)</span><b id="tRate">-</b></div>
+<h4>Allowances</h4><div class="kv"><span>SVP casts</span><b id="tSvp">-</b></div><div class="kv"><span>Patch test / calibration</span><b id="tCal">-</b></div><div class="kv"><span>Weather / downtime</span><b id="tWx">-</b></div><div class="kv"><span>Mob / demob</span><b id="tMob">-</b></div>
+<h4>Project</h4><div class="kv"><span><b>Total project time</b></span><b id="tTot">-</b></div><div class="kv"><span>Duration at operating hours/day</span><b id="tDays">-</b></div><div class="kv"><span>Estimated completion</span><b id="tEnd">-</b></div><div class="kv"><span>Production per calendar day</span><b id="tPD">-</b></div><div class="kv"><span>Estimated vessel cost</span><b id="tCost">-</b></div></div>
+<div class="card"><h3>Distance &amp; statistics</h3>
+<h4>Lines</h4><div class="kv"><span>Survey lines</span><b id="nL">0</b></div><div class="kv"><span>Cross lines</span><b id="nX">0</b></div><div class="kv"><span>Survey line length</span><b id="dL">-</b></div><div class="kv"><span>Cross line length</span><b id="dX">-</b></div>
+<div class="kv"><span>Line length (min / mean / max)</span><b id="dLs">-</b></div><div class="kv"><span>Line spacing (min / mean / max)</span><b id="dSp">-</b></div>
+<h4>Turns</h4><div class="kv"><span>Turns (Williamson / U-turn / transit)</span><b id="nT">0</b></div><div class="kv"><span>Turn guideline length</span><b id="dT">-</b></div><div class="kv"><span><b>Grand total distance</b></span><b id="dG">-</b></div>
+<h4>Coverage</h4><div class="kv"><span>Area</span><b id="ar">-</b></div><div class="kv"><span>Swath width (min / mean / max)</span><b id="dW">-</b></div><div class="kv"><span>Swath area / area covered</span><b id="dCov">-</b></div><div class="kv"><span>Mean achieved overlap</span><b id="dOv">-</b></div><div class="kv"><span>Line-km per km²</span><b id="dLk">-</b></div><div class="kv"><span>Land trimming</span><b id="lt">off</b></div>
+<h4>Data</h4><div class="kv"><span>Depth range used (min / mean / max)</span><b id="dDz">-</b></div><div class="kv"><span>Estimated pings</span><b id="dPg">-</b></div><div class="kv"><span>Estimated soundings</span><b id="dSn">-</b></div><div class="kv"><span>Sounding density</span><b id="dDn">-</b></div></div>
+<div class="card"><h3>IHO S-44 &amp; quality control</h3>
+<h4>Order requirements</h4><div class="kv"><span>Survey order</span><b id="qOrd">-</b></div><div class="kv"><span>Design swath W / spacing S (design depth)</span><b id="qW">-</b></div><div class="kv"><span>Overlap / design spacing</span><b id="qS">-</b></div>
+<div class="kv"><span>TVU max (design depth)</span><b id="qT">-</b></div><div class="kv"><span>TVU max at min / mean / max depth</span><b id="qTv">-</b></div><div class="kv"><span>THU max (mean depth)</span><b id="qTH">-</b></div><div class="kv"><span>Feature detection (mean depth)</span><b id="qCube">-</b></div><div class="kv"><span>Full seafloor search</span><b id="qFS">-</b></div>
+<h4>Cross-line check</h4><div class="kv"><span>Allowed depth difference at crossings (95%)</span><b id="qXL">-</b></div>
+<h4>Ping &amp; speed</h4><div class="kv"><span>Ping-rate limit at deepest part</span><b id="qPf">-</b></div><div class="kv"><span>Ping rate assumed</span><b id="qPu">-</b></div><div class="kv"><span>Ping spacing at survey speed</span><b id="qPs">-</b></div><div class="kv"><span>Along-track footprint (nadir)</span><b id="qFp">-</b></div><div class="kv"><span>Max speed for 3 pings on smallest feature</span><b id="qVm">-</b></div>
+<p class="note">If QC fails: check tide and draft, then SVP / ray refraction, then motion-heading alignment and patch-test offsets. Orders and limits follow IHO S-44 (verify against the current edition).</p></div>
+<div class="card"><h3>Plan checks</h3><ul id="chk"></ul></div>
+</div></section></main>
+<section id="guide" hidden>
+<div class="lead"><span id="logoG"></span><div><h2 style="margin:0;border:0">SwathPlan: guide and scientific background</h2><small>© 2026 Aldwin Syahperdana</small></div></div>
+
+<h2>1. What SwathPlan does</h2>
+<p>SwathPlan plans multibeam echosounder (MBES) survey lines. From a survey boundary, the water depth, the sensor swath angles and the overlap you want, it lays out parallel lines, designs the vessel turns, estimates time and distance, and checks the plan against the IHO S-44 order you choose. It runs entirely in your browser; only the map tiles and the global bathymetry downloads need internet.</p>
+
+<h2>2. Quick start, step by step</h2>
+<ol>
+<li><b>Define the survey area.</b> Click <i>Draw area</i> and click the map to add vertices (double-click or <i>Close polygon</i> to finish), pick a port from <i>Area presets</i>, or import a boundary in section 9 (SHP, DXF, KML/KMZ, GPX, GeoJSON, WKT, CSV). Use <i>Go to</i> in section 6 to find any place.</li>
+<li><b>Set the coordinate system</b> (section 8) before importing files that carry no CRS (DXF, WKT, text, XYZ). Choose geographic, UTM, a custom Transverse Mercator, or an EPSG code.</li>
+<li><b>Get the depth.</b> Type a design depth (section 1), or load XYZ soundings (section 11), or fetch free global bathymetry (section 10). Then use <i>Apply shallowest / 5th percentile / mean</i> to set the design depth.</li>
+<li><b>Choose the sensor</b> (section 1) and set the port and starboard swath angles (section 2). The catalogue values are approximate; check your datasheet.</li>
+<li><b>Set the overlap</b> (section 2), typically 20–30 %. Tick <i>Adaptive line spacing</i> if you loaded depth data and want wider spacing in deeper water.</li>
+<li><b>Set the line direction</b> (section 3). <i>Auto optimal</i> finds the azimuth with the fewest lines. Lines parallel to the contours usually give the most uniform depth along each line.</li>
+<li><b>Set the turn radius and speed</b> (sections 4 and 5). Use <i>Recommend R from LOA</i> for a first guess, then enter your vessel's real turning radius.</li>
+<li><b>Pick the IHO order</b> (section 5) and review the TVU, ping-rate and speed figures.</li>
+<li><b>Add the coastline</b> (section 7) if the area touches land, so lines are trimmed with a safety clearance.</li>
+<li><b>Fill in the project and operations panel</b>: start date, hours per day, weather allowance, SVP casts, calibration, mob/demob and the day rate if you want a cost estimate.</li>
+<li><b>Read the summary and Plan checks</b> under the map. Fix any ⚠ items and iterate.</li>
+<li><b>Export</b> (section 13) to your acquisition software (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner and more), and create the printable report for the client.</li>
+</ol>
+
+<h2>3. Panel reference</h2>
+<ul>
+<li><b>1 Sensor &amp; depth:</b> model list (editable catalogue, CSV import) and design depth.</li>
+<li><b>2 Swath &amp; overlap:</b> angles, overlap, adaptive spacing, maximum spacing and swath width.</li>
+<li><b>3 Line direction:</b> azimuth slider, presets, auto-optimal, cross lines and line names.</li>
+<li><b>4 Williamson turn:</b> turn radius, vessel length, speed reduction in turns.</li>
+<li><b>5 IHO S-44 &amp; speed:</b> survey order, ping-rate limit, TVU, speeds.</li>
+<li><b>6 Map &amp; search:</b> basemaps (OSM, topo, satellite, ocean, custom tile URL), OpenSeaMap overlay, place search.</li>
+<li><b>7 Coastline:</b> OSM coastline (online) or your land polygons, with clearance.</li>
+<li><b>8 Coordinate system:</b> parameters shown for the chosen system; editable for Custom.</li>
+<li><b>9 Boundary import:</b> reads CRS from .prj, or uses section 8 when the format has none.</li>
+<li><b>10 Global bathymetry:</b> GMRT, NOAA NCEI, EMODnet, GEBCO, or a downloaded GeoTIFF/ASCII grid.</li>
+<li><b>11 XYZ:</b> your own soundings with datum, unit and tide offset handling.</li>
+<li><b>12 Quick calculator and 13 Export.</b></li>
+</ul>
+
+<h2>4. Scientific background</h2>
+
+<h3>4.1 Swath geometry</h3>
+<p>A multibeam sonar forms a fan of beams across the track. For a flat seabed at depth <i>d</i> and beams steered to angles θ<sub>p</sub> (port) and θ<sub>s</sub> (starboard) from the vertical, the ground swath is</p>
+<pre class="f">W = d · ( tan θp + tan θs )          (m)</pre>
+<p>Example: d = 25 m, ±60° gives W = 25 × 2 × 1.732 = 86.6 m, or 3.5 × depth. Because W grows linearly with depth, shallow water gives narrow swaths and many lines. In practice the usable angle is limited by signal-to-noise ratio, sound-speed refraction near the outer beams, sea state and the sensor's design, so the planner lets you cap the angle and the swath width.</p>
+
+<h3>4.2 Overlap and line spacing</h3>
+<p>Adjacent swaths overlap so that the noisy outer beams are backed up by good inner beams and no gaps appear. With overlap fraction <i>o</i> (overlap width divided by swath width) the spacing is</p>
+<pre class="f">S = W · ( 1 − o )                    e.g. 86.6 × 0.70 = 60.6 m</pre>
+<p>The number of lines is N = ⌈B / S⌉, where B is the across-track extent of the area. In uniform mode the design depth should be the shallowest depth in the area (conservative); the 5th percentile is a common compromise.</p>
+<p><b>Adaptive (variable) spacing.</b> The swath at each place depends on the local depth, so a fixed S wastes lines in deep water. SwathPlan places each new line as far from the previous one as the depth allows. For consecutive lines <i>k</i> and <i>k+1</i> at across-track positions s and s′, with local depths d<sub>k</sub>(t) and d<sub>k+1</sub>(t) along the line coordinate t, the half-swaths facing each other are h<sub>k</sub>(t) and h′<sub>k+1</sub>(t), and the required condition is</p>
+<pre class="f">s′ − s  ≤  min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>
+<p>The largest s′ that satisfies it is found by bisection. Because the vessel reverses direction on alternate lines, the starboard and port angles swap each line, and the code accounts for this. The first and last lines are placed so that the swath reaches the boundary. The method assumes flat seabed under each swath at the depth beneath the line, which is the usual planning approximation.</p>
+
+<h3>4.3 Ping rate and along-track coverage</h3>
+<p>A ping must travel to the farthest slant range R and back before the next ping, so the maximum ping rate is</p>
+<pre class="f">f max = c / (2 R),   R = d / cos θmax,   c ≈ 1500 m/s</pre>
+<p>At d = 25 m and 60° the slant range is 50 m and f<sub>max</sub> = 15 Hz. The along-track spacing between pings is Δx = v / f (v in m/s). The along-track footprint at nadir is about d · β, where β is the along-track beamwidth in radians. To detect a small object, several pings should land on it. The summary uses a rule of thumb of three pings on the smallest feature required by the chosen IHO order, which gives a maximum speed v<sub>max</sub> = f · T / 3. This is a planning guide, not an S-44 requirement.</p>
+
+<h3>4.4 IHO S-44 uncertainty model</h3>
+<p>IHO S-44 limits the total vertical uncertainty (TVU) at the 95 % confidence level as</p>
+<pre class="f">TVU max(d) = √( a² + (b · d)² )</pre>
+<table><tr><th>Order</th><th>a (m)</th><th>b</th><th>THU max</th><th>Feature detection</th><th>Full seafloor search</th></tr>
+<tr><td>Exclusive</td><td>0.15</td><td>0.0075</td><td>1 m</td><td>cube &gt; 0.5 m</td><td>Required</td></tr>
+<tr><td>Special</td><td>0.25</td><td>0.0075</td><td>2 m</td><td>cube &gt; 1 m</td><td>Required</td></tr>
+<tr><td>1a</td><td>0.5</td><td>0.013</td><td>5 m + 5 % of depth</td><td>cube &gt; 2 m (to 40 m depth), 10 % of depth deeper</td><td>Required</td></tr>
+<tr><td>1b</td><td>0.5</td><td>0.013</td><td>5 m + 5 % of depth</td><td>not specified</td><td>Not required</td></tr>
+<tr><td>2</td><td>1.0</td><td>0.023</td><td>20 m + 10 % of depth</td><td>not specified</td><td>Not required</td></tr></table>
+<p>Example: Exclusive order at 25 m gives TVU = √(0.15² + (0.0075 × 25)²) = 0.24 m. The values are those of S-44 as the author understands them; always check the current edition. Total uncertainty combines many independent error sources (sonar range and angle, sound speed, motion, tide, positioning), see Hare (1995).</p>
+<p><b>Cross-line check.</b> Crossing lines are used to check consistency. If two independent measurements each have uncertainty TVU, their difference has uncertainty √2 · TVU, so differences at crossings should stay within about √2 · TVU(d) at 95 %. The summary shows this value.</p>
+
+<h3>4.5 Williamson turn geometry</h3>
+<p>To run the next line in the opposite direction, the vessel leaves the end of a line and turns around. If the line gap S is at least the turning diameter 2R, a plain U-turn with a straight connector of length S − 2R is used. If S &lt; 2R, a Williamson-style turn is designed: turn away from the next line by an angle α, then turn the opposite way by 180° + α, ending on the reciprocal heading. The lateral displacement after the two arcs is</p>
+<pre class="f">S = 2 R cos α   →   α = arccos( S / 2R )
+path length = R α + R (π + α) = R (π + 2α)
+forward overshoot beyond the line end = 2 R sin α</pre>
+<p>Example: R = 35 m, S = 60.6 m gives α = 30.0°, path length 146.6 m and overshoot 35 m. Real vessels and USVs have limited yaw rate and slow down in turns, so enter a realistic radius and the turn-speed reduction.</p>
+
+<h3>4.6 Time and productivity</h3>
+<pre class="f">on-line time  = (Σ line lengths) / v
+turn time     = (Σ turn lengths) / v turn
+productive    = on-line + turns
+total project = (productive + SVP + calibration) / (1 − w) + mobilisation</pre>
+<p>where w is the weather/downtime fraction. SVP time is the number of casts (productive time divided by the interval) times the cast duration. Duration in days divides the total by the operating hours per day. On-line efficiency is on-line time over productive time; a low value means turns dominate, so consider longer lines or a smaller overlap. Estimated soundings are pings × beams, with pings = ping rate × on-line time.</p>
+
+<h3>4.7 Coordinates and datums</h3>
+<p>The map works in a local metric frame around the area's centre (an equirectangular approximation, accurate for areas of some tens of kilometres). Geographic coordinates are converted to UTM or a custom Transverse Mercator with the series formulas of Snyder (1987), and the inverse series is used to read projected data. Datum shifts to WGS84 use the abridged Molodensky transformation with three translation parameters (typical accuracy a few metres, or better with local parameters). EPSG codes are resolved to PROJ definitions and converted with the proj4js library; datum grid files are not supported.</p>
+
+<h3>4.8 Coastline and land avoidance</h3>
+<p>OpenStreetMap coastlines are oriented with land on the left and water on the right. Each survey line is intersected with the coastline segments; the line is cut at the crossings, the starting side is decided from the nearest segment, and a clearance zone (a capsule of radius equal to the safety distance around each segment) is removed. For land polygons the inside/outside test is used instead. Turn paths are not checked against land.</p>
+
+<h3>4.9 Bathymetry data sources</h3>
+<table><tr><th>Source</th><th>Coverage</th><th>Typical resolution</th><th>Note</th></tr>
+<tr><td>GMRT</td><td>Global</td><td>≈ 100 m where multibeam exists, GEBCO elsewhere</td><td>Ryan et al. (2009)</td></tr>
+<tr><td>NOAA NCEI DEM mosaic</td><td>Global</td><td>Coastal DEMs to a few metres, ETOPO 2022 (15″) elsewhere</td><td>Mixed vertical datums</td></tr>
+<tr><td>EMODnet Bathymetry</td><td>European seas</td><td>≈ 115 m (1/16′)</td><td>Digital terrain model</td></tr>
+<tr><td>GEBCO 2020</td><td>Global</td><td>≈ 450 m (15″)</td><td>Via Open Topo Data</td></tr></table>
+<p>These grids blend many surveys of very different quality and are referenced roughly to mean sea level. They are good enough to size a plan, but they cannot meet S-44 depth accuracy and may miss shoals, wrecks and channels. Use your own soundings or a reconnaissance line for final planning in critical areas.</p>
+
+<h2>5. Assumptions and limitations</h2>
+<ul>
+<li>Flat seabed under each swath; no refraction or beam-angle limits other than those you enter.</li>
+<li>Sound speed 1500 m/s for ping-rate limits.</li>
+<li>Straight, parallel lines. Curved or contour-following lines are not generated.</li>
+<li>Catalogue sensor data are approximate and may be out of date; "n/a" means unknown.</li>
+<li>Time estimates assume constant speeds and ignore currents, traffic and port calls.</li>
+<li>Coastline data are not a navigation chart. Always plan against official charts and local notices.</li>
+<li>The Qinsy .qgfline file is rebuilt from a single sample and the HYPACK LNW layout is written from memory; test-import before field use.</li>
+</ul>
+
+<h2>6. References</h2>
+<ul>
+<li>International Hydrographic Organization. <i>S-44 Standards for Hydrographic Surveys</i>, current edition (6.x).</li>
+<li>Lurton, X. (2010). <i>An Introduction to Underwater Acoustics: Principles and Applications</i>, 2nd ed. Springer.</li>
+<li>Hare, R. (1995). Depth and position error budgets for multibeam echosounding. <i>International Hydrographic Review</i> 72(2), 37–69.</li>
+<li>NOAA Office of Coast Survey. <i>Hydrographic Surveys Specifications and Deliverables</i>.</li>
+<li>Snyder, J. P. (1987). <i>Map Projections: A Working Manual</i>. USGS Professional Paper 1395.</li>
+<li>NIMA (2000). <i>Department of Defense World Geodetic System 1984</i>, TR8350.2 (datum transformation formulas).</li>
+<li>Ryan, W. B. F. et al. (2009). Global Multi-Resolution Topography synthesis. <i>Geochemistry, Geophysics, Geosystems</i> 10, Q03014.</li>
+<li>GEBCO Compilation Group, <i>GEBCO Gridded Bathymetry Data</i> (gebco.net); EMODnet Bathymetry Consortium (emodnet.ec.europa.eu); NOAA NCEI, <i>ETOPO 2022 Global Relief Model</i>.</li>
+</ul>
+
+<h2>7. About</h2>
+<p><b>SwathPlan</b> was created by <b>Aldwin Syahperdana</b>. © 2026 Aldwin Syahperdana. All rights reserved. The software is provided as is, without warranty of any kind. It is a planning aid and does not replace the judgement of a qualified hydrographic surveyor.</p>
+</section>
+
+<footer>© 2026 <b>Aldwin Syahperdana</b>. All rights reserved. · SwathPlan MBES Survey Line Planner · A planning aid only: verify all results against your equipment specifications, the current IHO S-44 and your client's requirements.</footer>
+<script id="langpack" type="application/json"><!--@langpack--></script>
+<script><!--@include js/core/i18n-engine.js-->
+<!--@include js/mbes/iho-orders.js-->
+<!--@include js/mbes/catalogues.js-->
+<!--@include js/mbes/state.js-->
+<!--@include js/core/coords.js-->
+<!--@include js/mbes/plan.js-->
+<!--@include js/map/render.js-->
+<!--@include js/mbes/controls.js-->
+<!--@include js/io/export-basic.js-->
+<!--@include js/map/tiles.js-->
+<!--@include js/map/coastline.js-->
+<!--@include js/core/datum.js-->
+<!--@include js/io/xyz.js-->
+<!--@include js/core/epsg.js-->
+<!--@include js/mbes/sensor-catalogue-edit.js-->
+<!--@include js/core/crs-panel.js-->
+<!--@include js/io/import-boundary.js-->
+<!--@include js/io/export-shp-kml.js-->
+<!--@include js/io/export-more.js-->
+<!--@include js/mbes/adaptive-spacing.js-->
+<!--@include js/io/bathy-global.js-->
+<!--@include js/mbes/summary-report.js-->
+<!--@include js/sheet/map-sheet.js-->
+<!--@include js/sheet/pdf-writer.js-->
+<!--@include js/sheet/pdf-report.js-->
+<!--@include js/sheet/image-export.js-->
+<!--@include js/core/text-xy-parse.js-->
+<!--@include js/core/auto-lang-layout.js-->
+<!--@include js/io/qinsy-rln.js-->
+<!--@include js/sheet/grid-projected.js-->
+<!--@include js/mbes/auto-azimuth.js-->
+<!--@include js/map/interaction.js-->
+<!--@include js/core/app-state.js-->
+<!--@include js/core/lang-packs.js-->
+</script></body></html>

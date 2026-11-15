@@ -83,6 +83,10 @@ Some features need internet when you use them: map background tiles, global bath
 
 Tested in Chromium (Chrome, Edge) and Firefox. It is also designed for Safari, but report anything odd you see.
 
+## For developers
+
+`index.html` is built from the source files in `src/` with `node tools/build.mjs`. See [DEVELOPMENT.md](DEVELOPMENT.md) for the layout, the build, the language files and the tests.
+
 ## Feedback
 
 I'd really like to hear from people who plan surveys: what is missing, what is confusing, which export you need. Please open an **Issue** with the browser, a short description and, if you can, a screenshot or your `.SPL` file.
