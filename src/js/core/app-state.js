@@ -5,9 +5,10 @@ const ctrls=()=>[...document.querySelectorAll("input[id],select[id],textarea[id]
 function collectUI(){const u={};ctrls().forEach(e=>{if(e.type=="checkbox"||e.type=="radio")u[e.id]=e.checked?1:0;else if(e.value.length<=20000)u[e.id]=e.value});return u}
 function applyUI(u){Object.keys(u).forEach(k=>{const e=$(k);if(!e||SKIPU.has(k)||e.type=="file")return;const v=u[k];if(e.type=="checkbox"||e.type=="radio")e.checked=!!+v;else if(e.tagName=="SELECT"){if([...e.options].some(op=>op.value==v))e.value=v}else e.value=v})}
 function snapshot(){return{v:1,t:Date.now(),ui:collectUI(),o:{lat:o.lat,lon:o.lon},poly:poly.map(p=>[p[0],p[1]]),closed,V:{cx:V.cx,cy:V.cy,k:V.k},crs:typeof crsDef=="string"?crsDef:""}}
-function saveState(){if(RESET)return;try{localStorage.setItem("swp_state",JSON.stringify(snapshot()))}catch(e){}}
+const STATE_KEY=window.SWP_STATE_KEY||"swp_state";// each tool keeps its own autosave
+function saveState(){if(RESET)return;try{localStorage.setItem(STATE_KEY,JSON.stringify(snapshot()))}catch(e){}}
 function saveSoon(){if(RESET||_st)return;_st=setTimeout(()=>{_st=0;saveState()},1000)}
-function loadState(){try{const s=JSON.parse(localStorage.getItem("swp_state")||"null");return s&&s.v==1?s:null}catch(e){return null}}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(STATE_KEY)||"null");return s&&s.v==1?s:null}catch(e){return null}}
 function applyState(st){try{
 if(st.o&&isFinite(st.o.lat)&&isFinite(st.o.lon))o={lat:+st.o.lat,lon:+st.o.lon};
 if(st.ui&&/^carto/.test(st.ui.bm||""))st.ui.bm="esristreet";applyUI(st.ui||{});if(typeof st.crs=="string")crsDef=st.crs;
@@ -48,6 +49,6 @@ addEventListener("pagehide",saveState);document.addEventListener("visibilitychan
 $("bLoc").onclick=()=>{toast(i18("Locating…"),3000);locate(true)};
 $("spSave").onclick=()=>{const nm=($("prjN").value||"survey_plan").trim().replace(/[\\\/:*?"<>|]+/g,"_").slice(0,60)||"survey_plan";save(nm+".spl",splText(),"text/plain;charset=utf-8");toast(i18("Project saved as {0}.spl",nm),4000)};
 $("spImp").onchange=e=>{const f=e.target.files[0];e.target.value="";if(!f)return;const r=new FileReader();r.onload=()=>{try{const st=splParse(String(r.result));if(applyState(st)){saveState();toast(i18("Project loaded: {0}",f.name),4500)}else toast(i18("Could not apply the project file."),5000)}catch(err){toast(i18("Not a valid SwathPlan .SPL file."),5000)}};r.readAsText(f)};
-$("spReset").onclick=()=>{if(!confirm(i18("Forget the saved settings and restart with defaults?")))return;RESET=true;try{localStorage.removeItem("swp_state")}catch(e){}location.reload()};
+$("spReset").onclick=()=>{if(!confirm(i18("Forget the saved settings and restart with defaults?")))return;RESET=true;try{localStorage.removeItem(STATE_KEY)}catch(e){}location.reload()};
 
 initApp();
