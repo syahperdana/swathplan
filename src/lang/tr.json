@@ -898,5 +898,11 @@
  "Survey speed (kn)": "Ölçüm hızı (kn)",
  "Swath half-angle (°)": "Tarama yarı açısı (°)",
  "Turn radius (m)": "Dönüş yarıçapı (m)",
- "Vessels": "Gemiler"
+ "Vessels": "Gemiler",
+ "Share project details between planners": "Proje bilgilerini planlayıcılar arasında paylaş",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Proje bilgileri, sensör, IHO sınıfı, hız, gemi ve koordinat sistemi bu cihazdaki diğer SwathPlan planlayıcılarına da aktarılır; ölçüm alanı MBES ve jeofizik planlayıcıları arasında paylaşılır.",
+ "Project details updated from the {0}.": "Proje bilgileri şuradan güncellendi: {0}.",
+ "Project details and survey area updated from the {0}.": "Proje bilgileri ve ölçüm alanı şuradan güncellendi: {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Geçerli proje: {0} (son değişiklik: {1}, {2}). Her planlayıcı bununla açılır.",
+ "unnamed": "adsız"
 }

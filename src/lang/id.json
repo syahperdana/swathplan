@@ -901,5 +901,11 @@
  "Survey speed (kn)": "Kecepatan survei (knot)",
  "Swath half-angle (°)": "Setengah sudut swath (°)",
  "Turn radius (m)": "Radius belok (m)",
- "Vessels": "Kapal"
+ "Vessels": "Kapal",
+ "Share project details between planners": "Bagikan detail proyek antarperencana",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Detail proyek, sensor, orde IHO, kecepatan, kapal, dan sistem koordinat ikut ke perencana SwathPlan lain di perangkat ini; area survei dibagikan antara perencana MBES dan geofisika.",
+ "Project details updated from the {0}.": "Detail proyek diperbarui dari {0}.",
+ "Project details and survey area updated from the {0}.": "Detail proyek dan area survei diperbarui dari {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Proyek saat ini: {0} (terakhir diubah di {1}, {2}). Setiap perencana dibuka dengan proyek ini.",
+ "unnamed": "tanpa nama"
 }

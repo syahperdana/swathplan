@@ -898,5 +898,11 @@
  "Survey speed (kn)": "Tốc độ khảo sát (hải lý/giờ)",
  "Swath half-angle (°)": "Nửa góc dải quét (°)",
  "Turn radius (m)": "Bán kính quay (m)",
- "Vessels": "Số tàu"
+ "Vessels": "Số tàu",
+ "Share project details between planners": "Chia sẻ thông tin dự án giữa các công cụ",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Thông tin dự án, cảm biến, cấp IHO, tốc độ, tàu và hệ tọa độ được dùng chung với các công cụ SwathPlan khác trên thiết bị này; khu vực khảo sát được dùng chung giữa công cụ MBES và địa vật lý.",
+ "Project details updated from the {0}.": "Đã cập nhật thông tin dự án từ {0}.",
+ "Project details and survey area updated from the {0}.": "Đã cập nhật thông tin dự án và khu vực khảo sát từ {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Dự án hiện tại: {0} (thay đổi lần cuối trong {1}, {2}). Mọi công cụ đều mở dự án này.",
+ "unnamed": "chưa đặt tên"
 }

@@ -71,6 +71,10 @@ A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follow
 
 `parts/sec-tender.html` and `js/mbes/tender.js`. A scenario stores sensor, overlap, swath half-angle, speed, turn radius, day rate, hours per day and vessels (localStorage key `<SWP_STATE_KEY>_scen`). To compare, each scenario is written into the real inputs, `gen()` runs, the results are read from `SUM`/`R`, and the inputs are put back. Vessels divide the days; charged days are rounded up per vessel. The hub card opens `mbes/#tender`.
 
+## Shared project (all planners and the hub)
+
+`js/core/shared-project.js`, included right after `app-state.js`. Each planner keeps its own autosave; on top of that, a list of fields (`SH_F`: project details, sensor, depth, order, speed, turn radius, vessel length, CRS) plus `crsDef` and, in area planners, the closed survey area (WGS 84) are written to `swp_shared` whenever the planner saves and they differ. On load and when the tab becomes visible, a newer `swp_shared` written by another planner is applied (with a toast). `<SWP_STATE_KEY>_shseen` remembers the last version seen. `window.SWP_TOOL` names the planner (default "MBES line planner"); `window.SWP_SHARE_AREA=false` (corridor) shares the details but not the area. The checkbox `#shOn` (stored as `swp_share`, not in the autosave) turns sharing off. The hub shows the current project from `swp_shared`.
+
 ## The corridor planner
 
 `corridor/index.html` is the MBES planner with three changes, so it gets every shared feature (map, offline maps, coordinate systems, coastline, bathymetry, IHO checks, turns, cost, exports, sheet, report, languages):

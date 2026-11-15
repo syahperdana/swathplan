@@ -957,5 +957,11 @@
  "Survey speed (kn)",
  "Swath half-angle (°)",
  "Turn radius (m)",
- "Vessels"
+ "Vessels",
+ "Share project details between planners",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.",
+ "Project details updated from the {0}.",
+ "Project details and survey area updated from the {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.",
+ "unnamed"
 ]

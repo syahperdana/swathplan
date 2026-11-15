@@ -907,5 +907,11 @@
  "Survey speed (kn)": "ความเร็วสำรวจ (นอต)",
  "Swath half-angle (°)": "ครึ่งมุมการกวาด (°)",
  "Turn radius (m)": "รัศมีเลี้ยว (ม.)",
- "Vessels": "จำนวนเรือ"
+ "Vessels": "จำนวนเรือ",
+ "Share project details between planners": "แชร์รายละเอียดโครงการระหว่างเครื่องมือวางแผน",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "รายละเอียดโครงการ เซนเซอร์ เกณฑ์ IHO ความเร็ว เรือ และระบบพิกัด จะตามไปยังเครื่องมือวางแผน SwathPlan อื่นบนอุปกรณ์นี้ พื้นที่สำรวจแชร์กันระหว่างเครื่องมือ MBES และธรณีฟิสิกส์",
+ "Project details updated from the {0}.": "อัปเดตรายละเอียดโครงการจาก {0} แล้ว",
+ "Project details and survey area updated from the {0}.": "อัปเดตรายละเอียดโครงการและพื้นที่สำรวจจาก {0} แล้ว",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "โครงการปัจจุบัน: {0} (แก้ไขล่าสุดใน {1}, {2}) ทุกเครื่องมือจะเปิดด้วยโครงการนี้",
+ "unnamed": "ไม่มีชื่อ"
 }

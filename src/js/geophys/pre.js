@@ -1,5 +1,5 @@
 /* ===== geophysical page: settings and labels applied before the shared planner starts ===== */
-window.SWP_STATE_KEY="swp_state_geophys";window.SWP_TITLE="SwathPlan – Geophysical Survey Planner (Offline)";window.SWP_SHEET_TITLE="GEOPHYSICAL SURVEY LINE PLAN";window.SWP_REPORT_SUB="Geophysical survey line plan and IHO S-44 summary";
+window.SWP_STATE_KEY="swp_state_geophys";window.SWP_TOOL="Geophysical planner";window.SWP_TITLE="SwathPlan – Geophysical Survey Planner (Offline)";window.SWP_SHEET_TITLE="GEOPHYSICAL SURVEY LINE PLAN";window.SWP_REPORT_SUB="Geophysical survey line plan and IHO S-44 summary";
 (()=>{const q=s=>document.querySelector(s),t=(s,v)=>{const e=q(s);if(e)e.textContent=v};
 t(".brand small","Geophysical survey planner · side-scan · magnetometer · sub-bottom · seismic");
 const f=q("footer");if(f)f.innerHTML="© 2026 <b>Aldwin Syahperdana</b>. All rights reserved. · SwathPlan Geophysical Survey Planner · A planning aid only: verify all results against your equipment specifications, the current IHO S-44 and your client's requirements.";

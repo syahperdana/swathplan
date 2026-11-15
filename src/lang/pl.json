@@ -907,5 +907,11 @@
  "Survey speed (kn)": "Prędkość pomiaru (w)",
  "Swath half-angle (°)": "Półkąt pasa (°)",
  "Turn radius (m)": "Promień zwrotu (m)",
- "Vessels": "Jednostki"
+ "Vessels": "Jednostki",
+ "Share project details between planners": "Udostępniaj dane projektu między planerami",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Dane projektu, czujnik, rząd IHO, prędkość, jednostka i układ współrzędnych są przenoszone do innych planerów SwathPlan na tym urządzeniu; obszar pomiaru jest wspólny dla planera MBES i geofizycznego.",
+ "Project details updated from the {0}.": "Zaktualizowano dane projektu z: {0}.",
+ "Project details and survey area updated from the {0}.": "Zaktualizowano dane projektu i obszar pomiaru z: {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Bieżący projekt: {0} (ostatnia zmiana: {1}, {2}). Każdy planer otwiera się z nim.",
+ "unnamed": "bez nazwy"
 }

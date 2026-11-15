@@ -898,5 +898,11 @@
  "Survey speed (kn)": "측량 속력(노트)",
  "Swath half-angle (°)": "스와스 반각(°)",
  "Turn radius (m)": "선회 반경(m)",
- "Vessels": "선박"
+ "Vessels": "선박",
+ "Share project details between planners": "계획기 간 프로젝트 정보 공유",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "프로젝트 정보, 센서, IHO 등급, 속력, 선박, 좌표계가 이 기기의 다른 SwathPlan 계획기에도 적용됩니다. 측량 구역은 MBES와 지구물리 계획기 간에 공유됩니다.",
+ "Project details updated from the {0}.": "프로젝트 정보를 '{0}'에서 업데이트했습니다.",
+ "Project details and survey area updated from the {0}.": "프로젝트 정보와 측량 구역을 '{0}'에서 업데이트했습니다.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "현재 프로젝트: {0} (마지막 변경: '{1}', {2}). 모든 계획기가 이 프로젝트로 열립니다.",
+ "unnamed": "이름 없음"
 }

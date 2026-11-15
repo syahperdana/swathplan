@@ -898,5 +898,11 @@
  "Survey speed (kn)": "Bilis ng survey (kn)",
  "Swath half-angle (°)": "Kalahating anggulo ng swath (°)",
  "Turn radius (m)": "Radius ng pagliko (m)",
- "Vessels": "Mga barko"
+ "Vessels": "Mga barko",
+ "Share project details between planners": "Ibahagi ang detalye ng proyekto sa mga planner",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Sumusunod ang detalye ng proyekto, sensor, IHO order, bilis, barko at coordinate system sa iba pang SwathPlan planner sa device na ito; ibinabahagi ang survey area sa pagitan ng MBES at geophysical planner.",
+ "Project details updated from the {0}.": "Na-update ang detalye ng proyekto mula sa {0}.",
+ "Project details and survey area updated from the {0}.": "Na-update ang detalye ng proyekto at survey area mula sa {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Kasalukuyang proyekto: {0} (huling binago sa {1}, {2}). Dito bumubukas ang bawat planner.",
+ "unnamed": "walang pangalan"
 }

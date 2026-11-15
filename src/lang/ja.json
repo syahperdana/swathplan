@@ -899,5 +899,11 @@
  "Survey speed (kn)": "測量速度（ノット）",
  "Swath half-angle (°)": "スワス片側角（°）",
  "Turn radius (m)": "旋回半径（m）",
- "Vessels": "船数"
+ "Vessels": "船数",
+ "Share project details between planners": "プランナー間でプロジェクト情報を共有",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "プロジェクト情報、センサー、IHO等級、速度、船舶、座標系は、この端末の他のSwathPlanプランナーにも引き継がれます。測量範囲はMBESと物理探査のプランナー間で共有されます。",
+ "Project details updated from the {0}.": "プロジェクト情報を「{0}」から更新しました。",
+ "Project details and survey area updated from the {0}.": "プロジェクト情報と測量範囲を「{0}」から更新しました。",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "現在のプロジェクト：{0}（最終変更：「{1}」、{2}）。どのプランナーもこのプロジェクトで開きます。",
+ "unnamed": "名称未設定"
 }
