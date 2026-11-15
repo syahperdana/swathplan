@@ -1,12 +1,12 @@
 # Developing SwathPlan
 
-`index.html` at the repository root is the MBES planner, `corridor/index.html` the corridor planner, `hub/index.html` the tools hub and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
+`index.html` at the repository root is the tools hub (the home page), `mbes/index.html` the MBES planner, `corridor/index.html` the corridor planner, `hub/index.html` a redirect for old links and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
 
 ## Quick start
 
 ```sh
-node tools/build.mjs           # rebuild index.html from src/
-node tools/build.mjs --check   # verify index.html matches src/ (also runs on every pull request)
+node tools/build.mjs           # rebuild the pages from src/
+node tools/build.mjs --check   # verify the pages match src/ (also runs on every pull request)
 ```
 
 Node 18 or newer is enough. No packages are installed.
@@ -15,9 +15,10 @@ Node 18 or newer is enough. No packages are installed.
 
 ```
 src/
-  pages/mbes.html     the MBES planner: list of HTML parts and CSS/JS parts, in order
+  pages/mbes.html     the MBES planner (built to mbes/index.html): list of HTML parts and CSS/JS parts, in order
   pages/corridor.html the corridor planner (built to corridor/index.html)
-  pages/hub.html      the tools hub (built to hub/index.html)
+  pages/hub.html      the tools hub, the home page (built to index.html)
+  pages/hub-redirect.html  old hub/ address, sends visitors to the home page
   parts/              HTML pieces shared by the planner pages: header, each settings section,
                       map and results, guide, footer (sec3-corridor.html is corridor only)
   css/swathplan.css   planner styles
@@ -104,13 +105,13 @@ All in `src/js/map/offline-maps.js` (with `pmtiles.js` and small hooks in `tiles
 The snapshot test drives the page in headless Chromium (Python Playwright) with a frozen clock and no network. It plans a fixed area and records every export, the page text in all 22 languages and three layouts.
 
 ```sh
-python3 test/snapshot.py index.html /tmp/before     # before your change
+python3 test/snapshot.py mbes/index.html /tmp/before     # before your change
 # ...edit src/, run the build...
-python3 test/snapshot.py index.html /tmp/after
+python3 test/snapshot.py mbes/index.html /tmp/after
 python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what changed
 ```
 
-Corridor planner: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py corridor/index.html index.html` (route import, layouts, every export, `.SPL` round trip, separate autosave).
+Corridor planner: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py corridor/index.html mbes/index.html` (route import, layouts, every export, `.SPL` round trip, separate autosave).
 
 To test the offline app, serve the repository as `/swathplan/` over http (service workers do not run on `file://`), for example by copying it into `/tmp/site/swathplan/` and running `python3 -m http.server` in `/tmp/site`. In Chromium's DevTools, *Application → Service workers* has an *Offline* switch.
 

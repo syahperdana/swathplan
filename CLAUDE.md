@@ -2,7 +2,7 @@
 
 Read `DEVELOPMENT.md` first. The essentials:
 
-- `index.html`, `corridor/index.html`, `hub/index.html` and `sw.js` are generated. Edit `src/`, then run `node tools/build.mjs`. Never edit them directly.
+- `index.html` (hub, home page), `mbes/index.html`, `corridor/index.html`, `hub/index.html` (redirect) and `sw.js` are generated. Edit `src/`, then run `node tools/build.mjs`. Never edit them directly.
 - The JS parts in `src/js/` are ordered slices of one global script. Keep the include order in `src/pages/mbes.html`.
 - Inside `initApp()`, defer anything that uses `PACKS` or `setLang` with `setTimeout`.
 - Both planners are built from the same parts (`src/parts/`, `src/js/`). A change there affects both: check the MBES snapshot and run the corridor tests.

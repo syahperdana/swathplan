@@ -1,6 +1,6 @@
 """Browser check of the corridor planner: route import, layouts, every export, .SPL round trip, autosave.
 
-Usage: python3 -I test/corridor_check.py corridor/index.html index.html
+Usage: python3 -I test/corridor_check.py corridor/index.html mbes/index.html
 """
 import base64, json, re, sys, pathlib
 from playwright.sync_api import sync_playwright

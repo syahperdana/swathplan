@@ -5,7 +5,7 @@ Draw the area, set your sonar, get the lines, check them against IHO S-44, and e
 
 ![SwathPlan planner](docs/screenshot-planner.png)
 
-▶ **Live app:** https://syahperdana.github.io/swathplan/
+▶ **All tools:** https://syahperdana.github.io/swathplan/  ·  **MBES planner:** https://syahperdana.github.io/swathplan/mbes/
 🎬 **Demo video (84 s):** [docs/demo.mp4](docs/demo.mp4)
 
 ---
@@ -53,10 +53,10 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 Open the live link above. That is all.
 
 ### Option B: install it as an app
-Open the live link in Chrome, Edge or on Android and choose *Install* (on iPhone or iPad: *Share → Add to Home Screen*). The installed app opens and plans without internet, and offers updates when a new version is out. All tools are listed at https://syahperdana.github.io/swathplan/hub/.
+Open the live link in Chrome, Edge or on Android and choose *Install* (on iPhone or iPad: *Share → Add to Home Screen*). The installed app opens and plans without internet, and offers updates when a new version is out. All tools are listed on the home page, https://syahperdana.github.io/swathplan/.
 
 ### Option C: use the single file offline
-1. Download `index.html` from this repository (open the file, then *Raw → Save as*).
+1. On the home page, press *Download offline copy* (or download `mbes/index.html` from this repository).
 2. Double-click it. It opens in your browser.
 
 Some features need internet when you use them: map background tiles, global bathymetry downloads, and loading EPSG definitions. Planning, S-44 checks and exports work offline.
@@ -105,7 +105,7 @@ Tested in Chromium (Chrome, Edge) and Firefox. It is also designed for Safari, b
 
 ## For developers
 
-`index.html` is built from the source files in `src/` with `node tools/build.mjs`. See [DEVELOPMENT.md](DEVELOPMENT.md) for the layout, the build, the language files and the tests.
+The pages are built from the source files in `src/` with `node tools/build.mjs`. See [DEVELOPMENT.md](DEVELOPMENT.md) for the layout, the build, the language files and the tests.
 
 ## Feedback
 

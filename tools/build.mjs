@@ -23,7 +23,8 @@ const SRC = join(ROOT, "src");
 const CHECK = process.argv.includes("--check");
 
 // page template -> output file (relative to the repo root)
-const PAGES = { "mbes.html": "index.html", "corridor.html": "corridor/index.html", "hub.html": "hub/index.html" };
+// the hub is the home page; hub/ only redirects there (old links)
+const PAGES = { "hub.html": "index.html", "mbes.html": "mbes/index.html", "corridor.html": "corridor/index.html", "hub-redirect.html": "hub/index.html" };
 // files the offline app keeps (relative to the site root); the pages above are added first
 const STATIC = ["manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
 
