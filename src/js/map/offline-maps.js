@@ -93,15 +93,16 @@ if(poly.length){const r=DPR();cx.beginPath();poly.forEach((pt,i)=>{const t=sc(pt
 $("sbS").addEventListener("change",rq);$("sb").addEventListener("change",rq);
 
 // ---- bathymetry and coastline kept between sessions (IndexedDB) ---------------------------------
+const IDK=k=>(window.SWP_STATE_KEY?window.SWP_STATE_KEY+":":"")+k;// saved data per tool
 const IDB=(()=>{let P=null;const db=()=>P||(P=new Promise((ok,no)=>{const r=indexedDB.open("swathplan",1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}));
 const tx=(m,f)=>db().then(d=>new Promise((ok,no)=>{const t=d.transaction("kv",m),q=f(t.objectStore("kv"));t.oncomplete=()=>ok(q&&q.result);t.onerror=()=>no(t.error)}));
 return{get:k=>tx("readonly",s=>s.get(k)),set:(k,v)=>tx("readwrite",s=>s.put(v,k)),del:k=>tx("readwrite",s=>s.delete(k))}})();
 let savedBath=null;
-const _analyse=analyse;analyse=function(){_analyse.apply(this,arguments);if(bath&&bath!==savedBath){savedBath=bath;try{IDB.set("bath",bath).catch(()=>{})}catch(e){}}};
-const _setCst=setCst;setCst=function(l,p,msg){_setCst(l,p,msg);try{IDB.set("coast",{l,p,msg}).catch(()=>{})}catch(e){}};
-let hadState=false;try{hadState=!!localStorage.getItem("swp_state")}catch(e){}// read before autosave writes it again
+const _analyse=analyse;analyse=function(){_analyse.apply(this,arguments);if(bath&&bath!==savedBath){savedBath=bath;try{IDB.set(IDK("bath"),bath).catch(()=>{})}catch(e){}}};
+const _setCst=setCst;setCst=function(l,p,msg){_setCst(l,p,msg);try{IDB.set(IDK("coast"),{l,p,msg}).catch(()=>{})}catch(e){}};
+let hadState=false;try{hadState=!!localStorage.getItem(window.SWP_STATE_KEY||"swp_state")}catch(e){}// read before autosave writes it again
 setTimeout(async()=>{try{
-if(!hadState){await IDB.del("bath");await IDB.del("coast");return}// fresh start or Reset: forget them
-const c=await IDB.get("coast");if(c&&(c.l||c.p)&&!(cst.seg&&cst.seg.length)){_setCst(c.l||[],c.p||[],c.msg||"")}
-const b=await IDB.get("bath");if(b&&b.z&&b.z.length&&!bath){bath=b;savedBath=b;DG=null;analyse();gen();try{$("gbSt").textContent=i18("Restored from the last session.")}catch(e){}}
+if(!hadState){await IDB.del(IDK("bath"));await IDB.del(IDK("coast"));return}// fresh start or Reset: forget them
+const c=await IDB.get(IDK("coast"));if(c&&(c.l||c.p)&&!(cst.seg&&cst.seg.length)){_setCst(c.l||[],c.p||[],c.msg||"")}
+const b=await IDB.get(IDK("bath"));if(b&&b.z&&b.z.length&&!bath){bath=b;savedBath=b;DG=null;analyse();gen();try{$("gbSt").textContent=i18("Restored from the last session.")}catch(e){}}
 rq()}catch(e){}},300);

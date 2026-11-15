@@ -1,0 +1,9 @@
+<details><summary>Project &amp; operations (summary, cost and report)</summary><div>
+<label>Project / area name</label><input id="prjN" type="text" placeholder="e.g. Port approach channel survey"><label>Client</label><input id="prjC" type="text"><label>Vessel</label><input id="prjV" type="text"><label>Surveyor / party chief</label><input id="prjS" type="text"><label>Remarks / scope (printed in the PDF report)</label><textarea id="prjNote" rows="2" placeholder="Survey purpose, special requirements, restrictions…"></textarea>
+<div class="r2"><div><label>Start date</label><input type="date" id="sdate"></div><div><label>Operating hours per day</label><input id="opH" type="number" value="24" min="1" max="24"></div>
+<div><label>Weather / downtime allowance (%)</label><input id="wx" type="number" value="20" min="0" max="80"></div><div><label>Mob / demob (h)</label><input id="mob" type="number" value="0" min="0"></div>
+<div><label>Patch test / calibration (h)</label><input id="cal" type="number" value="0" min="0"></div><div><label>SVP cast every (h, 0 = none)</label><input id="svpI" type="number" value="4" min="0"></div>
+<div><label>SVP cast duration (min)</label><input id="svpD" type="number" value="15" min="0"></div><div><label>Vessel day rate (optional)</label><input id="rate" type="number" value="0" min="0"></div>
+<div><label>Ping rate (Hz, 0 = auto)</label><input id="pingU" type="number" value="0" min="0"></div><div><label>Along-track beamwidth (°)</label><input id="bwA" type="number" value="1" step="0.1" min="0.1"></div></div>
+<button class="p" id="rep">Create printable report</button><p class="note">The report is a self-contained HTML page with the map and all statistics. Open it and use Print → Save as PDF.</p>
+</div></details>

@@ -1,0 +1,9 @@
+<details><summary>10. Global bathymetry (online, free)</summary><div>
+<label>Source</label><select id="gbSrc"><option value="gmrt">GMRT – multibeam synthesis, up to ~100 m, global (GEBCO fills gaps)</option><option value="ncei">NOAA NCEI – best-available DEM mosaic (coastal DEMs + ETOPO 2022)</option><option value="emod">EMODnet Bathymetry – European seas, ~115 m</option><option value="gebco">GEBCO 2020 via OpenTopoData – global, ~450 m</option></select>
+<label>Target resolution</label><select id="gbRes"><option value="100">Finest available (~100 m)</option><option value="250">250 m</option><option value="500">500 m</option><option value="1000">1000 m</option></select>
+<button class="p" id="gbB">Fetch depths for the survey area</button>
+<div id="gbSt" class="note">Close an area first (draw, preset or import), then fetch.</div><div id="gbLink" class="note"></div>
+<label>Or load a downloaded grid: GeoTIFF (.tif) or ESRI ASCII (.asc), e.g. from GEBCO, EMODnet or GMRT</label>
+<div class="r2"><input type="file" id="gbF" accept=".tif,.tiff,.asc,.txt"><select id="gbZ"><option value="elev">Values = elevation (negative = depth)</option><option value="depth">Values = depth (positive down)</option><option value="auto">Detect automatically</option></select></div>
+<p class="note">The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section 11 or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).</p>
+</div></details>

@@ -12,7 +12,7 @@ cx.fillText(i18("grid {0} m",st),cv.width-80*r,cv.height-10*r);
 const path=(P,cl)=>{cx.beginPath();P.forEach((p,i)=>{const s=sc(p);i?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])});if(cl)cx.closePath()};
 if(poly.length){path(poly,closed);if(closed){cx.fillStyle="#ffffff40";cx.fill()}cx.strokeStyle="#12262d";cx.lineWidth=2*r;cx.setLineDash([8*r,4*r]);cx.stroke();cx.setLineDash([]);poly.forEach(p=>{const s=sc(p);cx.fillStyle="#12262d";cx.fillRect(s[0]-3*r,s[1]-3*r,6*r,6*r)})}
 drawBath();drawCoast();cx.lineWidth=1.6*r;cx.strokeStyle="#b0237a";R.turns.forEach(t=>{path(t.pts);cx.stroke()});
-cx.strokeStyle="#d98a00";R.cross.forEach(l=>{path([l.a,l.b]);cx.stroke()});
-cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;R.lines.forEach(l=>{path([l.a,l.b]);cx.stroke()});
+cx.strokeStyle="#d98a00";R.cross.forEach(l=>{path(LP(l));cx.stroke()});
+cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;R.lines.forEach(l=>{path(LP(l));cx.stroke()});
 }
 

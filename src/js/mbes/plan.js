@@ -16,7 +16,8 @@ for(let i=0;i+1<segs.length;i++){const A=segs[i],B=segs[i+1];let pts=[A.b],len=0
 if(B.k==A.k+1){const t=turnPts(A.b,A.f,n,B.s-A.s,Rr);pts=pts.concat(t.pts)}pts.push(B.a);for(let j=1;j<pts.length;j++)len+=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);R.turns.push({pts,len,ty:B.k==A.k+1?((B.s-A.s)<2*Rr?"w":"u"):"t"});R.tl+=len}
 if($("cross").checked){const t0=Math.min(...tv),t1=Math.max(...tv);Array.from({length:Math.max(1,Math.min(99,Math.round(g("nx"))||2))},(_,j)=>(j+1)/(Math.max(1,Math.min(99,Math.round(g("nx"))||2))+1)).forEach((k,j)=>{const t=t0+(t1-t0)*k;chords(poly,u,n,t).flatMap(c=>wr(t,c,u,n)).forEach(c=>R.cross.push({name:$("crossPre").value+(R.cross.length+1),a:[u[0]*t+n[0]*c[0],u[1]*t+n[1]*c[0]],b:[u[0]*t+n[0]*c[1],u[1]*t+n[1]*c[1]]}))})}
 stats()}
-const L=l=>Math.hypot(l.b[0]-l.a[0],l.b[1]-l.a[1]);
+// a line is {name,a,b} or, when it bends (corridor), {name,a,b,p:[points]}
+const LP=l=>l.p||[l.a,l.b],L=l=>{const q=LP(l);let s=0;for(let i=1;i<q.length;i++)s+=Math.hypot(q[i][0]-q[i-1][0],q[i][1]-q[i-1][1]);return s};
 function stats(){const p=params(),ln=R.lines,ol=ln.reduce((s,l)=>s+L(l),0),cl=R.cross.reduce((s,l)=>s+L(l),0),sp=g("spd"),ts=Math.max(1,sp-($("slow").checked?2:0));
 $("tsp").value=ts;const to=(ol+cl)/(sp*NM),tt=R.tl/(ts*NM),A=closed?area(poly):0;
 $("hD").textContent=f1(p.d);$("hL").textContent=ln.length+(R.cross.length?" + "+R.cross.length+" cross":"");$("hT").textContent=hm(to+tt);

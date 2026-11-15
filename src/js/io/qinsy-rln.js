@@ -30,7 +30,7 @@ function qgfBuild(lines,op){
  return qCat([Uint8Array.of(0x81,0x51,0x47,0x46,13,10,26,10),top])}
 function rlnText(P,fm){let t="";P.forEach(x=>{t+='"'+String(x.n).replace(/"/g,"'")+'"\r\n';let k=0;x.p.forEach((p,i)=>{if(i)k+=Math.hypot(p[0]-x.p[i-1][0],p[1]-x.p[i-1][1]);t+=fm(p).join(",")+","+(k/1000).toFixed(8)+"\r\n"})});return t}
 $("eEiva").onclick=()=>{if(!needs())return;const geo=$("crs").value!="utm"&&$("crs").value!="epsg";save("survey_runlines.rln",rlnText(paths(),p=>oc(p).map(v=>v.toFixed(geo?8:3))),"text/plain")};
-$("eQin").onclick=()=>{if(!R.lines.length){alert(i18("Draw and close an area first."));return}
+$("eQin").onclick=()=>{if(!R.lines.length){alert(i18(window.SWP_NEED||"Draw and close an area first."));return}
  const zone=Math.floor((o.lon+180)/6)+1,north=o.lat>=0;
  const L=paths().filter(x=>x.k!="turn").map(x=>({name:x.n,pts:x.p.map(q=>{const t=toLL(q);return utm(t[0],t[1],zone)})}));
  save("survey_lines.qgfline",qgfBuild(L,{zone,north,layer:"SWATHPLAN",layer2:"SURVEYLINES"}),"application/octet-stream")};

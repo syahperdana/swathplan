@@ -1,6 +1,6 @@
 # Developing SwathPlan
 
-`index.html` at the repository root is the MBES planner. GitHub Pages serves it, and people can also download it and open it offline. `hub/index.html` is the tools hub and `sw.js` is the offline service worker. **All three are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
+`index.html` at the repository root is the MBES planner, `corridor/index.html` the corridor planner, `hub/index.html` the tools hub and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
 
 ## Quick start
 
@@ -15,8 +15,11 @@ Node 18 or newer is enough. No packages are installed.
 
 ```
 src/
-  pages/mbes.html     the planner: HTML body plus the list of CSS/JS parts, in order
+  pages/mbes.html     the MBES planner: list of HTML parts and CSS/JS parts, in order
+  pages/corridor.html the corridor planner (built to corridor/index.html)
   pages/hub.html      the tools hub (built to hub/index.html)
+  parts/              HTML pieces shared by the planner pages: header, each settings section,
+                      map and results, guide, footer (sec3-corridor.html is corridor only)
   css/swathplan.css   planner styles
   css/hub.css         hub styles
   js/hub/hub.js       hub languages, install button, storage note
@@ -26,6 +29,7 @@ src/
   js/io/              imports (boundary, XYZ, grids) and exports (DXF, SHP, KML, RLN, Qinsy, GPX, CSV…)
   js/sheet/           map sheet, PDF writer, PDF report, image formats, projected grid
   js/mbes/            the MBES planner itself: catalogues, line generation, adaptive spacing, summary
+  js/corridor/        pre.js (labels and settings applied first), engine.js (offset geometry, KP), app.js
   lang/en.json        the English strings (these are the translation keys)
   lang/<code>.json    one file per language: { "English text": "translation" }
   lang/_order.json    language order in the packed data
@@ -51,6 +55,20 @@ The JS parts are **slices of one script, in their original order**, and they sti
 - Element ids are global. The build fails if the page has a duplicate id.
 
 Some part names are approximate: for example `js/mbes/catalogues.js` also defines `$`, `D` and `NM`, which everything uses. The parts will be untangled into properly shared modules step by step, with the snapshot tests guarding each step.
+
+## Lines with bends
+
+A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follows a route. Read the points with `LP(l)` and the length with `L(l)`; every export, the map, the sheet and the report already do. A straight line gives exactly the same output as before.
+
+## The corridor planner
+
+`corridor/index.html` is the MBES planner with three changes, so it gets every shared feature (map, offline maps, coordinate systems, coastline, bathymetry, IHO checks, turns, cost, exports, sheet, report, languages):
+
+- **Section 3** is `parts/sec3-corridor.html`. The MBES section 3 and the boundary import (section 9) are still in the page, hidden, because the shared code expects their controls.
+- **`js/corridor/pre.js` runs first** and sets per-tool values that the shared code reads: `SWP_STATE_KEY` (own autosave key and saved data), `SWP_TITLE`, `SWP_NEED`, `SWP_SHEET_TITLE`, `SWP_BOUND`, `SWP_BOUND_PDF`, `SWP_REPORT_SUB`, `SWP_AZROW`. It also renames a few labels (Draw route, Finish route).
+- **`js/corridor/app.js` runs after the planner has started** and replaces `gen()` (corridor lines, turns, cross lines at KP, outline as `poly`), rewires the drawing buttons and the area presets, adds route import, the KP table and route RLN, draws the route and KP labels, and adds the route to autosave and `.SPL` files (a `[ROUTE]` section).
+
+Offsets are positive to starboard of the route direction. Lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed from port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
 
 ## Offline app (PWA)
 
@@ -90,6 +108,8 @@ python3 test/snapshot.py index.html /tmp/before     # before your change
 python3 test/snapshot.py index.html /tmp/after
 python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what changed
 ```
+
+Corridor planner: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py corridor/index.html index.html` (route import, layouts, every export, `.SPL` round trip, separate autosave).
 
 To test the offline app, serve the repository as `/swathplan/` over http (service workers do not run on `file://`), for example by copying it into `/tmp/site/swathplan/` and running `python3 -m http.server` in `/tmp/site`. In Chromium's DevTools, *Application → Service workers* has an *Offline* switch.
 
