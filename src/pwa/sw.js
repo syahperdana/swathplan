@@ -2,6 +2,9 @@
 const VERSION = "__VERSION__";
 const APP = "swp-app-" + VERSION;   // the app files of this version
 const RUN = "swp-runtime";          // proj4 and EPSG definitions, kept across versions
+const TILES = "swp-tiles";          // map tiles you have viewed or saved, kept across versions
+const MAX_TILES = 6000;             // about 60–120 MB; the oldest tiles are dropped first
+const OLD = 30 * 864e5;             // refresh a saved tile in the background after 30 days
 const PRECACHE = __PRECACHE__;
 
 self.addEventListener("install", (e) => {
@@ -40,6 +43,11 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
+  if (isTile(req, url)) {
+    e.respondWith(tile(e, req));
+    return;
+  }
+
   if (RUNTIME.test(req.url)) {
     // proj4 library and EPSG definitions: use the saved copy, refresh it when online.
     e.respondWith(
@@ -50,5 +58,43 @@ self.addEventListener("fetch", (e) => {
       }))
     );
   }
-  // Everything else (map tiles, bathymetry, place search) goes straight to the network.
+  // Everything else (bathymetry, coastline, place search) goes straight to the network.
 });
+
+// ---- map tiles ---------------------------------------------------------------------------
+// A tile URL ends in z/x/y (OpenStreetMap style) or contains /tile/z/y/x (Esri style).
+const TILE_PATH = /\/\d{1,2}\/\d+\/\d+(@2x)?(\.(png|jpe?g|webp))?$|\/tile\/\d{1,2}\/\d+\/\d+/;
+function isTile(req, url) {
+  return url.origin !== location.origin && (req.destination === "image" || req.destination === "") && TILE_PATH.test(url.pathname);
+}
+
+let puts = 0;
+async function tile(e, req) {
+  const c = await caches.open(TILES);
+  const hit = await c.match(req.url, { ignoreVary: true });
+  if (hit) {
+    const age = Date.now() - (+hit.headers.get("x-swp-saved") || 0);
+    if (age > OLD) e.waitUntil(fetchTile(c, req).catch(() => {}));
+    return hit;
+  }
+  try { return await fetchTile(c, req); } catch (err) { return Response.error(); }
+}
+
+async function fetchTile(c, req) {
+  const res = await fetch(req);
+  // Opaque answers (servers without CORS) are not kept: browsers count each one as several MB.
+  if (res.ok && res.type !== "opaque") {
+    const body = await res.clone().blob();
+    const h = new Headers(res.headers);
+    h.set("x-swp-saved", String(Date.now()));
+    await c.put(req.url, new Response(body, { status: res.status, statusText: res.statusText, headers: h }));
+    if (++puts % 100 === 0) trimTiles(c);
+  }
+  return res;
+}
+
+async function trimTiles(c) {
+  const keys = await c.keys();
+  const extra = keys.length - MAX_TILES;
+  for (let i = 0; i < extra; i++) await c.delete(keys[i]);
+}

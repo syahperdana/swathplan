@@ -61,6 +61,12 @@ Open the live link in Chrome, Edge or on Android and choose *Install* (on iPhone
 
 Some features need internet when you use them: map background tiles, global bathymetry downloads, and loading EPSG definitions. Planning, S-44 checks and exports work offline.
 
+### Maps at sea (website or installed app)
+- Map tiles you view are kept on the device. Before leaving port, pan and zoom over your survey area at the scales you need.
+- Load your own **PMTiles** map file (raster) as the basemap. It is read in small pieces, so even a large file stays light, and the app keeps it for next time.
+- Loaded bathymetry is drawn as a **shaded depth background**, and bathymetry and coastline are kept between sessions.
+- A label on the map shows which map is in use.
+
 ### A first plan in 5 steps
 1. **Set your sensor** (section 1): pick a model or type the swath half-angle, then set the design depth.
 2. **Swath and overlap** (section 2): the line spacing updates immediately.

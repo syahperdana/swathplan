@@ -69,10 +69,18 @@
 <label>Survey location: place name, port or "lat, lon" (name search needs internet)</label>
 <div class="r2"><input id="goT" type="text" placeholder="Type the survey location, e.g. a port name, a bay, or coordinates like 51.95, 4.10"><button id="goB">Go</button></div>
 <label>Basemap (online tiles; falls back to grid when offline)</label>
-<select id="bm"><option value="none">None (grid only)</option><option value="esristreet">Esri World Street Map</option><option value="esritopo">Esri World Topographic</option><option value="esrigray">Esri Light Gray Canvas</option><option value="osmfr">OpenStreetMap France (may be blocked on local files)</option><option value="osm">OpenStreetMap standard (blocks pages opened from a local file)</option><option value="topo">OpenTopoMap</option><option value="sat">Esri World Imagery (satellite)</option><option value="ocean">Esri Ocean Basemap</option><option value="custom">Custom tile URL (Google / Bing / other)</option></select>
+<select id="bm"><option value="none">None (grid only)</option><option value="esristreet">Esri World Street Map</option><option value="esritopo">Esri World Topographic</option><option value="esrigray">Esri Light Gray Canvas</option><option value="osmfr">OpenStreetMap France (may be blocked on local files)</option><option value="osm">OpenStreetMap standard (blocks pages opened from a local file)</option><option value="topo">OpenTopoMap</option><option value="sat">Esri World Imagery (satellite)</option><option value="ocean">Esri Ocean Basemap</option><option value="pmtiles">Your map file (PMTiles)</option><option value="custom">Custom tile URL (Google / Bing / other)</option></select>
 <input id="bmU" type="text" placeholder="https://.../{z}/{x}/{y}?key=YOUR_KEY" style="margin-top:4px">
 <label><input type="checkbox" id="sea"> OpenSeaMap seamark overlay</label>
 <p class="note">Google and Bing have no free keyless tile URL. Paste the tile URL from your own API account into Custom. Placeholders: {z} {x} {y}, {q} = Bing quadkey, {s} = subdomain a–c.</p>
+<div id="pmBox" hidden><label>Map file (PMTiles, raster tiles)</label><input type="file" id="pmF" accept=".pmtiles"><div id="pmSt" class="note"></div><button id="pmDel" type="button" hidden>Remove map file</button>
+<p class="note">A PMTiles file is read in small pieces, so even a large file stays light on a phone. Convert MBTiles with the pmtiles tool, or download a file from a provider that allows offline use.</p></div>
+<div id="offBox" hidden><label>Offline maps</label><p class="note">Map tiles you view are kept on this device for offline use. Before going offline, pan and zoom over your survey area at the scales you need.</p>
+<div id="tcSt" class="note"></div><button id="tcClr" type="button">Clear saved tiles</button>
+<label>Save the area for offline use</label><div class="r2"><div><label>Lowest zoom</label><select id="saZ0"></select></div><div><label>Highest zoom</label><select id="saZ1"></select></div></div>
+<button id="saGo" type="button">Save area</button><div id="saSt" class="note"></div>
+<p class="note">Saves your Custom tile URL for the survey area. The built-in map servers do not allow bulk downloads.</p></div>
+<p id="offNo" class="note" hidden>Offline maps work on the website and in the installed app.</p>
 </div></details>
 <details><summary>7. Coastline &amp; land avoidance</summary><div>
 <label>Safety clearance from coast (m)</label><input type="number" id="clr" value="30" min="0">
@@ -122,7 +130,7 @@
 <div class="r2"><div><label>Header lines to skip</label><input type="number" id="hdr" value="0" min="0"></div><div><label>Z convention</label><select id="zsg"><option value="down">Positive down (depth)</option><option value="up">Negative down (elevation)</option></select></div>
 <div><label>Z unit</label><select id="zun"><option value="1">metres</option><option value="0.3048">feet</option><option value="1.8288">fathoms</option></select></div><div><label>Vertical offset (m)</label><input type="number" id="zoff" value="0" step="0.01"></div></div>
 <p class="note">Horizontal coordinates use the system chosen in section 8. Soundings loaded here replace any global data.</p>
-<button class="p" id="xl">Load XYZ</button><label><input type="checkbox" id="sb" checked> Show soundings on map</label>
+<button class="p" id="xl">Load XYZ</button><label><input type="checkbox" id="sb" checked> Show soundings on map</label><label><input type="checkbox" id="sbS" checked> Shaded depth background</label>
 <div id="sndR" class="note"></div><button id="sMin">Apply shallowest</button><button id="sP5">Apply 5th percentile</button><button id="sMean">Apply mean</button>
 </div></details>
 <details><summary>12. Quick profile calculator</summary><div>
@@ -156,7 +164,7 @@
 <div id="tools"><button id="bDraw" class="p">Draw area</button><button id="bClose">Close polygon</button><button id="bClr">Clear</button><button id="bFit">Fit</button><button id="bLoc" title="Go to the area preset nearest to my location">My location</button>
 <select id="pre2" style="width:auto;max-width:210px;margin:4px 0 0"></select></div>
 <div id="leg"><div><i style="background:#0b6f6a"></i>Survey lines</div><div><i style="background:#b0237a"></i>Williamson turns</div><div><i style="background:#d98a00"></i>Cross lines</div></div>
-<div id="attr"></div><div id="hud">Drag to pan · wheel to zoom · click to add vertices</div></div>
+<div id="mapSrc" hidden></div><div id="attr"></div><div id="hud">Drag to pan · wheel to zoom · click to add vertices</div></div>
 <div class="grid" id="sumWrap">
 <div class="card"><h3>Time analysis</h3>
 <h4>Production</h4><div class="kv"><span>On-line time (survey + cross lines)</span><b id="tO">-</b></div><div class="kv"><span>Turns &amp; transits</span><b id="tR">-</b></div><div class="kv"><span>Productive time</span><b id="tT">-</b></div>
@@ -337,6 +345,8 @@ total project = (productive + SVP + calibration) / (1 − w) + mobilisation</pre
 <!--@include js/sheet/grid-projected.js-->
 <!--@include js/mbes/auto-azimuth.js-->
 <!--@include js/map/interaction.js-->
+<!--@include js/map/pmtiles.js-->
+<!--@include js/map/offline-maps.js-->
 <!--@include js/core/app-state.js-->
 <!--@include js/core/lang-packs.js-->
 <!--@include js/core/pwa.js-->
