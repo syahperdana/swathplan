@@ -90,6 +90,18 @@ For cable and pipeline routes: https://syahperdana.github.io/swathplan/corridor/
 - Exports: every planner format (lines keep all their bend points), plus a **KP table** (CSV, with bearing) and the **route with KP** (EIVA RLN).
 - Map sheet, PDF report, IHO S-44 checks, time and cost, offline maps and all 22 languages, as in the MBES planner.
 
+## Geophysical planner
+
+For side-scan, magnetometer, sub-bottom and seismic surveys: https://syahperdana.github.io/swathplan/geophys/
+
+- Tick the sensors in your spread. Each one works out the line spacing it needs, and the closest spacing sets the plan, with the deciding sensor shown.
+  - **Side-scan:** range per side and coverage (100, 150 or 200 %), with a nadir-gap check and the maximum speed for the pings you need on your smallest target.
+  - **Magnetometer:** the distance at which your target is detectable and the sensor height give the spacing; sample spacing at survey speed is shown.
+  - **Sub-bottom profiler** and **UHR seismic:** grid spacing; seismic lines get half a streamer of extension at each end for full fold.
+  - **Multibeam** can join the spread.
+- Towed sensor layback is added as line run-in. Tie lines can be set by spacing.
+- Everything else as in the MBES planner: area drawing or import, auto direction, turns, time and cost, every export, map sheet, report, offline maps and 22 languages.
+
 ## Export notes
 
 | Format | Notes |

@@ -24,7 +24,7 @@ const CHECK = process.argv.includes("--check");
 
 // page template -> output file (relative to the repo root)
 // the hub is the home page; hub/ only redirects there (old links)
-const PAGES = { "hub.html": "index.html", "mbes.html": "mbes/index.html", "corridor.html": "corridor/index.html", "hub-redirect.html": "hub/index.html" };
+const PAGES = { "hub.html": "index.html", "mbes.html": "mbes/index.html", "corridor.html": "corridor/index.html", "geophys.html": "geophys/index.html", "hub-redirect.html": "hub/index.html" };
 // files the offline app keeps (relative to the site root); the pages above are added first
 const STATIC = ["manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
 
@@ -67,7 +67,9 @@ function langpack(L, only) {
 // ---- templates -----------------------------------------------------------------------
 function buildPage(tplName, L) {
   let html = read(join(SRC, "pages", tplName));
-  html = html.replace(/<!--@include ([^\s>]+)-->(\r?\n)?/g, (_, p) => read(join(SRC, p)));
+  // parts may include other parts (up to 5 levels deep)
+  for (let i = 0; i < 5 && /<!--@include /.test(html); i++)
+    html = html.replace(/<!--@include ([^\s>]+)-->(\r?\n)?/g, (_, p) => read(join(SRC, p)));
   html = html.replace("<!--@langpack-->", () => langpack(L));
   html = html.replace("<!--@langpack subset-->", () => langpack(L, html));
   if (/<!--@(include|langpack)/.test(html)) problems.push(`${tplName}: unresolved marker`);
