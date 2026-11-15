@@ -1,6 +1,6 @@
 # Developing SwathPlan
 
-`index.html` at the repository root is the tools hub (the home page), `mbes/index.html` the MBES planner, `corridor/index.html` the corridor planner, `geophys/index.html` the geophysical planner, `hub/index.html` a redirect for old links and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
+`index.html` at the repository root is the tools hub (the home page), `mbes/index.html` the MBES planner, `corridor/index.html` the corridor planner, `geophys/index.html` the geophysical planner, `infill/index.html` the infill planner, `hub/index.html` a redirect for old links and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
 
 ## Quick start
 
@@ -18,6 +18,7 @@ src/
   pages/mbes.html     the MBES planner (built to mbes/index.html): list of HTML parts and CSS/JS parts, in order
   pages/corridor.html the corridor planner (built to corridor/index.html)
   pages/geophys.html  the geophysical planner (built to geophys/index.html)
+  pages/infill.html   the infill planner (built to infill/index.html)
   pages/hub.html      the tools hub, the home page (built to index.html)
   pages/hub-redirect.html  old hub/ address, sends visitors to the home page
   parts/              HTML pieces shared by the planner pages: header, each settings section,
@@ -32,6 +33,7 @@ src/
   js/sheet/           map sheet, PDF writer, PDF report, image formats, projected grid
   js/mbes/            the MBES planner itself: catalogues, line generation, adaptive spacing, summary
   js/geophys/         pre.js (labels and settings), app.js (sensor spacing, run-in, tie lines, checks)
+  js/infill/          pre.js (labels and settings), app.js (tracks, coverage grid, gaps, infill lines)
   js/corridor/        pre.js (labels and settings applied first), engine.js (offset geometry, KP), app.js
   lang/en.json        the English strings (these are the translation keys)
   lang/<code>.json    one file per language: { "English text": "translation" }
@@ -99,6 +101,19 @@ Offsets are positive to starboard of the route direction. Lines are named by sid
 
 Test: `python3 test/geophys_check.py geophys/index.html`.
 
+## The infill planner
+
+`infill/index.html` is the MBES area planner with `parts/sec3-infill.html` after section 2 and the boundary section moved up; cross lines and auto direction are hidden. `js/infill/app.js`:
+
+- **Tracks** (`IFT`, `[{n, p:[[lat,lon]…]}]`, kept in IndexedDB under `<SWP_STATE_KEY>:tracks`): text and CSV are split into tracks at blank lines, non-numeric lines or a change in a leading name column, each block parsed with `parseXY` and converted with `importLL`; when both columns are below 90 the reading nearest the current area wins. Other files (GPX, KML, SHP, DXF, GeoJSON) go through `readBoundary(files, "", 2)`. Points closer than 0.5 m are dropped.
+- **Coverage grid** over the area's bounding box (auto cell `max(0.5, S/8, √(bbox/1.5e6))`, larger when soundings are sparser; at most 6 million cells). The area is filled by scanline; each track segment is filled as a quad with port/starboard widths from `depthAt` × tan(angle) or a fixed width. XYZ soundings loaded in section 11 (marked `bath.xyz`) mark their cells; the global grid never counts.
+- **Gaps**: uncovered cells inside the area, joined with 8 neighbours, smaller than the minimum area dropped.
+- `gen()`: per gap (ordered across the line direction), `ceil(width/S)` lines centred on the gap, each running over the gap cells within its band plus the extension; turns as in the MBES planner, transits between gaps. No cross lines.
+- `summary()`: the overlap check is replaced by coverage and swept-area-to-gap ratio; the cross-line check is removed.
+- Map: the grid is one canvas image (green covered, red planned gap, orange ignored) drawn in `drawTiles`, with the tracks over it. Gaps export as CSV (area, centre).
+
+Test: `python3 test/infill_check.py infill/index.html`.
+
 ## Offline app (PWA)
 
 - `src/js/core/pwa.js` runs on both pages. On the website it registers `sw.js`, adds the manifest and icons, and shows a banner when the app is ready offline or a new version is waiting. On a downloaded copy (`file://`) it does nothing except point the hub links to the online hub.
@@ -138,6 +153,8 @@ python3 test/snapshot.py mbes/index.html /tmp/before     # before your change
 python3 test/snapshot.py mbes/index.html /tmp/after
 python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what changed
 ```
+
+Infill planner: `python3 test/infill_check.py infill/index.html` (track import, gaps, infill lines, XYZ coverage, exports, restore).
 
 Corridor planner: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py corridor/index.html mbes/index.html` (route import, layouts, every export, `.SPL` round trip, separate autosave).
 

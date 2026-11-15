@@ -56,6 +56,16 @@
      "sizes": "192x192"
     }
    ]
+  },
+  {
+   "name": "Infill planner",
+   "url": "./infill/",
+   "icons": [
+    {
+     "src": "icons/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
   }
  ]
 }

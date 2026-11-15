@@ -2,10 +2,10 @@
 
 Read `DEVELOPMENT.md` first. The essentials:
 
-- `index.html` (hub, home page), `mbes/index.html`, `corridor/index.html`, `geophys/index.html`, `hub/index.html` (redirect) and `sw.js` are generated. Edit `src/`, then run `node tools/build.mjs`. Never edit them directly.
+- `index.html` (hub, home page), `mbes/index.html`, `corridor/index.html`, `geophys/index.html`, `infill/index.html`, `hub/index.html` (redirect) and `sw.js` are generated. Edit `src/`, then run `node tools/build.mjs`. Never edit them directly.
 - The JS parts in `src/js/` are ordered slices of one global script. Keep the include order in `src/pages/mbes.html`.
 - Inside `initApp()`, defer anything that uses `PACKS` or `setLang` with `setTimeout`.
-- All planners are built from the same parts (`src/parts/`, `src/js/`). A change there affects both: check the MBES snapshot and run the corridor and geophysical tests.
+- All planners are built from the same parts (`src/parts/`, `src/js/`). A change there affects both: check the MBES snapshot and run the corridor, geophysical and infill tests.
 - Tool-specific behaviour goes through `window.SWP_*` values (set in each tool's `pre.js`) or wrappers in its `app.js`, never by forking shared files.
 - Element ids are global; the build rejects duplicates.
 - Header space is tight on phones: compare header heights at 360–1400 px before and after any header change.

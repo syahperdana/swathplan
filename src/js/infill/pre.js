@@ -1,0 +1,10 @@
+/* ===== infill page: settings and labels applied before the shared planner starts ===== */
+window.SWP_STATE_KEY="swp_state_infill";window.SWP_TOOL="Infill planner";window.SWP_TITLE="SwathPlan – Infill Planner (Offline)";window.SWP_SHEET_TITLE="INFILL SURVEY LINE PLAN";window.SWP_REPORT_SUB="Infill survey line plan and IHO S-44 summary";
+(()=>{const q=s=>document.querySelector(s),t=(s,v)=>{const e=q(s);if(e)e.textContent=v};
+t(".brand small","Infill planner · coverage gaps · infill lines");
+const f=q("footer");if(f)f.innerHTML="© 2026 <b>Aldwin Syahperdana</b>. All rights reserved. · SwathPlan Infill Planner · A planning aid only: verify all results against your equipment specifications, the current IHO S-44 and your client's requirements.";
+// infill lines run across the gaps only: no cross lines here
+const cr=document.getElementById("cross");if(cr){cr.checked=false;[cr.closest("label"),document.getElementById("nx"),document.getElementById("crossPre")].forEach(e=>{if(!e)return;e.hidden=true;const l=e.previousElementSibling;if(l&&l.tagName=="LABEL"&&e.tagName!="LABEL")l.hidden=true})}
+const au=document.getElementById("auto");if(au)au.hidden=true;
+const pre=document.getElementById("pre");if(pre)pre.value="IF";
+const g=q("#guide .lead");if(g){const b=document.createElement("div");b.className="card";b.innerHTML="<h3>Infill planner: quick start</h3><ol><li>Draw or import the survey area (section 9), or load the tracks first and use the coverage extent as the area.</li><li>Load the acquired tracks (positions as text, CSV, GPX, KML, SHP or DXF) and, if you have them, the XYZ soundings (section 11).</li><li>Check the sensor, swath angles and depth (sections 1 and 2): they set the swath width of the tracks and the spacing of the infill lines.</li><li>Read the coverage and gaps, choose the line direction, then export the infill lines (section 13).</li></ol><p>The area is divided into grid cells. A cell is covered when a track's swath or a sounding falls in it. Connected uncovered cells form a gap; each gap gets its own lines.</p>";g.after(b)}})();
