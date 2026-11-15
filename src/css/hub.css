@@ -1,0 +1,29 @@
+:root{--bg:#eef2f1;--pn:#fff;--ink:#12262d;--mu:#5b6e75;--ac:#0b6f6a;--tl:#16c4b4;--pk:#ff6fc0;--bd:#cfd9d8}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 "Segoe UI","Noto Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+header{background:#12262d;color:#e6f2f0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.brand img{border-radius:9px;display:block}
+.nm{font-size:22px;font-weight:700;letter-spacing:.2px}.nm span{color:var(--pk)}
+#langSel{background:#1d3a44;color:#e6f2f0;border:1px solid #3d6a73;border-radius:5px;padding:5px 6px;font:inherit;font-size:13px;max-width:46vw}
+main{flex:1;width:100%;max-width:1040px;margin:0 auto;padding:28px 18px 36px}
+.intro h1{font-size:28px;line-height:1.2;margin:0 0 8px}
+.intro p{color:var(--mu);margin:0 0 26px;max-width:62ch;font-size:16px}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.tool{background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column}
+.tool h2{font-size:18px;margin:0 0 6px}
+.tool p{margin:0 0 14px;color:var(--mu);flex:1}
+.tool.live{border-color:var(--tl);box-shadow:0 0 0 1px var(--tl) inset}
+.tool.soon{opacity:.78}
+.act{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-block;background:var(--ac);color:#fff;border:0;border-radius:7px;padding:8px 14px;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.alt{background:transparent;color:var(--ac);box-shadow:0 0 0 1px var(--ac) inset}
+.tag{align-self:flex-start;font-size:12px;font-weight:600;color:var(--mu);background:#e3eaea;border-radius:99px;padding:3px 10px}
+.offline{margin-top:30px;background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:18px}
+.offline h2{font-size:18px;margin:0 0 6px}
+.offline p{margin:0 0 10px}
+.note{color:var(--mu);font-size:14px}
+footer{background:#12262d;color:#9fc2bd;font-size:12px;padding:10px 18px;text-align:center}
+[hidden]{display:none!important}
+@media (max-width:520px){.intro h1{font-size:23px}main{padding-top:20px}}
