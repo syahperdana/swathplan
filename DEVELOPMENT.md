@@ -1,6 +1,6 @@
 # Developing SwathPlan
 
-`index.html` at the repository root is the app. GitHub Pages serves it, and people can also download it and open it offline. **It is a build output: do not edit it by hand.** Edit the files in `src/` and run the build.
+`index.html` at the repository root is the MBES planner. GitHub Pages serves it, and people can also download it and open it offline. `hub/index.html` is the tools hub and `sw.js` is the offline service worker. **All three are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
 
 ## Quick start
 
@@ -15,9 +15,13 @@ Node 18 or newer is enough. No packages are installed.
 
 ```
 src/
-  pages/mbes.html     the page: HTML body plus the list of CSS/JS parts, in order
-  css/swathplan.css   all styles
-  js/core/            i18n engine, coordinates, datums, EPSG/proj4, CRS panel, app state and .SPL files, language packs
+  pages/mbes.html     the planner: HTML body plus the list of CSS/JS parts, in order
+  pages/hub.html      the tools hub (built to hub/index.html)
+  css/swathplan.css   planner styles
+  css/hub.css         hub styles
+  js/hub/hub.js       hub languages, install button, storage note
+  pwa/sw.js           service worker template (built to sw.js)
+  js/core/            language list, i18n engine, offline app (pwa.js), coordinates, datums, EPSG/proj4, CRS panel, app state and .SPL files, language packs
   js/map/             map canvas, basemap tiles, coastline, pan and zoom
   js/io/              imports (boundary, XYZ, grids) and exports (DXF, SHP, KML, RLN, Qinsy, GPX, CSV…)
   js/sheet/           map sheet, PDF writer, PDF report, image formats, projected grid
@@ -28,6 +32,8 @@ src/
   lang/_keep-english.json  names and references that stay English on purpose
 tools/build.mjs       the build
 test/                 behaviour snapshot tests
+manifest.webmanifest  app manifest (static, edit directly)
+icons/                app icons (static)
 ```
 
 ### How the page is assembled
@@ -36,6 +42,7 @@ test/                 behaviour snapshot tests
 
 - `<!--@include js/core/coords.js-->` inserts that file byte for byte. When the marker ends a line, the line break is dropped, because the file brings its own.
 - `<!--@langpack-->` inserts the language data built from `src/lang/`.
+- `<!--@langpack subset-->` inserts only the strings that appear in that page (the hub uses this to stay small).
 
 The JS parts are **slices of one script, in their original order**, and they still share one global scope. So:
 
@@ -44,6 +51,14 @@ The JS parts are **slices of one script, in their original order**, and they sti
 - Element ids are global. The build fails if the page has a duplicate id.
 
 Some part names are approximate: for example `js/mbes/catalogues.js` also defines `$`, `D` and `NM`, which everything uses. The parts will be untangled into properly shared modules step by step, with the snapshot tests guarding each step.
+
+## Offline app (PWA)
+
+- `src/js/core/pwa.js` runs on both pages. On the website it registers `sw.js`, adds the manifest and icons, and shows a banner when the app is ready offline or a new version is waiting. On a downloaded copy (`file://`) it does nothing except point the hub links to the online hub.
+- The build stamps `sw.js` with a version made from the pages, the manifest and the icons, so **every change to them reaches installed apps as an update**. A new version waits until the user taps *Update*; it never reloads the page by itself.
+- The service worker answers app files from the cache of its own version, so the app opens offline and never mixes two versions. proj4 and EPSG definitions are kept in a separate runtime cache. Map tiles, bathymetry and place search go to the network.
+- When you add a file the app needs offline, add it to `STATIC` in `tools/build.mjs`.
+- The header has no spare room on phones: the grid icon (`#tabH`) shows above 700 px, and on phones the logo (`#logoHub`) is the link to the hub. Check header heights at 360–1400 px after any header change.
 
 ## Languages
 
@@ -63,6 +78,8 @@ python3 test/snapshot.py index.html /tmp/before     # before your change
 python3 test/snapshot.py index.html /tmp/after
 python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what changed
 ```
+
+To test the offline app, serve the repository as `/swathplan/` over http (service workers do not run on `file://`), for example by copying it into `/tmp/site/swathplan/` and running `python3 -m http.server` in `/tmp/site`. In Chromium's DevTools, *Application → Service workers* has an *Offline* switch.
 
 For a pure refactor, the comparison must pass. For a feature, read the list of differences and confirm each one is intended.
 

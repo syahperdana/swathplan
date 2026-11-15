@@ -52,7 +52,10 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 ### Option A: open it online
 Open the live link above. That is all.
 
-### Option B: use it offline
+### Option B: install it as an app
+Open the live link in Chrome, Edge or on Android and choose *Install* (on iPhone or iPad: *Share → Add to Home Screen*). The installed app opens and plans without internet, and offers updates when a new version is out. All tools are listed at https://syahperdana.github.io/swathplan/hub/.
+
+### Option C: use the single file offline
 1. Download `index.html` from this repository (open the file, then *Raw → Save as*).
 2. Double-click it. It opens in your browser.
 
