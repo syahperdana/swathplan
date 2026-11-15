@@ -25,9 +25,11 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - **Cross lines**: choose how many, spaced evenly across the area, with their own name prefix.
 - Williamson and U-turn paths, time and distance estimates, and a cost and operations summary.
 - Coastline and land avoidance, and trimming of lines to navigable water.
+- **Compare scenarios** for a tender: sensor, overlap, swath angle, speed, turn radius, day rate, hours and vessels side by side, with time and cost, exported as CSV.
 
 **Quality checks**
 - IHO S-44 order requirements: spacing, overlap, TVU/THU, feature detection and a cross-line consistency check.
+- **Uncertainty budget (a priori TPU):** TVU and THU across the swath from your system's uncertainties, the widest angle that still meets the order, and one click to apply it.
 - Sensor catalogue with editable models.
 
 **Data**
@@ -40,6 +42,7 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - A print-ready **map sheet** (A4 or A3, PNG or PDF) with scale bar, north arrow, legend and title block. The grid can show **projected E/N**, **lat/lon**, or **both**.
 - A PDF report with the plan, the maths and the line list.
 - Save and reopen your project as a plain-text `.SPL` file. Changes are also autosaved in your browser.
+- **One project across the tools:** project details, sensor, order, vessel and coordinate system follow you between the planners, and the survey area is shared between the MBES, geophysical and infill planners.
 
 **Everything else**
 - 22 languages, picked automatically from your location, and switchable at any time.
@@ -101,6 +104,16 @@ For side-scan, magnetometer, sub-bottom and seismic surveys: https://syahperdana
   - **Multibeam** can join the spread.
 - Towed sensor layback is added as line run-in. Tie lines can be set by spacing.
 - Everything else as in the MBES planner: area drawing or import, auto direction, turns, time and cost, every export, map sheet, report, offline maps and 22 languages.
+
+## Infill planner
+
+Find the gaps in what you have surveyed and plan lines to fill them: https://syahperdana.github.io/swathplan/infill/
+
+- **Load the coverage:** acquired tracks (positions as text or CSV, GPX, KML, SHP, DXF or GeoJSON) and, if you have them, XYZ soundings.
+- **Track swath width:** from the swath angles and the depth along each track (loaded bathymetry, or the design depth), or a fixed width.
+- **Coverage map:** covered parts in green, gaps in red, with coverage % and gap area.
+- **Infill lines:** planned across each gap at the line spacing from sections 1 and 2, in the tracks' direction or one you choose. No area yet? Use the coverage extent as the area.
+- **Exports:** every planner format, plus a gaps CSV.
 
 ## Export notes
 
