@@ -808,5 +808,7 @@
  "CORRIDOR SURVEY LINE PLAN": "コリドー測線計画",
  "Corridor boundary": "コリドー境界",
  "Corridor boundary (WGS 84)": "コリドー境界（WGS 84）",
- "KP range / speed": "KP範囲 / 速度"
+ "KP range / speed": "KP範囲 / 速度",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "内蔵の世界海岸線（オフラインで使用可、Natural Earth、約1 kmの精度）",
+ "World coastline": "世界海岸線"
 }

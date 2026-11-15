@@ -65,6 +65,7 @@ Some features need internet when you use them: map background tiles, global bath
 - Map tiles you view are kept on the device. Before leaving port, pan and zoom over your survey area at the scales you need.
 - Load your own **PMTiles** map file (raster) as the basemap. It is read in small pieces, so even a large file stays light, and the app keeps it for next time.
 - Loaded bathymetry is drawn as a **shaded depth background**, and bathymetry and coastline are kept between sessions.
+- A built-in world coastline (Natural Earth, about 1 km detail) is always there when no map tiles are, so you are never looking at an empty grid.
 - A label on the map shows which map is in use.
 
 ### A first plan in 5 steps
@@ -113,6 +114,10 @@ I'd really like to hear from people who plan surveys: what is missing, what is c
 ## Disclaimer
 
 SwathPlan is a planning aid. Catalogue values for sonars are approximate and compiled from public information, so always check them against the manufacturer's datasheet. Verify all results against your equipment specifications, the current IHO S-44 and your client's requirements. The software is provided as is, without warranty.
+
+## Data credits
+
+The built-in world coastline is from [Natural Earth](https://www.naturalearthdata.com/) (public domain), simplified.
 
 ## Licence
 

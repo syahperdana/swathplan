@@ -87,6 +87,7 @@ All in `src/js/map/offline-maps.js` (with `pmtiles.js` and small hooks in `tiles
 - **Your map file (PMTiles v3, raster):** read in pieces with `Blob.slice`, never loaded whole. Kept in the Origin Private File System (`basemap.pmtiles`) where the browser allows `createWritable`; otherwise it lasts for the session. Vector PMTiles are refused with a message. `test/make_pmtiles.py` writes test files (`--leaves` for leaf directories).
 - **Shaded bathymetry:** the loaded depth points are binned once into a small image (up to 512 px), gaps filled three cells deep, coloured by depth and lit from the north-west, then scaled on screen. *Shaded depth background* off brings back the dots.
 - **Kept between sessions:** loaded bathymetry and coastline are stored in IndexedDB (`swathplan` / `kv`) and restored on start. A fresh start or *Reset* forgets them.
+- **Built-in world coastline:** Natural Earth 1:50m coastline (public domain), simplified to about 1 km and stored as encoded polylines in `src/js/map/coast-data.js` (185 KB). It is drawn under the tiles, so it shows when there are no tiles (offline, basemap None, no map file). Rebuild it with `python3 tools/make_coast.py ne_50m_coastline.shp 0.01`. It hides when the view spans more than 70° of latitude, where the local map frame no longer fits.
 - **Map source label** (`#mapSrc`): online map, saved tiles offline, your map file, plus bathymetry.
 - Offline maps need the website or installed app (service worker and Cache API); the downloaded single file shows a note instead.
 

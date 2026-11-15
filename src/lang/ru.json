@@ -815,5 +815,7 @@
  "CORRIDOR SURVEY LINE PLAN": "ПЛАН ГАЛСОВ СЪЁМКИ КОРИДОРА",
  "Corridor boundary": "Граница коридора",
  "Corridor boundary (WGS 84)": "Граница коридора (WGS 84)",
- "KP range / speed": "Диапазон KP / скорость"
+ "KP range / speed": "Диапазон KP / скорость",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Встроенная мировая береговая линия (работает без интернета; Natural Earth, детализация около 1 км)",
+ "World coastline": "Мировая береговая линия"
 }
