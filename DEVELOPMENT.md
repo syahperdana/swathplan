@@ -63,6 +63,10 @@ Some part names are approximate: for example `js/mbes/catalogues.js` also define
 
 A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follows a route. Read the points with `LP(l)` and the length with `L(l)`; every export, the map, the sheet and the report already do. A straight line gives exactly the same output as before.
 
+## Uncertainty budget (all planners)
+
+`parts/sec-tpu.html` and `js/mbes/tpu.js`: a simplified a priori TPU after Hare (1995). For each beam angle at the design depth it combines (RSS) range, angle (roll plus pointing), heave, water level, draft and sound speed into TVU, and positioning, heading, angle, pitch and sound speed into THU, then scales to 95 % (1.96σ vertical, 2.45σ horizontal) and compares with the IHO order (TVU `√(a² + (b·d)²)`, THU `a + b·d`). It finds the widest angle that meets both, can apply it to the swath angles, and adds a plan check (which also appears in the reports).
+
 ## The corridor planner
 
 `corridor/index.html` is the MBES planner with three changes, so it gets every shared feature (map, offline maps, coordinate systems, coastline, bathymetry, IHO checks, turns, cost, exports, sheet, report, languages):
