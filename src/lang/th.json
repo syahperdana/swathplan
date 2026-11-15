@@ -316,6 +316,7 @@
  "<b>Add the coastline</b> (section 7) if the area touches land, so lines are trimmed with a safety clearance.": "<b>เพิ่มแนวชายฝั่ง</b> (ข้อ 7) หากพื้นที่ติดแผ่นดิน เพื่อให้แนวถูกตัดโดยมีระยะปลอดภัย",
  "<b>Fill in the project and operations panel</b>: start date, hours per day, weather allowance, SVP casts, calibration, mob/demob and the day rate if you want a cost estimate.": "<b>กรอกแผงโครงการและการปฏิบัติการ</b>: วันเริ่มต้น ชั่วโมงต่อวัน ค่าเผื่อสภาพอากาศ การวัด SVP การสอบเทียบ การเข้า/ออกพื้นที่ และค่าเรือรายวันหากต้องการประมาณต้นทุน",
  "<b>Read the summary and Plan checks</b> under the map. Fix any ⚠ items and iterate.": "<b>อ่านสรุปและการตรวจสอบแผน</b> ใต้แผนที่ แก้ไขรายการ ⚠ แล้วทำซ้ำ",
+ "<b>Export</b> (section 13) to your acquisition software (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner and more), and create the printable report for the client.": "<b>ส่งออก</b> (ข้อ 13) ไปยังซอฟต์แวร์เก็บข้อมูลของคุณ (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner และอื่น ๆ) และสร้างรายงานสำหรับพิมพ์ให้ลูกค้า",
  "3. Panel reference": "3. อ้างอิงแผงควบคุม",
  "<b>1 Sensor &amp; depth:</b> model list (editable catalogue, CSV import) and design depth.": "<b>1 เซนเซอร์และความลึก:</b> รายการรุ่น (แคตตาล็อกแก้ไขได้ นำเข้า CSV) และความลึกออกแบบ",
  "<b>2 Swath &amp; overlap:</b> angles, overlap, adaptive spacing, maximum spacing and swath width.": "<b>2 สวาธและการซ้อนทับ:</b> มุม การซ้อนทับ ระยะห่างแบบปรับตัว ระยะห่างสูงสุด และความกว้างสวาธ",

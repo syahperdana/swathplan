@@ -311,6 +311,7 @@
  "<b>Add the coastline</b> (section 7) if the area touches land, so lines are trimmed with a safety clearance.": "<b>أضف خط الساحل</b> (القسم 7) إذا لامست المنطقة اليابسة، لتُقتطع الخطوط مع هامش أمان.",
  "<b>Fill in the project and operations panel</b>: start date, hours per day, weather allowance, SVP casts, calibration, mob/demob and the day rate if you want a cost estimate.": "<b>املأ لوحة المشروع والعمليات</b>: تاريخ البدء وساعات اليوم وهامش الطقس وقياسات SVP والمعايرة والتعبئة/فك التعبئة والأجرة اليومية إن أردت تقدير التكلفة.",
  "<b>Read the summary and Plan checks</b> under the map. Fix any ⚠ items and iterate.": "<b>اقرأ الملخص وفحوص الخطة</b> أسفل الخريطة. أصلح عناصر ⚠ وكرر.",
+ "<b>Export</b> (section 13) to your acquisition software (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner and more), and create the printable report for the client.": "<b>صدّر</b> (القسم 13) إلى برنامج الاستحواذ لديك (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner وغيرها)، وأنشئ التقرير القابل للطباعة للعميل.",
  "3. Panel reference": "3. مرجع اللوحات",
  "<b>1 Sensor &amp; depth:</b> model list (editable catalogue, CSV import) and design depth.": "<b>1 المستشعر والعمق:</b> قائمة الطرز (كتالوج قابل للتعديل، استيراد CSV) وعمق التصميم.",
  "<b>2 Swath &amp; overlap:</b> angles, overlap, adaptive spacing, maximum spacing and swath width.": "<b>2 الشريط والتداخل:</b> الزوايا والتداخل والتباعد التكيّفي وأقصى تباعد وعرض الشريط.",

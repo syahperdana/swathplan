@@ -310,6 +310,7 @@
  "<b>Add the coastline</b> (section 7) if the area touches land, so lines are trimmed with a safety clearance.": "구역이 육지와 접하면 <b>해안선을 추가하세요</b>(7번 항목). 측선이 안전 이격을 두고 잘립니다.",
  "<b>Fill in the project and operations panel</b>: start date, hours per day, weather allowance, SVP casts, calibration, mob/demob and the day rate if you want a cost estimate.": "<b>프로젝트 및 운영 패널을 채우세요</b>: 시작일, 일일 시간, 기상 여유, SVP 측정, 교정, 동원/철수, 그리고 비용 추정을 원하면 일일 비용.",
  "<b>Read the summary and Plan checks</b> under the map. Fix any ⚠ items and iterate.": "지도 아래의 <b>요약과 계획 점검</b>을 읽으세요. ⚠ 항목을 고치고 반복하세요.",
+ "<b>Export</b> (section 13) to your acquisition software (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner and more), and create the printable report for the client.": "<b>내보내기</b>(13번 항목)로 수집 소프트웨어용 파일(DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner 등)을 만들고, 고객용 인쇄 보고서를 작성합니다.",
  "3. Panel reference": "3. 패널 참고",
  "<b>1 Sensor &amp; depth:</b> model list (editable catalogue, CSV import) and design depth.": "<b>1 센서 및 수심:</b> 모델 목록(편집 가능한 카탈로그, CSV 가져오기)과 설계 수심.",
  "<b>2 Swath &amp; overlap:</b> angles, overlap, adaptive spacing, maximum spacing and swath width.": "<b>2 스와스 및 중첩:</b> 각도, 중첩, 적응형 간격, 최대 간격, 스와스 폭.",
