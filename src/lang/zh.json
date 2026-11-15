@@ -899,5 +899,11 @@
  "Survey speed (kn)": "测量航速（节）",
  "Swath half-angle (°)": "条带半角（°）",
  "Turn radius (m)": "转弯半径（米）",
- "Vessels": "船数"
+ "Vessels": "船数",
+ "Share project details between planners": "在规划器之间共享项目信息",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "项目信息、传感器、IHO 等级、航速、船舶和坐标系会带到本设备上的其他 SwathPlan 规划器；测区在 MBES 与地球物理规划器之间共享。",
+ "Project details updated from the {0}.": "已从“{0}”更新项目信息。",
+ "Project details and survey area updated from the {0}.": "已从“{0}”更新项目信息和测区。",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "当前项目：{0}（最后修改于“{1}”，{2}）。每个规划器都会打开此项目。",
+ "unnamed": "未命名"
 }

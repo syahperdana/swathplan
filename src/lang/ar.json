@@ -899,5 +899,11 @@
  "Survey speed (kn)": "سرعة المسح (عقدة)",
  "Swath half-angle (°)": "نصف زاوية المسح (°)",
  "Turn radius (m)": "نصف قطر الانعطاف (م)",
- "Vessels": "السفن"
+ "Vessels": "السفن",
+ "Share project details between planners": "مشاركة بيانات المشروع بين المخطِّطات",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "تنتقل بيانات المشروع والمستشعر ودرجة IHO والسرعة والسفينة ونظام الإحداثيات معك إلى مخطِّطات SwathPlan الأخرى على هذا الجهاز؛ وتُشارَك منطقة المسح بين مخطِّطَي MBES والجيوفيزياء.",
+ "Project details updated from the {0}.": "حُدِّثت بيانات المشروع من: {0}.",
+ "Project details and survey area updated from the {0}.": "حُدِّثت بيانات المشروع ومنطقة المسح من: {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "المشروع الحالي: {0} (آخر تغيير في: {1}، {2}). يُفتح به كل مخطِّط.",
+ "unnamed": "بلا اسم"
 }

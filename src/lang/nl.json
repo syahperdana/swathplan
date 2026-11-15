@@ -899,5 +899,11 @@
  "Survey speed (kn)": "Surveysnelheid (kn)",
  "Swath half-angle (°)": "Halve swath-hoek (°)",
  "Turn radius (m)": "Draaicirkel (m)",
- "Vessels": "Schepen"
+ "Vessels": "Schepen",
+ "Share project details between planners": "Projectgegevens delen tussen planners",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Projectgegevens, sensor, IHO-orde, snelheid, schip en coördinatensysteem gaan mee naar de andere SwathPlan-planners op dit apparaat; het surveygebied wordt gedeeld tussen de MBES- en de geofysische planner.",
+ "Project details updated from the {0}.": "Projectgegevens bijgewerkt vanuit: {0}.",
+ "Project details and survey area updated from the {0}.": "Projectgegevens en surveygebied bijgewerkt vanuit: {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Huidig project: {0} (laatst gewijzigd in: {1}, {2}). Elke planner opent ermee.",
+ "unnamed": "naamloos"
 }

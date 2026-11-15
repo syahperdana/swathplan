@@ -1,5 +1,5 @@
 /* ===== corridor page: settings and labels applied before the shared planner starts ===== */
-window.SWP_STATE_KEY="swp_state_corridor";window.SWP_TITLE="SwathPlan – Corridor Survey Planner (Offline)";window.SWP_NEED="Draw or import a route first.";window.SWP_SHEET_TITLE="CORRIDOR SURVEY LINE PLAN";window.SWP_BOUND="Corridor boundary";window.SWP_BOUND_PDF="Corridor boundary (WGS 84)";window.SWP_REPORT_SUB="Corridor survey line plan and IHO S-44 summary";
+window.SWP_STATE_KEY="swp_state_corridor";window.SWP_TOOL="Corridor planner";window.SWP_SHARE_AREA=false;window.SWP_TITLE="SwathPlan – Corridor Survey Planner (Offline)";window.SWP_NEED="Draw or import a route first.";window.SWP_SHEET_TITLE="CORRIDOR SURVEY LINE PLAN";window.SWP_BOUND="Corridor boundary";window.SWP_BOUND_PDF="Corridor boundary (WGS 84)";window.SWP_REPORT_SUB="Corridor survey line plan and IHO S-44 summary";
 (()=>{const q=s=>document.querySelector(s),t=(s,v)=>{const e=q(s);if(e)e.textContent=v};
 t(".brand small","Corridor survey planner · cable and pipeline routes · KP");
 t("#bDraw","Draw route");t("#bClose","Finish route");t("#hud","Drag to pan · wheel to zoom · click to add route points");

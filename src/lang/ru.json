@@ -906,5 +906,11 @@
  "Survey speed (kn)": "Скорость съёмки (уз)",
  "Swath half-angle (°)": "Полуугол полосы (°)",
  "Turn radius (m)": "Радиус разворота (м)",
- "Vessels": "Суда"
+ "Vessels": "Суда",
+ "Share project details between planners": "Общие данные проекта для всех планировщиков",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Данные проекта, датчик, разряд IHO, скорость, судно и система координат переносятся в другие планировщики SwathPlan на этом устройстве; район съёмки общий для планировщиков MBES и геофизики.",
+ "Project details updated from the {0}.": "Данные проекта обновлены из: {0}.",
+ "Project details and survey area updated from the {0}.": "Данные проекта и район съёмки обновлены из: {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Текущий проект: {0} (последнее изменение: {1}, {2}). Все планировщики открываются с ним.",
+ "unnamed": "без названия"
 }

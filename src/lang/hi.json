@@ -898,5 +898,11 @@
  "Survey speed (kn)": "सर्वे गति (नॉट)",
  "Swath half-angle (°)": "स्वाथ अर्ध-कोण (°)",
  "Turn radius (m)": "मोड़ त्रिज्या (मी)",
- "Vessels": "जहाज़"
+ "Vessels": "जहाज़",
+ "Share project details between planners": "प्लानरों के बीच परियोजना विवरण साझा करें",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "परियोजना विवरण, सेंसर, IHO ऑर्डर, गति, जहाज़ और निर्देशांक प्रणाली इस डिवाइस के अन्य SwathPlan प्लानरों में भी आ जाते हैं; सर्वे क्षेत्र MBES और भूभौतिकीय प्लानर के बीच साझा होता है।",
+ "Project details updated from the {0}.": "परियोजना विवरण यहाँ से अद्यतन: {0}।",
+ "Project details and survey area updated from the {0}.": "परियोजना विवरण और सर्वे क्षेत्र यहाँ से अद्यतन: {0}।",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "मौजूदा परियोजना: {0} (अंतिम बदलाव: {1}, {2})। हर प्लानर इसी से खुलता है।",
+ "unnamed": "बेनाम"
 }

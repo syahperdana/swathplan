@@ -899,5 +899,11 @@
  "Survey speed (kn)": "Velocidad de levantamiento (kn)",
  "Swath half-angle (°)": "Semiángulo de franja (°)",
  "Turn radius (m)": "Radio de viraje (m)",
- "Vessels": "Embarcaciones"
+ "Vessels": "Embarcaciones",
+ "Share project details between planners": "Compartir los datos del proyecto entre planificadores",
+ "Project details, sensor, IHO order, speed, vessel and coordinate system follow you to the other SwathPlan planners on this device; the survey area is shared between the MBES and geophysical planners.": "Los datos del proyecto, el sensor, el orden OHI, la velocidad, la embarcación y el sistema de coordenadas le acompañan a los demás planificadores de SwathPlan en este dispositivo; la zona de levantamiento se comparte entre los planificadores MBES y geofísico.",
+ "Project details updated from the {0}.": "Datos del proyecto actualizados desde: {0}.",
+ "Project details and survey area updated from the {0}.": "Datos del proyecto y zona de levantamiento actualizados desde: {0}.",
+ "Current project: {0} (last changed in the {1}, {2}). Every planner opens with it.": "Proyecto actual: {0} (último cambio en: {1}, {2}). Todos los planificadores se abren con él.",
+ "unnamed": "sin nombre"
 }
