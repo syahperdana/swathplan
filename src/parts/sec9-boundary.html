@@ -1,7 +1,0 @@
-<details><summary>9. Survey boundary import</summary><div>
-<input type="file" id="bF" multiple accept=".dxf,.dwg,.shp,.prj,.dbf,.shx,.kml,.kmz,.gpx,.geojson,.json,.csv,.txt,.wkt,.zip">
-<button class="p" id="bB">Import boundary</button>
-<textarea id="bT" rows="2" placeholder="…or paste WKT (POLYGON((x y, …))) or one 'x y' vertex per line" style="margin-top:4px"></textarea><button id="bP">Use pasted text</button>
-<div id="bSt" class="note">Supported: SHP (+PRJ, or a ZIP), DXF, KML, KMZ, GPX, GeoJSON, WKT, CSV/TXT vertex lists. Select the .shp and .prj together.</div>
-<p class="note">CRS: KML, KMZ, GPX and GeoJSON are WGS84 by specification. SHP uses its .prj file when present. DXF, WKT and text lists carry no CRS, so they use the coordinate system in section 8. DWG is a closed binary format and cannot be read in a browser: save it as DXF first (AutoCAD, BricsCAD, ODA File Converter or LibreDWG). If several shapes are found, the largest closed one becomes the boundary.</p>
-</div></details>

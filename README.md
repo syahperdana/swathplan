@@ -5,7 +5,7 @@ Draw the area, set your sonar, get the lines, check them against IHO S-44, and e
 
 ![SwathPlan planner](docs/screenshot-planner.png)
 
-▶ **All tools:** https://syahperdana.github.io/swathplan/  ·  **MBES planner:** https://syahperdana.github.io/swathplan/mbes/
+▶ **Live app:** https://syahperdana.github.io/swathplan/
 🎬 **Demo video (84 s):** [docs/demo.mp4](docs/demo.mp4)
 
 ---
@@ -25,11 +25,9 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - **Cross lines**: choose how many, spaced evenly across the area, with their own name prefix.
 - Williamson and U-turn paths, time and distance estimates, and a cost and operations summary.
 - Coastline and land avoidance, and trimming of lines to navigable water.
-- **Compare scenarios** for a tender: sensor, overlap, swath angle, speed, turn radius, day rate, hours and vessels side by side, with time and cost, exported as CSV.
 
 **Quality checks**
 - IHO S-44 order requirements: spacing, overlap, TVU/THU, feature detection and a cross-line consistency check.
-- **Uncertainty budget (a priori TPU):** TVU and THU across the swath from your system's uncertainties, the widest angle that still meets the order, and one click to apply it.
 - Sensor catalogue with editable models.
 
 **Data**
@@ -42,7 +40,6 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - A print-ready **map sheet** (A4 or A3, PNG or PDF) with scale bar, north arrow, legend and title block. The grid can show **projected E/N**, **lat/lon**, or **both**.
 - A PDF report with the plan, the maths and the line list.
 - Save and reopen your project as a plain-text `.SPL` file. Changes are also autosaved in your browser.
-- **One project across the tools:** project details, sensor, order, vessel and coordinate system follow you between the planners, and the survey area is shared between the MBES, geophysical and infill planners.
 
 **Everything else**
 - 22 languages, picked automatically from your location, and switchable at any time.
@@ -55,21 +52,11 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 ### Option A: open it online
 Open the live link above. That is all.
 
-### Option B: install it as an app
-Open the live link in Chrome, Edge or on Android and choose *Install* (on iPhone or iPad: *Share → Add to Home Screen*). The installed app opens and plans without internet, and offers updates when a new version is out. All tools are listed on the home page, https://syahperdana.github.io/swathplan/.
-
-### Option C: use the single file offline
-1. On the home page, press *Download offline copy* (or download `mbes/index.html` from this repository).
+### Option B: use it offline
+1. Download `index.html` from this repository (open the file, then *Raw → Save as*).
 2. Double-click it. It opens in your browser.
 
 Some features need internet when you use them: map background tiles, global bathymetry downloads, and loading EPSG definitions. Planning, S-44 checks and exports work offline.
-
-### Maps at sea (website or installed app)
-- Map tiles you view are kept on the device. Before leaving port, pan and zoom over your survey area at the scales you need.
-- Load your own **PMTiles** map file (raster) as the basemap. It is read in small pieces, so even a large file stays light, and the app keeps it for next time.
-- Loaded bathymetry is drawn as a **shaded depth background**, and bathymetry and coastline are kept between sessions.
-- A built-in world coastline (Natural Earth, about 1 km detail) is always there when no map tiles are, so you are never looking at an empty grid.
-- A label on the map shows which map is in use.
 
 ### A first plan in 5 steps
 1. **Set your sensor** (section 1): pick a model or type the swath half-angle, then set the design depth.
@@ -82,38 +69,6 @@ Some features need internet when you use them: map background tiles, global bath
 - The number buttons at the top of the left panel jump to a section. Press one again to close it.
 - Pick the coordinate system in section 13 **before** exporting. EIVA RLN and the sheet grid follow it.
 - If you load a boundary as plain text, the tool tells you whether it read it as degrees or as the coordinate system from section 8.
-
-## Corridor planner
-
-For cable and pipeline routes: https://syahperdana.github.io/swathplan/corridor/
-
-- Draw the route centreline on the map or import it (CSV/TXT, KML, GPX, GeoJSON, SHP, DXF, WKT). KP runs from the first point, from any start KP.
-- Lines follow the route through its bends, either fitted to your swath and corridor width or at fixed offsets (for example `0, ±25, ±50`). Names show side and offset: `RL_C`, `RL_P050`, `RL_S050`.
-- Run-in and run-out extensions, cross lines every chosen KP interval, turns at the route ends.
-- Exports: every planner format (lines keep all their bend points), plus a **KP table** (CSV, with bearing) and the **route with KP** (EIVA RLN).
-- Map sheet, PDF report, IHO S-44 checks, time and cost, offline maps and all 22 languages, as in the MBES planner.
-
-## Geophysical planner
-
-For side-scan, magnetometer, sub-bottom and seismic surveys: https://syahperdana.github.io/swathplan/geophys/
-
-- Tick the sensors in your spread. Each one works out the line spacing it needs, and the closest spacing sets the plan, with the deciding sensor shown.
-  - **Side-scan:** range per side and coverage (100, 150 or 200 %), with a nadir-gap check and the maximum speed for the pings you need on your smallest target.
-  - **Magnetometer:** the distance at which your target is detectable and the sensor height give the spacing; sample spacing at survey speed is shown.
-  - **Sub-bottom profiler** and **UHR seismic:** grid spacing; seismic lines get half a streamer of extension at each end for full fold.
-  - **Multibeam** can join the spread.
-- Towed sensor layback is added as line run-in. Tie lines can be set by spacing.
-- Everything else as in the MBES planner: area drawing or import, auto direction, turns, time and cost, every export, map sheet, report, offline maps and 22 languages.
-
-## Infill planner
-
-Find the gaps in what you have surveyed and plan lines to fill them: https://syahperdana.github.io/swathplan/infill/
-
-- **Load the coverage:** acquired tracks (positions as text or CSV, GPX, KML, SHP, DXF or GeoJSON) and, if you have them, XYZ soundings.
-- **Track swath width:** from the swath angles and the depth along each track (loaded bathymetry, or the design depth), or a fixed width.
-- **Coverage map:** covered parts in green, gaps in red, with coverage % and gap area.
-- **Infill lines:** planned across each gap at the line spacing from sections 1 and 2, in the tracks' direction or one you choose. No area yet? Use the coverage extent as the area.
-- **Exports:** every planner format, plus a gaps CSV.
 
 ## Export notes
 
@@ -128,10 +83,6 @@ Find the gaps in what you have surveyed and plan lines to fill them: https://sya
 
 Tested in Chromium (Chrome, Edge) and Firefox. It is also designed for Safari, but report anything odd you see.
 
-## For developers
-
-The pages are built from the source files in `src/` with `node tools/build.mjs`. See [DEVELOPMENT.md](DEVELOPMENT.md) for the layout, the build, the language files and the tests.
-
 ## Feedback
 
 I'd really like to hear from people who plan surveys: what is missing, what is confusing, which export you need. Please open an **Issue** with the browser, a short description and, if you can, a screenshot or your `.SPL` file.
@@ -139,10 +90,6 @@ I'd really like to hear from people who plan surveys: what is missing, what is c
 ## Disclaimer
 
 SwathPlan is a planning aid. Catalogue values for sonars are approximate and compiled from public information, so always check them against the manufacturer's datasheet. Verify all results against your equipment specifications, the current IHO S-44 and your client's requirements. The software is provided as is, without warranty.
-
-## Data credits
-
-The built-in world coastline is from [Natural Earth](https://www.naturalearthdata.com/) (public domain), simplified.
 
 ## Licence
 
