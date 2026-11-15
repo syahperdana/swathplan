@@ -1,6 +1,6 @@
 # Developing SwathPlan
 
-`index.html` at the repository root is the tools hub (the home page), `mbes/index.html` the MBES planner, `corridor/index.html` the corridor planner, `hub/index.html` a redirect for old links and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
+`index.html` at the repository root is the tools hub (the home page), `mbes/index.html` the MBES planner, `corridor/index.html` the corridor planner, `geophys/index.html` the geophysical planner, `hub/index.html` a redirect for old links and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
 
 ## Quick start
 
@@ -17,6 +17,7 @@ Node 18 or newer is enough. No packages are installed.
 src/
   pages/mbes.html     the MBES planner (built to mbes/index.html): list of HTML parts and CSS/JS parts, in order
   pages/corridor.html the corridor planner (built to corridor/index.html)
+  pages/geophys.html  the geophysical planner (built to geophys/index.html)
   pages/hub.html      the tools hub, the home page (built to index.html)
   pages/hub-redirect.html  old hub/ address, sends visitors to the home page
   parts/              HTML pieces shared by the planner pages: header, each settings section,
@@ -30,6 +31,7 @@ src/
   js/io/              imports (boundary, XYZ, grids) and exports (DXF, SHP, KML, RLN, Qinsy, GPX, CSV…)
   js/sheet/           map sheet, PDF writer, PDF report, image formats, projected grid
   js/mbes/            the MBES planner itself: catalogues, line generation, adaptive spacing, summary
+  js/geophys/         pre.js (labels and settings), app.js (sensor spacing, run-in, tie lines, checks)
   js/corridor/        pre.js (labels and settings applied first), engine.js (offset geometry, KP), app.js
   lang/en.json        the English strings (these are the translation keys)
   lang/<code>.json    one file per language: { "English text": "translation" }
@@ -70,6 +72,20 @@ A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follow
 - **`js/corridor/app.js` runs after the planner has started** and replaces `gen()` (corridor lines, turns, cross lines at KP, outline as `poly`), rewires the drawing buttons and the area presets, adds route import, the KP table and route RLN, draws the route and KP labels, and adds the route to autosave and `.SPL` files (a `[ROUTE]` section).
 
 Offsets are positive to starboard of the route direction. Lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed from port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
+
+## The geophysical planner
+
+`geophys/index.html` is the MBES area planner with section 2 replaced by `parts/sec2-geophys.html` (sensor calculator), which includes the multibeam swath block inside it (parts can include parts). `js/geophys/app.js` wraps:
+
+- `params()`: `S` and `W` come from the ticked sensors (the smallest spacing wins); the multibeam values stay in `mbS`/`mbW`, and `geo` holds the per-sensor rows and the driver.
+  - Side-scan: `S = 2R / (coverage/100) × (1 − margin)`; max speed from ping rate `c/2R`, target length and pings on target. Coverage under 200 % is flagged (nadir gap).
+  - Magnetometer: `S = 2·√(D² − h²)` (D detection distance, h sensor height); sample spacing at survey speed.
+  - Sub-bottom and UHR seismic: grid spacing; seismic lines are extended by half the streamer at each end (full fold).
+- `gen()`: run-in (towed layback + seismic + extra) and run-out applied to the lines, turns redone, tie lines by spacing.
+- `summary()`: sensor checks added to the plan checks. `stats()`: the multibeam block keeps showing multibeam values.
+- Map sheet rows through `SWP_SENSORROW` and `SWP_SWATHROW`.
+
+Test: `python3 test/geophys_check.py geophys/index.html`.
 
 ## Offline app (PWA)
 
