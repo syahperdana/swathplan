@@ -115,7 +115,10 @@ with sync_playwright() as p:
     for c in codes:
         pg.evaluate(f"setLang('{c}')")
         pg.clock.run_for(400)
-        txt = pg.evaluate("(()=>{const t=document.getElementById('toast');if(t)t.remove();return document.body.innerText})()")
+        txt = pg.evaluate("""(()=>{const t=document.getElementById('toast');if(t)t.remove();
+            // visible text, then the text of hidden pages such as the Guide
+            const c=document.body.cloneNode(true);c.querySelectorAll('script,style').forEach(e=>e.remove());
+            return document.body.innerText+'\\n\\n==== all text ====\\n'+c.textContent.replace(/\\s+/g,' ')})()""")
         (out / "text" / f"{c}.txt").write_text(txt, encoding="utf-8")
     pg.evaluate("setLang('en')")
     pg.clock.run_for(400)

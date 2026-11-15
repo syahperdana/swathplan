@@ -311,6 +311,7 @@
  "<b>Add the coastline</b> (section 7) if the area touches land, so lines are trimmed with a safety clearance.": "<b>海岸線を追加します</b>（セクション7）。区域が陸地に接する場合、安全距離を取って測線がトリミングされます。",
  "<b>Fill in the project and operations panel</b>: start date, hours per day, weather allowance, SVP casts, calibration, mob/demob and the day rate if you want a cost estimate.": "<b>プロジェクトと運用パネルに入力します</b>: 開始日、1日の稼働時間、気象余裕、SVP観測、校正、動員／撤収、費用見積りが必要なら日額料金。",
  "<b>Read the summary and Plan checks</b> under the map. Fix any ⚠ items and iterate.": "<b>地図の下のサマリーと計画チェックを読みます。</b> ⚠の項目を修正して繰り返します。",
+ "<b>Export</b> (section 13) to your acquisition software (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner and more), and create the printable report for the client.": "<b>エクスポート</b>（セクション13）して収録ソフトウェアに取り込み（DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner など）、クライアント向けの印刷用レポートを作成します。",
  "3. Panel reference": "3. パネルリファレンス",
  "<b>1 Sensor &amp; depth:</b> model list (editable catalogue, CSV import) and design depth.": "<b>1 センサーと水深:</b> モデル一覧（編集可能なカタログ、CSV読み込み）と設計水深。",
  "<b>2 Swath &amp; overlap:</b> angles, overlap, adaptive spacing, maximum spacing and swath width.": "<b>2 スワスとオーバーラップ:</b> 角度、オーバーラップ、適応間隔、最大間隔、最大スワス幅。",

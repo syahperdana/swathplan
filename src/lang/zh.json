@@ -311,6 +311,7 @@
  "<b>Add the coastline</b> (section 7) if the area touches land, so lines are trimmed with a safety clearance.": "<b>添加海岸线</b>（第7节）（若测区接触陆地），测线将按安全距离裁剪。",
  "<b>Fill in the project and operations panel</b>: start date, hours per day, weather allowance, SVP casts, calibration, mob/demob and the day rate if you want a cost estimate.": "<b>填写项目与作业面板</b>：开始日期、每日小时数、天气余量、声速剖面测量、校准、动员／撤离，以及需要成本估算时的日租金。",
  "<b>Read the summary and Plan checks</b> under the map. Fix any ⚠ items and iterate.": "<b>阅读地图下方的摘要和计划检查。</b> 修正带 ⚠ 的项目并反复调整。",
+ "<b>Export</b> (section 13) to your acquisition software (DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner and more), and create the printable report for the client.": "<b>导出</b>（第13节）到您的采集软件（DXF, shapefile, KML, GPX, CSV, HYPACK, Qinsy QGF line, EIVA RLN, QGroundControl, Mission Planner 等），并为客户生成可打印的报告。",
  "3. Panel reference": "3. 面板参考",
  "<b>1 Sensor &amp; depth:</b> model list (editable catalogue, CSV import) and design depth.": "<b>1 传感器与水深：</b>型号列表（可编辑目录，CSV 导入）和设计水深。",
  "<b>2 Swath &amp; overlap:</b> angles, overlap, adaptive spacing, maximum spacing and swath width.": "<b>2 条带与重叠：</b>角度、重叠、自适应间距、最大间距和条带宽度。",
