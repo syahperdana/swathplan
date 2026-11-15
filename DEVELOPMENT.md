@@ -22,7 +22,7 @@ src/
   js/hub/hub.js       hub languages, install button, storage note
   pwa/sw.js           service worker template (built to sw.js)
   js/core/            language list, i18n engine, offline app (pwa.js), coordinates, datums, EPSG/proj4, CRS panel, app state and .SPL files, language packs
-  js/map/             map canvas, basemap tiles, coastline, pan and zoom
+  js/map/             map canvas, basemap tiles, coastline, pan and zoom, PMTiles reader, offline maps
   js/io/              imports (boundary, XYZ, grids) and exports (DXF, SHP, KML, RLN, Qinsy, GPX, CSV…)
   js/sheet/           map sheet, PDF writer, PDF report, image formats, projected grid
   js/mbes/            the MBES planner itself: catalogues, line generation, adaptive spacing, summary
@@ -59,6 +59,18 @@ Some part names are approximate: for example `js/mbes/catalogues.js` also define
 - The service worker answers app files from the cache of its own version, so the app opens offline and never mixes two versions. proj4 and EPSG definitions are kept in a separate runtime cache. Map tiles, bathymetry and place search go to the network.
 - When you add a file the app needs offline, add it to `STATIC` in `tools/build.mjs`.
 - The header has no spare room on phones: the grid icon (`#tabH`) shows above 700 px, and on phones the logo (`#logoHub`) is the link to the hub. Check header heights at 360–1400 px after any header change.
+
+## Offline maps
+
+All in `src/js/map/offline-maps.js` (with `pmtiles.js` and small hooks in `tiles.js`):
+
+- **Tiles kept as you browse:** the service worker stores cross-origin tiles whose path ends in `z/x/y` (or Esri `/tile/z/y/x`) in the `swp-tiles` cache, cache-first, refreshed in the background after 30 days, at most 6,000 tiles (oldest dropped first). Only CORS answers are kept: opaque answers count as several MB each in browser quotas. The built-in providers load with CORS; a Custom tile URL loads without it, so for custom servers use *Save area*.
+- **Save area:** for the Custom tile URL only, because the built-in servers (OpenStreetMap, Esri) do not allow bulk downloads. Limit 3,000 tiles per run, 4 requests at a time, written straight into `swp-tiles`.
+- **Your map file (PMTiles v3, raster):** read in pieces with `Blob.slice`, never loaded whole. Kept in the Origin Private File System (`basemap.pmtiles`) where the browser allows `createWritable`; otherwise it lasts for the session. Vector PMTiles are refused with a message. `test/make_pmtiles.py` writes test files (`--leaves` for leaf directories).
+- **Shaded bathymetry:** the loaded depth points are binned once into a small image (up to 512 px), gaps filled three cells deep, coloured by depth and lit from the north-west, then scaled on screen. *Shaded depth background* off brings back the dots.
+- **Kept between sessions:** loaded bathymetry and coastline are stored in IndexedDB (`swathplan` / `kv`) and restored on start. A fresh start or *Reset* forgets them.
+- **Map source label** (`#mapSrc`): online map, saved tiles offline, your map file, plus bathymetry.
+- Offline maps need the website or installed app (service worker and Cache API); the downloaded single file shows a note instead.
 
 ## Languages
 
