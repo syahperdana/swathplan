@@ -1,5 +1,6 @@
 /* ===== toast, autosave, .SPL project files, geolocation (v2) ===== */
-let _tt=0;function toast(msg,ms){let t=$("toast");if(!t){t=document.createElement("div");t.id="toast";t.setAttribute("role","status");document.body.appendChild(t)}t.textContent=msg;t.className="on";clearTimeout(_tt);_tt=setTimeout(()=>{t.className=""},ms||5000)}
+let _tt=0;function toast(msg,ms){let t=$("toast");if(!t){t=document.createElement("div");t.id="toast";t.setAttribute("role","status");document.body.appendChild(t)}const ft=document.querySelector("footer");t.style.bottom=((ft&&ft.offsetHeight)||0)+12+"px";// above the sticky footer
+t.textContent=msg;t.className="on";clearTimeout(_tt);_tt=setTimeout(()=>{t.className=""},ms||5000)}
 const SKIPU=new Set(["langSel","snd"]);var RESET=false,_st=0,touched=false;
 const ctrls=()=>[...document.querySelectorAll("input[id],select[id],textarea[id]")].filter(e=>e.type!="file"&&e.type!="button"&&!SKIPU.has(e.id));
 function collectUI(){const u={};ctrls().forEach(e=>{if(e.type=="checkbox"||e.type=="radio")u[e.id]=e.checked?1:0;else if(e.value.length<=20000)u[e.id]=e.value});return u}
