@@ -6,7 +6,7 @@ const i18=(s,...a)=>{let t=DICT.get(s);if(t===undefined)t=s;return a.length?t.re
 const UNITS=[...document.querySelectorAll("[data-t]")].map(el=>({el,key:el.innerHTML.replace(/\s+/g," ").trim()}));
 function setLang(l){if(!PK[l])l="en";LANG=l;DICT.clear();if(l!="en")EN.forEach((k,i)=>{const t=PK[l][i];if(t)DICT.set(k,t)});
 const de=document.documentElement;de.lang=l;de.dir=RTL.has(l)?"rtl":"ltr";
-UNITS.forEach(u=>{u.el.innerHTML=i18(u.key)});document.title="SwathPlan – "+i18("Survey planning tools");
+UNITS.forEach(u=>{u.el.innerHTML=i18(u.key).replace(/IHO S-44/g,'<bdi class="nw">IHO S-44</bdi>')});document.title="SwathPlan – "+i18("Survey planning tools");
 document.getElementById("langSel").value=l;showStore()}
 // Same choice as the planner: a manual pick wins, then the planner's automatic pick, then the browser language.
 function firstLang(){const m=LS("swp_lang")||LS("swp_langauto");if(m&&PK[m])return m;

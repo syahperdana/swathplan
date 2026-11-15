@@ -27,3 +27,4 @@ main{flex:1;width:100%;max-width:1040px;margin:0 auto;padding:28px 18px 36px}
 footer{background:#12262d;color:#9fc2bd;font-size:12px;padding:10px 18px;text-align:center}
 [hidden]{display:none!important}
 @media (max-width:520px){.intro h1{font-size:23px}main{padding-top:20px}}
+.nw{white-space:nowrap}
