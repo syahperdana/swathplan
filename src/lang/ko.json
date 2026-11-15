@@ -807,5 +807,7 @@
  "CORRIDOR SURVEY LINE PLAN": "회랑 측선 계획",
  "Corridor boundary": "회랑 경계",
  "Corridor boundary (WGS 84)": "회랑 경계(WGS 84)",
- "KP range / speed": "KP 범위 / 속력"
+ "KP range / speed": "KP 범위 / 속력",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "내장 세계 해안선(오프라인 작동, Natural Earth, 약 1 km 정밀도)",
+ "World coastline": "세계 해안선"
 }

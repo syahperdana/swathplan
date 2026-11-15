@@ -807,5 +807,7 @@
  "CORRIDOR SURVEY LINE PLAN": "PLANO NG SURVEY LINE NG KORIDOR",
  "Corridor boundary": "Hangganan ng koridor",
  "Corridor boundary (WGS 84)": "Hangganan ng koridor (WGS 84)",
- "KP range / speed": "Saklaw ng KP / bilis"
+ "KP range / speed": "Saklaw ng KP / bilis",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Built-in na baybayin ng mundo (gumagana offline; Natural Earth, mga 1 km na detalye)",
+ "World coastline": "Baybayin ng mundo"
 }

@@ -807,5 +807,7 @@
  "CORRIDOR SURVEY LINE PLAN": "कॉरिडोर सर्वे लाइन योजना",
  "Corridor boundary": "कॉरिडोर सीमा",
  "Corridor boundary (WGS 84)": "कॉरिडोर सीमा (WGS 84)",
- "KP range / speed": "KP सीमा / गति"
+ "KP range / speed": "KP सीमा / गति",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "अंतर्निहित विश्व तटरेखा (ऑफ़लाइन काम करती है; Natural Earth, लगभग 1 किमी विवरण)",
+ "World coastline": "विश्व तटरेखा"
 }

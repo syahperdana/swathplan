@@ -807,5 +807,7 @@
  "CORRIDOR SURVEY LINE PLAN": "کوریڈور سروے لائن منصوبہ",
  "Corridor boundary": "کوریڈور کی حد",
  "Corridor boundary (WGS 84)": "کوریڈور کی حد (WGS 84)",
- "KP range / speed": "KP حد / رفتار"
+ "KP range / speed": "KP حد / رفتار",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "بلٹ اِن عالمی ساحلی لکیر (آف لائن کام کرتی ہے؛ Natural Earth، تقریباً 1 کلومیٹر تفصیل)",
+ "World coastline": "عالمی ساحلی لکیر"
 }

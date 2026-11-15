@@ -816,5 +816,7 @@
  "CORRIDOR SURVEY LINE PLAN": "แผนแนวสำรวจแนวพื้นที่เส้นทาง",
  "Corridor boundary": "ขอบเขตแนวพื้นที่",
  "Corridor boundary (WGS 84)": "ขอบเขตแนวพื้นที่ (WGS 84)",
- "KP range / speed": "ช่วง KP / ความเร็ว"
+ "KP range / speed": "ช่วง KP / ความเร็ว",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "แนวชายฝั่งโลกในตัว (ใช้งานออฟไลน์ได้; Natural Earth รายละเอียดประมาณ 1 กม.)",
+ "World coastline": "แนวชายฝั่งโลก"
 }

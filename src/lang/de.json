@@ -808,5 +808,7 @@
  "CORRIDOR SURVEY LINE PLAN": "KORRIDOR-MESSLINIENPLAN",
  "Corridor boundary": "Korridorgrenze",
  "Corridor boundary (WGS 84)": "Korridorgrenze (WGS 84)",
- "KP range / speed": "KP-Bereich / Geschwindigkeit"
+ "KP range / speed": "KP-Bereich / Geschwindigkeit",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Eingebaute Weltküstenlinie (funktioniert offline; Natural Earth, etwa 1 km Detail)",
+ "World coastline": "Weltküstenlinie"
 }

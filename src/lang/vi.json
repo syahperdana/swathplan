@@ -807,5 +807,7 @@
  "CORRIDOR SURVEY LINE PLAN": "KẾ HOẠCH TUYẾN KHẢO SÁT HÀNH LANG",
  "Corridor boundary": "Ranh giới hành lang",
  "Corridor boundary (WGS 84)": "Ranh giới hành lang (WGS 84)",
- "KP range / speed": "Khoảng KP / tốc độ"
+ "KP range / speed": "Khoảng KP / tốc độ",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Đường bờ biển thế giới có sẵn (dùng được ngoại tuyến; Natural Earth, chi tiết khoảng 1 km)",
+ "World coastline": "Đường bờ biển thế giới"
 }

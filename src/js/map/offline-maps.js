@@ -54,12 +54,27 @@ await Promise.all([worker(),worker(),worker(),worker()]);saRun=null;$("saGo").te
 $("saSt").textContent=run.cors?i18("This tile server does not allow saving tiles."):i18("Saved {0} tiles for offline use ({1} failed).",ok,fail);tcShow();rq()};
 if(WEB&&window.caches){$("offBox").hidden=false;tcShow()}else $("offNo").hidden=false;
 
+// ---- built-in world coastline (Natural Earth 1:50m), drawn under the tiles ----
+let NE=null;
+function neLoad(){if(NE||typeof COAST_NE!="string")return NE;
+NE=COAST_NE.split(" ").map(s=>{const a=[];let i=0,la=0,lo=0;const rd=()=>{let r=0,sh=0,b;do{b=s.charCodeAt(i++)-63;r|=(b&31)<<sh;sh+=5}while(b>=32);return r&1?~(r>>1):r>>1};
+while(i<s.length){la+=rd();lo+=rd();a.push(la/1e3,lo/1e3)}let a0=90,a1=-90,o0=360,o1=-360;for(let k=0;k<a.length;k+=2){a0=Math.min(a0,a[k]);a1=Math.max(a1,a[k]);o0=Math.min(o0,a[k+1]);o1=Math.max(o1,a[k+1])}return{a,a0,a1,o0,o1}});return NE}
+let neDrawn=false;
+function drawNE(){neDrawn=false;if(typeof noTiles!="undefined"&&noTiles)return;const ck=document.getElementById("neC");if(ck&&!ck.checked)return;const L=neLoad();if(!L)return;
+const tl=toLL(wc(0,0)),br=toLL(wc(cv.width,cv.height)),dl=Math.abs(tl[0]-br[0]),m=dl*.2+.05,la0=Math.min(tl[0],br[0])-m,la1=Math.max(tl[0],br[0])+m,lo0=Math.min(tl[1],br[1])-2*m,lo1=Math.max(tl[1],br[1])+2*m;
+if(dl>70)return;// the local map frame is for survey areas, not whole oceans
+const r=DPR();cx.save();cx.strokeStyle="#8a6d3b";cx.lineWidth=1.1*r;cx.globalAlpha=.85;cx.beginPath();
+L.forEach(l=>{if(l.a1<la0||l.a0>la1||l.o1<lo0||l.o0>lo1)return;for(let k=0;k<l.a.length;k+=2){const s=sc(fromLL(l.a[k],l.a[k+1]));k?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])}neDrawn=true});
+cx.stroke();cx.restore()}
+const _neTiles=drawTiles;drawTiles=function(){drawNE();return _neTiles.apply(this,arguments)};
+{const ck=document.getElementById("neC");if(ck)ck.addEventListener("change",rq)}
+
 // ---- map source label ------------------------------------------------------------------------
 let _ms="";
 function mapSrc(){const b=$("bm").value,P=[];
 if(b=="pmtiles")P.push(PM?i18("Your map file"):i18("No map file loaded"));
 else if(b!="none")P.push(navigator.onLine===false?(tileOK?i18("Offline: saved map tiles"):i18("Offline: no saved tiles here")):i18("Online map"));
-if(bath&&$("sb").checked&&$("sbS").checked)P.push(i18("Bathymetry"));
+if(neDrawn&&(b=="none"||(navigator.onLine===false&&!tileOK)||(b=="pmtiles"&&!PM)))P.push(i18("World coastline"));if(bath&&$("sb").checked&&$("sbS").checked)P.push(i18("Bathymetry"));
 const s=P.join(" + "),e=$("mapSrc");if(s!==_ms){_ms=s;e.textContent=s;e.hidden=!s}
 const hd=$("hud");e.style.bottom=(innerWidth<=700&&hd&&hd.offsetParent?hd.offsetHeight+16:30)+"px"}
 // texts written by this module follow a language change (setLang is defined later, so wrap it after load)

@@ -808,5 +808,7 @@
  "CORRIDOR SURVEY LINE PLAN": "خطة خطوط مسح الممر",
  "Corridor boundary": "حدود الممر",
  "Corridor boundary (WGS 84)": "حدود الممر (WGS 84)",
- "KP range / speed": "نطاق KP / السرعة"
+ "KP range / speed": "نطاق KP / السرعة",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "خط ساحل عالمي مضمَّن (يعمل دون اتصال؛ Natural Earth، دقة نحو 1 كم)",
+ "World coastline": "خط الساحل العالمي"
 }

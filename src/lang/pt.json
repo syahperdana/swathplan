@@ -808,5 +808,7 @@
  "CORRIDOR SURVEY LINE PLAN": "PLANO DE LINHAS DE LEVANTAMENTO EM CORREDOR",
  "Corridor boundary": "Limite do corredor",
  "Corridor boundary (WGS 84)": "Limite do corredor (WGS 84)",
- "KP range / speed": "Faixa de KP / velocidade"
+ "KP range / speed": "Faixa de KP / velocidade",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Linha de costa mundial integrada (funciona offline; Natural Earth, detalhe de cerca de 1 km)",
+ "World coastline": "Linha de costa mundial"
 }

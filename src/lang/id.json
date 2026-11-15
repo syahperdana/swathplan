@@ -810,5 +810,7 @@
  "CORRIDOR SURVEY LINE PLAN": "RENCANA LAJUR SURVEI KORIDOR",
  "Corridor boundary": "Batas koridor",
  "Corridor boundary (WGS 84)": "Batas koridor (WGS 84)",
- "KP range / speed": "Rentang KP / kecepatan"
+ "KP range / speed": "Rentang KP / kecepatan",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Garis pantai dunia bawaan (berfungsi offline; Natural Earth, detail sekitar 1 km)",
+ "World coastline": "Garis pantai dunia"
 }

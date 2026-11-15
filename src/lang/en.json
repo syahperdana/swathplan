@@ -864,5 +864,7 @@
  "CORRIDOR SURVEY LINE PLAN",
  "Corridor boundary",
  "Corridor boundary (WGS 84)",
- "KP range / speed"
+ "KP range / speed",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)",
+ "World coastline"
 ]

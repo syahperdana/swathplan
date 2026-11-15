@@ -808,5 +808,7 @@
  "CORRIDOR SURVEY LINE PLAN": "走廊测线计划",
  "Corridor boundary": "走廊边界",
  "Corridor boundary (WGS 84)": "走廊边界（WGS 84）",
- "KP range / speed": "KP 范围 / 航速"
+ "KP range / speed": "KP 范围 / 航速",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "内置全球海岸线（可离线使用；Natural Earth，约 1 公里精度）",
+ "World coastline": "全球海岸线"
 }

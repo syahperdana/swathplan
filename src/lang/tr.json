@@ -807,5 +807,7 @@
  "CORRIDOR SURVEY LINE PLAN": "KORİDOR ÖLÇÜM HATTI PLANI",
  "Corridor boundary": "Koridor sınırı",
  "Corridor boundary (WGS 84)": "Koridor sınırı (WGS 84)",
- "KP range / speed": "KP aralığı / hız"
+ "KP range / speed": "KP aralığı / hız",
+ "Built-in world coastline (works offline; Natural Earth, about 1 km detail)": "Yerleşik dünya kıyı çizgisi (çevrimdışı çalışır; Natural Earth, yaklaşık 1 km ayrıntı)",
+ "World coastline": "Dünya kıyı çizgisi"
 }
