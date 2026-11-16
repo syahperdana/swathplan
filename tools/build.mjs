@@ -24,9 +24,11 @@ const CHECK = process.argv.includes("--check");
 
 // page template -> output file (relative to the repo root)
 // the hub is the home page; hub/ only redirects there (old links)
-const PAGES = { "hub.html": "index.html", "planner.html": "planner/index.html", "infill.html": "infill/index.html", "mbes-redirect.html": "mbes/index.html", "corridor-redirect.html": "corridor/index.html", "geophys-redirect.html": "geophys/index.html", "hub-redirect.html": "hub/index.html" };
+const PAGES = { "hub.html": "index.html", "planner.html": "planner/index.html", "infill.html": "infill/index.html", "mbes-redirect.html": "mbes/index.html", "corridor-redirect.html": "corridor/index.html", "geophys-redirect.html": "geophys/index.html", "hub-redirect.html": "hub/index.html", "guide.html": "guide/index.html", "science.html": "science/index.html" };
 // files the offline app keeps (relative to the site root); the pages above are added first
-const STATIC = ["data/coast10m.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
+// the guide screenshots (docs/guide/*.jpg, made by tools/make_guide_shots.py) are kept too
+const SHOTS = readdirSync(join(ROOT, "docs/guide")).filter((f) => f.endsWith(".jpg")).sort().map((f) => "docs/guide/" + f);
+const STATIC = ["data/coast10m.js", ...SHOTS, "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
 
 const read = (p) => readFileSync(p, "utf8");
 const problems = [], notes = [];

@@ -45,3 +45,9 @@ details[data-sec]>summary::before{content:attr(data-n)}
 
 .note.warn{color:#b36b00}
 .note.warn:before{content:"⚠ "}
+
+.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin:14px 0 22px}
+.gcard{display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid #16c4b4;border-radius:10px;padding:14px 16px;color:inherit;text-decoration:none}
+.gcard:hover{box-shadow:0 0 0 2px #16c4b4 inset}
+.gcard b{font-size:16px;color:#0b6f6a}
+.gcard span{color:#5b6e75;font-size:14px}
