@@ -1146,7 +1146,6 @@
  "Typical 33 kHz low-frequency beam (about 20°)",
  "Use built-in coastline (offline, approximate)",
  "Save coastline as GeoJSON",
- "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.",
  "Too large to keep with the project: save it as GeoJSON and load the file next time.",
  "Kept with the project, so it works offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.",
@@ -1159,5 +1158,9 @@
  "Sheet {0} of {1}",
  "{0}, KP {1} to {2}",
  "Rendering map sheet {0} of {1}…",
- "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment."
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.",
+ "Loading…",
+ "Built-in coastline loaded: Natural Earth 1:10m land, {0} land areas here. Accurate to a few hundred metres: good for offshore and coastal planning, not for harbours or close inshore work.",
+ "The detailed 1:10m file (data/coast10m.js) was not found next to this page.",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land."
 ]

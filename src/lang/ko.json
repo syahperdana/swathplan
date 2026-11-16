@@ -1082,7 +1082,6 @@
  "Typical 33 kHz low-frequency beam (about 20°)": "일반적인 33 kHz 저주파 빔(약 20°)",
  "Use built-in coastline (offline, approximate)": "내장 해안선 사용(오프라인, 근사)",
  "Save coastline as GeoJSON": "해안선을 GeoJSON으로 저장",
- "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "불러온 해안선은 프로젝트와 함께 자동 저장과 .SPL 파일에 보관됩니다. 온라인일 때 OSM 해안선을 한 번 내려받으면 이후 오프라인에서도 사용할 수 있습니다. OSM 해안선은 상세하고 전 세계를 다루지만 사용자가 기여한 자료입니다: 공식 해도와 대조하세요. 내장 해안선은 Natural Earth 1:50m로 정확도가 약 1 km입니다: 그에 맞는 이격 거리로 연안 밖 계획에만 쓰세요. 상세한 오프라인 작업에는 GSHHG(full), Natural Earth 10m 또는 OSM 육지 폴리곤을 GeoJSON으로 내보내 불러오세요. 선회 경로는 육지와 대조하지 않습니다.",
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "프로젝트와 함께 보관하기에는 너무 큽니다: GeoJSON으로 저장하고 다음에는 그 파일을 불러오세요.",
  "Kept with the project, so it works offline.": "프로젝트와 함께 보관되어 오프라인에서도 작동합니다.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "내장 해안선을 불러왔습니다: {0}개 선. Natural Earth 1:50m로 정확도가 약 1 km입니다: 연안 밖 측선을 육지에서 떨어뜨리기에는 적합하지만 연안 작업에는 맞지 않습니다.",
@@ -1095,5 +1094,9 @@
  "Sheet {0} of {1}": "{1}장 중 {0}번째",
  "{0}, KP {1} to {2}": "{0}, KP {1}~{2}",
  "Rendering map sheet {0} of {1}…": "도면 {0}/{1} 생성 중…",
- "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "도면 {0}장을 zip 하나에 저장했습니다({1} MB): 전체도와 구간별 도면."
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "도면 {0}장을 zip 하나에 저장했습니다({1} MB): 전체도와 구간별 도면.",
+ "Loading…": "불러오는 중…",
+ "Built-in coastline loaded: Natural Earth 1:10m land, {0} land areas here. Accurate to a few hundred metres: good for offshore and coastal planning, not for harbours or close inshore work.": "내장 해안선을 불러왔습니다: Natural Earth 1:10m 육지, 이 구역에 {0}개 육지. 정확도는 수백 m: 연안 밖과 연안 계획에는 적합하지만 항만이나 아주 가까운 연안 작업에는 맞지 않습니다.",
+ "The detailed 1:10m file (data/coast10m.js) was not found next to this page.": "상세 1:10m 파일(data/coast10m.js)을 이 페이지 옆에서 찾지 못했습니다.",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land.": "불러온 해안선은 프로젝트와 함께 자동 저장과 .SPL 파일에 보관됩니다. 온라인일 때 OSM 해안선을 한 번 내려받으면 이후 오프라인에서도 사용할 수 있습니다. OSM 해안선은 상세하고 전 세계를 다루지만 사용자가 기여한 자료입니다: 공식 해도와 대조하세요. 내장 해안선은 Natural Earth 1:10m로 정확도가 수백 m입니다(데이터 폴더 없이 페이지만 쓰면 1:50m, 약 1 km): 그에 맞는 이격 거리로 연안 밖과 연안 계획에 쓸 수 있지만 항만에는 맞지 않습니다. 상세한 오프라인 작업에는 GSHHG(full) 또는 OSM 육지 폴리곤을 GeoJSON으로 내보내 불러오세요. 선회 경로는 육지와 대조하지 않습니다."
 }
