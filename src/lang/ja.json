@@ -972,7 +972,6 @@
  "Battery change (min)": "バッテリー交換（分）",
  "Battery changes": "バッテリー交換",
  "Camera": "カメラ",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "カメラの値は概算です：カメラの仕様書を確認してください。画像の長辺は飛行方向に直交します。",
  "Custom": "カスタム",
  "Custom camera": "カスタムカメラ",
  "DRONE CORRIDOR FLIGHT PLAN": "ドローン・コリドー飛行計画",
@@ -1061,7 +1060,6 @@
  "Point rate (points/s)": "点群レート（点/秒）",
  "Detection range at 10 % reflectivity (m)": "反射率10 %での検出距離（m）",
  "Target point density (points/m², 0 = none)": "目標点密度（点/m²、0 = なし）",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "プリセットはDJIの公表仕様に基づきます（シングルリターンの点群レート、飛行方向に直交する反復またはリニアスキャン）。L3の点群レートはパルスレート（100 kHz～2 MHz）に従うので、使う値を入力してください。密度は平坦な地面での平均で、植生・水面・暗い面では点が減ります。",
  "LiDAR swath": "LiDARスワス幅",
  "Point density (with overlap)": "点密度（重複込み）",
  "Flight time, batteries": "飛行時間、バッテリー",
@@ -1076,5 +1074,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "LiDARスワス幅 {0} m（高度{1} m）、1回の飛行で{2} 点/m²。",
  "Custom LiDAR": "カスタムLiDAR",
  "{0} pts/m² at {1} m": "高度{1} mで{0} 点/m²",
- "Side overlap": "横重複"
+ "Side overlap": "横重複",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "センサーサイズ、焦点距離、画像幅はメーカーの公表仕様に基づきます。最短撮影間隔は公表されていればメーカー値、なければ1秒です。お使いのカメラを確認してください。画像の長辺は飛行方向に直交します。",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "プリセットはメーカーの公表仕様に基づきます（シングルリターンの点群レート、飛行方向に直交する反復またはリニアスキャン）。360°スキャナーでは下向きの視野内の点だけが数えられるため、プリセットのレートはその割合です。RIEGLの距離は反射率20 %での値です。L3の点群レートはパルスレート（100 kHz～2 MHz）に従うので、使う値を入力してください。密度は平坦な地面での平均で、植生・水面・暗い面では点が減ります。"
 }

@@ -971,7 +971,6 @@
  "Battery change (min)": "Thay pin (phút)",
  "Battery changes": "Số lần thay pin",
  "Camera": "Camera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "Thông số camera là gần đúng: hãy kiểm tra bảng thông số của camera. Cạnh dài của ảnh vuông góc với hướng bay.",
  "Custom": "Tùy chỉnh",
  "Custom camera": "Camera tùy chỉnh",
  "DRONE CORRIDOR FLIGHT PLAN": "KẾ HOẠCH BAY DRONE HÀNH LANG",
@@ -1060,7 +1059,6 @@
  "Point rate (points/s)": "Tốc độ điểm (điểm/s)",
  "Detection range at 10 % reflectivity (m)": "Tầm phát hiện ở hệ số phản xạ 10 % (m)",
  "Target point density (points/m², 0 = none)": "Mật độ điểm mục tiêu (điểm/m², 0 = không)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Các thiết lập sẵn theo thông số DJI công bố (tốc độ điểm phản hồi đơn; quét lặp hoặc quét tuyến tính ngang hướng bay). Tốc độ điểm của L3 theo tần số xung, 100 kHz đến 2 MHz: hãy nhập giá trị của bạn. Mật độ là trung bình cho mặt đất phẳng; thực vật, mặt nước và bề mặt tối trả về ít điểm hơn.",
  "LiDAR swath": "Dải quét LiDAR",
  "Point density (with overlap)": "Mật độ điểm (có chồng phủ)",
  "Flight time, batteries": "Thời gian bay, pin",
@@ -1075,5 +1073,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "Dải quét LiDAR {0} m ở {1} m, {2} điểm/m² từ một lượt.",
  "Custom LiDAR": "LiDAR tùy chỉnh",
  "{0} pts/m² at {1} m": "{0} điểm/m² ở {1} m",
- "Side overlap": "Chồng phủ ngang"
+ "Side overlap": "Chồng phủ ngang",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Kích thước cảm biến, tiêu cự và chiều rộng ảnh theo thông số do nhà sản xuất công bố. Khoảng cách chụp ngắn nhất là con số của nhà sản xuất nếu có công bố, nếu không là 1 s: hãy kiểm tra máy ảnh của bạn. Cạnh dài của ảnh nằm ngang hướng bay.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Các thiết lập sẵn theo thông số do nhà sản xuất công bố (tốc độ điểm phản hồi đơn; quét lặp hoặc quét tuyến tính ngang hướng bay). Với máy quét 360°, chỉ các điểm trong trường nhìn hướng xuống được tính, nên tốc độ thiết lập sẵn là phần đó. Tầm của RIEGL được cho ở hệ số phản xạ 20 %. Tốc độ điểm của L3 theo tần số xung, 100 kHz đến 2 MHz: hãy nhập giá trị của bạn. Mật độ là trung bình cho mặt đất phẳng; thực vật, mặt nước và bề mặt tối trả về ít điểm hơn."
 }

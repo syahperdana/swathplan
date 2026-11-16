@@ -971,7 +971,6 @@
  "Battery change (min)": "배터리 교체(분)",
  "Battery changes": "배터리 교체",
  "Camera": "카메라",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "카메라 값은 근사값입니다: 카메라 사양서를 확인하세요. 영상의 긴 변은 비행 방향과 직각입니다.",
  "Custom": "사용자 지정",
  "Custom camera": "사용자 지정 카메라",
  "DRONE CORRIDOR FLIGHT PLAN": "드론 회랑 비행 계획",
@@ -1060,7 +1059,6 @@
  "Point rate (points/s)": "점 생성률 (점/초)",
  "Detection range at 10 % reflectivity (m)": "반사율 10 %에서 탐지 거리 (m)",
  "Target point density (points/m², 0 = none)": "목표 점밀도 (점/m², 0 = 없음)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "프리셋은 DJI가 공개한 사양을 따릅니다(단일 반사 점 생성률, 진행 방향에 직교하는 반복 또는 선형 스캔). L3의 점 생성률은 펄스율 100 kHz~2 MHz에 따르므로 사용하는 값을 입력하세요. 밀도는 평탄한 지면 기준 평균이며, 식생·수면·어두운 표면에서는 점이 줄어듭니다.",
  "LiDAR swath": "LiDAR 스와스",
  "Point density (with overlap)": "점밀도 (중복 포함)",
  "Flight time, batteries": "비행 시간, 배터리",
@@ -1075,5 +1073,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "LiDAR 스와스 {0} m (고도 {1} m), 1회 비행 {2} 점/m².",
  "Custom LiDAR": "사용자 LiDAR",
  "{0} pts/m² at {1} m": "고도 {1} m에서 {0} 점/m²",
- "Side overlap": "측면 중복"
+ "Side overlap": "측면 중복",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "센서 크기, 초점 거리, 이미지 폭은 제조사가 공개한 사양을 따릅니다. 최소 촬영 간격은 공개된 경우 제조사 값이며, 없으면 1초입니다. 사용하는 카메라를 확인하세요. 이미지의 긴 변은 진행 방향에 직교합니다.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "프리셋은 제조사가 공개한 사양을 따릅니다(단일 반사 점 생성률, 진행 방향에 직교하는 반복 또는 선형 스캔). 360° 스캐너는 아래쪽 시야 안의 점만 계산하므로 프리셋 생성률은 그 비율입니다. RIEGL 거리는 반사율 20 % 기준입니다. L3의 점 생성률은 펄스율 100 kHz~2 MHz에 따르므로 사용하는 값을 입력하세요. 밀도는 평탄한 지면 기준 평균이며, 식생·수면·어두운 표면에서는 점이 줄어듭니다."
 }

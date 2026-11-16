@@ -972,7 +972,6 @@
  "Battery change (min)": "تبديل البطارية (دقيقة)",
  "Battery changes": "تبديلات البطارية",
  "Camera": "الكاميرا",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "قيم الكاميرا تقريبية: راجع ورقة بيانات الكاميرا. الضلع الطويل للصورة عمودي على اتجاه الطيران.",
  "Custom": "مخصّص",
  "Custom camera": "كاميرا مخصّصة",
  "DRONE CORRIDOR FLIGHT PLAN": "خطة طيران المسيّرة للممر",
@@ -1061,7 +1060,6 @@
  "Point rate (points/s)": "معدل النقاط (نقطة/ث)",
  "Detection range at 10 % reflectivity (m)": "مدى الكشف عند انعكاسية 10 % (م)",
  "Target point density (points/m², 0 = none)": "كثافة النقاط المستهدفة (نقطة/م²، 0 = بلا)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "تتبع الإعدادات المسبقة مواصفات DJI المنشورة (معدل نقاط الارتداد الواحد؛ مسح متكرر أو خطي عرضيًا على اتجاه الطيران). يتبع معدل نقاط L3 معدل نبضاته من 100 كيلوهرتز إلى 2 ميغاهرتز: أدخل قيمتك. الكثافة متوسط لأرض مستوية؛ والنباتات والماء والأسطح الداكنة تعيد نقاطًا أقل.",
  "LiDAR swath": "عرض مسح LiDAR",
  "Point density (with overlap)": "كثافة النقاط (مع التداخل)",
  "Flight time, batteries": "زمن الطيران، البطاريات",
@@ -1076,5 +1074,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "عرض مسح LiDAR {0} م على ارتفاع {1} م، {2} نقطة/م² من مرور واحد.",
  "Custom LiDAR": "LiDAR مخصص",
  "{0} pts/m² at {1} m": "{0} نقطة/م² على ارتفاع {1} م",
- "Side overlap": "التداخل الجانبي"
+ "Side overlap": "التداخل الجانبي",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "حجم المستشعر والبعد البؤري وعرض الصورة وفق المواصفات المنشورة للمصنّعين. أقصر فاصل بين الصور هو رقم المصنّع حيث يُنشر، وإلا 1 ث: تحقق من كاميرتك. الضلع الطويل للصورة عرضي على اتجاه الطيران.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "تتبع الإعدادات المسبقة المواصفات المنشورة للمصنّعين (معدل نقاط الارتداد الواحد؛ مسح متكرر أو خطي عرضيًا على اتجاه الطيران). في الماسح ذي 360° لا تُحتسب إلا النقاط ضمن مجال الرؤية المتجه نحو الأسفل، لذا فالمعدل المسبق هو تلك الحصة. يُعطى مدى RIEGL عند انعكاسية 20 %. يتبع معدل نقاط L3 معدل نبضاته من 100 كيلوهرتز إلى 2 ميغاهرتز: أدخل قيمتك. الكثافة متوسط لأرض مستوية؛ والنباتات والماء والأسطح الداكنة تعيد نقاطًا أقل."
 }

@@ -980,7 +980,6 @@
  "Battery change (min)": "เปลี่ยนแบตเตอรี่ (นาที)",
  "Battery changes": "การเปลี่ยนแบตเตอรี่",
  "Camera": "กล้อง",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "ค่ากล้องเป็นค่าประมาณ: ตรวจสอบเอกสารข้อมูลของกล้อง ด้านยาวของภาพตั้งฉากกับทิศทางการบิน",
  "Custom": "กำหนดเอง",
  "Custom camera": "กล้องกำหนดเอง",
  "DRONE CORRIDOR FLIGHT PLAN": "แผนการบินโดรนตามแนวเส้นทาง",
@@ -1069,7 +1068,6 @@
  "Point rate (points/s)": "อัตราจุด (จุด/วินาที)",
  "Detection range at 10 % reflectivity (m)": "ระยะตรวจจับที่ค่าการสะท้อน 10 % (ม.)",
  "Target point density (points/m², 0 = none)": "ความหนาแน่นจุดเป้าหมาย (จุด/ตร.ม., 0 = ไม่กำหนด)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "ค่าตั้งล่วงหน้าเป็นไปตามข้อมูลจำเพาะที่ DJI เผยแพร่ (อัตราจุดแบบสะท้อนครั้งเดียว; การสแกนซ้ำหรือแบบเส้นตรงตั้งฉากกับทิศการบิน) อัตราจุดของ L3 ขึ้นกับอัตราพัลส์ 100 kHz ถึง 2 MHz: ใส่ค่าที่ใช้ ความหนาแน่นเป็นค่าเฉลี่ยบนพื้นราบ พืชพรรณ น้ำ และพื้นผิวสีเข้มให้จุดน้อยลง",
  "LiDAR swath": "แนวกวาด LiDAR",
  "Point density (with overlap)": "ความหนาแน่นจุด (รวมส่วนซ้อน)",
  "Flight time, batteries": "เวลาบิน แบตเตอรี่",
@@ -1084,5 +1082,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "แนวกวาด LiDAR {0} ม. ที่ {1} ม. ได้ {2} จุด/ตร.ม. จากเที่ยวบินเดียว",
  "Custom LiDAR": "LiDAR กำหนดเอง",
  "{0} pts/m² at {1} m": "{0} จุด/ตร.ม. ที่ {1} ม.",
- "Side overlap": "ส่วนซ้อนด้านข้าง"
+ "Side overlap": "ส่วนซ้อนด้านข้าง",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "ขนาดเซนเซอร์ ทางยาวโฟกัส และความกว้างภาพเป็นไปตามข้อมูลจำเพาะที่ผู้ผลิตเผยแพร่ ช่วงเวลาถ่ายภาพสั้นที่สุดใช้ค่าของผู้ผลิตหากมีการเผยแพร่ มิฉะนั้นใช้ 1 วินาที: ตรวจสอบกล้องของคุณ ด้านยาวของภาพตั้งฉากกับทิศการบิน",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "ค่าตั้งล่วงหน้าเป็นไปตามข้อมูลจำเพาะที่ผู้ผลิตเผยแพร่ (อัตราจุดแบบสะท้อนครั้งเดียว; การสแกนซ้ำหรือแบบเส้นตรงตั้งฉากกับทิศการบิน) สำหรับเครื่องสแกน 360° จะนับเฉพาะจุดในมุมมองที่หันลง อัตราที่ตั้งไว้จึงเป็นสัดส่วนนั้น ระยะของ RIEGL ระบุที่ค่าการสะท้อน 20 % อัตราจุดของ L3 ขึ้นกับอัตราพัลส์ 100 kHz ถึง 2 MHz: ใส่ค่าที่ใช้ ความหนาแน่นเป็นค่าเฉลี่ยบนพื้นราบ พืชพรรณ น้ำ และพื้นผิวสีเข้มให้จุดน้อยลง"
 }

@@ -971,7 +971,6 @@
  "Battery change (min)": "بیٹری تبدیلی (منٹ)",
  "Battery changes": "بیٹری کی تبدیلیاں",
  "Camera": "کیمرا",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "کیمرے کی قدریں تخمینی ہیں: کیمرے کی ڈیٹا شیٹ دیکھیں۔ تصویر کا لمبا رخ پرواز کی سمت کے آر پار ہے۔",
  "Custom": "حسبِ ضرورت",
  "Custom camera": "حسبِ ضرورت کیمرا",
  "DRONE CORRIDOR FLIGHT PLAN": "ڈرون کوریڈور پرواز منصوبہ",
@@ -1060,7 +1059,6 @@
  "Point rate (points/s)": "پوائنٹ ریٹ (پوائنٹس/سیکنڈ)",
  "Detection range at 10 % reflectivity (m)": "10 % انعکاس پر شناخت کا فاصلہ (میٹر)",
  "Target point density (points/m², 0 = none)": "ہدف پوائنٹ کثافت (پوائنٹس/میٹر²، 0 = کوئی نہیں)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "پری سیٹ DJI کی شائع شدہ تفصیلات پر مبنی ہیں (سنگل ریٹرن پوائنٹ ریٹ؛ پرواز کی سمت کے آر پار تکراری یا خطی اسکین)۔ L3 کا پوائنٹ ریٹ اس کے پلس ریٹ، 100 kHz سے 2 MHz، کے مطابق ہے: اپنا درج کریں۔ کثافت ہموار زمین کی اوسط ہے؛ نباتات، پانی اور گہری سطحیں کم پوائنٹس لوٹاتی ہیں۔",
  "LiDAR swath": "LiDAR سواتھ",
  "Point density (with overlap)": "پوائنٹ کثافت (اوورلیپ سمیت)",
  "Flight time, batteries": "پرواز کا وقت، بیٹریاں",
@@ -1075,5 +1073,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "LiDAR سواتھ {0} میٹر، {1} میٹر پر، ایک پرواز سے {2} پوائنٹس/میٹر²۔",
  "Custom LiDAR": "حسب منشا LiDAR",
  "{0} pts/m² at {1} m": "{1} میٹر پر {0} پوائنٹس/میٹر²",
- "Side overlap": "سائیڈ اوورلیپ"
+ "Side overlap": "سائیڈ اوورلیپ",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "سینسر کا سائز، فوکل لمبائی اور تصویر کی چوڑائی مینوفیکچررز کی شائع شدہ تفصیلات کے مطابق ہیں۔ سب سے کم فوٹو وقفہ شائع ہونے پر مینوفیکچرر کا عدد ہے، ورنہ 1 سیکنڈ: اپنا کیمرہ دیکھیں۔ تصویر کی لمبی طرف پرواز کی سمت کے آر پار ہے۔",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "پری سیٹ مینوفیکچررز کی شائع شدہ تفصیلات پر مبنی ہیں (سنگل ریٹرن پوائنٹ ریٹ؛ پرواز کی سمت کے آر پار تکراری یا خطی اسکین)۔ 360° اسکینر میں صرف نیچے کی طرف نظر کے زاویے کے پوائنٹس شمار ہوتے ہیں، اس لیے پری سیٹ ریٹ وہی حصہ ہے۔ RIEGL کا فاصلہ 20 % انعکاس پر دیا گیا ہے۔ L3 کا پوائنٹ ریٹ اس کے پلس ریٹ، 100 kHz سے 2 MHz، کے مطابق ہے: اپنا درج کریں۔ کثافت ہموار زمین کی اوسط ہے؛ نباتات، پانی اور گہری سطحیں کم پوائنٹس لوٹاتی ہیں۔"
 }

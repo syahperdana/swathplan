@@ -1032,7 +1032,6 @@
  "Battery change (min)",
  "Battery changes",
  "Camera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.",
  "Custom",
  "Custom camera",
  "DRONE CORRIDOR FLIGHT PLAN",
@@ -1121,7 +1120,6 @@
  "Point rate (points/s)",
  "Detection range at 10 % reflectivity (m)",
  "Target point density (points/m², 0 = none)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.",
  "LiDAR swath",
  "Point density (with overlap)",
  "Flight time, batteries",
@@ -1136,5 +1134,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.",
  "Custom LiDAR",
  "{0} pts/m² at {1} m",
- "Side overlap"
+ "Side overlap",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points."
 ]

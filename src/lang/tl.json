@@ -971,7 +971,6 @@
  "Battery change (min)": "Pagpalit ng baterya (min)",
  "Battery changes": "Mga pagpalit ng baterya",
  "Camera": "Camera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "Tantiya lang ang mga halaga ng camera: tingnan ang datasheet ng camera. Nakahalang sa direksiyon ng lipad ang mahabang gilid ng larawan.",
  "Custom": "Custom",
  "Custom camera": "Custom na camera",
  "DRONE CORRIDOR FLIGHT PLAN": "PLANO NG LIPAD NG DRONE SA CORRIDOR",
@@ -1060,7 +1059,6 @@
  "Point rate (points/s)": "Point rate (punto/s)",
  "Detection range at 10 % reflectivity (m)": "Abot ng pagtukoy sa 10 % reflectivity (m)",
  "Target point density (points/m², 0 = none)": "Target na densidad ng punto (punto/m², 0 = wala)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Ang mga preset ay batay sa inilathalang espesipikasyon ng DJI (single-return point rate; paulit-ulit o linear na scan pahalang sa direksyon ng lipad). Ang point rate ng L3 ay sumusunod sa pulse rate nito, 100 kHz hanggang 2 MHz: ilagay ang sa iyo. Ang densidad ay karaniwan para sa patag na lupa; mas kaunting punto ang bumabalik mula sa halaman, tubig at madidilim na ibabaw.",
  "LiDAR swath": "Swath ng LiDAR",
  "Point density (with overlap)": "Densidad ng punto (may overlap)",
  "Flight time, batteries": "Oras ng lipad, baterya",
@@ -1075,5 +1073,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "Swath ng LiDAR {0} m sa {1} m, {2} punto/m² mula sa isang lipad.",
  "Custom LiDAR": "Custom na LiDAR",
  "{0} pts/m² at {1} m": "{0} punto/m² sa {1} m",
- "Side overlap": "Side overlap"
+ "Side overlap": "Side overlap",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Ang laki ng sensor, focal length at lapad ng larawan ay batay sa inilathalang espesipikasyon ng mga gumawa. Ang pinakamaikling pagitan ng larawan ay ang numero ng gumawa kung inilathala, kung hindi ay 1 s: suriin ang iyong camera. Ang mahabang gilid ng larawan ay pahalang sa direksyon ng lipad.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Ang mga preset ay batay sa inilathalang espesipikasyon ng mga gumawa (single-return point rate; paulit-ulit o linear na scan pahalang sa direksyon ng lipad). Sa 360° na scanner, ang mga punto lang sa pababang field of view ang binibilang, kaya ang preset rate ay ang bahaging iyon. Ang abot ng RIEGL ay sa 20 % reflectivity. Ang point rate ng L3 ay sumusunod sa pulse rate nito, 100 kHz hanggang 2 MHz: ilagay ang sa iyo. Ang densidad ay karaniwan para sa patag na lupa; mas kaunting punto ang bumabalik mula sa halaman, tubig at madidilim na ibabaw."
 }

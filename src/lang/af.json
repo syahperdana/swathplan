@@ -972,7 +972,6 @@
  "Battery change (min)": "Batteryruil (min)",
  "Battery changes": "Batteryruilings",
  "Camera": "Kamera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "Kamerawaardes is benaderd: kyk na die kamera se datablad. Die beeld se lang kant is dwars op die vlugrigting.",
  "Custom": "Pasgemaak",
  "Custom camera": "Eie kamera",
  "DRONE CORRIDOR FLIGHT PLAN": "HOMMELTUIG-KORRIDORVLUGPLAN",
@@ -1061,7 +1060,6 @@
  "Point rate (points/s)": "Puntkoers (punte/s)",
  "Detection range at 10 % reflectivity (m)": "Opsporingsafstand by 10 % reflektiwiteit (m)",
  "Target point density (points/m², 0 = none)": "Teiken-puntdigtheid (punte/m², 0 = geen)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Voorinstellings volg DJI se gepubliseerde spesifikasies (enkel-eggo puntkoers; herhalende of lineêre skandering dwars op die vlugrigting). Die L3 se puntkoers volg sy pulskoers, 100 kHz tot 2 MHz: vul joune in. Die digtheid is ’n gemiddelde vir plat grond; plantegroei, water en donker oppervlaktes gee minder punte.",
  "LiDAR swath": "LiDAR-swad",
  "Point density (with overlap)": "Puntdigtheid (met oorvleueling)",
  "Flight time, batteries": "Vlugtyd, batterye",
@@ -1076,5 +1074,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "LiDAR-swad {0} m op {1} m, {2} pte/m² uit een vlug.",
  "Custom LiDAR": "Eie LiDAR",
  "{0} pts/m² at {1} m": "{0} pte/m² op {1} m",
- "Side overlap": "Syoorvleueling"
+ "Side overlap": "Syoorvleueling",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Sensorgrootte, brandpuntsafstand en beeldwydte volg die vervaardigers se gepubliseerde spesifikasies. Die kortste foto-interval is die vervaardiger se syfer waar dit gepubliseer is, anders 1 s: gaan jou kamera na. Die lang kant van die beeld lê dwars op die vlugrigting.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Voorinstellings volg die vervaardigers se gepubliseerde spesifikasies (enkel-eggo puntkoers; herhalende of lineêre skandering dwars op die vlugrigting). Vir ’n 360°-skandeerder tel net die punte binne die afwaartse sigveld, dus is die voorinstelling daardie deel. Die RIEGL-bereik is by 20 % reflektiwiteit. Die L3 se puntkoers volg sy pulskoers, 100 kHz tot 2 MHz: vul joune in. Die digtheid is ’n gemiddelde vir plat grond; plantegroei, water en donker oppervlaktes gee minder punte."
 }
