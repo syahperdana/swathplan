@@ -16,8 +16,8 @@ const at=new Map();S.forEach((s,k)=>{[s[0],s[2]].forEach(e=>{const l=at.get(e);l
 const walk=(e,arr)=>{for(;;){const l=at.get(e)||[],n=l.find(x=>!used[x]);if(n===undefined)return;used[n]=1;const s=S[n];if(s[0]==e){arr.push(s[3]);e=s[2]}else{arr.push(s[1]);e=s[0]}}};
 S.forEach((s,k)=>{if(used[k])return;used[k]=1;const f=[s[1],s[3]];walk(s[2],f);const b=[];walk(s[0],b);out.push(b.reverse().concat(f))});return out}
 // a grid over the area with a margin, sized to about 300 cells across
-function ctrGrid(m){const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),ext=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys)),cs=Math.max(5,ext/300),
-x0=Math.min(...xs)-m-cs,y0=Math.min(...ys)-m-cs;return{cs,x0,y0,nx:Math.ceil((Math.max(...xs)+m+cs-x0)/cs),ny:Math.ceil((Math.max(...ys)+m+cs-y0)/cs)}}
+function ctrGrid(m){const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),ext=Math.max(arrMax(xs)-arrMin(xs),arrMax(ys)-arrMin(ys)),cs=Math.max(5,ext/300),
+x0=arrMin(xs)-m-cs,y0=arrMin(ys)-m-cs;return{cs,x0,y0,nx:Math.ceil((arrMax(xs)+m+cs-x0)/cs),ny:Math.ceil((arrMax(ys)+m+cs-y0)/cs)}}
 // the contour at depth z0, and the depth range inside the area
 function ctrTrace(z0){const G=ctrGrid(0),Z=new Float64Array((G.nx+1)*(G.ny+1));let zmin=1e30,zmax=-1e30;
 for(let j=0;j<=G.ny;j++)for(let i=0;i<=G.nx;i++){const x=G.x0+i*G.cs,y=G.y0+j*G.cs,z=depthAt(x,y);Z[j*(G.nx+1)+i]=z;if(ctrPip(poly,[x,y])){zmin=Math.min(zmin,z);zmax=Math.max(zmax,z)}}
@@ -49,7 +49,7 @@ function ctrPlan(Rr,S){CTR_MSG=null;if(!bath||!bath.z||!bath.z.length){CTR_MSG=[
 const z0=g("ctrD")>0?g("ctrD"):g("depth"),T=ctrTrace(z0),f1z=v=>(Math.round(v*10)/10).toFixed(1),inArea=P=>P.filter(p=>ctrPip(poly,p)).length;
 let best=null,bs=0;T.lines.forEach(P=>{const s=inArea(P);if(P.length>1&&s>bs){bs=s;best=P}});
 if(!best){CTR_MSG=["No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.",f1z(z0),f1z(T.zmin),f1z(T.zmax)];return false}
-const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),diag=Math.hypot(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys));
+const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),diag=Math.hypot(arrMax(xs)-arrMin(xs),arrMax(ys)-arrMin(ys));
 const base=ctrDP(CG.extend(ctrSmooth(best,T.cs/2),diag),T.cs/8),C=[0];for(let i=1;i<base.length;i++)C.push(C[i-1]+Math.hypot(base[i][0]-base[i-1][0],base[i][1]-base[i-1][1]));
 const dmax=Math.max(...poly.map(p=>ctrNear(base,C,p).d)),K=Math.ceil(dmax/S)+1;if(2*K+1>800){CTR_MSG=["Too many contour lines for this area at this spacing; straight lines are used."];return false}
 // offset lines: level sets of the signed distance, so they never loop or cross

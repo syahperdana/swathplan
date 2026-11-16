@@ -33,7 +33,7 @@ for(let y=s;y<n-1e-9;y+=sy)for(let x=w;x<e-1e-9;x+=sx){const q=[x,Math.min(e,x+s
 function gbPts(w,e,s,n,sp,near,cap){const T=gbPieces(w,e,s,n,Math.max(sp,500),40,near),cell=(q,d)=>{const a=[],dy=d/111132.9,dx=dy/Math.max(.05,Math.cos((q[2]+q[3])/2*D));for(let y=q[2]+dy/2;y<q[3];y+=dy)for(let x=q[0]+dx/2;x<q[1];x+=dx)if(near(x,x,y,y))a.push([x,y]);return a};
 const A=T.reduce((t,q)=>t+(q[1]-q[0])*(q[3]-q[2])*111320*111132.9*Math.cos((q[2]+q[3])/2*D),0);let d=Math.max(sp,Math.sqrt(A/(cap*20))),P=[];for(let it=0;it<20;it++){P=[];let over=false;for(const q of T){P.push(...cell(q,d));if(P.length>cap){over=true;break}}if(!over)break;d*=1.3}return P}
 $("gbB").onclick=async()=>{const st=$("gbSt"),lk=$("gbLink");lk.innerHTML="";if(!closed||poly.length<3){st.textContent=i18("Close an area first (draw, preset or import).");return}
-const ll=poly.map(toLL),la=ll.map(q=>q[0]),lo=ll.map(q=>q[1]),m=Math.max(.003,(Math.max(...la)-Math.min(...la))*.03,(Math.max(...lo)-Math.min(...lo))*.03),s=Math.max(-90,Math.min(...la)-m),n=Math.min(90,Math.max(...la)+m),w=Math.min(...lo)-m,e=Math.max(...lo)+m,res=+$("gbRes").value,src=$("gbSrc").value,f5=v=>v.toFixed(5),
+const ll=poly.map(toLL),la=ll.map(q=>q[0]),lo=ll.map(q=>q[1]),m=Math.max(.003,(arrMax(la)-arrMin(la))*.03,(arrMax(lo)-arrMin(lo))*.03),s=Math.max(-90,arrMin(la)-m),n=Math.min(90,arrMax(la)+m),w=arrMin(lo)-m,e=arrMax(lo)+m,res=+$("gbRes").value,src=$("gbSrc").value,f5=v=>v.toFixed(5),
 wm=(e-w)*111320*Math.cos((s+n)/2*D),hm=(n-s)*111132.9,grid=(nx,ny)=>{const a=[];for(let j=0;j<ny;j++)for(let i=0;i<nx;i++)a.push([w+(i+.5)*(e-w)/nx,n-(j+.5)*(n-s)/ny]);return a};let url="";
 try{st.textContent="Downloading…";
 const near=gbNear(Math.max(500,res*3));

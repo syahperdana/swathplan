@@ -20,7 +20,7 @@ const ckForget=()=>{try{IDB.del(IDK("coast")).catch(()=>{})}catch(e){}};
 {const _clr=$("cClr").onclick;$("cClr").onclick=function(){_clr.apply(this,arguments);CK_MSG="";ckForget();saveSoon()}}
 // built-in coastline (Natural Earth 1:50m, in the page): closed rings turned counter-clockwise so land is on the left, as in OSM; cut to the area
 $("cNE").onclick=async()=>{if(!closed)return $("cSt").textContent=i18("Close an area first.");$("cSt").textContent=i18("Loading…");const N10=await neLoad10(),N=N10||neLoad();if(!N)return;
-const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(10000,g("clr")*5),lo=toLL([Math.min(...xs)-m,Math.min(...ys)-m]),hi=toLL([Math.max(...xs)+m,Math.max(...ys)+m]),
+const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(10000,g("clr")*5),lo=toLL([arrMin(xs)-m,arrMin(ys)-m]),hi=toLL([arrMax(xs)+m,arrMax(ys)+m]),
 a0=Math.min(lo[0],hi[0]),a1=Math.max(lo[0],hi[0]),o0=Math.min(lo[1],hi[1]),o1=Math.max(lo[1],hi[1]),inB=(la,ln)=>la>=a0&&la<=a1&&ln>=o0&&ln<=o1,out=[];
 if(N10){
 // 1:10m land polygons: each ring cut to the box (Sutherland-Hodgman); a point inside a ring is land, whatever its direction

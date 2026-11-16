@@ -32,8 +32,8 @@ let t=i18("Saved map tiles: {0}",n);if(navigator.storage&&navigator.storage.esti
 $("tcClr").onclick=async()=>{try{await caches.delete(TILES_CACHE)}catch(e){}tcShow();rq()};
 const zs=[];for(let z=3;z<=19;z++)zs.push(z);["saZ0","saZ1"].forEach((id,k)=>{const s=$(id);zs.forEach(z=>s.add(new Option(String(z),z)));s.value=k?16:12;s.addEventListener("change",saCheck)});
 function saTiles(z0,z1){const P=closed&&poly.length>2?poly:[wc(0,cv.height),wc(cv.width,0)],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),
-mx=(Math.max(...xs)-Math.min(...xs))*.1+200,my=(Math.max(...ys)-Math.min(...ys))*.1+200,
-sw=toLL([Math.min(...xs)-mx,Math.min(...ys)-my]),ne=toLL([Math.max(...xs)+mx,Math.max(...ys)+my]),L=[];
+mx=(arrMax(xs)-arrMin(xs))*.1+200,my=(arrMax(ys)-arrMin(ys))*.1+200,
+sw=toLL([arrMin(xs)-mx,arrMin(ys)-my]),ne=toLL([arrMax(xs)+mx,arrMax(ys)+my]),L=[];
 for(let z=z0;z<=z1;z++){const n=2**z,X=lo=>Math.floor((lo+180)/360*n),Y=la=>Math.floor((1-Math.log(Math.tan(la*D)+1/Math.cos(la*D))/Math.PI)/2*n);
 const x0=X(sw[1]),x1=X(ne[1]),y0=Math.max(0,Y(ne[0])),y1=Math.min(n-1,Y(sw[0]));
 if((x1-x0+1)*(y1-y0+1)+L.length>SAVE_LIMIT*4)return{n:Infinity,L};for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++)L.push([((x%n)+n)%n,y,z])}return{n:L.length,L}}
@@ -94,10 +94,10 @@ addEventListener("online",()=>{rq();tcShow()});addEventListener("offline",rq);
 // the north-west), which is then just scaled on screen: smooth to pan, light on a phone.
 let BS=null;
 function hsl2rgb(h,s,l){s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));return[f(0)*255,f(8)*255,f(4)*255]}
-function bathShade(){if(BS&&BS.b===bath)return BS;const B=bath,n=B.z.length;let a0=90,a1=-90,o0=360,o1=-360;
+function bathShade(Nmax){Nmax=Nmax||512;if(BS&&BS.b===bath&&BS.N==Nmax)return BS;const B=bath,n=B.z.length;let a0=90,a1=-90,o0=360,o1=-360;
 for(let i=0;i<n;i++){const la=B.la[i],lo=B.lo[i];if(la<a0)a0=la;if(la>a1)a1=la;if(lo<o0)o0=lo;if(lo>o1)o1=lo}
-if(!(a1>a0&&o1>o0))return BS={b:B,c:null};
-const asp=(o1-o0)*Math.cos((a0+a1)/2*D)/(a1-a0),N=Math.max(32,Math.min(512,Math.round(Math.sqrt(n)*1.2))),W=Math.max(8,Math.round(asp>=1?N:N*asp)),H=Math.max(8,Math.round(asp>=1?N/asp:N));
+if(!(a1>a0&&o1>o0))return BS={b:B,N:Nmax,c:null};
+const asp=(o1-o0)*Math.cos((a0+a1)/2*D)/(a1-a0),N=Math.max(32,Math.min(Nmax,Math.round(Math.sqrt(n)*1.2))),W=Math.max(8,Math.round(asp>=1?N:N*asp)),H=Math.max(8,Math.round(asp>=1?N/asp:N));
 const S=new Float32Array(W*H),C=new Uint16Array(W*H);
 for(let i=0;i<n;i++){const x=Math.min(W-1,Math.floor((B.lo[i]-o0)/(o1-o0)*W)),y=Math.min(H-1,Math.floor((a1-B.la[i])/(a1-a0)*H)),k=y*W+x;S[k]+=B.z[i];C[k]++}
 let Z=new Float32Array(W*H).fill(NaN);for(let k=0;k<W*H;k++)if(C[k])Z[k]=S[k]/C[k];
@@ -108,7 +108,7 @@ const at=(x,y)=>{x=Math.max(0,Math.min(W-1,x));y=Math.max(0,Math.min(H-1,y));con
 for(let y=0;y<H;y++)for(let x=0;x<W;x++){const v=Z[y*W+x];if(isNaN(v))continue;const k=(v-B.zmin)/sp,e=at(x+1,y),w=at(x-1,y),s=at(x,y+1),nn=at(x,y-1);
 const gx=e!=null&&w!=null?(w-e)/2:0,gy=nn!=null&&s!=null?(s-nn)/2:0,sh=Math.max(-1,Math.min(1,(gy-gx)/rel)),[r,gg,bb]=hsl2rgb(215,75,Math.max(18,Math.min(90,82-k*55+sh*9)));
 const p=(y*W+x)*4;im.data[p]=r;im.data[p+1]=gg;im.data[p+2]=bb;im.data[p+3]=220}
-g.putImageData(im,0,0);return BS={b:B,c:cvs,a0,a1,o0,o1}}
+g.putImageData(im,0,0);return BS={b:B,N:Nmax,c:cvs,a0,a1,o0,o1,Z,W,H,zmin:B.zmin,zmax:B.zmax,kind:"depth"}}
 const _drawBath=drawBath;
 drawBath=function(){if(!bath||!$("sb").checked)return;if(!$("sbS").checked)return _drawBath();const s=bathShade();if(!s.c)return _drawBath();
 const p=sc(fromLL(s.a1,s.o0)),q=sc(fromLL(s.a0,s.o1));cx.save();cx.imageSmoothingEnabled=true;cx.drawImage(s.c,p[0],p[1],q[0]-p[0],q[1]-p[1]);cx.restore();

@@ -204,7 +204,6 @@
  "Latitude / longitude (degrees)": "Latitude / longitude (degrees)",
  "Both: projected grid + lat/lon": "Pareho: projected grid + lat/lon",
  "Include basemap (needs internet)": "Isama ang basemap (kailangan ng internet)",
- "Include soundings": "Isama ang mga soundings",
  "Line names and direction arrows": "Mga pangalan ng linya at arrow ng direksyon",
  "PDF report (map sheet + statistics pages)": "PDF na ulat (map sheet + mga pahina ng estadistika)",
  "Map image format": "Format ng larawan ng mapa",
@@ -1106,5 +1105,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Kasing-tumpak lang ng pinagmulan ang datos: may totoong multibeam surveys ang GMRT at NCEI sa ilang lugar ngunit 100–450 m na grid sa iba, kaya gamitin lamang sa pagpaplano at huwag ipalit sa sarili mong soundings. Binabalewala ang mga cell na lupa at drying. Ang vertical datum ay humigit-kumulang mean sea level, hindi chart datum, kaya gamitin ang vertical offset sa aytem {§xyz} o pumili ng konserbatibong lalim. Kung hinarang ng browser ang serbisyo (offline o CORS), i-download ang grid mula sa ipinakitang link at i-load dito. Mga pinagmulan: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Ang mahahabang ruta at malalaking lugar ay dina-download nang paisa-isang bahagi sa paligid ng lugar ng survey.",
  "Height:": "Taas:",
  "Downloading… {0} of {1} pieces": "Dina-download… {0} sa {1} bahagi",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} sa {1} bahagi ang hindi na-download o naputol, kaya maaaring kulang ang lalim doon: subukan ang mas magaspang na resolusyon, o buksan ang link sa ibaba."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} sa {1} bahagi ang hindi na-download o naputol, kaya maaaring kulang ang lalim doon: subukan ang mas magaspang na resolusyon, o buksan ang link sa ibaba.",
+ "Include depths or terrain": "Isama ang lalim o lupain",
+ "Contours with depths or terrain": "Mga contour kasama ang lalim o lupain",
+ "Show the terrain on the map": "Ipakita ang lupain sa mapa",
+ "Depth (m), light = shallow": "Lalim (m), maliwanag = mababaw",
+ "Ground elevation (m)": "Taas ng lupa (m)",
+ "Depth contours every {0} m": "Mga contour ng lalim bawat {0} m",
+ "Elevation contours every {0} m": "Mga contour ng taas bawat {0} m"
 }

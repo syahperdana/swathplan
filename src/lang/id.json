@@ -205,7 +205,6 @@
  "Latitude / longitude (degrees)": "Lintang / bujur (derajat)",
  "Both: projected grid + lat/lon": "Keduanya: grid proyeksi + lintang/bujur",
  "Include basemap (needs internet)": "Sertakan peta dasar (perlu internet)",
- "Include soundings": "Sertakan sounding",
  "Line names and direction arrows": "Nama lajur dan panah arah",
  "PDF report (map sheet + statistics pages)": "Laporan PDF (lembar peta + halaman statistik)",
  "Map image format": "Format gambar peta",
@@ -1109,5 +1108,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Data hanya sebaik sumbernya: GMRT dan NCEI di beberapa tempat berisi survei multibeam nyata tetapi di tempat lain berupa grid 100–450 m, jadi gunakan untuk perencanaan, bukan pengganti sounding Anda sendiri. Sel daratan dan sel kering diabaikan. Datum vertikal kira-kira muka laut rata-rata, bukan datum peta: gunakan offset vertikal di bagian {§xyz} atau pilih kedalaman konservatif. Jika peramban memblokir layanan (luring atau CORS), gunakan tautan yang ditampilkan untuk mengunduh grid lalu muat di sini. Sumber: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Rute panjang dan area luas diunduh per bagian di sekitar area survei.",
  "Height:": "Tinggi:",
  "Downloading… {0} of {1} pieces": "Mengunduh… {0} dari {1} bagian",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} dari {1} bagian tidak dapat diunduh atau terpotong, jadi kedalaman di sana mungkin hilang: coba resolusi yang lebih kasar, atau buka tautan di bawah."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} dari {1} bagian tidak dapat diunduh atau terpotong, jadi kedalaman di sana mungkin hilang: coba resolusi yang lebih kasar, atau buka tautan di bawah.",
+ "Include depths or terrain": "Sertakan kedalaman atau medan",
+ "Contours with depths or terrain": "Kontur bersama kedalaman atau medan",
+ "Show the terrain on the map": "Tampilkan medan di peta",
+ "Depth (m), light = shallow": "Kedalaman (m), terang = dangkal",
+ "Ground elevation (m)": "Elevasi tanah (m)",
+ "Depth contours every {0} m": "Kontur kedalaman setiap {0} m",
+ "Elevation contours every {0} m": "Kontur elevasi setiap {0} m"
 }

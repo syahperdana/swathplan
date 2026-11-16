@@ -210,7 +210,6 @@
  "Latitude / longitude (degrees)": "Szerokość / długość geograficzna (stopnie)",
  "Both: projected grid + lat/lon": "Oba: siatka rzutowana + szer./dł. geograficzna",
  "Include basemap (needs internet)": "Dołącz mapę bazową (wymaga internetu)",
- "Include soundings": "Dołącz sondowania",
  "Line names and direction arrows": "Nazwy linii i strzałki kierunku",
  "PDF report (map sheet + statistics pages)": "Raport PDF (arkusz mapy + strony ze statystykami)",
  "Map image format": "Format obrazu mapy",
@@ -1115,5 +1114,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Dane są tak dobre jak źródło: GMRT i NCEI zawierają miejscami prawdziwe pomiary wielowiązkowe, ale gdzie indziej to siatki 100–450 m, więc używaj ich do planowania, a nie jako zamiennika własnych sondowań. Komórki lądu i osuchu są pomijane. Datum pionowe to w przybliżeniu średni poziom morza, nie zero map, więc użyj przesunięcia pionowego z sekcji {§xyz} lub wybierz ostrożną głębokość. Jeśli przeglądarka blokuje usługę (offline lub CORS), pobierz siatkę z wyświetlonego linku i wczytaj ją tutaj. Źródła: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Długie trasy i duże obszary są pobierane w częściach wokół obszaru pomiaru.",
  "Height:": "Wysokość:",
  "Downloading… {0} of {1} pieces": "Pobieranie… {0} z {1} części",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} z {1} części nie udało się pobrać lub są niepełne, więc może tam brakować głębokości: spróbuj grubszej rozdzielczości albo otwórz link poniżej."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} z {1} części nie udało się pobrać lub są niepełne, więc może tam brakować głębokości: spróbuj grubszej rozdzielczości albo otwórz link poniżej.",
+ "Include depths or terrain": "Uwzględnij głębokości lub teren",
+ "Contours with depths or terrain": "Izolinie z głębokościami lub terenem",
+ "Show the terrain on the map": "Pokaż teren na mapie",
+ "Depth (m), light = shallow": "Głębokość (m), jasne = płytko",
+ "Ground elevation (m)": "Wysokość terenu (m)",
+ "Depth contours every {0} m": "Izobaty co {0} m",
+ "Elevation contours every {0} m": "Poziomice co {0} m"
 }

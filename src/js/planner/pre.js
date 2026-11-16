@@ -14,6 +14,7 @@ SWP_REPORT_SUB:{get:()=>{const m=MODE();return m.uav?"Drone flight plan summary"
 SWP_AZROW:{get:()=>MODE().corr&&typeof coAzRow=="function"?coAzRow:undefined},
 SWP_SEGS:{get:()=>MODE().corr&&typeof coSegs=="function"?coSegs():[]},
 SWP_SENSORROW:{get:()=>MODE().uav&&typeof uvSensorRow=="function"?uvSensorRow:MODE().geo&&typeof geoSensorRow=="function"?geoSensorRow:MODE().sbes&&typeof sbSensorRow=="function"?sbSensorRow:undefined},
+SWP_UAVSHEET:{get:()=>MODE().uav},
 SWP_SWATHROW:{get:()=>MODE().uav&&typeof uvSwathRow=="function"?uvSwathRow:MODE().geo&&typeof geoSwathRow=="function"?geoSwathRow:MODE().sbes&&typeof sbSwathRow=="function"?sbSwathRow:undefined},
 // reports: the sensor in words, and whether multibeam swath and overlap apply
 SWP_SENSORTXT:{get:()=>MODE().uav&&typeof uvSensorTxt=="function"?uvSensorTxt():MODE().sbes&&typeof sbSensorTxt=="function"?sbSensorTxt():MODE().geo&&typeof geoSensorRow=="function"?geoSensorRow()[1]:undefined},

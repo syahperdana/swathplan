@@ -204,7 +204,6 @@
  "Latitude / longitude (degrees)": "Enlem / boylam (derece)",
  "Both: projected grid + lat/lon": "İkisi de: projeksiyon ızgarası + enlem/boylam",
  "Include basemap (needs internet)": "Altlık haritayı dahil et (internet gerekir)",
- "Include soundings": "Sondajları dahil et",
  "Line names and direction arrows": "Hat adları ve yön okları",
  "PDF report (map sheet + statistics pages)": "PDF raporu (harita paftası + istatistik sayfaları)",
  "Map image format": "Harita görüntü biçimi",
@@ -1106,5 +1105,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Veri, kaynağı kadar doğrudur: GMRT ve NCEI bazı bölgelerde gerçek çok ışınlı taramalar içerir, başka yerlerde ise 100–450 m ızgaralardır; bu yüzden yalnızca planlama için kullanın, kendi sondajınızın yerine koymayın. Kara ve açıkta kalan hücreler yok sayılır. Düşey datum yaklaşık ortalama deniz seviyesidir, harita datumu değildir; madde {§xyz}'deki düşey ofseti kullanın veya temkinli bir derinlik seçin. Tarayıcı hizmeti engellerse (çevrimdışı veya CORS), ızgarayı gösterilen bağlantıdan indirip buraya yükleyin. Kaynaklar: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Uzun güzergâhlar ve büyük alanlar, ölçüm alanının çevresinde parça parça indirilir.",
  "Height:": "Yükseklik:",
  "Downloading… {0} of {1} pieces": "İndiriliyor… {1} parçadan {0}",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} parçadan {0} tanesi indirilemedi veya yarım kaldı, bu yüzden orada derinlikler eksik olabilir: daha kaba bir çözünürlük deneyin veya aşağıdaki bağlantıyı açın."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} parçadan {0} tanesi indirilemedi veya yarım kaldı, bu yüzden orada derinlikler eksik olabilir: daha kaba bir çözünürlük deneyin veya aşağıdaki bağlantıyı açın.",
+ "Include depths or terrain": "Derinlikleri veya araziyi ekle",
+ "Contours with depths or terrain": "Derinlik veya araziyle eş yükselti eğrileri",
+ "Show the terrain on the map": "Araziyi haritada göster",
+ "Depth (m), light = shallow": "Derinlik (m), açık = sığ",
+ "Ground elevation (m)": "Zemin yüksekliği (m)",
+ "Depth contours every {0} m": "Her {0} m'de eş derinlik eğrileri",
+ "Elevation contours every {0} m": "Her {0} m'de eş yükselti eğrileri"
 }

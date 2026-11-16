@@ -17,6 +17,6 @@ const nums=rows.map(r=>r.map(s=>NUMRE.test(s)?+s:NaN));
 if(ix<0){const r0=nums.find(r=>r.filter(isFinite).length>=2)||[];let idx=r0.map((v,i)=>isFinite(v)?i:-1).filter(i=>i>=0);
 if(idx.length>=3&&idx[0]==0){const c0=nums.map(r=>r[0]).filter(isFinite);if(c0.length>2&&c0.every((v,i)=>Number.isInteger(v)&&(i==0||v==c0[i-1]+1||v==c0[i-1])))idx=idx.slice(1)}ix=idx[0];iy=idx[1]}
 const ring=[];if(ix>=0&&iy>=0)nums.forEach(r=>{if(isFinite(r[ix])&&isFinite(r[iy]))ring.push([r[ix],r[iy]])});
-let deg=false,swap=false;if(ring.length){const A=ring.map(p=>Math.abs(p[0])),B=ring.map(p=>Math.abs(p[1])),mA=Math.max(...A),mB=Math.max(...B);
+let deg=false,swap=false;if(ring.length){const A=ring.map(p=>Math.abs(p[0])),B=ring.map(p=>Math.abs(p[1])),mA=arrMax(A),mB=arrMax(B);
 if(named&&named.lon&&named.lat&&mA<=360&&mB<=360){deg=true;swap=named.lat0}else if(mA<=180&&mB<=90){deg=true;swap=mA<=90&&mB<=90?($("xord").value=="yx"):false}else if(mA<=90&&mB<=180){deg=true;swap=true}}
 return{ring,deg,swap}}

@@ -210,7 +210,6 @@
  "Latitude / longitude (degrees)": "ละติจูด / ลองจิจูด (องศา)",
  "Both: projected grid + lat/lon": "ทั้งสองแบบ: กริดภาพฉาย + ละติจูด/ลองจิจูด",
  "Include basemap (needs internet)": "รวมแผนที่พื้นหลัง (ต้องใช้อินเทอร์เน็ต)",
- "Include soundings": "รวมจุดหยั่งความลึก",
  "Line names and direction arrows": "ชื่อแนวและลูกศรทิศทาง",
  "PDF report (map sheet + statistics pages)": "รายงาน PDF (แผ่นแผนที่ + หน้าสถิติ)",
  "Map image format": "รูปแบบภาพแผนที่",
@@ -1115,5 +1114,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "ข้อมูลแม่นยำเท่าแหล่งที่มา: GMRT และ NCEI มีการสำรวจมัลติบีมจริงบางแห่ง แต่ที่อื่นเป็นกริด 100–450 ม. จึงควรใช้เพื่อวางแผนเท่านั้น ไม่ใช่แทนการหยั่งความลึกของคุณเอง เซลล์แผ่นดินและพื้นที่โผล่พ้นน้ำถูกละเว้น ดาตัมแนวดิ่งโดยประมาณคือระดับน้ำทะเลปานกลาง ไม่ใช่ดาตัมแผนที่เดินเรือ ให้ใช้ค่าชดเชยแนวดิ่งในข้อ {§xyz} หรือเลือกความลึกแบบระมัดระวัง หากเบราว์เซอร์บล็อกบริการ (ออฟไลน์หรือ CORS) ให้ดาวน์โหลดกริดจากลิงก์ที่แสดงแล้วโหลดที่นี่ แหล่งที่มา: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet เส้นทางยาวและพื้นที่ขนาดใหญ่จะดาวน์โหลดเป็นส่วน ๆ รอบพื้นที่สำรวจ",
  "Height:": "ความสูง:",
  "Downloading… {0} of {1} pieces": "กำลังดาวน์โหลด… {0} จาก {1} ส่วน",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "ดาวน์โหลด {0} จาก {1} ส่วนไม่ได้หรือได้ไม่ครบ จึงอาจไม่มีความลึกในบริเวณนั้น: ลองความละเอียดที่หยาบขึ้น หรือเปิดลิงก์ด้านล่าง"
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "ดาวน์โหลด {0} จาก {1} ส่วนไม่ได้หรือได้ไม่ครบ จึงอาจไม่มีความลึกในบริเวณนั้น: ลองความละเอียดที่หยาบขึ้น หรือเปิดลิงก์ด้านล่าง",
+ "Include depths or terrain": "รวมความลึกหรือภูมิประเทศ",
+ "Contours with depths or terrain": "เส้นชั้นพร้อมความลึกหรือภูมิประเทศ",
+ "Show the terrain on the map": "แสดงภูมิประเทศบนแผนที่",
+ "Depth (m), light = shallow": "ความลึก (ม.) สีอ่อน = ตื้น",
+ "Ground elevation (m)": "ความสูงพื้นดิน (ม.)",
+ "Depth contours every {0} m": "เส้นชั้นความลึกทุก {0} ม.",
+ "Elevation contours every {0} m": "เส้นชั้นความสูงทุก {0} ม."
 }

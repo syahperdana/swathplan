@@ -30,7 +30,7 @@ if(G.runIn>0||G.runOut>0){R.lines.forEach(l=>{const d=[l.b[0]-l.a[0],l.b[1]-l.a[
 const old=R.turns;R.turns=[];R.tl=0;for(let i=0;i+1<R.lines.length;i++){const A=R.lines[i],B=R.lines[i+1],d=[A.b[0]-A.a[0],A.b[1]-A.a[1]],m=Math.hypot(d[0],d[1])||1,f=[d[0]/m,d[1]/m],w=[B.a[0]-A.b[0],B.a[1]-A.b[1]];
 let nn=[f[1],-f[0]];if(nn[0]*w[0]+nn[1]*w[1]<0)nn=[-nn[0],-nn[1]];const S=Math.abs(nn[0]*w[0]+nn[1]*w[1]),ty=old[i]?old[i].ty:"u";let pts=[A.b];
 if(ty!="t")pts=pts.concat(turnPts(A.b,f,nn,S,Rr).pts);pts.push(B.a);let len=0;for(let j=1;j<pts.length;j++)len+=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);R.turns.push({pts,len,ty});R.tl+=len}ch=true}
-const T=g("gTI");if(T>0&&$("cross").checked&&closed){const az=g("az"),u=[Math.sin(az*D),Math.cos(az*D)],n=[Math.cos(az*D),-Math.sin(az*D)],tv=poly.map(q=>q[0]*u[0]+q[1]*u[1]),t0=Math.min(...tv),t1=Math.max(...tv),k=Math.max(1,Math.min(500,Math.floor((t1-t0)/T))),st=t0+((t1-t0)-(k-1)*T)/2;
+const T=g("gTI");if(T>0&&$("cross").checked&&closed){const az=g("az"),u=[Math.sin(az*D),Math.cos(az*D)],n=[Math.cos(az*D),-Math.sin(az*D)],tv=poly.map(q=>q[0]*u[0]+q[1]*u[1]),t0=arrMin(tv),t1=arrMax(tv),k=Math.max(1,Math.min(500,Math.floor((t1-t0)/T))),st=t0+((t1-t0)-(k-1)*T)/2;
 R.cross=[];for(let j=0;j<k;j++){const t=st+j*T;if(t<=t0||t>=t1)continue;chords(poly,u,n,t).flatMap(c=>wr(t,c,u,n)).forEach(c=>R.cross.push({name:$("crossPre").value+(R.cross.length+1),a:[u[0]*t+n[0]*c[0],u[1]*t+n[1]*c[0]],b:[u[0]*t+n[0]*c[1],u[1]*t+n[1]*c[1]]}))}ch=true}
 if(ch)stats();geoShow()};
 // the multibeam block keeps showing multibeam values
