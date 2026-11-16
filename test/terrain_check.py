@@ -35,6 +35,9 @@ with sync_playwright() as p:
     ev("window.__dl=[];$('eMp').click()");pg.wait_for_timeout(500);mp=[r.split('\t') for r in ev("window.__dl[0].t").strip().split('\n')[2:]]
     mh=[float(r[10]) for r in mp if r[3]=='16']
     ok(mh==hs,'Mission Planner: the same heights')
+    # a valley: the drone goes down into it instead of flying straight over
+    ev(f"({HILL})(-40,250)");pg.wait_for_timeout(500)
+    ok(ev("tgPlan().amax")<112 and ev("tgPlan().amin")>=99.4,f"valley: height above ground {ev('tgPlan().amin'):.1f} to {ev('tgPlan().amax'):.1f} m")
     # flat ground: the waypoints are the line ends again
     ev(f"({HILL})(0,300)");pg.wait_for_timeout(500)
     ok(ev("tgPlan().K.length")==ev("wpts().length") and abs(ev("tgPlan().amax")-100)<.01,'flat ground: same waypoints as without terrain, at the flight height')

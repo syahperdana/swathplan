@@ -2120,7 +2120,7 @@ function tgRoute(d){const W=[];R.lines.forEach((l,i)=>{const q=LP(l);for(let k=0
 for(let m=0;m<n;m++)W.push([a[0]+(b[0]-a[0])*m/n,a[1]+(b[1]-a[1])*m/n,m==0,i])}const z=q[q.length-1];W.push([z[0],z[1],true,i]);
 if($("inclT").checked&&R.turns[i])R.turns[i].pts.slice(1,-1).filter((_,j)=>j%3==0).forEach(p=>W.push([p[0],p[1],true,-1]))});return W}
 // heights: each waypoint flies at the set height above the highest ground on its two legs, so the straight leg between two waypoints never comes
-// closer to the terrain model than the set height; waypoints that the leg from the last kept one would pass over (within 0.5 m) are dropped
+// closer to the terrain model than the set height; a waypoint is dropped when the leg from the last kept one to the next passes it between 0.5 m below and 2 m above
 function tgPlan(){if(!MODE().uav||!TG||!R.lines.length)return null;const tf=$("uvTF").checked,U=uvGeo(),H=U.H,d=Math.max(5,g("uvTD")),to=$("uvTO").value.trim(),
 key=[H,d,tf,to,$("inclT").checked].join();if(TGC&&TGC.R===R&&TGC.L===R.lines&&TGC.T===TG&&TGC.k==key)return TGC.v;
 const W=tgRoute(d),n=W.length,fs=Math.max(1,Math.min(10,d/4)),cd=[0];for(let k=1;k<n;k++)cd.push(cd[k-1]+Math.hypot(W[k][0]-W[k-1][0],W[k][1]-W[k-1][1]));
@@ -2128,7 +2128,7 @@ const smp=(a,b,f)=>{const m=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])
 const sm=[];for(let k=0;k<n-1;k++){let m=-1e9;smp(W[k],W[k+1],(t,z)=>{if(isFinite(z)&&z>m)m=z});sm.push(m)}
 const z0=to!==""?g("uvTO"):W.map(tgAt).find(isFinite);if(!isFinite(z0))return null;let miss=0;
 const A=W.map((p,k)=>{const m=Math.max(k>0?sm[k-1]:-1e9,k<n-1?sm[k]:-1e9);if(m<-1e8){miss++;return H}return tf?H+m-z0:H});
-const K=[0];if(tf){let a=0;for(let k=1;k<n-1;k++){let ok=!W[k][2]&&W[k+1][3]==W[a][3];if(ok)for(let j=a+1;j<=k;j++){if(A[a]+(A[k+1]-A[a])*(cd[j]-cd[a])/(cd[k+1]-cd[a])<A[j]-.5){ok=false;break}}if(!ok){K.push(k);a=k}}}else for(let k=1;k<n-1;k++)K.push(k);
+const K=[0];if(tf){let a=0;for(let k=1;k<n-1;k++){let ok=!W[k][2]&&W[k+1][3]==W[a][3];if(ok)for(let j=a+1;j<=k;j++){const ip=A[a]+(A[k+1]-A[a])*(cd[j]-cd[a])/(cd[k+1]-cd[a]);if(ip<A[j]-.5||ip>A[j]+2){ok=false;break}}if(!ok){K.push(k);a=k}}}else for(let k=1;k<n-1;k++)K.push(k);
 if(n>1)K.push(n-1);const AI=new Float64Array(n);for(let q=0;q<K.length-1;q++){const a=K[q],b=K[q+1];for(let j=a;j<=b;j++)AI[j]=b>a?A[a]+(A[b]-A[a])*(cd[j]-cd[a])/(cd[b]-cd[a]):A[a]}
 let amin=1e9,amax=-1e9,gmin=1e9,gmax=-1e9;const PR=R.lines.map(()=>({s:[],g:[],a:[]}));
 for(let k=0;k<n-1;k++){const ln=W[k][3]>=0&&W[k][3]==W[k+1][3];smp(W[k],W[k+1],(t,z)=>{if(!isFinite(z))return;const al=AI[k]+(AI[k+1]-AI[k])*t+z0,h=al-z;
