@@ -1,4 +1,4 @@
-<details open><summary>2. Geophysical sensors &amp; line spacing</summary><div>
+<details data-sec="geo" open><summary>Geophysical sensors &amp; line spacing</summary><div>
 <p class="note">Tick the sensors in the survey spread. The line spacing is set by the sensor that needs the closest lines.</p>
 <label><input type="checkbox" id="gSS" checked> Side-scan sonar</label>
 <div id="gSSb"><div class="r2"><div><label>Range per side (m)</label><input type="number" id="gSR" value="75" min="5" step="5"></div><div><label>Seabed coverage</label><select id="gSC"><option value="100">100 %</option><option value="150">150 %</option><option value="200" selected>200 %</option></select></div></div>
@@ -13,7 +13,6 @@
 <div id="gSEb"><div class="r2"><div><label>Line spacing (m)</label><input type="number" id="gES" value="25" min="1" step="5"></div><div><label>Active streamer length (m)</label><input type="number" id="gEL" value="300" min="0" step="10"></div></div></div>
 <label><input type="checkbox" id="gMB"> Multibeam (swath settings below)</label>
 <div class="r2"><div><label>Towed sensor layback behind the antenna (m)</label><input type="number" id="gLB" value="50" min="0" step="5"></div><div><label>Extra line extension at each end (m)</label><input type="number" id="gEX" value="0" min="0" step="5"></div></div>
-<label>Tie line spacing (m, 0 = use the number of cross lines in section 3)</label><input type="number" id="gTI" value="0" min="0" step="50">
+<label>Tie line spacing (m, 0 = use the number of cross lines in section {§dir})</label><input type="number" id="gTI" value="0" min="0" step="50">
 <div id="gRes"></div>
-<!--@include parts/sec2-swath.html-->
 </div></details>

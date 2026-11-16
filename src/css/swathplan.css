@@ -40,3 +40,5 @@ input[readonly]{background:#eef3f2;color:#3d555c}
 #tabH{display:inline-flex;align-items:center;justify-content:center;align-self:stretch;padding:0 8px;margin-left:6px;min-height:26px;background:#1d3a44;border:1px solid #3d6a73;border-radius:4px;fill:#cfe6e2}#tabH:hover{border-color:#16c4b4;fill:#fff}
 #logoHub{display:flex;color:inherit}@media(max-width:700px){#tabH{display:none}}
 #mapSrc{position:absolute;right:8px;bottom:30px;background:#12262dd9;color:#fff;padding:2px 9px;border-radius:99px;font-size:11px;pointer-events:none}
+
+details[data-sec]>summary::before{content:attr(data-n)}

@@ -11,7 +11,7 @@ with sync_playwright() as p:
     br=p.chromium.launch();ctx=br.new_context(viewport={'width':1400,'height':900},locale='en-US',timezone_id='UTC')
     ctx.route(lambda u: not u.startswith('file:'), lambda r: r.abort());ctx.add_init_script(INIT)
     pg=ctx.new_page();errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('dialog',lambda d:(errs.append('dialog: '+d.message),d.dismiss()))
-    U=pathlib.Path(sys.argv[1]).resolve().as_uri()
+    U=pathlib.Path(sys.argv[1]).resolve().as_uri()+'?type=mbes&shape=corr'
     pg.goto(U);pg.wait_for_timeout(2500);pg.evaluate("setLang('en')")
     # a bending cable route near Jakarta Bay (lat, lon pasted)
     route="-6.0500, 106.7000\n-6.0450, 106.7300\n-6.0300, 106.7500\n-6.0320, 106.7800\n-6.0100, 106.8000"
@@ -55,7 +55,9 @@ with sync_playwright() as p:
     pg.wait_for_timeout(1500);pg.reload();pg.wait_for_timeout(2500)
     log('after reload:',pg.evaluate("RT.length"),pg.evaluate("$('coSt').textContent"),'| mode:',pg.evaluate("$('coMode').value"))
     keys=pg.evaluate("Object.keys(localStorage)");log('storage keys:',keys)
-    pg.goto(pathlib.Path(sys.argv[2]).resolve().as_uri());pg.wait_for_timeout(2500)
-    log('MBES page: lines',pg.evaluate("R.lines.length"),'has route var:',pg.evaluate("typeof RT"))
+    pg.evaluate("$('svG').value='area';$('svG').dispatchEvent(new Event('change'))");pg.wait_for_timeout(800)
+    log('switched to area: lines',pg.evaluate("R.lines.length"),'corridor off:',pg.evaluate("!CO.P"),'route kept:',pg.evaluate("RT.length"))
+    pg.evaluate("$('svG').value='corr';$('svG').dispatchEvent(new Event('change'))");pg.wait_for_timeout(800)
+    log('back to corridor:',pg.evaluate("$('coSt').textContent"))
     log('errors:',errs)
     br.close()

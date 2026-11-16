@@ -27,5 +27,6 @@ $("tpuUse").textContent=i18("Use ±{0}° as the swath angles",T.ok.toFixed(1));$
 $("tpuUse").onclick=()=>{if(!TPU||!(TPU.ok>5))return;["ap","as"].forEach(id=>{$(id).value=TPU.ok.toFixed(1)});gen();saveSoon()};
 ["tPos","tHdg","tRP","tBA","tHv","tTide","tDr","tRng","tSVs","tSVp"].forEach(id=>$(id).addEventListener("input",()=>{tpuShow();summary();saveSoon()}));
 // plan check: swath wider than the angle the uncertainty budget supports
-const _tpuSum=summary;summary=function(){_tpuSum.apply(this,arguments);try{tpuShow();if(!R.lines.length||!TPU)return;const a=Math.max(g("ap"),g("as"));
+const _tpuSum=summary;summary=function(){_tpuSum.apply(this,arguments);try{if($("tpuD").closest("[hidden]"))return;// not part of this survey
+tpuShow();if(!R.lines.length||!TPU)return;const a=Math.max(g("ap"),g("as"));
 $("chk").insertAdjacentHTML("beforeend",'<li class="'+(a<=TPU.ok+.05?"ok":"bad")+'">'+(a<=TPU.ok+.05?i18("Uncertainty budget: the order is met across the whole swath (±{0}°, usable to ±{1}°).",a,TPU.ok.toFixed(1)):i18("Uncertainty budget: beams beyond ±{0}° do not meet the order at {1} m (swath set to ±{2}°). Narrow the swath or improve the system.",TPU.ok.toFixed(1),TPU.d.toFixed(1),a))+"</li>")}catch(e){}};

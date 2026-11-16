@@ -1,6 +1,6 @@
 # Developing SwathPlan
 
-`index.html` at the repository root is the tools hub (the home page), `mbes/index.html` the MBES planner, `corridor/index.html` the corridor planner, `geophys/index.html` the geophysical planner, `infill/index.html` the infill planner, `hub/index.html` a redirect for old links and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
+`index.html` at the repository root is the tools hub (the home page), `planner/index.html` the survey planner (multibeam or geophysical, area or corridor), `infill/index.html` the infill planner, `mbes/`, `corridor/`, `geophys/` and `hub/` redirects for old links, and `sw.js` the offline service worker. GitHub Pages serves them, and each planner can also be downloaded as one file and opened offline. **All of them are build outputs: do not edit them by hand.** Edit the files in `src/` and run the build.
 
 ## Quick start
 
@@ -15,14 +15,13 @@ Node 18 or newer is enough. No packages are installed.
 
 ```
 src/
-  pages/mbes.html     the MBES planner (built to mbes/index.html): list of HTML parts and CSS/JS parts, in order
-  pages/corridor.html the corridor planner (built to corridor/index.html)
-  pages/geophys.html  the geophysical planner (built to geophys/index.html)
+  pages/planner.html  the survey planner (built to planner/index.html): list of HTML parts and CSS/JS parts, in order
+  pages/*-redirect.html  old addresses (mbes/, corridor/, geophys/, hub/) that forward to the new pages
   pages/infill.html   the infill planner (built to infill/index.html)
   pages/hub.html      the tools hub, the home page (built to index.html)
   pages/hub-redirect.html  old hub/ address, sends visitors to the home page
   parts/              HTML pieces shared by the planner pages: header, each settings section,
-                      map and results, guide, footer (sec3-corridor.html is corridor only)
+                      map and results, guide, footer; sec0-setup.html is the survey type and shape
   css/swathplan.css   planner styles
   css/hub.css         hub styles
   js/hub/hub.js       hub languages, install button, storage note
@@ -32,9 +31,10 @@ src/
   js/io/              imports (boundary, XYZ, grids) and exports (DXF, SHP, KML, RLN, Qinsy, GPX, CSV…)
   js/sheet/           map sheet, PDF writer, PDF report, image formats, projected grid
   js/mbes/            the MBES planner itself: catalogues, line generation, adaptive spacing, summary
-  js/geophys/         pre.js (labels and settings), app.js (sensor spacing, run-in, tie lines, checks)
+  js/planner/         pre.js (MODE(), SWP_* values as getters), mode.js (shows what the survey needs, switches modes)
+  js/geophys/         app.js: geophysical mode (sensor spacing, run-in, tie lines, checks)
   js/infill/          pre.js (labels and settings), app.js (tracks, coverage grid, gaps, infill lines)
-  js/corridor/        pre.js (labels and settings applied first), engine.js (offset geometry, KP), app.js
+  js/corridor/        engine.js (offset geometry, KP), app.js: corridor mode
   lang/en.json        the English strings (these are the translation keys)
   lang/<code>.json    one file per language: { "English text": "translation" }
   lang/_order.json    language order in the packed data
@@ -77,29 +77,32 @@ A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follow
 
 `js/core/shared-project.js`, included right after `app-state.js`. Each planner keeps its own autosave; on top of that, a list of fields (`SH_F`: project details, sensor, depth, order, speed, turn radius, vessel length, CRS) plus `crsDef` and, in area planners, the closed survey area (WGS 84) are written to `swp_shared` whenever the planner saves and they differ. On load and when the tab becomes visible, a newer `swp_shared` written by another planner is applied (with a toast). `<SWP_STATE_KEY>_shseen` remembers the last version seen. `window.SWP_TOOL` names the planner (default "MBES line planner"); `window.SWP_SHARE_AREA=false` (corridor) shares the details but not the area. The checkbox `#shOn` (stored as `swp_share`, not in the autosave) turns sharing off. The hub shows the current project from `swp_shared`.
 
-## The corridor planner
+## The survey planner: one page, four kinds of survey
 
-`corridor/index.html` is the MBES planner with three changes, so it gets every shared feature (map, offline maps, coordinate systems, coastline, bathymetry, IHO checks, turns, cost, exports, sheet, report, languages):
+`planner/index.html` holds every section. Two selects in the setup section choose the survey: `svT` (`mbes` or `geo`) and `svG` (`area` or `corr`). They are ordinary inputs, so they are autosaved and stored in `.SPL` files. `MODE()` (in `js/planner/pre.js`) returns `{geo, corr}` from them, and everything mode-specific asks it at call time.
 
-- **Section 3** is `parts/sec3-corridor.html`. The MBES section 3 and the boundary import (section 9) are still in the page, hidden, because the shared code expects their controls.
-- **`js/corridor/pre.js` runs first** and sets per-tool values that the shared code reads: `SWP_STATE_KEY` (own autosave key and saved data), `SWP_TITLE`, `SWP_NEED`, `SWP_SHEET_TITLE`, `SWP_BOUND`, `SWP_BOUND_PDF`, `SWP_REPORT_SUB`, `SWP_AZROW`. It also renames a few labels (Draw route, Finish route).
-- **`js/corridor/app.js` runs after the planner has started** and replaces `gen()` (corridor lines, turns, cross lines at KP, outline as `poly`), rewires the drawing buttons and the area presets, adds route import, the KP table and route RLN, draws the route and KP labels, and adds the route to autosave and `.SPL` files (a `[ROUTE]` section).
+- **`js/planner/pre.js`** runs first: `MODE()`, the autosave key `swp_state` (the old MBES key, so MBES sessions carry over) and the `SWP_*` values as getters that depend on the mode (sheet title, boundary label, report subtitle, map sheet rows).
+- **`js/corridor/app.js`** and **`js/geophys/app.js`** wrap the shared functions as before, but each wrapper does nothing unless its mode is on (`if(!MODE().corr) return original()`). They combine: in a geophysical corridor, `params()` comes from the sensors and `gen()` from the corridor, and the geophysical run-in lengthens the first and last segment of every corridor line before the turns are redone (`coTurns`).
+- **`js/planner/mode.js`** runs last. `applyMode()` hides the sections the survey does not need (geophysical sensors, multibeam sensor and swath, uncertainty budget, boundary import or route, line direction, adaptive spacing, tie line spacing) and re-points the drawing labels (`unitKey`). `setMode()` runs on a change of `svT`, `svG` or `gMB`: area → corridor makes a route from the area if there is none and keeps the area (`AREA_LL`, also autosaved); corridor → area brings the area back. `?type=…&shape=…` in the address sets the mode (the old pages use it).
 
-Offsets are positive to starboard of the route direction. Lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed from port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
+**Section numbers** are not in the titles. Each section is `<details data-sec="name">`; `secNumber()` (in the i18n engine) numbers the visible top-level ones in order and puts the number in `summary[data-n]` (shown by CSS). Texts that point to a section write `section {§crs}`, `sections {§sensor} and {§swath}`, and so on; `i18()` and the page translation fill in the current number. Use a placeholder, never a number, in new strings.
 
-## The geophysical planner
+### Corridor mode
 
-`geophys/index.html` is the MBES area planner with section 2 replaced by `parts/sec2-geophys.html` (sensor calculator), which includes the multibeam swath block inside it (parts can include parts). `js/geophys/app.js` wraps:
+The route section is `parts/sec3-corridor.html`. `gen()` makes the corridor lines, turns, cross lines at KP and the outline as `poly`; the drawing buttons and presets act on the route; route import, the KP table and route RLN; the route and KP labels on the map; the route in autosave and in `.SPL` files (`[ROUTE]`, corridor mode only). Offsets are positive to starboard; lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
+
+### Geophysical mode
+
+The sensor section is `parts/sec2-geophys.html`; the multibeam sensor and swath sections show only when Multibeam is ticked in the spread. `js/geophys/app.js` wraps:
 
 - `params()`: `S` and `W` come from the ticked sensors (the smallest spacing wins); the multibeam values stay in `mbS`/`mbW`, and `geo` holds the per-sensor rows and the driver.
   - Side-scan: `S = 2R / (coverage/100) × (1 − margin)`; max speed from ping rate `c/2R`, target length and pings on target. Coverage under 200 % is flagged (nadir gap).
   - Magnetometer: `S = 2·√(D² − h²)` (D detection distance, h sensor height); sample spacing at survey speed.
   - Sub-bottom and UHR seismic: grid spacing; seismic lines are extended by half the streamer at each end (full fold).
-- `gen()`: run-in (towed layback + seismic + extra) and run-out applied to the lines, turns redone, tie lines by spacing.
+- `gen()`: run-in (towed layback + seismic + extra) and run-out applied to the lines, turns redone, tie lines by spacing (areas only).
 - `summary()`: sensor checks added to the plan checks. `stats()`: the multibeam block keeps showing multibeam values.
-- Map sheet rows through `SWP_SENSORROW` and `SWP_SWATHROW`.
 
-Test: `python3 test/geophys_check.py geophys/index.html`.
+**Compare scenarios** follows the survey type: multibeam scenarios vary sensor, overlap and swath angle; geophysical ones vary side-scan range and coverage; both vary speed, turn radius, day rate, hours and vessels. Each scenario remembers its type.
 
 ## The infill planner
 
@@ -148,15 +151,19 @@ All in `src/js/map/offline-maps.js` (with `pmtiles.js` and small hooks in `tiles
 The snapshot test drives the page in headless Chromium (Python Playwright) with a frozen clock and no network. It plans a fixed area and records every export, the page text in all 22 languages and three layouts.
 
 ```sh
-python3 test/snapshot.py mbes/index.html /tmp/before     # before your change
+python3 test/snapshot.py planner/index.html /tmp/before  # before your change
 # ...edit src/, run the build...
-python3 test/snapshot.py mbes/index.html /tmp/after
+python3 test/snapshot.py planner/index.html /tmp/after
 python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what changed
 ```
 
 Infill planner: `python3 test/infill_check.py infill/index.html` (track import, gaps, infill lines, XYZ coverage, exports, restore).
 
-Corridor planner: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py corridor/index.html mbes/index.html` (route import, layouts, every export, `.SPL` round trip, separate autosave).
+The snapshot runs the planner in its default mode (multibeam, area), so its exports are those of the original MBES planner.
+
+Corridor mode: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py planner/index.html` (route import, layouts, every export, `.SPL` round trip, switching to area and back).
+
+Geophysical mode: `python3 test/geophys_check.py planner/index.html` (sensor spacing, run-in, tie lines, exports, and a geophysical corridor).
 
 To test the offline app, serve the repository as `/swathplan/` over http (service workers do not run on `file://`), for example by copying it into `/tmp/site/swathplan/` and running `python3 -m http.server` in `/tmp/site`. In Chromium's DevTools, *Application → Service workers* has an *Offline* switch.
 
