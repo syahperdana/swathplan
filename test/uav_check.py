@@ -1,4 +1,4 @@
-"""Drone (photogrammetry) mode checks: python3 -I test/uav_check.py planner/index.html"""
+"""Drone mode checks (camera and LiDAR): python3 -I test/uav_check.py planner/index.html"""
 import sys,json,os
 from playwright.sync_api import sync_playwright
 f=os.path.abspath(sys.argv[1] if len(sys.argv)>1 else 'planner/index.html')
@@ -28,6 +28,32 @@ with sync_playwright() as p:
     ok([x['doJumpId'] for x in it]==list(range(1,len(it)+1)),'QGroundControl item numbering')
     ev("window.__dl=[];$('eMp').click()");pg.wait_for_timeout(600);mp=ev("window.__dl[0].t").split('\n')
     ok(mp[2].split('\t')[10]=='100' and mp[3].split('\t')[3]=='206','Mission Planner: height and camera trigger')
+    # LiDAR payload: Zenmuse L2 at 100 m, 10 m/s, 50 % side overlap
+    ev("$('uvPay').value='lidar';$('uvPay').dispatchEvent(new Event('change'));$('uvLid').value='l2';$('uvLid').dispatchEvent(new Event('change'));$('uvH').value=100;$('uvLSO').value=50;$('uvLT').value=100;$('spd').value=19.4384;$('spd').dispatchEvent(new Event('input'))");pg.wait_for_timeout(500)
+    import math
+    sw=2*100*math.tan(math.radians(35))
+    ok(abs(ev("params().W")-sw)<.01 and abs(ev("params().S")-sw*.5)<.01,f'LiDAR swath 2H tan(FOV/2) = {sw:.1f} m, spacing = swath x (1 - side overlap)')
+    d1=240000/(10*sw)
+    ok(ev("$('uvLDn').textContent")==f"{round(d1/.5)} pts/m² ({round(d1)} per pass)",f'point density = rate / (speed x swath) = {d1:.0f} per pass, {d1/.5:.0f} with overlap')
+    ok(all(ev("[...document.querySelectorAll('#uvBox .uv-cam')].every(x=>x.offsetParent===null)") for _ in [0]) and ev("[...document.querySelectorAll('#uvBox .uv-lid')].every(x=>x.offsetParent!==null)"),'camera fields hidden, LiDAR fields shown')
+    chk=ev("$('chk').innerText")
+    ok('within the 250 m detection range' in chk and 'meets the 100 pts/m² target' in chk,'LiDAR plan checks: slant range and density target')
+    ev("$('uvLT').value=500;$('uvLT').dispatchEvent(new Event('input'))");pg.wait_for_timeout(400);chk=ev("$('chk').innerText")
+    vmax=240000/(500*.5*sw)
+    ok(f'fly at {vmax:.1f} m/s or slower' in chk,f'density below target: suggests {vmax:.1f} m/s')
+    ev("$('uvLT').value=100;$('uvH').value=230;$('uvH').dispatchEvent(new Event('input'))");pg.wait_for_timeout(400);chk=ev("$('chk').innerText")
+    ok('slant range is' in chk and 'beyond the 250 m detection range' in chk,'slant range beyond the detection range at the swath edge')
+    ev("$('uvH').value=100;$('uvH').dispatchEvent(new Event('input'))");pg.wait_for_timeout(300)
+    ev("window.__dl=[];$('eQgc').click();$('eMp').click()");pg.wait_for_timeout(600);dl=ev("window.__dl")
+    it=json.loads([d for d in dl if d['n'].endswith('.plan')][0]['t'])['mission']['items'];mpt=[d for d in dl if d['n'].endswith('.waypoints')][0]['t']
+    ok(it[0]['params'][6]==100 and not any(x['command']==206 for x in it) and '\t206\t' not in mpt,'LiDAR waypoint exports: height, no camera trigger')
+    ok(ev("SWP_SENSORTXT").startswith('DJI Zenmuse L2, 343 pts/m²'),'report sensor line names the LiDAR and density')
+    ev("$('uvLid').value='l3';$('uvLid').dispatchEvent(new Event('change'))");pg.wait_for_timeout(300)
+    ok(ev("[g('uvLF'),g('uvLR'),g('uvLX')]")==[80,350000,700],'Zenmuse L3 preset (80°, 350 kHz, 700 m)')
+    n=ev("R.lines.length");pg.reload();pg.wait_for_timeout(3000)
+    ok(ev("$('uvPay').value")=='lidar' and ev("$('uvLid').value")=='l3' and ev("R.lines.length")==n and ev("[...document.querySelectorAll('#uvBox .uv-lid')].every(x=>x.offsetParent!==null)"),'LiDAR payload restored after reload')
+    ev("$('uvPay').value='cam';$('uvPay').dispatchEvent(new Event('change'))");pg.wait_for_timeout(400)
+    ok(ev("$('uvGsd').textContent")=='2.66 cm/px' and abs(ev("params().S")-100*17.3/12.3*.35)<.01,'back to the camera: same plan as before')
     ok(ev("SWP_SHEET_TITLE")=='DRONE FLIGHT PLAN','sheet title')
     ev("$('svT').value='mbes';$('svT').dispatchEvent(new Event('change'))");pg.wait_for_timeout(600)
     ok(ev("$('spd').closest('details').dataset.sec")=='iho' and ev("$('spd').value")=='6','back to multibeam: speed returns with the vessel value')

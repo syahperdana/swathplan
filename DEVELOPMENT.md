@@ -112,7 +112,8 @@ The section is `parts/sec2-uav.html` (camera preset `uvCam`, sensor `uvSW`/`uvSH
 - `params()`: `S` = across-track footprint × (1 − side overlap), `W` the footprint, `Rr` = S/2 (tight turns).
 - `gen()`: lines are not trimmed to water.
 - `stats()` and `summary()`: run with no turn slow-down, and with battery changes standing in for SVP casts (`uvWith`); the plan checks become height (120 m warning), photo interval against the camera, and GSD.
-- Exports read `window.SWP_UAV` (`{h, trig, v}`): QGroundControl gets the height on every waypoint and `MAV_CMD_DO_SET_CAM_TRIGG_DIST` (206) on after the first waypoint and off at the end; Mission Planner the same.
+- Exports read `window.SWP_UAV` (`{h, trig, v}`): QGroundControl gets the height on every waypoint and `MAV_CMD_DO_SET_CAM_TRIGG_DIST` (206) on after the first waypoint and off at the end; Mission Planner the same. With `trig` 0 (LiDAR) no 206 commands are written.
+- **LiDAR payload** (`#uvPay` = `lidar`; presets `UV_LID` = [FOV across °, single-return point rate pts/s, range at 10 % m]; inputs `uvLid`, `uvLF`, `uvLR`, `uvLX`, side overlap `uvLSO`, target density `uvLT`): `uvGeo()` returns `uvLGeo()` (swath 2H·tan(FOV/2), `S` = swath × (1 − overlap), density P/(v·swath) per pass and ÷(1 − overlap)), with `lidar:true`, `dPh` 0. Elements with class `uv-cam` / `uv-lid` inside `#uvBox` are shown by `uvPayShow()`. The plan checks become height, slant range at the swath edge against the detection range, and density against the target (with the highest speed that meets it).
 
 Camera presets in `UV_CAM` are approximate values.
 
@@ -215,7 +216,7 @@ Corridor mode: `node test/corridor_engine.test.mjs` (geometry) and `python3 test
 
 Equipment lists: `python3 test/equipment_check.py planner/index.html`.
 
-Drone mode: `python3 test/uav_check.py planner/index.html` (GSD, spacing, photo distance, warnings, waypoint exports with height and camera trigger, switching back).
+Drone mode: `python3 test/uav_check.py planner/index.html` (GSD, spacing, photo distance, warnings, waypoint exports with height and camera trigger; LiDAR swath, density, range and density checks, no trigger, presets, reload; switching back).
 
 Single-beam mode: `python3 test/sbes_check.py planner/index.html` (spacing and footprint, S-44 checks per order, sheet and report text, scenarios, corridor, switching back).
 
