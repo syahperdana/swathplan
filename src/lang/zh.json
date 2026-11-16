@@ -93,7 +93,6 @@
  "Or load land polygons / coastline lines (GeoJSON, WGS84 lon/lat)": "或加载陆地多边形／海岸线（GeoJSON，WGS84 经度/纬度）",
  "Remove coastline": "移除海岸线",
  "No coastline loaded. Close an area first.": "未加载海岸线。请先闭合区域。",
- "OSM coastline is worldwide, full detail, user-contributed, so check it against official charts. For offline work, export GSHHG (full), Natural Earth 10m or OSM land polygons to GeoJSON and load the file. Turn paths are not checked against land.": "OSM 海岸线覆盖全球、细节完整，但由用户贡献，请与官方海图核对。离线工作时，将 GSHHG (full)、Natural Earth 10m 或 OSM 陆地多边形导出为 GeoJSON 后加载该文件。回转路径不会与陆地做检查。",
  "Coordinate system for imported files": "导入文件的坐标系",
  "Coordinate system": "坐标系",
  "Geographic lon/lat (degrees)": "地理坐标 经度/纬度（度）",
@@ -585,7 +584,7 @@
  "Flat seabed is assumed under each swath, at the depth beneath the line; no refraction or beam-angle limits other than those entered.": "假定每个条带下方为测线正下方水深处的平坦海底；除输入的外，不考虑折射或波束角限制。",
  "Sound speed of 1500 m/s is used for ping-rate limits; catalogue sensor data are approximate.": "ping 频率上限采用声速 1500 m/s；目录中的传感器数据为近似值。",
  "Global bathymetry and coastline data are indicative only and do not replace official charts or the survey's own soundings.": "全球水深和海岸线数据仅供参考，不能替代官方海图或测量自身的测深数据。",
- "Turn paths are not checked against land, shoals or traffic; the vessel master remains responsible for safe navigation.": "回转路径不会与陆地、浅滩或交通做检查；船长仍对航行安全负责。",
+ "Turn paths are checked only against the loaded coastline, not against shoals or traffic; the vessel master remains responsible for safe navigation.": "转弯路径只与已加载的海岸线核对，不检查浅滩或船舶交通；安全航行仍由船长负责。",
  "This document is a planning aid produced by SwathPlan. © 2026 Aldwin Syahperdana. Provided without warranty.": "本文档是 SwathPlan 生成的规划辅助资料。© 2026 Aldwin Syahperdana。不提供任何保证。",
  "Review and approval": "审核与批准",
  "Prepared by": "编制人",
@@ -909,6 +908,7 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "使用 S-44 最大值（3 × 水深或 25 米）",
  "Footprint at the design depth": "设计水深处的脚印",
  "Coverage by the main lines": "主测线的覆盖率",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 只允许等级 2 和等级 1b 不全覆盖：水深覆盖率至少 5 %，测深点间距不超过水深的 3 倍或 25 米（取较大者）。等级 1a 需要 100 % 的目标探测，特等和超特等需要全覆盖：请使用多波束，或增加侧扫声呐进行目标探测。",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0}需要全覆盖的水深测量，单波束测量无法做到。请使用多波束。",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0}需要 100 % 的目标探测：请增加侧扫声呐或使用多波束。",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "测线间距 {0} 米在 S-44 最大值 {1} 米（3 × 水深或 25 米）以内。",
@@ -1026,7 +1026,7 @@
  "Loading…": "正在加载…",
  "Built-in coastline loaded: Natural Earth 1:10m land, {0} land areas here. Accurate to a few hundred metres: good for offshore and coastal planning, not for harbours or close inshore work.": "已加载内置海岸线：Natural Earth 1:10m 陆地，此处 {0} 块陆地。精度为数百米：适合离岸和沿岸规划，不适合港口或贴岸作业。",
  "The detailed 1:10m file (data/coast10m.js) was not found next to this page.": "在此页面旁未找到详细的 1:10m 文件（data/coast10m.js）。",
- "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land.": "加载的海岸线会随项目保存，包括自动保存和 .SPL 文件：联网时下载一次 OSM 海岸线，之后离线也能使用。OSM 海岸线详细且覆盖全球，但由用户贡献：请与官方海图核对。内置海岸线为 Natural Earth 1:10m，精度为数百米（单独使用页面而没有其数据文件夹时为 1:50m，约 1 公里）：适合离岸和沿岸规划，并设置相应的安全距离，但不适合港口。如需详细的离线工作，请加载 GSHHG（full）或 OSM 陆地多边形的 GeoJSON 导出文件。转弯路径不检查是否穿越陆地。",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turns that cross land or come within the clearance are flagged in the plan checks.": "加载的海岸线会随项目保存，包括自动保存和 .SPL 文件：联网时下载一次 OSM 海岸线，之后离线也能使用。OSM 海岸线详细且覆盖全球，但由用户贡献：请与官方海图核对。内置海岸线为 Natural Earth 1:10m，精度为数百米（单独使用页面而没有其数据文件夹时为 1:50m，约 1 公里）：适合离岸和沿岸规划，并设置相应的安全距离，但不适合港口。如需详细的离线工作，请加载 GSHHG（full）或 OSM 陆地多边形的 GeoJSON 导出文件。穿越陆地或进入安全距离的转弯会在计划检查中标出。",
  "One file per segment, for every format (in a zip)": "每段一个文件，适用于所有格式（zip）",
  "One sheet per segment: PDFs get a page per segment, images one per sheet in a zip, DXF one file with each segment on its own layers and a named view per segment; other formats one file. One file per segment: every format is saved once per segment, with only that segment's lines, outline and statistics, all in one zip; map sheets and the report also get an overview. Whole route: one file, on one sheet.": "每段一张图：PDF 每段一页，图片每张图纸一张并打包为 zip，DXF 为一个文件、每段在各自图层并有命名视图；其他格式一个文件。每段一个文件：每种格式按段分别保存，只含该段的测线、轮廓和统计，全部放在一个 zip 中；图纸和报告还附带一张总图。整条路由：一个文件，一张图。",
  "Saved {0} files in one zip: one per segment.": "已将 {0} 个文件保存到一个 zip：每段一个。",
@@ -1041,5 +1041,6 @@
  "How to use the tools, and the science behind every number with its original references.": "工具的使用方法，以及每个数字背后的科学依据和原始文献。",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "逐步介绍测量规划器和补测规划器的用法，并附截图。",
  "The formulas, standards and data behind every number, with their original references.": "每个数字背后的公式、标准和数据，附原始文献。",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 只允许等级 2 和等级 1b 不全覆盖：水深覆盖率至少 5 %，测深点间距不超过水深的 3 倍或 25 米（取较大者）。等级 1a 需要 100 % 的目标探测，特等和超特等需要全覆盖：请使用多波束，或增加侧扫声呐进行目标探测。"
+ "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{1} 个转弯中有 {0} 个穿越陆地或进入 {2} 米安全距离（地图上红色）。请缩短这些端点的测线、减小转弯半径，或将边界移离海岸。",
+ "All turns stay at least {0} m from the coastline.": "所有转弯距海岸线至少 {0} 米。"
 }

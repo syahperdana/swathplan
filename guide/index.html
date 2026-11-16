@@ -250,7 +250,8 @@ ol.refs a.back{text-decoration:none;margin-left:4px}
 <li><b>Load land polygons / coastline lines</b> from a GeoJSON file, for example an export of GSHHG (full) or OSM land polygons for detailed offline work.</li>
 <li><b>Save coastline as GeoJSON</b> and <b>Remove coastline</b>.</li>
 </ul>
-<p>Set the <b>safety clearance</b> to match the accuracy of the coastline you use. A loaded coastline is kept with the project, in the autosave and in .SPL files: download the OSM coastline once in the office and it works offline in the field. Turn paths are not checked against land.</p>
+<p>Set the <b>safety clearance</b> to match the accuracy of the coastline you use. A loaded coastline is kept with the project, in the autosave and in .SPL files: download the OSM coastline once in the office and it works offline in the field. Turns that cross land or come within the clearance are flagged in the plan checks.</p>
+<p>With a coastline loaded, every Williamson turn, U-turn and transit is checked against it. A turn that crosses the coastline, comes closer than the safety clearance, or lies on land is drawn in red on the map, and the first line of the <b>Plan checks</b> says how many turns are affected. Turns at line ends trimmed close to the coast usually bulge onto land: shorten those lines, use a smaller turning radius, or move the boundary away from the coast. Drone flights are not checked. The check uses only the loaded coastline, not shoals, structures or traffic.</p>
 <h3>9.4 Project &amp; operations</h3>
 <figure class="half"><img src="../docs/guide/project.jpg" alt="Project & operations section" loading="lazy"><figcaption>Figure 18. <i>Project &amp; operations</i>.</figcaption></figure>
 <p>The project details are printed on the map sheet and in the reports. The operations figures drive the time and cost estimate: start date, operating hours per day, weather and downtime allowance, mobilisation and demobilisation, patch test or calibration, SVP casts (interval and duration), and an optional vessel day rate. <i>Ping rate</i> (0 = automatic from the slant range) and <i>Along-track beamwidth</i> feed the ping and footprint figures. <i>Create printable report</i> opens a self-contained HTML report that you can print or save as PDF.</p>
@@ -333,6 +334,7 @@ ol.refs a.back{text-decoration:none;margin-left:4px}
 <li>Swath and footprint assume a flat seabed at the depth under the line; refraction and beam-angle limits are only those you enter.</li>
 <li>Time estimates assume constant speeds and ignore currents, traffic and port calls.</li>
 <li>Catalogue values for sensors, side-scan models and cameras are approximate.</li>
+<li>Turns are checked only against the loaded coastline, not against shoals, structures or traffic.</li>
 <li>Coastlines and global bathymetry are not navigation data.</li>
 </ul>
 <p>The formulas behind every number, and the standards and papers they come from, are on the <a href="../science/">Science &amp; references</a> page.</p>

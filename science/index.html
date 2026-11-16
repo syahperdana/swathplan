@@ -205,6 +205,7 @@ cost           = total project (days) × day rate</pre>
 <h2>11 Coastlines and land avoidance</h2>
 <p>OpenStreetMap coastlines are drawn with the land on the left and the water on the right of the line<sup class="fn"><a href="#r17">17</a></sup>. SwathPlan intersects each survey line with the coastline, cuts it at the crossings, decides which side is water from the nearest segment, and removes a clearance zone, a capsule with the radius of the safety distance around each coastline segment. Land polygons use an inside/outside test (even-odd) instead, which does not depend on the direction of the rings.</p>
 <p>The built-in coastline is Natural Earth, a public-domain dataset<sup class="fn"><a href="#r18">18</a></sup>. For land avoidance SwathPlan uses the 1:10m land polygons with minor islands, cut to the area. The 1:10m coastline lines are not used for this: their direction is not consistent, and most continental coasts are open pieces, so the land side cannot be told from them. The 1:50m coastline, kept inside each page as a fallback, has closed rings stored in both directions, so SwathPlan turns every closed ring counter-clockwise (land on the left) before use. Natural Earth is generalised for small-scale maps: expect errors of a few hundred metres at 1:10m and about a kilometre at 1:50m. For detailed work, load GSHHG (full resolution)<sup class="fn"><a href="#r19">19</a></sup> or OpenStreetMap land polygons as GeoJSON.</p>
+<p>Turn paths are checked against the same coastline. Each turn is a polyline of points along its arcs. A turn is flagged when any of its straight pieces crosses a coastline segment (a proper intersection, found with orientation tests) or comes closer to one than the safety clearance (the shortest segment-to-segment distance, the least of the four point-to-segment distances), or when its middle point lies on land, which catches a turn wholly inside a land polygon. A grid of the coastline segments, with cells of at least 200 m and four times the clearance, keeps the test fast for thousands of turns.</p>
 
 <h2>12 Bathymetry sources</h2>
 <table><tr><th>Source</th><th>Coverage</th><th>Resolution</th><th>Reference</th></tr>
@@ -236,6 +237,7 @@ cost           = total project (days) × day rate</pre>
 <li>A single nominal sound speed (1500 m/s) for ping rates.</li>
 <li>Straight, parallel lines for areas; offset lines for corridors. Contour-following lines are not generated.</li>
 <li>Constant speeds; currents, traffic and port calls are not modelled.</li>
+<li>Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.</li>
 <li>Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.</li>
 </ul>
 
