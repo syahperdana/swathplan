@@ -1032,5 +1032,8 @@
  "not a TIFF file": "to nie jest plik TIFF",
  "read at 1/{0} resolution": "odczytano w rozdzielczości 1/{0}",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "TIFF z oddzielnymi płaszczyznami nie jest obsługiwany: wyeksportuj jako TIFF z przeplotem (pikselowy)",
- "{0} % of the raster has data": "{0} % rastra zawiera dane"
+ "{0} % of the raster has data": "{0} % rastra zawiera dane",
+ "SwathPlan home: all tools": "Strona główna SwathPlan: wszystkie narzędzia",
+ "SwathPlan tools": "Narzędzia SwathPlan",
+ "Tools": "Narzędzia"
 }

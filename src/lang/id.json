@@ -1026,5 +1026,8 @@
  "not a TIFF file": "bukan file TIFF",
  "read at 1/{0} resolution": "dibaca pada resolusi 1/{0}",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "TIFF bidang terpisah tidak didukung: ekspor sebagai TIFF berselang (piksel)",
- "{0} % of the raster has data": "{0} % raster berisi data"
+ "{0} % of the raster has data": "{0} % raster berisi data",
+ "SwathPlan home: all tools": "Beranda SwathPlan: semua alat",
+ "SwathPlan tools": "Alat SwathPlan",
+ "Tools": "Alat"
 }

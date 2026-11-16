@@ -1023,5 +1023,8 @@
  "not a TIFF file": "TIFF dosyası değil",
  "read at 1/{0} resolution": "1/{0} çözünürlükte okundu",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "Ayrı düzlemli TIFF desteklenmiyor: araya serpiştirilmiş (piksel) TIFF olarak dışa aktarın",
- "{0} % of the raster has data": "Rasterin %{0} kadarında veri var"
+ "{0} % of the raster has data": "Rasterin %{0} kadarında veri var",
+ "SwathPlan home: all tools": "SwathPlan ana sayfa: tüm araçlar",
+ "SwathPlan tools": "SwathPlan araçları",
+ "Tools": "Araçlar"
 }

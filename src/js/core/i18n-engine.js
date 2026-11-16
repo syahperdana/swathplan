@@ -3,7 +3,7 @@ FF='"Segoe UI","Noto Sans","Noto Sans CJK SC","Noto Sans CJK JP","Hiragino Sans"
 i18=(s,...a)=>{let t=DICT.get(s);if(t===undefined)t=s;return secSub(a.length&&typeof t=="string"?t.replace(/\{(\d+)\}/g,(m,i)=>a[+i]!==undefined?a[+i]:m):t)};
 // sections are numbered in the order they are shown; texts name them as {§crs}, {§bound}, ...
 const SECN={},secSub=t=>typeof t=="string"&&t.indexOf("{§")>=0?t.replace(/\{§(\w+)\}/g,(m,k)=>SECN[k]||"–"):t;
-function secNumber(){for(const k in SECN)delete SECN[k];let n=0;document.querySelectorAll("details[data-sec]").forEach(d=>{const s=d.querySelector(":scope>summary");if(d.parentElement.closest("details")||d.closest("[hidden]")){if(s)s.removeAttribute("data-n");return}n++;SECN[d.dataset.sec]=n;if(s)s.setAttribute("data-n",n+". ")})}
+function secNumber(){for(const k in SECN)delete SECN[k];let n=0;document.querySelectorAll("details[data-sec]").forEach(d=>{const s=d.querySelector(":scope>summary");if(d.parentElement.closest("details")||d.closest("[hidden]")){if(s)s.removeAttribute("data-n");return}n++;SECN[d.dataset.sec]=n;if(s)s.setAttribute("data-n",n+". ")});if(window.jumpSync)jumpSync()}
 const UNITS=(()=>{const U=[],norm=s=>s.replace(/\s+/g," ").trim(),SK=new Set(["SCRIPT","STYLE","svg","SVG","CANVAS","TEXTAREA","PRE"]),INL=new Set(["B","I","EM","STRONG","CODE","SUB","SUP","A","SPAN","BR","KBD","SMALL","U"]),LET=/[A-Za-zÀ-ɏ]{2}/;
 const inl=el=>[...el.querySelectorAll("*")].every(c=>INL.has(c.tagName)&&!c.id);
 const walk=el=>{if(SK.has(el.tagName)||el.getAttribute("data-i18n")=="off"||el.closest("#sens,#ord,#pre2"))return;

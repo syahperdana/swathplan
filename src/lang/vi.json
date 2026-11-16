@@ -1023,5 +1023,8 @@
  "not a TIFF file": "không phải tệp TIFF",
  "read at 1/{0} resolution": "đọc ở độ phân giải 1/{0}",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "Không hỗ trợ TIFF tách mặt phẳng: hãy xuất dạng TIFF xen kẽ (theo điểm ảnh)",
- "{0} % of the raster has data": "{0} % ảnh lưới có dữ liệu"
+ "{0} % of the raster has data": "{0} % ảnh lưới có dữ liệu",
+ "SwathPlan home: all tools": "Trang chủ SwathPlan: tất cả công cụ",
+ "SwathPlan tools": "Công cụ SwathPlan",
+ "Tools": "Công cụ"
 }

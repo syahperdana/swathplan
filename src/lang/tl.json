@@ -1023,5 +1023,8 @@
  "not a TIFF file": "hindi TIFF file",
  "read at 1/{0} resolution": "binasa sa 1/{0} na resolution",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "Hindi suportado ang separate-plane TIFF: i-export bilang interleaved (pixel) TIFF",
- "{0} % of the raster has data": "{0} % ng raster ang may data"
+ "{0} % of the raster has data": "{0} % ng raster ang may data",
+ "SwathPlan home: all tools": "SwathPlan home: lahat ng tool",
+ "SwathPlan tools": "Mga tool ng SwathPlan",
+ "Tools": "Mga tool"
 }

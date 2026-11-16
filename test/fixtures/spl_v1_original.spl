@@ -1,0 +1,115 @@
+SWATHPLAN-SPL 1
+# SwathPlan project file (plain text, UTF-8). Boundary = WGS 84 decimal degrees.
+# Saved 2026-11-16T02:14:20.702Z
+
+[ORIGIN]
+lat = -6.1
+lon = 106.88
+
+[VIEW]
+cx = 0
+cy = 0
+k = 0.2008
+
+[BOUNDARY]
+closed = 1
+# latitude longitude
+-6.10899824 106.86644860
+-6.10899824 106.89355140
+-6.09100176 106.89355140
+-6.09100176 106.86644860
+
+[SETTINGS]
+sens = 0
+mAdd = 
+depth = 32
+ap = 60
+as = 60
+ov = 25
+adp = 0
+mxS = 0
+mxW = 0
+az = 37.5
+azN = 37.5
+pre = HB
+cross = 1
+nx = 2
+crossPre = X
+R = 140
+loa = 14
+slow = 1
+ord = 0
+spd = 6
+tsp = 4
+prjN = Legacy harbour survey
+prjC = 
+prjV = 
+prjS = 
+prjNote = 
+sdate = 
+opH = 24
+wx = 20
+mob = 0
+cal = 0
+svpI = 4
+svpD = 15
+rate = 0
+pingU = 0
+bwA = 1
+goT = 
+bm = esristreet
+bmU = 
+sea = 0
+clr = 30
+trim = 1
+xcrs = geo
+epC = 
+epQ = 
+epR = 
+epT = 
+pjN = Geographic (lon/lat), WGS84
+zone = –
+tl0 = –
+tp0 = –
+tk = –
+tfe = –
+tfn = –
+da = 6378137
+dif = 298.257223563
+dx = 0
+dy = 0
+dz = 0
+qf = 
+xord = xy
+bT = 
+gbSrc = gmrt
+gbRes = 100
+gbZ = elev
+hdr = 0
+zsg = down
+zun = 1
+zoff = 0
+sb = 1
+qa = 60
+qd = 32
+qo = 30
+qn = 10
+ql = 2
+qs = 6
+qL = 14
+crs = utm
+inclT = 1
+acc = 5
+xfmt = gpxR
+xpPaper = A4
+xpOri = auto
+xpDpi = 300
+xpScale = 0
+xpGrid = auto
+xpBase = 1
+xpSnd = 1
+xpNames = 1
+xpFmt = png
+pre2 = Indonesia — Tanjung Priok (Jakarta)
+
+[END]

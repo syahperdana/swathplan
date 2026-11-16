@@ -1023,5 +1023,8 @@
  "not a TIFF file": "TIFF 파일이 아닙니다",
  "read at 1/{0} resolution": "1/{0} 해상도로 읽음",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "분리 평면 TIFF는 지원하지 않습니다: 인터리브(픽셀) TIFF로 내보내세요",
- "{0} % of the raster has data": "래스터의 {0} %에 자료가 있음"
+ "{0} % of the raster has data": "래스터의 {0} %에 자료가 있음",
+ "SwathPlan home: all tools": "SwathPlan 홈: 모든 도구",
+ "SwathPlan tools": "SwathPlan 도구",
+ "Tools": "도구"
 }

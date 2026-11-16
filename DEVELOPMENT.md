@@ -126,6 +126,15 @@ A cell is covered when `cov ≥ need` (1, or 2 for 200 % side-scan). Gaps are un
 
 Tests: `python3 test/infill_check.py infill/index.html` (tracks, XYZ, exports, restore) and `python3 test/infill_sources_check.py infill/index.html` (grid holiday, UTM mosaic with and without EPSG, side-scan 100 % and 200 %, kind switch).
 
+## .SPL project files: compatibility rules
+
+Every version must open every older `.SPL` file, and older versions should open newer files as far as they can.
+
+- The format stays `SWATHPLAN-SPL 1`: sections in brackets, `key = value` lines. Readers skip sections and keys they do not know, so new settings and sections (`[ROUTE]`, survey type `svT`, and so on) are safe to add.
+- Never rename or reuse a setting key. If one must change, add the old name to `SPL_ALIAS` in `app-state.js` so older files keep working.
+- A file is opened on top of the page defaults (`UI_DEFAULTS`, taken at start-up): settings an older file does not mention come out at their default, not at whatever was on screen. So a multibeam file from before the survey type existed opens as a multibeam area survey.
+- `test/fixtures/spl_v1_original.spl` was saved by the original single-file planner. `python3 test/spl_compat_check.py planner/index.html [old/index.html]` opens it in the current planner (from a different mode) and checks the plan is unchanged; with an old planner page it also opens a new file there. Add a fixture whenever the format gains something important.
+
 ## Offline app (PWA)
 
 - `src/js/core/pwa.js` runs on both pages. On the website it registers `sw.js`, adds the manifest and icons, and shows a banner when the app is ready offline or a new version is waiting. On a downloaded copy (`file://`) it does nothing except point the hub links to the online hub.
@@ -167,6 +176,8 @@ python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what c
 ```
 
 Infill planner: `python3 test/infill_check.py infill/index.html` (track import, gaps, infill lines, XYZ coverage, exports, restore) and `python3 test/infill_sources_check.py infill/index.html` (GeoTIFF grids and mosaics, side-scan coverage).
+
+`.SPL` compatibility: `python3 test/spl_compat_check.py planner/index.html`.
 
 The snapshot runs the planner in its default mode (multibeam, area), so its exports are those of the original MBES planner.
 

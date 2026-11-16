@@ -1024,5 +1024,8 @@
  "not a TIFF file": "ليس ملف TIFF",
  "read at 1/{0} resolution": "قُرئ بدقة 1/{0}",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "لا يُدعم TIFF ذو المستويات المنفصلة: صدّره بصيغة TIFF متداخلة (بكسلية)",
- "{0} % of the raster has data": "{0} % من الصورة الشبكية تحتوي بيانات"
+ "{0} % of the raster has data": "{0} % من الصورة الشبكية تحتوي بيانات",
+ "SwathPlan home: all tools": "الصفحة الرئيسية لـ SwathPlan: كل الأدوات",
+ "SwathPlan tools": "أدوات SwathPlan",
+ "Tools": "الأدوات"
 }
