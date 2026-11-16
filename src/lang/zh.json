@@ -1051,5 +1051,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "没有 {0} 米等深线穿过测区；使用直线测线。测区内水深：{1} 至 {2} 米。",
  "Too many contour lines for this area at this spacing; straight lines are used.": "按此间距该测区的等深线测线过多；使用直线测线。",
  "Checked against the manufacturer's datasheet: {0}.": "已对照制造商数据表核实：{0}。",
- "Not yet checked against a datasheet: treat these values as approximate.": "尚未对照数据表核实：请将这些数值视为近似值。"
+ "Not yet checked against a datasheet: treat these values as approximate.": "尚未对照数据表核实：请将这些数值视为近似值。",
+ "Also cover outside the boundary (m)": "边界外也覆盖（米）",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "边界内已加载数据未覆盖的部分都算空白：测线之间的漏洞，以及沿边缘仍缺的条带。边界外的一段余量也计入，使条带边缘越过边界；覆盖率仅针对测区本身。"
 }

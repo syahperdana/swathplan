@@ -1051,5 +1051,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "لا يعبر المنطقة أي كنتور {0} م؛ تُستخدم خطوط مستقيمة. الأعماق في المنطقة: من {1} إلى {2} م.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "خطوط كنتور كثيرة جدًا لهذه المنطقة بهذا التباعد؛ تُستخدم خطوط مستقيمة.",
  "Checked against the manufacturer's datasheet: {0}.": "تم التحقق منها مقابل نشرة بيانات الشركة المصنعة: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "لم يُتحقق منها بعد مقابل نشرة بيانات: اعتبر هذه القيم تقريبية."
+ "Not yet checked against a datasheet: treat these values as approximate.": "لم يُتحقق منها بعد مقابل نشرة بيانات: اعتبر هذه القيم تقريبية.",
+ "Also cover outside the boundary (m)": "التغطية خارج الحدود أيضًا (م)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "كل ما داخل الحدود ولا تغطيه البيانات المحمّلة فجوة: ثغرات بين المسارات وشرائط ما زالت ناقصة على الحواف. ويُحتسب أيضًا هامش خارج الحدود لكي تتجاوزه حواف المسح؛ ونسبة التغطية هي للمنطقة نفسها."
 }

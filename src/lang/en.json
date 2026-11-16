@@ -1111,5 +1111,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.",
  "Checked against the manufacturer's datasheet: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate."
+ "Not yet checked against a datasheet: treat these values as approximate.",
+ "Also cover outside the boundary (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself."
 ]

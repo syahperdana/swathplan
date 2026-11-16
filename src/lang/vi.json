@@ -1050,5 +1050,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Không có đường đẳng sâu {0} m nào cắt qua khu vực; dùng tuyến thẳng. Độ sâu trong khu vực: {1} đến {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Quá nhiều tuyến đẳng sâu cho khu vực này với khoảng cách này; dùng tuyến thẳng.",
  "Checked against the manufacturer's datasheet: {0}.": "Đã đối chiếu với bảng thông số của nhà sản xuất: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Chưa đối chiếu với bảng thông số: xem các giá trị này là gần đúng."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Chưa đối chiếu với bảng thông số: xem các giá trị này là gần đúng.",
+ "Also cover outside the boundary (m)": "Phủ cả ngoài ranh giới (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Mọi chỗ trong ranh giới mà dữ liệu đã nạp không phủ đều là khoảng trống: lỗ giữa các tuyến và dải còn thiếu dọc mép. Một dải biên ngoài ranh giới cũng được tính, để mép dải quét vượt qua ranh giới; tỷ lệ phủ là của chính khu vực."
 }

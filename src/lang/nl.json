@@ -1051,5 +1051,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Geen {0} m-dieptelijn kruist het gebied; er worden rechte lijnen gebruikt. Diepten in het gebied: {1} tot {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Te veel dieptelijnlijnen voor dit gebied bij deze afstand; er worden rechte lijnen gebruikt.",
  "Checked against the manufacturer's datasheet: {0}.": "Gecontroleerd met het gegevensblad van de fabrikant: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Nog niet gecontroleerd met een gegevensblad: beschouw deze waarden als benadering."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Nog niet gecontroleerd met een gegevensblad: beschouw deze waarden als benadering.",
+ "Also cover outside the boundary (m)": "Ook buiten de grens dekken (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Alles binnen de grens dat de geladen data niet dekken is een gat: openingen tussen de sporen en stroken die langs de randen nog ontbreken. Een marge buiten de grens telt ook mee, zodat de swathranden erover reiken; het dekkingspercentage geldt voor het gebied zelf."
 }

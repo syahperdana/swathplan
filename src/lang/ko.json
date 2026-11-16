@@ -1050,5 +1050,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "{0} m 등심선이 구역을 지나지 않아 직선 측선을 사용합니다. 구역 내 수심: {1}~{2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "이 간격으로는 이 구역의 등심선 측선이 너무 많아 직선 측선을 사용합니다.",
  "Checked against the manufacturer's datasheet: {0}.": "제조사 데이터시트로 확인함: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "아직 데이터시트로 확인하지 않음: 이 값은 근사치로 보세요."
+ "Not yet checked against a datasheet: treat these values as approximate.": "아직 데이터시트로 확인하지 않음: 이 값은 근사치로 보세요.",
+ "Also cover outside the boundary (m)": "경계 밖도 커버 (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "경계 안에서 불러온 데이터가 덮지 못한 곳은 모두 공백입니다. 측선 사이의 구멍과 가장자리를 따라 아직 빠진 띠도 포함됩니다. 경계 밖 여유 구간도 함께 계산해 스와스 가장자리가 경계를 넘게 합니다. 커버율은 구역 자체에 대한 값입니다."
 }

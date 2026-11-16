@@ -1051,5 +1051,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Keine {0}-m-Tiefenlinie schneidet das Gebiet; es werden gerade Linien verwendet. Tiefen im Gebiet: {1} bis {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Zu viele Tiefenlinien-Linien für dieses Gebiet bei diesem Abstand; es werden gerade Linien verwendet.",
  "Checked against the manufacturer's datasheet: {0}.": "Mit dem Datenblatt des Herstellers geprüft: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Noch nicht mit einem Datenblatt geprüft: Werte als Näherung behandeln."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Noch nicht mit einem Datenblatt geprüft: Werte als Näherung behandeln.",
+ "Also cover outside the boundary (m)": "Auch außerhalb der Grenze abdecken (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Alles innerhalb der Grenze, was die geladenen Daten nicht abdecken, ist eine Lücke: Löcher zwischen den Spuren und noch fehlende Streifen an den Rändern. Ein Saum außerhalb der Grenze zählt ebenfalls mit, damit die Fächerränder darüber hinausreichen; der Abdeckungsgrad bezieht sich auf das Gebiet selbst."
 }
