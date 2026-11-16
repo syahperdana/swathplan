@@ -1162,5 +1162,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.",
  "Height above ground {0} to {1} m over the terrain model.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.",
+ "Save the project as",
+ "Save"
 ]

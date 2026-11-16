@@ -1102,5 +1102,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Au-dessus du terrain, la hauteur au-dessus du sol varie de {0} à {1} m, donc l'échelle des images et le recouvrement latéral changent : activez le suivi de terrain.",
  "Height above ground {0} to {1} m over the terrain model.": "Hauteur au-dessus du sol de {0} à {1} m sur le modèle de terrain.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Au-dessus des terrains bas, le drone est jusqu'à {0} m au-dessus du sol, au-delà de la limite de 120 m de nombreux pays.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} points de passage sont hors du modèle de terrain et gardent la hauteur de décollage : chargez le terrain sur une zone plus grande."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} points de passage sont hors du modèle de terrain et gardent la hauteur de décollage : chargez le terrain sur une zone plus grande.",
+ "Save the project as": "Enregistrer le projet sous",
+ "Save": "Enregistrer"
 }

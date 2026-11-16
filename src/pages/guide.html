@@ -204,7 +204,7 @@
 <p>Press <i>Add current settings as a scenario</i>, change what you want to compare (sensor, overlap, swath angle, speed, turn radius, day rate, working hours, number of vessels), add again, and compare time, line length and cost on the same geometry. <i>Export comparison (CSV)</i> saves the table for your bid.</p>
 
 <h2>11 Project files (.SPL)</h2>
-<p><i>Save .SPL</i> writes a plain-text project file: the boundary or route, every setting, and the coastline you loaded. <i>Open .SPL</i> reads it back. The format is designed to stay compatible:</p>
+<p><i>Save .SPL</i> writes a plain-text project file: the boundary or route, every setting, and the coastline you loaded. It first asks for the file name; the default is the project name, or <code>survey_plan</code> when there is none. <i>Open .SPL</i> reads it back. The format is designed to stay compatible:</p>
 <ul>
 <li>Files from older versions open in newer ones. Settings that did not exist yet get their default values.</li>
 <li>Files from newer versions open in older ones; what the older version does not know is skipped.</li>

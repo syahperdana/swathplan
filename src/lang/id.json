@@ -1104,5 +1104,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Di atas medan, tinggi di atas tanah berkisar {0} sampai {1} m sehingga skala foto dan tampalan samping berubah: aktifkan mengikuti medan.",
  "Height above ground {0} to {1} m over the terrain model.": "Tinggi di atas tanah {0} sampai {1} m di atas model medan.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Di atas tanah rendah drone berada sampai {0} m di atasnya, melebihi batas 120 m di banyak negara.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} titik jalan berada di luar model medan dan tetap pada tinggi lepas landas: muat medan untuk area yang lebih luas."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} titik jalan berada di luar model medan dan tetap pada tinggi lepas landas: muat medan untuk area yang lebih luas.",
+ "Save the project as": "Simpan proyek sebagai",
+ "Save": "Simpan"
 }

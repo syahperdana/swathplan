@@ -1110,5 +1110,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Di atas rupa bumi, ketinggian di atas tanah berubah dari {0} hingga {1} m, jadi skala imej dan pertindihan sisi berubah: hidupkan ikut rupa bumi.",
  "Height above ground {0} to {1} m over the terrain model.": "Ketinggian di atas tanah {0} hingga {1} m di atas model rupa bumi.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Di atas tanah rendah dron berada sehingga {0} m di atasnya, melebihi had 120 m di banyak negara.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} titik laluan berada di luar model rupa bumi dan kekal pada ketinggian berlepas: muatkan rupa bumi untuk kawasan lebih besar."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} titik laluan berada di luar model rupa bumi dan kekal pada ketinggian berlepas: muatkan rupa bumi untuk kawasan lebih besar.",
+ "Save the project as": "Simpan projek sebagai",
+ "Save": "Simpan"
 }

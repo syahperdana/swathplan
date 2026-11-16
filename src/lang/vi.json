@@ -1101,5 +1101,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Trên địa hình, độ cao so với mặt đất thay đổi từ {0} đến {1} m nên tỷ lệ ảnh và độ phủ ngang thay đổi: hãy bật bay theo địa hình.",
  "Height above ground {0} to {1} m over the terrain model.": "Độ cao so với mặt đất {0} đến {1} m trên mô hình địa hình.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Trên vùng đất thấp drone cao tới {0} m so với mặt đất, vượt giới hạn 120 m ở nhiều nước.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} điểm bay nằm ngoài mô hình địa hình và giữ độ cao cất cánh: hãy tải địa hình cho khu vực rộng hơn."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} điểm bay nằm ngoài mô hình địa hình và giữ độ cao cất cánh: hãy tải địa hình cho khu vực rộng hơn.",
+ "Save the project as": "Lưu dự án thành",
+ "Save": "Lưu"
 }

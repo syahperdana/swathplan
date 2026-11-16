@@ -1110,5 +1110,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "เหนือภูมิประเทศ ความสูงเหนือพื้นดินเปลี่ยนจาก {0} ถึง {1} ม. มาตราส่วนภาพและส่วนซ้อนด้านข้างจึงเปลี่ยน: เปิดการบินตามภูมิประเทศ",
  "Height above ground {0} to {1} m over the terrain model.": "ความสูงเหนือพื้นดิน {0} ถึง {1} ม. เหนือแบบจำลองภูมิประเทศ",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "เหนือพื้นที่ต่ำ โดรนอยู่สูงถึง {0} ม. เหนือพื้น เกินขีดจำกัด 120 ม. ของหลายประเทศ",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} จุดนำทางอยู่นอกแบบจำลองภูมิประเทศและใช้ความสูงขึ้นบิน: โหลดภูมิประเทศให้ครอบคลุมพื้นที่กว้างขึ้น"
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} จุดนำทางอยู่นอกแบบจำลองภูมิประเทศและใช้ความสูงขึ้นบิน: โหลดภูมิประเทศให้ครอบคลุมพื้นที่กว้างขึ้น",
+ "Save the project as": "บันทึกโครงการเป็น",
+ "Save": "บันทึก"
 }

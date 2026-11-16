@@ -1101,5 +1101,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Arazi üzerinde yerden yükseklik {0} ile {1} m arasında değişiyor, bu yüzden görüntü ölçeği ve yan bindirme değişir: arazi izlemeyi açın.",
  "Height above ground {0} to {1} m over the terrain model.": "Arazi modeli üzerinde yerden yükseklik {0} – {1} m.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Alçak zemin üzerinde drone yerden {0} m'ye kadar yükseliyor; birçok ülkedeki 120 m sınırını aşar.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} yol noktası arazi modelinin dışında ve kalkış yüksekliğini koruyor: daha geniş bir alan için araziyi yükleyin."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} yol noktası arazi modelinin dışında ve kalkış yüksekliğini koruyor: daha geniş bir alan için araziyi yükleyin.",
+ "Save the project as": "Projeyi farklı kaydet",
+ "Save": "Kaydet"
 }

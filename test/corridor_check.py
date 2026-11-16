@@ -43,7 +43,7 @@ with sync_playwright() as p:
     gj=json.loads(outs['survey_plan.geojson']);log('GeoJSON features:',len(gj['features']),'| first line coords:',len(gj['features'][1]['geometry']['coordinates']))
     q=outs['survey_lines.qgfline'];log('Qinsy size:',len(q),'magic ok:',q[:4]==bytes([0x81,0x51,0x47,0x46]))
     # SPL round trip
-    spl=grab("$('spSave').click()")[0][1].decode();log('SPL has ROUTE:', '[ROUTE]' in spl, '| route pts:', len(re.search(r'\[ROUTE\]([\s\S]*?)\n\[',spl).group(1).strip().split('\n'))-1)
+    spl=grab("$('spSave').click();$('splOk').click()")[0][1].decode();log('SPL has ROUTE:', '[ROUTE]' in spl, '| route pts:', len(re.search(r'\[ROUTE\]([\s\S]*?)\n\[',spl).group(1).strip().split('\n'))-1)
     import tempfile;SPL=tempfile.mktemp(suffix='.spl');open(SPL,'w').write(spl)
     pg.evaluate("$('bClr').click()");log('after clear lines:',pg.evaluate('R.lines.length'))
     pg.set_input_files('#spImp',SPL);pg.wait_for_timeout(1500)

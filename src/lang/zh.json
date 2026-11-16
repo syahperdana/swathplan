@@ -1102,5 +1102,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "在地形上方离地高度在 {0} 至 {1} m 之间变化，影像比例和旁向重叠随之改变：请开启跟随地形。",
  "Height above ground {0} to {1} m over the terrain model.": "在地形模型上方离地高度 {0} 至 {1} m。",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "在低洼地面上方无人机离地可达 {0} m，超过许多国家 120 m 的限制。",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} 个航点位于地形模型之外，保持起飞高度：请加载更大范围的地形。"
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} 个航点位于地形模型之外，保持起飞高度：请加载更大范围的地形。",
+ "Save the project as": "项目另存为",
+ "Save": "保存"
 }
