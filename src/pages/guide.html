@@ -82,7 +82,7 @@
 <tr><td>Hydrographic: multibeam (MBES)</td><td>Swath width at the design depth and the overlap</td><td>Sensor &amp; design depth, Swath &amp; overlap, Williamson turn, IHO S-44 &amp; speed, Uncertainty budget</td></tr>
 <tr><td>Hydrographic: single-beam (SBES)</td><td>The spacing you enter, checked against S-44</td><td>Single-beam echosounder &amp; line spacing</td></tr>
 <tr><td>Geophysical</td><td>The sensor that needs the closest lines (side-scan, magnetometer, sub-bottom, UHR seismic, optional multibeam)</td><td>Geophysical sensors &amp; line spacing</td></tr>
-<tr><td>Aerial: drone (photogrammetry)</td><td>Camera footprint and side overlap</td><td>Drone camera &amp; flight (vessel sections hidden)</td></tr></table>
+<tr><td>Aerial: drone (camera or LiDAR)</td><td>Camera footprint or LiDAR swath, and side overlap</td><td>Drone payload &amp; flight (vessel sections hidden)</td></tr></table>
 <p><b>Shape</b>: <i>Area (polygon)</i> lays out straight parallel lines across a closed boundary. <i>Corridor along a route</i> lays out lines that follow a route centreline at fixed offsets, with KP (kilometre point) numbering (<a href="#7-corridors-along-a-route">section 7</a>).</p>
 <p>Changing the type or the shape keeps your area, route, settings and project details.</p>
 
@@ -131,9 +131,11 @@
 <li><b>Multibeam</b> (optional): the multibeam spacing from the sections below joins the comparison.</li>
 <li><b>Layback</b>, <b>extra line extension</b> and <b>tie line spacing</b> complete the line plan.</li>
 </ul>
-<h3>6.4 Drone (photogrammetry)</h3>
-<figure class="half"><img src="../docs/guide/drone.jpg" alt="Drone camera & flight section" loading="lazy"><figcaption>Figure 9. <i>Drone camera &amp; flight</i>.</figcaption></figure>
-<p>Pick a camera (DJI Mavic 3 Enterprise, Matrice 4E, Phantom 4 RTK, Zenmuse P1 with a 35 mm lens) or enter your own sensor size, focal length, image width and shortest photo interval. Then set the flight height above ground, the forward and side overlap, the speed (in the same section), the flight time per battery and the time to change a battery. The section shows the ground sample distance, the image footprint, the line spacing, the photo distance and interval, and the number of photos, minutes and batteries. The plan checks warn above 120 m (the limit in many countries) and when photos would come faster than the camera can take them.</p>
+<h3>6.4 Drone (camera or LiDAR)</h3>
+<figure class="half"><img src="../docs/guide/drone.jpg" alt="Drone payload & flight section" loading="lazy"><figcaption>Figure 9. <i>Drone payload &amp; flight</i>, camera payload.</figcaption></figure>
+<p>First choose the <b>payload</b>: <i>Camera (photogrammetry)</i> or <i>LiDAR</i>.</p>
+<p><b>Camera.</b> Pick a camera (DJI Mavic 3 Enterprise, Matrice 4E, Phantom 4 RTK, Zenmuse P1 with a 35 mm lens) or enter your own sensor size, focal length, image width and shortest photo interval. Then set the flight height above ground, the forward and side overlap, the speed (in the same section), the flight time per battery and the time to change a battery. The section shows the ground sample distance, the image footprint, the line spacing, the photo distance and interval, and the number of photos, minutes and batteries. The plan checks warn above 120 m (the limit in many countries) and when photos would come faster than the camera can take them.</p>
+<p><b>LiDAR.</b> Pick DJI Zenmuse L2, L1 or L3, or enter your own: the field of view across the flight direction, the point rate (points per second, single return) and the detection range on dark ground (10 % reflectivity). For the L3, enter the point rate that matches the pulse rate you fly; the preset is 350 kHz. Set the side overlap (50 % by default) and, if your specification asks for one, a target point density. The section shows the swath (2 × height × tan(half the field of view)), the line spacing, the average point density from one pass and with the overlap, and the flight time and batteries. The plan checks warn when the height, or the slant range at the swath edge, is beyond the detection range on dark ground. When the density is below the target, they give the highest speed that meets it. The density is an average for flat, bare ground; vegetation, water and dark roofs return fewer points. The waypoint exports carry the height and speed but no camera trigger, because the LiDAR records all the time.</p>
 <p>Vessel sections (turns, IHO order, coastline, bathymetry) are hidden, lines are not trimmed to water, and turns are tight. The QGroundControl and Mission Planner exports carry the height, the speed and the camera trigger distance.</p>
 
 <h2>7 Corridors along a route</h2>
@@ -219,7 +221,7 @@
 <tr><td>Qinsy QGF line (.qgfline)</td><td>Qinsy</td><td>Straight lines in WGS 84 UTM. Rebuilt from a sample file: test-import first.</td></tr>
 <tr><td>KML</td><td>Google Earth, GIS</td><td>Lines, boundary and segments, WGS 84.</td></tr>
 <tr><td>GeoJSON</td><td>GIS, web maps</td><td>Lines, boundary and segments with their names and KP, WGS 84.</td></tr>
-<tr><td>QGroundControl (.plan), Mission Planner (.waypoints)</td><td>Autopilots: USVs and drones</td><td>Waypoints along the lines (and turns). Drone plans add the height and the camera trigger distance.</td></tr>
+<tr><td>QGroundControl (.plan), Mission Planner (.waypoints)</td><td>Autopilots: USVs and drones</td><td>Waypoints along the lines (and turns). Drone plans add the height and, for a camera, the trigger distance.</td></tr>
 <tr><td>More formats</td><td>Various</td><td>GPX (routes, single route, tracks, waypoints), CSV (line list, vertices), TXT (vertices, start/end, waypoint list in degrees and minutes), WKT, GML 2, MapInfo MIF/MID, HYPACK LNW, NMEA 0183 waypoints. GPX, KML, GML and NMEA are always WGS 84.</td></tr></table>
 <h3>12.1 Map sheet, PDF report and images</h3>
 <figure><img src="../docs/guide/sheet.jpg" alt="A printed map sheet with graticule, scale bar, legend and title block" loading="lazy"><figcaption>Figure 23. The map sheet: graticule, scale bar, north arrow, legend and a title block with the project, survey parameters and plan summary.</figcaption></figure>

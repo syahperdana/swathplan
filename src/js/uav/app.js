@@ -1,7 +1,13 @@
-/* ===== drone (photogrammetry) mode of the survey planner: camera footprint, overlaps, photo trigger, batteries (active when MODE().uav) ===== */
+/* ===== drone mode of the survey planner: camera (photogrammetry) or LiDAR payload, footprint or swath, overlaps, photo trigger, point density, batteries (active when MODE().uav) ===== */
 const UV_CAM={m3e:[17.3,13,12.3,5280,.7],m4e:[17.3,13,12.3,5280,.5],p4r:[13.2,8.8,8.8,5472,2.5],p1:[35.9,24,35,8192,.7]};// approximate: sensor w/h mm, focal mm, image width px, shortest interval s
 const uvKnMs=.5144;
-function uvGeo(){const H=Math.max(1,g("uvH")),F=Math.max(.1,g("uvF")),across=H*Math.max(.1,g("uvSW"))/F,along=H*Math.max(.1,g("uvSH"))/F,gsd=across/Math.max(1,g("uvIW")),
+// LiDAR presets (DJI published specs): across-track FOV °, point rate pts/s (single return), detection range m at 10 % reflectivity
+const UV_LID={l2:[70,240000,250],l1:[70.4,240000,190],l3:[80,350000,700]};
+const uvLid=()=>MODE().uav&&$("uvPay")&&$("uvPay").value=="lidar";
+// LiDAR: swath 2H·tan(FOV/2), spacing from the side overlap, point density = rate / (speed × swath), raised by the overlap
+function uvLGeo(){const H=Math.max(1,g("uvH")),fov=Math.min(170,Math.max(1,g("uvLF"))),sw=2*H*Math.tan(fov/2*D),so=Math.min(95,Math.max(0,g("uvLSO")))/100,v=Math.max(.1,g("spd")*uvKnMs),rate=Math.max(1,g("uvLR")),
+d1=rate/(v*sw),slant=H/Math.cos(fov/2*D);return{lidar:true,H,fov,across:sw,along:0,S:sw*(1-so),so,v,rate,d1,den:d1/(1-so),slant,rng:Math.max(1,g("uvLX")),dPh:0,tPh:0,gsd:0}}
+function uvGeo(){if(uvLid())return uvLGeo();const H=Math.max(1,g("uvH")),F=Math.max(.1,g("uvF")),across=H*Math.max(.1,g("uvSW"))/F,along=H*Math.max(.1,g("uvSH"))/F,gsd=across/Math.max(1,g("uvIW")),
 so=Math.min(95,Math.max(0,g("uvSO")))/100,fo=Math.min(95,Math.max(0,g("uvFO")))/100,v=Math.max(.1,g("spd")*uvKnMs);
 return{H,across,along,gsd,S:across*(1-so),dPh:along*(1-fo),v,tPh:along*(1-fo)/v}}
 // spacing from the camera; tight turns (a half circle between neighbouring lines)
@@ -12,25 +18,39 @@ const _uvGen=gen;gen=function(){if(!MODE().uav)return _uvGen();const t=$("trim")
 function uvWith(f){if(!MODE().uav)return f();const k={slow:$("slow").checked,svpI:$("svpI").value,svpD:$("svpD").value};$("slow").checked=false;$("svpI").value=Math.max(1,g("uvBat"))/60;$("svpD").value=Math.max(0,g("uvSwap"));
 try{return f()}finally{$("slow").checked=k.slow;$("svpI").value=k.svpI;$("svpD").value=k.svpD}}
 const _uvStats=stats;stats=function(){uvWith(_uvStats);uvShow()};
-function uvShow(){if(!MODE().uav)return;const U=uvGeo(),ln=R.lines.concat(R.cross),Lm=ln.reduce((s,l)=>s+L(l),0),ph=ln.length?Math.round(Lm/U.dPh)+ln.length:0,ft=(Lm+(R.tl||0))/U.v/60,nb=Math.max(1,Math.ceil(ft/Math.max(1,g("uvBat"))));
+function uvShow(){if(!MODE().uav)return;uvPayShow();if(uvLid())return uvLShow();const U=uvGeo(),ln=R.lines.concat(R.cross),Lm=ln.reduce((s,l)=>s+L(l),0),ph=ln.length?Math.round(Lm/U.dPh)+ln.length:0,ft=(Lm+(R.tl||0))/U.v/60,nb=Math.max(1,Math.ceil(ft/Math.max(1,g("uvBat"))));
 $("uvGsd").textContent=(U.gsd*100).toFixed(2)+" cm/px";$("uvFp").textContent=U.across.toFixed(1)+" × "+U.along.toFixed(1)+" m";$("uvLs").textContent=U.S.toFixed(1)+" m";
 $("uvPh").textContent=i18("{0} m ({1} s at {2} m/s)",U.dPh.toFixed(1),U.tPh.toFixed(1),U.v.toFixed(1));$("uvTot").textContent=ln.length?i18("{0} photos · {1} min · {2} batteries",ph,Math.round(ft),nb):"-";
 $("tSvp").textContent=i18("{0} battery changes · {1}",Math.max(0,nb-1),hm(Math.max(0,nb-1)*g("uvSwap")/60))}
+function uvLShow(){const U=uvLGeo(),ln=R.lines.concat(R.cross),Lm=ln.reduce((s,l)=>s+L(l),0),ft=(Lm+(R.tl||0))/U.v/60,nb=Math.max(1,Math.ceil(ft/Math.max(1,g("uvBat"))));
+$("uvLSw").textContent=U.across.toFixed(1)+" m";$("uvLLs").textContent=U.S.toFixed(1)+" m";
+$("uvLDn").textContent=i18("{0} pts/m² ({1} per pass)",Math.round(U.den),Math.round(U.d1));
+$("uvLTot").textContent=ln.length?i18("{0} min · {1} batteries",Math.round(ft),nb):"-";
+$("tSvp").textContent=i18("{0} battery changes · {1}",Math.max(0,nb-1),hm(Math.max(0,nb-1)*g("uvSwap")/60))}
+function uvPayShow(){const l=uvLid();document.querySelectorAll("#uvBox .uv-cam").forEach(e=>e.hidden=l);document.querySelectorAll("#uvBox .uv-lid").forEach(e=>e.hidden=!l)}
 // plan checks: the vessel and IHO checks give way to height, photo interval and batteries
 const _uvSum=summary;summary=function(){uvWith(()=>_uvSum.apply(this,arguments));if(!MODE().uav||!R.lines.length)return;const U=uvGeo(),ul=$("chk"),pre=t=>i18(t).split("{0}")[0];
 const keep=["On-line efficiency","Average line length","Lines are long compared","transit leg"].map(k=>k.toLowerCase());
 [...ul.children].forEach(li=>{const t=li.textContent.toLowerCase();if(!keep.some(k=>t.indexOf(k)>=0)&&!t.startsWith(pre("On-line efficiency {0} %.").toLowerCase()))li.remove()});
 const C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>");
 U.H>120?add("bad",i18("Flight height {0} m is above 120 m, the limit in many countries: check your local rules.",U.H)):add("ok",i18("Flight height {0} m.",U.H));
+if(U.lidar){const tg=Math.max(0,g("uvLT"));
+U.H>U.rng?add("bad",i18("Flight height {0} m is beyond the LiDAR's detection range of {1} m on dark (10 %) ground: fly lower.",U.H,U.rng)):U.slant>U.rng?add("bad",i18("At the swath edge the slant range is {0} m, beyond the {1} m detection range on dark (10 %) ground: fly lower or narrow the field of view.",Math.round(U.slant),U.rng)):add("ok",i18("Slant range at the swath edge {0} m, within the {1} m detection range on dark (10 %) ground.",Math.round(U.slant),U.rng));
+if(tg>0){const vmax=U.rate/(tg*(1-U.so)*U.across);U.den>=tg?add("ok",i18("Point density {0} pts/m² meets the {1} pts/m² target.",Math.round(U.den),tg)):add("bad",i18("Point density {0} pts/m² is below the {1} pts/m² target: fly at {2} m/s or slower, lower, or with more side overlap.",Math.round(U.den),tg,vmax.toFixed(1)))}
+add("inf",i18("LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.",U.across.toFixed(0),U.H,Math.round(U.d1)));ul.insertAdjacentHTML("afterbegin",C.join(""));return}
 U.tPh<Math.max(.1,g("uvMI"))?add("bad",i18("A photo every {0} s is faster than the camera allows ({1} s): fly slower or lower the forward overlap.",U.tPh.toFixed(2),g("uvMI"))):add("ok",i18("A photo every {0} m ({1} s) gives {2} % forward overlap.",U.dPh.toFixed(1),U.tPh.toFixed(1),g("uvFO")));
 add("inf",i18("Ground sample distance {0} cm/pixel at {1} m.",(U.gsd*100).toFixed(2),U.H));ul.insertAdjacentHTML("afterbegin",C.join(""))};
 // camera presets
 $("uvCam").addEventListener("change",()=>{const c=UV_CAM[$("uvCam").value];if(c){["uvSW","uvSH","uvF","uvIW","uvMI"].forEach((id,i)=>$(id).value=c[i])}gen();saveSoon()});
 ["uvSW","uvSH","uvF","uvIW","uvMI"].forEach(id=>$(id).addEventListener("input",()=>{$("uvCam").value="custom"}));
 ["uvSW","uvSH","uvF","uvIW","uvMI","uvH","uvFO","uvSO","uvBat","uvSwap"].forEach(id=>{const e=$(id);["input","change"].forEach(ev=>e.addEventListener(ev,()=>{gen();saveSoon()}))});
+$("uvLid").addEventListener("change",()=>{const c=UV_LID[$("uvLid").value];if(c){["uvLF","uvLR","uvLX"].forEach((id,i)=>$(id).value=c[i])}gen();saveSoon()});
+["uvLF","uvLR","uvLX"].forEach(id=>$(id).addEventListener("input",()=>{$("uvLid").value="custom"}));
+["uvPay","uvLF","uvLR","uvLX","uvLSO","uvLT"].forEach(id=>{const e=$(id);["input","change"].forEach(ev=>e.addEventListener(ev,()=>{gen();saveSoon()}))});
+setTimeout(uvPayShow,0);
 // map sheet, reports and waypoint exports
-const uvSensorTxt=()=>{const o=$("uvCam").selectedOptions[0];return($("uvCam").value=="custom"?i18("Custom camera"):o.textContent)+", "+i18("{0} cm/px at {1} m",(uvGeo().gsd*100).toFixed(2),g("uvH"))};
-const uvSensorRow=()=>[i18("Camera"),uvSensorTxt()];
-const uvSwathRow=()=>[i18("Overlap (forward / side)"),g("uvFO")+" % / "+g("uvSO")+" %"];
-const uvMission=()=>{const U=uvGeo();return{h:U.H,trig:U.dPh,v:U.v}};
+const uvSensorTxt=()=>{if(uvLid()){const o=$("uvLid").selectedOptions[0],U=uvLGeo();return($("uvLid").value=="custom"?i18("Custom LiDAR"):o.textContent)+", "+i18("{0} pts/m² at {1} m",Math.round(U.den),U.H)}const o=$("uvCam").selectedOptions[0];return($("uvCam").value=="custom"?i18("Custom camera"):o.textContent)+", "+i18("{0} cm/px at {1} m",(uvGeo().gsd*100).toFixed(2),g("uvH"))};
+const uvSensorRow=()=>[uvLid()?i18("LiDAR"):i18("Camera"),uvSensorTxt()];
+const uvSwathRow=()=>uvLid()?[i18("Side overlap"),g("uvLSO")+" %"]:[i18("Overlap (forward / side)"),g("uvFO")+" % / "+g("uvSO")+" %"];
+const uvMission=()=>{const U=uvGeo();return{h:U.H,trig:U.lidar?0:U.dPh,v:U.v}};// LiDAR: no camera trigger
 const _uvSetLang=setLang;setLang=function(){const r=_uvSetLang.apply(this,arguments);try{uvShow()}catch(e){}return r};

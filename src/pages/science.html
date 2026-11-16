@@ -102,7 +102,7 @@ TVU = 1.96 σz        THU = 2.45 σh</pre>
 <h3>6.3 Sub-bottom profiler and UHR seismic</h3>
 <p>Both use the grid spacing you enter. For 2D seismic, a line only reaches full fold once the whole streamer has passed over the start of the target area<sup class="fn"><a href="#r8">8</a></sup>, so the planner extends seismic lines by half the active streamer length at each end. Towed sensors add their layback behind the antenna to the run-in. The spacing used is the smallest of the ticked sensors.</p>
 
-<h2>7 Drone photogrammetry</h2>
+<h2>7 Drone photogrammetry and LiDAR</h2>
 <p>For a nadir camera with sensor width S<sub>w</sub> and height S<sub>h</sub> (mm), focal length F (mm, the real focal length, not the 35 mm equivalent), image width N pixels, at height H above ground<sup class="fn"><a href="#r9">9</a></sup><sup class="fn"><a href="#r10">10</a></sup>:</p>
 <pre class="f">footprint across = H · Sw / F       footprint along = H · Sh / F
 GSD = footprint across / N           (ground sample distance, m per pixel)
@@ -112,6 +112,14 @@ photo interval   = photo distance / v</pre>
 <p>For example, the DJI Mavic 3 Enterprise wide camera (17.3 × 13 mm, 12.3 mm, 5280 px)<sup class="fn"><a href="#r26">26</a></sup> at 100 m gives a 140.7 m footprint across, a GSD of 2.66 cm, 49.2 m line spacing at 65 % side overlap and a photo every 26.4 m at 75 % forward overlap. The defaults, 75 % forward and 65 % side, follow common practice: Pix4D recommends at least 75 % forward and 60 % side for general mapping<sup class="fn"><a href="#r10">10</a></sup>. The plan check compares the photo interval with the camera's shortest interval: 0.7 s for the Mavic 3 Enterprise<sup class="fn"><a href="#r26">26</a></sup> and the Zenmuse P1<sup class="fn"><a href="#r29">29</a></sup>, 0.5 s for the Matrice 4E<sup class="fn"><a href="#r27">27</a></sup> and 2.5 s for the Phantom 4 RTK<sup class="fn"><a href="#r28">28</a></sup>.</p>
 <p>Photos are counted as Σ line length / photo distance plus one per line. Batteries are the flight time divided by the time per battery, rounded up, and each change adds its time to the plan. The height warning uses 120 m, the limit for the EU open category<sup class="fn"><a href="#r11">11</a></sup>; the US limit is 400 ft above ground level<sup class="fn"><a href="#r12">12</a></sup>. Local rules and permissions decide.</p>
 <p>The waypoint exports switch distance-based triggering on after the first waypoint with MAVLink command 206, <code>MAV_CMD_DO_SET_CAM_TRIGG_DIST</code> (parameter 1 the distance, parameter 3 one picture at once), and off at the end with a distance of 0<sup class="fn"><a href="#r13">13</a></sup>.</p>
+<p><b>LiDAR.</b> A scanner with across-track field of view FOV, point rate P (points per second, single return), at height H and ground speed v, over flat ground:</p>
+<pre class="f">swath          = 2 · H · tan(FOV / 2)
+line spacing   = swath · (1 − side overlap)
+density, 1 pass = P / (v · swath)                (points per m²)
+density        = density, 1 pass / (1 − side overlap)
+slant range at the swath edge = H / cos(FOV / 2)
+highest speed for a target density D = P / (D · (1 − side overlap) · swath)</pre>
+<p>The average density counts every emitted point once on the ground; with side overlap each point of the ground is swept 1 / (1 − overlap) times on average. The detection range is the maker's figure for 10 % reflectivity in bright light, which is about the darkest common ground (asphalt, wet soil). The plan check compares it with the height and with the slant range at the swath edge. For example, the DJI Zenmuse L2 (70° across, 240,000 points/s single return, 250 m at 10 % reflectivity and 100 klx)<sup class="fn"><a href="#r38">38</a></sup> at 100 m and 10 m/s sweeps 140 m and gives 171 points/m² per pass, 343 with 50 % side overlap; the edge slant range is 122 m. The L1 has a 70.4° field of view in repetitive scanning, the same 240,000 points/s single return and 190 m at 10 %<sup class="fn"><a href="#r39">39</a></sup>. The L3 scans up to 80°, its pulse rate is adjustable from 100 kHz to 2 MHz, and it detects 700 m at 10 % reflectivity at 350 kHz (950 m at 100 kHz)<sup class="fn"><a href="#r40">40</a></sup>. In non-repetitive scanning the pattern also spreads along track, but the average density per pass is the same, since it depends only on the point rate and the area swept per second.</p>
 
 <h2>8 Turns, time and cost</h2>
 <h3>8.1 Williamson-style and U-turns</h3>
@@ -166,7 +174,10 @@ cost           = total project (days) × day rate</pre>
 <tr><td>DJI Mavic 3 Enterprise (wide)</td><td>17.3 × 13 mm, 12.3 mm, 5280 px, 0.7 s</td><td><sup class="fn"><a href="#r26">26</a></sup></td></tr>
 <tr><td>DJI Matrice 4E (wide)</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent (12.3 mm), 5280 px, 0.5 s</td><td><sup class="fn"><a href="#r27">27</a></sup></td></tr>
 <tr><td>DJI Phantom 4 RTK</td><td>1″ (13.2 × 8.8 mm), 8.8 mm, 5472 px, 2.5 s</td><td><sup class="fn"><a href="#r28">28</a></sup></td></tr>
-<tr><td>DJI Zenmuse P1, 35 mm lens</td><td>35.9 × 24 mm, 35 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr></table>
+<tr><td>DJI Zenmuse P1, 35 mm lens</td><td>35.9 × 24 mm, 35 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr>
+<tr><td>DJI Zenmuse L2 (LiDAR)</td><td>70° across, 240,000 points/s, 250 m at 10 %</td><td><sup class="fn"><a href="#r38">38</a></sup></td></tr>
+<tr><td>DJI Zenmuse L1 (LiDAR)</td><td>70.4° across, 240,000 points/s, 190 m at 10 %</td><td><sup class="fn"><a href="#r39">39</a></sup></td></tr>
+<tr><td>DJI Zenmuse L3 (LiDAR, 350 kHz)</td><td>80° across, 350,000 points/s, 700 m at 10 %</td><td><sup class="fn"><a href="#r40">40</a></sup></td></tr></table>
 <p>Multibeam models checked against the manufacturer's published datasheet or manual in November 2026<sup class="fn"><a href="#r37">37</a></sup>. The half-angle is half the swath sector the maker states for a flat seabed (for NORBIT, half the sector it gives for IHO Special Order quality); "n/a" means the datasheet does not give a single-swath beam count.</p>
 <table><tr><th>Model</th><th>Beams</th><th>Frequency</th><th>Max half-angle</th><th>Source</th></tr>
 <tr><td>Kongsberg EM 2040C</td><td>512</td><td>200–400 kHz + 700 kHz</td><td>70°</td><td>Kongsberg EM 2040C MKII data sheet 443809</td></tr>
@@ -241,6 +252,9 @@ cost           = total project (days) × day rate</pre>
 <li id="r35">Chaikin, G. M. (1974). An algorithm for high-speed curve generation. <i>Computer Graphics and Image Processing</i>, 3(4), 346–349. <a href="https://doi.org/10.1016/0146-664X(74)90028-8">doi:10.1016/0146-664X(74)90028-8</a></li>
 <li id="r36">Douglas, D. H. and Peucker, T. K. (1973). Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. <i>Cartographica</i>, 10(2), 112–122. <a href="https://doi.org/10.3138/FM57-6770-U75U-7727">doi:10.3138/FM57-6770-U75U-7727</a></li>
 <li id="r37">Manufacturer datasheets and manuals, as named in the table: Kongsberg Discovery (kongsberg.com/discovery/seafloor-mapping), Teledyne RESON (teledynemarine.com/reson), R2Sonic (r2sonic.com), NORBIT Subsea (norbit.com). Accessed November 2026.</li>
+<li id="r38">DJI (2023). <i>Zenmuse L2 specifications</i> and <i>Zenmuse L2 operation guide</i>. <a href="https://enterprise.dji.com/zenmuse-l2/specs">enterprise.dji.com/zenmuse-l2/specs</a>. Accessed November 2026.</li>
+<li id="r39">DJI (2020). <i>Zenmuse L1 specifications</i>. <a href="https://www.dji.com/zenmuse-l1/info">dji.com/zenmuse-l1/info</a>. Accessed November 2026.</li>
+<li id="r40">DJI (2025). <i>Zenmuse L3 specifications</i>. <a href="https://enterprise.dji.com/zenmuse-l3/specs">enterprise.dji.com/zenmuse-l3/specs</a>. Accessed November 2026.</li>
 </ol>
 <p class="ver">© 2026 Aldwin Syahperdana. Last checked against the sources: November 2026.</p>
 </article></main>
