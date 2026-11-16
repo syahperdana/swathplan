@@ -3,11 +3,16 @@
 // (the maker's figure where published, otherwise 1 s: check yours)
 const UV_CAM={m3e:[17.3,13,12.3,5280,.7],m3m:[17.3,13,12.3,5280,1],m3d:[17.3,13,12.3,5280,1],m4e:[17.3,13,12.3,5280,.5],p4r:[13.2,8.8,8.8,5472,2.5],l2c:[17.3,13,12.3,5280,.7],
 p1_24:[35.9,24,24,8192,.7],p1:[35.9,24,35,8192,.7],p1_50:[35.9,24,50,8192,.7],evo2:[13.2,8.8,10.6,5472,1],soda:[13.2,8.8,10.6,5472,1],aeriax:[23.5,15.6,18.5,6000,1],
-rx1r2:[35.9,24,35,7952,1],a6100:[23.5,15.6,20,6000,1],lr1:[35.7,23.8,24,9504,1],ixm35:[43.9,32.9,35,11664,.34],ixm80:[43.9,32.9,80,11664,.34]};
+rx1r2:[35.9,24,35,7952,1],a6100:[23.5,15.6,20,6000,1],lr1:[35.7,23.8,24,9504,1],ixm35:[43.9,32.9,35,11664,.34],ixm80:[43.9,32.9,80,11664,.34],
+p5_35:[46.2,32.9,35,13392,.25],p5_80:[46.2,32.9,80,13392,.25],m4t:[9.7,7.3,6.7,8064,.7],anafi:[6.4,4.8,4.4,8000,1],x10:[13.1,9.8,7.6,8192,1]};
+// P5: 128 MP global shutter, 3.45 µm pixels (13,392 px wide), 4 frames/s; small sensors: real focal length from the 24 / 20 mm equivalent
 const uvKnMs=.5144;
 // LiDAR presets (DJI published specs): across-track FOV °, point rate pts/s (single return), detection range m at 10 % reflectivity
 const UV_LID={l2:[70,240000,250],l1:[70.4,240000,190],l3:[80,350000,700],avia:[70.4,240000,190],mapper:[70.4,240000,190],aa450:[70.4,240000,190],
-sult:[90,160000,140],mvux3:[120,100000,170]};// Surveyor Ultra: 360° scanner, points within a 90° downward sector (640,000 × 90/360); miniVUX-3UAV: 300 kHz at 120°, range at 20 %
+sult:[90,160000,140],mvux3:[120,100000,170],
+vux120:[100,2000000,760],ranger:[100,2000000,760],voyager:[100,1500000,760],qube240:[70,240000,171],qube640:[120,213333,80],wingtra:[90,160000,80],r3pro:[90,160000,80],liair:[70.4,240000,190],x3ch:[90,160000,80]};
+// VUX-120²³ / RANGER-U120: 2 M measurements/s at 100°, 760 m at 20 % (lowest pulse rate); Voyager: VUX-120 at 1.8 MHz (1.5 M/s); Qube 240: 140 m maximum height, i.e. 171 m at the 70° edge;
+// Hesai XT32 / XT32M2X scanners (Qube 640, Wingtra, ROCK R3 Pro V2, LiAir X3C-H): 640,000 points/s over 360°, counted within the downward sector, 80 m at 10 %// Surveyor Ultra: 360° scanner, points within a 90° downward sector (640,000 × 90/360); miniVUX-3UAV: 300 kHz at 120°, range at 20 %
 const uvLid=()=>MODE().uav&&$("uvPay")&&$("uvPay").value=="lidar";
 // LiDAR: swath 2H·tan(FOV/2), spacing from the side overlap, point density = rate / (speed × swath), raised by the overlap
 function uvLGeo(){const H=Math.max(1,g("uvH")),fov=Math.min(170,Math.max(1,g("uvLF"))),sw=2*H*Math.tan(fov/2*D),so=Math.min(95,Math.max(0,g("uvLSO")))/100,v=Math.max(.1,g("spd")*uvKnMs),rate=Math.max(1,g("uvLR")),

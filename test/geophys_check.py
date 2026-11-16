@@ -61,10 +61,13 @@ with sync_playwright() as p:
     # side-scan list: 20 models, every option has a frequency and range, saved values of the first list still exist
     ev=pg.evaluate
     opts=ev("[...$('gSM').querySelectorAll('option[data-f]')].map(o=>[o.value,+o.dataset.f,+o.dataset.r,o.parentElement.label])")
-    check(len(opts)>=40 and len({o[3] for o in opts})>=20 and all(o[1]>0 and o[2]>0 for o in opts),f"{len({o[3] for o in opts})} side-scan models, {len(opts)} frequencies, each with a range per side")
+    check(len(opts)>=85 and len({o[3] for o in opts})>=44 and all(o[1]>0 and o[2]>0 for o in opts),f"{len({o[3] for o in opts})} side-scan models, {len(opts)} frequencies, each with a range per side")
     check(all(v in [o[0] for o in opts] for v in ['EdgeTech 4125|400','EdgeTech 4200|300','EdgeTech 4200|600','Klein 3900|445','Klein 4900|900']),"saved side-scan values of the earlier list still match")
     ev("$('gSM').value='EdgeTech 4205|120';$('gSM').dispatchEvent(new Event('change'))");pg.wait_for_timeout(300)
     check(ev("g('gSR')")==600,"EdgeTech 4205 at 120 kHz sets 600 m per side")
+    check(all(v in [o[0] for o in opts] for v in ['C-MAX CM2 DF|100','Humminbird MEGA SI+|1100','Garmin SideVü (GT52/GT54)|455','Klein 4K-SVY|300','Lowrance / Simrad Active Imaging|455','Cerulean Omniscan 450 SS|450']),"C-MAX, Humminbird, Garmin, Lowrance, Cerulean and Klein 4K-SVY listed")
+    ev("$('gSM').value='Klein 4K-SVY|300';$('gSM').dispatchEvent(new Event('change'))");pg.wait_for_timeout(300)
+    check(ev("g('gSR')")==250,"Klein 4K-SVY at 300 kHz sets 250 m per side")
     check(not errs,f"no page errors {errs[:3]}")
     br.close()
 print("FAILED" if bad else "ALL OK"); sys.exit(1 if bad else 0)
