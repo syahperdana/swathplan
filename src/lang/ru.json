@@ -207,7 +207,6 @@
  "Latitude / longitude (degrees)": "Широта / долгота (градусы)",
  "Both: projected grid + lat/lon": "Обе: проекционная сетка + широта/долгота",
  "Include basemap (needs internet)": "Включить подложку (нужен интернет)",
- "Include soundings": "Включить промеры",
  "Line names and direction arrows": "Названия галсов и стрелки направления",
  "PDF report (map sheet + statistics pages)": "PDF-отчёт (планшет карты + страницы статистики)",
  "Map image format": "Формат изображения карты",
@@ -1114,5 +1113,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Данные не лучше источника: GMRT и NCEI местами содержат реальные многолучевые съёмки, но в остальных местах это сетки 100–450 м, поэтому используйте их для планирования, а не вместо собственных промеров. Суша и осушки игнорируются. Вертикальная основа — примерно средний уровень моря, а не нуль глубин: используйте вертикальное смещение из раздела {§xyz} или выберите консервативную глубину. Если браузер блокирует сервис (офлайн или CORS), скачайте сетку по показанной ссылке и загрузите её здесь. Источники: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Длинные трассы и большие районы загружаются частями вокруг района съёмки.",
  "Height:": "Высота:",
  "Downloading… {0} of {1} pieces": "Загрузка… {0} из {1} частей",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} из {1} частей не удалось загрузить или они оборваны, поэтому там могут отсутствовать глубины: попробуйте более грубое разрешение или откройте ссылку ниже."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} из {1} частей не удалось загрузить или они оборваны, поэтому там могут отсутствовать глубины: попробуйте более грубое разрешение или откройте ссылку ниже.",
+ "Include depths or terrain": "Включить глубины или рельеф",
+ "Contours with depths or terrain": "Изолинии вместе с глубинами или рельефом",
+ "Show the terrain on the map": "Показать рельеф на карте",
+ "Depth (m), light = shallow": "Глубина (м), светлее = мельче",
+ "Ground elevation (m)": "Высота земли (м)",
+ "Depth contours every {0} m": "Изобаты через {0} м",
+ "Elevation contours every {0} m": "Горизонтали через {0} м"
 }

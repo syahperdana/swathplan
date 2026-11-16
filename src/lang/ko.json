@@ -204,7 +204,6 @@
  "Latitude / longitude (degrees)": "위도 / 경도(도)",
  "Both: projected grid + lat/lon": "둘 다: 투영 격자 + 위경도",
  "Include basemap (needs internet)": "배경지도 포함 (인터넷 필요)",
- "Include soundings": "측심값 포함",
  "Line names and direction arrows": "측선 이름과 방향 화살표",
  "PDF report (map sheet + statistics pages)": "PDF 보고서 (지도 시트 + 통계 페이지)",
  "Map image format": "지도 이미지 형식",
@@ -1106,5 +1105,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "자료는 출처의 품질만큼만 정확합니다: GMRT와 NCEI는 일부 지역에 실제 다중빔 측량 자료가 있지만 다른 곳은 100–450 m 격자이므로 계획용으로만 쓰고 직접 측심을 대체하지 마세요. 육지와 간출 셀은 무시됩니다. 수직 기준은 해도 기준면이 아니라 대략 평균 해수면이므로 {§xyz}번 항목의 수직 오프셋을 사용하거나 보수적인 수심을 선택하세요. 브라우저가 서비스를 차단하면(오프라인 또는 CORS) 표시된 링크로 격자를 내려받아 여기서 불러오세요. 출처: GMRT(Lamont-Doherty), NOAA NCEI, EMODnet. 긴 노선과 넓은 지역은 측량 지역 주변을 나누어 내려받습니다.",
  "Height:": "높이:",
  "Downloading… {0} of {1} pieces": "다운로드 중… {1}개 중 {0}개",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1}개 중 {0}개 조각을 내려받지 못했거나 잘려서 그곳의 수심이 빠질 수 있습니다. 더 거친 해상도를 사용하거나 아래 링크를 여십시오."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1}개 중 {0}개 조각을 내려받지 못했거나 잘려서 그곳의 수심이 빠질 수 있습니다. 더 거친 해상도를 사용하거나 아래 링크를 여십시오.",
+ "Include depths or terrain": "수심 또는 지형 포함",
+ "Contours with depths or terrain": "수심·지형 등고선",
+ "Show the terrain on the map": "지도에 지형 표시",
+ "Depth (m), light = shallow": "수심 (m), 밝을수록 얕음",
+ "Ground elevation (m)": "지반 표고 (m)",
+ "Depth contours every {0} m": "등심선 {0} m 간격",
+ "Elevation contours every {0} m": "등고선 {0} m 간격"
 }

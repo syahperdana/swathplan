@@ -205,7 +205,6 @@
  "Latitude / longitude (degrees)": "緯度／経度（度）",
  "Both: projected grid + lat/lon": "両方：投影グリッド＋緯度経度",
  "Include basemap (needs internet)": "ベースマップを含める（インターネット必要）",
- "Include soundings": "測深点を含める",
  "Line names and direction arrows": "測線名と方向矢印",
  "PDF report (map sheet + statistics pages)": "PDFレポート（図面シート＋統計ページ）",
  "Map image format": "地図画像の形式",
@@ -1107,5 +1106,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "データの品質はソース次第です。GMRTとNCEIは場所によって実際のマルチビーム測量を含みますが、他の場所では100～450 mグリッドです。計画用に使い、ご自身の測深データの代わりにはしないでください。陸地と干出セルは無視されます。鉛直基準面はおおよそ平均海面で、海図基準面ではありません。セクション{§xyz}の鉛直オフセットを使うか、安全側の水深を選んでください。ブラウザがサービスをブロックする場合（オフラインやCORS）、表示されるリンクからグリッドをダウンロードしてここに読み込んでください。出典: GMRT (Lamont-Doherty)、NOAA NCEI、EMODnet。長いルートや広い範囲は、調査範囲の周辺を分割してダウンロードします。",
  "Height:": "高度:",
  "Downloading… {0} of {1} pieces": "ダウンロード中… {1} 個中 {0} 個",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} 個中 {0} 個の部分をダウンロードできないか途中で切れたため、そこでは水深が欠けている可能性があります。より粗い解像度を試すか、下のリンクを開いてください。"
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} 個中 {0} 個の部分をダウンロードできないか途中で切れたため、そこでは水深が欠けている可能性があります。より粗い解像度を試すか、下のリンクを開いてください。",
+ "Include depths or terrain": "水深または地形を含める",
+ "Contours with depths or terrain": "水深・地形の等値線",
+ "Show the terrain on the map": "地図に地形を表示",
+ "Depth (m), light = shallow": "水深（m）、明るい = 浅い",
+ "Ground elevation (m)": "地盤標高（m）",
+ "Depth contours every {0} m": "等深線 {0} m 間隔",
+ "Elevation contours every {0} m": "等高線 {0} m 間隔"
 }

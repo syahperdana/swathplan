@@ -204,7 +204,6 @@
  "Latitude / longitude (degrees)": "عرض بلد / طول بلد (درجے)",
  "Both: projected grid + lat/lon": "دونوں: پروجیکٹڈ گرڈ + عرض/طول بلد",
  "Include basemap (needs internet)": "بیس میپ شامل کریں (انٹرنیٹ درکار)",
- "Include soundings": "ساؤنڈنگز شامل کریں",
  "Line names and direction arrows": "لائن نام اور سمتی تیر",
  "PDF report (map sheet + statistics pages)": "PDF رپورٹ (نقشہ شیٹ + اعداد و شمار کے صفحات)",
  "Map image format": "نقشہ تصویر فارمیٹ",
@@ -1106,5 +1105,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "ڈیٹا اتنا ہی درست ہے جتنا اس کا ماخذ: GMRT اور NCEI میں کچھ علاقوں میں حقیقی ملٹی بیم سروے ہیں مگر دوسری جگہوں پر 100–450 میٹر کے گرڈ ہیں، اس لیے انہیں صرف منصوبہ بندی کے لیے استعمال کریں، اپنی ساؤنڈنگز کے متبادل کے طور پر نہیں۔ خشکی اور خشک ہونے والے خانے نظر انداز کیے جاتے ہیں۔ عمودی ڈیٹم تقریباً اوسط سطحِ سمندر ہے، چارٹ ڈیٹم نہیں، اس لیے آئٹم {§xyz} کا عمودی آفسیٹ استعمال کریں یا محتاط گہرائی منتخب کریں۔ اگر براؤزر سروس کو بلاک کرے (آف لائن یا CORS)، تو دکھائے گئے لنک سے گرڈ ڈاؤن لوڈ کر کے یہاں لوڈ کریں۔ ماخذ: GMRT (Lamont-Doherty)، NOAA NCEI، EMODnet۔ لمبے راستے اور بڑے علاقے سروے کے علاقے کے آس پاس حصوں میں ڈاؤن لوڈ کیے جاتے ہیں۔",
  "Height:": "اونچائی:",
  "Downloading… {0} of {1} pieces": "ڈاؤن لوڈ ہو رہا ہے… {1} میں سے {0} حصے",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} میں سے {0} حصے ڈاؤن لوڈ نہیں ہو سکے یا ادھورے رہے، اس لیے وہاں گہرائیاں غائب ہو سکتی ہیں: کم باریک ریزولیوشن آزمائیں، یا نیچے دیا گیا لنک کھولیں۔"
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} میں سے {0} حصے ڈاؤن لوڈ نہیں ہو سکے یا ادھورے رہے، اس لیے وہاں گہرائیاں غائب ہو سکتی ہیں: کم باریک ریزولیوشن آزمائیں، یا نیچے دیا گیا لنک کھولیں۔",
+ "Include depths or terrain": "گہرائیاں یا زمین شامل کریں",
+ "Contours with depths or terrain": "گہرائیوں یا زمین کے ساتھ کنٹور",
+ "Show the terrain on the map": "نقشے پر زمین دکھائیں",
+ "Depth (m), light = shallow": "گہرائی (m)، ہلکا = کم گہرا",
+ "Ground elevation (m)": "زمین کی بلندی (m)",
+ "Depth contours every {0} m": "ہر {0} m پر گہرائی کنٹور",
+ "Elevation contours every {0} m": "ہر {0} m پر بلندی کنٹور"
 }

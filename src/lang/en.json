@@ -237,7 +237,6 @@
  "Latitude / longitude (degrees)",
  "Both: projected grid + lat/lon",
  "Include basemap (needs internet)",
- "Include soundings",
  "Line names and direction arrows",
  "PDF report (map sheet + statistics pages)",
  "Map image format",
@@ -1167,5 +1166,12 @@
  "Save",
  "Height:",
  "Downloading… {0} of {1} pieces",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.",
+ "Include depths or terrain",
+ "Contours with depths or terrain",
+ "Show the terrain on the map",
+ "Depth (m), light = shallow",
+ "Ground elevation (m)",
+ "Depth contours every {0} m",
+ "Elevation contours every {0} m"
 ]

@@ -204,7 +204,6 @@
  "Latitude / longitude (degrees)": "Vĩ độ / kinh độ (độ)",
  "Both: projected grid + lat/lon": "Cả hai: lưới chiếu + vĩ/kinh độ",
  "Include basemap (needs internet)": "Gồm bản đồ nền (cần internet)",
- "Include soundings": "Gồm điểm đo sâu",
  "Line names and direction arrows": "Tên tuyến và mũi tên hướng",
  "PDF report (map sheet + statistics pages)": "Báo cáo PDF (tờ bản đồ + các trang thống kê)",
  "Map image format": "Định dạng ảnh bản đồ",
@@ -1106,5 +1105,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Dữ liệu chỉ chính xác bằng nguồn của nó: GMRT và NCEI có khảo sát đa tia thực ở một số vùng nhưng ở nơi khác là lưới 100–450 m, vì vậy chỉ dùng để lập kế hoạch, không thay thế cho việc đo trực tiếp. Ô đất liền và ô lộ khô bị bỏ qua. Mốc cao độ xấp xỉ mực nước biển trung bình, không phải mốc hải đồ, nên hãy dùng độ lệch thẳng đứng ở mục {§xyz} hoặc chọn độ sâu thận trọng. Nếu trình duyệt chặn dịch vụ (ngoại tuyến hoặc CORS), hãy tải lưới từ liên kết hiển thị và nạp vào đây. Nguồn: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Tuyến dài và khu vực rộng được tải theo từng phần quanh khu vực khảo sát.",
  "Height:": "Độ cao:",
  "Downloading… {0} of {1} pieces": "Đang tải… {0} / {1} phần",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} / {1} phần không tải được hoặc bị cắt ngang, nên có thể thiếu độ sâu ở đó: hãy thử độ phân giải thô hơn, hoặc mở liên kết bên dưới."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} / {1} phần không tải được hoặc bị cắt ngang, nên có thể thiếu độ sâu ở đó: hãy thử độ phân giải thô hơn, hoặc mở liên kết bên dưới.",
+ "Include depths or terrain": "Gồm độ sâu hoặc địa hình",
+ "Contours with depths or terrain": "Đường đồng mức kèm độ sâu hoặc địa hình",
+ "Show the terrain on the map": "Hiện địa hình trên bản đồ",
+ "Depth (m), light = shallow": "Độ sâu (m), sáng = nông",
+ "Ground elevation (m)": "Độ cao mặt đất (m)",
+ "Depth contours every {0} m": "Đường đẳng sâu cách {0} m",
+ "Elevation contours every {0} m": "Đường đồng mức cách {0} m"
 }

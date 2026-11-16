@@ -90,3 +90,7 @@ if(P.miss)add("bad",i18("{0} waypoints are outside the terrain model and keep th
 $("chk").insertAdjacentHTML("afterbegin",C.join(""));return r};
 $("uvTB").onclick=tgLoad;$("uvTFile").onchange=e=>{const f=e.target.files[0];if(f)tgFile(f);e.target.value=""};
 ["uvTF","uvTD","uvTO"].forEach(id=>{const e=$(id);["input","change"].forEach(ev=>e.addEventListener(ev,()=>{gen();saveSoon()}))});
+// the terrain on the map, under the lines (drone mode, "Show the terrain on the map")
+const _tgDraw=drawBath;drawBath=function(){_tgDraw.apply(this,arguments);if(!MODE().uav||!TG||!$("uvTM").checked)return;const t=tgShade();if(!t||!t.c)return;
+const p=sc(fromLL(t.a1,t.o0)),q=sc(fromLL(t.a0,t.o1));cx.save();cx.globalAlpha=.85;cx.imageSmoothingEnabled=true;cx.drawImage(t.c,p[0],p[1],q[0]-p[0],q[1]-p[1]);cx.restore()};
+$("uvTM").addEventListener("change",()=>{rq();saveSoon()});

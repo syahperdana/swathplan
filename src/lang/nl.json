@@ -205,7 +205,6 @@
  "Latitude / longitude (degrees)": "Breedte / lengte (graden)",
  "Both: projected grid + lat/lon": "Beide: geprojecteerd raster + lat/lon",
  "Include basemap (needs internet)": "Basiskaart opnemen (internet nodig)",
- "Include soundings": "Peilingen opnemen",
  "Line names and direction arrows": "Lijnnamen en richtingspijlen",
  "PDF report (map sheet + statistics pages)": "Pdf-rapport (kaartblad + statistiekpagina's)",
  "Map image format": "Afbeeldingsformaat kaart",
@@ -1107,5 +1106,12 @@
  "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "De data zijn zo goed als de bron: GMRT en NCEI bevatten op sommige plaatsen echte multibeam-opnamen, maar elders rasters van 100–450 m; gebruik ze voor planning, niet als vervanging van uw eigen peilingen. Land- en droogvallende cellen worden genegeerd. Het verticale datum is ruwweg gemiddeld zeeniveau, niet kaartdatum: gebruik de verticale offset in sectie {§xyz} of kies een voorzichtige diepte. Blokkeert uw browser een dienst (offline of CORS), gebruik dan de getoonde link om het raster te downloaden en laad het hier. Bronnen: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Lange routes en grote gebieden worden in stukken rond het meetgebied gedownload.",
  "Height:": "Hoogte:",
  "Downloading… {0} of {1} pieces": "Downloaden… {0} van {1} stukken",
- "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} van {1} stukken konden niet worden gedownload of zijn afgebroken, dus daar kunnen diepten ontbreken: probeer een grovere resolutie of open de link hieronder."
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} van {1} stukken konden niet worden gedownload of zijn afgebroken, dus daar kunnen diepten ontbreken: probeer een grovere resolutie of open de link hieronder.",
+ "Include depths or terrain": "Diepten of terrein opnemen",
+ "Contours with depths or terrain": "Contouren bij diepten of terrein",
+ "Show the terrain on the map": "Terrein op de kaart tonen",
+ "Depth (m), light = shallow": "Diepte (m), licht = ondiep",
+ "Ground elevation (m)": "Grondhoogte (m)",
+ "Depth contours every {0} m": "Dieptelijnen elke {0} m",
+ "Elevation contours every {0} m": "Hoogtelijnen elke {0} m"
 }
