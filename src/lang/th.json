@@ -1088,5 +1088,12 @@
  "Transducer": "ทรานสดิวเซอร์",
  "Typical 200 kHz narrow beam (about 3°)": "ลำคลื่นแคบ 200 kHz ทั่วไป (ประมาณ 3°)",
  "Typical 200 kHz beam (about 8°)": "ลำคลื่น 200 kHz ทั่วไป (ประมาณ 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "ลำคลื่นความถี่ต่ำ 33 kHz ทั่วไป (ประมาณ 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "ลำคลื่นความถี่ต่ำ 33 kHz ทั่วไป (ประมาณ 20°)",
+ "Use built-in coastline (offline, approximate)": "ใช้แนวชายฝั่งในตัว (ออฟไลน์ โดยประมาณ)",
+ "Save coastline as GeoJSON": "บันทึกแนวชายฝั่งเป็น GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "แนวชายฝั่งที่โหลดจะถูกเก็บไว้กับโปรเจกต์ ทั้งในการบันทึกอัตโนมัติและไฟล์ .SPL: ดาวน์โหลดแนวชายฝั่ง OSM ครั้งเดียวขณะออนไลน์ แล้วจะใช้งานออฟไลน์ได้ต่อไป แนวชายฝั่ง OSM ละเอียดและครอบคลุมทั่วโลกแต่มาจากผู้ใช้: ตรวจสอบกับแผนที่เดินเรือทางการ แนวชายฝั่งในตัวคือ Natural Earth 1:50m แม่นยำประมาณ 1 กม.: ใช้สำหรับการวางแผนนอกชายฝั่งเท่านั้น พร้อมระยะปลอดภัยที่เหมาะสม สำหรับงานออฟไลน์ที่ละเอียด ให้โหลดไฟล์ GeoJSON ที่ส่งออกจาก GSHHG (full), Natural Earth 10m หรือรูปหลายเหลี่ยมพื้นดินของ OSM เส้นทางเลี้ยวจะไม่ถูกตรวจสอบกับพื้นดิน",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "ใหญ่เกินกว่าจะเก็บไว้กับโปรเจกต์: บันทึกเป็น GeoJSON แล้วโหลดไฟล์นั้นในครั้งต่อไป",
+ "Kept with the project, so it works offline.": "เก็บไว้กับโปรเจกต์แล้ว จึงใช้งานออฟไลน์ได้",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "โหลดแนวชายฝั่งในตัวแล้ว: {0} เส้น เป็น Natural Earth 1:50m แม่นยำประมาณ 1 กม.: เหมาะสำหรับกันแนวสำรวจนอกชายฝั่งให้พ้นพื้นดิน ไม่เหมาะกับงานใกล้ชายฝั่ง",
+ "No built-in coastline in this area (open water or inland)": "ไม่มีแนวชายฝั่งในตัวในพื้นที่นี้ (ทะเลเปิดหรือบนบก)"
 }

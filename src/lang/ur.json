@@ -1079,5 +1079,12 @@
  "Transducer": "ٹرانسڈیوسر",
  "Typical 200 kHz narrow beam (about 3°)": "عام 200 kHz تنگ بیم (تقریباً 3°)",
  "Typical 200 kHz beam (about 8°)": "عام 200 kHz بیم (تقریباً 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "عام 33 kHz کم فریکوئنسی بیم (تقریباً 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "عام 33 kHz کم فریکوئنسی بیم (تقریباً 20°)",
+ "Use built-in coastline (offline, approximate)": "بلٹ اِن ساحلی لکیر استعمال کریں (آف لائن، تخمینی)",
+ "Save coastline as GeoJSON": "ساحلی لکیر کو GeoJSON کے طور پر محفوظ کریں",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "لوڈ کی گئی ساحلی لکیر پروجیکٹ کے ساتھ، آٹو سیو اور محفوظ .SPL فائلوں میں رکھی جاتی ہے: OSM ساحلی لکیر ایک بار آن لائن ڈاؤن لوڈ کریں اور وہ آف لائن بھی کام کرتی رہے گی۔ OSM ساحلی لکیر تفصیلی اور عالمی ہے مگر صارفین کی بنائی ہوئی ہے: سرکاری چارٹس سے ملائیں۔ بلٹ اِن ساحلی لکیر Natural Earth 1:50m ہے، تقریباً 1 کلومیٹر تک درست: اسے صرف ساحل سے دور منصوبہ بندی کے لیے، مناسب فاصلے کے ساتھ استعمال کریں۔ تفصیلی آف لائن کام کے لیے GSHHG (full)، Natural Earth 10m یا OSM زمینی کثیرالاضلاع کا GeoJSON ایکسپورٹ لوڈ کریں۔ موڑ کے راستے زمین کے مقابلے میں نہیں جانچے جاتے۔",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "پروجیکٹ کے ساتھ رکھنے کے لیے بہت بڑی: اسے GeoJSON کے طور پر محفوظ کریں اور اگلی بار وہ فائل لوڈ کریں۔",
+ "Kept with the project, so it works offline.": "پروجیکٹ کے ساتھ رکھی گئی، اس لیے آف لائن کام کرتی ہے۔",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "بلٹ اِن ساحلی لکیر لوڈ ہو گئی: {0} لکیریں۔ یہ Natural Earth 1:50m ہے، تقریباً 1 کلومیٹر تک درست: ساحل سے دور لائنوں کو زمین سے بچانے کے لیے ٹھیک، ساحلی کام کے لیے نہیں۔",
+ "No built-in coastline in this area (open water or inland)": "اس علاقے میں کوئی بلٹ اِن ساحلی لکیر نہیں (کھلا پانی یا اندرونِ ملک)"
 }

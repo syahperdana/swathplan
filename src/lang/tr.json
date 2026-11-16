@@ -1079,5 +1079,12 @@
  "Transducer": "Dönüştürücü",
  "Typical 200 kHz narrow beam (about 3°)": "Tipik 200 kHz dar huzme (yaklaşık 3°)",
  "Typical 200 kHz beam (about 8°)": "Tipik 200 kHz huzme (yaklaşık 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Tipik 33 kHz düşük frekans huzmesi (yaklaşık 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Tipik 33 kHz düşük frekans huzmesi (yaklaşık 20°)",
+ "Use built-in coastline (offline, approximate)": "Yerleşik kıyı çizgisini kullan (çevrim dışı, yaklaşık)",
+ "Save coastline as GeoJSON": "Kıyı çizgisini GeoJSON olarak kaydet",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "Yüklenen kıyı çizgisi projeyle birlikte, otomatik kayıtta ve .SPL dosyalarında saklanır: OSM kıyı çizgisini çevrim içiyken bir kez indirin, sonra çevrim dışı da çalışır. OSM kıyı çizgisi ayrıntılı ve dünya çapındadır ama kullanıcı katkılıdır: resmî haritalarla karşılaştırın. Yerleşik kıyı çizgisi Natural Earth 1:50m’dir ve yaklaşık 1 km doğrulukludur: yalnızca açık deniz planlamasında, buna uygun bir emniyet mesafesiyle kullanın. Ayrıntılı çevrim dışı çalışma için GSHHG (full), Natural Earth 10m veya OSM kara çokgenlerinin GeoJSON dışa aktarımını yükleyin. Dönüş yolları karaya karşı denetlenmez.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Projeyle saklanamayacak kadar büyük: GeoJSON olarak kaydedin ve bir dahaki sefere dosyayı yükleyin.",
+ "Kept with the project, so it works offline.": "Projeyle saklandı, bu yüzden çevrim dışı çalışır.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Yerleşik kıyı çizgisi yüklendi: {0} çizgi. Natural Earth 1:50m, yaklaşık 1 km doğrulukta: açık deniz hatlarını karadan uzak tutmak için uygun, kıyı yakını çalışmalar için değil.",
+ "No built-in coastline in this area (open water or inland)": "Bu alanda yerleşik kıyı çizgisi yok (açık deniz veya iç kesim)"
 }

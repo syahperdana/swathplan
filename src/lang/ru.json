@@ -1087,5 +1087,12 @@
  "Transducer": "Антенна",
  "Typical 200 kHz narrow beam (about 3°)": "Типичный узкий луч 200 кГц (около 3°)",
  "Typical 200 kHz beam (about 8°)": "Типичный луч 200 кГц (около 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Типичный низкочастотный луч 33 кГц (около 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Типичный низкочастотный луч 33 кГц (около 20°)",
+ "Use built-in coastline (offline, approximate)": "Встроенная береговая линия (офлайн, приблизительно)",
+ "Save coastline as GeoJSON": "Сохранить береговую линию в GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "Загруженная береговая линия хранится вместе с проектом — в автосохранении и в файлах .SPL: скачайте береговую линию OSM один раз при подключении, и дальше она работает офлайн. Береговая линия OSM подробная и всемирная, но создана пользователями: сверяйте её с официальными картами. Встроенная береговая линия — Natural Earth 1:50m с точностью около 1 км: используйте её только для планирования в открытом море и с соответствующим отступом. Для подробной офлайн-работы загрузите экспорт GeoJSON из GSHHG (full), Natural Earth 10m или полигонов суши OSM. Траектории разворотов на сушу не проверяются.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Слишком большая, чтобы хранить с проектом: сохраните в GeoJSON и загрузите файл в следующий раз.",
+ "Kept with the project, so it works offline.": "Хранится с проектом, поэтому работает офлайн.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Встроенная береговая линия загружена: {0} линий. Это Natural Earth 1:50m с точностью около 1 км: подходит, чтобы удерживать морские галсы вдали от суши, но не для прибрежных работ.",
+ "No built-in coastline in this area (open water or inland)": "В этом районе нет встроенной береговой линии (открытое море или суша)"
 }

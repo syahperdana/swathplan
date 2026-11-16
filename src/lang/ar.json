@@ -1080,5 +1080,12 @@
  "Transducer": "المحوّل",
  "Typical 200 kHz narrow beam (about 3°)": "حزمة ضيقة نموذجية 200 كيلوهرتز (نحو 3°)",
  "Typical 200 kHz beam (about 8°)": "حزمة نموذجية 200 كيلوهرتز (نحو 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "حزمة منخفضة التردد نموذجية 33 كيلوهرتز (نحو 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "حزمة منخفضة التردد نموذجية 33 كيلوهرتز (نحو 20°)",
+ "Use built-in coastline (offline, approximate)": "استخدم خط الساحل المدمج (دون اتصال، تقريبي)",
+ "Save coastline as GeoJSON": "احفظ خط الساحل بصيغة GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "يُحفظ خط الساحل المحمّل مع المشروع، في الحفظ التلقائي وفي ملفات .SPL: نزّل خط ساحل OSM مرة واحدة أثناء الاتصال ويبقى يعمل دون اتصال. خط ساحل OSM مفصّل وعالمي لكنه من إسهام المستخدمين: قارنه بالخرائط الرسمية. خط الساحل المدمج هو Natural Earth 1:50m بدقة نحو 1 كم: استخدمه لتخطيط المناطق البعيدة عن الشاطئ فقط، مع مسافة أمان مناسبة. للعمل المفصّل دون اتصال، حمّل ملف GeoJSON مصدّرًا من GSHHG (full) أو Natural Earth 10m أو مضلعات اليابسة من OSM. لا تُفحص مسارات الانعطاف مقابل اليابسة.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "أكبر من أن يُحفظ مع المشروع: احفظه بصيغة GeoJSON وحمّل الملف في المرة القادمة.",
+ "Kept with the project, so it works offline.": "محفوظ مع المشروع، لذا يعمل دون اتصال.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "تم تحميل خط الساحل المدمج: {0} خطوط. إنه Natural Earth 1:50m بدقة نحو 1 كم: مناسب لإبعاد الخطوط البحرية عن اليابسة، لا للعمل القريب من الشاطئ.",
+ "No built-in coastline in this area (open water or inland)": "لا يوجد خط ساحل مدمج في هذه المنطقة (مياه مفتوحة أو داخل اليابسة)"
 }

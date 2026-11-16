@@ -1079,5 +1079,12 @@
  "Transducer": "송수파기",
  "Typical 200 kHz narrow beam (about 3°)": "일반적인 200 kHz 협빔(약 3°)",
  "Typical 200 kHz beam (about 8°)": "일반적인 200 kHz 빔(약 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "일반적인 33 kHz 저주파 빔(약 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "일반적인 33 kHz 저주파 빔(약 20°)",
+ "Use built-in coastline (offline, approximate)": "내장 해안선 사용(오프라인, 근사)",
+ "Save coastline as GeoJSON": "해안선을 GeoJSON으로 저장",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "불러온 해안선은 프로젝트와 함께 자동 저장과 .SPL 파일에 보관됩니다. 온라인일 때 OSM 해안선을 한 번 내려받으면 이후 오프라인에서도 사용할 수 있습니다. OSM 해안선은 상세하고 전 세계를 다루지만 사용자가 기여한 자료입니다: 공식 해도와 대조하세요. 내장 해안선은 Natural Earth 1:50m로 정확도가 약 1 km입니다: 그에 맞는 이격 거리로 연안 밖 계획에만 쓰세요. 상세한 오프라인 작업에는 GSHHG(full), Natural Earth 10m 또는 OSM 육지 폴리곤을 GeoJSON으로 내보내 불러오세요. 선회 경로는 육지와 대조하지 않습니다.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "프로젝트와 함께 보관하기에는 너무 큽니다: GeoJSON으로 저장하고 다음에는 그 파일을 불러오세요.",
+ "Kept with the project, so it works offline.": "프로젝트와 함께 보관되어 오프라인에서도 작동합니다.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "내장 해안선을 불러왔습니다: {0}개 선. Natural Earth 1:50m로 정확도가 약 1 km입니다: 연안 밖 측선을 육지에서 떨어뜨리기에는 적합하지만 연안 작업에는 맞지 않습니다.",
+ "No built-in coastline in this area (open water or inland)": "이 구역에는 내장 해안선이 없습니다(외해 또는 내륙)"
 }

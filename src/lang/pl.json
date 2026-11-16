@@ -1088,5 +1088,12 @@
  "Transducer": "Przetwornik",
  "Typical 200 kHz narrow beam (about 3°)": "Typowa wąska wiązka 200 kHz (ok. 3°)",
  "Typical 200 kHz beam (about 8°)": "Typowa wiązka 200 kHz (ok. 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Typowa niskoczęstotliwościowa wiązka 33 kHz (ok. 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Typowa niskoczęstotliwościowa wiązka 33 kHz (ok. 20°)",
+ "Use built-in coastline (offline, approximate)": "Użyj wbudowanej linii brzegowej (offline, przybliżonej)",
+ "Save coastline as GeoJSON": "Zapisz linię brzegową jako GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "Wczytana linia brzegowa jest przechowywana z projektem, w autozapisie i w plikach .SPL: pobierz linię brzegową OSM raz, będąc online, a potem działa offline. Linia brzegowa OSM jest szczegółowa i ogólnoświatowa, ale tworzona przez użytkowników: porównaj ją z oficjalnymi mapami. Wbudowana linia brzegowa to Natural Earth 1:50m z dokładnością ok. 1 km: używaj jej tylko do planowania na otwartym morzu, z odpowiednim odstępem. Do szczegółowej pracy offline wczytaj eksport GeoJSON z GSHHG (full), Natural Earth 10m lub poligonów lądu OSM. Trasy zwrotów nie są sprawdzane względem lądu.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Za duża, by przechować ją z projektem: zapisz ją jako GeoJSON i następnym razem wczytaj plik.",
+ "Kept with the project, so it works offline.": "Przechowywana z projektem, więc działa offline.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Wczytano wbudowaną linię brzegową: {0} linii. To Natural Earth 1:50m z dokładnością ok. 1 km: wystarcza, by trzymać linie na morzu z dala od lądu, ale nie do prac przybrzeżnych.",
+ "No built-in coastline in this area (open water or inland)": "Brak wbudowanej linii brzegowej w tym obszarze (otwarte morze lub ląd)"
 }

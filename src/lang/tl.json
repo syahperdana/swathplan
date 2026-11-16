@@ -1079,5 +1079,12 @@
  "Transducer": "Transducer",
  "Typical 200 kHz narrow beam (about 3°)": "Karaniwang makitid na beam na 200 kHz (mga 3°)",
  "Typical 200 kHz beam (about 8°)": "Karaniwang beam na 200 kHz (mga 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Karaniwang low-frequency na beam na 33 kHz (mga 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Karaniwang low-frequency na beam na 33 kHz (mga 20°)",
+ "Use built-in coastline (offline, approximate)": "Gamitin ang built-in na baybayin (offline, tantiya)",
+ "Save coastline as GeoJSON": "I-save ang baybayin bilang GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "Itinatabi kasama ng proyekto ang na-load na baybayin, sa autosave at sa mga na-save na .SPL file: i-download nang isang beses ang OSM na baybayin habang online at gagana pa rin ito offline. Detalyado at pandaigdigan ang OSM na baybayin pero gawa ng mga user: ihambing sa opisyal na chart. Ang built-in na baybayin ay Natural Earth 1:50m, tumpak sa mga 1 km: gamitin lang para sa pagpaplano sa malayong dagat, na may angkop na clearance. Para sa detalyadong offline na trabaho, mag-load ng GeoJSON export ng GSHHG (full), Natural Earth 10m o OSM land polygons. Hindi sinusuri laban sa lupa ang mga liko.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Masyadong malaki para itabi kasama ng proyekto: i-save bilang GeoJSON at i-load ang file sa susunod.",
+ "Kept with the project, so it works offline.": "Nakatabi kasama ng proyekto, kaya gumagana offline.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Na-load ang built-in na baybayin: {0} linya. Ito ay Natural Earth 1:50m, tumpak sa mga 1 km: angkop para ilayo sa lupa ang mga linya sa malayong dagat, hindi para sa trabahong malapit sa baybayin.",
+ "No built-in coastline in this area (open water or inland)": "Walang built-in na baybayin sa lugar na ito (bukas na dagat o loob ng lupa)"
 }
