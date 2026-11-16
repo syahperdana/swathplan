@@ -145,7 +145,6 @@
  "Values = elevation (negative = depth)": "ค่า = ระดับสูง (ค่าลบ = ความลึก)",
  "Values = depth (positive down)": "ค่า = ความลึก (บวกลงล่าง)",
  "Detect automatically": "ตรวจจับอัตโนมัติ",
- "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).": "ข้อมูลแม่นยำเท่าแหล่งที่มา: GMRT และ NCEI มีการสำรวจมัลติบีมจริงบางแห่ง แต่ที่อื่นเป็นกริด 100–450 ม. จึงควรใช้เพื่อวางแผนเท่านั้น ไม่ใช่แทนการหยั่งความลึกของคุณเอง เซลล์แผ่นดินและพื้นที่โผล่พ้นน้ำถูกละเว้น ดาตัมแนวดิ่งโดยประมาณคือระดับน้ำทะเลปานกลาง ไม่ใช่ดาตัมแผนที่เดินเรือ ให้ใช้ค่าชดเชยแนวดิ่งในข้อ {§xyz} หรือเลือกความลึกแบบระมัดระวัง หากเบราว์เซอร์บล็อกบริการ (ออฟไลน์หรือ CORS) ให้ดาวน์โหลดกริดจากลิงก์ที่แสดงแล้วโหลดที่นี่ แหล่งที่มา: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO ผ่าน Open Topo Data (1 คำขอ/วินาที, 1000/วัน)",
  "Bathymetry from XYZ file (your own data)": "ความลึกจากไฟล์ XYZ (ข้อมูลของคุณเอง)",
  "Header lines to skip": "จำนวนบรรทัดส่วนหัวที่ข้าม",
  "Z convention": "รูปแบบ Z",
@@ -1112,5 +1111,9 @@
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "เหนือพื้นที่ต่ำ โดรนอยู่สูงถึง {0} ม. เหนือพื้น เกินขีดจำกัด 120 ม. ของหลายประเทศ",
  "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} จุดนำทางอยู่นอกแบบจำลองภูมิประเทศและใช้ความสูงขึ้นบิน: โหลดภูมิประเทศให้ครอบคลุมพื้นที่กว้างขึ้น",
  "Save the project as": "บันทึกโครงการเป็น",
- "Save": "บันทึก"
+ "Save": "บันทึก",
+ "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "ข้อมูลแม่นยำเท่าแหล่งที่มา: GMRT และ NCEI มีการสำรวจมัลติบีมจริงบางแห่ง แต่ที่อื่นเป็นกริด 100–450 ม. จึงควรใช้เพื่อวางแผนเท่านั้น ไม่ใช่แทนการหยั่งความลึกของคุณเอง เซลล์แผ่นดินและพื้นที่โผล่พ้นน้ำถูกละเว้น ดาตัมแนวดิ่งโดยประมาณคือระดับน้ำทะเลปานกลาง ไม่ใช่ดาตัมแผนที่เดินเรือ ให้ใช้ค่าชดเชยแนวดิ่งในข้อ {§xyz} หรือเลือกความลึกแบบระมัดระวัง หากเบราว์เซอร์บล็อกบริการ (ออฟไลน์หรือ CORS) ให้ดาวน์โหลดกริดจากลิงก์ที่แสดงแล้วโหลดที่นี่ แหล่งที่มา: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet เส้นทางยาวและพื้นที่ขนาดใหญ่จะดาวน์โหลดเป็นส่วน ๆ รอบพื้นที่สำรวจ",
+ "Height:": "ความสูง:",
+ "Downloading… {0} of {1} pieces": "กำลังดาวน์โหลด… {0} จาก {1} ส่วน",
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "ดาวน์โหลด {0} จาก {1} ส่วนไม่ได้หรือได้ไม่ครบ จึงอาจไม่มีความลึกในบริเวณนั้น: ลองความละเอียดที่หยาบขึ้น หรือเปิดลิงก์ด้านล่าง"
 }

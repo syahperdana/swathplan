@@ -163,7 +163,7 @@
  "Values = elevation (negative = depth)",
  "Values = depth (positive down)",
  "Detect automatically",
- "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).",
+ "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.",
  "Bathymetry from XYZ file (your own data)",
  "Header lines to skip",
  "Z convention",
@@ -1164,5 +1164,8 @@
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.",
  "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.",
  "Save the project as",
- "Save"
+ "Save",
+ "Height:",
+ "Downloading… {0} of {1} pieces",
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below."
 ]

@@ -145,7 +145,6 @@
  "Values = elevation (negative = depth)": "Wartości = wysokość (ujemne = głębokość)",
  "Values = depth (positive down)": "Wartości = głębokość (dodatnie w dół)",
  "Detect automatically": "Wykryj automatycznie",
- "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).": "Dane są tak dobre jak źródło: GMRT i NCEI zawierają miejscami prawdziwe pomiary wielowiązkowe, ale gdzie indziej to siatki 100–450 m, więc używaj ich do planowania, a nie jako zamiennika własnych sondowań. Komórki lądu i osuchu są pomijane. Datum pionowe to w przybliżeniu średni poziom morza, nie zero map, więc użyj przesunięcia pionowego z sekcji {§xyz} lub wybierz ostrożną głębokość. Jeśli przeglądarka blokuje usługę (offline lub CORS), pobierz siatkę z wyświetlonego linku i wczytaj ją tutaj. Źródła: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO przez Open Topo Data (1 zapytanie/s, 1000 dziennie).",
  "Bathymetry from XYZ file (your own data)": "Batymetria z pliku XYZ (własne dane)",
  "Header lines to skip": "Wiersze nagłówka do pominięcia",
  "Z convention": "Konwencja Z",
@@ -1112,5 +1111,9 @@
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Nad niskim terenem dron jest do {0} m nad gruntem, ponad limit 120 m obowiązujący w wielu krajach.",
  "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} punktów trasy leży poza modelem terenu i zachowuje wysokość startu: wczytaj teren dla większego obszaru.",
  "Save the project as": "Zapisz projekt jako",
- "Save": "Zapisz"
+ "Save": "Zapisz",
+ "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "Dane są tak dobre jak źródło: GMRT i NCEI zawierają miejscami prawdziwe pomiary wielowiązkowe, ale gdzie indziej to siatki 100–450 m, więc używaj ich do planowania, a nie jako zamiennika własnych sondowań. Komórki lądu i osuchu są pomijane. Datum pionowe to w przybliżeniu średni poziom morza, nie zero map, więc użyj przesunięcia pionowego z sekcji {§xyz} lub wybierz ostrożną głębokość. Jeśli przeglądarka blokuje usługę (offline lub CORS), pobierz siatkę z wyświetlonego linku i wczytaj ją tutaj. Źródła: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Długie trasy i duże obszary są pobierane w częściach wokół obszaru pomiaru.",
+ "Height:": "Wysokość:",
+ "Downloading… {0} of {1} pieces": "Pobieranie… {0} z {1} części",
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{0} z {1} części nie udało się pobrać lub są niepełne, więc może tam brakować głębokości: spróbuj grubszej rozdzielczości albo otwórz link poniżej."
 }

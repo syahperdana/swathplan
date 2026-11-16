@@ -166,6 +166,7 @@ cost           = total project (days) × day rate</pre>
 <tr><td>NOAA NCEI DEM mosaic</td><td>Global</td><td>Coastal DEMs where available, ETOPO 2022 (15″) elsewhere</td><td>NOAA NCEI (2022)<sup class="fn"><a href="#r21">21</a></sup></td></tr>
 <tr><td>EMODnet Digital Bathymetry</td><td>European seas</td><td>1/16 arc-minute (≈ 115 m)</td><td>EMODnet Bathymetry Consortium<sup class="fn"><a href="#r30">30</a></sup></td></tr>
 </table>
+<p>Only the part of the box near the survey area is fetched. GMRT and EMODnet are requested in pieces of about 300 × 300 cells that come within 500 m (or three cells) of the area or corridor, at most 40 pieces; with more, the resolution is coarsened by 1.4 until 40 suffice. NOAA NCEI is sampled at points near the area, at most 12,000. A piece that fails or comes back cut short is reported and left out, never read as zero depth.</p>
 <p>These grids blend surveys of very different age and quality and are referenced roughly to mean sea level. They are good for sizing a plan, but cannot meet S-44 depth uncertainty and may miss shoals, wrecks and dredged channels. None of them may be used for navigation<sup class="fn"><a href="#r20">20</a></sup><sup class="fn"><a href="#r31">31</a></sup>.</p>
 
 <h2>13 Infill planning</h2>
