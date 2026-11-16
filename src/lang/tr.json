@@ -1026,5 +1026,15 @@
  "{0} % of the raster has data": "Rasterin %{0} kadarında veri var",
  "SwathPlan home: all tools": "SwathPlan ana sayfa: tüm araçlar",
  "SwathPlan tools": "SwathPlan araçları",
- "Tools": "Araçlar"
+ "Tools": "Araçlar",
+ "Split into segments every (km, 0 = no split)": "Her şu kadar km’de bölümlere ayır (km, 0 = ayırma)",
+ "Overlap between segments (m)": "Bölümler arası bindirme (m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Uzun güzergâhlar bölümler hâlinde ölçülür. Her bölümün kendi hatları ve sınırı vardır; hat adları bölüm numarasını içerir (örneğin RL_02_S050, bölüm 2, sancakta 50 m). Komşu bölümler, veriler boşluksuz birleşsin diye bindirilir.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} bölüm, en fazla {1} km, {2} m bindirme.",
+ "Segment {0}": "Bölüm {0}",
+ "Corridor segments": "Koridor bölümleri",
+ "Segment": "Bölüm",
+ "KP from": "KP başlangıç",
+ "KP to": "KP bitiş",
+ "Length (km)": "Uzunluk (km)"
 }

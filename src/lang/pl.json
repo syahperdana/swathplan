@@ -1035,5 +1035,15 @@
  "{0} % of the raster has data": "{0} % rastra zawiera dane",
  "SwathPlan home: all tools": "Strona główna SwathPlan: wszystkie narzędzia",
  "SwathPlan tools": "Narzędzia SwathPlan",
- "Tools": "Narzędzia"
+ "Tools": "Narzędzia",
+ "Split into segments every (km, 0 = no split)": "Dziel na odcinki co (km, 0 = bez podziału)",
+ "Overlap between segments (m)": "Zakład między odcinkami (m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Długie trasy mierzy się odcinkami. Każdy odcinek ma własne linie i granicę, a nazwy linii zawierają numer odcinka (np. RL_02_S050 to odcinek 2, 50 m na sterburtę). Sąsiednie odcinki zachodzą na siebie, aby dane łączyły się bez luki.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} odcinki do {1} km, zakład {2} m.",
+ "Segment {0}": "Odcinek {0}",
+ "Corridor segments": "Odcinki korytarza",
+ "Segment": "Odcinek",
+ "KP from": "KP od",
+ "KP to": "KP do",
+ "Length (km)": "Długość (km)"
 }

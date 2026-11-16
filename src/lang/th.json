@@ -1035,5 +1035,15 @@
  "{0} % of the raster has data": "{0} % ของราสเตอร์มีข้อมูล",
  "SwathPlan home: all tools": "หน้าแรก SwathPlan: เครื่องมือทั้งหมด",
  "SwathPlan tools": "เครื่องมือ SwathPlan",
- "Tools": "เครื่องมือ"
+ "Tools": "เครื่องมือ",
+ "Split into segments every (km, 0 = no split)": "แบ่งเป็นช่วงทุก (กม. 0 = ไม่แบ่ง)",
+ "Overlap between segments (m)": "การซ้อนทับระหว่างช่วง (ม.)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "แนวเส้นทางยาวจะสำรวจเป็นช่วง แต่ละช่วงมีแนวสำรวจและขอบเขตของตนเอง และชื่อแนวมีหมายเลขช่วง (เช่น RL_02_S050 คือช่วงที่ 2 ห่างกราบขวา 50 ม.) ช่วงที่ติดกันซ้อนทับกันเพื่อให้ข้อมูลต่อเนื่องไม่มีช่องว่าง",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} ช่วง ยาวไม่เกิน {1} กม. ซ้อนทับ {2} ม.",
+ "Segment {0}": "ช่วงที่ {0}",
+ "Corridor segments": "ช่วงของแนวเส้นทาง",
+ "Segment": "ช่วง",
+ "KP from": "KP เริ่ม",
+ "KP to": "KP สิ้นสุด",
+ "Length (km)": "ความยาว (กม.)"
 }

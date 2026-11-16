@@ -9,6 +9,8 @@
 <label id="coCtrL"><input type="checkbox" id="coCtr" checked> Run a line on the route centreline</label>
 <div id="coOffB" hidden><label>Offsets from the route (m, starboard positive, port negative)</label><input type="text" id="coOff" value="0, ±25, ±50, ±75, ±100"></div>
 <div class="kv"><span>Survey lines and offsets</span><b id="coLn">-</b></div>
+<div class="r2"><div><label>Split into segments every (km, 0 = no split)</label><input type="number" id="coSeg" value="20" min="0" step="1"></div><div><label>Overlap between segments (m)</label><input type="number" id="coSegO" value="100" min="0" step="10"></div></div>
+<p class="note">Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.</p>
 <label>Line extension at each end, run-in and run-out (m)</label><input type="number" id="coExt" value="50" min="0" step="1">
 <div class="r2"><div><label>Cross line every (m of KP, 0 = none)</label><input type="number" id="coXI" value="500" min="0" step="10"></div><div><label>Cross line beyond the corridor (m)</label><input type="number" id="coXE" value="25" min="0" step="1"></div></div>
 <div class="r2"><div><label>Line name prefix</label><input type="text" id="coPre" value="RL_"></div><div><label>Cross line prefix</label><input type="text" id="coXP" value="XL_"></div></div>
