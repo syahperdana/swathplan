@@ -1050,5 +1050,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "कोई {0} मी समोच्च रेखा क्षेत्र को पार नहीं करती; सीधी लाइनें उपयोग होती हैं। क्षेत्र में गहराई: {1} से {2} मी।",
  "Too many contour lines for this area at this spacing; straight lines are used.": "इस अंतराल पर इस क्षेत्र के लिए बहुत अधिक समोच्च लाइनें; सीधी लाइनें उपयोग होती हैं।",
  "Checked against the manufacturer's datasheet: {0}.": "निर्माता की डेटाशीट से जाँचा गया: {0}।",
- "Not yet checked against a datasheet: treat these values as approximate.": "अभी डेटाशीट से नहीं जाँचा गया: इन मानों को अनुमानित मानें।"
+ "Not yet checked against a datasheet: treat these values as approximate.": "अभी डेटाशीट से नहीं जाँचा गया: इन मानों को अनुमानित मानें।",
+ "Also cover outside the boundary (m)": "सीमा के बाहर भी कवर करें (मी)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "सीमा के भीतर जो कुछ लोड किया गया डेटा कवर नहीं करता, वह अंतराल है: ट्रैक के बीच के छेद और किनारों पर अभी छूटी पट्टियाँ। सीमा के बाहर का मार्जिन भी गिना जाता है, ताकि स्वाथ के किनारे सीमा से आगे पहुँचें; कवरेज प्रतिशत केवल क्षेत्र का है।"
 }

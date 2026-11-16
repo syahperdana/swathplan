@@ -1058,5 +1058,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Изобата {0} м не пересекает район; используются прямые галсы. Глубины в районе: от {1} до {2} м.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Слишком много галсов по изобате для этого района при таком шаге; используются прямые галсы.",
  "Checked against the manufacturer's datasheet: {0}.": "Проверено по паспорту изготовителя: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Ещё не проверено по паспорту: считайте значения приблизительными."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Ещё не проверено по паспорту: считайте значения приблизительными.",
+ "Also cover outside the boundary (m)": "Покрывать и за границей (м)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Всё внутри границы, что не покрыто загруженными данными, считается пропуском: дыры между галсами и полосы, которых ещё нет вдоль краёв. Учитывается и полоса за границей, чтобы края полосы обзора заходили за неё; процент покрытия — для самого района."
 }

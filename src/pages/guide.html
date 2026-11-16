@@ -246,6 +246,7 @@
 <li><b>Track lines</b> (before processing): the vessel or towfish positions. The covered strip is computed from the depth and swath angles (or a fixed width). For side-scan it runs from the nadir gap to the range on each side, and at 200 % every point must be seen twice (points seen once show in yellow). <i>Use the coverage extent as the area</i> draws the boundary from the data.</li>
 </ul>
 <p>Then set the grid cell, the smallest gap worth infilling, the line extension and the direction (<i>Same direction as the tracks</i>). The planner reports the coverage of the area and the gaps, plans infill lines spaced for the chosen coverage, and exports the gaps as CSV and the lines in every format.</p>
+<p>With a survey boundary drawn or imported, every part of it that the loaded data does not cover is a gap: holes between tracks as well as the strips still missing along the boundary. To be safe at the edges, set <i>Also cover outside the boundary (m)</i>, for example to half a swath. A margin of that width outside the boundary then counts as area to cover. The margin strip along each boundary edge gets infill lines parallel to that edge, and gaps inside the area keep the chosen line direction. The coverage percentage is still that of the area itself. An infill line runs only where its strip has gaps, so it never crosses ground that is already covered; it is split into several lines where needed.</p>
 
 <h2>14 Troubleshooting</h2>
 <table><tr><th>Problem</th><th>What to do</th></tr>

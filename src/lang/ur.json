@@ -1050,5 +1050,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "کوئی {0} میٹر کنٹور علاقے سے نہیں گزرتی؛ سیدھی لائنیں استعمال ہوتی ہیں۔ علاقے میں گہرائی: {1} سے {2} میٹر۔",
  "Too many contour lines for this area at this spacing; straight lines are used.": "اس فاصلے پر اس علاقے کے لیے بہت زیادہ کنٹور لائنیں؛ سیدھی لائنیں استعمال ہوتی ہیں۔",
  "Checked against the manufacturer's datasheet: {0}.": "مینوفیکچرر کی ڈیٹا شیٹ سے جانچا گیا: {0}۔",
- "Not yet checked against a datasheet: treat these values as approximate.": "ابھی ڈیٹا شیٹ سے نہیں جانچا گیا: ان اقدار کو تخمینی سمجھیں۔"
+ "Not yet checked against a datasheet: treat these values as approximate.": "ابھی ڈیٹا شیٹ سے نہیں جانچا گیا: ان اقدار کو تخمینی سمجھیں۔",
+ "Also cover outside the boundary (m)": "حد کے باہر بھی کور کریں (میٹر)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "حد کے اندر جو کچھ لوڈ شدہ ڈیٹا کور نہیں کرتا وہ خلا ہے: ٹریکس کے درمیان سوراخ اور کناروں پر ابھی باقی پٹیاں۔ حد کے باہر کا مارجن بھی شمار ہوتا ہے، تاکہ سواتھ کے کنارے حد سے آگے پہنچیں؛ کوریج کا فیصد صرف علاقے کا ہے۔"
 }

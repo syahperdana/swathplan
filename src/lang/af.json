@@ -1051,5 +1051,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Geen {0} m-dieptelyn kruis die gebied nie; reguit lyne word gebruik. Dieptes in die gebied: {1} tot {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Te veel dieptelyn-lyne vir hierdie gebied by hierdie spasiëring; reguit lyne word gebruik.",
  "Checked against the manufacturer's datasheet: {0}.": "Nagegaan teen die vervaardiger se datablad: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Nog nie teen ’n datablad nagegaan nie: beskou hierdie waardes as benaderd."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Nog nie teen ’n datablad nagegaan nie: beskou hierdie waardes as benaderd.",
+ "Also cover outside the boundary (m)": "Dek ook buite die grens (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Alles binne die grens wat die gelaaide data nie dek nie, is ’n gaping: gate tussen spore en stroke wat nog langs die kante ontbreek. ’n Marge buite die grens tel ook, sodat die swadrande verby die grens strek; die dekkingspersentasie is van die gebied self."
 }

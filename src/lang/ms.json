@@ -1059,5 +1059,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Tiada kontur {0} m merentas kawasan; garisan lurus digunakan. Kedalaman di kawasan: {1} hingga {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Terlalu banyak garisan kontur untuk kawasan ini pada jarak ini; garisan lurus digunakan.",
  "Checked against the manufacturer's datasheet: {0}.": "Disemak dengan lembaran data pengeluar: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Belum disemak dengan lembaran data: anggap nilai ini anggaran."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Belum disemak dengan lembaran data: anggap nilai ini anggaran.",
+ "Also cover outside the boundary (m)": "Liputi juga di luar sempadan (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Semua di dalam sempadan yang tidak diliputi data yang dimuatkan ialah jurang: lubang antara trek dan jalur yang masih tiada di sepanjang tepi. Margin di luar sempadan juga dikira, supaya tepi sapuan melepasi sempadan; peratus liputan adalah untuk kawasan itu sendiri."
 }

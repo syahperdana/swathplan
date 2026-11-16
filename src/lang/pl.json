@@ -1059,5 +1059,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Żadna izobata {0} m nie przecina obszaru; używane są linie proste. Głębokości w obszarze: od {1} do {2} m.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "Za dużo linii wzdłuż izobaty dla tego obszaru przy tym odstępie; używane są linie proste.",
  "Checked against the manufacturer's datasheet: {0}.": "Sprawdzono z kartą katalogową producenta: {0}.",
- "Not yet checked against a datasheet: treat these values as approximate.": "Jeszcze nie sprawdzono z kartą katalogową: traktuj te wartości jako przybliżone."
+ "Not yet checked against a datasheet: treat these values as approximate.": "Jeszcze nie sprawdzono z kartą katalogową: traktuj te wartości jako przybliżone.",
+ "Also cover outside the boundary (m)": "Pokryj też poza granicą (m)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "Wszystko w granicy, czego wczytane dane nie pokrywają, jest luką: dziury między przejściami i pasy jeszcze brakujące wzdłuż krawędzi. Liczy się też margines poza granicą, aby krawędzie pasa sięgały za nią; procent pokrycia dotyczy samego obszaru."
 }

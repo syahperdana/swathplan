@@ -1059,5 +1059,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "ไม่มีเส้นชั้นความลึก {0} ม. ผ่านพื้นที่ จึงใช้แนวตรง ความลึกในพื้นที่: {1} ถึง {2} ม.",
  "Too many contour lines for this area at this spacing; straight lines are used.": "แนวตามเส้นชั้นความลึกมากเกินไปสำหรับพื้นที่นี้ที่ระยะห่างนี้ จึงใช้แนวตรง",
  "Checked against the manufacturer's datasheet: {0}.": "ตรวจสอบกับเอกสารข้อมูลของผู้ผลิตแล้ว: {0}",
- "Not yet checked against a datasheet: treat these values as approximate.": "ยังไม่ได้ตรวจสอบกับเอกสารข้อมูล: ให้ถือว่าค่าเหล่านี้เป็นค่าประมาณ"
+ "Not yet checked against a datasheet: treat these values as approximate.": "ยังไม่ได้ตรวจสอบกับเอกสารข้อมูล: ให้ถือว่าค่าเหล่านี้เป็นค่าประมาณ",
+ "Also cover outside the boundary (m)": "ครอบคลุมนอกขอบเขตด้วย (ม.)",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "ทุกส่วนในขอบเขตที่ข้อมูลที่โหลดไม่ครอบคลุมคือช่องว่าง ทั้งรูระหว่างแนวสำรวจและแถบที่ยังขาดตามขอบ ระยะเผื่อนอกขอบเขตก็นับด้วย เพื่อให้ขอบแนวกวาดเลยขอบเขตออกไป เปอร์เซ็นต์การครอบคลุมคิดเฉพาะพื้นที่เอง"
 }

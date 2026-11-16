@@ -34,6 +34,22 @@ with sync_playwright() as p:
     worst = pg.evaluate("""(()=>{const G=IF.g,S=params().S;let w=0;IF.regions.forEach(r=>r.cells.forEach(k=>{const i=k%G.nx,j=(k-i)/G.nx,x=G.x0+(i+.5)*G.c,y=G.y0+(j+.5)*G.c;let d=1e9;
       R.lines.forEach(l=>{const a=l.a,b=l.b,dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy)));d=Math.min(d,Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy))});w=Math.max(w,d)}));return w/(params().W/2)})()""")
     check(worst <= 1.0, f"all gap cells inside the infill swaths (worst {worst:.2f} of half a swath)")
+    # a margin outside the boundary: the strip west of the first track becomes a gap, the coverage of the area itself is unchanged
+    n0 = pg.evaluate("IF.regions.length"); c0 = pg.evaluate("$('ifCov').textContent")
+    pg.evaluate("$('ifBuf').value=params().W;$('ifBuf').dispatchEvent(new Event('change'))"); pg.wait_for_timeout(500)
+    print('   ', pg.evaluate("$('ifSt').textContent"))
+    xw = pg.evaluate("Math.min(...poly.map(p=>p[0]))")
+    import os
+    if os.environ.get('SHOT'): pg.evaluate("fit();render()"); pg.wait_for_timeout(400); pg.screenshot(path=os.environ['SHOT'])
+    check(abs(float(pg.evaluate("$('ifCov').textContent").split()[0]) - float(c0.split()[0])) < 1, "margin outside the boundary: coverage of the area itself unchanged (grid shift only)")
+    over = pg.evaluate("""(()=>{const G=IF.g;let a=0,b=0;R.lines.forEach(l=>{const n=Math.ceil(L(l)/G.c);for(let t=0;t<=n;t++){const x=l.a[0]+(l.b[0]-l.a[0])*t/n,y=l.a[1]+(l.b[1]-l.a[1])*t/n,i=Math.floor((x-G.x0)/G.c),j=Math.floor((y-G.y0)/G.c);if(i<0||j<0||i>=G.nx||j>=G.ny)continue;const k=j*G.nx+i;if(!G.ins[k])continue;b++;if(G.cov[k]>=255)a++}});return a/Math.max(1,b)})()""")
+    check(over < 0.35, f"infill lines do not run across covered ground ({over*100:.0f} % of their length over covered cells, from the line extensions)")
+    h = pg.evaluate("Math.max(...poly.map(p=>p[1]))-Math.min(...poly.map(p=>p[1]))")
+    check(pg.evaluate("R.lines.filter(l=>Math.abs(l.b[0]-l.a[0])>Math.abs(l.b[1]-l.a[1])).length") >= 2, "the strips along the north and south edges get lines along the edge (east-west)")
+    check(pg.evaluate("R.lines.length") < 20, f"a few lines around the margin, not many short ones ({pg.evaluate('R.lines.length')})")
+    check(pg.evaluate(f"R.lines.some(l=>Math.max(l.a[0],l.b[0])<{xw})"), "an infill line runs outside the boundary to cover the margin")
+    pg.evaluate("$('ifBuf').value=0;$('ifBuf').dispatchEvent(new Event('change'))"); pg.wait_for_timeout(500)
+    check(pg.evaluate("IF.regions.length") == n0, "margin 0: back to the gaps inside the area")
     check(abs(pg.evaluate("g('az')")) < 0.01 or abs(pg.evaluate("g('az')") - 180) < 0.01, "line direction follows the tracks (N-S)")
     chk = pg.evaluate("$('chk').innerText")
     check(chk.startswith("Coverage") and "No cross lines" not in chk and "overlap" not in chk.split('\n')[1], "infill plan checks")

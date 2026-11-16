@@ -1051,5 +1051,7 @@
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "{0} mの等深線が範囲を通っていないため、直線の測線を使います。範囲内の水深：{1}～{2} m。",
  "Too many contour lines for this area at this spacing; straight lines are used.": "この間隔ではこの範囲の等深線測線が多すぎるため、直線の測線を使います。",
  "Checked against the manufacturer's datasheet: {0}.": "メーカーのデータシートで確認済み：{0}。",
- "Not yet checked against a datasheet: treat these values as approximate.": "データシートでの確認はまだです：値は概算として扱ってください。"
+ "Not yet checked against a datasheet: treat these values as approximate.": "データシートでの確認はまだです：値は概算として扱ってください。",
+ "Also cover outside the boundary (m)": "境界の外側もカバー（m）",
+ "Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.": "境界内で読み込んだデータが覆っていない所はすべて欠測です。測線間の穴や、縁に沿ってまだ足りない帯も含みます。境界外の余白も欠測として数えるので、スワスの端が境界を越えます。カバー率は範囲そのものに対する値です。"
 }
