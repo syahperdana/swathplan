@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "プロジェクトに保存するには大きすぎます：GeoJSONで保存し、次回はそのファイルを読み込んでください。",
  "Kept with the project, so it works offline.": "プロジェクトに保存済みのため、オフラインで使えます。",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "内蔵の海岸線を読み込みました：{0}本。Natural Earth 1:50mで精度は約1 kmです：沖合の測線を陸地から離すには十分ですが、沿岸作業には向きません。",
- "No built-in coastline in this area (open water or inland)": "この範囲に内蔵の海岸線はありません（外洋または内陸）"
+ "No built-in coastline in this area (open water or inland)": "この範囲に内蔵の海岸線はありません（外洋または内陸）",
+ "Long routes in segments": "長いルートを区間で",
+ "One sheet per segment, plus an overview": "区間ごとに1枚、さらに全体図",
+ "The whole route on one sheet": "ルート全体を1枚に",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF：全図面を1ファイルに。画像：図面ごとに1枚、まとめてzipに。DXF：1ファイルで、区間ごとにレイヤーを分け、区間ごとの名前付きビュー付き。",
+ "Overview: whole route": "全体図：ルート全体",
+ "Sheet {0} of {1}": "{1}枚中{0}枚目",
+ "{0}, KP {1} to {2}": "{0}、KP {1}～{2}",
+ "Rendering map sheet {0} of {1}…": "図面{0}/{1}を作成中…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0}枚の図面を1つのzipに保存しました（{1} MB）：全体図と区間ごとの図面。"
 }

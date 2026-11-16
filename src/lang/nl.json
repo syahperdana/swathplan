@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Te groot om bij het project te bewaren: sla hem op als GeoJSON en laad het bestand de volgende keer.",
  "Kept with the project, so it works offline.": "Bewaard bij het project, dus werkt offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Ingebouwde kustlijn geladen: {0} lijnen. Het is Natural Earth 1:50m, nauwkeurig tot ongeveer 1 km: geschikt om lijnen op zee van land te houden, niet voor werk dicht onder de kust.",
- "No built-in coastline in this area (open water or inland)": "Geen ingebouwde kustlijn in dit gebied (open water of binnenland)"
+ "No built-in coastline in this area (open water or inland)": "Geen ingebouwde kustlijn in dit gebied (open water of binnenland)",
+ "Long routes in segments": "Lange tracés in segmenten",
+ "One sheet per segment, plus an overview": "Eén blad per segment, plus een overzicht",
+ "The whole route on one sheet": "Het hele tracé op één blad",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: alle bladen in één bestand. Afbeeldingen: één afbeelding per blad, samen in een zip. DXF: één bestand, elk segment op eigen lagen, met een benoemde weergave per segment.",
+ "Overview: whole route": "Overzicht: hele tracé",
+ "Sheet {0} of {1}": "Blad {0} van {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} tot {2}",
+ "Rendering map sheet {0} of {1}…": "Kaartblad {0} van {1} maken…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} kaartbladen opgeslagen in één zip ({1} MB): een overzicht en één blad per segment."
 }

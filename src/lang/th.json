@@ -1095,5 +1095,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "ใหญ่เกินกว่าจะเก็บไว้กับโปรเจกต์: บันทึกเป็น GeoJSON แล้วโหลดไฟล์นั้นในครั้งต่อไป",
  "Kept with the project, so it works offline.": "เก็บไว้กับโปรเจกต์แล้ว จึงใช้งานออฟไลน์ได้",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "โหลดแนวชายฝั่งในตัวแล้ว: {0} เส้น เป็น Natural Earth 1:50m แม่นยำประมาณ 1 กม.: เหมาะสำหรับกันแนวสำรวจนอกชายฝั่งให้พ้นพื้นดิน ไม่เหมาะกับงานใกล้ชายฝั่ง",
- "No built-in coastline in this area (open water or inland)": "ไม่มีแนวชายฝั่งในตัวในพื้นที่นี้ (ทะเลเปิดหรือบนบก)"
+ "No built-in coastline in this area (open water or inland)": "ไม่มีแนวชายฝั่งในตัวในพื้นที่นี้ (ทะเลเปิดหรือบนบก)",
+ "Long routes in segments": "แนวเส้นทางยาวแบ่งเป็นช่วง",
+ "One sheet per segment, plus an overview": "หนึ่งแผ่นต่อช่วง พร้อมแผ่นภาพรวม",
+ "The whole route on one sheet": "ทั้งแนวเส้นทางในแผ่นเดียว",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: ทุกแผ่นในไฟล์เดียว รูปภาพ: หนึ่งภาพต่อแผ่น รวมไว้ใน zip DXF: ไฟล์เดียว แต่ละช่วงอยู่ในเลเยอร์ของตนเอง พร้อมมุมมองที่ตั้งชื่อไว้สำหรับแต่ละช่วง",
+ "Overview: whole route": "ภาพรวม: ทั้งแนวเส้นทาง",
+ "Sheet {0} of {1}": "แผ่นที่ {0} จาก {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} ถึง {2}",
+ "Rendering map sheet {0} of {1}…": "กำลังสร้างแผ่นแผนที่ {0} จาก {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "บันทึกแผ่นแผนที่ {0} แผ่นใน zip เดียว ({1} MB): แผ่นภาพรวมและหนึ่งแผ่นต่อช่วง"
 }

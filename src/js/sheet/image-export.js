@@ -16,6 +16,8 @@ for(let y0=0;y0<H;y0+=256){const h=Math.min(256,H-y0),d=ctx.getImageData(0,y0,W,
 async function withFallback(op,fn){try{return await fn(op)}catch(e){if(op.base&&/taint|insecure|secur|cross/i.test(e.message+e.name)){op.base=false;xst(i18("The basemap server blocks export (CORS): exporting without basemap."));return await fn(op)}throw e}}
 $("xpPdf").onclick=async()=>{if(!needs())return;try{xst(i18("Building the PDF report…"));const b=await withFallback(xo(),op=>buildReport(op,true));save("survey_plan_report.pdf",b,"application/pdf");xst(i18("PDF report saved ({0} MB).",(b.size/1048576).toFixed(1)))}catch(e){xst(i18("Export failed: {0}",e.message))}};
 $("xpImg").onclick=async()=>{if(!needs())return;const f=$("xpFmt").value,base="survey_plan_"+(/gtif|pngw|jpgw/.test(f)?"map":"sheet");try{xst(i18("Rendering…"));
+// a long corridor: an overview and one sheet per segment, in one zip (segment-sheets.js)
+if(f!="pdfmap"){const SO=typeof sheetOps=="function"?sheetOps(xo()):[];if(SO.length>1){await sheetsZip(SO,f,base);return}}
 if(f=="svg"){const r=await renderSheet(Object.assign(xo(),{base:false}),false,true);save(base+".svg",r.svg,"image/svg+xml");xst(i18("SVG saved (vector, without basemap)."));return}
 if(f=="pdfmap"){const b=await withFallback(xo(),op=>buildReport(op,false));save(base+".pdf",b,"application/pdf");xst(i18("PDF map sheet saved ({0} MB).",(b.size/1048576).toFixed(1)));return}
 const geoF=/gtif|pngw|jpgw/.test(f),res=await withFallback(xo(),op=>renderSheet(op,geoF)),cv2=res.cv,L=res.L,mpp=L.mpm/res.u,dlon=mpp/(111320*Math.cos(o.lat*D)),dlat=mpp/111132.9,tl=toLL([L.cx-L.fr[2]/2*L.mpm,L.cy+L.fr[3]/2*L.mpm]),geo={dx:dlon,dy:dlat,x0:tl[1],y0:tl[0]},dpi=res.dpi;let blob,name=base;

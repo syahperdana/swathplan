@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Troppo grande per restare con il progetto: salvala come GeoJSON e carica il file la prossima volta.",
  "Kept with the project, so it works offline.": "Resta con il progetto, quindi funziona offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Linea di costa integrata caricata: {0} linee. È Natural Earth 1:50m, precisa a circa 1 km: adatta a tenere lontane da terra le linee al largo, non al lavoro costiero.",
- "No built-in coastline in this area (open water or inland)": "Nessuna linea di costa integrata in quest’area (mare aperto o entroterra)"
+ "No built-in coastline in this area (open water or inland)": "Nessuna linea di costa integrata in quest’area (mare aperto o entroterra)",
+ "Long routes in segments": "Tracciati lunghi in segmenti",
+ "One sheet per segment, plus an overview": "Un foglio per segmento, più una panoramica",
+ "The whole route on one sheet": "Tutto il tracciato su un foglio",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: tutti i fogli in un file. Immagini: un’immagine per foglio, insieme in uno zip. DXF: un file, ogni segmento sui propri layer, con una vista denominata per segmento.",
+ "Overview: whole route": "Panoramica: tutto il tracciato",
+ "Sheet {0} of {1}": "Foglio {0} di {1}",
+ "{0}, KP {1} to {2}": "{0}, KP da {1} a {2}",
+ "Rendering map sheet {0} of {1}…": "Creazione del foglio {0} di {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} fogli salvati in uno zip ({1} MB): una panoramica e un foglio per segmento."
 }

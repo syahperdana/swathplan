@@ -1095,5 +1095,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Terlalu besar untuk disimpan bersama projek: simpan sebagai GeoJSON dan muatkan fail itu lain kali.",
  "Kept with the project, so it works offline.": "Disimpan bersama projek, jadi berfungsi di luar talian.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Garis pantai terbina dalam dimuatkan: {0} garisan. Ini Natural Earth 1:50m, tepat kira-kira 1 km: sesuai untuk menjauhkan garisan luar pesisir dari daratan, bukan untuk kerja dekat pantai.",
- "No built-in coastline in this area (open water or inland)": "Tiada garis pantai terbina dalam di kawasan ini (laut terbuka atau pedalaman)"
+ "No built-in coastline in this area (open water or inland)": "Tiada garis pantai terbina dalam di kawasan ini (laut terbuka atau pedalaman)",
+ "Long routes in segments": "Laluan panjang dalam segmen",
+ "One sheet per segment, plus an overview": "Satu helaian setiap segmen, dengan gambaran keseluruhan",
+ "The whole route on one sheet": "Seluruh laluan dalam satu helaian",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: semua helaian dalam satu fail. Imej: satu imej setiap helaian, bersama dalam zip. DXF: satu fail, setiap segmen pada lapisannya sendiri, dengan paparan bernama untuk setiap segmen.",
+ "Overview: whole route": "Gambaran keseluruhan: seluruh laluan",
+ "Sheet {0} of {1}": "Helaian {0} daripada {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} hingga {2}",
+ "Rendering map sheet {0} of {1}…": "Menjana helaian peta {0} daripada {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} helaian peta disimpan dalam satu zip ({1} MB): gambaran keseluruhan dan satu helaian setiap segmen."
 }

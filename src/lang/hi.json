@@ -1086,5 +1086,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "प्रोजेक्ट के साथ रखने के लिए बहुत बड़ी: इसे GeoJSON के रूप में सहेजें और अगली बार वह फ़ाइल लोड करें।",
  "Kept with the project, so it works offline.": "प्रोजेक्ट के साथ रखी गई, इसलिए ऑफ़लाइन काम करती है।",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "अंतर्निहित तटरेखा लोड हुई: {0} रेखाएँ। यह Natural Earth 1:50m है, लगभग 1 किमी तक सटीक: अपतटीय लाइनों को भूमि से दूर रखने के लिए ठीक, तटीय काम के लिए नहीं।",
- "No built-in coastline in this area (open water or inland)": "इस क्षेत्र में कोई अंतर्निहित तटरेखा नहीं (खुला पानी या अंतर्देशीय)"
+ "No built-in coastline in this area (open water or inland)": "इस क्षेत्र में कोई अंतर्निहित तटरेखा नहीं (खुला पानी या अंतर्देशीय)",
+ "Long routes in segments": "लंबे मार्ग खंडों में",
+ "One sheet per segment, plus an overview": "हर खंड की एक शीट, साथ में एक अवलोकन",
+ "The whole route on one sheet": "पूरा मार्ग एक शीट पर",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: सभी शीट एक फ़ाइल में। छवियाँ: हर शीट की एक छवि, सब एक zip में। DXF: एक फ़ाइल, हर खंड अपनी परतों पर, हर खंड का एक नामित व्यू।",
+ "Overview: whole route": "अवलोकन: पूरा मार्ग",
+ "Sheet {0} of {1}": "शीट {0} / {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} से {2}",
+ "Rendering map sheet {0} of {1}…": "मानचित्र शीट {0} / {1} बन रही है…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} मानचित्र शीट एक zip में सहेजी गईं ({1} MB): एक अवलोकन और हर खंड की एक शीट।"
 }

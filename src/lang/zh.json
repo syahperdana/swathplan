@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "太大，无法随项目保存：请另存为 GeoJSON，下次加载该文件。",
  "Kept with the project, so it works offline.": "已随项目保存，可离线使用。",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "已加载内置海岸线：{0} 条。它是 Natural Earth 1:50m，精度约 1 公里：适合让离岸测线避开陆地，不适合近岸作业。",
- "No built-in coastline in this area (open water or inland)": "该区域没有内置海岸线（开阔水域或内陆）"
+ "No built-in coastline in this area (open water or inland)": "该区域没有内置海岸线（开阔水域或内陆）",
+ "Long routes in segments": "长路由分段出图",
+ "One sheet per segment, plus an overview": "每段一张图，另加总图",
+ "The whole route on one sheet": "整条路由一张图",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF：所有图纸在一个文件中。图片：每张图纸一张图片，打包为 zip。DXF：一个文件，每段在各自图层上，并为每段建立命名视图。",
+ "Overview: whole route": "总图：整条路由",
+ "Sheet {0} of {1}": "第 {0} 张，共 {1} 张",
+ "{0}, KP {1} to {2}": "{0}，KP {1} 至 {2}",
+ "Rendering map sheet {0} of {1}…": "正在生成第 {0} 张图纸，共 {1} 张…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "已将 {0} 张图纸保存到一个 zip（{1} MB）：一张总图和每段一张图。"
 }

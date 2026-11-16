@@ -111,6 +111,7 @@ Choose *Corridor along a route* as the shape.
 - Lines follow the route through its bends, either fitted to your swath and corridor width or at fixed offsets (for example `0, ±25, ±50`). Names show side and offset: `RL_C`, `RL_P050`, `RL_S050`.
 - Run-in and run-out extensions, cross lines every chosen KP interval, turns at the route ends.
 - **Long routes in segments:** split every 20 km (or any length), with a 100 m overlap between adjacent segments (adjustable). Lines are named by segment (`RL_02_S050`), and the segment boundaries go into DXF, KML, GeoJSON, SHP, the map sheet and the PDF report.
+- **Exports per segment:** for a split route, the map sheet comes as an overview plus one sheet per segment, each at its own scale: all pages in one PDF (and in the report), images one per sheet in a zip. The DXF puts each segment's lines on their own layers (`line_S01`, `cross_S01`, `turn_S01`) with a named view per segment (`SEG01`). Choose *The whole route on one sheet* in Export to get the single sheet.
 - Exports: every planner format (lines keep all their bend points), plus a **KP table** (CSV, with bearing) and the **route with KP** (EIVA RLN).
 - Map sheet, PDF report, IHO S-44 checks, time and cost, offline maps and all 22 languages.
 
