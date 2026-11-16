@@ -90,3 +90,6 @@ if(m)st.route=m[1].split(/\r?\n/).map(l=>l.trim()).filter(l=>l&&l[0]!="#").map(l
 (()=>{const st=loadState();if(st&&Array.isArray(st.route))RT=st.route.filter(q=>q&&isFinite(q[0])&&isFinite(q[1]));if(!MODE().corr)return;
 if(st&&!st.closed&&Array.isArray(st.poly)&&st.poly.length){closed=false;draw=true;gen();return}// a route was being drawn: carry on
 coFromArea();gen();if(!st)fit();analyse();gen()})();
+
+// the export section offers one sheet per segment when the route is split
+{const _g=gen;gen=function(){const r=_g.apply(this,arguments),w=$("xpSegW");if(w)w.hidden=!(MODE().corr&&CO.segs&&CO.segs.length>1);return r}}

@@ -1150,5 +1150,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.",
  "Kept with the project, so it works offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.",
- "No built-in coastline in this area (open water or inland)"
+ "No built-in coastline in this area (open water or inland)",
+ "Long routes in segments",
+ "One sheet per segment, plus an overview",
+ "The whole route on one sheet",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.",
+ "Overview: whole route",
+ "Sheet {0} of {1}",
+ "{0}, KP {1} to {2}",
+ "Rendering map sheet {0} of {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment."
 ]

@@ -1086,5 +1086,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "پروجیکٹ کے ساتھ رکھنے کے لیے بہت بڑی: اسے GeoJSON کے طور پر محفوظ کریں اور اگلی بار وہ فائل لوڈ کریں۔",
  "Kept with the project, so it works offline.": "پروجیکٹ کے ساتھ رکھی گئی، اس لیے آف لائن کام کرتی ہے۔",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "بلٹ اِن ساحلی لکیر لوڈ ہو گئی: {0} لکیریں۔ یہ Natural Earth 1:50m ہے، تقریباً 1 کلومیٹر تک درست: ساحل سے دور لائنوں کو زمین سے بچانے کے لیے ٹھیک، ساحلی کام کے لیے نہیں۔",
- "No built-in coastline in this area (open water or inland)": "اس علاقے میں کوئی بلٹ اِن ساحلی لکیر نہیں (کھلا پانی یا اندرونِ ملک)"
+ "No built-in coastline in this area (open water or inland)": "اس علاقے میں کوئی بلٹ اِن ساحلی لکیر نہیں (کھلا پانی یا اندرونِ ملک)",
+ "Long routes in segments": "لمبے راستے حصوں میں",
+ "One sheet per segment, plus an overview": "ہر حصے کی ایک شیٹ، ساتھ ایک جائزہ",
+ "The whole route on one sheet": "پورا راستہ ایک شیٹ پر",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: تمام شیٹس ایک فائل میں۔ تصاویر: ہر شیٹ کی ایک تصویر، سب ایک zip میں۔ DXF: ایک فائل، ہر حصہ اپنی تہوں پر، ہر حصے کا ایک نام والا ویو۔",
+ "Overview: whole route": "جائزہ: پورا راستہ",
+ "Sheet {0} of {1}": "شیٹ {0} از {1}",
+ "{0}, KP {1} to {2}": "{0}، KP {1} سے {2}",
+ "Rendering map sheet {0} of {1}…": "نقشہ شیٹ {0} از {1} بن رہی ہے…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} نقشہ شیٹس ایک zip میں محفوظ ہوئیں ({1} MB): ایک جائزہ اور ہر حصے کی ایک شیٹ۔"
 }

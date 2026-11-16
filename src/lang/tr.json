@@ -1086,5 +1086,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Projeyle saklanamayacak kadar büyük: GeoJSON olarak kaydedin ve bir dahaki sefere dosyayı yükleyin.",
  "Kept with the project, so it works offline.": "Projeyle saklandı, bu yüzden çevrim dışı çalışır.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Yerleşik kıyı çizgisi yüklendi: {0} çizgi. Natural Earth 1:50m, yaklaşık 1 km doğrulukta: açık deniz hatlarını karadan uzak tutmak için uygun, kıyı yakını çalışmalar için değil.",
- "No built-in coastline in this area (open water or inland)": "Bu alanda yerleşik kıyı çizgisi yok (açık deniz veya iç kesim)"
+ "No built-in coastline in this area (open water or inland)": "Bu alanda yerleşik kıyı çizgisi yok (açık deniz veya iç kesim)",
+ "Long routes in segments": "Uzun güzergâhlar bölümler hâlinde",
+ "One sheet per segment, plus an overview": "Her bölüm için bir pafta, artı genel görünüm",
+ "The whole route on one sheet": "Tüm güzergâh tek paftada",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: tüm paftalar tek dosyada. Görüntüler: her pafta için bir görüntü, hepsi bir zip içinde. DXF: tek dosya, her bölüm kendi katmanlarında, her bölüm için adlandırılmış bir görünüm.",
+ "Overview: whole route": "Genel görünüm: tüm güzergâh",
+ "Sheet {0} of {1}": "Pafta {0} / {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} – {2}",
+ "Rendering map sheet {0} of {1}…": "Pafta {0} / {1} hazırlanıyor…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} pafta tek zip içinde kaydedildi ({1} MB): bir genel görünüm ve her bölüm için bir pafta."
 }

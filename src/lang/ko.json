@@ -1086,5 +1086,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "프로젝트와 함께 보관하기에는 너무 큽니다: GeoJSON으로 저장하고 다음에는 그 파일을 불러오세요.",
  "Kept with the project, so it works offline.": "프로젝트와 함께 보관되어 오프라인에서도 작동합니다.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "내장 해안선을 불러왔습니다: {0}개 선. Natural Earth 1:50m로 정확도가 약 1 km입니다: 연안 밖 측선을 육지에서 떨어뜨리기에는 적합하지만 연안 작업에는 맞지 않습니다.",
- "No built-in coastline in this area (open water or inland)": "이 구역에는 내장 해안선이 없습니다(외해 또는 내륙)"
+ "No built-in coastline in this area (open water or inland)": "이 구역에는 내장 해안선이 없습니다(외해 또는 내륙)",
+ "Long routes in segments": "긴 노선을 구간별로",
+ "One sheet per segment, plus an overview": "구간마다 한 장, 그리고 전체도",
+ "The whole route on one sheet": "노선 전체를 한 장에",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: 모든 도면을 한 파일에. 이미지: 도면마다 한 장씩, zip 하나로. DXF: 한 파일, 구간마다 별도 레이어와 구간별 이름 있는 뷰.",
+ "Overview: whole route": "전체도: 노선 전체",
+ "Sheet {0} of {1}": "{1}장 중 {0}번째",
+ "{0}, KP {1} to {2}": "{0}, KP {1}~{2}",
+ "Rendering map sheet {0} of {1}…": "도면 {0}/{1} 생성 중…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "도면 {0}장을 zip 하나에 저장했습니다({1} MB): 전체도와 구간별 도면."
 }

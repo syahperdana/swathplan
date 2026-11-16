@@ -8,6 +8,8 @@
 <p class="note">A hydrographic-style plan sheet with graticule, scale bar, north arrow, legend and title block. Printed at 100 % the scale bar is true.</p>
 <div class="r2"><div><label>Paper</label><select id="xpPaper"><option value="A4">A4</option><option value="A3">A3</option></select></div><div><label>Orientation</label><select id="xpOri"><option value="auto">Auto</option><option value="land">Landscape</option><option value="port">Portrait</option></select></div>
 <div><label>Resolution</label><select id="xpDpi"><option value="300">300 dpi (print)</option><option value="200">200 dpi</option><option value="150">150 dpi (screen)</option></select></div><div><label>Scale 1: (0 = auto fit)</label><input type="number" id="xpScale" value="0" min="0"></div></div>
+<div id="xpSegW" hidden><label>Long routes in segments</label><select id="xpSegs"><option value="seg">One sheet per segment, plus an overview</option><option value="all">The whole route on one sheet</option></select>
+<p class="note">PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.</p></div>
 <label>Grid labels on the map sheet</label><select id="xpGrid"><option value="auto">Follow the coordinate system above</option><option value="geo">Latitude / longitude (degrees)</option><option value="both">Both: projected grid + lat/lon</option></select>
 <label><input type="checkbox" id="xpBase" checked> Include basemap (needs internet)</label><label><input type="checkbox" id="xpSnd" checked> Include soundings</label><label><input type="checkbox" id="xpNames" checked> Line names and direction arrows</label>
 <button class="p" id="xpPdf">PDF report (map sheet + statistics pages)</button>

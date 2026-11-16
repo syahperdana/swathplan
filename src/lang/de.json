@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Zu groß, um mit dem Projekt gespeichert zu werden: als GeoJSON speichern und die Datei beim nächsten Mal laden.",
  "Kept with the project, so it works offline.": "Mit dem Projekt gespeichert, funktioniert also offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Eingebaute Küstenlinie geladen: {0} Linien. Es ist Natural Earth 1:50m, auf etwa 1 km genau: geeignet, um Linien auf See vom Land fernzuhalten, nicht für küstennahe Arbeit.",
- "No built-in coastline in this area (open water or inland)": "Keine eingebaute Küstenlinie in diesem Gebiet (offenes Wasser oder Binnenland)"
+ "No built-in coastline in this area (open water or inland)": "Keine eingebaute Küstenlinie in diesem Gebiet (offenes Wasser oder Binnenland)",
+ "Long routes in segments": "Lange Trassen in Abschnitten",
+ "One sheet per segment, plus an overview": "Ein Blatt je Abschnitt, dazu eine Übersicht",
+ "The whole route on one sheet": "Die ganze Trasse auf einem Blatt",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: alle Blätter in einer Datei. Bilder: ein Bild je Blatt, zusammen in einer ZIP-Datei. DXF: eine Datei, jeder Abschnitt auf eigenen Layern, mit einer benannten Ansicht je Abschnitt.",
+ "Overview: whole route": "Übersicht: ganze Trasse",
+ "Sheet {0} of {1}": "Blatt {0} von {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} bis {2}",
+ "Rendering map sheet {0} of {1}…": "Kartenblatt {0} von {1} wird erstellt…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} Kartenblätter in einer ZIP-Datei gespeichert ({1} MB): eine Übersicht und ein Blatt je Abschnitt."
 }

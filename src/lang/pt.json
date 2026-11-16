@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Grande demais para ficar com o projeto: salve como GeoJSON e carregue o arquivo da próxima vez.",
  "Kept with the project, so it works offline.": "Fica com o projeto, então funciona offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Linha de costa embutida carregada: {0} linhas. É Natural Earth 1:50m, precisa a cerca de 1 km: serve para afastar da terra as linhas ao largo, não para trabalho costeiro.",
- "No built-in coastline in this area (open water or inland)": "Sem linha de costa embutida nesta área (mar aberto ou interior)"
+ "No built-in coastline in this area (open water or inland)": "Sem linha de costa embutida nesta área (mar aberto ou interior)",
+ "Long routes in segments": "Rotas longas em segmentos",
+ "One sheet per segment, plus an overview": "Uma folha por segmento, mais uma visão geral",
+ "The whole route on one sheet": "A rota inteira em uma folha",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: todas as folhas em um arquivo. Imagens: uma imagem por folha, juntas em um zip. DXF: um arquivo, cada segmento em suas próprias camadas, com uma vista nomeada por segmento.",
+ "Overview: whole route": "Visão geral: rota inteira",
+ "Sheet {0} of {1}": "Folha {0} de {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} a {2}",
+ "Rendering map sheet {0} of {1}…": "Gerando a folha {0} de {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "{0} folhas salvas em um zip ({1} MB): uma visão geral e uma folha por segmento."
 }

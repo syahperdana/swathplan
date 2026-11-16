@@ -1086,5 +1086,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Quá lớn để lưu cùng dự án: hãy lưu thành GeoJSON và nạp tệp đó lần sau.",
  "Kept with the project, so it works offline.": "Đã lưu cùng dự án nên dùng được khi ngoại tuyến.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Đã nạp đường bờ biển tích hợp: {0} đường. Đây là Natural Earth 1:50m, chính xác khoảng 1 km: phù hợp để giữ các tuyến ngoài khơi tránh xa đất liền, không dùng cho công việc ven bờ.",
- "No built-in coastline in this area (open water or inland)": "Không có đường bờ biển tích hợp trong khu vực này (biển mở hoặc nội địa)"
+ "No built-in coastline in this area (open water or inland)": "Không có đường bờ biển tích hợp trong khu vực này (biển mở hoặc nội địa)",
+ "Long routes in segments": "Tuyến dài theo đoạn",
+ "One sheet per segment, plus an overview": "Mỗi đoạn một tờ, kèm tờ tổng quan",
+ "The whole route on one sheet": "Cả tuyến trên một tờ",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: mọi tờ trong một tệp. Ảnh: mỗi tờ một ảnh, gộp trong một tệp zip. DXF: một tệp, mỗi đoạn trên lớp riêng, có một khung nhìn đặt tên cho mỗi đoạn.",
+ "Overview: whole route": "Tổng quan: cả tuyến",
+ "Sheet {0} of {1}": "Tờ {0}/{1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} đến {2}",
+ "Rendering map sheet {0} of {1}…": "Đang tạo tờ bản đồ {0}/{1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "Đã lưu {0} tờ bản đồ trong một tệp zip ({1} MB): một tờ tổng quan và mỗi đoạn một tờ."
 }

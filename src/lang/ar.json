@@ -1087,5 +1087,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "أكبر من أن يُحفظ مع المشروع: احفظه بصيغة GeoJSON وحمّل الملف في المرة القادمة.",
  "Kept with the project, so it works offline.": "محفوظ مع المشروع، لذا يعمل دون اتصال.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "تم تحميل خط الساحل المدمج: {0} خطوط. إنه Natural Earth 1:50m بدقة نحو 1 كم: مناسب لإبعاد الخطوط البحرية عن اليابسة، لا للعمل القريب من الشاطئ.",
- "No built-in coastline in this area (open water or inland)": "لا يوجد خط ساحل مدمج في هذه المنطقة (مياه مفتوحة أو داخل اليابسة)"
+ "No built-in coastline in this area (open water or inland)": "لا يوجد خط ساحل مدمج في هذه المنطقة (مياه مفتوحة أو داخل اليابسة)",
+ "Long routes in segments": "المسارات الطويلة على مقاطع",
+ "One sheet per segment, plus an overview": "لوحة لكل مقطع، مع لوحة عامة",
+ "The whole route on one sheet": "المسار كله على لوحة واحدة",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: كل اللوحات في ملف واحد. الصور: صورة لكل لوحة، مجمّعة في ملف zip. DXF: ملف واحد، كل مقطع على طبقاته الخاصة، مع عرض مسمّى لكل مقطع.",
+ "Overview: whole route": "لوحة عامة: المسار كله",
+ "Sheet {0} of {1}": "اللوحة {0} من {1}",
+ "{0}, KP {1} to {2}": "{0}، KP من {1} إلى {2}",
+ "Rendering map sheet {0} of {1}…": "جارٍ إنشاء اللوحة {0} من {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "حُفظت {0} لوحات في ملف zip واحد ({1} ميغابايت): لوحة عامة ولوحة لكل مقطع."
 }

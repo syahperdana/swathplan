@@ -1086,5 +1086,14 @@
  "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Masyadong malaki para itabi kasama ng proyekto: i-save bilang GeoJSON at i-load ang file sa susunod.",
  "Kept with the project, so it works offline.": "Nakatabi kasama ng proyekto, kaya gumagana offline.",
  "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Na-load ang built-in na baybayin: {0} linya. Ito ay Natural Earth 1:50m, tumpak sa mga 1 km: angkop para ilayo sa lupa ang mga linya sa malayong dagat, hindi para sa trabahong malapit sa baybayin.",
- "No built-in coastline in this area (open water or inland)": "Walang built-in na baybayin sa lugar na ito (bukas na dagat o loob ng lupa)"
+ "No built-in coastline in this area (open water or inland)": "Walang built-in na baybayin sa lugar na ito (bukas na dagat o loob ng lupa)",
+ "Long routes in segments": "Mahahabang ruta sa mga segment",
+ "One sheet per segment, plus an overview": "Isang sheet bawat segment, kasama ang overview",
+ "The whole route on one sheet": "Buong ruta sa isang sheet",
+ "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF: lahat ng sheet sa isang file. Larawan: isang larawan bawat sheet, magkakasama sa isang zip. DXF: isang file, bawat segment sa sariling layer, may pinangalanang view bawat segment.",
+ "Overview: whole route": "Overview: buong ruta",
+ "Sheet {0} of {1}": "Sheet {0} ng {1}",
+ "{0}, KP {1} to {2}": "{0}, KP {1} hanggang {2}",
+ "Rendering map sheet {0} of {1}…": "Ginagawa ang map sheet {0} ng {1}…",
+ "Saved {0} map sheets in one zip ({1} MB): an overview and one sheet per segment.": "Na-save ang {0} map sheet sa isang zip ({1} MB): isang overview at isang sheet bawat segment."
 }
