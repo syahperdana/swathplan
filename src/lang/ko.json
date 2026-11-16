@@ -1101,5 +1101,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "지형 위에서 지면 위 고도가 {0}~{1} m로 달라져 영상 축척과 횡중복이 바뀝니다. 지형 따라 비행을 켜십시오.",
  "Height above ground {0} to {1} m over the terrain model.": "지형 모델 위 지면 위 고도 {0}~{1} m.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "낮은 지반 위에서는 드론이 최대 {0} m 위에 있어 많은 나라의 120 m 제한을 넘습니다.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "웨이포인트 {0}개가 지형 모델 밖에 있어 이륙 높이를 유지합니다. 더 넓은 지역의 지형을 불러오십시오."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "웨이포인트 {0}개가 지형 모델 밖에 있어 이륙 높이를 유지합니다. 더 넓은 지역의 지형을 불러오십시오.",
+ "Save the project as": "프로젝트를 다른 이름으로 저장",
+ "Save": "저장"
 }

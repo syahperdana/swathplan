@@ -51,7 +51,17 @@ if(navigator.onLine)setTimeout(()=>locate(false),50)}
 cv.addEventListener("pointerdown",()=>{touched=true});document.addEventListener("input",e=>{touched=true;saveSoon()},true);document.addEventListener("change",()=>saveSoon(),true);
 addEventListener("pagehide",saveState);document.addEventListener("visibilitychange",()=>{if(document.hidden)saveState()});
 $("bLoc").onclick=()=>{toast(i18("Locating…"),3000);locate(true)};
-$("spSave").onclick=()=>{const nm=($("prjN").value||"survey_plan").trim().replace(/[\\\/:*?"<>|]+/g,"_").slice(0,60)||"survey_plan";save(nm+".spl",splText(),"text/plain;charset=utf-8");toast(i18("Project saved as {0}.spl",nm),4000)};
+// save: ask for the file name (default: the project name, else survey_plan) in a small in-page dialog
+const splClean=v=>(v||"").trim().replace(/\.spl$/i,"").replace(/[\\\/:*?"<>|]+/g,"_").slice(0,80).trim();
+function splAsk(def,cb){let d=$("splDlg");if(!d){d=document.createElement("div");d.id="splDlg";d.setAttribute("role","dialog");d.setAttribute("aria-modal","true");
+d.style.cssText="position:fixed;inset:0;background:#0006;display:flex;align-items:center;justify-content:center;z-index:1300";
+d.innerHTML='<form style="background:#fff;color:#12262d;padding:16px 18px;border-radius:8px;width:min(420px,92vw);box-shadow:0 8px 30px #0004"><b id="splT" style="display:block;margin-bottom:8px"></b>'
++'<div style="display:flex;align-items:center;gap:4px"><input id="splN" type="text" style="flex:1;min-width:0" autocomplete="off" spellcheck="false"><span>.spl</span></div>'
++'<div style="text-align:right;margin-top:12px"><button type="button" id="splNo"></button><button type="submit" class="p" id="splOk"></button></div></form>';document.body.appendChild(d);
+d.querySelector("form").onsubmit=e=>{e.preventDefault();const n=splClean($("splN").value)||"survey_plan";d.hidden=true;d.style.display="none";d._cb&&d._cb(n)};
+$("splNo").onclick=()=>{d.hidden=true;d.style.display="none"};d.addEventListener("keydown",e=>{if(e.key=="Escape")$("splNo").click()});d.addEventListener("click",e=>{if(e.target===d)$("splNo").click()})}
+$("splT").textContent=i18("Save the project as");$("splNo").textContent=i18("Cancel");$("splOk").textContent=i18("Save");d._cb=cb;$("splN").value=def;d.hidden=false;d.style.display="flex";setTimeout(()=>{$("splN").focus();$("splN").select()},0)}
+$("spSave").onclick=()=>splAsk(splClean($("prjN").value)||"survey_plan",nm=>{save(nm+".spl",splText(),"text/plain;charset=utf-8");toast(i18("Project saved as {0}.spl",nm),4000)});
 $("spImp").onchange=e=>{const f=e.target.files[0];e.target.value="";if(!f)return;const r=new FileReader();r.onload=()=>{try{const st=splParse(String(r.result));if(UI_DEFAULTS)st.ui=Object.assign({},UI_DEFAULTS,st.ui);if(applyState(st)){saveState();toast(i18("Project loaded: {0}",f.name),4500)}else toast(i18("Could not apply the project file."),5000)}catch(err){toast(i18("Not a valid SwathPlan .SPL file."),5000)}};r.readAsText(f)};
 $("spReset").onclick=()=>{if(!confirm(i18("Forget the saved settings and restart with defaults?")))return;RESET=true;try{localStorage.removeItem(STATE_KEY)}catch(e){}location.reload()};
 

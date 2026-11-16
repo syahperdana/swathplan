@@ -1101,5 +1101,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Sa ibabaw ng lupain, nag-iiba ang taas mula sa lupa mula {0} hanggang {1} m, kaya nagbabago ang sukat ng larawan at ang side overlap: i-on ang pagsunod sa lupain.",
  "Height above ground {0} to {1} m over the terrain model.": "Taas mula sa lupa {0} hanggang {1} m sa ibabaw ng modelo ng lupain.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Sa ibabaw ng mababang lupa, umaabot ang drone nang {0} m mula rito, lampas sa 120 m na limitasyon ng maraming bansa.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} waypoint ang nasa labas ng modelo ng lupain at nananatili sa taas ng paglipad: i-load ang lupain para sa mas malaking lugar."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} waypoint ang nasa labas ng modelo ng lupain at nananatili sa taas ng paglipad: i-load ang lupain para sa mas malaking lugar.",
+ "Save the project as": "I-save ang proyekto bilang",
+ "Save": "I-save"
 }

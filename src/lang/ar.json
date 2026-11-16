@@ -1102,5 +1102,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "فوق التضاريس يتراوح الارتفاع فوق الأرض بين {0} و{1} م، فيتغيّر مقياس الصور والتداخل الجانبي: فعّل اتباع التضاريس.",
  "Height above ground {0} to {1} m over the terrain model.": "الارتفاع فوق الأرض من {0} إلى {1} م فوق نموذج التضاريس.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "فوق الأرض المنخفضة تصل الطائرة إلى {0} م فوقها، أعلى من حد 120 م في كثير من البلدان.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} نقطة مسار خارج نموذج التضاريس وتبقى على ارتفاع الإقلاع: حمّل التضاريس لمنطقة أوسع."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} نقطة مسار خارج نموذج التضاريس وتبقى على ارتفاع الإقلاع: حمّل التضاريس لمنطقة أوسع.",
+ "Save the project as": "حفظ المشروع باسم",
+ "Save": "حفظ"
 }

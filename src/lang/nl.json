@@ -1102,5 +1102,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Boven het terrein varieert de hoogte boven de grond van {0} tot {1} m, waardoor beeldschaal en zijoverlap veranderen: zet terreinvolgen aan.",
  "Height above ground {0} to {1} m over the terrain model.": "Hoogte boven de grond {0} tot {1} m boven het terreinmodel.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Boven lage grond vliegt de drone tot {0} m erboven, meer dan de grens van 120 m in veel landen.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} waypoints liggen buiten het terreinmodel en houden de starthoogte: laad het terrein voor een groter gebied."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} waypoints liggen buiten het terreinmodel en houden de starthoogte: laad het terrein voor een groter gebied.",
+ "Save the project as": "Project opslaan als",
+ "Save": "Opslaan"
 }

@@ -1109,5 +1109,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "Над рельефом высота над землёй меняется от {0} до {1} м, поэтому меняются масштаб снимков и поперечное перекрытие: включите следование рельефу.",
  "Height above ground {0} to {1} m over the terrain model.": "Высота над землёй от {0} до {1} м над моделью рельефа.",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "Над низинами дрон оказывается до {0} м над землёй, выше предела 120 м во многих странах.",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} путевых точек вне модели рельефа и остаются на высоте взлёта: загрузите рельеф для большего района."
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} путевых точек вне модели рельефа и остаются на высоте взлёта: загрузите рельеф для большего района.",
+ "Save the project as": "Сохранить проект как",
+ "Save": "Сохранить"
 }

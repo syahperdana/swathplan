@@ -1102,5 +1102,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "地形上で対地高度が {0}～{1} m と変化し、画像縮尺と横方向重複が変わります。地形追従をオンにしてください。",
  "Height above ground {0} to {1} m over the terrain model.": "地形モデル上の対地高度 {0}～{1} m。",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "低い地盤の上では対地高度が最大 {0} m となり、多くの国の上限 120 m を超えます。",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "ウェイポイント {0} 点が地形モデルの範囲外で、離陸地点の高さのままです。より広い範囲の地形を読み込んでください。"
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "ウェイポイント {0} 点が地形モデルの範囲外で、離陸地点の高さのままです。より広い範囲の地形を読み込んでください。",
+ "Save the project as": "名前を付けてプロジェクトを保存",
+ "Save": "保存"
 }

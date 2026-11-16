@@ -1101,5 +1101,7 @@
  "Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.": "زمین کے اوپر زمین سے اونچائی {0} سے {1} m تک بدلتی ہے، اس لیے تصویر کا پیمانہ اور سائیڈ اوورلیپ بدلتے ہیں: زمین کے ساتھ اڑان آن کریں۔",
  "Height above ground {0} to {1} m over the terrain model.": "زمینی ماڈل کے اوپر زمین سے اونچائی {0} سے {1} m۔",
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "نشیبی زمین کے اوپر ڈرون اس سے {0} m تک اونچا ہوتا ہے، جو کئی ممالک کی 120 m حد سے زیادہ ہے۔",
- "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} وے پوائنٹس زمینی ماڈل سے باہر ہیں اور ٹیک آف کی اونچائی پر رہتے ہیں: بڑے علاقے کا زمینی ماڈل لوڈ کریں۔"
+ "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} وے پوائنٹس زمینی ماڈل سے باہر ہیں اور ٹیک آف کی اونچائی پر رہتے ہیں: بڑے علاقے کا زمینی ماڈل لوڈ کریں۔",
+ "Save the project as": "پروجیکٹ اس نام سے محفوظ کریں",
+ "Save": "محفوظ کریں"
 }
