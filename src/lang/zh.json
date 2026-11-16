@@ -972,7 +972,6 @@
  "Battery change (min)": "更换电池（分钟）",
  "Battery changes": "电池更换",
  "Camera": "相机",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "相机参数为近似值：请核对相机规格书。图像长边垂直于飞行方向。",
  "Custom": "自定义",
  "Custom camera": "自定义相机",
  "DRONE CORRIDOR FLIGHT PLAN": "无人机走廊飞行计划",
@@ -1061,7 +1060,6 @@
  "Point rate (points/s)": "点频（点/秒）",
  "Detection range at 10 % reflectivity (m)": "10 % 反射率下的探测距离（米）",
  "Target point density (points/m², 0 = none)": "目标点密度（点/平方米，0 = 不设）",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "预设值依据 DJI 公布的参数（单回波点频；垂直于航向的重复或线性扫描）。L3 的点频随脉冲频率而定，100 kHz 至 2 MHz：请填写您的设置。密度为平坦地面的平均值；植被、水面和深色表面返回的点更少。",
  "LiDAR swath": "激光雷达条带宽度",
  "Point density (with overlap)": "点密度（含重叠）",
  "Flight time, batteries": "飞行时间、电池",
@@ -1076,5 +1074,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "激光雷达条带 {0} 米（高度 {1} 米），单次 {2} 点/平方米。",
  "Custom LiDAR": "自定义激光雷达",
  "{0} pts/m² at {1} m": "高度 {1} 米时 {0} 点/平方米",
- "Side overlap": "旁向重叠"
+ "Side overlap": "旁向重叠",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "传感器尺寸、焦距和图像宽度依据各厂商公布的参数。最短拍照间隔在厂商公布时取其数值，否则为 1 秒：请核对您的相机。图像长边垂直于航向。",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "预设值依据各厂商公布的参数（单回波点频；垂直于航向的重复或线性扫描）。对于 360° 扫描仪，只计入向下视场内的点，因此预设点频为该部分。RIEGL 的距离为 20 % 反射率下的数值。L3 的点频随脉冲频率而定，100 kHz 至 2 MHz：请填写您的设置。密度为平坦地面的平均值；植被、水面和深色表面返回的点更少。"
 }

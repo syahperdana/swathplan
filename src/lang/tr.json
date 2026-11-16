@@ -971,7 +971,6 @@
  "Battery change (min)": "Batarya değişimi (dk)",
  "Battery changes": "Batarya değişimleri",
  "Camera": "Kamera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "Kamera değerleri yaklaşıktır: kameranın veri sayfasını kontrol edin. Görüntünün uzun kenarı uçuş yönüne diktir.",
  "Custom": "Özel",
  "Custom camera": "Özel kamera",
  "DRONE CORRIDOR FLIGHT PLAN": "DRON KORİDOR UÇUŞ PLANI",
@@ -1060,7 +1059,6 @@
  "Point rate (points/s)": "Nokta hızı (nokta/s)",
  "Detection range at 10 % reflectivity (m)": "%10 yansıtıcılıkta algılama menzili (m)",
  "Target point density (points/m², 0 = none)": "Hedef nokta yoğunluğu (nokta/m², 0 = yok)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Ön ayarlar DJI’nin yayımlanmış özelliklerine dayanır (tek dönüşlü nokta hızı; uçuş yönüne dik tekrarlı veya doğrusal tarama). L3’ün nokta hızı darbe hızını izler, 100 kHz ile 2 MHz arası: kendi değerinizi girin. Yoğunluk düz zemin için ortalamadır; bitki örtüsü, su ve koyu yüzeyler daha az nokta döndürür.",
  "LiDAR swath": "LiDAR tarama genişliği",
  "Point density (with overlap)": "Nokta yoğunluğu (bindirmeli)",
  "Flight time, batteries": "Uçuş süresi, bataryalar",
@@ -1075,5 +1073,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "LiDAR tarama genişliği {0} m, {1} m’de, tek geçişte {2} nokta/m².",
  "Custom LiDAR": "Özel LiDAR",
  "{0} pts/m² at {1} m": "{1} m’de {0} nokta/m²",
- "Side overlap": "Yan bindirme"
+ "Side overlap": "Yan bindirme",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Sensör boyutu, odak uzaklığı ve görüntü genişliği üreticilerin yayımladığı özelliklere dayanır. En kısa fotoğraf aralığı, yayımlanmışsa üreticinin değeridir, değilse 1 s: kameranızı kontrol edin. Görüntünün uzun kenarı uçuş yönüne diktir.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Ön ayarlar üreticilerin yayımladığı özelliklere dayanır (tek dönüşlü nokta hızı; uçuş yönüne dik tekrarlı veya doğrusal tarama). 360° tarayıcıda yalnızca aşağı bakan görüş alanındaki noktalar sayılır, bu yüzden ön ayar hızı o paydır. RIEGL menzili %20 yansıtıcılıkta verilmiştir. L3’ün nokta hızı darbe hızını izler, 100 kHz ile 2 MHz arası: kendi değerinizi girin. Yoğunluk düz zemin için ortalamadır; bitki örtüsü, su ve koyu yüzeyler daha az nokta döndürür."
 }

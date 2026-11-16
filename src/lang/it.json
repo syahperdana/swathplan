@@ -972,7 +972,6 @@
  "Battery change (min)": "Cambio batteria (min)",
  "Battery changes": "Cambi batteria",
  "Camera": "Fotocamera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "I valori della fotocamera sono approssimativi: verifica la scheda tecnica. Il lato lungo dell’immagine è trasversale alla direzione di volo.",
  "Custom": "Personalizzato",
  "Custom camera": "Fotocamera personalizzata",
  "DRONE CORRIDOR FLIGHT PLAN": "PIANO DI VOLO DRONE IN CORRIDOIO",
@@ -1061,7 +1060,6 @@
  "Point rate (points/s)": "Frequenza di punti (punti/s)",
  "Detection range at 10 % reflectivity (m)": "Portata a riflettività 10 % (m)",
  "Target point density (points/m², 0 = none)": "Densità di punti obiettivo (punti/m², 0 = nessuna)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "I preset seguono le specifiche pubblicate da DJI (frequenza a ritorno singolo; scansione ripetitiva o lineare trasversale alla rotta). La frequenza dell’L3 segue la sua frequenza d’impulso, da 100 kHz a 2 MHz: inserisci la tua. La densità è una media su terreno piano; vegetazione, acqua e superfici scure restituiscono meno punti.",
  "LiDAR swath": "Strisciata LiDAR",
  "Point density (with overlap)": "Densità di punti (con sovrapposizione)",
  "Flight time, batteries": "Tempo di volo, batterie",
@@ -1076,5 +1074,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "Strisciata LiDAR {0} m a {1} m, {2} pti/m² da una passata.",
  "Custom LiDAR": "LiDAR personalizzato",
  "{0} pts/m² at {1} m": "{0} pti/m² a {1} m",
- "Side overlap": "Sovrapposizione laterale"
+ "Side overlap": "Sovrapposizione laterale",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Dimensioni del sensore, lunghezza focale e larghezza dell’immagine seguono le specifiche pubblicate dai produttori. L’intervallo minimo tra le foto è il dato del produttore, se pubblicato, altrimenti 1 s: verifica la tua camera. Il lato lungo dell’immagine è trasversale alla rotta.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "I preset seguono le specifiche pubblicate dai produttori (frequenza a ritorno singolo; scansione ripetitiva o lineare trasversale alla rotta). Per uno scanner a 360° contano solo i punti nel campo visivo rivolto verso il basso, quindi la frequenza del preset è quella quota. La portata RIEGL è data a riflettività 20 %. La frequenza dell’L3 segue la sua frequenza d’impulso, da 100 kHz a 2 MHz: inserisci la tua. La densità è una media su terreno piano; vegetazione, acqua e superfici scure restituiscono meno punti."
 }

@@ -58,6 +58,13 @@ with sync_playwright() as p:
     L0=pg.evaluate("L({a:R.lines[0].a,b:R.lines[0].b,p:R.lines[0].p})")
     check(lb>0 and abs(L1-L0-lb)<0.5,f"layback adds the run-in to corridor lines ({L1-L0:.1f} m for {lb} m)")
     check(pg.evaluate("R.turns.length")==pg.evaluate("R.lines.length")-1,"turns redone between corridor lines")
+    # side-scan list: 20 models, every option has a frequency and range, saved values of the first list still exist
+    ev=pg.evaluate
+    opts=ev("[...$('gSM').querySelectorAll('option[data-f]')].map(o=>[o.value,+o.dataset.f,+o.dataset.r,o.parentElement.label])")
+    check(len(opts)>=40 and len({o[3] for o in opts})>=20 and all(o[1]>0 and o[2]>0 for o in opts),f"{len({o[3] for o in opts})} side-scan models, {len(opts)} frequencies, each with a range per side")
+    check(all(v in [o[0] for o in opts] for v in ['EdgeTech 4125|400','EdgeTech 4200|300','EdgeTech 4200|600','Klein 3900|445','Klein 4900|900']),"saved side-scan values of the earlier list still match")
+    ev("$('gSM').value='EdgeTech 4205|120';$('gSM').dispatchEvent(new Event('change'))");pg.wait_for_timeout(300)
+    check(ev("g('gSR')")==600,"EdgeTech 4205 at 120 kHz sets 600 m per side")
     check(not errs,f"no page errors {errs[:3]}")
     br.close()
 print("FAILED" if bad else "ALL OK"); sys.exit(1 if bad else 0)

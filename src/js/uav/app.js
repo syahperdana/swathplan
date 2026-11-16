@@ -1,8 +1,13 @@
 /* ===== drone mode of the survey planner: camera (photogrammetry) or LiDAR payload, footprint or swath, overlaps, photo trigger, point density, batteries (active when MODE().uav) ===== */
-const UV_CAM={m3e:[17.3,13,12.3,5280,.7],m4e:[17.3,13,12.3,5280,.5],p4r:[13.2,8.8,8.8,5472,2.5],p1:[35.9,24,35,8192,.7]};// approximate: sensor w/h mm, focal mm, image width px, shortest interval s
+// camera presets: sensor w/h mm (long side across track), real focal length mm, image width px, shortest photo interval s
+// (the maker's figure where published, otherwise 1 s: check yours)
+const UV_CAM={m3e:[17.3,13,12.3,5280,.7],m3m:[17.3,13,12.3,5280,1],m3d:[17.3,13,12.3,5280,1],m4e:[17.3,13,12.3,5280,.5],p4r:[13.2,8.8,8.8,5472,2.5],l2c:[17.3,13,12.3,5280,.7],
+p1_24:[35.9,24,24,8192,.7],p1:[35.9,24,35,8192,.7],p1_50:[35.9,24,50,8192,.7],evo2:[13.2,8.8,10.6,5472,1],soda:[13.2,8.8,10.6,5472,1],aeriax:[23.5,15.6,18.5,6000,1],
+rx1r2:[35.9,24,35,7952,1],a6100:[23.5,15.6,20,6000,1],lr1:[35.7,23.8,24,9504,1],ixm35:[43.9,32.9,35,11664,.34],ixm80:[43.9,32.9,80,11664,.34]};
 const uvKnMs=.5144;
 // LiDAR presets (DJI published specs): across-track FOV °, point rate pts/s (single return), detection range m at 10 % reflectivity
-const UV_LID={l2:[70,240000,250],l1:[70.4,240000,190],l3:[80,350000,700]};
+const UV_LID={l2:[70,240000,250],l1:[70.4,240000,190],l3:[80,350000,700],avia:[70.4,240000,190],mapper:[70.4,240000,190],aa450:[70.4,240000,190],
+sult:[90,160000,140],mvux3:[120,100000,170]};// Surveyor Ultra: 360° scanner, points within a 90° downward sector (640,000 × 90/360); miniVUX-3UAV: 300 kHz at 120°, range at 20 %
 const uvLid=()=>MODE().uav&&$("uvPay")&&$("uvPay").value=="lidar";
 // LiDAR: swath 2H·tan(FOV/2), spacing from the side overlap, point density = rate / (speed × swath), raised by the overlap
 function uvLGeo(){const H=Math.max(1,g("uvH")),fov=Math.min(170,Math.max(1,g("uvLF"))),sw=2*H*Math.tan(fov/2*D),so=Math.min(95,Math.max(0,g("uvLSO")))/100,v=Math.max(.1,g("spd")*uvKnMs),rate=Math.max(1,g("uvLR")),

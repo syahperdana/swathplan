@@ -980,7 +980,6 @@
  "Battery change (min)": "Tukar bateri (min)",
  "Battery changes": "Penukaran bateri",
  "Camera": "Kamera",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "Nilai kamera adalah anggaran: semak helaian data kamera. Sisi panjang imej melintang arah penerbangan.",
  "Custom": "Tersuai",
  "Custom camera": "Kamera tersuai",
  "DRONE CORRIDOR FLIGHT PLAN": "PELAN PENERBANGAN DRON KORIDOR",
@@ -1069,7 +1068,6 @@
  "Point rate (points/s)": "Kadar titik (titik/s)",
  "Detection range at 10 % reflectivity (m)": "Jarak pengesanan pada kepantulan 10 % (m)",
  "Target point density (points/m², 0 = none)": "Sasaran ketumpatan titik (titik/m², 0 = tiada)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Pratetap mengikut spesifikasi yang diterbitkan DJI (kadar titik pantulan tunggal; imbasan berulang atau linear melintang arah terbang). Kadar titik L3 mengikut kadar denyutnya, 100 kHz hingga 2 MHz: masukkan nilai anda. Ketumpatan ialah purata bagi tanah rata; tumbuhan, air dan permukaan gelap memulangkan kurang titik.",
  "LiDAR swath": "Sapuan LiDAR",
  "Point density (with overlap)": "Ketumpatan titik (dengan pertindihan)",
  "Flight time, batteries": "Masa terbang, bateri",
@@ -1084,5 +1082,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "Sapuan LiDAR {0} m pada {1} m, {2} titik/m² daripada satu laluan.",
  "Custom LiDAR": "LiDAR tersuai",
  "{0} pts/m² at {1} m": "{0} titik/m² pada {1} m",
- "Side overlap": "Pertindihan sisi"
+ "Side overlap": "Pertindihan sisi",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Saiz penderia, panjang fokus dan lebar imej mengikut spesifikasi yang diterbitkan pengeluar. Selang foto terpendek ialah angka pengeluar jika diterbitkan, jika tidak 1 s: semak kamera anda. Sisi panjang imej melintang arah terbang.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Pratetap mengikut spesifikasi yang diterbitkan pengeluar (kadar titik pantulan tunggal; imbasan berulang atau linear melintang arah terbang). Bagi pengimbas 360°, hanya titik dalam medan pandang ke bawah yang dikira, jadi kadar pratetap ialah bahagian itu. Jarak RIEGL diberi pada kepantulan 20 %. Kadar titik L3 mengikut kadar denyutnya, 100 kHz hingga 2 MHz: masukkan nilai anda. Ketumpatan ialah purata bagi tanah rata; tumbuhan, air dan permukaan gelap memulangkan kurang titik."
 }

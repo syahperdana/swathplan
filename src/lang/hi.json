@@ -971,7 +971,6 @@
  "Battery change (min)": "बैटरी बदलना (मिनट)",
  "Battery changes": "बैटरी बदलाव",
  "Camera": "कैमरा",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "कैमरा मान अनुमानित हैं: कैमरे की डेटाशीट जाँचें। छवि की लंबी भुजा उड़ान दिशा के आर-पार है।",
  "Custom": "कस्टम",
  "Custom camera": "कस्टम कैमरा",
  "DRONE CORRIDOR FLIGHT PLAN": "ड्रोन कॉरिडोर उड़ान योजना",
@@ -1060,7 +1059,6 @@
  "Point rate (points/s)": "बिंदु दर (बिंदु/से)",
  "Detection range at 10 % reflectivity (m)": "10 % परावर्तकता पर पहचान दूरी (मी)",
  "Target point density (points/m², 0 = none)": "लक्ष्य बिंदु घनत्व (बिंदु/मी², 0 = कोई नहीं)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "प्रीसेट DJI के प्रकाशित विनिर्देशों पर आधारित हैं (एकल-रिटर्न बिंदु दर; उड़ान दिशा के आर-पार दोहराव या रैखिक स्कैन)। L3 की बिंदु दर उसकी पल्स दर, 100 kHz से 2 MHz, पर निर्भर है: अपनी दर दर्ज करें। घनत्व समतल भूमि का औसत है; वनस्पति, पानी और गहरी सतहें कम बिंदु लौटाती हैं।",
  "LiDAR swath": "LiDAR स्वाथ",
  "Point density (with overlap)": "बिंदु घनत्व (ओवरलैप सहित)",
  "Flight time, batteries": "उड़ान समय, बैटरियाँ",
@@ -1075,5 +1073,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "LiDAR स्वाथ {0} मी, {1} मी पर, एक उड़ान से {2} बिंदु/मी²।",
  "Custom LiDAR": "कस्टम LiDAR",
  "{0} pts/m² at {1} m": "{1} मी पर {0} बिंदु/मी²",
- "Side overlap": "पार्श्व ओवरलैप"
+ "Side overlap": "पार्श्व ओवरलैप",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "सेंसर आकार, फोकल लंबाई और छवि चौड़ाई निर्माताओं के प्रकाशित विनिर्देशों पर आधारित हैं। सबसे छोटा फोटो अंतराल प्रकाशित होने पर निर्माता का आँकड़ा है, अन्यथा 1 से: अपना कैमरा जाँचें। छवि की लंबी भुजा उड़ान दिशा के आर-पार है।",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "प्रीसेट निर्माताओं के प्रकाशित विनिर्देशों पर आधारित हैं (एकल-रिटर्न बिंदु दर; उड़ान दिशा के आर-पार दोहराव या रैखिक स्कैन)। 360° स्कैनर में केवल नीचे की ओर दृश्य क्षेत्र के बिंदु गिने जाते हैं, इसलिए प्रीसेट दर वही हिस्सा है। RIEGL की दूरी 20 % परावर्तकता पर दी गई है। L3 की बिंदु दर उसकी पल्स दर, 100 kHz से 2 MHz, पर निर्भर है: अपनी दर दर्ज करें। घनत्व समतल भूमि का औसत है; वनस्पति, पानी और गहरी सतहें कम बिंदु लौटाती हैं।"
 }

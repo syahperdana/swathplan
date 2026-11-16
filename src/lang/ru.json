@@ -979,7 +979,6 @@
  "Battery change (min)": "Замена аккумулятора (мин)",
  "Battery changes": "Замены аккумулятора",
  "Camera": "Камера",
- "Camera values are approximate: check your camera's datasheet. The image's long side is across the flight direction.": "Параметры камеры приблизительны: сверьтесь с её паспортом. Длинная сторона кадра поперёк направления полёта.",
  "Custom": "Своя",
  "Custom camera": "Своя камера",
  "DRONE CORRIDOR FLIGHT PLAN": "ПЛАН ПОЛЁТА ДРОНА ПО КОРИДОРУ",
@@ -1068,7 +1067,6 @@
  "Point rate (points/s)": "Частота точек (точек/с)",
  "Detection range at 10 % reflectivity (m)": "Дальность обнаружения при отражательной способности 10 % (м)",
  "Target point density (points/m², 0 = none)": "Целевая плотность точек (точек/м², 0 = нет)",
- "Presets follow DJI's published specifications (single-return point rate; repetitive or linear scanning across the flight direction). The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Предустановки соответствуют опубликованным характеристикам DJI (частота при одном отражении; повторяющееся или линейное сканирование поперёк курса). Частота точек L3 определяется частотой импульсов, от 100 кГц до 2 МГц: введите свою. Плотность — среднее для ровной поверхности; растительность, вода и тёмные поверхности дают меньше точек.",
  "LiDAR swath": "Полоса LiDAR",
  "Point density (with overlap)": "Плотность точек (с перекрытием)",
  "Flight time, batteries": "Время полёта, аккумуляторы",
@@ -1083,5 +1081,7 @@
  "LiDAR swath {0} m at {1} m, {2} pts/m² from one pass.": "Полоса LiDAR {0} м на высоте {1} м, {2} точек/м² за один проход.",
  "Custom LiDAR": "Свой LiDAR",
  "{0} pts/m² at {1} m": "{0} точек/м² на высоте {1} м",
- "Side overlap": "Поперечное перекрытие"
+ "Side overlap": "Поперечное перекрытие",
+ "Sensor size, focal length and image width follow the makers' published specifications. The shortest photo interval is the maker's figure where one is published, otherwise 1 s: check your camera. The image's long side is across the flight direction.": "Размер матрицы, фокусное расстояние и ширина снимка соответствуют опубликованным характеристикам производителей. Минимальный интервал съёмки — значение производителя, если оно опубликовано, иначе 1 с: проверьте свою камеру. Длинная сторона снимка направлена поперёк курса.",
+ "Presets follow the makers' published specifications (single-return point rate; repetitive or linear scanning across the flight direction). For a 360° scanner only the points within the downward field of view count, so the preset rate is that share. The RIEGL range is given at 20 % reflectivity. The L3's point rate follows its pulse rate, 100 kHz to 2 MHz: enter yours. The density is an average for flat ground; vegetation, water and dark surfaces return fewer points.": "Предустановки соответствуют опубликованным характеристикам производителей (частота при одном отражении; повторяющееся или линейное сканирование поперёк курса). Для сканера 360° учитываются только точки в поле зрения, направленном вниз, поэтому предустановленная частота — это их доля. Дальность RIEGL указана при отражательной способности 20 %. Частота точек L3 определяется частотой импульсов, от 100 кГц до 2 МГц: введите свою. Плотность — среднее для ровной поверхности; растительность, вода и тёмные поверхности дают меньше точек."
 }

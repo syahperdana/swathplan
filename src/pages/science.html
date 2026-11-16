@@ -94,7 +94,7 @@ TVU = 1.96 σz        THU = 2.45 σh</pre>
 <pre class="f">S = 2R / (C / 100) · (1 − m)</pre>
 <p>200 % coverage, with alternate lines filling each other's nadir gap, is the usual practice for object detection<sup class="fn"><a href="#r4">4</a></sup><sup class="fn"><a href="#r6">6</a></sup>. The ping rate is limited by the two-way travel to the range, f = c / (2R), and the speed by the three-ping rule<sup class="fn"><a href="#r4">4</a></sup>:</p>
 <pre class="f">v_max = L_target · f / n_pings          (NOAA: 1 m object, 3 pings)</pre>
-<p>The model and frequency list gives each system's longest range per side from its datasheet: EdgeTech 4125 (150 m at 400 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r22">22</a></sup>, EdgeTech 4200 (230 m at 300 kHz, 120 m at 600 kHz)<sup class="fn"><a href="#r23">23</a></sup>, Klein 3900 (150 m at 445 kHz, 50 m at 900 kHz)<sup class="fn"><a href="#r24">24</a></sup> and Klein 4900 (200 m at 455 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r25">25</a></sup>. These are maximum operating ranges. The usable range in a given survey also depends on the towfish height, the water conditions and the target size, so the range field stays editable.</p>
+<p>The model and frequency list gives each system's longest range per side from its datasheet: EdgeTech 4125 (150 m at 400 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r22">22</a></sup>, EdgeTech 4200 (230 m at 300 kHz, 120 m at 600 kHz)<sup class="fn"><a href="#r23">23</a></sup>, Klein 3900 (150 m at 445 kHz, 50 m at 900 kHz)<sup class="fn"><a href="#r24">24</a></sup> and Klein 4900 (200 m at 455 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r25">25</a></sup>; section 14 lists the other models and their sources. These are maximum operating ranges. The usable range in a given survey also depends on the towfish height, the water conditions and the target size, so the range field stays editable.</p>
 <h3>6.2 Magnetometer</h3>
 <p>The anomaly of a ferrous object falls off quickly with distance (with the cube of the distance for a dipole)<sup class="fn"><a href="#r7">7</a></sup>. So the planner asks for the distance <i>D</i> at which your target can still be detected, and the sensor height <i>h</i> above the seabed. A seabed point is within reach if it is within <i>D</i> of the sensor, so the lines can be up to</p>
 <pre class="f">S = 2 √( D² − h² )              (only when D &gt; h)</pre>
@@ -165,19 +165,40 @@ cost           = total project (days) × day rate</pre>
 <p>The infill planner rasterises the area into cells (the grid cell size). From a processed GeoTIFF<sup class="fn"><a href="#r33">33</a></sup>, a cell is covered when the grid or mosaic has data there. From track lines, a cell is covered when it falls inside a track's swath. For multibeam the swath comes from the depth and swath angles; for side-scan it runs from the nadir gap to the range on each side<sup class="fn"><a href="#r6">6</a></sup>. At 200 % coverage a cell counts as covered only when two tracks see it<sup class="fn"><a href="#r4">4</a></sup>. Uncovered cells are grouped into gaps, gaps smaller than the chosen minimum are ignored, and lines are planned across each gap with the spacing of the chosen coverage. Each line is cut into runs where its strip has gap cells; a covered stretch longer than four cells (or twice the line extension) splits it. With a margin outside the boundary, cells within that distance of an edge or a corner are added, each assigned to its edge. Margin gaps are grouped per edge and planned along it, and gaps are visited nearest first. The coverage percentage counts only the cells inside the boundary.</p>
 
 <h2>14 Equipment values</h2>
-<p>The catalogues give approximate values from manufacturers' published specifications and stay editable:</p>
+<p>The catalogues give values from manufacturers' published specifications, accessed November 2026, and stay editable. Where a maker publishes no shortest photo interval, the planner uses 1 s.</p>
 <table><tr><th>Item</th><th>Values used</th><th>Source</th></tr>
 <tr><td>EdgeTech 4125</td><td>150 m @ 400 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r22">22</a></sup></td></tr>
 <tr><td>EdgeTech 4200</td><td>230 m @ 300 kHz, 120 m @ 600 kHz per side</td><td><sup class="fn"><a href="#r23">23</a></sup></td></tr>
 <tr><td>Klein 3900</td><td>150 m @ 445 kHz, 50 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r24">24</a></sup></td></tr>
 <tr><td>Klein 4900</td><td>200 m @ 455 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r25">25</a></sup></td></tr>
+<tr><td>EdgeTech 4200 (also)</td><td>500 m @ 100 kHz, 150 m @ 400 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r41">41</a></sup></td></tr>
+<tr><td>EdgeTech 4205</td><td>600 m @ 120, 350 m @ 230, 200 m @ 410, 150 m @ 540, 90 m @ 850 kHz per side</td><td><sup class="fn"><a href="#r42">42</a></sup></td></tr>
+<tr><td>EdgeTech 2205 (AUV/ROV)</td><td>1000 m @ 75, 500 m @ 120, 300 m @ 230, 200 m @ 410, 150 m @ 540, 75 m @ 850, 35 m @ 1600 kHz per side</td><td><sup class="fn"><a href="#r43">43</a></sup></td></tr>
+<tr><td>Klein UUV 3500, HydroScan</td><td>150 m @ 455 kHz, 75 m @ 900 kHz (typical) per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Klein System 4000</td><td>200 m @ 400 kHz per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Klein MA-X VIEW 600 / 4K-MAX</td><td>120 m @ 600 kHz per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Klein MANTIS UUV</td><td>150 m @ 600, 100 m @ 720, 75 m @ 850 kHz per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Kraken KATFISH (SAS)</td><td>200 m per side, 337 kHz centre per side</td><td><sup class="fn"><a href="#r45">45</a></sup></td></tr>
+<tr><td>StarFish 452F, 990F</td><td>100 m @ 450 kHz, 35 m @ 1 MHz per side</td><td><sup class="fn"><a href="#r46">46</a></sup></td></tr>
+<tr><td>Imagenex 872 YellowFin</td><td>200 m range scale @ 260 kHz per side</td><td><sup class="fn"><a href="#r47">47</a></sup></td></tr>
+<tr><td>DeepVision DE340D, DE680SAR</td><td>200 m @ 340 kHz, 50 m @ 680 kHz per side</td><td><sup class="fn"><a href="#r48">48</a></sup></td></tr>
+<tr><td>JW Fishers SSS-100K, 600K, 1200K</td><td>600 m @ 100, 75 m @ 600, 25 m @ 1200 kHz per side</td><td><sup class="fn"><a href="#r49">49</a></sup></td></tr>
 <tr><td>DJI Mavic 3 Enterprise (wide)</td><td>17.3 × 13 mm, 12.3 mm, 5280 px, 0.7 s</td><td><sup class="fn"><a href="#r26">26</a></sup></td></tr>
 <tr><td>DJI Matrice 4E (wide)</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent (12.3 mm), 5280 px, 0.5 s</td><td><sup class="fn"><a href="#r27">27</a></sup></td></tr>
 <tr><td>DJI Phantom 4 RTK</td><td>1″ (13.2 × 8.8 mm), 8.8 mm, 5472 px, 2.5 s</td><td><sup class="fn"><a href="#r28">28</a></sup></td></tr>
 <tr><td>DJI Zenmuse P1, 35 mm lens</td><td>35.9 × 24 mm, 35 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr>
 <tr><td>DJI Zenmuse L2 (LiDAR)</td><td>70° across, 240,000 points/s, 250 m at 10 %</td><td><sup class="fn"><a href="#r38">38</a></sup></td></tr>
 <tr><td>DJI Zenmuse L1 (LiDAR)</td><td>70.4° across, 240,000 points/s, 190 m at 10 %</td><td><sup class="fn"><a href="#r39">39</a></sup></td></tr>
-<tr><td>DJI Zenmuse L3 (LiDAR, 350 kHz)</td><td>80° across, 350,000 points/s, 700 m at 10 %</td><td><sup class="fn"><a href="#r40">40</a></sup></td></tr></table>
+<tr><td>DJI Zenmuse L3 (LiDAR, 350 kHz)</td><td>80° across, 350,000 points/s, 700 m at 10 %</td><td><sup class="fn"><a href="#r40">40</a></sup></td></tr>
+<tr><td>DJI Zenmuse P1, 24 and 50 mm lenses</td><td>35.9 × 24 mm, 24 / 50 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr>
+<tr><td>DJI Mavic 3M, Matrice 3D (wide), Zenmuse L2 RGB</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent, 5280 px; L2: 0.7 s</td><td><sup class="fn"><a href="#r50">50</a></sup></td></tr>
+<tr><td>Autel EVO II Pro RTK V3</td><td>1″ (13.2 × 8.8 mm), 29 mm equivalent (10.6 mm), 5472 px</td><td><sup class="fn"><a href="#r51">51</a></sup></td></tr>
+<tr><td>senseFly S.O.D.A., Aeria X</td><td>1″, 10.6 mm, 5472 px; APS-C, 18.5 mm, 6000 px</td><td><sup class="fn"><a href="#r52">52</a></sup></td></tr>
+<tr><td>Sony RX1R II, a6100, ILX-LR1 (Wingtra, Quantum Systems)</td><td>35.9 × 24 mm, 35 mm, 42 MP; 23.5 × 15.6 mm, 20 mm, 6000 px; 35.7 × 23.8 mm, 24 mm, 61 MP</td><td><sup class="fn"><a href="#r53">53</a></sup></td></tr>
+<tr><td>Phase One iXM-100</td><td>43.9 × 32.9 mm, 35 / 80 mm, 11664 px, 3 frames/s</td><td><sup class="fn"><a href="#r54">54</a></sup></td></tr>
+<tr><td>Livox Avia; YellowScan Mapper+; CHCNAV AlphaAir 450 (LiDAR)</td><td>70.4° across, 240,000 points/s, 190 m at 10 %</td><td><sup class="fn"><a href="#r55">55</a></sup></td></tr>
+<tr><td>YellowScan Surveyor Ultra (LiDAR)</td><td>360° scanner, 640,000 points/s (160,000 within 90° downward), 140 m at 10 %</td><td><sup class="fn"><a href="#r55">55</a></sup></td></tr>
+<tr><td>RIEGL miniVUX-3UAV (LiDAR)</td><td>100,000 measurements/s at 120° (300 kHz), 170 m at 20 %</td><td><sup class="fn"><a href="#r56">56</a></sup></td></tr></table>
 <p>Multibeam models checked against the manufacturer's published datasheet or manual in November 2026<sup class="fn"><a href="#r37">37</a></sup>. The half-angle is half the swath sector the maker states for a flat seabed (for NORBIT, half the sector it gives for IHO Special Order quality); "n/a" means the datasheet does not give a single-swath beam count.</p>
 <table><tr><th>Model</th><th>Beams</th><th>Frequency</th><th>Max half-angle</th><th>Source</th></tr>
 <tr><td>Kongsberg EM 2040C</td><td>512</td><td>200–400 kHz + 700 kHz</td><td>70°</td><td>Kongsberg EM 2040C MKII data sheet 443809</td></tr>
@@ -255,6 +276,22 @@ cost           = total project (days) × day rate</pre>
 <li id="r38">DJI (2023). <i>Zenmuse L2 specifications</i> and <i>Zenmuse L2 operation guide</i>. <a href="https://enterprise.dji.com/zenmuse-l2/specs">enterprise.dji.com/zenmuse-l2/specs</a>. Accessed November 2026.</li>
 <li id="r39">DJI (2020). <i>Zenmuse L1 specifications</i>. <a href="https://www.dji.com/zenmuse-l1/info">dji.com/zenmuse-l1/info</a>. Accessed November 2026.</li>
 <li id="r40">DJI (2025). <i>Zenmuse L3 specifications</i>. <a href="https://enterprise.dji.com/zenmuse-l3/specs">enterprise.dji.com/zenmuse-l3/specs</a>. Accessed November 2026.</li>
+<li id="r41">EdgeTech. <i>4200 MP</i> specifications (operating range per side 100 kHz: 500 m, 300 kHz: 230 m, 400 kHz: 150 m, 600 kHz: 120 m, 900 kHz: 75 m), via Unique Group product page. Accessed November 2026.</li>
+<li id="r42">EdgeTech. <i>4205 Tri-Frequency / Motion Tolerant Side Scan Sonar System</i>, datasheet (operating range per side 120 kHz: 600 m, 230 kHz: 350 m, 410 kHz: 200 m, 540 kHz: 150 m, 850 kHz: 90 m). Accessed November 2026.</li>
+<li id="r43">EdgeTech. <i>2205 AUV-based sonar</i>, datasheet (side scan frequencies and ranges, 75 kHz: 1000 m to 1600 kHz: 35 m). Accessed November 2026.</li>
+<li id="r44">Klein (MIND Technology). Datasheets: <i>UUV-3500</i> and <i>HydroScan</i> (typical range 150 m @ 455 kHz, 75 m @ 900 kHz); <i>System 4000</i> (200 m per side @ 400 kHz); <i>MA-X VIEW 600</i> (up to 120 m per side @ 600 kHz); <i>MANTIS UUV</i> (150 m @ 600 kHz, 100 m @ 720 kHz, 75 m @ 850 kHz). <a href="https://www.klein.com">klein.com</a> Accessed November 2026.</li>
+<li id="r45">Kraken Robotics. <i>KATFISH</i> brochure and flyer (ranges up to 200 m per side; SAS centre frequencies 337 and 105 kHz). <a href="https://krakenrobotics.com">krakenrobotics.com</a> Accessed November 2026.</li>
+<li id="r46">Tritech / Blueprint Subsea. <i>StarFish</i> side scan range (452F: 450 kHz, up to 100 m per channel; 990F: 1 MHz, up to 35 m per channel). Accessed November 2026.</li>
+<li id="r47">Imagenex. <i>872 YellowFin Sidescan Sonar</i> specifications, rev. 7 (260/330/800 kHz; range scales 10 to 200 m). <a href="https://imagenex.com/products/yellowfin">imagenex.com</a> Accessed November 2026.</li>
+<li id="r48">DeepVision. <i>DeepEye DE340D</i> (340 kHz, range 15 to 200 m) and <i>DE680SAR</i> (680 kHz, range 5 to 50 m) specifications. Accessed November 2026.</li>
+<li id="r49">JW Fishers. Side scan sonar specifications: SSS-600K range settings to 75 m per side, SSS-1200K to 25 m, 100 kHz up to 2,000 ft (about 600 m) per side. Accessed November 2026.</li>
+<li id="r50">DJI. <i>Mavic 3M</i>, <i>Dock 2 (Matrice 3D)</i> and <i>Zenmuse L2</i> specifications (4/3 CMOS 20 MP wide cameras, 24 mm equivalent; L2 JPEG timed interval 0.7 s). <a href="https://enterprise.dji.com">enterprise.dji.com</a> Accessed November 2026.</li>
+<li id="r51">Autel Robotics. <i>EVO II Pro RTK V3</i> specifications (1-inch CMOS, 20 MP, 29 mm equivalent focal length). <a href="https://www.autelrobotics.com">autelrobotics.com</a> Accessed November 2026.</li>
+<li id="r52">AgEagle (senseFly). <i>S.O.D.A.</i> (1″, 10.6 mm, 5,472 × 3,648 px) and <i>Aeria X</i> (APS-C, 18.5 mm, 6,000 × 4,000 px) specifications. <a href="https://ageagle.com">ageagle.com</a> Accessed November 2026.</li>
+<li id="r53">Wingtra. <i>WingtraOne GEN II</i> sensor specifications (Sony RX1R II: full frame, 42 MP, 35 mm; Sony a6100: APS-C 23.5 × 15.6 mm, 6,000 px, 20 mm). Quantum Systems. <i>Trinity Pro</i> cameras overview (Sony ILX-LR1: 35.7 × 23.8 mm, 24 mm lens). <a href="https://wingtra.com">wingtra.com</a>, <a href="https://quantum-systems.com">quantum-systems.com</a> Accessed November 2026.</li>
+<li id="r54">Phase One. <i>iXM Series</i> brochure (iXM-100: 11,664 × 8,750 px, 43.9 × 32.9 mm, 3 frames/s; 35 and 80 mm RSM lenses). Accessed November 2026.</li>
+<li id="r55">Livox. <i>Avia</i> specifications (70.4° × 4.5° repetitive, 240,000 points/s first return, 190 m at 10 %). <a href="https://www.livoxtech.com/avia/specs">livoxtech.com</a>. YellowScan. <i>Mapper+</i> and <i>Surveyor Ultra</i> specifications (Surveyor Ultra: 360° × 40.3°, 640,000 shots/s, 140 m at 10 %). <a href="https://www.yellowscan.com">yellowscan.com</a>. CHCNAV. <i>AlphaAir 450</i> datasheet (70.4°, 240,000 points/s, 190 m at 10 %). Accessed November 2026.</li>
+<li id="r56">RIEGL. <i>miniVUX-3UAV</i> data sheet (100/200/300 kHz PRR; at 300 kHz up to 100,000 measurements/s at 120° field of view). Phoenix LiDAR Systems. <i>miniRANGER-3 LITE</i> specification (miniVUX-3UAV; maximum range 170 m at 20 % reflectivity). <a href="https://www.riegl.com">riegl.com</a> Accessed November 2026.</li>
 </ol>
 <p class="ver">© 2026 Aldwin Syahperdana. Last checked against the sources: November 2026.</p>
 </article></main>
