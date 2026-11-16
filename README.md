@@ -85,11 +85,15 @@ Some features need internet when you use them: map background tiles, global bath
 
 ## One planner for every survey
 
-The survey planner starts with two choices: **what you survey with** (multibeam, single-beam, or a geophysical spread) and **the shape of the job** (an area, or a corridor along a cable or pipeline route). It then shows only the sections that survey needs, numbered in the order you see them. Any combination works, including a geophysical survey along a route, and switching keeps your area, route and settings.
+The survey planner starts with two choices: **what you survey with** (multibeam, single-beam, a geophysical spread, or a drone camera) and **the shape of the job** (an area, or a corridor along a cable or pipeline route). It then shows only the sections that survey needs, numbered in the order you see them. Any combination works, including a geophysical survey along a route, and switching keeps your area, route and settings.
 
 ## Single-beam surveys
 
 Choose *Hydrographic: single-beam (SBES)* for shallow or partial-coverage work. Set the beam width and the line spacing, or use the S-44 maximum (3 × depth, or 25 m). The planner shows the footprint and coverage, checks the spacing and the 5 % coverage that S-44 allows for Order 2 and 1b, and warns that Order 1a needs a feature search and Special and Exclusive Order need full coverage.
+
+## Drone surveys (photogrammetry)
+
+Choose *Aerial: drone (photogrammetry)* to plan a mapping flight over an area or along a route. Pick a camera (DJI Mavic 3 Enterprise, Matrice 4E, Phantom 4 RTK, Zenmuse P1, or your own sensor size, focal length and image width), then set the flight height, the forward and side overlap, the speed and the battery time. The planner shows the ground sample distance, the image footprint, the line spacing, the photo interval and the number of photos and batteries, and warns when the height is above 120 m or the photos come faster than the camera allows. The QGroundControl and Mission Planner exports carry the height, the speed and a camera trigger distance. Camera values are approximate: check your camera's datasheet.
 
 ## Corridor surveys
 

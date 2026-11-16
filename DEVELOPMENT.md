@@ -93,6 +93,17 @@ The route section is `parts/sec3-corridor.html`. `gen()` makes the corridor line
 
 Offsets are positive to starboard; lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
 
+### Drone mode
+
+The section is `parts/sec2-uav.html` (camera preset `uvCam`, sensor `uvSW`/`uvSH`, focal `uvF`, image width `uvIW`, shortest interval `uvMI`, height `uvH`, overlaps `uvFO`/`uvSO`, battery `uvBat`/`uvSwap`). While the drone is chosen, `applyMode` hides the vessel sections (turn, IHO, coastline, bathymetry, profile) and the SVP inputs, and moves the speed input into the drone section; a comment node marks where it goes back. The drone and the vessel keep separate speeds (`uvV`, `spdV`, swapped in `setMode`). `js/uav/app.js` wraps, each falling through when `MODE().uav` is off:
+
+- `params()`: `S` = across-track footprint × (1 − side overlap), `W` the footprint, `Rr` = S/2 (tight turns).
+- `gen()`: lines are not trimmed to water.
+- `stats()` and `summary()`: run with no turn slow-down, and with battery changes standing in for SVP casts (`uvWith`); the plan checks become height (120 m warning), photo interval against the camera, and GSD.
+- Exports read `window.SWP_UAV` (`{h, trig, v}`): QGroundControl gets the height on every waypoint and `MAV_CMD_DO_SET_CAM_TRIGG_DIST` (206) on after the first waypoint and off at the end; Mission Planner the same.
+
+Camera presets in `UV_CAM` are approximate values.
+
 ### Single-beam mode
 
 The section is `parts/sec2-sbes.html` (beam width, line spacing `sbSp`); the design depth input is moved into it while single beam is chosen (`applyMode`), and back. `js/sbes/app.js` wraps:
@@ -184,6 +195,8 @@ Infill planner: `python3 test/infill_check.py infill/index.html` (track import, 
 The snapshot runs the planner in its default mode (multibeam, area), so its exports are those of the original MBES planner.
 
 Corridor mode: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py planner/index.html` (route import, layouts, every export, `.SPL` round trip, switching to area and back).
+
+Drone mode: `python3 test/uav_check.py planner/index.html` (GSD, spacing, photo distance, warnings, waypoint exports with height and camera trigger, switching back).
 
 Single-beam mode: `python3 test/sbes_check.py planner/index.html` (spacing and footprint, S-44 checks per order, sheet and report text, scenarios, corridor, switching back).
 
