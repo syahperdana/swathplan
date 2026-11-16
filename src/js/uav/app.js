@@ -62,5 +62,5 @@ setTimeout(uvPayShow,0);
 const uvSensorTxt=()=>{if(uvLid()){const o=$("uvLid").selectedOptions[0],U=uvLGeo();return($("uvLid").value=="custom"?i18("Custom LiDAR"):o.textContent)+", "+i18("{0} pts/m² at {1} m",Math.round(U.den),U.H)}const o=$("uvCam").selectedOptions[0];return($("uvCam").value=="custom"?i18("Custom camera"):o.textContent)+", "+i18("{0} cm/px at {1} m",(uvGeo().gsd*100).toFixed(2),g("uvH"))};
 const uvSensorRow=()=>[uvLid()?i18("LiDAR"):i18("Camera"),uvSensorTxt()];
 const uvSwathRow=()=>uvLid()?[i18("Side overlap"),g("uvLSO")+" %"]:[i18("Overlap (forward / side)"),g("uvFO")+" % / "+g("uvSO")+" %"];
-const uvMission=()=>{const U=uvGeo();return{h:U.H,trig:U.lidar?0:U.dPh,v:U.v}};// LiDAR: no camera trigger
+const uvMission=()=>{const U=uvGeo();return{h:U.H,trig:U.lidar?0:U.dPh,v:U.v,wp:typeof tgWp=="function"?tgWp():undefined}};// wp: per-waypoint heights when following the terrain// LiDAR: no camera trigger
 const _uvSetLang=setLang;setLang=function(){const r=_uvSetLang.apply(this,arguments);try{uvShow()}catch(e){}return r};
