@@ -26,6 +26,18 @@ with sync_playwright() as p:
     n,bt=dl(pg,"$('eDxf').click()");t=bt.decode();ly=set(re.findall(r'\n8\n([^\n]+)\n',t))
     ok({'line_S01','line_S03','cross_S02','turn_S02','segments','boundary'}<=ly and 'line' not in ly,'DXF: each segment on its own layers')
     ok(re.findall(r'\nVIEW\n2\n(\w+)',t)==['SEG01','SEG02','SEG03'] and t.index('TABLES')<t.index('ENTITIES'),'DXF: a named view per segment')
+    # one file per segment, for every format
+    ev("$('xpSegs').value='file'");before=ev("[$('hL').textContent,R.lines.length,R.cross.length,poly.length]")
+    for bt,click,k in [('DXF',"$('eDxf').click()",3),('GeoJSON',"$('eGj').click()",3),('HYPACK',"$('eLnx').click()",3),('Shapefile',"$('eShp').click()",3),('QGroundControl',"$('eQgc').click()",3),('PNG',"$('xpFmt').value='png';$('xpImg').click()",4)]:
+        n,bt_=dl(pg,click);z=zipfile.ZipFile(io.BytesIO(bt_)).namelist()
+        ok(n.endswith('_per_segment.zip') and len(z)==k and any('_S02' in x for x in z),f'one file per segment: {bt} ({len(z)} files)')
+    n,bt_=dl(pg,"$('eGj').click()");zz=zipfile.ZipFile(io.BytesIO(bt_));import json as _j
+    L=[sum(1 for f in _j.loads(zz.read(x))['features'] if f['properties'].get('kind')=='line') for x in zz.namelist()]
+    ok(L==[3,3,3],'each segment file holds only its own lines '+str(L))
+    n,bt_=dl(pg,"$('xpPdf').click()");zz=zipfile.ZipFile(io.BytesIO(bt_))
+    km=[re.findall(r'\d[\d.,]*\s?km',PdfReader(io.BytesIO(zz.read(x))).pages[1].extract_text() or '')[:1] for x in zz.namelist()]
+    ok(len(zz.namelist())==4 and len(set(map(str,km)))==4,'reports: an overview plus one per segment, each with its own figures '+str(km))
+    ok(ev("[$('hL').textContent,R.lines.length,R.cross.length,poly.length]")==before,'the plan is unchanged afterwards')
     ev("$('xpSegs').value='all'")
     n,bt=dl(pg,"$('xpFmt').value='pdfmap';$('xpImg').click()");ok(len(PdfReader(io.BytesIO(bt)).pages)==1,'whole-route choice: one sheet as before')
     n,bt=dl(pg,"$('xpPdf').click()");ok(len(PdfReader(io.BytesIO(bt)).pages)==rep-3,'whole-route choice: report has the single sheet')
