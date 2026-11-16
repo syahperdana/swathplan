@@ -958,6 +958,7 @@
  "Export the lines (section {§exp}).": "Exporte las líneas (sección {§exp}).",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "Geofísico: sonar de barrido lateral, magnetómetro, perfilador de sedimentos, sísmica",
  "Hydrographic: multibeam (MBES)": "Hidrográfico: multihaz (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Planifique líneas de levantamiento multihaz, monohaz, geofísicas o con dron sobre un área o a lo largo de una ruta de cable o tubería: controles IHO S-44, giros, tiempo y coste, y exportaciones para software de adquisición y apps de drones.",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "Las secciones que no se aplican al levantamiento elegido se ocultan, así que los números de sección siguen lo que ve.",
  "Set the coordinate system (section {§crs}) before importing files without one.": "Configure el sistema de coordenadas (sección {§crs}) antes de importar archivos que no lo tengan.",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "Configure el equipo: el multihaz y la franja, o los sensores geofísicos del conjunto.",
@@ -1072,5 +1073,12 @@
  "{0} cm/px at {1} m": "{0} cm/px a {1} m",
  "{0} m ({1} s at {2} m/s)": "{0} m ({1} s a {2} m/s)",
  "{0} photos · {1} min · {2} batteries": "{0} fotos · {1} min · {2} baterías",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Planifique líneas de levantamiento multihaz, monohaz, geofísicas o con dron sobre un área o a lo largo de una ruta de cable o tubería: controles IHO S-44, giros, tiempo y coste, y exportaciones para software de adquisición y apps de drones."
+ "Side-scan model and frequency": "Modelo y frecuencia del sonar de barrido lateral",
+ "{0} kHz, up to {1} m per side": "{0} kHz, hasta {1} m por banda",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "El alcance de {0} m supera los {1} m que logra esta frecuencia: acorte el alcance o elija una frecuencia más baja.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "Hasta {0} m por banda a esta frecuencia. Valores aproximados: consulte la ficha del fabricante y las condiciones en campo.",
+ "Transducer": "Transductor",
+ "Typical 200 kHz narrow beam (about 3°)": "Haz estrecho típico de 200 kHz (unos 3°)",
+ "Typical 200 kHz beam (about 8°)": "Haz típico de 200 kHz (unos 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "Haz típico de baja frecuencia de 33 kHz (unos 20°)"
 }

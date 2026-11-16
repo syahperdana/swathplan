@@ -42,8 +42,18 @@ spd>r.vmax?add("bad",i18("Survey speed {0} kn is above the side-scan limit of {1
 if(r.k=="mag")r.ok?add("inf",i18("Magnetometer: the farthest point between lines is {0} m from the sensor (limit {1} m).",Math.hypot(r.S/2,g("gMA")).toFixed(1),g("gMD"))):add("bad",i18("Magnetometer: the detection distance is not larger than the sensor height, so targets cannot be found between lines."))});
 if(G.drv)add("inf",i18("Line spacing used: {0}, set by {1}.",G.S.toFixed(1)+" m",G.drv.n));$("chk").insertAdjacentHTML("afterbegin",C.join(""))};
 // map sheet rows describe the spread
-const geoSensorRow=()=>{const G=params().geo;return[i18("Sensors"),G.rows.length?G.rows.map(r=>r.n).join(", "):i18("Multibeam")]};
+const geoSensorRow=()=>{const G=params().geo;return[i18("Sensors"),G.rows.length?G.rows.map(r=>{const o=r.k=="sss"&&$("gSM").selectedOptions[0];return o&&o.dataset.f?r.n+" ("+o.parentElement.label+", "+o.dataset.f+" kHz)":r.n}).join(", "):i18("Multibeam")]};
 const geoSwathRow=()=>{const G=params().geo;return[i18("Spacing set by"),G.drv?G.drv.n:i18("Multibeam")]};
 ["gSS","gSR","gSC","gSO","gSA","gSL","gSP","gMG","gMA","gMD","gMF","gSB","gBS","gSE","gES","gEL","gMB","gLB","gEX","gTI"].forEach(id=>{const e=$(id);["input","change"].forEach(ev=>e.addEventListener(ev,()=>{gen();saveSoon()}))});
 const _geoSetLang=setLang;setLang=function(){const r=_geoSetLang.apply(this,arguments);try{if(MODE().geo)geoShow()}catch(e){}return r};
 gen();
+
+/* side-scan model list (options in parts/sec2-geophys.html): a language change relabels them */
+function sssFill(){$("gSM").querySelectorAll("option[data-f]").forEach(o=>o.textContent=i18("{0} kHz, up to {1} m per side",o.dataset.f,o.dataset.r));sssNote()}
+const sssMax=()=>{const o=$("gSM").selectedOptions[0];return o&&o.dataset.r?+o.dataset.r:0};
+function sssNote(){const n=$("gSMn"),mx=sssMax(),R=g("gSR");n.hidden=!mx;if(!mx)return;const over=R>mx;n.classList.toggle("warn",over);
+n.textContent=(over?i18("The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.",R,mx):i18("Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.",mx))}
+$("gSM").addEventListener("change",()=>{const mx=sssMax();if(mx){$("gSR").value=mx;$("gSR").dispatchEvent(new Event("input"))}sssNote();saveSoon()});
+$("gSR").addEventListener("input",sssNote);
+{const _sl=setLang;setLang=function(){const r=_sl.apply(this,arguments);try{sssFill()}catch(e){}return r}}
+setTimeout(sssFill,0);

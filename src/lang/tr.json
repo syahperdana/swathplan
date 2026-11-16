@@ -957,6 +957,7 @@
  "Export the lines (section {§exp}).": "Hatları dışa aktarın (madde {§exp}).",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "Jeofizik: yan taramalı sonar, manyetometre, sığ sismik profil, sismik",
  "Hydrographic: multibeam (MBES)": "Hidrografik: çok ışınlı (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Bir alan üzerinde ya da kablo veya boru hattı güzergâhı boyunca çok ışınlı, tek ışınlı, jeofizik veya dron ölçüm hatları planlayın: IHO S-44 kontrolleri, dönüşler, süre ve maliyet, veri toplama yazılımları ve dron uygulamaları için dışa aktarımlar.",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "Seçilen ölçüme uymayan maddeler gizlenir; madde numaraları gördüğünüz sırayı izler.",
  "Set the coordinate system (section {§crs}) before importing files without one.": "Koordinat sistemi olmayan dosyaları içe aktarmadan önce koordinat sistemini ayarlayın (madde {§crs}).",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "Ekipmanı ayarlayın: çok ışınlı ve tarama ya da düzenekteki jeofizik sensörler.",
@@ -1071,5 +1072,12 @@
  "{0} cm/px at {1} m": "{0} cm/px, {1} m’de",
  "{0} m ({1} s at {2} m/s)": "{0} m ({2} m/s’de {1} s)",
  "{0} photos · {1} min · {2} batteries": "{0} fotoğraf · {1} dk · {2} batarya",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Bir alan üzerinde ya da kablo veya boru hattı güzergâhı boyunca çok ışınlı, tek ışınlı, jeofizik veya dron ölçüm hatları planlayın: IHO S-44 kontrolleri, dönüşler, süre ve maliyet, veri toplama yazılımları ve dron uygulamaları için dışa aktarımlar."
+ "Side-scan model and frequency": "Yan taramalı sonar modeli ve frekansı",
+ "{0} kHz, up to {1} m per side": "{0} kHz, her yana {1} m’ye kadar",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "{0} m menzil, bu frekansın ulaştığı {1} m’nin ötesinde: menzili kısaltın veya daha düşük bir frekans seçin.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "Bu frekansta her yana {0} m’ye kadar. Değerler yaklaşıktır: üreticinin veri sayfasını ve sahadaki koşulları kontrol edin.",
+ "Transducer": "Dönüştürücü",
+ "Typical 200 kHz narrow beam (about 3°)": "Tipik 200 kHz dar huzme (yaklaşık 3°)",
+ "Typical 200 kHz beam (about 8°)": "Tipik 200 kHz huzme (yaklaşık 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "Tipik 33 kHz düşük frekans huzmesi (yaklaşık 20°)"
 }
