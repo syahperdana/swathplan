@@ -35,7 +35,7 @@ const mean=ll.length?ol/ll.length:0,Rr=g("R");mean<6*Rr?add("bad",i18("Average l
 if(tc("t"))add("inf",i18("{0} transit leg(s) join separate line pieces (concave area or land trimming); check they are safe.",tc("t")));
 hasB?(bath.src&&/GMRT|NCEI|EMODnet|GEBCO/.test(bath.src)&&oi<=2?add("bad",i18("Depths come from a global grid ({0}). It cannot support {1} design: verify with your own soundings.",bath.src,ordN(oi))):add("ok",i18("Depth model from loaded data: {0} values.",bath.z.length))):add("inf",i18("Design depth only: load soundings or global bathymetry for depth-adaptive planning."));
 cst.seg&&cst.seg.length?($("trim").checked?add("ok",i18("Lines are trimmed to water with {0} m clearance.",g("clr"))):add("bad",i18("A coastline is loaded but trimming is switched off."))):add("inf",i18("No coastline loaded: check lines against charts for land and hazards."));
-cl.length?add("ok",i18("{0} cross line(s) available for the S-44 consistency check.",cl.length)):add("bad",i18("No cross lines: tick the option in section 3 for QC."));
+cl.length?add("ok",i18("{0} cross line(s) available for the S-44 consistency check.",cl.length)):add("bad",i18("No cross lines: tick the option in section {§dir} for QC."));
 if(g("mxS")>0)add("inf",i18("Maximum line spacing is capped at {0} m.",g("mxS")))}
 $("chk").innerHTML=C.join("")}
 $("tabP").onclick=()=>{$("mainP").hidden=false;$("guide").hidden=true;$("tabP").classList.add("on");$("tabG").classList.remove("on");render()};

@@ -28,28 +28,8 @@
  ],
  "shortcuts": [
   {
-   "name": "MBES line planner",
-   "url": "./mbes/",
-   "icons": [
-    {
-     "src": "icons/icon-192.png",
-     "sizes": "192x192"
-    }
-   ]
-  },
-  {
-   "name": "Corridor planner",
-   "url": "./corridor/",
-   "icons": [
-    {
-     "src": "icons/icon-192.png",
-     "sizes": "192x192"
-    }
-   ]
-  },
-  {
-   "name": "Geophysical planner",
-   "url": "./geophys/",
+   "name": "Survey planner",
+   "url": "./planner/",
    "icons": [
     {
      "src": "icons/icon-192.png",

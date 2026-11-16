@@ -1,6 +1,9 @@
 let LANG="en";const DICT=new Map(),LATIN=new Set(["en","id","de","fr","it","es","nl","af","pt","tl","ms","sv","da","no","nb","fi","ca"]),RTL=new Set(["ar","he","fa","ur"]),CJKL=new Set(["ja","zh","ko"]),
 FF='"Segoe UI","Noto Sans","Noto Sans CJK SC","Noto Sans CJK JP","Hiragino Sans","Yu Gothic","Microsoft YaHei","Noto Sans Arabic","Noto Naskh Arabic","Malgun Gothic","Apple SD Gothic Neo","Noto Sans CJK KR","Nirmala UI","Kohinoor Devanagari","Noto Sans Devanagari","Noto Sans Bengali","Leelawadee UI","Noto Sans Thai","Noto Sans Hebrew","Arial Unicode MS","Tahoma",Arial,sans-serif',
-i18=(s,...a)=>{let t=DICT.get(s);if(t===undefined)t=s;return a.length&&typeof t=="string"?t.replace(/\{(\d+)\}/g,(m,i)=>a[+i]!==undefined?a[+i]:m):t};
+i18=(s,...a)=>{let t=DICT.get(s);if(t===undefined)t=s;return secSub(a.length&&typeof t=="string"?t.replace(/\{(\d+)\}/g,(m,i)=>a[+i]!==undefined?a[+i]:m):t)};
+// sections are numbered in the order they are shown; texts name them as {§crs}, {§bound}, ...
+const SECN={},secSub=t=>typeof t=="string"&&t.indexOf("{§")>=0?t.replace(/\{§(\w+)\}/g,(m,k)=>SECN[k]||"–"):t;
+function secNumber(){for(const k in SECN)delete SECN[k];let n=0;document.querySelectorAll("details[data-sec]").forEach(d=>{const s=d.querySelector(":scope>summary");if(d.parentElement.closest("details")||d.closest("[hidden]")){if(s)s.removeAttribute("data-n");return}n++;SECN[d.dataset.sec]=n;if(s)s.setAttribute("data-n",n+". ")})}
 const UNITS=(()=>{const U=[],norm=s=>s.replace(/\s+/g," ").trim(),SK=new Set(["SCRIPT","STYLE","svg","SVG","CANVAS","TEXTAREA","PRE"]),INL=new Set(["B","I","EM","STRONG","CODE","SUB","SUP","A","SPAN","BR","KBD","SMALL","U"]),LET=/[A-Za-zÀ-ɏ]{2}/;
 const inl=el=>[...el.querySelectorAll("*")].every(c=>INL.has(c.tagName)&&!c.id);
 const walk=el=>{if(SK.has(el.tagName)||el.getAttribute("data-i18n")=="off"||el.closest("#sens,#ord,#pre2"))return;
@@ -10,4 +13,4 @@ if(hasTxt&&el.children.length&&!el.id&&inl(el)){U.push({k:"h",el,key:norm(el.inn
 [...el.childNodes].forEach(n=>{if(n.nodeType==3){if(LET.test(n.nodeValue)){const m=n.nodeValue.match(/^(\s*)([\s\S]*?)(\s*)$/);U.push({k:"t",node:n,pre:m[1]?" ":"",post:m[3]?" ":"",key:norm(m[2])})}}else if(n.nodeType==1)walk(n)})};
 walk(document.body);return U})();
 window.__units=()=>UNITS.map(u=>u.key);
-const applyUnits=()=>UNITS.forEach(u=>{const t=DICT.get(u.key),v=t===undefined?u.key:t;if(u.k=="t")u.node.nodeValue=u.pre+v+u.post;else if(u.k=="h")u.el.innerHTML=v;else u.el.setAttribute(u.a,v)});
+const applyUnits=()=>{secNumber();UNITS.forEach(u=>{const t=DICT.get(u.key),v=secSub(t===undefined?u.key:t);if(u.k=="t")u.node.nodeValue=u.pre+v+u.post;else if(u.k=="h")u.el.innerHTML=v;else u.el.setAttribute(u.a,v)})};

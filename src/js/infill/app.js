@@ -83,9 +83,9 @@ ifShow();stats()};
 function ifShow(){const G=IF.g,has=IFT.length||ifXYZ();
 $("ifCov").textContent=G&&has?(IF.cov*100).toFixed(1)+" %":"-";
 $("ifGap").textContent=G&&has?i18("{0} ({1} m²)",IF.regions.length,Math.round(IF.gapA).toLocaleString()):"-";
-let t;if(!closed||poly.length<3)t=IFT.length?i18("Use the coverage extent as the area, or draw or import the area (section 9)."):i18("Draw or import the survey area (section 9) and load the coverage.");
+let t;if(!closed||poly.length<3)t=IFT.length?i18("Use the coverage extent as the area, or draw or import the area (section {§bound})."):i18("Draw or import the survey area (section {§bound}) and load the coverage.");
 else if(!G)t=i18("The area is too large for this grid cell. Enter a larger grid cell.");
-else if(!has)t=i18("No coverage loaded yet: add the acquired tracks or load XYZ soundings (section 11).");
+else if(!has)t=i18("No coverage loaded yet: add the acquired tracks or load XYZ soundings (section {§xyz}).");
 else if(!IF.regions.length)t=i18("No gaps larger than {0} m²: the area is covered.",g("ifMin"));
 else{const km=R.lines.reduce((s,l)=>s+L(l),0)/1000;t=i18("{0} infill lines, {1} km, across {2} gaps. Grid cell {3} m.",R.lines.length,km.toFixed(2),IF.regions.length,G.c)}
 $("ifSt").textContent=t}
@@ -103,7 +103,7 @@ $("ifClr").onclick=()=>{if(IFT.length&&!confirm(i18("Remove all loaded tracks?")
 // a convex hull around the tracks' swaths (and the soundings) as the area
 function ifExtent(){const P=[];const fixed=$("ifWM").value=="fixed",half=fixed?g("ifWF")/2:Math.max(g("ap"),g("as"))>0?g("depth")*Math.tan(Math.max(g("ap"),g("as"))*D):0;
 const LL=[];IFT.forEach(t=>t.p.forEach(q=>LL.push(q)));const B=ifXYZ();if(B)for(let i=0;i<B.z.length;i+=Math.max(1,Math.floor(B.z.length/20000)))LL.push([B.la[i],B.lo[i]]);
-if(LL.length<2)return toast(i18("No coverage loaded yet: add the acquired tracks or load XYZ soundings (section 11)."),4000);
+if(LL.length<2)return toast(i18("No coverage loaded yet: add the acquired tracks or load XYZ soundings (section {§xyz})."),4000);
 const m=LL.reduce((s,q)=>[s[0]+q[0]/LL.length,s[1]+q[1]/LL.length],[0,0]);reorigin(m[0],m[1]);
 LL.forEach(q=>{const w=fromLL(q[0],q[1]);for(let k=0;k<8;k++){const a=k*Math.PI/4;P.push([w[0]+Math.cos(a)*half,w[1]+Math.sin(a)*half])}});
 const h=ifHull(P);if(h.length<3)return;poly=h;closed=true;draw=false;projC();fit();ifSetAz(ifTrackAz());analyse();gen();render();saveSoon()}
@@ -123,7 +123,7 @@ const _ifLang=setLang;setLang=function(){const r=_ifLang.apply(this,arguments);t
 const _ifSum=summary;summary=function(){_ifSum.apply(this,arguments);if(!R.lines.length)return;
 const W=params().W,wS=R.lines.reduce((s,l)=>s+L(l),0)*W,gA=IF.gapA,ov=gA>0&&wS>0?1-gA/wS:NaN;
 if($("dCov"))$("dCov").textContent=gA>0&&wS>0?(wS/gA).toFixed(2)+" ×":"–";if($("dOv"))$("dOv").textContent="–";
-const pre=t=>i18(t).split("{0}")[0],drop=[pre("Achieved overlap {0} % is below the {1} % target."),pre("Mean achieved overlap {0} % meets the {1} % target."),i18("No cross lines: tick the option in section 3 for QC.")];
+const pre=t=>i18(t).split("{0}")[0],drop=[pre("Achieved overlap {0} % is below the {1} % target."),pre("Mean achieved overlap {0} % meets the {1} % target."),i18("No cross lines: tick the option in section {§dir} for QC.")];
 const ul=$("chk");[...ul.children].forEach(li=>{const t=li.textContent;if(drop.some(d=>d&&t.startsWith(d)))li.remove()});
 const li=document.createElement("li");li.className=wS>=gA?"ok":"bad";li.textContent=i18("Coverage {0} % of the area; the infill lines sweep {1} × the gap area ({2} gaps).",(IF.cov*100).toFixed(1),isFinite(ov)?(wS/gA).toFixed(1):"–",IF.regions.length);ul.prepend(li)};
 // restore the tracks saved on this device

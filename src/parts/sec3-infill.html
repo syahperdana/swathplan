@@ -1,5 +1,5 @@
-<details id="ifD" open><summary>Coverage and gaps (infill)</summary><div>
-<p class="note">Load what has been surveyed so far. The planner marks the covered parts of the area, finds the gaps and plans infill lines across them with the line spacing from sections 1 and 2.</p>
+<details data-sec="infill" id="ifD" open><summary>Coverage and gaps (infill)</summary><div>
+<p class="note">Load what has been surveyed so far. The planner marks the covered parts of the area, finds the gaps and plans infill lines across them with the line spacing from sections {§sensor} and {§swath}.</p>
 <label>Acquired tracks (vessel or transducer positions)</label>
 <input type="file" id="ifF" multiple accept=".csv,.txt,.pos,.nav,.shp,.dbf,.prj,.zip,.kml,.kmz,.gpx,.geojson,.json,.dxf,.wkt">
 <textarea id="ifT" rows="3" placeholder="…or paste positions: lat lon or E N, one per line; a blank line or a line name starts a new track" style="margin-top:4px"></textarea>
@@ -7,8 +7,8 @@
 <p class="note" id="ifTSt">No tracks loaded.</p>
 <div class="r2"><div><label>Swath width of the tracks</label><select id="ifWM"><option value="depth">From depth and swath angles</option><option value="fixed">Fixed width</option></select></div>
 <div><label>Fixed swath width (m)</label><input type="number" id="ifWF" value="100" min="1" step="any"></div></div>
-<p class="note">From depth: the swath angles of section 2 and the depth along each track (loaded bathymetry, or the design depth). Port is left of the direction of travel.</p>
-<label><input type="checkbox" id="ifX" checked> Count XYZ soundings from section 11 as covered</label>
+<p class="note">From depth: the swath angles of section {§swath} and the depth along each track (loaded bathymetry, or the design depth). Port is left of the direction of travel.</p>
+<label><input type="checkbox" id="ifX" checked> Count XYZ soundings from section {§xyz} as covered</label>
 <div class="r2"><div><label>Grid cell (m, blank = auto)</label><input type="number" id="ifC" min="0.2" step="any" placeholder="auto"></div>
 <div><label>Ignore gaps smaller than (m²)</label><input type="number" id="ifMin" value="50" min="0" step="any"></div>
 <div><label>Extend infill lines at each end (m)</label><input type="number" id="ifExt" value="20" min="0" step="any"></div>

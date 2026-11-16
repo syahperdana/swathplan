@@ -5,7 +5,7 @@ Draw the area, set your sonar, get the lines, check them against IHO S-44, and e
 
 ![SwathPlan planner](docs/screenshot-planner.png)
 
-▶ **All tools:** https://syahperdana.github.io/swathplan/  ·  **MBES planner:** https://syahperdana.github.io/swathplan/mbes/
+▶ **All tools:** https://syahperdana.github.io/swathplan/  ·  **Survey planner:** https://syahperdana.github.io/swathplan/planner/
 🎬 **Demo video (84 s):** [docs/demo.mp4](docs/demo.mp4)
 
 ---
@@ -83,27 +83,31 @@ Some features need internet when you use them: map background tiles, global bath
 - Pick the coordinate system in section 13 **before** exporting. EIVA RLN and the sheet grid follow it.
 - If you load a boundary as plain text, the tool tells you whether it read it as degrees or as the coordinate system from section 8.
 
-## Corridor planner
+## One planner for every survey
 
-For cable and pipeline routes: https://syahperdana.github.io/swathplan/corridor/
+The survey planner starts with two choices: **what you survey with** (multibeam, or a geophysical spread) and **the shape of the job** (an area, or a corridor along a cable or pipeline route). It then shows only the sections that survey needs, numbered in the order you see them. Any combination works, including a geophysical survey along a route, and switching keeps your area, route and settings.
+
+## Corridor surveys
+
+Choose *Corridor along a route* as the shape.
 
 - Draw the route centreline on the map or import it (CSV/TXT, KML, GPX, GeoJSON, SHP, DXF, WKT). KP runs from the first point, from any start KP.
 - Lines follow the route through its bends, either fitted to your swath and corridor width or at fixed offsets (for example `0, ±25, ±50`). Names show side and offset: `RL_C`, `RL_P050`, `RL_S050`.
 - Run-in and run-out extensions, cross lines every chosen KP interval, turns at the route ends.
 - Exports: every planner format (lines keep all their bend points), plus a **KP table** (CSV, with bearing) and the **route with KP** (EIVA RLN).
-- Map sheet, PDF report, IHO S-44 checks, time and cost, offline maps and all 22 languages, as in the MBES planner.
+- Map sheet, PDF report, IHO S-44 checks, time and cost, offline maps and all 22 languages.
 
-## Geophysical planner
+## Geophysical surveys
 
-For side-scan, magnetometer, sub-bottom and seismic surveys: https://syahperdana.github.io/swathplan/geophys/
+Choose *Geophysical* as the survey type, over an area or along a route.
 
 - Tick the sensors in your spread. Each one works out the line spacing it needs, and the closest spacing sets the plan, with the deciding sensor shown.
   - **Side-scan:** range per side and coverage (100, 150 or 200 %), with a nadir-gap check and the maximum speed for the pings you need on your smallest target.
   - **Magnetometer:** the distance at which your target is detectable and the sensor height give the spacing; sample spacing at survey speed is shown.
   - **Sub-bottom profiler** and **UHR seismic:** grid spacing; seismic lines get half a streamer of extension at each end for full fold.
   - **Multibeam** can join the spread.
-- Towed sensor layback is added as line run-in. Tie lines can be set by spacing.
-- Everything else as in the MBES planner: area drawing or import, auto direction, turns, time and cost, every export, map sheet, report, offline maps and 22 languages.
+- Towed sensor layback is added as line run-in, also on corridor lines. Tie lines can be set by spacing in areas.
+- Everything else as for multibeam: area or route, turns, time and cost, every export, map sheet, report, offline maps and 22 languages.
 
 ## Infill planner
 
