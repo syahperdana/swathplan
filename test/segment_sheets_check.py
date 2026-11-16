@@ -26,6 +26,8 @@ with sync_playwright() as p:
     n,bt=dl(pg,"$('eDxf').click()");t=bt.decode();ly=set(re.findall(r'\n8\n([^\n]+)\n',t))
     ok({'line_S01','line_S03','cross_S02','turn_S02','segments','boundary'}<=ly and 'line' not in ly,'DXF: each segment on its own layers')
     ok(re.findall(r'\nVIEW\n2\n(\w+)',t)==['SEG01','SEG02','SEG03'] and t.index('TABLES')<t.index('ENTITIES'),'DXF: a named view per segment')
+    ok(t.count('\nPOLYLINE\n8\nsegments\n')==3,'DXF: each segment border is one closed polyline on layer segments')
+    ok(bool(re.search(r'\nLAYER\n2\nsegments\n70\n0\n62\n190\n',t)) and bool(re.search(r'\nLAYER\n2\nboundary\n70\n0\n62\n7\n',t)),'DXF: layer table gives segment borders their own colour')
     # one file per segment, for every format
     ev("$('xpSegs').value='file'");before=ev("[$('hL').textContent,R.lines.length,R.cross.length,poly.length]")
     for bt,click,k in [('DXF',"$('eDxf').click()",3),('GeoJSON',"$('eGj').click()",3),('HYPACK',"$('eLnx').click()",3),('Shapefile',"$('eShp').click()",3),('QGroundControl',"$('eQgc').click()",3),('PNG',"$('xpFmt').value='png';$('xpImg').click()",4)]:
@@ -43,7 +45,7 @@ with sync_playwright() as p:
     n,bt=dl(pg,"$('xpPdf').click()");ok(len(PdfReader(io.BytesIO(bt)).pages)==rep-3,'whole-route choice: report has the single sheet')
     n,bt=dl(pg,"$('xpFmt').value='png';$('xpImg').click()");ok(n=='survey_plan_sheet.png','whole-route choice: a single image')
     ev("$('coSeg').value=0;$('coSeg').dispatchEvent(new Event('input'))");pg.wait_for_timeout(800);ok(ev("$('xpSegW').hidden"),'no split: the choice is hidden')
-    n,bt=dl(pg,"$('eDxf').click()");t=bt.decode();ok('TABLES' not in t and 'line_S' not in t,'no split: DXF as before')
+    n,bt=dl(pg,"$('eDxf').click()");t=bt.decode();ok('\nVIEW\n' not in t and 'line_S' not in t and '\nsegments\n' not in t,'no split: no segment layers or views in the DXF')
     ev("$('svG').value='area';$('svG').dispatchEvent(new Event('change'))");pg.wait_for_timeout(800);ok(ev("$('xpSegW').hidden"),'area survey: the choice is hidden')
     ok(not e,'no page errors '+str(e));b.close()
 print('ALL OK' if not bad else f'{len(bad)} FAILED');sys.exit(1 if bad else 0)
