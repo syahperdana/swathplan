@@ -91,7 +91,7 @@ The survey planner starts with two choices: **what you survey with** (multibeam,
 
 To save typing, the planner has short lists of common equipment, always with a *Custom* option. Values are approximate: check the maker's datasheet.
 
-- **Side-scan sonar:** 20 models from EdgeTech, Klein, Kraken, StarFish, Imagenex, DeepVision and JW Fishers, each at its frequencies. Choosing one sets the range per side to the longest that frequency reaches, and the planner warns if you set a longer range. The model is named on the map sheet and in the report.
+- **Side-scan sonar:** 44 models from EdgeTech, Klein, Kraken, Marine Sonic, Tritech, Imagenex, DeepVision, JW Fishers, C-MAX, Cerulean, Hi-Target, ZHD and others, plus fishfinder side imaging (Humminbird, Garmin, Lowrance / Simrad, Raymarine), each at its frequencies. Choosing one sets the range per side to the longest that frequency reaches, and the planner warns if you set a longer range. The model is named on the map sheet and in the report.
 - **Single-beam transducers:** typical 200 kHz narrow (about 3°), 200 kHz (about 8°) and 33 kHz (about 20°) beams.
 - **Drone cameras and LiDAR:** see *Drone surveys* below.
 
@@ -108,9 +108,9 @@ Both are in English for now; translations will follow.
 
 ## Drone surveys (camera or LiDAR)
 
-Choose *Aerial: drone (camera or LiDAR)* to plan a mapping flight over an area or along a route. Pick one of 17 cameras (DJI, Autel, senseFly, the Sony cameras on Wingtra and Quantum Systems drones, Phase One) or enter your own sensor size, focal length and image width, then set the flight height, the forward and side overlap, the speed and the battery time. The planner shows the ground sample distance, the image footprint, the line spacing, the photo interval and the number of photos and batteries, and warns when the height is above 120 m or the photos come faster than the camera allows. The QGroundControl and Mission Planner exports carry the height, the speed and a camera trigger distance. Camera values are approximate: check your camera's datasheet.
+Choose *Aerial: drone (camera or LiDAR)* to plan a mapping flight over an area or along a route. Pick one of 22 cameras (DJI, Autel, senseFly, Parrot, Skydio, the Sony cameras on Wingtra and Quantum Systems drones, Phase One) or enter your own sensor size, focal length and image width, then set the flight height, the forward and side overlap, the speed and the battery time. The planner shows the ground sample distance, the image footprint, the line spacing, the photo interval and the number of photos and batteries, and warns when the height is above 120 m or the photos come faster than the camera allows. The QGroundControl and Mission Planner exports carry the height, the speed and a camera trigger distance. Camera values are approximate: check your camera's datasheet.
 
-With the **LiDAR** payload (DJI Zenmuse L1/L2/L3, Livox Avia, YellowScan, CHCNAV, RIEGL, or your own field of view, point rate and detection range), the planner shows the swath, the line spacing from the side overlap and the average point density per pass and with the overlap. It warns when the height or the slant range at the swath edge is beyond the detection range on dark ground, and when the density is below a target, giving the highest speed that meets it. The waypoint exports then carry no camera trigger.
+With the **LiDAR** payload (DJI Zenmuse L1/L2/L3, Livox Avia, YellowScan, CHCNAV, RIEGL, Phoenix, Quantum Systems, Wingtra, ROCK Robotic, GreenValley, or your own field of view, point rate and detection range), the planner shows the swath, the line spacing from the side overlap and the average point density per pass and with the overlap. It warns when the height or the slant range at the swath edge is beyond the detection range on dark ground, and when the density is below a target, giving the highest speed that meets it. The waypoint exports then carry no camera trigger.
 
 ## Corridor surveys
 
