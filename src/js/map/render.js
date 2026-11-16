@@ -1,5 +1,5 @@
-function fit(){const P=poly.length?poly:[[-1000,-1000],[1000,1000]],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),w=cv.clientWidth,h=cv.clientHeight,dx=Math.max(...xs)-Math.min(...xs)||100,dy=Math.max(...ys)-Math.min(...ys)||100;
-V.cx=(Math.max(...xs)+Math.min(...xs))/2;V.cy=(Math.max(...ys)+Math.min(...ys))/2;V.k=Math.min(w/dx,h/dy)*.8}
+function fit(){const P=poly.length?poly:[[-1000,-1000],[1000,1000]],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),w=cv.clientWidth,h=cv.clientHeight,dx=arrMax(xs)-arrMin(xs)||100,dy=arrMax(ys)-arrMin(ys)||100;
+V.cx=(arrMax(xs)+arrMin(xs))/2;V.cy=(arrMax(ys)+arrMin(ys))/2;V.k=Math.min(w/dx,h/dy)*.8}
 const cv=$("cv"),cx=cv.getContext("2d");
 const sc=p=>[(p[0]-V.cx)*V.k+cv.width/2,cv.height/2-(p[1]-V.cy)*V.k],wc=(x,y)=>[(x-cv.width/2)/V.k+V.cx,(cv.height/2-y)/V.k+V.cy];
 function render(){clampV();const r=DPR(),CW=Math.max(1,Math.round(cv.clientWidth*r)),CH=Math.max(1,Math.round(cv.clientHeight*r));if(cv.width!=CW||cv.height!=CH){cv.width=CW;cv.height=CH}

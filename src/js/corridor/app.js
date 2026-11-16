@@ -39,7 +39,7 @@ $("coRev").onclick=()=>{if(RT.length<2)return;RT.reverse();gen();saveSoon()};
 ["coKP0","coHW","coMode","coCtr","coOff","coExt","coXI","coXE","coPre","coXP","coSeg","coSegO"].forEach(id=>{const e=$(id);["input","change"].forEach(ev=>e.addEventListener(ev,()=>{gen();saveSoon()}))});
 
 // switching from an area: a route along the middle of the area, unless one is kept from before
-function coFromArea(){if(RT.length<2&&closed&&poly.length>=3){const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),y=(Math.min(...ys)+Math.max(...ys))/2;RT=[[Math.min(...xs),y],[Math.max(...xs),y]].map(p=>toLL(p))}
+function coFromArea(){if(RT.length<2&&closed&&poly.length>=3){const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),y=(arrMin(ys)+arrMax(ys))/2;RT=[[arrMin(xs),y],[arrMax(xs),y]].map(p=>toLL(p))}
 if(RT.length>=2){closed=true;draw=false}}
 
 // ---- route import (same readers as the boundary import, lines of 2+ points) ----

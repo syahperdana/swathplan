@@ -4,7 +4,7 @@ const xo=()=>({paper:$("xpPaper").value,ori:$("xpOri").value,dpi:+$("xpDpi").val
 const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t.push(c>>>0)}return t})(),crc32=(u,c0)=>{let c=c0==null?-1:c0;for(let i=0;i<u.length;i++)c=crcT[(c^u[i])&255]^(c>>>8);return c};
 const toBlobP=(cv,t,q)=>new Promise(r=>cv.toBlob(r,t,q)),loadImg=src=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src});
 function sheetLayout(o){const k=o.paper=="A3"?420/297:1;let W=297*k,H=210*k;const pts=o.ext?o.ext.slice():poly.slice();if(!o.ext){R.turns.forEach(t=>t.pts.forEach(p=>pts.push(p)));R.lines.concat(R.cross).forEach(l=>pts.push(...LP(l)))}// o.ext: one segment's outline (segment-sheets.js)
-const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),bw=x1-x0||100,bh=y1-y0||100,port=o.ori=="port"||(o.ori=="auto"&&bh>bw*1.1);if(port)[W,H]=[H,W];
+const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x0=arrMin(xs),x1=arrMax(xs),y0=arrMin(ys),y1=arrMax(ys),bw=x1-x0||100,bh=y1-y0||100,port=o.ori=="port"||(o.ori=="auto"&&bh>bw*1.1);if(port)[W,H]=[H,W];
 const m=10*k,lm=8*k,Pw=62*k,Ph=78*k,gap=3*k;let map,panel;if(!port){panel=[W-m-Pw,m,Pw,H-2*m];map=[m,m,panel[0]-gap-m,H-2*m]}else{panel=[m,H-m-Ph,W-2*m,Ph];map=[m,m,W-2*m,panel[1]-gap-m]}
 const fr=[map[0]+lm,map[1]+lm,map[2]-2*lm,map[3]-2*lm],need=Math.max(bw*1.12/fr[2],bh*1.12/fr[3])*1000,Dn=o.scale>0?o.scale:(STD.find(v=>v>=need)||Math.ceil(need/1e6)*1e6);
 return{k,W,H,port,m,lm,panel,map,fr,D:Dn,mpm:Dn/1000,cx:(x0+x1)/2,cy:(y0+y1)/2}}
@@ -31,7 +31,7 @@ pth(poly,true);c.fillStyle="rgba(255,255,255,.18)";c.fill();c.setLineDash([1.6,.
 sp.forEach(sg=>{let x=0,y=0;sg.pts.forEach(p=>{x+=p[0]/sg.pts.length;y+=p[1]/sg.pts.length});const q=P([x,y]),w=c.measureText(sg.name).width+1.6;c.fillStyle="#6a3d9ae6";c.fillRect(q[0]-w/2,q[1]-1.5,w,3);c.fillStyle="#fff";c.fillText(sg.name,q[0],q[1])});c.textAlign="left";c.textBaseline="alphabetic"}}
 c.lineWidth=.14;c.strokeStyle="#c2188a";R.turns.forEach(t=>{pth(t.pts);c.stroke()});c.lineWidth=.22;c.strokeStyle="#e07b00";R.cross.forEach(l=>{pth(LP(l));c.stroke()});
 c.lineWidth=.22;c.strokeStyle="#0b5c7a";R.lines.forEach(l=>{pth(LP(l));c.stroke()});
-if(op.names){const sp=R.sp&&R.sp.length?Math.min(...R.sp)/L.mpm:params().S/L.mpm,nth=Math.max(1,Math.ceil(2.6/Math.max(.1,sp))),fs=1.7;c.font=fs+"px "+FF;c.textBaseline="middle";R.lines.forEach((l,i)=>{const a=P(l.a),b=P(l.b),dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len;
+if(op.names){const sp=R.sp&&R.sp.length?arrMin(R.sp)/L.mpm:params().S/L.mpm,nth=Math.max(1,Math.ceil(2.6/Math.max(.1,sp))),fs=1.7;c.font=fs+"px "+FF;c.textBaseline="middle";R.lines.forEach((l,i)=>{const a=P(l.a),b=P(l.b),dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len;
 if(sp>=1.1){c.fillStyle="#0b5c7a";c.beginPath();c.moveTo(a[0]+ux*1.4,a[1]+uy*1.4);c.lineTo(a[0]+ux*.1-uy*.45,a[1]+uy*.1+ux*.45);c.lineTo(a[0]+ux*.1+uy*.45,a[1]+uy*.1-ux*.45);c.closePath();c.fill()}
 if(i%nth==0){let ang=Math.atan2(dy,dx),al="right",off=-1.2;if(dx<0){ang+=Math.PI;al="left";off=1.2}c.save();c.translate(a[0],a[1]);c.rotate(ang);c.fillStyle="#12262d";c.textAlign=al;c.fillText(l.name,off,0);c.restore()}})}
 c.restore()}

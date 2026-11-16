@@ -8,7 +8,7 @@ $("eGj").onclick=()=>{if(!needs())return;const m=p=>{const q=toLL(p);return[+q[1
 const dxfIn=(p,P)=>{let c=false;for(let i=0,j=P.length-1;i<P.length;j=i++)if((P[i][1]>p[1])!=(P[j][1]>p[1])&&p[0]<(P[j][0]-P[i][0])*(p[1]-P[i][1])/(P[j][1]-P[i][1])+P[i][0])c=!c;return c};
 function dxfLayer(SG){if(SG.length<2)return x=>x.k;return x=>{let n=x.seg;if(!n){const k=x.p.length,q=k%2?x.p[(k-1)/2]:[(x.p[k/2-1][0]+x.p[k/2][0])/2,(x.p[k/2-1][1]+x.p[k/2][1])/2],h=SG.find(sg=>dxfIn(q,sg.pts));n=h?h.n:0}return n?x.k+"_S"+String(n).padStart(2,"0"):x.k}}
 // and a named view per segment (VIEW table entries), to jump to it in CAD
-function dxfViews(SG){if(SG.length<2)return[];return SG.map(sg=>{const c=sg.pts.map(oc),xs=c.map(q=>q[0]),ys=c.map(q=>q[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+function dxfViews(SG){if(SG.length<2)return[];return SG.map(sg=>{const c=sg.pts.map(oc),xs=c.map(q=>q[0]),ys=c.map(q=>q[1]),x0=arrMin(xs),x1=arrMax(xs),y0=arrMin(ys),y1=arrMax(ys);
 return`0\nVIEW\n2\nSEG${String(sg.n).padStart(2,"0")}\n70\n0\n40\n${(y1-y0)*1.1}\n10\n${(x0+x1)/2}\n20\n${(y0+y1)/2}\n41\n${(x1-x0)*1.1}\n11\n0\n21\n0\n31\n1\n12\n0\n22\n0\n32\n0\n42\n50\n43\n0\n44\n0\n50\n0\n71\n0\n`})}
 // layer colours (AutoCAD colour index), each kind clearly different
 // survey lines cyan, cross lines orange, turns red, segment borders violet, boundary white (black on a white background)

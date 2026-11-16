@@ -386,6 +386,9 @@ function buildPre(){const cur=$("pre2").value;$("pre2").innerHTML="";$("pre2").a
 let poly=[],closed=false,draw=true,o={lat:35,lon:127},V={cx:0,cy:0,k:.05},R={lines:[],turns:[],cross:[],tl:0},bath=null,sdp=null,cst={lines:[],polys:[],seg:null,mode:""};
 const f1=(v,u="m",d=1)=>isFinite(v)?v.toFixed(d)+" "+u:"-",hm=h=>{let s=Math.round(h*3600);return Math.floor(s/3600)+"h "+String(Math.floor(s%3600/60)).padStart(2,"0")+"m"+(s%60?" "+String(s%60).padStart(2,"0")+"s":"")};
 const g=i=>+$(i).value;
+// min / max of an array of any length (Math.min(...a) overflows the call stack past about 100,000 values)
+function arrMin(a){let m=Infinity;for(let i=0;i<a.length;i++){const v=a[i];if(v<m||v!==v)m=v;if(m!==m)return m}return m}
+function arrMax(a){let m=-Infinity;for(let i=0;i<a.length;i++){const v=a[i];if(v>m||v!==v)m=v;if(m!==m)return m}return m}
 function toLL(p){const la=o.lat+p[1]/111132.9;return[la,o.lon+p[0]/(111320*Math.cos(o.lat*D))]}
 function fromLL(la,lo){return[(lo-o.lon)*111320*Math.cos(o.lat*D),(la-o.lat)*111132.9]}
 function utm(lat,lon,z){const a=6378137,f=1/298.257223563,k0=.9996,e2=f*(2-f),ep=e2/(1-e2),p=lat*D,l0=((z-1)*6-177)*D,s=Math.sin(p),c=Math.cos(p),t=Math.tan(p),N=a/Math.sqrt(1-e2*s*s),T=t*t,C=ep*c*c,A=c*(lon*D-l0),e4=e2*e2,e6=e4*e2;
@@ -395,20 +398,20 @@ function oc(p){const[la,lo]=toLL(p);if($("crs").value=="epsg"&&window.proj4&&crs
 function chords(P,a,b,s){const r=[];for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length],s1=p[0]*a[0]+p[1]*a[1],s2=q[0]*a[0]+q[1]*a[1];
 if((s1<=s)!=(s2<=s)){const t1=p[0]*b[0]+p[1]*b[1],t2=q[0]*b[0]+q[1]*b[1];r.push(t1+(t2-t1)*(s-s1)/(s2-s1))}}r.sort((x,y)=>x-y);const o=[];for(let i=0;i+1<r.length;i+=2)if(r[i+1]-r[i]>1)o.push([r[i],r[i+1]]);return o}
 function area(P){let s=0;for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length];s+=p[0]*q[1]-q[0]*p[1]}return Math.abs(s)/2}
-function nLines(az,S){const n=[Math.cos(az*D),-Math.sin(az*D)],u=[Math.sin(az*D),Math.cos(az*D)],v=poly.map(p=>p[0]*n[0]+p[1]*n[1]);return linePositions(Math.min(...v),Math.max(...v),n,u,S).length}
+function nLines(az,S){const n=[Math.cos(az*D),-Math.sin(az*D)],u=[Math.sin(az*D),Math.cos(az*D)],v=poly.map(p=>p[0]*n[0]+p[1]*n[1]);return linePositions(arrMin(v),arrMax(v),n,u,S).length}
 function params(){const d=g("depth"),W=d*(Math.tan(g("ap")*D)+Math.tan(g("as")*D)),S=W*(1-g("ov")/100),Rr=g("R"),od=ORD[$("ord").value],tvu=Math.sqrt(od[1]**2+(od[2]*d)**2);return{d,W,S,Rr,od,tvu}}
 function turnPts(P,f,n,S,Rr){const al=S>=2*Rr?0:Math.acos(S/(2*Rr)),pts=[],w=(F,L)=>[P[0]+f[0]*F+n[0]*L,P[1]+f[1]*F+n[1]*L];let F=0,L=0,ph=0,len=0;
 const arc=(p1,sg)=>{const N=Math.max(2,Math.ceil(Math.abs(p1-ph)/(5*D)));const F0=F,L0=L,p0=ph;for(let i=1;i<=N;i++){const q=p0+(p1-p0)*i/N;F=F0+sg*Rr*(Math.sin(q)-Math.sin(p0));L=L0-sg*Rr*(Math.cos(q)-Math.cos(p0));pts.push(w(F,L))}ph=p1;len+=Rr*Math.abs(p1-p0)};
 if(al>0)arc(-al,-1);arc(Math.PI,1);return{pts,len}}
 function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3){return stats()}
 const{S,Rr}=params(),az=g("az"),u=[Math.sin(az*D),Math.cos(az*D)],n=[Math.cos(az*D),-Math.sin(az*D)],sv=poly.map(p=>p[0]*n[0]+p[1]*n[1]),tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]);
-const s0=Math.min(...sv),s1=Math.max(...sv);const ss=linePositions(s0,s1,n,u,S);R.sp=ss.slice(1).map((v,i)=>v-ss[i]);
+const s0=arrMin(sv),s1=arrMax(sv);const ss=linePositions(s0,s1,n,u,S);R.sp=ss.slice(1).map((v,i)=>v-ss[i]);
 let segs=[];ss.forEach((s,k)=>chords(poly,n,u,s).flatMap(c=>wr(s,c,n,u)).forEach(c=>segs.push({s,c,k})));
 segs.forEach((sg,i)=>{const[a,b]=i%2?[sg.c[1],sg.c[0]]:sg.c;sg.a=[n[0]*sg.s+u[0]*a,n[1]*sg.s+u[1]*a];sg.b=[n[0]*sg.s+u[0]*b,n[1]*sg.s+u[1]*b];sg.f=i%2?[-u[0],-u[1]]:u});
 R.lines=segs.map((s,i)=>({name:$("pre").value+(i+1),a:s.a,b:s.b}));
 for(let i=0;i+1<segs.length;i++){const A=segs[i],B=segs[i+1];let pts=[A.b],len=0;
 if(B.k==A.k+1){const t=turnPts(A.b,A.f,n,B.s-A.s,Rr);pts=pts.concat(t.pts)}pts.push(B.a);for(let j=1;j<pts.length;j++)len+=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);R.turns.push({pts,len,ty:B.k==A.k+1?((B.s-A.s)<2*Rr?"w":"u"):"t"});R.tl+=len}
-if($("cross").checked){const t0=Math.min(...tv),t1=Math.max(...tv);Array.from({length:Math.max(1,Math.min(99,Math.round(g("nx"))||2))},(_,j)=>(j+1)/(Math.max(1,Math.min(99,Math.round(g("nx"))||2))+1)).forEach((k,j)=>{const t=t0+(t1-t0)*k;chords(poly,u,n,t).flatMap(c=>wr(t,c,u,n)).forEach(c=>R.cross.push({name:$("crossPre").value+(R.cross.length+1),a:[u[0]*t+n[0]*c[0],u[1]*t+n[1]*c[0]],b:[u[0]*t+n[0]*c[1],u[1]*t+n[1]*c[1]]}))})}
+if($("cross").checked){const t0=arrMin(tv),t1=arrMax(tv);Array.from({length:Math.max(1,Math.min(99,Math.round(g("nx"))||2))},(_,j)=>(j+1)/(Math.max(1,Math.min(99,Math.round(g("nx"))||2))+1)).forEach((k,j)=>{const t=t0+(t1-t0)*k;chords(poly,u,n,t).flatMap(c=>wr(t,c,u,n)).forEach(c=>R.cross.push({name:$("crossPre").value+(R.cross.length+1),a:[u[0]*t+n[0]*c[0],u[1]*t+n[1]*c[0]],b:[u[0]*t+n[0]*c[1],u[1]*t+n[1]*c[1]]}))})}
 stats()}
 // a line is {name,a,b} or, when it bends (corridor), {name,a,b,p:[points]}
 const LP=l=>l.p||[l.a,l.b],L=l=>{const q=LP(l);let s=0;for(let i=1;i<q.length;i++)s+=Math.hypot(q[i][0]-q[i-1][0],q[i][1]-q[i-1][1]);return s};
@@ -421,8 +424,8 @@ $("dL").textContent=km(ol);$("dT").textContent=km(R.tl);$("dG").textContent=km(o
 $("qW").textContent=f1(p.W);$("qS").textContent=f1(p.S)+" ("+g("ov")+"%)";$("qT").textContent="±"+p.tvu.toFixed(3)+" m";
 const sl=p.d/Math.cos(Math.max(g("ap"),g("as"))*D);$("ping").textContent=(1500/(2*sl)).toFixed(1)+" Hz";$("tvu").textContent="±"+p.tvu.toFixed(3)+" m";$("spdHint").textContent=i18("Suggested for {0}: about {1} kts (check along-track density).",ordN(+$("ord").value),p.od[3]);
 $("azT").textContent=g("az").toFixed(3);$("ovT").textContent=g("ov");summary();render();saveSoon()}
-function fit(){const P=poly.length?poly:[[-1000,-1000],[1000,1000]],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),w=cv.clientWidth,h=cv.clientHeight,dx=Math.max(...xs)-Math.min(...xs)||100,dy=Math.max(...ys)-Math.min(...ys)||100;
-V.cx=(Math.max(...xs)+Math.min(...xs))/2;V.cy=(Math.max(...ys)+Math.min(...ys))/2;V.k=Math.min(w/dx,h/dy)*.8}
+function fit(){const P=poly.length?poly:[[-1000,-1000],[1000,1000]],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),w=cv.clientWidth,h=cv.clientHeight,dx=arrMax(xs)-arrMin(xs)||100,dy=arrMax(ys)-arrMin(ys)||100;
+V.cx=(arrMax(xs)+arrMin(xs))/2;V.cy=(arrMax(ys)+arrMin(ys))/2;V.k=Math.min(w/dx,h/dy)*.8}
 const cv=$("cv"),cx=cv.getContext("2d");
 const sc=p=>[(p[0]-V.cx)*V.k+cv.width/2,cv.height/2-(p[1]-V.cy)*V.k],wc=(x,y)=>[(x-cv.width/2)/V.k+V.cx,(cv.height/2-y)/V.k+V.cy];
 function render(){clampV();const r=DPR(),CW=Math.max(1,Math.round(cv.clientWidth*r)),CH=Math.max(1,Math.round(cv.clientHeight*r));if(cv.width!=CW||cv.height!=CH){cv.width=CW;cv.height=CH}
@@ -468,7 +471,7 @@ $("eGj").onclick=()=>{if(!needs())return;const m=p=>{const q=toLL(p);return[+q[1
 const dxfIn=(p,P)=>{let c=false;for(let i=0,j=P.length-1;i<P.length;j=i++)if((P[i][1]>p[1])!=(P[j][1]>p[1])&&p[0]<(P[j][0]-P[i][0])*(p[1]-P[i][1])/(P[j][1]-P[i][1])+P[i][0])c=!c;return c};
 function dxfLayer(SG){if(SG.length<2)return x=>x.k;return x=>{let n=x.seg;if(!n){const k=x.p.length,q=k%2?x.p[(k-1)/2]:[(x.p[k/2-1][0]+x.p[k/2][0])/2,(x.p[k/2-1][1]+x.p[k/2][1])/2],h=SG.find(sg=>dxfIn(q,sg.pts));n=h?h.n:0}return n?x.k+"_S"+String(n).padStart(2,"0"):x.k}}
 // and a named view per segment (VIEW table entries), to jump to it in CAD
-function dxfViews(SG){if(SG.length<2)return[];return SG.map(sg=>{const c=sg.pts.map(oc),xs=c.map(q=>q[0]),ys=c.map(q=>q[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+function dxfViews(SG){if(SG.length<2)return[];return SG.map(sg=>{const c=sg.pts.map(oc),xs=c.map(q=>q[0]),ys=c.map(q=>q[1]),x0=arrMin(xs),x1=arrMax(xs),y0=arrMin(ys),y1=arrMax(ys);
 return`0\nVIEW\n2\nSEG${String(sg.n).padStart(2,"0")}\n70\n0\n40\n${(y1-y0)*1.1}\n10\n${(x0+x1)/2}\n20\n${(y0+y1)/2}\n41\n${(x1-x0)*1.1}\n11\n0\n21\n0\n31\n1\n12\n0\n22\n0\n32\n0\n42\n50\n43\n0\n44\n0\n50\n0\n71\n0\n`})}
 // layer colours (AutoCAD colour index), each kind clearly different
 // survey lines cyan, cross lines orange, turns red, segment borders violet, boundary white (black on a white background)
@@ -539,7 +542,7 @@ if(c[1]>cur+1)out.push([cur,c[1]]);return out.filter(q=>q[1]-q[0]>1)}
 function drawCoast(){const S=cst.seg;if(!S||!S.length)return;const r=DPR(),pth=()=>{cx.beginPath();for(let i=0;i<S.length;i+=4){const a=sc([S[i],S[i+1]]),b=sc([S[i+2],S[i+3]]);cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1])}};
 cx.lineCap=cx.lineJoin="round";pth();cx.lineWidth=Math.max(1,2*g("clr")*V.k);cx.strokeStyle="#c0392b30";cx.stroke();pth();cx.lineWidth=1.5*r;cx.strokeStyle="#8a5a14";cx.stroke();cx.lineCap="butt"}
 function setCst(l,p,msg){cst={lines:l,polys:p,seg:null,mode:p.length?"polys":"lines"};projC();$("cSt").textContent=i18("{0} ({1} segments)",msg,cst.seg.length/4);gen()}
-$("cOSM").onclick=async()=>{if(!closed)return $("cSt").textContent=i18("Close an area first.");const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(3000,g("clr")*5),lo=toLL([Math.min(...xs)-m,Math.min(...ys)-m]),hi=toLL([Math.max(...xs)+m,Math.max(...ys)+m]);
+$("cOSM").onclick=async()=>{if(!closed)return $("cSt").textContent=i18("Close an area first.");const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(3000,g("clr")*5),lo=toLL([arrMin(xs)-m,arrMin(ys)-m]),hi=toLL([arrMax(xs)+m,arrMax(ys)+m]);
 const q=`[out:json][timeout:60];way["natural"="coastline"](${lo[0]},${lo[1]},${hi[0]},${hi[1]});out geom;`;$("cSt").textContent=i18("Downloading from Overpass…");
 for(const u of["https://overpass-api.de/api/interpreter","https://overpass.kumi.systems/api/interpreter"]){try{const r=await fetch(u,{method:"POST",body:"data="+encodeURIComponent(q)});if(!r.ok)throw 0;const j=await r.json();
 const L=j.elements.filter(e=>e.geometry).map(e=>e.geometry.map(p=>[p.lon,p.lat]));return setCst(L,[],L.length?i18("OSM coastline loaded: {0} ways",L.length):i18("No OSM coastline in this area (open water or inland)"))}catch(e){}}
@@ -651,8 +654,8 @@ $("bB").onclick=()=>{const f=[...$("bF").files];if(!f.length)return $("bSt").tex
 // ---- exports: shapefile, EIVA, Qinsy, KML
 const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 function shpSet(type,recs){const n=recs.length,tot=100+recs.reduce((a,r)=>a+56+16*r.pts.length,0),shp=new DataView(new ArrayBuffer(tot)),shx=new DataView(new ArrayBuffer(100+8*n)),all=[].concat(...recs.map(r=>r.pts)),X=all.map(p=>p[0]),Y=all.map(p=>p[1]);
-for(const[v,len]of[[shp,tot],[shx,100+8*n]]){v.setInt32(0,9994);v.setInt32(24,len/2);v.setInt32(28,1000,true);v.setInt32(32,type,true);[Math.min(...X),Math.min(...Y),Math.max(...X),Math.max(...Y)].forEach((x,i)=>v.setFloat64(36+8*i,x,true))}
-let o=100;recs.forEach((r,i)=>{const k=r.pts.length,cl=(48+16*k)/2;shx.setInt32(100+8*i,o/2);shx.setInt32(104+8*i,cl);shp.setInt32(o,i+1);shp.setInt32(o+4,cl);const c=o+8,x=r.pts.map(p=>p[0]),y=r.pts.map(p=>p[1]);shp.setInt32(c,type,true);[Math.min(...x),Math.min(...y),Math.max(...x),Math.max(...y)].forEach((v,j)=>shp.setFloat64(c+4+8*j,v,true));shp.setInt32(c+36,1,true);shp.setInt32(c+40,k,true);shp.setInt32(c+44,0,true);r.pts.forEach((p,j)=>{shp.setFloat64(c+48+16*j,p[0],true);shp.setFloat64(c+56+16*j,p[1],true)});o+=56+16*k});
+for(const[v,len]of[[shp,tot],[shx,100+8*n]]){v.setInt32(0,9994);v.setInt32(24,len/2);v.setInt32(28,1000,true);v.setInt32(32,type,true);[arrMin(X),arrMin(Y),arrMax(X),arrMax(Y)].forEach((x,i)=>v.setFloat64(36+8*i,x,true))}
+let o=100;recs.forEach((r,i)=>{const k=r.pts.length,cl=(48+16*k)/2;shx.setInt32(100+8*i,o/2);shx.setInt32(104+8*i,cl);shp.setInt32(o,i+1);shp.setInt32(o+4,cl);const c=o+8,x=r.pts.map(p=>p[0]),y=r.pts.map(p=>p[1]);shp.setInt32(c,type,true);[arrMin(x),arrMin(y),arrMax(x),arrMax(y)].forEach((v,j)=>shp.setFloat64(c+4+8*j,v,true));shp.setInt32(c+36,1,true);shp.setInt32(c+40,k,true);shp.setInt32(c+44,0,true);r.pts.forEach((p,j)=>{shp.setFloat64(c+48+16*j,p[0],true);shp.setFloat64(c+56+16*j,p[1],true)});o+=56+16*k});
 const F=[["NAME","C",24,0],["KIND","C",8,0],["LEN_M","N",12,1]],rl=1+24+8+12,hl=32+32*F.length+1,db=new Uint8Array(hl+rl*n+1),dd=new DataView(db.buffer),d=new Date();db[0]=3;db[1]=d.getFullYear()-1900;db[2]=d.getMonth()+1;db[3]=d.getDate();dd.setUint32(4,n,true);dd.setUint16(8,hl,true);dd.setUint16(10,rl,true);
 F.forEach((f,i)=>{const q=32+32*i;for(let j=0;j<f[0].length;j++)db[q+j]=f[0].charCodeAt(j);db[q+11]=f[1].charCodeAt(0);db[q+16]=f[2];db[q+17]=f[3]});db[hl-1]=13;
 recs.forEach((r,i)=>{let q=hl+rl*i;db[q++]=32;const put=(t,w,right)=>{t=String(t).replace(/[^\x20-\x7e]/g,"?").slice(0,w);t=right?t.padStart(w):t.padEnd(w);for(let j=0;j<w;j++)db[q++]=t.charCodeAt(j)};put(r.name,24);put(r.kind,8);put((r.len||0).toFixed(1),12,true)});db[db.length-1]=26;
@@ -701,7 +704,7 @@ $("xBtn").onclick=()=>{if(!needs())return;const f=EXP[$("xfmt").value]();save(f[
 // ---- depth model and optimal (adaptive) line positions
 let DG=null;
 const dgStamp=()=>o.lat+","+o.lon+","+(bath?bath.z.length:0)+","+poly.length+","+(poly[0]||[]).join();
-function buildDG(){DG=null;if(!bath||!bath.z.length||!poly.length)return;const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=1500,x0=Math.min(...xs)-m,x1=Math.max(...xs)+m,y0=Math.min(...ys)-m,y1=Math.max(...ys)+m,P=[];
+function buildDG(){DG=null;if(!bath||!bath.z.length||!poly.length)return;const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=1500,x0=arrMin(xs)-m,x1=arrMax(xs)+m,y0=arrMin(ys)-m,y1=arrMax(ys)+m,P=[];
 for(let i=0;i<bath.z.length;i++){const p=fromLL(bath.la[i],bath.lo[i]);if(p[0]<x0||p[0]>x1||p[1]<y0||p[1]>y1)continue;P.push([p[0],p[1],bath.z[i]])}
 if(!P.length)return;const cs=Math.max(5,Math.sqrt((x1-x0)*(y1-y0)/Math.min(40000,P.length))),cells=new Map();let zmax=0;
 P.forEach(p=>{const k=Math.floor((p[0]-x0)/cs)*100000+Math.floor((p[1]-y0)/cs),c=cells.get(k)||[0,0];c[0]+=p[2];c[1]++;cells.set(k,c)});cells.forEach(c=>{zmax=Math.max(zmax,c[0]/c[1])});DG={cs,x0,y0,cells,zmax:zmax||g("depth"),stamp:dgStamp()}}
@@ -709,7 +712,7 @@ function depthAt(x,y){if(!DG||DG.stamp!=dgStamp())buildDG();if(!DG||!DG.cells.si
 for(let r=0;r<=8;r++){let m=1e30;for(let a=-r;a<=r;a++)for(let b=-r;b<=r;b++){if(Math.max(Math.abs(a),Math.abs(b))!=r)continue;const c=DG.cells.get((ix+a)*100000+iy+b);if(c)m=Math.min(m,c[0]/c[1])}if(m<1e29)return Math.max(.5,m)}return g("depth")}
 function linePositions(s0,s1,n,u,S){const ov=g("ov")/100,W=params().W,ad=$("adp").checked&&bath&&bath.z.length;
 if(!ad){S=Math.max(S,.05,(s1-s0)/3000);const out=[];let s=s0+S/2;if(s>s1)return[(s0+s1)/2];out.push(s);for(;out.length<4000;){const nx=s+S;if(nx<=s1){out.push(nx);s=nx;continue}if(s+W/2<s1){const f=Math.min(nx,s1-.05*S);if(f>s+1e-6)out.push(f)}break}return out}
-const tp=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D),mw=g("mxW")>0?g("mxW"):1e18,tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]),stp=Math.max(5,(Math.max(...tv)-Math.min(...tv))/150),
+const tp=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D),mw=g("mxW")>0?g("mxW"):1e18,tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]),stp=Math.max(5,(arrMax(tv)-arrMin(tv))/150),
 hw=(d,k,plus)=>Math.min(d*((k%2==0)==plus?ts:tp),mw/2),Wt=d=>Math.min(d*(tp+ts),mw),dep=(q,t)=>depthAt(n[0]*q+u[0]*t,n[1]*q+u[1]*t),
 prof=q=>{const a=[];chords(poly,n,u,q).forEach(c=>{const m=Math.max(2,Math.ceil((c[1]-c[0])/stp)+1);for(let i=0;i<m;i++)a.push(c[0]+(c[1]-c[0])*i/(m-1))});return a};
 if(!DG||DG.stamp!=dgStamp())buildDG();const zmax=DG?DG.zmax:g("depth"),Smax=g("mxS")>0?g("mxS"):Math.min(zmax*(tp+ts),mw)*(1-ov),Smin=.5;
@@ -757,7 +760,7 @@ for(let y=s;y<n-1e-9;y+=sy)for(let x=w;x<e-1e-9;x+=sx){const q=[x,Math.min(e,x+s
 function gbPts(w,e,s,n,sp,near,cap){const T=gbPieces(w,e,s,n,Math.max(sp,500),40,near),cell=(q,d)=>{const a=[],dy=d/111132.9,dx=dy/Math.max(.05,Math.cos((q[2]+q[3])/2*D));for(let y=q[2]+dy/2;y<q[3];y+=dy)for(let x=q[0]+dx/2;x<q[1];x+=dx)if(near(x,x,y,y))a.push([x,y]);return a};
 const A=T.reduce((t,q)=>t+(q[1]-q[0])*(q[3]-q[2])*111320*111132.9*Math.cos((q[2]+q[3])/2*D),0);let d=Math.max(sp,Math.sqrt(A/(cap*20))),P=[];for(let it=0;it<20;it++){P=[];let over=false;for(const q of T){P.push(...cell(q,d));if(P.length>cap){over=true;break}}if(!over)break;d*=1.3}return P}
 $("gbB").onclick=async()=>{const st=$("gbSt"),lk=$("gbLink");lk.innerHTML="";if(!closed||poly.length<3){st.textContent=i18("Close an area first (draw, preset or import).");return}
-const ll=poly.map(toLL),la=ll.map(q=>q[0]),lo=ll.map(q=>q[1]),m=Math.max(.003,(Math.max(...la)-Math.min(...la))*.03,(Math.max(...lo)-Math.min(...lo))*.03),s=Math.max(-90,Math.min(...la)-m),n=Math.min(90,Math.max(...la)+m),w=Math.min(...lo)-m,e=Math.max(...lo)+m,res=+$("gbRes").value,src=$("gbSrc").value,f5=v=>v.toFixed(5),
+const ll=poly.map(toLL),la=ll.map(q=>q[0]),lo=ll.map(q=>q[1]),m=Math.max(.003,(arrMax(la)-arrMin(la))*.03,(arrMax(lo)-arrMin(lo))*.03),s=Math.max(-90,arrMin(la)-m),n=Math.min(90,arrMax(la)+m),w=arrMin(lo)-m,e=arrMax(lo)+m,res=+$("gbRes").value,src=$("gbSrc").value,f5=v=>v.toFixed(5),
 wm=(e-w)*111320*Math.cos((s+n)/2*D),hm=(n-s)*111132.9,grid=(nx,ny)=>{const a=[];for(let j=0;j<ny;j++)for(let i=0;i<nx;i++)a.push([w+(i+.5)*(e-w)/nx,n-(j+.5)*(n-s)/ny]);return a};let url="";
 try{st.textContent="Downloading…";
 const near=gbNear(Math.max(500,res*3));
@@ -782,14 +785,14 @@ function summary(){const p=params(),ln=R.lines,cl=R.cross,tn=R.turns,A=closed?ar
 km=m=>(m/1000).toFixed(2)+" km ("+(m/NM).toFixed(2)+" NM)",ol=ln.reduce((a,l)=>a+L(l),0),xl=cl.reduce((a,l)=>a+L(l),0),tl=R.tl||0,to=(ol+xl)/(sp*NM),tt=tl/(ts*NM),prod=to+tt,
 opH=Math.min(24,Math.max(1,g("opH")||24)),wx=Math.min(80,Math.max(0,g("wx")||0)),nS=g("svpI")>0?Math.floor(prod/g("svpI")):0,svp=nS*(g("svpD")||0)/60,cal=g("cal")||0,mob=g("mob")||0,core=prod+svp+cal,wxh=core/(1-wx/100)-core,tot=core+wxh+mob,days=tot/opH,
 hasB=!!(bath&&bath.z.length),ds=hasB&&sdp?{min:sdp.min,mean:sdp.mean,max:sdp.max}:{min:p.d,mean:p.d,max:p.d},dash="–",f1=(v,u)=>isFinite(v)?v.toFixed(1)+(u||""):dash,dc=Math.ceil(days-1e-9),
-adp=$("adp").checked&&hasB,q=R.sp||[],spTxt=q.length?Math.min(...q).toFixed(1)+" – "+Math.max(...q).toFixed(1)+" m, "+i18("mean")+" "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1):f1(p.S," m");
+adp=$("adp").checked&&hasB,q=R.sp||[],spTxt=q.length?arrMin(q).toFixed(1)+" – "+arrMax(q).toFixed(1)+" m, "+i18("mean")+" "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1):f1(p.S," m");
 set("spR",i18(adp?"{0} (adaptive)":"{0} (uniform)",spTxt));set("hT",hm(tot));SUM={to,tt,prod,svp,cal,wxh,mob,tot,days,ol,xl,tl,A,sp:spTxt,dc,opH,daysTxt:i18("{0} days at {1} h/day",days.toFixed(2),opH)};
 set("tO",hm(to));set("tR",hm(tt));set("tT",hm(prod));set("tEff",prod>0?(to/prod*100).toFixed(1)+" %":dash);set("tRate",to>0&&A>0?i18("{0} km²/h · {1} line-km/h",(A/to).toFixed(3),((ol+xl)/1000/to).toFixed(1)):dash);
 set("tSvp",i18("{0} casts · {1}",nS,hm(svp)));set("tCal",hm(cal));set("tWx",hm(wxh)+" ("+wx+" %)");set("tMob",hm(mob));set("tTot",hm(tot));
 set("tDays",i18("{0} days at {1} h/day ({2} calendar)",days.toFixed(2),opH,dc));let end=dash;const sd=$("sdate").value;if(sd){const d=new Date(sd+"T00:00:00");if(!isNaN(d)){d.setDate(d.getDate()+Math.max(0,dc-1));end=d.toISOString().slice(0,10)}}set("tEnd",end);
 set("tPD",A>0&&days>0?i18("{0} km²/day · {1} line-km/day",(A/Math.max(1,days)).toFixed(3),((ol+xl)/1000/Math.max(1,days)).toFixed(1)):dash);SUM.cost=dc*g("rate");set("tCost",g("rate")>0?i18("{0} ({1} days × {2})",SUM.cost.toLocaleString(),dc,g("rate").toLocaleString()):i18("set a day rate in Project & operations"));
-const ll=ln.map(L),tc=t=>tn.filter(x=>x.ty==t).length;set("nL",ln.length);set("nX",cl.length);set("dL",km(ol));set("dX",km(xl));set("dLs",ll.length?Math.min(...ll).toFixed(0)+" / "+(ol/ll.length).toFixed(0)+" / "+Math.max(...ll).toFixed(0)+" m":dash);
-set("dSp",q.length?Math.min(...q).toFixed(1)+" / "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1)+" / "+Math.max(...q).toFixed(1)+" m":f1(p.S," m"));
+const ll=ln.map(L),tc=t=>tn.filter(x=>x.ty==t).length;set("nL",ln.length);set("nX",cl.length);set("dL",km(ol));set("dX",km(xl));set("dLs",ll.length?arrMin(ll).toFixed(0)+" / "+(ol/ll.length).toFixed(0)+" / "+arrMax(ll).toFixed(0)+" m":dash);
+set("dSp",q.length?arrMin(q).toFixed(1)+" / "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1)+" / "+arrMax(q).toFixed(1)+" m":f1(p.S," m"));
 set("nT",tn.length+" ("+tc("w")+" / "+tc("u")+" / "+tc("t")+")");set("dT",km(tl));set("dG",km(ol+xl+tl));set("ar",A.toFixed(3)+" km²");
 const tp=Math.tan(g("ap")*D),tsn=Math.tan(g("as")*D),mw=g("mxW")>0?g("mxW"):1e18;let wS=0,wL=0,wMin=1e9,wMax=0;
 ln.forEach(l=>{const len=L(l);let a=0;for(let i=0;i<8;i++){const t=(i+.5)/8,d=hasB?depthAt(l.a[0]+(l.b[0]-l.a[0])*t,l.a[1]+(l.b[1]-l.a[1])*t):p.d,w=Math.min(d*(tp+tsn),mw);a+=w;wMin=Math.min(wMin,w);wMax=Math.max(wMax,w)}wS+=a/8*len;wL+=len});
@@ -909,7 +912,7 @@ const xo=()=>({paper:$("xpPaper").value,ori:$("xpOri").value,dpi:+$("xpDpi").val
 const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t.push(c>>>0)}return t})(),crc32=(u,c0)=>{let c=c0==null?-1:c0;for(let i=0;i<u.length;i++)c=crcT[(c^u[i])&255]^(c>>>8);return c};
 const toBlobP=(cv,t,q)=>new Promise(r=>cv.toBlob(r,t,q)),loadImg=src=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src});
 function sheetLayout(o){const k=o.paper=="A3"?420/297:1;let W=297*k,H=210*k;const pts=o.ext?o.ext.slice():poly.slice();if(!o.ext){R.turns.forEach(t=>t.pts.forEach(p=>pts.push(p)));R.lines.concat(R.cross).forEach(l=>pts.push(...LP(l)))}// o.ext: one segment's outline (segment-sheets.js)
-const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),bw=x1-x0||100,bh=y1-y0||100,port=o.ori=="port"||(o.ori=="auto"&&bh>bw*1.1);if(port)[W,H]=[H,W];
+const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),x0=arrMin(xs),x1=arrMax(xs),y0=arrMin(ys),y1=arrMax(ys),bw=x1-x0||100,bh=y1-y0||100,port=o.ori=="port"||(o.ori=="auto"&&bh>bw*1.1);if(port)[W,H]=[H,W];
 const m=10*k,lm=8*k,Pw=62*k,Ph=78*k,gap=3*k;let map,panel;if(!port){panel=[W-m-Pw,m,Pw,H-2*m];map=[m,m,panel[0]-gap-m,H-2*m]}else{panel=[m,H-m-Ph,W-2*m,Ph];map=[m,m,W-2*m,panel[1]-gap-m]}
 const fr=[map[0]+lm,map[1]+lm,map[2]-2*lm,map[3]-2*lm],need=Math.max(bw*1.12/fr[2],bh*1.12/fr[3])*1000,Dn=o.scale>0?o.scale:(STD.find(v=>v>=need)||Math.ceil(need/1e6)*1e6);
 return{k,W,H,port,m,lm,panel,map,fr,D:Dn,mpm:Dn/1000,cx:(x0+x1)/2,cy:(y0+y1)/2}}
@@ -936,7 +939,7 @@ pth(poly,true);c.fillStyle="rgba(255,255,255,.18)";c.fill();c.setLineDash([1.6,.
 sp.forEach(sg=>{let x=0,y=0;sg.pts.forEach(p=>{x+=p[0]/sg.pts.length;y+=p[1]/sg.pts.length});const q=P([x,y]),w=c.measureText(sg.name).width+1.6;c.fillStyle="#6a3d9ae6";c.fillRect(q[0]-w/2,q[1]-1.5,w,3);c.fillStyle="#fff";c.fillText(sg.name,q[0],q[1])});c.textAlign="left";c.textBaseline="alphabetic"}}
 c.lineWidth=.14;c.strokeStyle="#c2188a";R.turns.forEach(t=>{pth(t.pts);c.stroke()});c.lineWidth=.22;c.strokeStyle="#e07b00";R.cross.forEach(l=>{pth(LP(l));c.stroke()});
 c.lineWidth=.22;c.strokeStyle="#0b5c7a";R.lines.forEach(l=>{pth(LP(l));c.stroke()});
-if(op.names){const sp=R.sp&&R.sp.length?Math.min(...R.sp)/L.mpm:params().S/L.mpm,nth=Math.max(1,Math.ceil(2.6/Math.max(.1,sp))),fs=1.7;c.font=fs+"px "+FF;c.textBaseline="middle";R.lines.forEach((l,i)=>{const a=P(l.a),b=P(l.b),dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len;
+if(op.names){const sp=R.sp&&R.sp.length?arrMin(R.sp)/L.mpm:params().S/L.mpm,nth=Math.max(1,Math.ceil(2.6/Math.max(.1,sp))),fs=1.7;c.font=fs+"px "+FF;c.textBaseline="middle";R.lines.forEach((l,i)=>{const a=P(l.a),b=P(l.b),dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,ux=dx/len,uy=dy/len;
 if(sp>=1.1){c.fillStyle="#0b5c7a";c.beginPath();c.moveTo(a[0]+ux*1.4,a[1]+uy*1.4);c.lineTo(a[0]+ux*.1-uy*.45,a[1]+uy*.1+ux*.45);c.lineTo(a[0]+ux*.1+uy*.45,a[1]+uy*.1-ux*.45);c.closePath();c.fill()}
 if(i%nth==0){let ang=Math.atan2(dy,dx),al="right",off=-1.2;if(dx<0){ang+=Math.PI;al="left";off=1.2}c.save();c.translate(a[0],a[1]);c.rotate(ang);c.fillStyle="#12262d";c.textAlign=al;c.fillText(l.name,off,0);c.restore()}})}
 c.restore()}
@@ -1102,7 +1105,7 @@ T.forEach((t,i)=>{d.Rc(d.M+(i%3)*(d.cw()/3),d.y+(i>2?14:0),8,8,C[i]);d.T(d.M+(i%
 d.tbl([{t:i18("Component"),w:217},{t:i18("Time"),w:110,al:"r"},{t:i18("Hours"),w:80,al:"r"},{t:i18("Share"),w:95,al:"r"}],T.map(t=>[t[0],hm(t[1]),t[1].toFixed(2),(t[1]/tot*100).toFixed(1)+" %"]).concat([[i18("Total project time"),hm(tot),tot.toFixed(2),"100 %"]]),{hl:(r,i)=>i==T.length,sz:9});
 d.kv(card(0));d.p(i18("Assumptions: constant survey speed of {0} kn on line and {1} kn in turns; {2}; weather allowance of {3} % applied to productive, SVP and calibration time; {4} operating hours per day. Currents, traffic and port calls are not included.",g("spd"),$("tsp").value,v("tSvp"),g("wx"),S.opH),8.5,"#5b6e75");
 d.np();d.h1(i18("Distance, coverage and data statistics"));d.kv(card(1));
-if(R.sp&&R.sp.length>1){d.h2(i18("Line spacing along the plan"));d.need(150);const x0=d.M+34,y1=d.y+10,w=d.cw()-44,h=100,mx=Math.max(...R.sp)*1.1;d.Rc(x0,y1,w,h,"#fbfdfd","#cfd9d8",.6);for(let i=0;i<=4;i++){const yy=y1+h-h*i/4;d.Ln(x0,yy,x0+w,yy,.3,"#e3eaea");d.T(x0-4,yy+2.5,(mx*i/4).toFixed(0),7,0,"#5b6e75","r")}
+if(R.sp&&R.sp.length>1){d.h2(i18("Line spacing along the plan"));d.need(150);const x0=d.M+34,y1=d.y+10,w=d.cw()-44,h=100,mx=arrMax(R.sp)*1.1;d.Rc(x0,y1,w,h,"#fbfdfd","#cfd9d8",.6);for(let i=0;i<=4;i++){const yy=y1+h-h*i/4;d.Ln(x0,yy,x0+w,yy,.3,"#e3eaea");d.T(x0-4,yy+2.5,(mx*i/4).toFixed(0),7,0,"#5b6e75","r")}
 d.PL(R.sp.map((s,i)=>[x0+w*i/(R.sp.length-1),y1+h-h*s/mx]),"#0b6f6a",1.2);d.T(x0+w/2,y1+h+14,i18("Line number (1 to {0})",R.sp.length+1),7.5,0,"#5b6e75","c");d.T(d.M,y1+h/2,"m",7.5,0,"#5b6e75");d.y=y1+h+26}
 if(bath&&sdp){d.h2(i18("Depth distribution inside the survey area"));d.need(150);const nb=12,cnt=new Array(nb).fill(0),z0=sdp.min,z1=sdp.max||z0+1;for(let i=0;i<bath.z.length;i++)if(inPoly(fromLL(bath.la[i],bath.lo[i]))){const b=Math.min(nb-1,Math.floor((bath.z[i]-z0)/(z1-z0||1)*nb));cnt[b]++}
 const x0=d.M+10,y1=d.y+8,w=d.cw()-20,h=90,mx=Math.max(...cnt,1);cnt.forEach((c,i)=>{const bh=h*c/mx;d.Rc(x0+i*w/nb+1,y1+h-bh,w/nb-2,bh,"#2a6fa8");d.T(x0+(i+.5)*w/nb,y1+h+10,(z0+(i+.5)*(z1-z0)/nb).toFixed(0),7,0,"#5b6e75","c")});d.Ln(x0,y1+h,x0+w,y1+h,.6,"#444");d.T(x0+w/2,y1+h+22,i18("Depth (m)"),7.5,0,"#5b6e75","c");d.y=y1+h+30}
@@ -1213,7 +1216,7 @@ const nums=rows.map(r=>r.map(s=>NUMRE.test(s)?+s:NaN));
 if(ix<0){const r0=nums.find(r=>r.filter(isFinite).length>=2)||[];let idx=r0.map((v,i)=>isFinite(v)?i:-1).filter(i=>i>=0);
 if(idx.length>=3&&idx[0]==0){const c0=nums.map(r=>r[0]).filter(isFinite);if(c0.length>2&&c0.every((v,i)=>Number.isInteger(v)&&(i==0||v==c0[i-1]+1||v==c0[i-1])))idx=idx.slice(1)}ix=idx[0];iy=idx[1]}
 const ring=[];if(ix>=0&&iy>=0)nums.forEach(r=>{if(isFinite(r[ix])&&isFinite(r[iy]))ring.push([r[ix],r[iy]])});
-let deg=false,swap=false;if(ring.length){const A=ring.map(p=>Math.abs(p[0])),B=ring.map(p=>Math.abs(p[1])),mA=Math.max(...A),mB=Math.max(...B);
+let deg=false,swap=false;if(ring.length){const A=ring.map(p=>Math.abs(p[0])),B=ring.map(p=>Math.abs(p[1])),mA=arrMax(A),mB=arrMax(B);
 if(named&&named.lon&&named.lat&&mA<=360&&mB<=360){deg=true;swap=named.lat0}else if(mA<=180&&mB<=90){deg=true;swap=mA<=90&&mB<=90?($("xord").value=="yx"):false}else if(mA<=90&&mB<=180){deg=true;swap=true}}
 return{ring,deg,swap}}
 const AUTOL={id:"ID",ms:"MY BN",th:"TH",vi:"VN",tl:"PH",ko:"KR KP",ja:"JP",zh:"CN TW HK MO",hi:"IN",ur:"PK",tr:"TR TR",pl:"PL",ru:"RU BY KZ KG",de:"DE AT CH LI",fr:"FR MC LU SN CI CM CD CG GA BJ TG GN HT MG DJ",it:"IT SM VA",es:"ES MX AR CL CO PE VE EC UY PY BO CR CU DO GT HN NI PA SV",nl:"NL SR",pt:"PT BR AO MZ CV GW ST TL",ar:"SA AE QA KW BH OM YE IQ JO LB SY EG LY DZ MA TN SD MR SO KM PS",af:"NA"};
@@ -1400,8 +1403,8 @@ let t=i18("Saved map tiles: {0}",n);if(navigator.storage&&navigator.storage.esti
 $("tcClr").onclick=async()=>{try{await caches.delete(TILES_CACHE)}catch(e){}tcShow();rq()};
 const zs=[];for(let z=3;z<=19;z++)zs.push(z);["saZ0","saZ1"].forEach((id,k)=>{const s=$(id);zs.forEach(z=>s.add(new Option(String(z),z)));s.value=k?16:12;s.addEventListener("change",saCheck)});
 function saTiles(z0,z1){const P=closed&&poly.length>2?poly:[wc(0,cv.height),wc(cv.width,0)],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),
-mx=(Math.max(...xs)-Math.min(...xs))*.1+200,my=(Math.max(...ys)-Math.min(...ys))*.1+200,
-sw=toLL([Math.min(...xs)-mx,Math.min(...ys)-my]),ne=toLL([Math.max(...xs)+mx,Math.max(...ys)+my]),L=[];
+mx=(arrMax(xs)-arrMin(xs))*.1+200,my=(arrMax(ys)-arrMin(ys))*.1+200,
+sw=toLL([arrMin(xs)-mx,arrMin(ys)-my]),ne=toLL([arrMax(xs)+mx,arrMax(ys)+my]),L=[];
 for(let z=z0;z<=z1;z++){const n=2**z,X=lo=>Math.floor((lo+180)/360*n),Y=la=>Math.floor((1-Math.log(Math.tan(la*D)+1/Math.cos(la*D))/Math.PI)/2*n);
 const x0=X(sw[1]),x1=X(ne[1]),y0=Math.max(0,Y(ne[0])),y1=Math.min(n-1,Y(sw[0]));
 if((x1-x0+1)*(y1-y0+1)+L.length>SAVE_LIMIT*4)return{n:Infinity,L};for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++)L.push([((x%n)+n)%n,y,z])}return{n:L.length,L}}
@@ -1631,7 +1634,7 @@ const ckForget=()=>{try{IDB.del(IDK("coast")).catch(()=>{})}catch(e){}};
 {const _clr=$("cClr").onclick;$("cClr").onclick=function(){_clr.apply(this,arguments);CK_MSG="";ckForget();saveSoon()}}
 // built-in coastline (Natural Earth 1:50m, in the page): closed rings turned counter-clockwise so land is on the left, as in OSM; cut to the area
 $("cNE").onclick=async()=>{if(!closed)return $("cSt").textContent=i18("Close an area first.");$("cSt").textContent=i18("Loading…");const N10=await neLoad10(),N=N10||neLoad();if(!N)return;
-const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(10000,g("clr")*5),lo=toLL([Math.min(...xs)-m,Math.min(...ys)-m]),hi=toLL([Math.max(...xs)+m,Math.max(...ys)+m]),
+const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(10000,g("clr")*5),lo=toLL([arrMin(xs)-m,arrMin(ys)-m]),hi=toLL([arrMax(xs)+m,arrMax(ys)+m]),
 a0=Math.min(lo[0],hi[0]),a1=Math.max(lo[0],hi[0]),o0=Math.min(lo[1],hi[1]),o1=Math.max(lo[1],hi[1]),inB=(la,ln)=>la>=a0&&la<=a1&&ln>=o0&&ln<=o1,out=[];
 if(N10){
 // 1:10m land polygons: each ring cut to the box (Sutherland-Hodgman); a point inside a ring is land, whatever its direction
@@ -1804,7 +1807,7 @@ function ifFill(P,x0,y0,c,nx,ny,A,v){// scanline fill of polygon P (world metres
 let ya=1e30,yb=-1e30;P.forEach(p=>{ya=Math.min(ya,p[1]);yb=Math.max(yb,p[1])});const j0=Math.max(0,Math.floor((ya-y0)/c)),j1=Math.min(ny-1,Math.ceil((yb-y0)/c));
 for(let j=j0;j<=j1;j++){const y=y0+(j+.5)*c,xs=[];for(let i=0,k=P.length-1;i<P.length;k=i++){const a=P[k],b=P[i];if((a[1]>y)!=(b[1]>y))xs.push(a[0]+(y-a[1])/(b[1]-a[1])*(b[0]-a[0]))}
 xs.sort((p,q)=>p-q);for(let k=0;k+1<xs.length;k+=2){const i0=Math.max(0,Math.ceil((xs[k]-x0)/c-.5)),i1=Math.min(nx-1,Math.floor((xs[k+1]-x0)/c-.5));for(let i=i0;i<=i1;i++){if(typeof v=="function")v(j*nx+i);else A[j*nx+i]=v}}}}
-function ifCell(){const u=+$("ifC").value;if(u>0)return u;const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),bb=(Math.max(...xs)-Math.min(...xs))*(Math.max(...ys)-Math.min(...ys));
+function ifCell(){const u=+$("ifC").value;if(u>0)return u;const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),bb=(arrMax(xs)-arrMin(xs))*(arrMax(ys)-arrMin(ys));
 let c=Math.max(.5,ifSpacing()/8,Math.sqrt(bb/1.5e6));ifGrids().forEach(gr=>{c=Math.max(c,1.05*ifPix(gr))});// a cell is no smaller than a grid cell
 const B=ifXYZ();if(B&&B.z.length>1){let n=0,a0=1e30,a1=-1e30,b0=1e30,b1=-1e30;for(let i=0;i<B.z.length;i++){const q=fromLL(B.la[i],B.lo[i]);if(!inPoly(q))continue;n++;a0=Math.min(a0,q[0]);a1=Math.max(a1,q[0]);b0=Math.min(b0,q[1]);b1=Math.max(b1,q[1])}
 if(n>1)c=Math.max(c,1.5*Math.sqrt(Math.max(1,(a1-a0)*(b1-b0))/n))}// soundings need cells at least as large as their spacing
@@ -1814,7 +1817,7 @@ function ifMargin(P,mg,x0,y0,c,nx,ny,ins,eg){let e=0;const v=k=>{if(!ins[k]){ins
 if(l>1e-9){const nx_=-(b[1]-a[1])/l*mg,ny_=(b[0]-a[0])/l*mg;ifFill([[a[0]+nx_,a[1]+ny_],[b[0]+nx_,b[1]+ny_],[b[0]-nx_,b[1]-ny_],[a[0]-nx_,a[1]-ny_]],x0,y0,c,nx,ny,ins,v)}
 const d=[];for(let t=0;t<24;t++)d.push([b[0]+mg*Math.cos(t*Math.PI/12),b[1]+mg*Math.sin(t*Math.PI/12)]);ifFill(d,x0,y0,c,nx,ny,ins,v)}}
 function ifGrid(){IF.g=null;IF.img=null;IF.regions=[];if(!closed||poly.length<3)return;
-const c=ifCell(),mg=Math.max(0,g("ifBuf")||0),xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),x0=Math.min(...xs)-mg-c,y0=Math.min(...ys)-mg-c,nx=Math.ceil((Math.max(...xs)+mg-x0)/c)+1,ny=Math.ceil((Math.max(...ys)+mg-y0)/c)+1;
+const c=ifCell(),mg=Math.max(0,g("ifBuf")||0),xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),x0=arrMin(xs)-mg-c,y0=arrMin(ys)-mg-c,nx=Math.ceil((arrMax(xs)+mg-x0)/c)+1,ny=Math.ceil((arrMax(ys)+mg-y0)/c)+1;
 if(nx*ny>6e6)return;const ins=new Uint8Array(nx*ny),cov=new Uint8Array(nx*ny),need=ifNeed();ifFill(poly,x0,y0,c,nx,ny,ins,1);const eg=new Int32Array(nx*ny);if(mg>0)ifMargin(poly,mg,x0,y0,c,nx,ny,ins,eg);const cls=k=>ins[k]==1?-1:eg[k];// cov: 255 = covered, or the number of side-scan tracks that saw the cell
 const p=params(),ta=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D),fixed=$("ifWM").value=="fixed",wf=Math.max(0,g("ifWF"))/2;
 const sss=ifSSS(),stamp=sss?new Int32Array(nx*ny):null,sR=Math.max(1,g("ifSR")),sG=Math.min(sR,Math.max(0,g("ifSA")));

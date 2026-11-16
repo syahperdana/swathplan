@@ -32,8 +32,8 @@ let t=i18("Saved map tiles: {0}",n);if(navigator.storage&&navigator.storage.esti
 $("tcClr").onclick=async()=>{try{await caches.delete(TILES_CACHE)}catch(e){}tcShow();rq()};
 const zs=[];for(let z=3;z<=19;z++)zs.push(z);["saZ0","saZ1"].forEach((id,k)=>{const s=$(id);zs.forEach(z=>s.add(new Option(String(z),z)));s.value=k?16:12;s.addEventListener("change",saCheck)});
 function saTiles(z0,z1){const P=closed&&poly.length>2?poly:[wc(0,cv.height),wc(cv.width,0)],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),
-mx=(Math.max(...xs)-Math.min(...xs))*.1+200,my=(Math.max(...ys)-Math.min(...ys))*.1+200,
-sw=toLL([Math.min(...xs)-mx,Math.min(...ys)-my]),ne=toLL([Math.max(...xs)+mx,Math.max(...ys)+my]),L=[];
+mx=(arrMax(xs)-arrMin(xs))*.1+200,my=(arrMax(ys)-arrMin(ys))*.1+200,
+sw=toLL([arrMin(xs)-mx,arrMin(ys)-my]),ne=toLL([arrMax(xs)+mx,arrMax(ys)+my]),L=[];
 for(let z=z0;z<=z1;z++){const n=2**z,X=lo=>Math.floor((lo+180)/360*n),Y=la=>Math.floor((1-Math.log(Math.tan(la*D)+1/Math.cos(la*D))/Math.PI)/2*n);
 const x0=X(sw[1]),x1=X(ne[1]),y0=Math.max(0,Y(ne[0])),y1=Math.min(n-1,Y(sw[0]));
 if((x1-x0+1)*(y1-y0+1)+L.length>SAVE_LIMIT*4)return{n:Infinity,L};for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++)L.push([((x%n)+n)%n,y,z])}return{n:L.length,L}}

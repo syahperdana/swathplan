@@ -7,8 +7,8 @@ const i=Math.min(TG.nx-2,Math.floor(fx)),j=Math.min(TG.ny-2,Math.floor(fy)),a=fx
 const tgAt=p=>{const l=toLL(p);return tgZ(l[0],l[1])};
 // the box to cover: lines, turns and area, plus half a swath and 100 m
 function tgBox(){const P=[];R.lines.forEach(l=>P.push(...LP(l)));(R.turns||[]).forEach(t=>t&&t.pts&&P.push(...t.pts));if(closed)P.push(...poly);if(!P.length)return null;
-const m=Math.max(150,uvGeo().across/2+100),xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),a=toLL([Math.min(...xs)-m,Math.min(...ys)-m]),b=toLL([Math.max(...xs)+m,Math.max(...ys)+m]);
-return{la0:a[0],lo0:a[1],la1:b[0],lo1:b[1],wm:Math.max(...xs)-Math.min(...xs)+2*m,hm:Math.max(...ys)-Math.min(...ys)+2*m}}
+const m=Math.max(150,uvGeo().across/2+100),xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),a=toLL([arrMin(xs)-m,arrMin(ys)-m]),b=toLL([arrMax(xs)+m,arrMax(ys)+m]);
+return{la0:a[0],lo0:a[1],la1:b[0],lo1:b[1],wm:arrMax(xs)-arrMin(xs)+2*m,hm:arrMax(ys)-arrMin(ys)+2*m}}
 // a grid over the box with at most N nodes a side and at least sp m between them
 function tgNodes(B,N,sp){const s=Math.max(sp,Math.max(B.wm,B.hm)/(N-1)),nx=Math.max(2,Math.ceil(B.wm/s)+1),ny=Math.max(2,Math.ceil(B.hm/s)+1);
 return{la0:B.la0,lo0:B.lo0,dla:(B.la1-B.la0)/(ny-1),dlo:(B.lo1-B.lo0)/(nx-1),nx,ny,z:new Float32Array(nx*ny).fill(NaN)}}
@@ -64,12 +64,12 @@ let amin=1e9,amax=-1e9,gmin=1e9,gmax=-1e9;const PR=R.lines.map(()=>({s:[],g:[],a
 for(let k=0;k<n-1;k++){const ln=W[k][3]>=0&&W[k][3]==W[k+1][3];smp(W[k],W[k+1],(t,z)=>{if(!isFinite(z))return;const al=AI[k]+(AI[k+1]-AI[k])*t+z0,h=al-z;
 if(ln){amin=Math.min(amin,h);amax=Math.max(amax,h);gmin=Math.min(gmin,z);gmax=Math.max(gmax,z)}if(ln){const q=PR[W[k][3]];q.s.push(cd[k]+(cd[k+1]-cd[k])*t);q.g.push(z);q.a.push(al)}})}
 // the profile shown: the line over the most relief (the longest when the ground is even)
-const rel=q=>q.g.length?Math.max(...q.g)-Math.min(...q.g):-1,pr=PR.reduce((m,q,i)=>{const r=rel(q),lq=L(R.lines[i]);return r>m.r+.5||(Math.abs(r-m.r)<=.5&&lq>m.l)?{r,l:lq,q}:m},{r:-2,l:0,q:PR[0]}).q;
+const rel=q=>q.g.length?arrMax(q.g)-arrMin(q.g):-1,pr=PR.reduce((m,q,i)=>{const r=rel(q),lq=L(R.lines[i]);return r>m.r+.5||(Math.abs(r-m.r)<=.5&&lq>m.l)?{r,l:lq,q}:m},{r:-2,l:0,q:PR[0]}).q;
 const v=amax<-1e8?null:{tf,H,z0,W,K,AI,amin,amax,gmin,gmax,miss,hi:Math.max(...K.map(k=>AI[k])),pr,src:TG.src};TGC={R,L:R.lines,T:TG,k:key,v};return v}
 // for the waypoint exports: [lat, lon, height above take-off] when terrain following is on
 function tgWp(){const P=tgPlan();return P&&P.tf?P.K.map(k=>{const l=toLL(P.W[k]);return[l[0],l[1],+P.AI[k].toFixed(1)]}):undefined}
 // profile of one line: ground (filled) and flight path
-function tgProf(P){const p=P.pr;if(p.s.length<2)return"";const w=320,h=96,s1=p.s[p.s.length-1]-p.s[0]||1,g0=Math.min(...p.g),a1=Math.max(...p.a),lo=g0-.08*((a1-g0)||1),hi=a1,r=(hi-lo)||1,
+function tgProf(P){const p=P.pr;if(p.s.length<2)return"";const w=320,h=96,s1=p.s[p.s.length-1]-p.s[0]||1,g0=arrMin(p.g),a1=arrMax(p.a),lo=g0-.08*((a1-g0)||1),hi=a1,r=(hi-lo)||1,
 X=s=>((s-p.s[0])/s1*w).toFixed(1),Y=z=>(h-4-(z-lo)/r*(h-14)).toFixed(1),st=Math.max(1,Math.floor(p.s.length/300)),ix=p.s.map((_,i)=>i).filter(i=>i%st==0||i==p.s.length-1);
 return'<div style="position:relative"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="display:block;width:100%;height:110px" role="img" aria-label="'+i18("Profile of the line over the most relief: ground and flight path")+'"><polygon fill="#d9c7a3" points="0,'+h+" "+ix.map(i=>X(p.s[i])+","+Y(p.g[i])).join(" ")+" "+w+","+h+'"/>'+'<polyline fill="none" stroke="#1f6fb2" stroke-width="1.6" vector-effect="non-scaling-stroke" points="'+ix.map(i=>X(p.s[i])+","+Y(p.a[i])).join(" ")+'"/></svg>'+'<span style="position:absolute;left:3px;top:0;font-size:11px">'+Math.round(hi)+' m</span><span style="position:absolute;left:3px;bottom:2px;font-size:11px">'+Math.round(g0)+" m</span></div>"}
 function tgShow(){if(!MODE().uav)return;const P=tgPlan(),f=(a,b)=>i18("{0} to {1} m",Math.round(a),Math.round(b));

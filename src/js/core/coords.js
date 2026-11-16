@@ -1,3 +1,6 @@
+// min / max of an array of any length (Math.min(...a) overflows the call stack past about 100,000 values)
+function arrMin(a){let m=Infinity;for(let i=0;i<a.length;i++){const v=a[i];if(v<m||v!==v)m=v;if(m!==m)return m}return m}
+function arrMax(a){let m=-Infinity;for(let i=0;i<a.length;i++){const v=a[i];if(v>m||v!==v)m=v;if(m!==m)return m}return m}
 function toLL(p){const la=o.lat+p[1]/111132.9;return[la,o.lon+p[0]/(111320*Math.cos(o.lat*D))]}
 function fromLL(la,lo){return[(lo-o.lon)*111320*Math.cos(o.lat*D),(la-o.lat)*111132.9]}
 function utm(lat,lon,z){const a=6378137,f=1/298.257223563,k0=.9996,e2=f*(2-f),ep=e2/(1-e2),p=lat*D,l0=((z-1)*6-177)*D,s=Math.sin(p),c=Math.cos(p),t=Math.tan(p),N=a/Math.sqrt(1-e2*s*s),T=t*t,C=ep*c*c,A=c*(lon*D-l0),e4=e2*e2,e6=e4*e2;

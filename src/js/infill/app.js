@@ -58,7 +58,7 @@ function ifFill(P,x0,y0,c,nx,ny,A,v){// scanline fill of polygon P (world metres
 let ya=1e30,yb=-1e30;P.forEach(p=>{ya=Math.min(ya,p[1]);yb=Math.max(yb,p[1])});const j0=Math.max(0,Math.floor((ya-y0)/c)),j1=Math.min(ny-1,Math.ceil((yb-y0)/c));
 for(let j=j0;j<=j1;j++){const y=y0+(j+.5)*c,xs=[];for(let i=0,k=P.length-1;i<P.length;k=i++){const a=P[k],b=P[i];if((a[1]>y)!=(b[1]>y))xs.push(a[0]+(y-a[1])/(b[1]-a[1])*(b[0]-a[0]))}
 xs.sort((p,q)=>p-q);for(let k=0;k+1<xs.length;k+=2){const i0=Math.max(0,Math.ceil((xs[k]-x0)/c-.5)),i1=Math.min(nx-1,Math.floor((xs[k+1]-x0)/c-.5));for(let i=i0;i<=i1;i++){if(typeof v=="function")v(j*nx+i);else A[j*nx+i]=v}}}}
-function ifCell(){const u=+$("ifC").value;if(u>0)return u;const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),bb=(Math.max(...xs)-Math.min(...xs))*(Math.max(...ys)-Math.min(...ys));
+function ifCell(){const u=+$("ifC").value;if(u>0)return u;const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),bb=(arrMax(xs)-arrMin(xs))*(arrMax(ys)-arrMin(ys));
 let c=Math.max(.5,ifSpacing()/8,Math.sqrt(bb/1.5e6));ifGrids().forEach(gr=>{c=Math.max(c,1.05*ifPix(gr))});// a cell is no smaller than a grid cell
 const B=ifXYZ();if(B&&B.z.length>1){let n=0,a0=1e30,a1=-1e30,b0=1e30,b1=-1e30;for(let i=0;i<B.z.length;i++){const q=fromLL(B.la[i],B.lo[i]);if(!inPoly(q))continue;n++;a0=Math.min(a0,q[0]);a1=Math.max(a1,q[0]);b0=Math.min(b0,q[1]);b1=Math.max(b1,q[1])}
 if(n>1)c=Math.max(c,1.5*Math.sqrt(Math.max(1,(a1-a0)*(b1-b0))/n))}// soundings need cells at least as large as their spacing
@@ -68,7 +68,7 @@ function ifMargin(P,mg,x0,y0,c,nx,ny,ins,eg){let e=0;const v=k=>{if(!ins[k]){ins
 if(l>1e-9){const nx_=-(b[1]-a[1])/l*mg,ny_=(b[0]-a[0])/l*mg;ifFill([[a[0]+nx_,a[1]+ny_],[b[0]+nx_,b[1]+ny_],[b[0]-nx_,b[1]-ny_],[a[0]-nx_,a[1]-ny_]],x0,y0,c,nx,ny,ins,v)}
 const d=[];for(let t=0;t<24;t++)d.push([b[0]+mg*Math.cos(t*Math.PI/12),b[1]+mg*Math.sin(t*Math.PI/12)]);ifFill(d,x0,y0,c,nx,ny,ins,v)}}
 function ifGrid(){IF.g=null;IF.img=null;IF.regions=[];if(!closed||poly.length<3)return;
-const c=ifCell(),mg=Math.max(0,g("ifBuf")||0),xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),x0=Math.min(...xs)-mg-c,y0=Math.min(...ys)-mg-c,nx=Math.ceil((Math.max(...xs)+mg-x0)/c)+1,ny=Math.ceil((Math.max(...ys)+mg-y0)/c)+1;
+const c=ifCell(),mg=Math.max(0,g("ifBuf")||0),xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),x0=arrMin(xs)-mg-c,y0=arrMin(ys)-mg-c,nx=Math.ceil((arrMax(xs)+mg-x0)/c)+1,ny=Math.ceil((arrMax(ys)+mg-y0)/c)+1;
 if(nx*ny>6e6)return;const ins=new Uint8Array(nx*ny),cov=new Uint8Array(nx*ny),need=ifNeed();ifFill(poly,x0,y0,c,nx,ny,ins,1);const eg=new Int32Array(nx*ny);if(mg>0)ifMargin(poly,mg,x0,y0,c,nx,ny,ins,eg);const cls=k=>ins[k]==1?-1:eg[k];// cov: 255 = covered, or the number of side-scan tracks that saw the cell
 const p=params(),ta=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D),fixed=$("ifWM").value=="fixed",wf=Math.max(0,g("ifWF"))/2;
 const sss=ifSSS(),stamp=sss?new Int32Array(nx*ny):null,sR=Math.max(1,g("ifSR")),sG=Math.min(sR,Math.max(0,g("ifSA")));

@@ -34,6 +34,11 @@ with sync_playwright() as p:
     # the shaded grid on the sheet matches the map's colours: sample the sheet canvas inside the area
     px=ev("""(async()=>{const op=xo();op.base=false;op.dpi=60;const r=await renderSheet(op,true);const L=r.L,k=r.u||r.cv.width/L.fr[2],c=r.cv.getContext('2d');const d=c.getImageData(Math.round(r.cv.width*.3),Math.round(r.cv.height*.5),1,1).data;r.cv.width=0;return[...d]})()""")
     ok(px[2]>px[0]+30,f'map frame shows blue depth shading {px[:3]}')
+    # thousands of lines (shallow, adaptive): the sheet still renders (no call-stack overflow on the extent)
+    ev("$('adp').checked=false;$('depth').value=.5;$('depth').dispatchEvent(new Event('input'))");pg.wait_for_timeout(2500)
+    n=ev("R.lines.length");pts=ev("R.turns.reduce((s,t)=>s+t.pts.length,0)+R.lines.reduce((s,l)=>s+LP(l).length,0)")
+    ok(ev(SHEET)!=None,f'{n} lines, {pts} points: the sheet renders')
+    ev("$('depth').value=25;$('adp').checked=true;$('depth').dispatchEvent(new Event('input'))");pg.wait_for_timeout(1500)
     # drone: the terrain, with elevation contours, and the sheet rows for a drone
     ev("$('svT').value='uav';$('svT').dispatchEvent(new Event('change'))");pg.wait_for_timeout(800);ev(f"({HILL})(80,300)");pg.wait_for_timeout(800)
     R=ev(SHEET)

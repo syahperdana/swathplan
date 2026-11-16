@@ -4,14 +4,14 @@ function summary(){const p=params(),ln=R.lines,cl=R.cross,tn=R.turns,A=closed?ar
 km=m=>(m/1000).toFixed(2)+" km ("+(m/NM).toFixed(2)+" NM)",ol=ln.reduce((a,l)=>a+L(l),0),xl=cl.reduce((a,l)=>a+L(l),0),tl=R.tl||0,to=(ol+xl)/(sp*NM),tt=tl/(ts*NM),prod=to+tt,
 opH=Math.min(24,Math.max(1,g("opH")||24)),wx=Math.min(80,Math.max(0,g("wx")||0)),nS=g("svpI")>0?Math.floor(prod/g("svpI")):0,svp=nS*(g("svpD")||0)/60,cal=g("cal")||0,mob=g("mob")||0,core=prod+svp+cal,wxh=core/(1-wx/100)-core,tot=core+wxh+mob,days=tot/opH,
 hasB=!!(bath&&bath.z.length),ds=hasB&&sdp?{min:sdp.min,mean:sdp.mean,max:sdp.max}:{min:p.d,mean:p.d,max:p.d},dash="–",f1=(v,u)=>isFinite(v)?v.toFixed(1)+(u||""):dash,dc=Math.ceil(days-1e-9),
-adp=$("adp").checked&&hasB,q=R.sp||[],spTxt=q.length?Math.min(...q).toFixed(1)+" – "+Math.max(...q).toFixed(1)+" m, "+i18("mean")+" "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1):f1(p.S," m");
+adp=$("adp").checked&&hasB,q=R.sp||[],spTxt=q.length?arrMin(q).toFixed(1)+" – "+arrMax(q).toFixed(1)+" m, "+i18("mean")+" "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1):f1(p.S," m");
 set("spR",i18(adp?"{0} (adaptive)":"{0} (uniform)",spTxt));set("hT",hm(tot));SUM={to,tt,prod,svp,cal,wxh,mob,tot,days,ol,xl,tl,A,sp:spTxt,dc,opH,daysTxt:i18("{0} days at {1} h/day",days.toFixed(2),opH)};
 set("tO",hm(to));set("tR",hm(tt));set("tT",hm(prod));set("tEff",prod>0?(to/prod*100).toFixed(1)+" %":dash);set("tRate",to>0&&A>0?i18("{0} km²/h · {1} line-km/h",(A/to).toFixed(3),((ol+xl)/1000/to).toFixed(1)):dash);
 set("tSvp",i18("{0} casts · {1}",nS,hm(svp)));set("tCal",hm(cal));set("tWx",hm(wxh)+" ("+wx+" %)");set("tMob",hm(mob));set("tTot",hm(tot));
 set("tDays",i18("{0} days at {1} h/day ({2} calendar)",days.toFixed(2),opH,dc));let end=dash;const sd=$("sdate").value;if(sd){const d=new Date(sd+"T00:00:00");if(!isNaN(d)){d.setDate(d.getDate()+Math.max(0,dc-1));end=d.toISOString().slice(0,10)}}set("tEnd",end);
 set("tPD",A>0&&days>0?i18("{0} km²/day · {1} line-km/day",(A/Math.max(1,days)).toFixed(3),((ol+xl)/1000/Math.max(1,days)).toFixed(1)):dash);SUM.cost=dc*g("rate");set("tCost",g("rate")>0?i18("{0} ({1} days × {2})",SUM.cost.toLocaleString(),dc,g("rate").toLocaleString()):i18("set a day rate in Project & operations"));
-const ll=ln.map(L),tc=t=>tn.filter(x=>x.ty==t).length;set("nL",ln.length);set("nX",cl.length);set("dL",km(ol));set("dX",km(xl));set("dLs",ll.length?Math.min(...ll).toFixed(0)+" / "+(ol/ll.length).toFixed(0)+" / "+Math.max(...ll).toFixed(0)+" m":dash);
-set("dSp",q.length?Math.min(...q).toFixed(1)+" / "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1)+" / "+Math.max(...q).toFixed(1)+" m":f1(p.S," m"));
+const ll=ln.map(L),tc=t=>tn.filter(x=>x.ty==t).length;set("nL",ln.length);set("nX",cl.length);set("dL",km(ol));set("dX",km(xl));set("dLs",ll.length?arrMin(ll).toFixed(0)+" / "+(ol/ll.length).toFixed(0)+" / "+arrMax(ll).toFixed(0)+" m":dash);
+set("dSp",q.length?arrMin(q).toFixed(1)+" / "+(q.reduce((a,b)=>a+b,0)/q.length).toFixed(1)+" / "+arrMax(q).toFixed(1)+" m":f1(p.S," m"));
 set("nT",tn.length+" ("+tc("w")+" / "+tc("u")+" / "+tc("t")+")");set("dT",km(tl));set("dG",km(ol+xl+tl));set("ar",A.toFixed(3)+" km²");
 const tp=Math.tan(g("ap")*D),tsn=Math.tan(g("as")*D),mw=g("mxW")>0?g("mxW"):1e18;let wS=0,wL=0,wMin=1e9,wMax=0;
 ln.forEach(l=>{const len=L(l);let a=0;for(let i=0;i<8;i++){const t=(i+.5)/8,d=hasB?depthAt(l.a[0]+(l.b[0]-l.a[0])*t,l.a[1]+(l.b[1]-l.a[1])*t):p.d,w=Math.min(d*(tp+tsn),mw);a+=w;wMin=Math.min(wMin,w);wMax=Math.max(wMax,w)}wS+=a/8*len;wL+=len});
