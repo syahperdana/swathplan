@@ -908,7 +908,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "S-44 üst sınırını kullan (3 × derinlik veya 25 m)",
  "Footprint at the design depth": "Tasarım derinliğinde iz",
  "Coverage by the main lines": "Ana hatların kapsaması",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 eksik kapsamaya yalnızca sınıf 2 ve sınıf 1b için izin verir: en az %5 batimetrik kapsama ve derinlikler arası mesafe ortalama derinliğin 3 katı veya 25 m’den (hangisi büyükse) fazla değil. Sınıf 1a %100 obje taraması, özel ve münhasır sınıf ise tam kapsama ister: çok ışınlı kullanın veya obje taraması için yan taramalı sonar ekleyin.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} tam batimetrik kapsama ister; tek ışınlı ölçüm bunu sağlayamaz. Çok ışınlı kullanın.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} %100 obje taraması ister: yan taramalı sonar ekleyin veya çok ışınlı kullanın.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "Hat aralığı {0} m, S-44 üst sınırı {1} m (3 × derinlik veya 25 m) içinde.",
@@ -1040,5 +1039,6 @@
  "This page is in English for now. Translations will follow.": "Bu sayfa şimdilik İngilizce. Çeviriler gelecek.",
  "How to use the tools, and the science behind every number with its original references.": "Araçların nasıl kullanılacağı ve her sayının arkasındaki bilim, özgün kaynaklarıyla.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Ölçme planlayıcısı ve tamamlama planlayıcısının kullanımı, adım adım, ekran görüntüleriyle.",
- "The formulas, standards and data behind every number, with their original references.": "Her sayının arkasındaki formüller, standartlar ve veriler, özgün kaynaklarıyla."
+ "The formulas, standards and data behind every number, with their original references.": "Her sayının arkasındaki formüller, standartlar ve veriler, özgün kaynaklarıyla.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 eksik kapsamaya yalnızca sınıf 2 ve sınıf 1b için izin verir: en az %5 batimetrik kapsama ve derinlikler arası mesafe su derinliğinin 3 katı veya 25 m’den (hangisi büyükse) fazla değil. Sınıf 1a %100 obje taraması, özel ve münhasır sınıf ise tam kapsama ister: çok ışınlı kullanın veya obje taraması için yan taramalı sonar ekleyin."
 }

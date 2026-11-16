@@ -917,7 +917,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "ใช้ค่าสูงสุดตาม S-44 (3 × ความลึก หรือ 25 ม.)",
  "Footprint at the design depth": "รอยลำคลื่นที่ความลึกออกแบบ",
  "Coverage by the main lines": "ความครอบคลุมของแนวหลัก",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 ยอมให้ครอบคลุมไม่เต็มพื้นที่เฉพาะเกณฑ์ 2 และเกณฑ์ 1b: ความครอบคลุมเชิงความลึกอย่างน้อย 5 % และระยะห่างระหว่างจุดความลึกไม่เกิน 3 × ความลึกเฉลี่ยหรือ 25 ม. แล้วแต่ค่าใดมากกว่า เกณฑ์ 1a ต้องค้นหาวัตถุ 100 % ส่วนเกณฑ์พิเศษและเกณฑ์เฉพาะต้องครอบคลุมเต็มพื้นที่: ใช้มัลติบีม หรือเพิ่มโซนาร์กวาดข้างเพื่อค้นหาวัตถุ",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} ต้องการความครอบคลุมเชิงความลึกเต็มพื้นที่ ซึ่งการสำรวจซิงเกิลบีมทำไม่ได้ ให้ใช้มัลติบีม",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} ต้องค้นหาวัตถุ 100 %: เพิ่มโซนาร์กวาดข้างหรือใช้มัลติบีม",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "ระยะห่างแนว {0} ม. อยู่ในค่าสูงสุดตาม S-44 {1} ม. (3 × ความลึก หรือ 25 ม.)",
@@ -1049,5 +1048,6 @@
  "This page is in English for now. Translations will follow.": "หน้านี้ยังเป็นภาษาอังกฤษ คำแปลจะตามมา",
  "How to use the tools, and the science behind every number with its original references.": "วิธีใช้เครื่องมือ และหลักวิทยาศาสตร์เบื้องหลังทุกตัวเลขพร้อมแหล่งอ้างอิงต้นฉบับ",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "วิธีใช้ตัววางแผนสำรวจและตัววางแผนสำรวจเพิ่มเติม ทีละขั้น พร้อมภาพหน้าจอ",
- "The formulas, standards and data behind every number, with their original references.": "สูตร มาตรฐาน และข้อมูลเบื้องหลังทุกตัวเลข พร้อมแหล่งอ้างอิงต้นฉบับ"
+ "The formulas, standards and data behind every number, with their original references.": "สูตร มาตรฐาน และข้อมูลเบื้องหลังทุกตัวเลข พร้อมแหล่งอ้างอิงต้นฉบับ",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 ยอมให้ครอบคลุมไม่เต็มพื้นที่เฉพาะเกณฑ์ 2 และเกณฑ์ 1b: ความครอบคลุมเชิงความลึกอย่างน้อย 5 % และระยะห่างระหว่างจุดความลึกไม่เกิน 3 × ความลึกของน้ำหรือ 25 ม. แล้วแต่ค่าใดมากกว่า เกณฑ์ 1a ต้องค้นหาวัตถุ 100 % ส่วนเกณฑ์พิเศษและเกณฑ์เฉพาะต้องครอบคลุมเต็มพื้นที่: ใช้มัลติบีม หรือเพิ่มโซนาร์กวาดข้างเพื่อค้นหาวัตถุ"
 }

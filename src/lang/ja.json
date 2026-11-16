@@ -909,7 +909,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "S-44の最大値を使う（水深×3または25 m）",
  "Footprint at the design depth": "設計水深でのフットプリント",
  "Coverage by the main lines": "主測線によるカバレッジ",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44で全面カバーでなくてよいのは等級2と等級1bだけです：水深データのカバレッジ5 %以上で、測深点の間隔は平均水深×3または25 mのうち大きい方以下。等級1aは100 %の物体探査、特別等級と特級は全面カバーが必要です：マルチビームを使うか、物体探査にサイドスキャンソナーを加えてください。",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0}は全面の水深カバーが必要で、シングルビーム測量では満たせません。マルチビームを使ってください。",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0}は100 %の物体探査が必要です：サイドスキャンソナーを加えるかマルチビームを使ってください。",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "測線間隔{0} mはS-44の最大値{1} m（水深×3または25 m）以内です。",
@@ -1041,5 +1040,6 @@
  "This page is in English for now. Translations will follow.": "このページは現在英語のみです。翻訳は今後追加します。",
  "How to use the tools, and the science behind every number with its original references.": "ツールの使い方と、すべての数値の背後にある科学を原典とともに。",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "測量プランナーと補測プランナーの使い方を、スクリーンショット付きで順を追って説明します。",
- "The formulas, standards and data behind every number, with their original references.": "すべての数値の背後にある式、規格、データを原典とともに。"
+ "The formulas, standards and data behind every number, with their original references.": "すべての数値の背後にある式、規格、データを原典とともに。",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44で全面カバーでなくてよいのは等級2と等級1bだけです：水深データのカバレッジ5 %以上で、測深点の間隔は水深×3または25 mのうち大きい方以下。等級1aは100 %の物体探査、特別等級と特級は全面カバーが必要です：マルチビームを使うか、物体探査にサイドスキャンソナーを加えてください。"
 }

@@ -909,7 +909,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "S-44-Höchstwert verwenden (3 × Tiefe oder 25 m)",
  "Footprint at the design depth": "Footprint bei der Entwurfstiefe",
  "Coverage by the main lines": "Abdeckung durch die Hauptlinien",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 erlaubt eine unvollständige Abdeckung nur für Ordnung 2 und Ordnung 1b: mindestens 5 % bathymetrische Abdeckung, mit Tiefen höchstens 3 × mittlere Tiefe oder 25 m auseinander, je nachdem, was größer ist. Ordnung 1a verlangt eine 100-%-Objektsuche, Sonder- und Exklusivordnung eine vollständige Abdeckung: Fächerecholot verwenden oder Seitensichtsonar für die Objektsuche ergänzen.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} verlangt eine vollständige bathymetrische Abdeckung, die eine Einzelstrahlvermessung nicht liefern kann. Fächerecholot verwenden.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} verlangt eine 100-%-Objektsuche: Seitensichtsonar ergänzen oder Fächerecholot verwenden.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "Linienabstand {0} m liegt innerhalb des S-44-Höchstwerts von {1} m (3 × Tiefe oder 25 m).",
@@ -1041,5 +1040,6 @@
  "This page is in English for now. Translations will follow.": "Diese Seite ist vorerst auf Englisch. Übersetzungen folgen.",
  "How to use the tools, and the science behind every number with its original references.": "Wie die Werkzeuge funktionieren, und die Wissenschaft hinter jeder Zahl mit ihren Originalquellen.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Wie man den Vermessungsplaner und den Lückenplaner benutzt, Schritt für Schritt, mit Bildschirmfotos.",
- "The formulas, standards and data behind every number, with their original references.": "Die Formeln, Normen und Daten hinter jeder Zahl, mit ihren Originalquellen."
+ "The formulas, standards and data behind every number, with their original references.": "Die Formeln, Normen und Daten hinter jeder Zahl, mit ihren Originalquellen.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 erlaubt eine unvollständige Abdeckung nur für Ordnung 2 und Ordnung 1b: mindestens 5 % bathymetrische Abdeckung, mit Tiefen höchstens 3 × Wassertiefe oder 25 m auseinander, je nachdem, was größer ist. Ordnung 1a verlangt eine 100-%-Objektsuche, Sonder- und Exklusivordnung eine vollständige Abdeckung: Fächerecholot verwenden oder Seitensichtsonar für die Objektsuche ergänzen."
 }

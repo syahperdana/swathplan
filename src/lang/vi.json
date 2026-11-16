@@ -908,7 +908,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "Dùng giá trị tối đa S-44 (3 × độ sâu hoặc 25 m)",
  "Footprint at the design depth": "Vết chiếu ở độ sâu thiết kế",
  "Coverage by the main lines": "Độ phủ của các tuyến chính",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 chỉ cho phép độ phủ không đầy đủ với cấp 2 và cấp 1b: độ phủ địa hình ít nhất 5 %, khoảng cách giữa các điểm đo sâu không quá 3 × độ sâu trung bình hoặc 25 m, lấy giá trị lớn hơn. Cấp 1a cần tìm kiếm vật thể 100 %, cấp đặc biệt và cấp độc quyền cần độ phủ đầy đủ: dùng đa tia, hoặc thêm sonar quét sườn để tìm vật thể.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} cần độ phủ địa hình đầy đủ, khảo sát đơn tia không đáp ứng được. Hãy dùng đa tia.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} cần tìm kiếm vật thể 100 %: thêm sonar quét sườn hoặc dùng đa tia.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "Khoảng cách tuyến {0} m nằm trong giá trị tối đa S-44 {1} m (3 × độ sâu hoặc 25 m).",
@@ -1040,5 +1039,6 @@
  "This page is in English for now. Translations will follow.": "Trang này hiện chỉ có tiếng Anh. Bản dịch sẽ có sau.",
  "How to use the tools, and the science behind every number with its original references.": "Cách dùng các công cụ, và cơ sở khoa học của từng con số cùng tài liệu gốc.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Cách dùng công cụ lập kế hoạch khảo sát và lập kế hoạch đo bù, từng bước, có ảnh chụp màn hình.",
- "The formulas, standards and data behind every number, with their original references.": "Công thức, tiêu chuẩn và dữ liệu đằng sau từng con số, cùng tài liệu gốc."
+ "The formulas, standards and data behind every number, with their original references.": "Công thức, tiêu chuẩn và dữ liệu đằng sau từng con số, cùng tài liệu gốc.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 chỉ cho phép độ phủ không đầy đủ với cấp 2 và cấp 1b: độ phủ địa hình ít nhất 5 %, khoảng cách giữa các điểm đo sâu không quá 3 × độ sâu nước hoặc 25 m, lấy giá trị lớn hơn. Cấp 1a cần tìm kiếm vật thể 100 %, cấp đặc biệt và cấp độc quyền cần độ phủ đầy đủ: dùng đa tia, hoặc thêm sonar quét sườn để tìm vật thể."
 }

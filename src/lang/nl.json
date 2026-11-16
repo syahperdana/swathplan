@@ -909,7 +909,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "S-44-maximum gebruiken (3 × diepte of 25 m)",
  "Footprint at the design depth": "Footprint op de ontwerpdiepte",
  "Coverage by the main lines": "Dekking door de hoofdlijnen",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 staat onvolledige dekking alleen toe voor orde 2 en orde 1b: minstens 5 % bathymetrische dekking, met dieptes hooguit 3 × de gemiddelde diepte of 25 m uit elkaar, de grootste waarde. Orde 1a vraagt een 100 %-objectzoektocht, speciale en exclusieve orde volledige dekking: gebruik multibeam, of voeg side-scan sonar toe voor de objectzoektocht.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} vraagt volledige bathymetrische dekking, die een singlebeamsurvey niet kan geven. Gebruik multibeam.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} vraagt een 100 %-objectzoektocht: voeg side-scan sonar toe of gebruik multibeam.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "Lijnafstand {0} m valt binnen het S-44-maximum van {1} m (3 × diepte of 25 m).",
@@ -1041,5 +1040,6 @@
  "This page is in English for now. Translations will follow.": "Deze pagina is voorlopig in het Engels. Vertalingen volgen.",
  "How to use the tools, and the science behind every number with its original references.": "Hoe de hulpmiddelen werken, en de wetenschap achter elk getal met de oorspronkelijke bronnen.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Hoe je de surveyplanner en de infillplanner gebruikt, stap voor stap, met schermafbeeldingen.",
- "The formulas, standards and data behind every number, with their original references.": "De formules, normen en gegevens achter elk getal, met de oorspronkelijke bronnen."
+ "The formulas, standards and data behind every number, with their original references.": "De formules, normen en gegevens achter elk getal, met de oorspronkelijke bronnen.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 staat onvolledige dekking alleen toe voor orde 2 en orde 1b: minstens 5 % bathymetrische dekking, met dieptes hooguit 3 × de waterdiepte of 25 m uit elkaar, de grootste waarde. Orde 1a vraagt een 100 %-objectzoektocht, speciale en exclusieve orde volledige dekking: gebruik multibeam, of voeg side-scan sonar toe voor de objectzoektocht."
 }

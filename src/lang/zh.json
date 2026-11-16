@@ -909,7 +909,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "使用 S-44 最大值（3 × 水深或 25 米）",
  "Footprint at the design depth": "设计水深处的脚印",
  "Coverage by the main lines": "主测线的覆盖率",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 只允许等级 2 和等级 1b 不全覆盖：水深覆盖率至少 5 %，测深点间距不超过平均水深的 3 倍或 25 米（取较大者）。等级 1a 需要 100 % 的目标探测，特等和超特等需要全覆盖：请使用多波束，或增加侧扫声呐进行目标探测。",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0}需要全覆盖的水深测量，单波束测量无法做到。请使用多波束。",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0}需要 100 % 的目标探测：请增加侧扫声呐或使用多波束。",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "测线间距 {0} 米在 S-44 最大值 {1} 米（3 × 水深或 25 米）以内。",
@@ -1041,5 +1040,6 @@
  "This page is in English for now. Translations will follow.": "本页面目前为英文，译文稍后提供。",
  "How to use the tools, and the science behind every number with its original references.": "工具的使用方法，以及每个数字背后的科学依据和原始文献。",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "逐步介绍测量规划器和补测规划器的用法，并附截图。",
- "The formulas, standards and data behind every number, with their original references.": "每个数字背后的公式、标准和数据，附原始文献。"
+ "The formulas, standards and data behind every number, with their original references.": "每个数字背后的公式、标准和数据，附原始文献。",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 只允许等级 2 和等级 1b 不全覆盖：水深覆盖率至少 5 %，测深点间距不超过水深的 3 倍或 25 米（取较大者）。等级 1a 需要 100 % 的目标探测，特等和超特等需要全覆盖：请使用多波束，或增加侧扫声呐进行目标探测。"
 }

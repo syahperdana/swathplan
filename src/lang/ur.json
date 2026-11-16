@@ -908,7 +908,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "S-44 کی زیادہ سے زیادہ حد استعمال کریں (3 × گہرائی یا 25 میٹر)",
  "Footprint at the design depth": "ڈیزائن گہرائی پر فٹ پرنٹ",
  "Coverage by the main lines": "مرکزی لائنوں سے کوریج",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 نامکمل کوریج صرف آرڈر 2 اور آرڈر 1b کے لیے قبول کرتا ہے: کم از کم 5 % باتھیمیٹرک کوریج، اور گہرائیوں کے درمیان فاصلہ اوسط گہرائی کے 3 گنا یا 25 میٹر (جو بڑا ہو) سے زیادہ نہیں۔ آرڈر 1a کے لیے 100 % فیچر تلاش، اور اسپیشل و ایکسکلوسیو آرڈر کے لیے مکمل کوریج ضروری ہے: ملٹی بیم استعمال کریں، یا فیچر تلاش کے لیے سائیڈ اسکین سونار شامل کریں۔",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} کے لیے مکمل باتھیمیٹرک کوریج چاہیے، جو سنگل بیم سروے نہیں دے سکتا۔ ملٹی بیم استعمال کریں۔",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} کے لیے 100 % فیچر تلاش چاہیے: سائیڈ اسکین سونار شامل کریں یا ملٹی بیم استعمال کریں۔",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "لائن وقفہ {0} میٹر، S-44 کی حد {1} میٹر (3 × گہرائی یا 25 میٹر) کے اندر ہے۔",
@@ -1040,5 +1039,6 @@
  "This page is in English for now. Translations will follow.": "یہ صفحہ فی الحال انگریزی میں ہے۔ تراجم بعد میں آئیں گے۔",
  "How to use the tools, and the science behind every number with its original references.": "ٹولز کیسے استعمال کریں، اور ہر عدد کے پیچھے سائنس اس کے اصل حوالوں کے ساتھ۔",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "سروے پلانر اور انفل پلانر کیسے استعمال کریں، قدم بہ قدم، اسکرین شاٹس کے ساتھ۔",
- "The formulas, standards and data behind every number, with their original references.": "ہر عدد کے پیچھے فارمولے، معیارات اور ڈیٹا، ان کے اصل حوالوں کے ساتھ۔"
+ "The formulas, standards and data behind every number, with their original references.": "ہر عدد کے پیچھے فارمولے، معیارات اور ڈیٹا، ان کے اصل حوالوں کے ساتھ۔",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 نامکمل کوریج صرف آرڈر 2 اور آرڈر 1b کے لیے قبول کرتا ہے: کم از کم 5 % باتھیمیٹرک کوریج، اور گہرائیوں کے درمیان فاصلہ پانی کی گہرائی کے 3 گنا یا 25 میٹر (جو بڑا ہو) سے زیادہ نہیں۔ آرڈر 1a کے لیے 100 % فیچر تلاش، اور اسپیشل و ایکسکلوسیو آرڈر کے لیے مکمل کوریج ضروری ہے: ملٹی بیم استعمال کریں، یا فیچر تلاش کے لیے سائیڈ اسکین سونار شامل کریں۔"
 }

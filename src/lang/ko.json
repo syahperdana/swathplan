@@ -908,7 +908,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "S-44 최대값 사용(수심 × 3 또는 25 m)",
  "Footprint at the design depth": "설계 수심에서의 풋프린트",
  "Coverage by the main lines": "주측선에 의한 커버리지",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44는 등급 2와 등급 1b에만 불완전한 커버리지를 허용합니다: 수심 커버리지 5 % 이상, 측심 간격은 평균 수심 × 3 또는 25 m 중 큰 값 이하. 등급 1a는 100 % 물체 탐색, 특등급과 최특등급은 전면 커버리지가 필요합니다: 멀티빔을 쓰거나 물체 탐색용 사이드스캔 소나를 추가하세요.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0}는 전면 수심 커버리지가 필요하며 싱글빔 측량으로는 불가능합니다. 멀티빔을 사용하세요.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0}는 100 % 물체 탐색이 필요합니다: 사이드스캔 소나를 추가하거나 멀티빔을 사용하세요.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "측선 간격 {0} m는 S-44 최대값 {1} m(수심 × 3 또는 25 m) 이내입니다.",
@@ -1040,5 +1039,6 @@
  "This page is in English for now. Translations will follow.": "이 페이지는 현재 영어로만 제공됩니다. 번역은 곧 추가됩니다.",
  "How to use the tools, and the science behind every number with its original references.": "도구 사용법과 모든 수치 뒤의 과학을 원래 참고문헌과 함께.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "측량 계획기와 보측 계획기 사용법을 스크린샷과 함께 단계별로 설명합니다.",
- "The formulas, standards and data behind every number, with their original references.": "모든 수치 뒤의 공식, 표준, 데이터를 원래 참고문헌과 함께."
+ "The formulas, standards and data behind every number, with their original references.": "모든 수치 뒤의 공식, 표준, 데이터를 원래 참고문헌과 함께.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44는 등급 2와 등급 1b에만 불완전한 커버리지를 허용합니다: 수심 커버리지 5 % 이상, 측심 간격은 수심 × 3 또는 25 m 중 큰 값 이하. 등급 1a는 100 % 물체 탐색, 특등급과 최특등급은 전면 커버리지가 필요합니다: 멀티빔을 쓰거나 물체 탐색용 사이드스캔 소나를 추가하세요."
 }
