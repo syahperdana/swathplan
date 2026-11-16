@@ -1042,5 +1042,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "測量プランナーと補測プランナーの使い方を、スクリーンショット付きで順を追って説明します。",
  "The formulas, standards and data behind every number, with their original references.": "すべての数値の背後にある式、規格、データを原典とともに。",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{1}回の旋回のうち{0}回が陸地を横切るか{2} mの離隔内に入っています（地図上の赤）。その端の測線を短くする、旋回半径を小さくする、または境界を海岸から離してください。",
- "All turns stay at least {0} m from the coastline.": "すべての旋回が海岸線から{0} m以上離れています。"
+ "All turns stay at least {0} m from the coastline.": "すべての旋回が海岸線から{0} m以上離れています。",
+ "Follow a depth contour (needs loaded bathymetry)": "等深線に沿わせる（水深データの読み込みが必要）",
+ "Contour depth (m, 0 = design depth)": "等深線の水深（m、0 = 設計水深）",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "主測線を読み込んだ水深データの等深線1本に平行に、設計測線間隔ずつずらして配置し、範囲と航行可能な水域で切り取ります。傾斜した海底では各測線がほぼ同じ水深に保たれ、スワス幅がそろいます。方位角は交差測線だけに使われ、適応測線間隔は適用されません。",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "測線は{0} mの等深線に沿います：{1}本、間隔{2} m。",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "先に水深データを読み込んでください（セクション{§gbath}または{§xyz}）。それまでは直線の測線を使います。",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "{0} mの等深線が範囲を通っていないため、直線の測線を使います。範囲内の水深：{1}～{2} m。",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "この間隔ではこの範囲の等深線測線が多すぎるため、直線の測線を使います。"
 }

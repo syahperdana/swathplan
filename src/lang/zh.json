@@ -1042,5 +1042,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "逐步介绍测量规划器和补测规划器的用法，并附截图。",
  "The formulas, standards and data behind every number, with their original references.": "每个数字背后的公式、标准和数据，附原始文献。",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{1} 个转弯中有 {0} 个穿越陆地或进入 {2} 米安全距离（地图上红色）。请缩短这些端点的测线、减小转弯半径，或将边界移离海岸。",
- "All turns stay at least {0} m from the coastline.": "所有转弯距海岸线至少 {0} 米。"
+ "All turns stay at least {0} m from the coastline.": "所有转弯距海岸线至少 {0} 米。",
+ "Follow a depth contour (needs loaded bathymetry)": "沿等深线布线（需先加载水深数据）",
+ "Contour depth (m, 0 = design depth)": "等深线水深（米，0 = 设计水深）",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "主测线平行于已加载水深数据中的一条等深线，按设计测线间距逐条偏移，并裁剪到测区和可航水域内。在倾斜海底上，每条测线因此大致保持同一水深，条带宽度均匀。方位角只用于联络测线；自适应间距不适用。",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "测线沿 {0} 米等深线：{1} 条，间距 {2} 米。",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "请先加载水深数据（第 {§gbath} 或 {§xyz} 节）；在此之前使用直线测线。",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "没有 {0} 米等深线穿过测区；使用直线测线。测区内水深：{1} 至 {2} 米。",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "按此间距该测区的等深线测线过多；使用直线测线。"
 }

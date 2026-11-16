@@ -1041,5 +1041,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "سروے پلانر اور انفل پلانر کیسے استعمال کریں، قدم بہ قدم، اسکرین شاٹس کے ساتھ۔",
  "The formulas, standards and data behind every number, with their original references.": "ہر عدد کے پیچھے فارمولے، معیارات اور ڈیٹا، ان کے اصل حوالوں کے ساتھ۔",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{1} میں سے {0} موڑ زمین پار کرتے ہیں یا {2} میٹر حفاظتی فاصلے میں آتے ہیں (نقشے پر سرخ)۔ ان سروں پر لائنیں چھوٹی کریں، چھوٹا موڑ رداس لیں، یا حد کو ساحل سے دور کریں۔",
- "All turns stay at least {0} m from the coastline.": "تمام موڑ ساحلی لکیر سے کم از کم {0} میٹر دور رہتے ہیں۔"
+ "All turns stay at least {0} m from the coastline.": "تمام موڑ ساحلی لکیر سے کم از کم {0} میٹر دور رہتے ہیں۔",
+ "Follow a depth contour (needs loaded bathymetry)": "گہرائی کی کنٹور لکیر کی پیروی کریں (لوڈ شدہ بیتھیمیٹری درکار)",
+ "Contour depth (m, 0 = design depth)": "کنٹور کی گہرائی (میٹر، 0 = ڈیزائن گہرائی)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "مرکزی لائنیں لوڈ شدہ بیتھیمیٹری کی ایک گہرائی کنٹور کے متوازی چلتی ہیں، ڈیزائن لائن فاصلے پر ہٹائی جاتی ہیں اور علاقے اور قابلِ جہاز رانی پانی تک کاٹی جاتی ہیں۔ ڈھلوان سمندری تہہ پر ہر لائن تقریباً ایک ہی گہرائی پر رہتی ہے، اس لیے سواتھ یکساں رہتا ہے۔ ازیمتھ صرف کراس لائنیں طے کرتا ہے؛ موافق فاصلہ لاگو نہیں ہوتا۔",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "لائنیں {0} میٹر کنٹور کی پیروی کرتی ہیں: {1} لائنیں، {2} میٹر فاصلہ۔",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "پہلے بیتھیمیٹری لوڈ کریں (حصہ {§gbath} یا {§xyz})؛ تب تک سیدھی لائنیں استعمال ہوتی ہیں۔",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "کوئی {0} میٹر کنٹور علاقے سے نہیں گزرتی؛ سیدھی لائنیں استعمال ہوتی ہیں۔ علاقے میں گہرائی: {1} سے {2} میٹر۔",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "اس فاصلے پر اس علاقے کے لیے بہت زیادہ کنٹور لائنیں؛ سیدھی لائنیں استعمال ہوتی ہیں۔"
 }

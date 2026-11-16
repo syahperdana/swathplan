@@ -1042,5 +1042,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Hoe om die opmetingsbeplanner en die invulbeplanner te gebruik, stap vir stap, met skermskote.",
  "The formulas, standards and data behind every number, with their original references.": "Die formules, standaarde en data agter elke getal, met die oorspronklike bronne.",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{0} van {1} draaie kruis land of kom binne die speling van {2} m (rooi op die kaart). Kort die lyne by daardie ente in, gebruik ’n kleiner draairadius, of skuif die grens weg van die kus.",
- "All turns stay at least {0} m from the coastline.": "Alle draaie bly minstens {0} m van die kuslyn af."
+ "All turns stay at least {0} m from the coastline.": "Alle draaie bly minstens {0} m van die kuslyn af.",
+ "Follow a depth contour (needs loaded bathymetry)": "Volg ’n dieptelyn (gelaaide batimetrie nodig)",
+ "Contour depth (m, 0 = design depth)": "Diepte van die dieptelyn (m, 0 = ontwerpdiepte)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "Die hooflyne loop parallel aan een dieptelyn van die gelaaide batimetrie, verskuif met die ontwerp-lynspasiëring en afgesny tot die gebied en bevaarbare water. Op ’n skuins seebodem bly elke lyn so op omtrent dieselfde diepte en bly die swad eweredig. Die azimut bepaal net die dwarslyne; aanpasbare spasiëring geld nie.",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Die lyne volg die {0} m-dieptelyn: {1} lyne, {2} m uitmekaar.",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Laai eers batimetrie (afdeling {§gbath} of {§xyz}); tot dan word reguit lyne gebruik.",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Geen {0} m-dieptelyn kruis die gebied nie; reguit lyne word gebruik. Dieptes in die gebied: {1} tot {2} m.",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Te veel dieptelyn-lyne vir hierdie gebied by hierdie spasiëring; reguit lyne word gebruik."
 }

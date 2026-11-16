@@ -1050,5 +1050,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Jak korzystać z planera pomiarów i planera uzupełnień, krok po kroku, ze zrzutami ekranu.",
  "The formulas, standards and data behind every number, with their original references.": "Wzory, normy i dane stojące za każdą liczbą wraz ze źródłami.",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{0} z {1} zwrotów przecina ląd lub wchodzi w odstęp {2} m (na czerwono na mapie). Skróć linie na tych końcach, zmniejsz promień zwrotu lub odsuń granicę od brzegu.",
- "All turns stay at least {0} m from the coastline.": "Wszystkie zwroty pozostają co najmniej {0} m od linii brzegowej."
+ "All turns stay at least {0} m from the coastline.": "Wszystkie zwroty pozostają co najmniej {0} m od linii brzegowej.",
+ "Follow a depth contour (needs loaded bathymetry)": "Prowadź wzdłuż izobaty (wymaga wczytanej batymetrii)",
+ "Contour depth (m, 0 = design depth)": "Głębokość izobaty (m, 0 = głębokość projektowa)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "Linie główne biegną równolegle do jednej izobaty wczytanej batymetrii, przesunięte o projektowy odstęp linii i przycięte do obszaru i wód żeglownych. Na nachylonym dnie każda linia pozostaje wtedy na mniej więcej tej samej głębokości, a pas pokrycia jest równy. Azymut ustala tylko linie poprzeczne; odstęp adaptacyjny nie ma zastosowania.",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Linie biegną wzdłuż izobaty {0} m: {1} linii, co {2} m.",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Najpierw wczytaj batymetrię (sekcja {§gbath} lub {§xyz}); do tego czasu używane są linie proste.",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Żadna izobata {0} m nie przecina obszaru; używane są linie proste. Głębokości w obszarze: od {1} do {2} m.",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Za dużo linii wzdłuż izobaty dla tego obszaru przy tym odstępie; używane są linie proste."
 }

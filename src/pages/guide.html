@@ -153,6 +153,7 @@
 <h3>8.1 Line direction</h3>
 <figure class="half"><img src="../docs/guide/direction-turn.jpg" alt="Line direction and Williamson turn sections" loading="lazy"><figcaption>Figure 12. <i>Line direction</i> and <i>Williamson turn</i>.</figcaption></figure>
 <p>Set the azimuth with the slider, the preset buttons, or <i>Auto optimal (fewest lines)</i>. Lines along the depth contours usually give the most even depth along each line, and so the most even swath. Set the main line prefix, and the number and prefix of the cross lines, which run perpendicular across the area for quality control.</p>
+<p><b>Follow a depth contour (needs loaded bathymetry)</b> bends the main lines so they run parallel to one depth contour instead of straight. Load depths first (global bathymetry or your own XYZ soundings), tick the box, and set <i>Contour depth</i> (0 uses the design depth). The lines are offset from that contour at the design line spacing, cut to the area and, with trimming on, to water. The note under the box says which contour is used and how many lines it gives; if the contour does not cross the area, it gives the depth range so you can pick another, and straight lines are used meanwhile. The azimuth then sets only the cross lines, which stay straight. Pick a contour near the shallow side, where the swath is narrowest, so the spacing holds everywhere. Exports write the bent lines as polylines. Drone flights always use straight lines.</p>
 <h3>8.2 Turns</h3>
 <figure><img src="../docs/guide/turns.jpg" alt="Close-up of Williamson turns at the line ends" loading="lazy"><figcaption>Figure 13. Williamson (bulb) turns at the line ends: the line spacing is smaller than the turning diameter.</figcaption></figure>
 <p>Enter the vessel's real turning radius R. <i>Recommend R from LOA</i> gives a first guess of 2.5 × the vessel length. If the line spacing is smaller than the turning diameter 2R, the planner draws a Williamson-style turn that swings out and comes back on the reciprocal heading. Otherwise it draws a plain U-turn. <i>Reduce speed in turns by 2 kts</i> slows the vessel in the turns for the time estimate.</p>
@@ -258,7 +259,7 @@
 
 <h2>15 Limitations</h2>
 <ul>
-<li>Area lines are straight and parallel; contour-following lines are not generated.</li>
+<li>Contour-following lines use one contour and the design spacing; adaptive spacing does not apply to them.</li>
 <li>Swath and footprint assume a flat seabed at the depth under the line; refraction and beam-angle limits are only those you enter.</li>
 <li>Time estimates assume constant speeds and ignore currents, traffic and port calls.</li>
 <li>Catalogue values for sensors, side-scan models and cameras are approximate.</li>

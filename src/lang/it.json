@@ -1042,5 +1042,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Come usare il pianificatore di rilievi e quello delle integrazioni, passo dopo passo, con schermate.",
  "The formulas, standards and data behind every number, with their original references.": "Le formule, le norme e i dati dietro ogni numero, con i riferimenti originali.",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{0} virate su {1} attraversano terra o entrano nella distanza di sicurezza di {2} m (in rosso sulla mappa). Accorcia le linee a quelle estremità, usa un raggio di virata minore o allontana il limite dalla costa.",
- "All turns stay at least {0} m from the coastline.": "Tutte le virate restano ad almeno {0} m dalla linea di costa."
+ "All turns stay at least {0} m from the coastline.": "Tutte le virate restano ad almeno {0} m dalla linea di costa.",
+ "Follow a depth contour (needs loaded bathymetry)": "Segui un’isobata (richiede batimetria caricata)",
+ "Contour depth (m, 0 = design depth)": "Profondità dell’isobata (m, 0 = profondità di progetto)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "Le linee principali seguono un’isobata della batimetria caricata, sfalsate della spaziatura di progetto e tagliate all’area e all’acqua navigabile. Su un fondale in pendenza ogni linea resta così circa alla stessa profondità e la strisciata resta uniforme. L’azimut imposta solo le linee trasversali; la spaziatura adattiva non si applica.",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Le linee seguono l’isobata dei {0} m: {1} linee, distanti {2} m.",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Carica prima la batimetria (sezione {§gbath} o {§xyz}); fino ad allora si usano linee rette.",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Nessuna isobata dei {0} m attraversa l’area; si usano linee rette. Profondità nell’area: da {1} a {2} m.",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Troppe linee di isobata per quest’area con questa spaziatura; si usano linee rette."
 }
