@@ -19,16 +19,24 @@ for(let it=0;it<3;it++){const Z=G.z.slice();for(let j=0;j<G.ny;j++)for(let i=0;i
 for(let b=-1;b<=1;b++)for(let a=-1;a<=1;a++){const p=i+a,q=j+b;if(p<0||q<0||p>=G.nx||q>=G.ny)continue;const v=Z[q*G.nx+p];if(isFinite(v)){t+=v;n++}}if(n)G.z[j*G.nx+i]=t/n}}return G}
 function tgSet(G,src){let lo=1e9,hi=-1e9,n=0;G.z.forEach(v=>{if(isFinite(v)){lo=Math.min(lo,v);hi=Math.max(hi,v);n++}});if(!n)throw new Error(i18("no terrain values in this area"));
 G.src=src;TG=G;TGC=null;$("uvTF").checked=true;$("uvTSt").textContent=i18("{0}: {1} terrain points, ground {2} to {3} m. Terrain following is on.",src,n,Math.round(lo),Math.round(hi));gen();saveSoon()}
+// AWS Terrain Tiles (Tilezen terrarium PNG, open CORS): elevation = R·256 + G + B/256 − 32768 m; SRTM 30 m on land from 60° N to 56° S,
+// national DEMs in places, ETOPO1 at sea. Up to 36 tiles at zoom 13 or lower, sampled bilinearly at the grid nodes.
+async function tgTiles(G,prog){const T=(la,lo,z)=>{const n=2**z,s=Math.sin(Math.max(-85,Math.min(85,la))*D);return[(lo+180)/360*n,(.5-Math.log((1+s)/(1-s))/(4*Math.PI))*n]},
+la1=G.la0+(G.ny-1)*G.dla,lo1=G.lo0+(G.nx-1)*G.dlo;let z=13,a,b;for(;z>3;z--){a=T(la1,G.lo0,z);b=T(G.la0,lo1,z);if((Math.floor(b[0])-Math.floor(a[0])+1)*(Math.floor(b[1])-Math.floor(a[1])+1)<=36)break}
+const tl=[];for(let ty=Math.floor(a[1]);ty<=Math.floor(b[1]);ty++)for(let tx=Math.floor(a[0]);tx<=Math.floor(b[0]);tx++)tl.push([tx,ty]);const TD=new Map(),n2=2**z;let done=0,ok=0,err="";
+await Promise.all([0,1,2,3,4,5].map(async w=>{for(let k=w;k<tl.length;k+=6){const[tx,ty]=tl[k];try{const r=await fetch("https://s3.amazonaws.com/elevation-tiles-prod/terrarium/"+z+"/"+((tx%n2+n2)%n2)+"/"+ty+".png");if(!r.ok)throw new Error("HTTP "+r.status);
+const bm=await createImageBitmap(await r.blob()),c=document.createElement("canvas");c.width=c.height=256;const x=c.getContext("2d");x.drawImage(bm,0,0);const d=x.getImageData(0,0,256,256).data,e=new Float32Array(65536);
+for(let i=0;i<65536;i++)e[i]=d[4*i]*256+d[4*i+1]+d[4*i+2]/256-32768;TD.set(tx+","+ty,e);ok++}catch(er){err=er.message}prog(++done/tl.length)}}));
+if(!ok)throw new Error(err||"no tiles");const px=(gx,gy)=>{const e=TD.get(Math.floor(gx/256)+","+Math.floor(gy/256));return e?e[(gy%256)*256+gx%256]:NaN};
+for(let j=0;j<G.ny;j++)for(let i=0;i<G.nx;i++){const q=T(G.la0+j*G.dla,G.lo0+i*G.dlo,z),fx=q[0]*256-.5,fy=q[1]*256-.5,x0=Math.floor(fx),y0=Math.floor(fy),u=fx-x0,v=fy-y0;let s=0,w=0;
+[[x0,y0,(1-u)*(1-v)],[x0+1,y0,u*(1-v)],[x0,y0+1,(1-u)*v],[x0+1,y0+1,u*v]].forEach(([X,Y,k])=>{const h=px(X,Y);if(isFinite(h)&&k>0){s+=h*k;w+=k}});G.z[j*G.nx+i]=w>1e-9?s/w:NaN}return G}
 async function tgLoad(){const st=$("uvTSt"),src=$("uvTS").value;if(src=="file"){$("uvTFile").click();return}const B=tgBox();if(!B){st.textContent=i18("Close an area first (draw, preset or import).");return}
 try{st.textContent=i18("Downloading the terrain… {0} %",0);
 if(src=="ncei"){const G=tgNodes(B,70,30),pts=[];for(let j=0;j<G.ny;j++)for(let i=0;i<G.nx;i++)pts.push([G.lo0+i*G.dlo,G.la0+j*G.dla]);const P=[];
 for(let a=0;a<pts.length;a+=250){const ch=pts.slice(a,a+250),r=JSON.parse(await gbGet("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_global_mosaic/ImageServer/getSamples",{method:"POST",body:new URLSearchParams({geometry:JSON.stringify({points:ch,spatialReference:{wkid:4326}}),geometryType:"esriGeometryMultipoint",returnFirstValueOnly:"true",interpolation:"RSP_BilinearInterpolation",f:"json"})}));
 if(r.error)throw new Error(r.error.message||"service error");(r.samples||[]).forEach((q,i)=>{const p=ch[q.locationId!=null?q.locationId:i];if(p)P.push([p[1],p[0],parseFloat(q.value)])});st.textContent=i18("Downloading the terrain… {0} %",Math.round(100*Math.min(1,(a+250)/pts.length)))}
 tgSet(tgBin(G,P),"NOAA NCEI")}
-else{const G=tgNodes(B,50,30),pts=[];for(let j=0;j<G.ny;j++)for(let i=0;i<G.nx;i++)pts.push([G.la0+j*G.dla,G.lo0+i*G.dlo]);const P=[];
-for(let a=0;a<pts.length;a+=100){if(a)await new Promise(r=>setTimeout(r,1100));const ch=pts.slice(a,a+100),r=JSON.parse(await gbGet("https://api.opentopodata.org/v1/srtm30m?locations="+ch.map(q=>q[0].toFixed(6)+","+q[1].toFixed(6)).join("|")));
-if(r.status!="OK")throw new Error(r.error||"service error");r.results.forEach((q,i)=>{if(q.elevation!=null)P.push([ch[i][0],ch[i][1],q.elevation])});st.textContent=i18("Downloading the terrain… {0} %",Math.round(100*Math.min(1,(a+100)/pts.length)))}
-tgSet(tgBin(G,P),"SRTM 30 m")}}
+else{const G=tgNodes(B,200,10);await tgTiles(G,f=>st.textContent=i18("Downloading the terrain… {0} %",Math.round(100*f)));tgSet(G,"SRTM 30 m (AWS Terrain Tiles)")}}
 catch(err){st.textContent=i18("Could not download the terrain: {0}. The service may be offline, blocked by the browser or busy: try the other source or a file.",err.message)}}
 // a GeoTIFF or ESRI ASCII elevation grid, in lat/lon or in the coordinate system of section {§crs}
 async function tgFile(f){const st=$("uvTSt");try{st.textContent=i18("Reading {0}…",f.name);const B=tgBox();if(!B)throw new Error(i18("Close an area first (draw, preset or import)."));
@@ -42,7 +50,7 @@ function tgRoute(d){const W=[];R.lines.forEach((l,i)=>{const q=LP(l);for(let k=0
 for(let m=0;m<n;m++)W.push([a[0]+(b[0]-a[0])*m/n,a[1]+(b[1]-a[1])*m/n,m==0,i])}const z=q[q.length-1];W.push([z[0],z[1],true,i]);
 if($("inclT").checked&&R.turns[i])R.turns[i].pts.slice(1,-1).filter((_,j)=>j%3==0).forEach(p=>W.push([p[0],p[1],true,-1]))});return W}
 // heights: each waypoint flies at the set height above the highest ground on its two legs, so the straight leg between two waypoints never comes
-// closer to the terrain model than the set height; waypoints that the leg from the last kept one would pass over (within 0.5 m) are dropped
+// closer to the terrain model than the set height; a waypoint is dropped when the leg from the last kept one to the next passes it between 0.5 m below and 2 m above
 function tgPlan(){if(!MODE().uav||!TG||!R.lines.length)return null;const tf=$("uvTF").checked,U=uvGeo(),H=U.H,d=Math.max(5,g("uvTD")),to=$("uvTO").value.trim(),
 key=[H,d,tf,to,$("inclT").checked].join();if(TGC&&TGC.R===R&&TGC.L===R.lines&&TGC.T===TG&&TGC.k==key)return TGC.v;
 const W=tgRoute(d),n=W.length,fs=Math.max(1,Math.min(10,d/4)),cd=[0];for(let k=1;k<n;k++)cd.push(cd[k-1]+Math.hypot(W[k][0]-W[k-1][0],W[k][1]-W[k-1][1]));
@@ -50,7 +58,7 @@ const smp=(a,b,f)=>{const m=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])
 const sm=[];for(let k=0;k<n-1;k++){let m=-1e9;smp(W[k],W[k+1],(t,z)=>{if(isFinite(z)&&z>m)m=z});sm.push(m)}
 const z0=to!==""?g("uvTO"):W.map(tgAt).find(isFinite);if(!isFinite(z0))return null;let miss=0;
 const A=W.map((p,k)=>{const m=Math.max(k>0?sm[k-1]:-1e9,k<n-1?sm[k]:-1e9);if(m<-1e8){miss++;return H}return tf?H+m-z0:H});
-const K=[0];if(tf){let a=0;for(let k=1;k<n-1;k++){let ok=!W[k][2]&&W[k+1][3]==W[a][3];if(ok)for(let j=a+1;j<=k;j++){if(A[a]+(A[k+1]-A[a])*(cd[j]-cd[a])/(cd[k+1]-cd[a])<A[j]-.5){ok=false;break}}if(!ok){K.push(k);a=k}}}else for(let k=1;k<n-1;k++)K.push(k);
+const K=[0];if(tf){let a=0;for(let k=1;k<n-1;k++){let ok=!W[k][2]&&W[k+1][3]==W[a][3];if(ok)for(let j=a+1;j<=k;j++){const ip=A[a]+(A[k+1]-A[a])*(cd[j]-cd[a])/(cd[k+1]-cd[a]);if(ip<A[j]-.5||ip>A[j]+2){ok=false;break}}if(!ok){K.push(k);a=k}}}else for(let k=1;k<n-1;k++)K.push(k);
 if(n>1)K.push(n-1);const AI=new Float64Array(n);for(let q=0;q<K.length-1;q++){const a=K[q],b=K[q+1];for(let j=a;j<=b;j++)AI[j]=b>a?A[a]+(A[b]-A[a])*(cd[j]-cd[a])/(cd[b]-cd[a]):A[a]}
 let amin=1e9,amax=-1e9,gmin=1e9,gmax=-1e9;const PR=R.lines.map(()=>({s:[],g:[],a:[]}));
 for(let k=0;k<n-1;k++){const ln=W[k][3]>=0&&W[k][3]==W[k+1][3];smp(W[k],W[k+1],(t,z)=>{if(!isFinite(z))return;const al=AI[k]+(AI[k+1]-AI[k])*t+z0,h=al-z;
@@ -63,19 +71,21 @@ function tgWp(){const P=tgPlan();return P&&P.tf?P.K.map(k=>{const l=toLL(P.W[k])
 // profile of one line: ground (filled) and flight path
 function tgProf(P){const p=P.pr;if(p.s.length<2)return"";const w=320,h=96,s1=p.s[p.s.length-1]-p.s[0]||1,g0=Math.min(...p.g),a1=Math.max(...p.a),lo=g0-.08*((a1-g0)||1),hi=a1,r=(hi-lo)||1,
 X=s=>((s-p.s[0])/s1*w).toFixed(1),Y=z=>(h-4-(z-lo)/r*(h-14)).toFixed(1),st=Math.max(1,Math.floor(p.s.length/300)),ix=p.s.map((_,i)=>i).filter(i=>i%st==0||i==p.s.length-1);
-return'<svg viewBox="0 0 '+w+' '+h+'" width="100%" role="img" aria-label="'+i18("Profile of the line over the most relief: ground and flight path")+'"><polygon fill="#d9c7a3" points="0,'+h+" "+ix.map(i=>X(p.s[i])+","+Y(p.g[i])).join(" ")+" "+w+","+h+'"/>'
-+'<polyline fill="none" stroke="#1f6fb2" stroke-width="1.6" points="'+ix.map(i=>X(p.s[i])+","+Y(p.a[i])).join(" ")+'"/><text x="2" y="10" font-size="9" fill="currentColor">'+Math.round(hi)+' m</text><text x="2" y="'+(h-6)+'" font-size="9" fill="currentColor">'+Math.round(g0)+" m</text></svg>"}
+return'<div style="position:relative"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="display:block;width:100%;height:110px" role="img" aria-label="'+i18("Profile of the line over the most relief: ground and flight path")+'"><polygon fill="#d9c7a3" points="0,'+h+" "+ix.map(i=>X(p.s[i])+","+Y(p.g[i])).join(" ")+" "+w+","+h+'"/>'+'<polyline fill="none" stroke="#1f6fb2" stroke-width="1.6" vector-effect="non-scaling-stroke" points="'+ix.map(i=>X(p.s[i])+","+Y(p.a[i])).join(" ")+'"/></svg>'+'<span style="position:absolute;left:3px;top:0;font-size:11px">'+Math.round(hi)+' m</span><span style="position:absolute;left:3px;bottom:2px;font-size:11px">'+Math.round(g0)+" m</span></div>"}
 function tgShow(){if(!MODE().uav)return;const P=tgPlan(),f=(a,b)=>i18("{0} to {1} m",Math.round(a),Math.round(b));
 $("uvTG").textContent=P?f(P.gmin,P.gmax):"-";$("uvTA").textContent=P?f(P.amin,P.amax):"-";$("uvTW").textContent=P&&P.tf?P.K.length+" · "+Math.round(P.hi)+" m":"-";$("uvTP").innerHTML=P?tgProf(P):""}
 const _tgStats=stats;stats=function(){const r=_tgStats.apply(this,arguments);tgShow();return r};
 // plan checks over the terrain
-const _tgSum=summary;summary=function(){const r=_tgSum.apply(this,arguments);const P=tgPlan();if(!P)return r;const U=uvGeo(),C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>"),R0=x=>Math.round(x);
+const _tgSum=summary;summary=function(){const r=_tgSum.apply(this,arguments);const P=tgPlan();
+// a terrain loaded for another place: none of the waypoints is on it
+if(!P){if(MODE().uav&&TG&&R.lines.length)$("chk").insertAdjacentHTML("afterbegin",'<li class="bad">'+i18("{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.",wpts().length)+"</li>");return r}const U=uvGeo(),C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>"),R0=x=>Math.round(x);
 if(P.tf){add("ok",i18("Terrain following: the drone stays {0} to {1} m above the terrain model; ground from {2} to {3} m.",R0(P.amin),R0(P.amax),R0(P.gmin),R0(P.gmax)));
 if(!U.lidar&&P.amax>1.05*P.H)add("inf",i18("Ground sample distance {0} to {1} cm/pixel as the height above ground changes.",(U.gsd*100*P.amin/P.H).toFixed(2),(U.gsd*100*P.amax/P.H).toFixed(2)));
 if(U.lidar&&P.amax/Math.cos(U.fov/2*D)>U.rng)add("bad",i18("Where the drone is highest above the ground ({0} m), the slant range at the swath edge is {1} m, beyond the {2} m detection range on dark (10 %) ground.",R0(P.amax),R0(P.amax/Math.cos(U.fov/2*D)),U.rng));
 if(P.K.length>700)add("bad",i18("{0} waypoints: some autopilots hold fewer (often about 700 on ArduPilot boards). Raise the waypoint spacing or split the mission.",P.K.length))}
 else{P.amin<=0?add("bad",i18("The terrain rises {0} m above the flight altitude: turn on terrain following or fly higher.",R0(-P.amin))):P.amin<.8*P.H||P.amax>1.2*P.H?add("bad",i18("Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.",R0(P.amin),R0(P.amax))):add("ok",i18("Height above ground {0} to {1} m over the terrain model.",R0(P.amin),R0(P.amax)));
-if(P.amax>120&&P.H<=120)add("bad",i18("Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.",R0(P.amax)))}
+}
+if(P.amax>120&&P.H<=120)add("bad",i18("Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.",R0(P.amax)));
 if(P.miss)add("bad",i18("{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.",P.miss));
 $("chk").insertAdjacentHTML("afterbegin",C.join(""));return r};
 $("uvTB").onclick=tgLoad;$("uvTFile").onchange=e=>{const f=e.target.files[0];if(f)tgFile(f);e.target.value=""};

@@ -33,7 +33,7 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - Sensor catalogue with editable models.
 
 **Data**
-- Global bathymetry from public sources (GMRT, NOAA NCEI, EMODnet, GEBCO), your own GeoTIFF or ESRI ASCII grid, or your own XYZ file.
+- Global bathymetry from public sources (GMRT, NOAA NCEI, EMODnet), your own GeoTIFF or ESRI ASCII grid, or your own XYZ file.
 - Area presets for many ports and survey regions.
 - Projected coordinate systems: UTM, and EPSG or custom definitions.
 
@@ -112,7 +112,7 @@ Choose *Aerial: drone (camera or LiDAR)* to plan a mapping flight over an area o
 
 With the **LiDAR** payload (DJI Zenmuse L1/L2/L3, Livox Avia, YellowScan, CHCNAV, RIEGL, Phoenix, Quantum Systems, Wingtra, ROCK Robotic, GreenValley, or your own field of view, point rate and detection range), the planner shows the swath, the line spacing from the side overlap and the average point density per pass and with the overlap. It warns when the height or the slant range at the swath edge is beyond the detection range on dark ground, and when the density is below a target, giving the highest speed that meets it. The waypoint exports then carry no camera trigger.
 
-**Terrain following:** load a terrain model (SRTM 30 m or the NOAA NCEI mosaic online, or a GeoTIFF or ESRI ASCII elevation file). The planner then sets each waypoint high enough that the drone stays at least the flight height above the terrain model, adds waypoints along the lines where the ground changes, and drops them where it is even. It shows a profile and the range of heights above ground. The QGroundControl and Mission Planner exports carry each waypoint's height above the take-off point. A loaded model also warns, without terrain following, where the ground rises above a fixed flight altitude.
+**Terrain following:** load a terrain model (SRTM 30 m from the AWS Terrain Tiles or the NOAA NCEI mosaic online, or a GeoTIFF or ESRI ASCII elevation file). The planner then sets each waypoint high enough that the drone stays at least the flight height above the terrain model, adds waypoints along the lines where the ground changes, and drops them where it is even. It shows a profile and the range of heights above ground. The QGroundControl and Mission Planner exports carry each waypoint's height above the take-off point. A loaded model also warns, without terrain following, where the ground rises above a fixed flight altitude.
 
 ## Corridor surveys
 

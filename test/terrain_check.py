@@ -35,6 +35,9 @@ with sync_playwright() as p:
     ev("window.__dl=[];$('eMp').click()");pg.wait_for_timeout(500);mp=[r.split('\t') for r in ev("window.__dl[0].t").strip().split('\n')[2:]]
     mh=[float(r[10]) for r in mp if r[3]=='16']
     ok(mh==hs,'Mission Planner: the same heights')
+    # a valley: the drone goes down into it instead of flying straight over
+    ev(f"({HILL})(-40,250)");pg.wait_for_timeout(500)
+    ok(ev("tgPlan().amax")<112 and ev("tgPlan().amin")>=99.4,f"valley: height above ground {ev('tgPlan().amin'):.1f} to {ev('tgPlan().amax'):.1f} m")
     # flat ground: the waypoints are the line ends again
     ev(f"({HILL})(0,300)");pg.wait_for_timeout(500)
     ok(ev("tgPlan().K.length")==ev("wpts().length") and abs(ev("tgPlan().amax")-100)<.01,'flat ground: same waypoints as without terrain, at the flight height')
@@ -57,6 +60,9 @@ with sync_playwright() as p:
     fn=os.path.join(tempfile.mkdtemp(),'plateau.asc');open(fn,'w').write(asc)
     ev("$('uvTS').value='file'");pg.set_input_files('#uvTFile',fn);pg.wait_for_timeout(1200)
     ok('plateau.asc' in ev("$('uvTSt').textContent") and abs(ev("tgPlan().gmin")-200)<.01 and abs(ev("tgPlan().gmax")-200)<.01,'ESRI ASCII elevation file: ground 200 m')
+    # the area moved away from the loaded terrain
+    ev("const q=poly.map(p=>[p[0]+50000,p[1]]);poly=q;gen()");pg.wait_for_timeout(500)
+    ok('outside the terrain model' in ev("$('chk').innerText") and ev("SWP_UAV.wp")==None,'area away from the terrain: warned, exports at one height')
     # language and other modes
     ev("setLang('de')");pg.wait_for_timeout(400);ev("setLang('en')")
     ev("$('svT').value='mbes';$('svT').dispatchEvent(new Event('change'))");pg.wait_for_timeout(600)
