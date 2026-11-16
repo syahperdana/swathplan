@@ -1121,5 +1121,10 @@
  "Depth (m), light = shallow": "ความลึก (ม.) สีอ่อน = ตื้น",
  "Ground elevation (m)": "ความสูงพื้นดิน (ม.)",
  "Depth contours every {0} m": "เส้นชั้นความลึกทุก {0} ม.",
- "Elevation contours every {0} m": "เส้นชั้นความสูงทุก {0} ม."
+ "Elevation contours every {0} m": "เส้นชั้นความสูงทุก {0} ม.",
+ "Download PDF": "ดาวน์โหลด PDF",
+ "Language": "ภาษา",
+ "Edition": "ฉบับ",
+ "Website": "เว็บไซต์",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "เป็นเพียงเครื่องมือช่วยวางแผน: ไม่ได้แทนที่แผนที่เดินเรือทางการ ข้อกำหนดของอุปกรณ์ IHO S-44 ฉบับปัจจุบัน หรือผู้สำรวจที่มีคุณวุฒิ ห้ามใช้เพื่อการเดินเรือ"
 }

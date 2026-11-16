@@ -1121,5 +1121,10 @@
  "Depth (m), light = shallow": "Głębokość (m), jasne = płytko",
  "Ground elevation (m)": "Wysokość terenu (m)",
  "Depth contours every {0} m": "Izobaty co {0} m",
- "Elevation contours every {0} m": "Poziomice co {0} m"
+ "Elevation contours every {0} m": "Poziomice co {0} m",
+ "Download PDF": "Pobierz PDF",
+ "Language": "Język",
+ "Edition": "Wydanie",
+ "Website": "Strona",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Tylko pomoc w planowaniu: nie zastępuje oficjalnych map, specyfikacji sprzętu, aktualnej IHO S-44 ani wykwalifikowanego hydrografa. Nie do nawigacji."
 }

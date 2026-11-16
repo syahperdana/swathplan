@@ -1112,5 +1112,10 @@
  "Depth (m), light = shallow": "गहराई (m), हल्का = उथला",
  "Ground elevation (m)": "ज़मीन की ऊँचाई (m)",
  "Depth contours every {0} m": "हर {0} m पर गहराई समोच्च",
- "Elevation contours every {0} m": "हर {0} m पर ऊँचाई समोच्च"
+ "Elevation contours every {0} m": "हर {0} m पर ऊँचाई समोच्च",
+ "Download PDF": "PDF डाउनलोड करें",
+ "Language": "भाषा",
+ "Edition": "संस्करण",
+ "Website": "वेबसाइट",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "केवल योजना सहायक: यह आधिकारिक चार्ट, उपकरण विनिर्देशों, वर्तमान IHO S-44 या योग्य सर्वेक्षक का स्थान नहीं लेता। नौवहन के लिए नहीं।"
 }

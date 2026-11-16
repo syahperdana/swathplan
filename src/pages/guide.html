@@ -8,18 +8,17 @@
 <style>
 <!--@include css/hub.css-->
 <!--@include css/docs.css-->
-</style></head><body data-title="User guide">
+</style></head><body data-doc="guide" data-title="User guide">
 <header><a class="brand" href="../"><img src="../icons/icon-192.png" width="40" height="40" alt=""><span class="nm">Swath<span>Plan</span></span></a>
 <nav class="dn"><a href="../" data-t>All tools</a><a href="../planner/" data-t>Survey planner</a><a href="../infill/" data-t>Infill planner</a><a href="./" class="on" data-t>User guide</a><a href="../science/" data-t>Science &amp; references</a></nav>
 <select id="langSel" aria-label="Language" title="Language"></select></header>
 <main class="doc">
-<nav id="toc"><b data-t>Contents</b></nav>
+<nav id="toc"><a id="pdfL" class="pdfl" href="../docs/pdf/swathplan-guide-en.pdf" download="swathplan-guide-en.pdf"><span data-t>Download PDF</span></a><b data-t>Contents</b></nav>
 <article dir="ltr">
 <h1>SwathPlan user guide</h1>
 <p class="lede">How to plan a survey with SwathPlan, from the first click to the files you send to the vessel. Every section of the survey planner and the infill planner is covered, with screenshots. The science behind the numbers, with its original references, is on the <a href="../science/">Science &amp; references</a> page.</p>
-<p class="note" data-t>This guide is in English for now. Translations will follow.</p>
 
-<h2>1 What SwathPlan is</h2>
+<h2 id="1-what-swathplan-is">1 What SwathPlan is</h2>
 <p>SwathPlan is a set of free survey planning tools that run in your web browser:</p>
 <ul>
 <li><b>Survey planner</b>: lays out survey lines for multibeam, single-beam, geophysical or drone surveys, over an area or along a cable or pipeline route. It designs the vessel turns, estimates time, distance and cost, checks the plan against IHO S-44, and exports the lines for acquisition software, CAD, GIS and drone apps.</li>
@@ -28,8 +27,8 @@
 <p>Your data never leave your device: there is no account and no server. The planners work offline once they have been opened or installed. Only the online extras (map tiles, place search, global bathymetry downloads, the OpenStreetMap coastline) need internet.</p>
 <div class="warn"><b>Planning aid only.</b> SwathPlan helps you size and lay out a survey. It does not replace official charts, the equipment manufacturer's specifications, the current IHO S-44 or the judgement of a qualified hydrographic surveyor.</div>
 
-<h2>2 Getting started</h2>
-<h3>2.1 Opening SwathPlan</h3>
+<h2 id="2-getting-started">2 Getting started</h2>
+<h3 id="2-1-opening-swathplan">2.1 Opening SwathPlan</h3>
 <p>The home page lists the tools. Each tool has two buttons:</p>
 <ul>
 <li><b>Open</b> runs it from the website.</li>
@@ -38,7 +37,7 @@
 <figure><img src="../docs/guide/hub.jpg" alt="The SwathPlan home page with the survey planner and infill planner" loading="lazy" width="1400" height="760"><figcaption>Figure 1. The home page.</figcaption></figure>
 <p><b>Install it as an app</b> (recommended for field use): on the home page press <i>Install app</i> (Chrome, Edge and Android). On an iPhone or iPad, open the page in Safari, tap Share, then <i>Add to Home Screen</i>. The installed app opens without internet and keeps itself up to date: when a new version is available, a banner offers to reload.</p>
 
-<h3>2.2 The screen</h3>
+<h3 id="2-2-the-screen">2.2 The screen</h3>
 <figure><img src="../docs/guide/planner-overview.jpg" alt="The survey planner screen with the header, the sidebar of sections, the map and the results" loading="lazy" width="1400" height="860"><figcaption>Figure 2. The survey planner: (1) header, (2) sidebar with the numbered sections, (3) map, (4) results and plan checks under the map.</figcaption></figure>
 <ol>
 <li><b>Header</b>: project files, language, the tools menu, and a live summary (design depth, number of lines, estimated project time).</li>
@@ -47,7 +46,7 @@
 <li><b>Results</b>: time analysis, distances and statistics, IHO S-44 quality control, and the plan checks, which update as you change anything.</li>
 </ol>
 
-<h3>2.3 The header</h3>
+<h3 id="2-3-the-header">2.3 The header</h3>
 <figure><img src="../docs/guide/header.jpg" alt="The header with Save .SPL, Open .SPL, Reset, language, Tools menu open" loading="lazy" width="1400" height="190"><figcaption>Figure 3. The header with the <i>Tools</i> menu open.</figcaption></figure>
 <ul>
 <li><b>SwathPlan logo</b>: back to the home page.</li>
@@ -55,14 +54,14 @@
 <li><b>Reset</b>: forgets the saved settings and restarts with the defaults. Save an .SPL first if you may want the project back.</li>
 <li><b>Language</b>: 22 languages. The choice is remembered and shared by all SwathPlan pages.</li>
 <li><b>Tools</b>: the other SwathPlan pages, including this guide.</li>
-<li><b>Planner / Guide &amp; science</b>: switches between the planner and links to this guide and the science page.</li>
+<li><b>Planner / Guide &amp; science</b>: switches between the planner and links to this guide and the science page. Both pages follow the language you chose in the planner, and both can be downloaded as a PDF in that language (<i>Download PDF</i> above the contents).</li>
 </ul>
 
-<h3>2.4 Autosave and sharing between the planners</h3>
+<h3 id="2-4-autosave-and-sharing-between-the-planners">2.4 Autosave and sharing between the planners</h3>
 <p>Everything you do is saved in the browser as you go: close the page and it reopens where you left it. The coastline and downloaded map tiles are kept too. Saving is per browser and per device, so use .SPL files to move a project to another computer or to keep versions.</p>
 <p>With <i>Share project details between planners</i> ticked (in <i>Project &amp; operations</i>), the project name, client, vessel, sensor, IHO order, speed and coordinate system follow you between the survey planner and the infill planner.</p>
 
-<h2>3 Your first plan in ten steps</h2>
+<h2 id="3-your-first-plan-in-ten-steps">3 Your first plan in ten steps</h2>
 <ol class="steps">
 <li><b>Choose the survey type and shape</b> in <i>Survey type</i>: what you survey with (multibeam, single-beam, geophysical, drone) and whether it is an area or a corridor along a route.</li>
 <li><b>Define the area.</b> Click <i>Draw area</i> and click the corners on the map, then double-click or press <i>Close polygon</i>. You can also pick a port from the presets list on the map, or import a boundary file in <i>Survey boundary import</i>. For a corridor, draw or import the route instead.</li>
@@ -76,7 +75,7 @@
 <li><b>Check and export.</b> Read the results and fix the ⚠ plan checks, then export the lines (section <i>Export</i>) and make the map sheet and the PDF report.</li>
 </ol>
 
-<h2>4 Survey type and shape</h2>
+<h2 id="4-survey-type-and-shape">4 Survey type and shape</h2>
 <figure class="half"><img src="../docs/guide/setup.jpg" alt="The Survey type section" loading="lazy"><figcaption>Figure 4. <i>Survey type</i>: one survey type per project, over an area or along a route.</figcaption></figure>
 <table><tr><th>Survey type</th><th>Line spacing comes from</th><th>Sections it shows</th></tr>
 <tr><td>Hydrographic: multibeam (MBES)</td><td>Swath width at the design depth and the overlap</td><td>Sensor &amp; design depth, Swath &amp; overlap, Williamson turn, IHO S-44 &amp; speed, Uncertainty budget</td></tr>
@@ -86,8 +85,8 @@
 <p><b>Shape</b>: <i>Area (polygon)</i> lays out straight parallel lines across a closed boundary. <i>Corridor along a route</i> lays out lines that follow a route centreline at fixed offsets, with KP (kilometre point) numbering (<a href="#7-corridors-along-a-route">section 7</a>).</p>
 <p>Changing the type or the shape keeps your area, route, settings and project details.</p>
 
-<h2>5 Defining the survey area</h2>
-<h3>5.1 Drawing on the map</h3>
+<h2 id="5-defining-the-survey-area">5 Defining the survey area</h2>
+<h3 id="5-1-drawing-on-the-map">5.1 Drawing on the map</h3>
 <figure><img src="../docs/guide/draw-area.jpg" alt="Drawing an area: three corners placed, the polygon still open" loading="lazy"><figcaption>Figure 5. Drawing an area. Each click adds a corner; double-click or <i>Close polygon</i> finishes it.</figcaption></figure>
 <ul>
 <li><b>Draw area</b> starts a new boundary; click the corners in order.</li>
@@ -96,7 +95,7 @@
 <li>The <b>presets list</b> on the map holds major ports, grouped by continent. Choosing one draws a ready-made area there, which is handy for trying the planner.</li>
 <li><b>Map background &amp; search</b>: type a place name, a port or <code>lat, lon</code> in <i>Survey location</i> to move the map (name search needs internet).</li>
 </ul>
-<h3>5.2 Importing a boundary</h3>
+<h3 id="5-2-importing-a-boundary">5.2 Importing a boundary</h3>
 <p><i>Survey boundary import</i> reads SHP (with its .prj, or a ZIP), DXF, KML, KMZ, GPX, GeoJSON, WKT and CSV/TXT vertex lists, or text pasted into the box. If a file holds several shapes, the largest closed one becomes the boundary.</p>
 <ul>
 <li>KML, KMZ, GPX and GeoJSON are always WGS 84 longitude/latitude.</li>
@@ -104,11 +103,11 @@
 <li>DXF, WKT and text lists carry no coordinate system: they use the one set in <i>Coordinate system for imported files</i>.</li>
 <li>DWG cannot be read in a browser: save it as DXF first (AutoCAD, BricsCAD, ODA File Converter or LibreDWG).</li>
 </ul>
-<h3>5.3 Coordinate system for imported files</h3>
+<h3 id="5-3-coordinate-system-for-imported-files">5.3 Coordinate system for imported files</h3>
 <p>Choose <i>Geographic lon/lat</i>, a UTM zone (WGS 84 or other datums), <i>Custom (Transverse Mercator)</i> with your own parameters and a 3-parameter datum shift, or an EPSG code. EPSG definitions are looked up online (epsg.io or spatialreference.org) and then kept in the browser, so codes you have used once work offline. For fully offline EPSG work, load a definitions file and proj4.js in <i>Offline helpers</i>. Datum grid files (NTv2 and similar) are not supported. <i>X / Y order</i> handles files written northing first or latitude first.</p>
 
-<h2>6 Survey types in detail</h2>
-<h3>6.1 Multibeam: sensor, swath and overlap</h3>
+<h2 id="6-survey-types-in-detail">6 Survey types in detail</h2>
+<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Multibeam: sensor, swath and overlap</h3>
 <figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Figure 6. <i>Sensor &amp; design depth</i> and <i>Swath &amp; overlap</i>.</figcaption></figure>
 <ul>
 <li><b>MBES model</b>: a catalogue of common multibeam systems with beams, frequency and maximum swath half-angle. Current models from Kongsberg, Teledyne RESON, R2Sonic and NORBIT have been checked against the maker's datasheet, and the line under the values names it; the others say they are not yet checked and are approximate. Either way, check your own system's datasheet. Add your own models, or import a catalogue as CSV with the same columns.</li>
@@ -118,10 +117,10 @@
 <li><b>Adaptive line spacing</b>: with depth data loaded, each line is placed as far from the previous one as the local depth allows while keeping the overlap along its whole length, so lines are wider apart in deeper water.</li>
 <li><b>Max line spacing</b> and <b>Max swath width</b> cap the result (0 = no cap).</li>
 </ul>
-<h3>6.2 Single-beam</h3>
+<h3 id="6-2-single-beam">6.2 Single-beam</h3>
 <figure class="half"><img src="../docs/guide/sbes.jpg" alt="Single-beam echosounder & line spacing section" loading="lazy"><figcaption>Figure 7. <i>Single-beam echosounder &amp; line spacing</i>.</figcaption></figure>
 <p>Choose a typical transducer or enter its beam width. The footprint on the seabed (about 2 × depth × tan(beam width / 2)) is shown, together with the coverage the main lines give. You set the line spacing yourself; <i>Use the S-44 maximum</i> sets it to 3 × depth or 25 m, whichever is greater. The plan checks report whether the spacing and the bathymetric coverage meet S-44. Single-beam can only meet Orders 2 and 1b. Order 1a needs a 100 % feature search (add side-scan), and Special and Exclusive Order need full coverage (use multibeam).</p>
-<h3>6.3 Geophysical</h3>
+<h3 id="6-3-geophysical">6.3 Geophysical</h3>
 <figure class="half"><img src="../docs/guide/geophys.jpg" alt="Geophysical sensors & line spacing section" loading="lazy"><figcaption>Figure 8. <i>Geophysical sensors &amp; line spacing</i>: the sensor needing the closest lines sets the spacing (◀).</figcaption></figure>
 <p>Tick the sensors in the spread. Each proposes a spacing and the closest one is used:</p>
 <ul>
@@ -131,7 +130,7 @@
 <li><b>Multibeam</b> (optional): the multibeam spacing from the sections below joins the comparison.</li>
 <li><b>Layback</b>, <b>extra line extension</b> and <b>tie line spacing</b> complete the line plan.</li>
 </ul>
-<h3>6.4 Drone (camera or LiDAR)</h3>
+<h3 id="6-4-drone-camera-or-lidar">6.4 Drone (camera or LiDAR)</h3>
 <figure class="half"><img src="../docs/guide/drone.jpg" alt="Drone payload & flight section" loading="lazy"><figcaption>Figure 9. <i>Drone payload &amp; flight</i>, camera payload.</figcaption></figure>
 <p>First choose the <b>payload</b>: <i>Camera (photogrammetry)</i> or <i>LiDAR</i>.</p>
 <p><b>Camera.</b> Pick a camera: DJI (Mavic 3 Enterprise, Mavic 3M, Matrice 3D, Matrice 4E, Matrice 4T, Phantom 4 RTK, the Zenmuse L2's RGB camera, Zenmuse P1 with 24, 35 or 50 mm lenses), Autel EVO II Pro RTK V3, senseFly S.O.D.A. and Aeria X for the eBee X, the Sony RX1R II, a6100 and ILX-LR1 used on Wingtra and Quantum Systems drones, Parrot ANAFI Ai, Skydio X10, or the Phase One iXM-100 and P5. You can also enter your own sensor size, focal length, image width and shortest photo interval. Then set the flight height above ground, the forward and side overlap, the speed (in the same section), the flight time per battery and the time to change a battery. The section shows the ground sample distance, the image footprint, the line spacing, the photo distance and interval, and the number of photos, minutes and batteries. The plan checks warn above 120 m (the limit in many countries) and when photos would come faster than the camera can take them.</p>
@@ -140,7 +139,7 @@
 <p><b>Terrain following.</b> Under <i>Follow the terrain</i>, choose a terrain model: SRTM 30 m or the NOAA NCEI DEM mosaic (both online), or a GeoTIFF or ESRI ASCII elevation file. Press <i>Load terrain</i>. Terrain following is switched on when the model has loaded. Each line is split into waypoints at the <i>waypoint spacing</i>, and each waypoint is set high enough that the legs to its neighbours stay at least the flight height above the terrain model. Waypoints are dropped where the ground is even. The take-off ground elevation is the ground at the first waypoint unless you enter it. The section shows the ground along the lines, the range of heights above ground, the number of waypoints with the highest one above take-off, and a profile of the line over the most relief. The exports give every waypoint its own height above the take-off point. Without terrain following, a loaded model still warns where the ground rises above the flight altitude or the height above ground changes a lot. The model is not saved with the project: load it again after reopening. A 30 m model does not contain trees, buildings or masts, so keep a margin.</p>
 <p>Vessel sections (turns, IHO order, coastline, bathymetry) are hidden, lines are not trimmed to water, and turns are tight. The QGroundControl and Mission Planner exports carry the height, the speed and the camera trigger distance.</p>
 
-<h2>7 Corridors along a route</h2>
+<h2 id="7-corridors-along-a-route">7 Corridors along a route</h2>
 <figure><img src="../docs/guide/corridor-map.jpg" alt="A 58 km route split into three segments with KP labels" loading="lazy"><figcaption>Figure 10. A 58 km route with KP labels, split into three segments.</figcaption></figure>
 <figure class="half"><img src="../docs/guide/corridor.jpg" alt="Route & corridor section" loading="lazy"><figcaption>Figure 11. <i>Route &amp; corridor</i>.</figcaption></figure>
 <ul>
@@ -153,28 +152,28 @@
 </ul>
 <p>Line names show side and offset: C = centreline, P = port, S = starboard. Lines are sailed in order across the corridor, turning at the route ends.</p>
 
-<h2>8 Lines, turns, IHO order and uncertainty</h2>
-<h3>8.1 Line direction</h3>
+<h2 id="8-lines-turns-iho-order-and-uncertainty">8 Lines, turns, IHO order and uncertainty</h2>
+<h3 id="8-1-line-direction">8.1 Line direction</h3>
 <figure class="half"><img src="../docs/guide/direction-turn.jpg" alt="Line direction and Williamson turn sections" loading="lazy"><figcaption>Figure 12. <i>Line direction</i> and <i>Williamson turn</i>.</figcaption></figure>
 <p>Set the azimuth with the slider, the preset buttons, or <i>Auto optimal (fewest lines)</i>. Lines along the depth contours usually give the most even depth along each line, and so the most even swath. Set the main line prefix, and the number and prefix of the cross lines, which run perpendicular across the area for quality control.</p>
 <p><b>Follow a depth contour (needs loaded bathymetry)</b> bends the main lines so they run parallel to one depth contour instead of straight. Load depths first (global bathymetry or your own XYZ soundings), tick the box, and set <i>Contour depth</i> (0 uses the design depth). The lines are offset from that contour at the design line spacing, cut to the area and, with trimming on, to water. The note under the box says which contour is used and how many lines it gives; if the contour does not cross the area, it gives the depth range so you can pick another, and straight lines are used meanwhile. The azimuth then sets only the cross lines, which stay straight. Pick a contour near the shallow side, where the swath is narrowest, so the spacing holds everywhere. Exports write the bent lines as polylines. Drone flights always use straight lines.</p>
-<h3>8.2 Turns</h3>
+<h3 id="8-2-turns">8.2 Turns</h3>
 <figure><img src="../docs/guide/turns.jpg" alt="Close-up of Williamson turns at the line ends" loading="lazy"><figcaption>Figure 13. Williamson (bulb) turns at the line ends: the line spacing is smaller than the turning diameter.</figcaption></figure>
 <p>Enter the vessel's real turning radius R. <i>Recommend R from LOA</i> gives a first guess of 2.5 × the vessel length. If the line spacing is smaller than the turning diameter 2R, the planner draws a Williamson-style turn that swings out and comes back on the reciprocal heading. Otherwise it draws a plain U-turn. <i>Reduce speed in turns by 2 kts</i> slows the vessel in the turns for the time estimate.</p>
-<h3>8.3 IHO S-44 &amp; speed</h3>
+<h3 id="8-3-iho-s-44-speed">8.3 IHO S-44 &amp; speed</h3>
 <figure class="half"><img src="../docs/guide/iho.jpg" alt="IHO S-44 & speed section" loading="lazy"><figcaption>Figure 14. <i>IHO S-44 &amp; speed</i>.</figcaption></figure>
 <p>Choose the S-44 order (Exclusive, Special, 1a, 1b, 2). The section shows the ping-rate limit from the slant range and the maximum total vertical uncertainty (TVU) at the design depth. Enter the survey and turn speeds. The results then check overlap, feature detection, and the maximum speed for three pings on the smallest feature of that order.</p>
-<h3>8.4 Uncertainty budget (a priori TPU)</h3>
+<h3 id="8-4-uncertainty-budget-a-priori-tpu">8.4 Uncertainty budget (a priori TPU)</h3>
 <figure class="half"><img src="../docs/guide/tpu.jpg" alt="Uncertainty budget with TVU and THU curves against beam angle" loading="lazy"><figcaption>Figure 15. The uncertainty budget: TVU and THU as a percentage of the S-44 limit across the swath; the shaded part meets the order.</figcaption></figure>
 <p>Enter the 1σ uncertainty of each part of the system: positioning, heading, roll and pitch, beam pointing, heave, water level, draft, range and sound speed. The planner combines them for every beam angle at the design depth and plots the 95 % result against the S-44 limits. <i>Use this swath angle</i> sets the swath to the widest angle that still meets the order. It is a simplified a priori model (see the science page): check it against your own uncertainty model before committing to a specification.</p>
 
-<h2>9 Depth, map, coastline and project settings</h2>
-<h3>9.1 Global bathymetry and your own soundings</h3>
+<h2 id="9-depth-map-coastline-and-project-settings">9 Depth, map, coastline and project settings</h2>
+<h3 id="9-1-global-bathymetry-and-your-own-soundings">9.1 Global bathymetry and your own soundings</h3>
 <p><i>Global bathymetry</i> fetches depths for the closed area from GMRT, NOAA NCEI or EMODnet, at the resolution you choose. Only the ground near the area or corridor is fetched, in pieces, so a long route does not download the whole box around it; if a piece fails, the status says how many and gives a link to download it. You can also load a downloaded GeoTIFF or ESRI ASCII grid. These grids are 100–450 m models of mixed quality, referenced roughly to mean sea level, not chart datum. They are good enough to size a plan, but they miss shoals and wrecks.</p>
 <p><i>Bathymetry from XYZ file</i> loads your own soundings (header lines to skip, positive-down or elevation, metres, feet or fathoms, and a vertical offset for datum or tide). They replace any global data. Show them on the map as points or a shaded background, then apply the shallowest, 5th percentile or mean as the design depth.</p>
-<h3>9.2 Map background and offline maps</h3>
+<h3 id="9-2-map-background-and-offline-maps">9.2 Map background and offline maps</h3>
 <p>Choose a basemap (Esri street, topographic, grey, satellite and ocean maps, OpenStreetMap, OpenTopoMap), your own PMTiles map file, or a custom tile URL (for example from your own Google or Bing account). The OpenSeaMap overlay adds seamarks. Tiles you view are kept on the device for offline use, so pan and zoom over your area before going offline. <i>Save area</i> downloads a zoom range for a custom tile URL. Without tiles the map shows a grid and the built-in world coastline.</p>
-<h3>9.3 Coastline and land avoidance</h3>
+<h3 id="9-3-coastline-and-land-avoidance">9.3 Coastline and land avoidance</h3>
 <figure><img src="../docs/guide/coast-map.jpg" alt="Survey lines trimmed at the coastline with the built-in coastline" loading="lazy"><figcaption>Figure 16. With a coastline loaded and <i>Trim survey and cross lines to navigable water</i> ticked, lines stop at the safety clearance from the coast.</figcaption></figure>
 <figure class="half"><img src="../docs/guide/coast.jpg" alt="Coastline & land avoidance section" loading="lazy"><figcaption>Figure 17. <i>Coastline &amp; land avoidance</i>.</figcaption></figure>
 <ul>
@@ -185,26 +184,26 @@
 </ul>
 <p>Set the <b>safety clearance</b> to match the accuracy of the coastline you use. A loaded coastline is kept with the project, in the autosave and in .SPL files: download the OSM coastline once in the office and it works offline in the field. Turns that cross land or come within the clearance are flagged in the plan checks.</p>
 <p>With a coastline loaded, every Williamson turn, U-turn and transit is checked against it. A turn that crosses the coastline, comes closer than the safety clearance, or lies on land is drawn in red on the map, and the first line of the <b>Plan checks</b> says how many turns are affected. Turns at line ends trimmed close to the coast usually bulge onto land: shorten those lines, use a smaller turning radius, or move the boundary away from the coast. Drone flights are not checked. The check uses only the loaded coastline, not shoals, structures or traffic.</p>
-<h3>9.4 Project &amp; operations</h3>
+<h3 id="9-4-project-operations">9.4 Project &amp; operations</h3>
 <figure class="half"><img src="../docs/guide/project.jpg" alt="Project & operations section" loading="lazy"><figcaption>Figure 18. <i>Project &amp; operations</i>.</figcaption></figure>
 <p>The project details are printed on the map sheet and in the reports. The operations figures drive the time and cost estimate: start date, operating hours per day, weather and downtime allowance, mobilisation and demobilisation, patch test or calibration, SVP casts (interval and duration), and an optional vessel day rate. <i>Ping rate</i> (0 = automatic from the slant range) and <i>Along-track beamwidth</i> feed the ping and footprint figures. <i>Create printable report</i> opens a self-contained HTML report that you can print or save as PDF.</p>
 
-<h2>10 Results, checks and comparisons</h2>
-<h3>10.1 Reading the results</h3>
+<h2 id="10-results-checks-and-comparisons">10 Results, checks and comparisons</h2>
+<h3 id="10-1-reading-the-results">10.1 Reading the results</h3>
 <figure><img src="../docs/guide/results.jpg" alt="Results under the map: time analysis, distance and statistics, IHO S-44 and quality control" loading="lazy"><figcaption>Figure 19. The results under the map.</figcaption></figure>
 <ul>
 <li><b>Time analysis</b>: on-line time (survey and cross lines), turns and transits, productive time, on-line efficiency, coverage rate, then the allowances (SVP, calibration, weather, mobilisation) and the total project time, duration in working days, estimated completion, production per day and the vessel cost.</li>
 <li><b>Distance &amp; statistics</b>: number and length of lines, line spacing, turns, total distance, area, swath statistics, achieved overlap, line-km per km², land trimming, depth range, and estimated pings and soundings.</li>
 <li><b>IHO S-44 &amp; quality control</b>: the order's requirements against the plan (TVU, THU, feature detection, full seafloor search), the allowed depth difference at crossings, and the ping and speed figures.</li>
 </ul>
-<h3>10.2 Plan checks</h3>
+<h3 id="10-2-plan-checks">10.2 Plan checks</h3>
 <figure class="half"><img src="../docs/guide/checks.jpg" alt="Plan checks list with passed and failed checks" loading="lazy"><figcaption>Figure 20. Plan checks: ✓ passed, ⚠ needs attention, ℹ information.</figcaption></figure>
 <p>The checks look at the plan as a whole: overlap against the target, swath angle against the sensor, speed against feature detection, line length against the turn time, transits and, for each survey type, its own rules (S-44 coverage for single-beam, height and photo interval for drones). Fix the ⚠ items and the list updates.</p>
-<h3>10.3 Comparing scenarios for a tender</h3>
+<h3 id="10-3-comparing-scenarios-for-a-tender">10.3 Comparing scenarios for a tender</h3>
 <figure class="half"><img src="../docs/guide/tender.jpg" alt="Compare scenarios (tender) with three scenarios" loading="lazy"><figcaption>Figure 21. <i>Compare scenarios (tender)</i>: the same area with different overlap and speed.</figcaption></figure>
 <p>Press <i>Add current settings as a scenario</i>, change what you want to compare (sensor, overlap, swath angle, speed, turn radius, day rate, working hours, number of vessels), add again, and compare time, line length and cost on the same geometry. <i>Export comparison (CSV)</i> saves the table for your bid.</p>
 
-<h2>11 Project files (.SPL)</h2>
+<h2 id="11-project-files-spl">11 Project files (.SPL)</h2>
 <p><i>Save .SPL</i> writes a plain-text project file: the boundary or route, every setting, and the coastline you loaded. It first asks for the file name; the default is the project name, or <code>survey_plan</code> when there is none. <i>Open .SPL</i> reads it back. The format is designed to stay compatible:</p>
 <ul>
 <li>Files from older versions open in newer ones. Settings that did not exist yet get their default values.</li>
@@ -212,7 +211,7 @@
 </ul>
 <p>Use .SPL files to move a project between computers, keep versions, or send a plan to a colleague.</p>
 
-<h2>12 Exporting</h2>
+<h2 id="12-exporting">12 Exporting</h2>
 <figure class="half"><img src="../docs/guide/export.jpg" alt="Export section" loading="lazy"><figcaption>Figure 22. <i>Export</i>.</figcaption></figure>
 <p>First choose the <b>coordinate system</b> for the exported coordinates: UTM, WGS 84 degrees, or the EPSG/custom system you loaded. Tick <i>Include Williamson turn trajectories</i> if your software should get the turns too. <i>USV acceptance radius</i> goes into the waypoint files.</p>
 <table><tr><th>Format</th><th>For</th><th>Contents and notes</th></tr>
@@ -225,7 +224,7 @@
 <tr><td>GeoJSON</td><td>GIS, web maps</td><td>Lines, boundary and segments with their names and KP, WGS 84.</td></tr>
 <tr><td>QGroundControl (.plan), Mission Planner (.waypoints)</td><td>Autopilots: USVs and drones</td><td>Waypoints along the lines (and turns). Drone plans add the height and, for a camera, the trigger distance.</td></tr>
 <tr><td>More formats</td><td>Various</td><td>GPX (routes, single route, tracks, waypoints), CSV (line list, vertices), TXT (vertices, start/end, waypoint list in degrees and minutes), WKT, GML 2, MapInfo MIF/MID, HYPACK LNW, NMEA 0183 waypoints. GPX, KML, GML and NMEA are always WGS 84.</td></tr></table>
-<h3>12.1 Map sheet, PDF report and images</h3>
+<h3 id="12-1-map-sheet-pdf-report-and-images">12.1 Map sheet, PDF report and images</h3>
 <figure><img src="../docs/guide/sheet.jpg" alt="A printed map sheet with graticule, scale bar, legend and title block" loading="lazy"><figcaption>Figure 23. The map sheet: graticule, scale bar, north arrow, legend and a title block with the project, survey parameters and plan summary.</figcaption></figure>
 <p>Choose the paper (A4 or A3), orientation, resolution and scale (0 = fit automatically), the grid labels (projected, latitude/longitude, or both), and whether to include the basemap (needs internet), the depths or terrain, contours, and the line names and arrows. Printed at 100 %, the scale bar is true.</p>
 <p>Loaded depths are drawn as the same shaded grid as on the map (light = shallow), with depth contours and a colour scale in the legend. In drone mode the loaded terrain is drawn instead, in green to brown to white with a hillshade, with elevation contours. The contour interval is a round number (1, 2, 2.5 or 5 × 10ⁿ m) chosen so that the values inside the map frame span 4 to 10 contours, about one per 25 mm of frame, so a larger scale gives a finer interval. Every fifth contour is drawn thicker, and labels are kept apart. With <i>Shaded depth background</i> turned off, depths are drawn as dots as before. The same picture goes into every image format, the SVG (as an embedded image), the PDF map sheet and the PDF report.</p>
@@ -233,7 +232,7 @@
 <li><b>PDF report</b>: the map sheet followed by the statistics pages.</li>
 <li><b>Map image</b>: the sheet as PNG, JPEG, WebP, TIFF, BMP, SVG (vector, without basemap) or PDF. Georeferenced versions of the map frame are also available: GeoTIFF, or PNG/JPEG with a world file and .prj.</li>
 </ul>
-<h3>12.2 Long routes in segments</h3>
+<h3 id="12-2-long-routes-in-segments">12.2 Long routes in segments</h3>
 <p>For a corridor split into segments, <i>Long routes in segments</i> sets how every export handles them:</p>
 <ul>
 <li><b>One sheet per segment, plus an overview</b> (default): PDFs get a page per segment, images one per sheet in a zip, DXF one file with layers and views per segment, other formats one file for the whole route.</li>
@@ -242,7 +241,7 @@
 </ul>
 <div class="tip"><b>DWG:</b> a browser cannot write DWG. Open the DXF in AutoCAD or BricsCAD and save it as DWG, or use the free ODA File Converter.</div>
 
-<h2>13 The infill planner</h2>
+<h2 id="13-the-infill-planner">13 The infill planner</h2>
 <figure><img src="../docs/guide/infill-map.jpg" alt="Infill planner: covered area in green, a gap in red, an infill line across it" loading="lazy"><figcaption>Figure 24. Infill planner: covered parts in green, a gap (holiday) in red, and the infill line planned across it.</figcaption></figure>
 <figure class="half"><img src="../docs/guide/infill.jpg" alt="Coverage and gaps section of the infill planner" loading="lazy"><figcaption>Figure 25. <i>Coverage and gaps (infill)</i>.</figcaption></figure>
 <p>The infill planner uses the same map, area, sensor, turn and export sections as the survey planner. In <i>Survey data</i>, choose what was surveyed: multibeam bathymetry or side-scan sonar. Then load what you have:</p>
@@ -253,7 +252,7 @@
 <p>Then set the grid cell, the smallest gap worth infilling, the line extension and the direction (<i>Same direction as the tracks</i>). The planner reports the coverage of the area and the gaps, plans infill lines spaced for the chosen coverage, and exports the gaps as CSV and the lines in every format.</p>
 <p>With a survey boundary drawn or imported, every part of it that the loaded data does not cover is a gap: holes between tracks as well as the strips still missing along the boundary. To be safe at the edges, set <i>Also cover outside the boundary (m)</i>, for example to half a swath. A margin of that width outside the boundary then counts as area to cover. The margin strip along each boundary edge gets infill lines parallel to that edge, and gaps inside the area keep the chosen line direction. The coverage percentage is still that of the area itself. An infill line runs only where its strip has gaps, so it never crosses ground that is already covered; it is split into several lines where needed.</p>
 
-<h2>14 Troubleshooting</h2>
+<h2 id="14-troubleshooting">14 Troubleshooting</h2>
 <table><tr><th>Problem</th><th>What to do</th></tr>
 <tr><td>The page looks old after an update</td><td>The offline copy is still active: press the update banner, or reload the page twice.</td></tr>
 <tr><td>No map, only a grid</td><td>No internet, or the basemap blocks pages opened from a file. Choose another basemap, load a PMTiles file, or use the grid and built-in coastline.</td></tr>
@@ -263,7 +262,7 @@
 <tr><td>Lines cut too much or not enough at the coast</td><td>Check which coastline is loaded and match the safety clearance to its accuracy.</td></tr>
 <tr><td>Acquisition software rejects a file</td><td>Check the export coordinate system. The LNX and LNW layouts have not been verified in HYPACK yet, and the Qinsy file is rebuilt from a single sample: test-import before field use.</td></tr></table>
 
-<h2>15 Limitations</h2>
+<h2 id="15-limitations">15 Limitations</h2>
 <ul>
 <li>Contour-following lines use one contour and the design spacing; adaptive spacing does not apply to them.</li>
 <li>Swath and footprint assume a flat seabed at the depth under the line; refraction and beam-angle limits are only those you enter.</li>

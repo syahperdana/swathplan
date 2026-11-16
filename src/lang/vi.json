@@ -1112,5 +1112,10 @@
  "Depth (m), light = shallow": "Độ sâu (m), sáng = nông",
  "Ground elevation (m)": "Độ cao mặt đất (m)",
  "Depth contours every {0} m": "Đường đẳng sâu cách {0} m",
- "Elevation contours every {0} m": "Đường đồng mức cách {0} m"
+ "Elevation contours every {0} m": "Đường đồng mức cách {0} m",
+ "Download PDF": "Tải PDF",
+ "Language": "Ngôn ngữ",
+ "Edition": "Phiên bản",
+ "Website": "Trang web",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Chỉ là công cụ hỗ trợ lập kế hoạch: không thay thế hải đồ chính thức, thông số thiết bị, IHO S-44 hiện hành hay một trắc địa viên có chuyên môn. Không dùng để hàng hải."
 }

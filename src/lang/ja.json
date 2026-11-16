@@ -1113,5 +1113,10 @@
  "Depth (m), light = shallow": "水深（m）、明るい = 浅い",
  "Ground elevation (m)": "地盤標高（m）",
  "Depth contours every {0} m": "等深線 {0} m 間隔",
- "Elevation contours every {0} m": "等高線 {0} m 間隔"
+ "Elevation contours every {0} m": "等高線 {0} m 間隔",
+ "Download PDF": "PDFをダウンロード",
+ "Language": "言語",
+ "Edition": "版",
+ "Website": "ウェブサイト",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "計画用の補助ツールです。公式の海図、機器の仕様書、最新の IHO S-44、資格のある測量技術者の判断に代わるものではありません。航海には使用しないでください。"
 }

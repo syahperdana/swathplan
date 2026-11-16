@@ -1112,5 +1112,10 @@
  "Depth (m), light = shallow": "수심 (m), 밝을수록 얕음",
  "Ground elevation (m)": "지반 표고 (m)",
  "Depth contours every {0} m": "등심선 {0} m 간격",
- "Elevation contours every {0} m": "등고선 {0} m 간격"
+ "Elevation contours every {0} m": "등고선 {0} m 간격",
+ "Download PDF": "PDF 내려받기",
+ "Language": "언어",
+ "Edition": "판",
+ "Website": "웹사이트",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "계획 보조 도구일 뿐입니다. 공식 해도, 장비 사양, 현행 IHO S-44 또는 자격을 갖춘 측량사를 대신하지 않습니다. 항해용이 아닙니다."
 }

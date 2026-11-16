@@ -1113,5 +1113,10 @@
  "Depth (m), light = shallow": "Profundidade (m), claro = raso",
  "Ground elevation (m)": "Elevação do terreno (m)",
  "Depth contours every {0} m": "Isóbatas a cada {0} m",
- "Elevation contours every {0} m": "Curvas de nível a cada {0} m"
+ "Elevation contours every {0} m": "Curvas de nível a cada {0} m",
+ "Download PDF": "Descarregar PDF",
+ "Language": "Idioma",
+ "Edition": "Edição",
+ "Website": "Sítio web",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Apenas uma ajuda ao planeamento: não substitui as cartas oficiais, as especificações dos equipamentos, a IHO S-44 em vigor nem um hidrógrafo qualificado. Não serve para navegação."
 }

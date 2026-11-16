@@ -1113,5 +1113,10 @@
  "Depth (m), light = shallow": "العمق (م)، الفاتح = ضحل",
  "Ground elevation (m)": "ارتفاع الأرض (م)",
  "Depth contours every {0} m": "خطوط عمق كل {0} م",
- "Elevation contours every {0} m": "خطوط ارتفاع كل {0} م"
+ "Elevation contours every {0} m": "خطوط ارتفاع كل {0} م",
+ "Download PDF": "تنزيل PDF",
+ "Language": "اللغة",
+ "Edition": "الإصدار",
+ "Website": "الموقع",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "أداة مساعدة للتخطيط فقط: لا تغني عن الخرائط الرسمية ومواصفات المعدات والإصدار الحالي من IHO S-44 أو المسّاح المؤهل. ليست للملاحة."
 }
