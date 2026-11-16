@@ -142,7 +142,6 @@
  "Values = elevation (negative = depth)": "값 = 고도 (음수 = 수심)",
  "Values = depth (positive down)": "값 = 수심 (아래쪽이 양수)",
  "Detect automatically": "자동 감지",
- "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).": "자료는 출처의 품질만큼만 정확합니다: GMRT와 NCEI는 일부 지역에 실제 다중빔 측량 자료가 있지만 다른 곳은 100–450 m 격자이므로 계획용으로만 쓰고 직접 측심을 대체하지 마세요. 육지와 간출 셀은 무시됩니다. 수직 기준은 해도 기준면이 아니라 대략 평균 해수면이므로 {§xyz}번 항목의 수직 오프셋을 사용하거나 보수적인 수심을 선택하세요. 브라우저가 서비스를 차단하면(오프라인 또는 CORS) 표시된 링크로 격자를 내려받아 여기서 불러오세요. 출처: GMRT(Lamont-Doherty), NOAA NCEI, EMODnet, Open Topo Data를 통한 GEBCO(초당 1회, 하루 1000회 요청).",
  "Bathymetry from XYZ file (your own data)": "XYZ 파일의 수심 (사용자 자료)",
  "Header lines to skip": "건너뛸 머리글 줄 수",
  "Z convention": "Z 규약",
@@ -1103,5 +1102,9 @@
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "낮은 지반 위에서는 드론이 최대 {0} m 위에 있어 많은 나라의 120 m 제한을 넘습니다.",
  "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "웨이포인트 {0}개가 지형 모델 밖에 있어 이륙 높이를 유지합니다. 더 넓은 지역의 지형을 불러오십시오.",
  "Save the project as": "프로젝트를 다른 이름으로 저장",
- "Save": "저장"
+ "Save": "저장",
+ "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "자료는 출처의 품질만큼만 정확합니다: GMRT와 NCEI는 일부 지역에 실제 다중빔 측량 자료가 있지만 다른 곳은 100–450 m 격자이므로 계획용으로만 쓰고 직접 측심을 대체하지 마세요. 육지와 간출 셀은 무시됩니다. 수직 기준은 해도 기준면이 아니라 대략 평균 해수면이므로 {§xyz}번 항목의 수직 오프셋을 사용하거나 보수적인 수심을 선택하세요. 브라우저가 서비스를 차단하면(오프라인 또는 CORS) 표시된 링크로 격자를 내려받아 여기서 불러오세요. 출처: GMRT(Lamont-Doherty), NOAA NCEI, EMODnet. 긴 노선과 넓은 지역은 측량 지역 주변을 나누어 내려받습니다.",
+ "Height:": "높이:",
+ "Downloading… {0} of {1} pieces": "다운로드 중… {1}개 중 {0}개",
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1}개 중 {0}개 조각을 내려받지 못했거나 잘려서 그곳의 수심이 빠질 수 있습니다. 더 거친 해상도를 사용하거나 아래 링크를 여십시오."
 }

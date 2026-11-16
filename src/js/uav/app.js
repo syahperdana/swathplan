@@ -27,7 +27,8 @@ const _uvGen=gen;gen=function(){if(!MODE().uav)return _uvGen();const t=$("trim")
 // time: no slow-down in turns; battery changes take the place of SVP casts
 function uvWith(f){if(!MODE().uav)return f();const k={slow:$("slow").checked,svpI:$("svpI").value,svpD:$("svpD").value};$("slow").checked=false;$("svpI").value=Math.max(1,g("uvBat"))/60;$("svpD").value=Math.max(0,g("uvSwap"));
 try{return f()}finally{$("slow").checked=k.slow;$("svpI").value=k.svpI;$("svpD").value=k.svpD}}
-const _uvStats=stats;stats=function(){uvWith(_uvStats);uvShow()};
+// header: the flight height instead of the depth while the drone is chosen
+const _uvStats=stats;stats=function(){uvWith(_uvStats);const u=MODE().uav;$("hDd").hidden=u;$("hDh").hidden=!u;if(u)$("hD").textContent=f1(uvGeo().H,"m",0);uvShow()};
 function uvShow(){if(!MODE().uav)return;uvPayShow();if(uvLid())return uvLShow();const U=uvGeo(),ln=R.lines.concat(R.cross),Lm=ln.reduce((s,l)=>s+L(l),0),ph=ln.length?Math.round(Lm/U.dPh)+ln.length:0,ft=(Lm+(R.tl||0))/U.v/60,nb=Math.max(1,Math.ceil(ft/Math.max(1,g("uvBat"))));
 $("uvGsd").textContent=(U.gsd*100).toFixed(2)+" cm/px";$("uvFp").textContent=U.across.toFixed(1)+" × "+U.along.toFixed(1)+" m";$("uvLs").textContent=U.S.toFixed(1)+" m";
 $("uvPh").textContent=i18("{0} m ({1} s at {2} m/s)",U.dPh.toFixed(1),U.tPh.toFixed(1),U.v.toFixed(1));$("uvTot").textContent=ln.length?i18("{0} photos · {1} min · {2} batteries",ph,Math.round(ft),nb):"-";

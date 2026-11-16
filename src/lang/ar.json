@@ -142,7 +142,6 @@
  "Values = elevation (negative = depth)": "القيم = الارتفاع (السالب = عمق)",
  "Values = depth (positive down)": "القيم = العمق (الموجب نحو الأسفل)",
  "Detect automatically": "اكتشاف تلقائي",
- "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).": "البيانات بجودة مصدرها: يحتوي GMRT وNCEI في بعض المواضع على مسوح متعددة الحزم حقيقية لكنهما في مواضع أخرى شبكات 100–450 م، فاستخدمهما للتخطيط لا بديلاً عن مسوحاتك. تُهمَل خلايا اليابسة والمناطق المكشوفة. المرجع الرأسي هو تقريباً متوسط مستوى سطح البحر لا صفر الخرائط: استخدم الإزاحة الرأسية في القسم {§xyz} أو اختر عمقاً متحفظاً. إذا حجب متصفحك خدمة (دون اتصال أو CORS) فاستخدم الرابط المعروض لتنزيل الشبكة ثم حمّلها هنا. المصادر: GMRT (Lamont-Doherty)، NOAA NCEI، EMODnet، GEBCO عبر Open Topo Data (طلب واحد في الثانية، 1000 في اليوم).",
  "Bathymetry from XYZ file (your own data)": "القياسات العمقية من ملف XYZ (بياناتك الخاصة)",
  "Header lines to skip": "أسطر الترويسة المراد تخطيها",
  "Z convention": "اصطلاح Z",
@@ -1104,5 +1103,9 @@
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "فوق الأرض المنخفضة تصل الطائرة إلى {0} م فوقها، أعلى من حد 120 م في كثير من البلدان.",
  "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "{0} نقطة مسار خارج نموذج التضاريس وتبقى على ارتفاع الإقلاع: حمّل التضاريس لمنطقة أوسع.",
  "Save the project as": "حفظ المشروع باسم",
- "Save": "حفظ"
+ "Save": "حفظ",
+ "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "البيانات بجودة مصدرها: يحتوي GMRT وNCEI في بعض المواضع على مسوح متعددة الحزم حقيقية لكنهما في مواضع أخرى شبكات 100–450 م، فاستخدمهما للتخطيط لا بديلاً عن مسوحاتك. تُهمَل خلايا اليابسة والمناطق المكشوفة. المرجع الرأسي هو تقريباً متوسط مستوى سطح البحر لا صفر الخرائط: استخدم الإزاحة الرأسية في القسم {§xyz} أو اختر عمقاً متحفظاً. إذا حجب متصفحك خدمة (دون اتصال أو CORS) فاستخدم الرابط المعروض لتنزيل الشبكة ثم حمّلها هنا. المصادر: GMRT (Lamont-Doherty)، NOAA NCEI، EMODnet. تُنزَّل المسارات الطويلة والمناطق الكبيرة على أجزاء حول منطقة المسح.",
+ "Height:": "الارتفاع:",
+ "Downloading… {0} of {1} pieces": "جارٍ التنزيل… {0} من {1} أجزاء",
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "تعذّر تنزيل {0} من {1} أجزاء أو وصلت ناقصة، فقد تنقص الأعماق هناك: جرّب دقة أخشن أو افتح الرابط أدناه."
 }

@@ -142,7 +142,6 @@
  "Values = elevation (negative = depth)": "値＝標高（負＝水深）",
  "Values = depth (positive down)": "値＝水深（正が下向き）",
  "Detect automatically": "自動検出",
- "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet, GEBCO via Open Topo Data (1 request per second, 1000 per day).": "データの品質はソース次第です。GMRTとNCEIは場所によって実際のマルチビーム測量を含みますが、他の場所では100～450 mグリッドです。計画用に使い、ご自身の測深データの代わりにはしないでください。陸地と干出セルは無視されます。鉛直基準面はおおよそ平均海面で、海図基準面ではありません。セクション{§xyz}の鉛直オフセットを使うか、安全側の水深を選んでください。ブラウザがサービスをブロックする場合（オフラインやCORS）、表示されるリンクからグリッドをダウンロードしてここに読み込んでください。出典: GMRT (Lamont-Doherty)、NOAA NCEI、EMODnet、GEBCO（Open Topo Data経由、1秒に1リクエスト、1日1000件）。",
  "Bathymetry from XYZ file (your own data)": "XYZファイルからの水深（独自データ）",
  "Header lines to skip": "スキップするヘッダー行数",
  "Z convention": "Zの規約",
@@ -1104,5 +1103,9 @@
  "Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.": "低い地盤の上では対地高度が最大 {0} m となり、多くの国の上限 120 m を超えます。",
  "{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.": "ウェイポイント {0} 点が地形モデルの範囲外で、離陸地点の高さのままです。より広い範囲の地形を読み込んでください。",
  "Save the project as": "名前を付けてプロジェクトを保存",
- "Save": "保存"
+ "Save": "保存",
+ "The data are only as good as the source: GMRT and NCEI hold real multibeam surveys in places but are 100–450 m grids elsewhere, so use them for planning, not as a substitute for your own soundings. Land and drying cells are ignored. Vertical datum is roughly mean sea level, not chart datum: use the vertical offset in section {§xyz} or choose a conservative depth. If your browser blocks a service (offline or CORS), use the link shown to download the grid and load it here. Sources: GMRT (Lamont-Doherty), NOAA NCEI, EMODnet. Long routes and large areas are fetched in pieces around the survey area.": "データの品質はソース次第です。GMRTとNCEIは場所によって実際のマルチビーム測量を含みますが、他の場所では100～450 mグリッドです。計画用に使い、ご自身の測深データの代わりにはしないでください。陸地と干出セルは無視されます。鉛直基準面はおおよそ平均海面で、海図基準面ではありません。セクション{§xyz}の鉛直オフセットを使うか、安全側の水深を選んでください。ブラウザがサービスをブロックする場合（オフラインやCORS）、表示されるリンクからグリッドをダウンロードしてここに読み込んでください。出典: GMRT (Lamont-Doherty)、NOAA NCEI、EMODnet。長いルートや広い範囲は、調査範囲の周辺を分割してダウンロードします。",
+ "Height:": "高度:",
+ "Downloading… {0} of {1} pieces": "ダウンロード中… {1} 個中 {0} 個",
+ "{0} of {1} pieces could not be downloaded or were cut short, so depths may be missing there: try a coarser resolution, or open the link below.": "{1} 個中 {0} 個の部分をダウンロードできないか途中で切れたため、そこでは水深が欠けている可能性があります。より粗い解像度を試すか、下のリンクを開いてください。"
 }
