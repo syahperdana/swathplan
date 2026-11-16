@@ -52,7 +52,17 @@
 <p>With depth data loaded, SwathPlan places each line as far from the previous one as the local depth allows. For consecutive lines at across-track positions <i>s</i> and <i>s′</i>, with the half-swaths facing each other <i>h(t)</i> and <i>h′(t)</i> computed from the depth under each line along the line coordinate <i>t</i>, the condition is</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>
 <p>The largest <i>s′</i> that meets it is found by bisection. Lines alternate direction, so port and starboard angles swap from one line to the next, and the code accounts for this. The first and last lines are placed so that the swath reaches the boundary. Like the uniform case, it assumes a flat seabed under each swath at the depth under the line.</p>
-<h3>3.3 Ping rate, along-track sampling and speed</h3>
+<h3>3.3 Contour-following lines (SwathPlan's method)</h3>
+<p>With <i>Follow a depth contour</i> on, the main lines run parallel to one isobath instead of being straight. On a sloping seabed a line along an isobath keeps an even depth, so its swath width stays even.</p>
+<ol>
+<li>The depth is sampled on a regular grid over the area (about 300 cells across) and the isobath at the chosen depth is traced with marching squares<sup class="fn"><a href="#r34">34</a></sup>. Saddle cells are resolved with the mean of the four corners. Where several pieces exist, the one with the most length inside the area is used.</li>
+<li>The isobath is smoothed with two passes of Chaikin's corner cutting<sup class="fn"><a href="#r35">35</a></sup>, simplified with the Douglas–Peucker algorithm<sup class="fn"><a href="#r36">36</a></sup>, and extended straight at both ends so that it spans the area.</li>
+<li>A signed distance to this base line (positive to starboard) is computed on the grid, and every line is the level set at <i>k · S</i>, again traced with marching squares, for whole numbers <i>k</i>. Level sets of a distance field are the exact offset curves without the loops that offsetting a curve point by point produces on its concave side, so neighbouring lines never cross and stay one spacing <i>S</i> apart.</li>
+<li>Each line is cut to the area and, with trimming on, to water outside the safety clearance; the cut ends are refined by bisection. Pieces shorter than the smaller of 50 m and <i>S</i> are dropped.</li>
+<li>Lines are run row by row in alternating directions. Between rows the turn is built as in section 8.1, from the heading at the end of the line; along a row, a straight transit joins the pieces.</li>
+</ol>
+<p>The spacing is the design spacing <i>S</i> of section 3.1 at the design depth: only the line on the base isobath has exactly that depth, and the others are offset curves, not isobaths. Choose the base depth near the shallow side of the area so that the spacing holds where the swath is narrowest. Adaptive spacing (3.2) is not applied.</p>
+<h3>3.4 Ping rate, along-track sampling and speed</h3>
 <p>Each ping must travel to the farthest point of the swath and back before the next, so the highest ping rate is<sup class="fn"><a href="#r3">3</a></sup></p>
 <pre class="f">f_max = c / (2 R),     R = d / cos θmax         d = 25 m, 60°: R = 50 m, f_max = 15 Hz</pre>
 <p>At speed <i>v</i> the pings are Δx = v / f apart along the track, and the along-track footprint at nadir is about <i>d</i> · β (β = along-track beamwidth in radians)<sup class="fn"><a href="#r3">3</a></sup>. To make sure a small feature is hit by several pings, SwathPlan uses the rule that NOAA set for side-scan sonar: an object must be ensonified at least three times per pass, which gives a maximum speed<sup class="fn"><a href="#r4">4</a></sup></p>
@@ -163,7 +173,7 @@ cost           = total project (days) × day rate</pre>
 <ul>
 <li>Flat seabed under each swath or footprint; no refraction or beam-angle limits other than those you enter.</li>
 <li>A single nominal sound speed (1500 m/s) for ping rates.</li>
-<li>Straight, parallel lines for areas; offset lines for corridors. Contour-following lines are not generated.</li>
+<li>Straight, parallel lines for areas, or offsets of one isobath when following a contour; offset lines for corridors.</li>
 <li>Constant speeds; currents, traffic and port calls are not modelled.</li>
 <li>Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.</li>
 <li>Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.</li>
@@ -204,6 +214,9 @@ cost           = total project (days) × day rate</pre>
 <li id="r31">GEBCO Compilation Group (2020). <i>GEBCO 2020 Grid</i>. <a href="https://doi.org/10.5285/a29c5465-b138-234d-e053-6c86abc040b9">doi:10.5285/a29c5465-b138-234d-e053-6c86abc040b9</a></li>
 <li id="r32">Open Topo Data: an open elevation API (GEBCO 2020 dataset; 1 request per second, 1000 per day on the public API). <a href="https://www.opentopodata.org/">opentopodata.org</a></li>
 <li id="r33">Open Geospatial Consortium (2019). <i>OGC GeoTIFF Standard</i>, version 1.1, OGC 19-008r4.</li>
+<li id="r34">Lorensen, W. E. and Cline, H. E. (1987). Marching cubes: a high resolution 3D surface construction algorithm. <i>ACM SIGGRAPH Computer Graphics</i>, 21(4), 163–169. <a href="https://doi.org/10.1145/37402.37422">doi:10.1145/37402.37422</a> (marching squares is its two-dimensional form).</li>
+<li id="r35">Chaikin, G. M. (1974). An algorithm for high-speed curve generation. <i>Computer Graphics and Image Processing</i>, 3(4), 346–349. <a href="https://doi.org/10.1016/0146-664X(74)90028-8">doi:10.1016/0146-664X(74)90028-8</a></li>
+<li id="r36">Douglas, D. H. and Peucker, T. K. (1973). Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. <i>Cartographica</i>, 10(2), 112–122. <a href="https://doi.org/10.3138/FM57-6770-U75U-7727">doi:10.3138/FM57-6770-U75U-7727</a></li>
 </ol>
 <p class="ver">© 2026 Aldwin Syahperdana. Last checked against the sources: November 2026.</p>
 </article></main>

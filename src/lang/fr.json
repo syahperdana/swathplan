@@ -1042,5 +1042,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Comment utiliser le planificateur de levés et le planificateur de compléments, pas à pas, avec des captures d’écran.",
  "The formulas, standards and data behind every number, with their original references.": "Les formules, normes et données derrière chaque chiffre, avec leurs références d’origine.",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{0} virages sur {1} traversent la terre ou entrent dans la marge de {2} m (en rouge sur la carte). Raccourcissez les lignes à ces extrémités, réduisez le rayon de giration ou éloignez la limite de la côte.",
- "All turns stay at least {0} m from the coastline.": "Tous les virages restent à au moins {0} m du trait de côte."
+ "All turns stay at least {0} m from the coastline.": "Tous les virages restent à au moins {0} m du trait de côte.",
+ "Follow a depth contour (needs loaded bathymetry)": "Suivre une isobathe (bathymétrie chargée nécessaire)",
+ "Contour depth (m, 0 = design depth)": "Profondeur de l’isobathe (m, 0 = profondeur de conception)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "Les lignes principales suivent une isobathe de la bathymétrie chargée, décalées de l’espacement de conception, puis coupées à la zone et aux eaux navigables. Sur un fond en pente, chaque ligne reste ainsi à peu près à la même profondeur et la fauchée reste régulière. L’azimut ne fixe que les lignes transversales ; l’espacement adaptatif ne s’applique pas.",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Les lignes suivent l’isobathe {0} m : {1} lignes, espacées de {2} m.",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Chargez d’abord une bathymétrie (section {§gbath} ou {§xyz}) ; des lignes droites sont utilisées en attendant.",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Aucune isobathe {0} m ne traverse la zone ; des lignes droites sont utilisées. Profondeurs dans la zone : {1} à {2} m.",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Trop de lignes d’isobathe pour cette zone à cet espacement ; des lignes droites sont utilisées."
 }

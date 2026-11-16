@@ -23,9 +23,9 @@ if(G.runIn||G.runOut)h+="<br>"+i18("Line run-in {0} m, run-out {1} m (layback, s
 $("gRes").innerHTML=h;["gSS","gMG","gSB","gSE"].forEach(id=>{$(id+"b").hidden=!$(id).checked})}
 // lines: run-in and run-out, turns redone, tie lines by spacing
 const _geoGen=gen;gen=function(){_geoGen();if(!MODE().geo)return;if(!R.lines.length){geoShow();return}const p=params(),G=p.geo,Rr=p.Rr;let ch=false;
-if(MODE().corr){if(G.runIn>0||G.runOut>0){// corridor lines bend: lengthen their first and last segments, then redo the turns
+if(MODE().corr||R.ctr){if(G.runIn>0||G.runOut>0){// corridor lines bend: lengthen their first and last segments, then redo the turns
 const lg=(a,b,d)=>{const v=[a[0]-b[0],a[1]-b[1]],m=Math.hypot(v[0],v[1])||1;return[a[0]+v[0]/m*d,a[1]+v[1]/m*d]};
-R.lines.forEach(l=>{const q=l.p.slice(),n=q.length;q[0]=lg(q[0],q[1],G.runIn);q[n-1]=lg(q[n-1],q[n-2],G.runOut);l.p=q;l.a=q[0];l.b=q[n-1]});coTurns(Rr);stats()}geoShow();return}
+R.lines.forEach(l=>{const q=l.p.slice(),n=q.length;q[0]=lg(q[0],q[1],G.runIn);q[n-1]=lg(q[n-1],q[n-2],G.runOut);l.p=q;l.a=q[0];l.b=q[n-1]});R.ctr?ctrTurns(Rr):coTurns(Rr);stats()}geoShow();return}
 if(G.runIn>0||G.runOut>0){R.lines.forEach(l=>{const d=[l.b[0]-l.a[0],l.b[1]-l.a[1]],m=Math.hypot(d[0],d[1])||1,u=[d[0]/m,d[1]/m];l.a=[l.a[0]-u[0]*G.runIn,l.a[1]-u[1]*G.runIn];l.b=[l.b[0]+u[0]*G.runOut,l.b[1]+u[1]*G.runOut]});
 const old=R.turns;R.turns=[];R.tl=0;for(let i=0;i+1<R.lines.length;i++){const A=R.lines[i],B=R.lines[i+1],d=[A.b[0]-A.a[0],A.b[1]-A.a[1]],m=Math.hypot(d[0],d[1])||1,f=[d[0]/m,d[1]/m],w=[B.a[0]-A.b[0],B.a[1]-A.b[1]];
 let nn=[f[1],-f[0]];if(nn[0]*w[0]+nn[1]*w[1]<0)nn=[-nn[0],-nn[1]];const S=Math.abs(nn[0]*w[0]+nn[1]*w[1]),ty=old[i]?old[i].ty:"u";let pts=[A.b];

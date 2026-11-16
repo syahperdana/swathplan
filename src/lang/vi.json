@@ -1041,5 +1041,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Cách dùng công cụ lập kế hoạch khảo sát và lập kế hoạch đo bù, từng bước, có ảnh chụp màn hình.",
  "The formulas, standards and data behind every number, with their original references.": "Công thức, tiêu chuẩn và dữ liệu đằng sau từng con số, cùng tài liệu gốc.",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{0} trong {1} vòng quay cắt qua đất liền hoặc vào khoảng cách an toàn {2} m (màu đỏ trên bản đồ). Hãy rút ngắn tuyến ở các đầu đó, dùng bán kính quay nhỏ hơn, hoặc dời ranh giới xa bờ.",
- "All turns stay at least {0} m from the coastline.": "Mọi vòng quay đều cách đường bờ biển ít nhất {0} m."
+ "All turns stay at least {0} m from the coastline.": "Mọi vòng quay đều cách đường bờ biển ít nhất {0} m.",
+ "Follow a depth contour (needs loaded bathymetry)": "Đi theo một đường đẳng sâu (cần nạp dữ liệu độ sâu)",
+ "Contour depth (m, 0 = design depth)": "Độ sâu đường đẳng sâu (m, 0 = độ sâu thiết kế)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "Các tuyến chính chạy song song với một đường đẳng sâu của dữ liệu độ sâu đã nạp, dời theo khoảng cách tuyến thiết kế và được cắt theo khu vực và vùng nước tàu đi được. Trên đáy biển dốc, mỗi tuyến vì vậy giữ gần như cùng một độ sâu và dải quét đều. Phương vị chỉ đặt các tuyến kiểm tra; khoảng cách thích ứng không áp dụng.",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Các tuyến đi theo đường đẳng sâu {0} m: {1} tuyến, cách nhau {2} m.",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Hãy nạp dữ liệu độ sâu trước (mục {§gbath} hoặc {§xyz}); cho đến lúc đó dùng tuyến thẳng.",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Không có đường đẳng sâu {0} m nào cắt qua khu vực; dùng tuyến thẳng. Độ sâu trong khu vực: {1} đến {2} m.",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Quá nhiều tuyến đẳng sâu cho khu vực này với khoảng cách này; dùng tuyến thẳng."
 }

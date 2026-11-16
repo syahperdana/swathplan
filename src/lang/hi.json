@@ -1041,5 +1041,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "सर्वे प्लानर और इनफ़िल प्लानर का उपयोग कैसे करें, चरण दर चरण, स्क्रीनशॉट के साथ।",
  "The formulas, standards and data behind every number, with their original references.": "हर संख्या के पीछे के सूत्र, मानक और डेटा, उनके मूल संदर्भों के साथ।",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{1} में से {0} मोड़ भूमि पार करते हैं या {2} मी सुरक्षा दूरी में आते हैं (मानचित्र पर लाल)। उन छोरों पर लाइनें छोटी करें, छोटा मोड़ त्रिज्या लें, या सीमा को तट से दूर करें।",
- "All turns stay at least {0} m from the coastline.": "सभी मोड़ तटरेखा से कम से कम {0} मी दूर रहते हैं।"
+ "All turns stay at least {0} m from the coastline.": "सभी मोड़ तटरेखा से कम से कम {0} मी दूर रहते हैं।",
+ "Follow a depth contour (needs loaded bathymetry)": "गहराई समोच्च रेखा का अनुसरण करें (लोड की गई बैथिमेट्री चाहिए)",
+ "Contour depth (m, 0 = design depth)": "समोच्च गहराई (मी, 0 = डिज़ाइन गहराई)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "मुख्य लाइनें लोड की गई बैथिमेट्री की एक गहराई समोच्च रेखा के समानांतर चलती हैं, डिज़ाइन लाइन अंतराल पर खिसकाई जाती हैं और क्षेत्र तथा नौगम्य जल तक काटी जाती हैं। ढलान वाले समुद्र तल पर हर लाइन लगभग एक ही गहराई पर रहती है, इसलिए स्वाथ एकसमान रहता है। दिगंश केवल क्रॉस लाइनें तय करता है; अनुकूली अंतराल लागू नहीं होता।",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "लाइनें {0} मी समोच्च रेखा का अनुसरण करती हैं: {1} लाइनें, {2} मी अंतराल।",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "पहले बैथिमेट्री लोड करें (खंड {§gbath} या {§xyz}); तब तक सीधी लाइनें उपयोग होती हैं।",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "कोई {0} मी समोच्च रेखा क्षेत्र को पार नहीं करती; सीधी लाइनें उपयोग होती हैं। क्षेत्र में गहराई: {1} से {2} मी।",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "इस अंतराल पर इस क्षेत्र के लिए बहुत अधिक समोच्च लाइनें; सीधी लाइनें उपयोग होती हैं।"
 }

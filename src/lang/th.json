@@ -1050,5 +1050,12 @@
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "วิธีใช้ตัววางแผนสำรวจและตัววางแผนสำรวจเพิ่มเติม ทีละขั้น พร้อมภาพหน้าจอ",
  "The formulas, standards and data behind every number, with their original references.": "สูตร มาตรฐาน และข้อมูลเบื้องหลังทุกตัวเลข พร้อมแหล่งอ้างอิงต้นฉบับ",
  "{0} of {1} turns cross land or come within the {2} m clearance (red on the map). Shorten the lines at those ends, use a smaller turning radius, or move the boundary away from the coast.": "{0} จาก {1} การเลี้ยวตัดผ่านพื้นดินหรือเข้าใกล้เกินระยะปลอดภัย {2} ม. (สีแดงบนแผนที่) ให้ตัดแนวที่ปลายนั้นให้สั้นลง ใช้รัศมีเลี้ยวที่เล็กลง หรือย้ายขอบเขตให้ห่างจากชายฝั่ง",
- "All turns stay at least {0} m from the coastline.": "การเลี้ยวทั้งหมดอยู่ห่างจากแนวชายฝั่งอย่างน้อย {0} ม."
+ "All turns stay at least {0} m from the coastline.": "การเลี้ยวทั้งหมดอยู่ห่างจากแนวชายฝั่งอย่างน้อย {0} ม.",
+ "Follow a depth contour (needs loaded bathymetry)": "วางแนวตามเส้นชั้นความลึก (ต้องโหลดข้อมูลความลึกก่อน)",
+ "Contour depth (m, 0 = design depth)": "ความลึกของเส้นชั้นความลึก (ม., 0 = ความลึกออกแบบ)",
+ "The main lines run parallel to one depth contour of the loaded bathymetry, offset at the design line spacing and cut to the area and to navigable water. On a sloping seabed each line then stays at about the same depth, so the swath stays even. The azimuth sets only the cross lines; adaptive spacing does not apply.": "แนวสำรวจหลักขนานกับเส้นชั้นความลึกหนึ่งเส้นจากข้อมูลความลึกที่โหลดไว้ เลื่อนออกทีละระยะห่างแนวที่ออกแบบ แล้วตัดให้อยู่ในพื้นที่และน่านน้ำที่เดินเรือได้ บนพื้นทะเลที่ลาดเอียง แต่ละแนวจึงอยู่ที่ความลึกใกล้เคียงกันและแนวกวาดสม่ำเสมอ มุมแอซิมัทใช้กำหนดเฉพาะแนวตัดขวาง และไม่ใช้ระยะห่างแบบปรับตามความลึก",
+ "Lines follow the {0} m contour: {1} lines, {2} m apart.": "แนวสำรวจตามเส้นชั้นความลึก {0} ม.: {1} แนว ห่างกัน {2} ม.",
+ "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "โหลดข้อมูลความลึกก่อน (ส่วน {§gbath} หรือ {§xyz}) ระหว่างนี้ใช้แนวตรง",
+ "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "ไม่มีเส้นชั้นความลึก {0} ม. ผ่านพื้นที่ จึงใช้แนวตรง ความลึกในพื้นที่: {1} ถึง {2} ม.",
+ "Too many contour lines for this area at this spacing; straight lines are used.": "แนวตามเส้นชั้นความลึกมากเกินไปสำหรับพื้นที่นี้ที่ระยะห่างนี้ จึงใช้แนวตรง"
 }
