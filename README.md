@@ -115,12 +115,12 @@ Choose *Geophysical* as the survey type, over an area or along a route.
 
 ## Infill planner
 
-Find the gaps in what you have surveyed and plan lines to fill them: https://syahperdana.github.io/swathplan/infill/
+Find the gaps (holidays) in what you have surveyed and plan lines to fill them: https://syahperdana.github.io/swathplan/infill/
 
-- **Load the coverage:** acquired tracks (positions as text or CSV, GPX, KML, SHP, DXF or GeoJSON) and, if you have them, XYZ soundings.
-- **Track swath width:** from the swath angles and the depth along each track (loaded bathymetry, or the design depth), or a fixed width.
-- **Coverage map:** covered parts in green, gaps in red, with coverage % and gap area.
-- **Infill lines:** planned across each gap at the line spacing from sections 1 and 2, in the tracks' direction or one you choose. No area yet? Use the coverage extent as the area.
+- **Choose the data:** multibeam bathymetry or side-scan sonar. The planner shows only what that data needs.
+- **Processed data (recommended):** load your processed bathymetry grid or side-scan mosaic as a GeoTIFF. Empty cells and pixels are the gaps. WGS 84 and UTM files are placed from their own EPSG code; large files are read at reduced resolution. Multibeam XYZ soundings can be added too.
+- **Track lines (estimate before processing):** vessel or towfish positions (text, CSV, GPX, KML, SHP, DXF or GeoJSON). Multibeam tracks use the swath from depth and angles; side-scan tracks use the range per side and the nadir gap, and can be checked for **200 % coverage** (points seen only once show in yellow).
+- **Infill lines** are planned across each gap at the multibeam spacing, or at the side-scan spacing for the chosen coverage.
 - **Exports:** every planner format, plus a gaps CSV.
 
 ## Export notes

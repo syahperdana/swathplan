@@ -114,16 +114,17 @@ The sensor section is `parts/sec2-geophys.html`; the multibeam sensor and swath 
 
 ## The infill planner
 
-`infill/index.html` is the MBES area planner with `parts/sec3-infill.html` after section 2 and the boundary section moved up; cross lines and auto direction are hidden. `js/infill/app.js`:
+`infill/index.html` starts with **Survey data** (`parts/sec0-infill.html`, select `ifK`: `mbes` or `sss`), then the coordinate system, the multibeam sensor and swath (multibeam only), **Coverage and gaps** (`parts/sec3-infill.html`), the boundary and the rest. Cross lines and auto direction are hidden; scenarios, the uncertainty budget, global bathymetry and the profile calculator sit in a hidden block. The XYZ section's controls are moved into the coverage section at start-up (`#ifXYZ`). Elements with class `if-mbes` / `if-sss` show for one kind of data (`ifApplyKind`).
 
-- **Tracks** (`IFT`, `[{n, p:[[lat,lon]…]}]`, kept in IndexedDB under `<SWP_STATE_KEY>:tracks`): text and CSV are split into tracks at blank lines, non-numeric lines or a change in a leading name column, each block parsed with `parseXY` and converted with `importLL`; when both columns are below 90 the reading nearest the current area wins. Other files (GPX, KML, SHP, DXF, GeoJSON) go through `readBoundary(files, "", 2)`. Points closer than 0.5 m are dropped.
-- **Coverage grid** over the area's bounding box (auto cell `max(0.5, S/8, √(bbox/1.5e6))`, larger when soundings are sparser; at most 6 million cells). The area is filled by scanline; each track segment is filled as a quad with port/starboard widths from `depthAt` × tan(angle) or a fixed width. XYZ soundings loaded in section 11 (marked `bath.xyz`) mark their cells; the global grid never counts.
-- **Gaps**: uncovered cells inside the area, joined with 8 neighbours, smaller than the minimum area dropped.
-- `gen()`: per gap (ordered across the line direction), `ceil(width/S)` lines centred on the gap, each running over the gap cells within its band plus the extension; turns as in the MBES planner, transits between gaps. No cross lines.
-- `summary()`: the overlap check is replaced by coverage and swept-area-to-gap ratio; the cross-line check is removed.
-- Map: the grid is one canvas image (green covered, red planned gap, orange ignored) drawn in `drawTiles`, with the tracks over it. Gaps export as CSV (area, centre).
+Coverage sources, all combined on one grid (`cov`: 255 = covered, otherwise the number of side-scan tracks that saw the cell):
 
-Test: `python3 test/infill_check.py infill/index.html`.
+- **Processed grids and mosaics** (`js/infill/tiff-mask.js`, `readTiffMask`): classic TIFF, strips or tiles, 1–4 interleaved samples, 8/16/32-bit integer or float, no compression, LZW, Deflate or PackBits, predictor 1/2/3. The raster becomes a "has data" mask, reduced so it has at most 4 million cells (a mask cell has data when any pixel in its block has). No data: the GDAL_NODATA tag, transparency, common fill values, and for mosaics black (and optionally white) background. Masks are kept in IndexedDB (`<key>:grids`) with their affine, EPSG and kind (`grid` for multibeam, `mosaic` for side-scan); only those of the current kind count. Position: the file's own EPSG when it is 4326 or WGS 84 / UTM (326xx, 327xx), otherwise the coordinate system of the CRS section (`ifConv`); converted through a lattice every 8 mask cells and interpolated (`ifGridWorld`). Every grid cell holding a valid mask cell is covered; the auto grid cell is at least 1.05 × the mask cell.
+- **XYZ soundings** (multibeam): cells with a sounding.
+- **Track lines** (`IFT`, kept in IndexedDB under `<key>:tracks`; text, CSV, GPX, KML, SHP, DXF, GeoJSON): multibeam tracks fill quads with port/starboard widths from `depthAt` × tan(angle) or a fixed width. Side-scan tracks fill each side from the towfish height (nadir gap) to the range, and a cell's count goes up once per track (`stamp`).
+
+A cell is covered when `cov ≥ need` (1, or 2 for 200 % side-scan). Gaps are uncovered cells inside the area, joined with 8 neighbours; small ones are dropped. Infill lines per gap at `ifSpacing()`: the multibeam spacing, or `2·range·(1 − margin)/(coverage/100)` for side-scan. The overlay shows covered (green), seen once at 200 % (yellow), planned gap (red) and ignored gap (orange). A 200 % side-scan job with only a mosaic gets a note: a mosaic cannot show double coverage.
+
+Tests: `python3 test/infill_check.py infill/index.html` (tracks, XYZ, exports, restore) and `python3 test/infill_sources_check.py infill/index.html` (grid holiday, UTM mosaic with and without EPSG, side-scan 100 % and 200 %, kind switch).
 
 ## Offline app (PWA)
 
@@ -165,7 +166,7 @@ python3 test/snapshot.py planner/index.html /tmp/after
 python3 test/compare.py /tmp/before /tmp/after       # PASS, or a list of what changed
 ```
 
-Infill planner: `python3 test/infill_check.py infill/index.html` (track import, gaps, infill lines, XYZ coverage, exports, restore).
+Infill planner: `python3 test/infill_check.py infill/index.html` (track import, gaps, infill lines, XYZ coverage, exports, restore) and `python3 test/infill_sources_check.py infill/index.html` (GeoTIFF grids and mosaics, side-scan coverage).
 
 The snapshot runs the planner in its default mode (multibeam, area), so its exports are those of the original MBES planner.
 
