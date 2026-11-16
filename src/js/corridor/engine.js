@@ -36,5 +36,9 @@ if(centre){const k=Math.ceil(need/S-1e-9);for(let i=-k;i<=k;i++)o.push(i*S)}
 else{const k=Math.max(1,Math.ceil((need+S/2)/S-1e-9));for(let i=0;i<k;i++){o.push(S/2+i*S,-(S/2+i*S))}}
 return[...new Set(o.map(v=>Math.round(v*100)/100))].sort((a,b)=>a-b)}
 const offName=(pre,v)=>{if(Math.abs(v)<1e-9)return pre+"C";const a=Math.round(Math.abs(v)*10)/10,s=String(Math.floor(a)).padStart(3,"0")+(a%1?"."+a.toFixed(1).split(".")[1]:"");return pre+(v<0?"P":"S")+s};
+// the part of P between chainages s0 and s1 (for route segments)
+function subpath(P,C,s0,s1){const L=C[C.length-1];s0=Math.max(0,Math.min(L,s0));s1=Math.max(s0,Math.min(L,s1));const o=[at(P,C,s0).p];for(let i=0;i<P.length;i++)if(C[i]>s0+1e-6&&C[i]<s1-1e-6)o.push([P[i][0],P[i][1]]);o.push(at(P,C,s1).p);return clean(o)}
+// segments of a route of length L: every SL metres, adjacent ones overlapping by SO metres
+function segments(L,SL,SO){if(!(SL>0)||L<=SL+1e-6)return[{a:0,b:L}];const n=Math.ceil(L/SL-1e-9),o=[];for(let i=0;i<n;i++)o.push({a:Math.max(0,i*SL-SO/2),b:Math.min(L,(i+1)*SL+SO/2)});return o}
 function outline(P,hw){if(P.length<2||!(hw>0))return[];const L=offset(P,-hw),Rt=offset(P,hw);return L.concat(Rt.reverse())}
-return{clean,chain,at,offset,extend,parseOffsets,swathOffsets,offName,outline,unloop}})();
+return{clean,chain,at,offset,extend,parseOffsets,swathOffsets,offName,outline,unloop,subpath,segments}})();

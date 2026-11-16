@@ -1026,5 +1026,15 @@
  "{0} % of the raster has data": "रास्टर के {0} % में डेटा है",
  "SwathPlan home: all tools": "SwathPlan होम: सभी टूल",
  "SwathPlan tools": "SwathPlan टूल",
- "Tools": "टूल"
+ "Tools": "टूल",
+ "Split into segments every (km, 0 = no split)": "हर इतने किमी पर खंडों में बाँटें (किमी, 0 = न बाँटें)",
+ "Overlap between segments (m)": "खंडों के बीच ओवरलैप (मी)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "लंबे मार्ग खंडों में सर्वे किए जाते हैं। हर खंड की अपनी लाइनें और सीमा होती है, और लाइनों के नाम में खंड संख्या होती है (जैसे RL_02_S050 = खंड 2, स्टारबोर्ड पर 50 मी)। पास-पास के खंड ओवरलैप करते हैं ताकि डेटा बिना अंतराल जुड़े।",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} खंड, अधिकतम {1} किमी, {2} मी ओवरलैप।",
+ "Segment {0}": "खंड {0}",
+ "Corridor segments": "कॉरिडोर खंड",
+ "Segment": "खंड",
+ "KP from": "KP से",
+ "KP to": "KP तक",
+ "Length (km)": "लंबाई (किमी)"
 }

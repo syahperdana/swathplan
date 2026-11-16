@@ -31,3 +31,9 @@ R=[[0,0],[300,400],[300,1000]];const C=CG.chain(R);ok(C[2]==1100,"chainage 1100"
 // outline polygon closes around route
 const ol=CG.outline([[0,0],[1000,0],[1000,1000]],100);ok(ol.length>6,"outline "+ol.length+" pts");
 const ex=CG.extend([[0,0],[100,0]],50);ok(ex[0][0]==-50&&ex[1][0]==150,"extension");
+// route segments: every 20 km with 100 m overlap; a 45 km route gives 3 segments
+let sg=CG.segments(45000,20000,100);ok(sg.length==3&&sg[0].a==0&&sg[0].b==20050&&sg[1].a==19950&&sg[1].b==40050&&sg[2].a==39950&&sg[2].b==45000,"segments 0–20.05, 19.95–40.05, 39.95–45 km");
+ok(CG.segments(15000,20000,100).length==1&&CG.segments(15000,0,100).length==1,"short route or 0 km: one segment");
+// cutting a bent route by chainage keeps the vertices in between and ends at the exact points
+R=[[0,0],[300,400],[300,1000]];const Cs=CG.chain(R),sp=CG.subpath(R,Cs,250,800);
+ok(sp.length==3&&Math.abs(sp[0][0]-150)<1e-9&&Math.abs(sp[0][1]-200)<1e-9&&sp[1][0]==300&&sp[1][1]==400&&Math.abs(sp[2][1]-700)<1e-9&&Math.abs(plen(sp)-550)<1e-9,"subpath 250–800 m: 550 m through the bend");

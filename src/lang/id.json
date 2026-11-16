@@ -1029,5 +1029,15 @@
  "{0} % of the raster has data": "{0} % raster berisi data",
  "SwathPlan home: all tools": "Beranda SwathPlan: semua alat",
  "SwathPlan tools": "Alat SwathPlan",
- "Tools": "Alat"
+ "Tools": "Alat",
+ "Split into segments every (km, 0 = no split)": "Bagi menjadi segmen setiap (km, 0 = tidak dibagi)",
+ "Overlap between segments (m)": "Tumpang tindih antarsegmen (m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Rute panjang disurvei per segmen. Setiap segmen memiliki lajur dan batasnya sendiri, dan lajur dinamai menurut segmen (misalnya RL_02_S050 adalah segmen 2, 50 m ke kanan). Segmen yang berdampingan saling tumpang tindih agar data bersambung tanpa celah.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} segmen hingga {1} km, tumpang tindih {2} m.",
+ "Segment {0}": "Segmen {0}",
+ "Corridor segments": "Segmen koridor",
+ "Segment": "Segmen",
+ "KP from": "KP dari",
+ "KP to": "KP sampai",
+ "Length (km)": "Panjang (km)"
 }

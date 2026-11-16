@@ -1027,5 +1027,15 @@
  "{0} % of the raster has data": "栅格的 {0} % 含数据",
  "SwathPlan home: all tools": "SwathPlan 首页：全部工具",
  "SwathPlan tools": "SwathPlan 工具",
- "Tools": "工具"
+ "Tools": "工具",
+ "Split into segments every (km, 0 = no split)": "每隔多少公里分段（公里，0 = 不分段）",
+ "Overlap between segments (m)": "段间重叠（米）",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "长路由按分段测量。每段有自己的测线和边界，测线按段编号命名（例如 RL_02_S050 为第 2 段、右舷 50 米）。相邻分段相互重叠，使数据无缝衔接。",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} 段，每段最长 {1} 公里，重叠 {2} 米。",
+ "Segment {0}": "第 {0} 段",
+ "Corridor segments": "走廊分段",
+ "Segment": "分段",
+ "KP from": "起始 KP",
+ "KP to": "终止 KP",
+ "Length (km)": "长度（公里）"
 }

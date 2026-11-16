@@ -1026,5 +1026,15 @@
  "{0} % of the raster has data": "래스터의 {0} %에 자료가 있음",
  "SwathPlan home: all tools": "SwathPlan 홈: 모든 도구",
  "SwathPlan tools": "SwathPlan 도구",
- "Tools": "도구"
+ "Tools": "도구",
+ "Split into segments every (km, 0 = no split)": "구간 분할 간격(km, 0 = 분할 안 함)",
+ "Overlap between segments (m)": "구간 간 중첩(m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "긴 노선은 구간별로 측량합니다. 각 구간에는 자체 측선과 경계가 있고, 측선 이름에 구간 번호가 들어갑니다(예: RL_02_S050은 2구간, 우현 50 m). 인접 구간은 서로 겹쳐 자료가 끊김 없이 이어지게 합니다.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0}개 구간, 최대 {1} km, 중첩 {2} m.",
+ "Segment {0}": "{0}구간",
+ "Corridor segments": "회랑 구간",
+ "Segment": "구간",
+ "KP from": "KP 시작",
+ "KP to": "KP 끝",
+ "Length (km)": "길이(km)"
 }

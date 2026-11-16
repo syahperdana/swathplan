@@ -1034,5 +1034,15 @@
  "{0} % of the raster has data": "{0} % растра содержат данные",
  "SwathPlan home: all tools": "Главная SwathPlan: все инструменты",
  "SwathPlan tools": "Инструменты SwathPlan",
- "Tools": "Инструменты"
+ "Tools": "Инструменты",
+ "Split into segments every (km, 0 = no split)": "Делить на участки каждые (км, 0 = не делить)",
+ "Overlap between segments (m)": "Перекрытие участков (м)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Длинные трассы снимают по участкам. У каждого участка свои галсы и граница, а в названии галса стоит номер участка (например, RL_02_S050 — участок 2, 50 м по правому борту). Соседние участки перекрываются, чтобы данные стыковались без разрыва.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} участков до {1} км, перекрытие {2} м.",
+ "Segment {0}": "Участок {0}",
+ "Corridor segments": "Участки коридора",
+ "Segment": "Участок",
+ "KP from": "KP от",
+ "KP to": "KP до",
+ "Length (km)": "Длина (км)"
 }

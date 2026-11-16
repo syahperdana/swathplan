@@ -1026,5 +1026,15 @@
  "{0} % of the raster has data": "{0} % ng raster ang may data",
  "SwathPlan home: all tools": "SwathPlan home: lahat ng tool",
  "SwathPlan tools": "Mga tool ng SwathPlan",
- "Tools": "Mga tool"
+ "Tools": "Mga tool",
+ "Split into segments every (km, 0 = no split)": "Hatiin sa mga segment bawat (km, 0 = walang hati)",
+ "Overlap between segments (m)": "Overlap sa pagitan ng mga segment (m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Sinusurvey nang pa-segment ang mahahabang ruta. May sariling linya at hangganan ang bawat segment, at may numero ng segment ang pangalan ng linya (halimbawa, ang RL_02_S050 ay segment 2, 50 m sa starboard). Nag-o-overlap ang magkatabing segment para magdugtong ang data nang walang puwang.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} segment na hanggang {1} km, overlap na {2} m.",
+ "Segment {0}": "Segment {0}",
+ "Corridor segments": "Mga segment ng corridor",
+ "Segment": "Segment",
+ "KP from": "KP mula",
+ "KP to": "KP hanggang",
+ "Length (km)": "Haba (km)"
 }

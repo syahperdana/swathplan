@@ -1026,5 +1026,15 @@
  "{0} % of the raster has data": "{0} % ảnh lưới có dữ liệu",
  "SwathPlan home: all tools": "Trang chủ SwathPlan: tất cả công cụ",
  "SwathPlan tools": "Công cụ SwathPlan",
- "Tools": "Công cụ"
+ "Tools": "Công cụ",
+ "Split into segments every (km, 0 = no split)": "Chia thành đoạn mỗi (km, 0 = không chia)",
+ "Overlap between segments (m)": "Chồng phủ giữa các đoạn (m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Tuyến dài được khảo sát theo đoạn. Mỗi đoạn có tuyến đo và ranh giới riêng, tên tuyến có số đoạn (ví dụ RL_02_S050 là đoạn 2, cách 50 m về mạn phải). Các đoạn kề nhau chồng lên nhau để dữ liệu nối liền không khoảng trống.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} đoạn, tối đa {1} km, chồng phủ {2} m.",
+ "Segment {0}": "Đoạn {0}",
+ "Corridor segments": "Các đoạn hành lang",
+ "Segment": "Đoạn",
+ "KP from": "KP từ",
+ "KP to": "KP đến",
+ "Length (km)": "Chiều dài (km)"
 }

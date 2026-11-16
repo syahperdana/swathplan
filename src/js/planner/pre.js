@@ -12,6 +12,7 @@ SWP_BOUND_PDF:{get:()=>MODE().corr?"Corridor boundary (WGS 84)":"Survey area bou
 SWP_REPORT_SUB:{get:()=>{const m=MODE();return m.geo?"Geophysical survey line plan and IHO S-44 summary":m.sbes?"Single-beam survey line plan and IHO S-44 summary":m.corr?"Corridor survey line plan and IHO S-44 summary":"MBES survey line plan and IHO S-44 summary"}},
 // map sheet rows: set by the corridor and geophysical parts when their mode is on
 SWP_AZROW:{get:()=>MODE().corr&&typeof coAzRow=="function"?coAzRow:undefined},
+SWP_SEGS:{get:()=>MODE().corr&&typeof coSegs=="function"?coSegs():[]},
 SWP_SENSORROW:{get:()=>MODE().geo&&typeof geoSensorRow=="function"?geoSensorRow:MODE().sbes&&typeof sbSensorRow=="function"?sbSensorRow:undefined},
 SWP_SWATHROW:{get:()=>MODE().geo&&typeof geoSwathRow=="function"?geoSwathRow:MODE().sbes&&typeof sbSwathRow=="function"?sbSwathRow:undefined},
 // reports: the sensor in words, and whether multibeam swath and overlap apply

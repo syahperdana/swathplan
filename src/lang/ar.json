@@ -1027,5 +1027,15 @@
  "{0} % of the raster has data": "{0} % من الصورة الشبكية تحتوي بيانات",
  "SwathPlan home: all tools": "الصفحة الرئيسية لـ SwathPlan: كل الأدوات",
  "SwathPlan tools": "أدوات SwathPlan",
- "Tools": "الأدوات"
+ "Tools": "الأدوات",
+ "Split into segments every (km, 0 = no split)": "التقسيم إلى مقاطع كل (كم، 0 = بلا تقسيم)",
+ "Overlap between segments (m)": "التداخل بين المقاطع (م)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "تُمسح المسارات الطويلة على مقاطع. لكل مقطع خطوطه وحدوده، وتُسمّى الخطوط برقم المقطع (مثلًا RL_02_S050 هو المقطع 2، على بعد 50 م إلى اليمين). تتداخل المقاطع المتجاورة لتتصل البيانات دون فجوة.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} مقاطع حتى {1} كم، بتداخل {2} م.",
+ "Segment {0}": "المقطع {0}",
+ "Corridor segments": "مقاطع الممر",
+ "Segment": "المقطع",
+ "KP from": "من KP",
+ "KP to": "إلى KP",
+ "Length (km)": "الطول (كم)"
 }

@@ -89,7 +89,9 @@ A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follow
 
 ### Corridor mode
 
-The route section is `parts/sec3-corridor.html`. `gen()` makes the corridor lines, turns, cross lines at KP and the outline as `poly`; the drawing buttons and presets act on the route; route import, the KP table and route RLN; the route and KP labels on the map; the route in autosave and in `.SPL` files (`[ROUTE]`, corridor mode only). Offsets are positive to starboard; lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
+The route section is `parts/sec3-corridor.html`. `gen()` makes the corridor lines, turns, cross lines at KP and the outline as `poly`; the drawing buttons and presets act on the route; route import, the KP table and route RLN; the route and KP labels on the map; the route in autosave and in `.SPL` files (`[ROUTE]`, corridor mode only). **Segments:** `CG.segments(L, coSeg km, coSegO m)` cuts long routes every `coSeg` km (default 20; 0 = never), adjacent segments overlapping by `coSegO` m (default 100, half added at each cut). Each segment gets `CG.subpath` of the route, its own offset lines (named `RL_01_S050`: prefix, segment, side and offset) and its own outline in `CO.segs`; between segments the vessel transits (`ty:"t"`). `SWP_SEGS` (corridor mode) gives the segment polygons with names and KP ranges to the DXF (layer `segments`, with labels), KML, GeoJSON, SHP (`segments`), the map sheet and the PDF report (a KP table). The DXF also carries the area or corridor boundary (layer `boundary`) in every mode.
+
+Offsets are positive to starboard; lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
 
 ### Single-beam mode
 

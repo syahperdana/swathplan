@@ -1027,5 +1027,15 @@
  "{0} % of the raster has data": "{0} % van het raster bevat gegevens",
  "SwathPlan home: all tools": "SwathPlan-start: alle tools",
  "SwathPlan tools": "SwathPlan-tools",
- "Tools": "Tools"
+ "Tools": "Tools",
+ "Split into segments every (km, 0 = no split)": "Opdelen in segmenten elke (km, 0 = niet opdelen)",
+ "Overlap between segments (m)": "Overlap tussen segmenten (m)",
+ "Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.": "Lange tracés worden in segmenten gemeten. Elk segment heeft eigen lijnen en een eigen grens, en lijnen krijgen het segmentnummer (bijvoorbeeld RL_02_S050 is segment 2, 50 m aan stuurboord). Aangrenzende segmenten overlappen zodat de gegevens zonder gat aansluiten.",
+ "{0} segments of up to {1} km, overlapping {2} m.": "{0} segmenten van maximaal {1} km, {2} m overlap.",
+ "Segment {0}": "Segment {0}",
+ "Corridor segments": "Corridorsegmenten",
+ "Segment": "Segment",
+ "KP from": "KP van",
+ "KP to": "KP tot",
+ "Length (km)": "Lengte (km)"
 }
