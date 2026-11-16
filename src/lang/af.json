@@ -1024,5 +1024,8 @@
  "not a TIFF file": "nie ’n TIFF-lêer nie",
  "read at 1/{0} resolution": "teen 1/{0} resolusie gelees",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "TIFF met aparte vlakke word nie ondersteun nie: voer dit as ’n vervlegte (pixel-) TIFF uit",
- "{0} % of the raster has data": "{0} % van die raster het data"
+ "{0} % of the raster has data": "{0} % van die raster het data",
+ "SwathPlan home: all tools": "SwathPlan-tuisblad: alle gereedskap",
+ "SwathPlan tools": "SwathPlan-gereedskap",
+ "Tools": "Gereedskap"
 }

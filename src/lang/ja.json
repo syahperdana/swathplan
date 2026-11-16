@@ -1024,5 +1024,8 @@
  "not a TIFF file": "TIFFファイルではありません",
  "read at 1/{0} resolution": "1/{0}の解像度で読み込み",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "プレーン分離TIFFには対応していません：インターリーブ（ピクセル）TIFFで書き出してください",
- "{0} % of the raster has data": "ラスターの{0} %にデータあり"
+ "{0} % of the raster has data": "ラスターの{0} %にデータあり",
+ "SwathPlan home: all tools": "SwathPlanホーム：すべてのツール",
+ "SwathPlan tools": "SwathPlanのツール",
+ "Tools": "ツール"
 }

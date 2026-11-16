@@ -1024,5 +1024,8 @@
  "not a TIFF file": "keine TIFF-Datei",
  "read at 1/{0} resolution": "mit 1/{0} Auflösung gelesen",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "TIFF mit getrennten Ebenen wird nicht unterstützt: als verschachteltes (Pixel-)TIFF exportieren",
- "{0} % of the raster has data": "{0} % des Rasters enthalten Daten"
+ "{0} % of the raster has data": "{0} % des Rasters enthalten Daten",
+ "SwathPlan home: all tools": "SwathPlan-Startseite: alle Werkzeuge",
+ "SwathPlan tools": "SwathPlan-Werkzeuge",
+ "Tools": "Werkzeuge"
 }

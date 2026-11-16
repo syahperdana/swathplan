@@ -106,7 +106,10 @@ const root=(document.querySelector('meta[name="swp-root"]')||{}).content||"./";
 // Manifest and icons are added on the website only, so a downloaded copy does not look for missing files.
 if(web&&!document.querySelector('link[rel="manifest"]')){[["manifest","manifest.webmanifest"],["icon","icons/icon-192.png"],["apple-touch-icon","icons/apple-touch-icon.png"]].forEach(([r,h])=>{const l=document.createElement("link");l.rel=r;l.href=root+h;document.head.appendChild(l)});
 const tc=document.createElement("meta");tc.name="theme-color";tc.content="#12262d";document.head.appendChild(tc)}
-["tabH","logoHub"].forEach(id=>{const a=document.getElementById(id);if(!a)return;if(web)a.href=root;else{a.href="https://syahperdana.github.io/swathplan/";a.target="_blank";a.rel="noopener"}});
+{const a=document.getElementById("logoHub");if(a){if(web)a.href=root;else{a.href="https://syahperdana.github.io/swathplan/";a.target="_blank";a.rel="noopener"}}}
+// tools menu: the current page is marked; a downloaded copy links to the live site
+document.querySelectorAll("#tmenu .tml a").forEach(a=>{const p=a.dataset.p;if(web)a.href=root+p;else{a.href="https://syahperdana.github.io/swathplan/"+p;a.target="_blank";a.rel="noopener"}if(web&&p&&location.pathname.indexOf("/"+p)>=0)a.classList.add("on")});
+{const m=document.getElementById("tmenu");if(m)document.addEventListener("click",e=>{if(m.open&&!m.contains(e.target))m.open=false})}
 if(!document.getElementById("swpBarCss")){const st=document.createElement("style");st.id="swpBarCss";
 st.textContent="#swpBar{position:fixed;left:50%;top:calc(var(--hh,0px) + 10px);transform:translateX(-50%);background:#12262d;color:#fff;border:1px solid #16c4b4;border-radius:8px;padding:7px 8px 7px 14px;display:flex;gap:10px;align-items:center;z-index:100;font-size:13px;box-shadow:0 4px 18px #0006;max-width:92vw}#swpBar button{background:#16c4b4;color:#06202b;border:0;border-radius:5px;padding:5px 11px;font-weight:600;cursor:pointer;margin:0;font-size:13px}#swpBar button.x{background:transparent;color:#9fc2bd;font-size:18px;line-height:1;padding:0 4px}@media print{#swpBar{display:none}}";
 document.head.appendChild(st)}

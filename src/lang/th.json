@@ -1032,5 +1032,8 @@
  "not a TIFF file": "ไม่ใช่ไฟล์ TIFF",
  "read at 1/{0} resolution": "อ่านที่ความละเอียด 1/{0}",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "ไม่รองรับ TIFF แบบแยกระนาบ: ส่งออกเป็น TIFF แบบสลับ (ต่อพิกเซล)",
- "{0} % of the raster has data": "{0} % ของราสเตอร์มีข้อมูล"
+ "{0} % of the raster has data": "{0} % ของราสเตอร์มีข้อมูล",
+ "SwathPlan home: all tools": "หน้าแรก SwathPlan: เครื่องมือทั้งหมด",
+ "SwathPlan tools": "เครื่องมือ SwathPlan",
+ "Tools": "เครื่องมือ"
 }

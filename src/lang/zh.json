@@ -1024,5 +1024,8 @@
  "not a TIFF file": "不是 TIFF 文件",
  "read at 1/{0} resolution": "按 1/{0} 分辨率读取",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "不支持分平面存储的 TIFF：请导出为交错（像素）TIFF",
- "{0} % of the raster has data": "栅格的 {0} % 含数据"
+ "{0} % of the raster has data": "栅格的 {0} % 含数据",
+ "SwathPlan home: all tools": "SwathPlan 首页：全部工具",
+ "SwathPlan tools": "SwathPlan 工具",
+ "Tools": "工具"
 }

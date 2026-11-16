@@ -1023,5 +1023,8 @@
  "not a TIFF file": "TIFF فائل نہیں",
  "read at 1/{0} resolution": "1/{0} ریزولوشن پر پڑھا گیا",
  "separate-plane TIFF is not supported: export it as an interleaved (pixel) TIFF": "الگ پلین والی TIFF معاون نہیں: انٹرلیوڈ (پکسل) TIFF کے طور پر ایکسپورٹ کریں",
- "{0} % of the raster has data": "راسٹر کے {0} % میں ڈیٹا ہے"
+ "{0} % of the raster has data": "راسٹر کے {0} % میں ڈیٹا ہے",
+ "SwathPlan home: all tools": "SwathPlan ہوم: تمام ٹولز",
+ "SwathPlan tools": "SwathPlan ٹولز",
+ "Tools": "ٹولز"
 }
