@@ -1056,5 +1056,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Галсы идут по изобате {0} м: {1} галсов, через {2} м.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Сначала загрузите батиметрию (раздел {§gbath} или {§xyz}); до этого используются прямые галсы.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Изобата {0} м не пересекает район; используются прямые галсы. Глубины в районе: от {1} до {2} м.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Слишком много галсов по изобате для этого района при таком шаге; используются прямые галсы."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Слишком много галсов по изобате для этого района при таком шаге; используются прямые галсы.",
+ "Checked against the manufacturer's datasheet: {0}.": "Проверено по паспорту изготовителя: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Ещё не проверено по паспорту: считайте значения приблизительными."
 }

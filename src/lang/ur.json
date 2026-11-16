@@ -1048,5 +1048,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "لائنیں {0} میٹر کنٹور کی پیروی کرتی ہیں: {1} لائنیں، {2} میٹر فاصلہ۔",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "پہلے بیتھیمیٹری لوڈ کریں (حصہ {§gbath} یا {§xyz})؛ تب تک سیدھی لائنیں استعمال ہوتی ہیں۔",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "کوئی {0} میٹر کنٹور علاقے سے نہیں گزرتی؛ سیدھی لائنیں استعمال ہوتی ہیں۔ علاقے میں گہرائی: {1} سے {2} میٹر۔",
- "Too many contour lines for this area at this spacing; straight lines are used.": "اس فاصلے پر اس علاقے کے لیے بہت زیادہ کنٹور لائنیں؛ سیدھی لائنیں استعمال ہوتی ہیں۔"
+ "Too many contour lines for this area at this spacing; straight lines are used.": "اس فاصلے پر اس علاقے کے لیے بہت زیادہ کنٹور لائنیں؛ سیدھی لائنیں استعمال ہوتی ہیں۔",
+ "Checked against the manufacturer's datasheet: {0}.": "مینوفیکچرر کی ڈیٹا شیٹ سے جانچا گیا: {0}۔",
+ "Not yet checked against a datasheet: treat these values as approximate.": "ابھی ڈیٹا شیٹ سے نہیں جانچا گیا: ان اقدار کو تخمینی سمجھیں۔"
 }

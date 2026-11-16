@@ -183,7 +183,7 @@ ol.refs a.back{text-decoration:none;margin-left:4px}
 <h3>6.1 Multibeam: sensor, swath and overlap</h3>
 <figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Figure 6. <i>Sensor &amp; design depth</i> and <i>Swath &amp; overlap</i>.</figcaption></figure>
 <ul>
-<li><b>MBES model</b>: a catalogue of common multibeam systems with beams, frequency and maximum swath half-angle. The values are approximate: check your datasheet. Add your own models, or import a catalogue as CSV with the same columns.</li>
+<li><b>MBES model</b>: a catalogue of common multibeam systems with beams, frequency and maximum swath half-angle. Current models from Kongsberg, Teledyne RESON, R2Sonic and NORBIT have been checked against the maker's datasheet, and the line under the values names it; the others say they are not yet checked and are approximate. Either way, check your own system's datasheet. Add your own models, or import a catalogue as CSV with the same columns.</li>
 <li><b>Design depth</b>: the depth the spacing is designed for. Use the shallowest depth for full coverage everywhere; the 5th percentile is a common compromise.</li>
 <li><b>Port and starboard angle</b>: the swath half-angles you will actually log. They set the swath width W = depth × (tan port + tan starboard).</li>
 <li><b>Lateral overlap</b>: how much neighbouring swaths overlap, typically 20–30 %. The spacing is S = W × (1 − overlap).</li>
@@ -334,7 +334,7 @@ ol.refs a.back{text-decoration:none;margin-left:4px}
 <li>Contour-following lines use one contour and the design spacing; adaptive spacing does not apply to them.</li>
 <li>Swath and footprint assume a flat seabed at the depth under the line; refraction and beam-angle limits are only those you enter.</li>
 <li>Time estimates assume constant speeds and ignore currents, traffic and port calls.</li>
-<li>Catalogue values for sensors, side-scan models and cameras are approximate.</li>
+<li>Catalogue values not marked as checked are approximate; checked ones follow the maker's datasheet, which your system's configuration may differ from.</li>
 <li>Turns are checked only against the loaded coastline, not against shoals, structures or traffic.</li>
 <li>Coastlines and global bathymetry are not navigation data.</li>
 </ul>

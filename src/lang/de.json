@@ -1049,5 +1049,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Die Linien folgen der {0}-m-Tiefenlinie: {1} Linien, {2} m Abstand.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Zuerst Bathymetrie laden (Abschnitt {§gbath} oder {§xyz}); bis dahin werden gerade Linien verwendet.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Keine {0}-m-Tiefenlinie schneidet das Gebiet; es werden gerade Linien verwendet. Tiefen im Gebiet: {1} bis {2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Zu viele Tiefenlinien-Linien für dieses Gebiet bei diesem Abstand; es werden gerade Linien verwendet."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Zu viele Tiefenlinien-Linien für dieses Gebiet bei diesem Abstand; es werden gerade Linien verwendet.",
+ "Checked against the manufacturer's datasheet: {0}.": "Mit dem Datenblatt des Herstellers geprüft: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Noch nicht mit einem Datenblatt geprüft: Werte als Näherung behandeln."
 }

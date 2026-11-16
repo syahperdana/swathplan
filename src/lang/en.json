@@ -1109,5 +1109,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used."
+ "Too many contour lines for this area at this spacing; straight lines are used.",
+ "Checked against the manufacturer's datasheet: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate."
 ]

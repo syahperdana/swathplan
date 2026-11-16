@@ -1049,5 +1049,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Le linee seguono l’isobata dei {0} m: {1} linee, distanti {2} m.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Carica prima la batimetria (sezione {§gbath} o {§xyz}); fino ad allora si usano linee rette.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Nessuna isobata dei {0} m attraversa l’area; si usano linee rette. Profondità nell’area: da {1} a {2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Troppe linee di isobata per quest’area con questa spaziatura; si usano linee rette."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Troppe linee di isobata per quest’area con questa spaziatura; si usano linee rette.",
+ "Checked against the manufacturer's datasheet: {0}.": "Verificato con la scheda tecnica del produttore: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Non ancora verificato con una scheda tecnica: considera questi valori approssimativi."
 }

@@ -1048,5 +1048,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Các tuyến đi theo đường đẳng sâu {0} m: {1} tuyến, cách nhau {2} m.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Hãy nạp dữ liệu độ sâu trước (mục {§gbath} hoặc {§xyz}); cho đến lúc đó dùng tuyến thẳng.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Không có đường đẳng sâu {0} m nào cắt qua khu vực; dùng tuyến thẳng. Độ sâu trong khu vực: {1} đến {2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Quá nhiều tuyến đẳng sâu cho khu vực này với khoảng cách này; dùng tuyến thẳng."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Quá nhiều tuyến đẳng sâu cho khu vực này với khoảng cách này; dùng tuyến thẳng.",
+ "Checked against the manufacturer's datasheet: {0}.": "Đã đối chiếu với bảng thông số của nhà sản xuất: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Chưa đối chiếu với bảng thông số: xem các giá trị này là gần đúng."
 }

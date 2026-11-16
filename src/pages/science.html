@@ -167,7 +167,30 @@ cost           = total project (days) × day rate</pre>
 <tr><td>DJI Matrice 4E (wide)</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent (12.3 mm), 5280 px, 0.5 s</td><td><sup class="fn"><a href="#r27">27</a></sup></td></tr>
 <tr><td>DJI Phantom 4 RTK</td><td>1″ (13.2 × 8.8 mm), 8.8 mm, 5472 px, 2.5 s</td><td><sup class="fn"><a href="#r28">28</a></sup></td></tr>
 <tr><td>DJI Zenmuse P1, 35 mm lens</td><td>35.9 × 24 mm, 35 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr></table>
-<p>The multibeam catalogue in the survey planner is compiled from public lists and marked approximate in the planner; check your sensor's datasheet.</p>
+<p>Multibeam models checked against the manufacturer's published datasheet or manual in November 2026<sup class="fn"><a href="#r37">37</a></sup>. The half-angle is half the swath sector the maker states for a flat seabed (for NORBIT, half the sector it gives for IHO Special Order quality); "n/a" means the datasheet does not give a single-swath beam count.</p>
+<table><tr><th>Model</th><th>Beams</th><th>Frequency</th><th>Max half-angle</th><th>Source</th></tr>
+<tr><td>Kongsberg EM 2040C</td><td>512</td><td>200–400 kHz + 700 kHz</td><td>70°</td><td>Kongsberg EM 2040C MKII data sheet 443809</td></tr>
+<tr><td>Kongsberg EM 2040P</td><td>n/a</td><td>200–700 kHz</td><td>85°</td><td>Kongsberg EM 2040P MKII data sheet 437136</td></tr>
+<tr><td>Kongsberg EM 2040-04 Single RX (MKII)</td><td>n/a</td><td>200–700 kHz</td><td>85°</td><td>Kongsberg EM 2040 MKII data sheet 443810</td></tr>
+<tr><td>Kongsberg EM 2040-07 Dual RX (MKII)</td><td>n/a</td><td>200–700 kHz</td><td>85°</td><td>Kongsberg EM 2040 MKII data sheet 443810</td></tr>
+<tr><td>Kongsberg EM 2042</td><td>1024</td><td>150–700 kHz</td><td>85°</td><td>Kongsberg EM2042 data sheets 496233 and 110-0132023</td></tr>
+<tr><td>Kongsberg EM 712</td><td>n/a</td><td>40–100 kHz</td><td>70°</td><td>Kongsberg EM 712 data sheet</td></tr>
+<tr><td>Kongsberg EM 124</td><td>1024</td><td>10.5–13.5 kHz</td><td>75°</td><td>Kongsberg EM 124 presentation (Lobecker, IRSO 2023)</td></tr>
+<tr><td>Teledyne RESON SeaBat T20-P</td><td>1024</td><td>190–420 kHz</td><td>70°</td><td>Teledyne RESON SeaBat T20-P product leaflet</td></tr>
+<tr><td>Teledyne RESON SeaBat T20-R</td><td>1024</td><td>190–420 kHz</td><td>70°</td><td>Teledyne RESON SeaBat T20-R/T20-P product leaflets</td></tr>
+<tr><td>Teledyne RESON SeaBat T50-P</td><td>1024</td><td>190–420 kHz</td><td>75°</td><td>Teledyne RESON SeaBat T50-P/T50-R/T50-S product leaflets</td></tr>
+<tr><td>Teledyne RESON SeaBat T50-R</td><td>1024</td><td>190–420 kHz</td><td>75°</td><td>Teledyne RESON SeaBat T50-R/T50-S product leaflets</td></tr>
+<tr><td>Teledyne RESON SeaBat T51-S</td><td>1024</td><td>400/800 kHz</td><td>85°</td><td>Teledyne RESON SeaBat T51-S product leaflet</td></tr>
+<tr><td>Teledyne RESON SeaBat T51-R</td><td>1024</td><td>350–800 kHz</td><td>75°</td><td>Teledyne RESON SeaBat T51-R product leaflet and launch release (2021)</td></tr>
+<tr><td>R2Sonic Sonic 2020</td><td>256</td><td>200–400 kHz + 700 kHz</td><td>65°</td><td>R2Sonic Sonic 2020 brochure</td></tr>
+<tr><td>R2Sonic Sonic 2022</td><td>256</td><td>200–400 kHz</td><td>80°</td><td>R2Sonic Sonic 2024/2022 operation manual</td></tr>
+<tr><td>R2Sonic Sonic 2024</td><td>256</td><td>200–400 kHz</td><td>80°</td><td>R2Sonic Sonic 2024/2022 operation manual</td></tr>
+<tr><td>R2Sonic Sonic 2026</td><td>256</td><td>n/a</td><td>80°</td><td>R2Sonic Sonic 2026/2024/2022 operation manual V6.3</td></tr>
+<tr><td>NORBIT iWBMS</td><td>1024</td><td>200–700 kHz</td><td>77°</td><td>NORBIT iWBMS data sheets (IHO Special Order sector >155°)</td></tr>
+<tr><td>NORBIT WINGHEAD i77h</td><td>1024</td><td>200–700 kHz</td><td>77°</td><td>NORBIT WINGHEAD i77h data sheet PS-200004 (IHO Special Order sector >155°)</td></tr>
+<tr><td>NORBIT WINGHEAD i80s</td><td>1024</td><td>200–700 kHz</td><td>70°</td><td>NORBIT WINGHEAD i80S LR data sheet PS-230008</td></tr>
+</table>
+<p>The other multibeam entries, mostly discontinued models, are compiled from public lists and marked in the planner as not yet checked; check your sensor's datasheet.</p>
 
 <h2>15 Assumptions and limitations</h2>
 <ul>
@@ -217,6 +240,7 @@ cost           = total project (days) × day rate</pre>
 <li id="r34">Lorensen, W. E. and Cline, H. E. (1987). Marching cubes: a high resolution 3D surface construction algorithm. <i>ACM SIGGRAPH Computer Graphics</i>, 21(4), 163–169. <a href="https://doi.org/10.1145/37402.37422">doi:10.1145/37402.37422</a> (marching squares is its two-dimensional form).</li>
 <li id="r35">Chaikin, G. M. (1974). An algorithm for high-speed curve generation. <i>Computer Graphics and Image Processing</i>, 3(4), 346–349. <a href="https://doi.org/10.1016/0146-664X(74)90028-8">doi:10.1016/0146-664X(74)90028-8</a></li>
 <li id="r36">Douglas, D. H. and Peucker, T. K. (1973). Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. <i>Cartographica</i>, 10(2), 112–122. <a href="https://doi.org/10.3138/FM57-6770-U75U-7727">doi:10.3138/FM57-6770-U75U-7727</a></li>
+<li id="r37">Manufacturer datasheets and manuals, as named in the table: Kongsberg Discovery (kongsberg.com/discovery/seafloor-mapping), Teledyne RESON (teledynemarine.com/reson), R2Sonic (r2sonic.com), NORBIT Subsea (norbit.com). Accessed November 2026.</li>
 </ol>
 <p class="ver">© 2026 Aldwin Syahperdana. Last checked against the sources: November 2026.</p>
 </article></main>

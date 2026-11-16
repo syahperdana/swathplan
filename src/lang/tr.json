@@ -1048,5 +1048,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Hatlar {0} m eş derinlik eğrisini izliyor: {1} hat, {2} m aralıkla.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Önce batimetri yükleyin (bölüm {§gbath} veya {§xyz}); o zamana kadar düz hatlar kullanılır.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Alandan {0} m eş derinlik eğrisi geçmiyor; düz hatlar kullanılır. Alandaki derinlikler: {1} ile {2} m arası.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Bu aralıkta bu alan için çok fazla eş derinlik hattı var; düz hatlar kullanılır."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Bu aralıkta bu alan için çok fazla eş derinlik hattı var; düz hatlar kullanılır.",
+ "Checked against the manufacturer's datasheet: {0}.": "Üreticinin veri sayfasıyla denetlendi: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Henüz bir veri sayfasıyla denetlenmedi: bu değerleri yaklaşık kabul edin."
 }

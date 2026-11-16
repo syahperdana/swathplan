@@ -1049,5 +1049,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Die lyne volg die {0} m-dieptelyn: {1} lyne, {2} m uitmekaar.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Laai eers batimetrie (afdeling {§gbath} of {§xyz}); tot dan word reguit lyne gebruik.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Geen {0} m-dieptelyn kruis die gebied nie; reguit lyne word gebruik. Dieptes in die gebied: {1} tot {2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Te veel dieptelyn-lyne vir hierdie gebied by hierdie spasiëring; reguit lyne word gebruik."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Te veel dieptelyn-lyne vir hierdie gebied by hierdie spasiëring; reguit lyne word gebruik.",
+ "Checked against the manufacturer's datasheet: {0}.": "Nagegaan teen die vervaardiger se datablad: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Nog nie teen ’n datablad nagegaan nie: beskou hierdie waardes as benaderd."
 }
