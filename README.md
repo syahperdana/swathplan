@@ -99,6 +99,13 @@ To save typing, the planner has short lists of common equipment, always with a *
 
 Choose *Hydrographic: single-beam (SBES)* for shallow or partial-coverage work. Set the beam width and the line spacing, or use the S-44 maximum (3 × depth, or 25 m). The planner shows the footprint and coverage, checks the spacing and the 5 % coverage that S-44 allows for Order 2 and 1b, and warns that Order 1a needs a feature search and Special and Exclusive Order need full coverage.
 
+## Documentation
+
+- **User guide** (`guide/`): every section of the survey planner and the infill planner, step by step, with screenshots.
+- **Science & references** (`science/`): the formulas behind every number, with footnotes to the original standards, papers, datasets and datasheets (IHO S-44 Edition 6.2.0, Hare 1995, NOAA specifications, Natural Earth, GEBCO and others).
+
+Both are in English for now; translations will follow.
+
 ## Drone surveys (photogrammetry)
 
 Choose *Aerial: drone (photogrammetry)* to plan a mapping flight over an area or along a route. Pick a camera (DJI Mavic 3 Enterprise, Matrice 4E, Phantom 4 RTK, Zenmuse P1, or your own sensor size, focal length and image width), then set the flight height, the forward and side overlap, the speed and the battery time. The planner shows the ground sample distance, the image footprint, the line spacing, the photo interval and the number of photos and batteries, and warns when the height is above 120 m or the photos come faster than the camera allows. The QGroundControl and Mission Planner exports carry the height, the speed and a camera trigger distance. Camera values are approximate: check your camera's datasheet.

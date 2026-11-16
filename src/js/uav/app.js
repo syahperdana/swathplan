@@ -1,5 +1,5 @@
 /* ===== drone (photogrammetry) mode of the survey planner: camera footprint, overlaps, photo trigger, batteries (active when MODE().uav) ===== */
-const UV_CAM={m3e:[17.3,13,12.3,5280,.7],m4e:[17.3,13,12.3,5280,.5],p4r:[13.2,8.8,8.8,5472,2],p1:[35.9,24,35,8192,.7]};// approximate: sensor w/h mm, focal mm, image width px, shortest interval s
+const UV_CAM={m3e:[17.3,13,12.3,5280,.7],m4e:[17.3,13,12.3,5280,.5],p4r:[13.2,8.8,8.8,5472,2.5],p1:[35.9,24,35,8192,.7]};// approximate: sensor w/h mm, focal mm, image width px, shortest interval s
 const uvKnMs=.5144;
 function uvGeo(){const H=Math.max(1,g("uvH")),F=Math.max(.1,g("uvF")),across=H*Math.max(.1,g("uvSW"))/F,along=H*Math.max(.1,g("uvSH"))/F,gsd=across/Math.max(1,g("uvIW")),
 so=Math.min(95,Math.max(0,g("uvSO")))/100,fo=Math.min(95,Math.max(0,g("uvFO")))/100,v=Math.max(.1,g("spd")*uvKnMs);

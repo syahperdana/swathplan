@@ -2,7 +2,7 @@
 
 Read `DEVELOPMENT.md` first. The essentials:
 
-- `index.html` (hub, home page), `planner/index.html`, `infill/index.html`, the redirects `mbes/`, `corridor/`, `geophys/`, `hub/` and `sw.js` are generated. Edit `src/`, then run `node tools/build.mjs`. Never edit them directly.
+- `index.html` (hub, home page), `planner/index.html`, `infill/index.html`, `guide/index.html`, `science/index.html`, the redirects `mbes/`, `corridor/`, `geophys/`, `hub/` and `sw.js` are generated. Edit `src/`, then run `node tools/build.mjs`. Never edit them directly.
 - The JS parts in `src/js/` are ordered slices of one global script. Keep the include order in `src/pages/planner.html`.
 - Inside `initApp()`, defer anything that uses `PACKS` or `setLang` with `setTimeout`.
 - All planners are built from the same parts (`src/parts/`, `src/js/`). A change there affects both: check the planner snapshot and run the corridor, geophysical and infill tests.

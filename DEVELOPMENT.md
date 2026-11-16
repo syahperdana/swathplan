@@ -245,3 +245,12 @@ Also check by hand after any visible change: switch languages and look for missi
 - Sonar catalogue values are approximate and compiled from public information.
 - The EPSG path, Firefox and Safari have not been tested by the automated tests.
 - SwathPlan is a planning aid. Results must be checked against equipment specifications, the current IHO S-44 and the client's requirements.
+
+## User guide and science pages
+
+`src/pages/guide.html` → `guide/index.html` and `src/pages/science.html` → `science/index.html` are documentation pages in the style of the home page (`css/hub.css` + `css/docs.css`, script `js/docs/docs.js`). Only the page frame (header, contents, footer, marked `data-t`) is translated, with the `subset` langpack; the text is English until it has been reviewed, then it will be translated. The contents list is built from the article's `h2` and `h3`, and footnotes (`<sup class="fn"><a href="#r3">3</a></sup>`) get a link back from their reference.
+
+- **Screenshots**: `docs/guide/*.jpg`, made from the built pages by `python3 -I tools/make_guide_shots.py` (offline, no basemap). Rerun it after a visible change to a section and look at the pictures. The build adds them to the offline cache.
+- **Science page rule**: every statement taken from a standard, paper, dataset or datasheet carries a footnote to the original source; SwathPlan's own methods say so instead. When a formula changes in the code, change it on the page too. When an equipment value changes, change the table in section 14 and its source.
+- The planner's *Guide & science* tab now holds two cards linking to these pages (with the live site as the target in a downloaded copy, like the tools menu).
+- Test: `python3 -I test/docs_check.py` (contents, links, images, footnotes both ways, translated frame, the planner's and home page's links).

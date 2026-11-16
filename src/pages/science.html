@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwathPlan – Science &amp; references</title>
+<meta name="description" content="The formulas, standards and data behind SwathPlan, with their original references.">
+<meta name="author" content="Aldwin Syahperdana">
+<meta name="swp-root" content="../"><meta name="theme-color" content="#12262d">
+<link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="../icons/icon-192.png"><link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<style>
+<!--@include css/hub.css-->
+<!--@include css/docs.css-->
+</style></head><body data-title="Science &amp; references">
+<header><a class="brand" href="../"><img src="../icons/icon-192.png" width="40" height="40" alt=""><span class="nm">Swath<span>Plan</span></span></a>
+<nav class="dn"><a href="../" data-t>All tools</a><a href="../planner/" data-t>Survey planner</a><a href="../infill/" data-t>Infill planner</a><a href="../guide/" data-t>User guide</a><a href="./" class="on" data-t>Science &amp; references</a></nav>
+<select id="langSel" aria-label="Language" title="Language"></select></header>
+<main class="doc">
+<nav id="toc"><b data-t>Contents</b></nav>
+<article dir="ltr">
+<h1>Science and background</h1>
+<p class="lede">The formulas SwathPlan uses, where they come from, and what they assume. Each statement taken from a standard, paper, dataset or datasheet carries a numbered footnote to the original source in the <a href="#references">references</a>. Methods without a footnote are SwathPlan's own, and the text says so. How to use the tools is in the <a href="../guide/">user guide</a>.</p>
+<p class="note" data-t>This page is in English for now. Translations will follow.</p>
+
+<h2>1 Conventions</h2>
+<ul>
+<li>Distances in metres, speeds in knots on screen (1 kn = 0.5144 m/s in the formulas), angles from the vertical for beams and from north for azimuths.</li>
+<li><i>d</i> is the depth below the transducer, <i>θ</i> a beam angle, <i>c</i> the sound speed. Where one value is needed, <i>c</i> = 1500 m/s, the usual nominal value for seawater<sup class="fn"><a href="#r3">3</a></sup>.</li>
+<li>Uncertainties are given at the 95 % confidence level, as in IHO S-44: 1.96σ for one-dimensional (vertical) quantities and 2.45σ for two-dimensional (horizontal) ones<sup class="fn"><a href="#r1">1</a></sup>.</li>
+<li>Unless stated, the seabed under each swath or footprint is taken as flat at the depth under the line. This is the usual planning approximation; real slopes widen or narrow the swath.</li>
+</ul>
+
+<h2>2 IHO S-44, the survey standard</h2>
+<p>SwathPlan checks plans against IHO S-44 <i>Standards for Hydrographic Surveys</i>, Edition 6.2.0 (October 2024)<sup class="fn"><a href="#r1">1</a></sup>, adopted unanimously by the IHO Member States in April 2025<sup class="fn"><a href="#r2">2</a></sup>. The orders and their requirements (S-44 Table 1) are:</p>
+<table><tr><th>Criterion</th><th>Order 2</th><th>Order 1b</th><th>Order 1a</th><th>Special Order</th><th>Exclusive Order</th></tr>
+<tr><td>THU (95 %)</td><td>20 m + 10 % of depth</td><td>5 m + 5 % of depth</td><td>5 m + 5 % of depth</td><td>2 m</td><td>1 m</td></tr>
+<tr><td>TVU <i>a</i></td><td>1.0 m</td><td>0.5 m</td><td>0.5 m</td><td>0.25 m</td><td>0.15 m</td></tr>
+<tr><td>TVU <i>b</i></td><td>0.023</td><td>0.013</td><td>0.013</td><td>0.0075</td><td>0.0075</td></tr>
+<tr><td>Feature detection</td><td>Not specified</td><td>Not specified</td><td>Cubic features &gt; 2 m to 40 m depth; 10 % of depth beyond</td><td>Cubic features &gt; 1 m</td><td>Cubic features &gt; 0.5 m</td></tr>
+<tr><td>Feature search</td><td>Recommended</td><td>Recommended</td><td>100 %</td><td>100 %</td><td>200 %</td></tr>
+<tr><td>Bathymetric coverage</td><td>5 %</td><td>5 %</td><td>≤ 100 %</td><td>100 %</td><td>200 %</td></tr></table>
+<p>The maximum allowed total vertical uncertainty at depth <i>d</i> is<sup class="fn"><a href="#r1">1</a></sup></p>
+<pre class="f">TVU_max(d) = √( a² + (b · d)² )</pre>
+<p>For example, Exclusive Order at 25 m gives √(0.15² + (0.0075 × 25)²) = 0.24 m.</p>
+<p><b>Cross-line check.</b> Where a cross line meets a main line, the same seabed is measured twice. If both soundings meet TVU_max independently, their difference has a standard deviation √2 times larger, so at 95 % the difference should stay within about √2 · TVU_max(d). The results show this value for the depth range; it follows from the propagation of independent errors and is a guide, not an S-44 rule.</p>
+
+<h2>3 Multibeam line planning</h2>
+<h3>3.1 Swath width and line spacing</h3>
+<p>A multibeam echosounder ensonifies a fan of beams across the track<sup class="fn"><a href="#r3">3</a></sup>. On a flat seabed at depth <i>d</i>, with the outer beams at θ<sub>p</sub> (port) and θ<sub>s</sub> (starboard) from the vertical, the swath width is</p>
+<pre class="f">W = d · ( tan θp + tan θs )</pre>
+<p>With overlap fraction <i>o</i> (the overlap width divided by the swath width), neighbouring lines are</p>
+<pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
+<p>Overlap backs up the noisy outer beams with good inner beams of the next line and absorbs steering and depth errors. Because W grows with depth, the shallowest depth in the area sets the spacing that gives full coverage everywhere; the 5th percentile is a common compromise.</p>
+<h3>3.2 Adaptive line spacing (SwathPlan's method)</h3>
+<p>With depth data loaded, SwathPlan places each line as far from the previous one as the local depth allows. For consecutive lines at across-track positions <i>s</i> and <i>s′</i>, with the half-swaths facing each other <i>h(t)</i> and <i>h′(t)</i> computed from the depth under each line along the line coordinate <i>t</i>, the condition is</p>
+<pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>
+<p>The largest <i>s′</i> that meets it is found by bisection. Lines alternate direction, so port and starboard angles swap from one line to the next, and the code accounts for this. The first and last lines are placed so that the swath reaches the boundary. Like the uniform case, it assumes a flat seabed under each swath at the depth under the line.</p>
+<h3>3.3 Ping rate, along-track sampling and speed</h3>
+<p>Each ping must travel to the farthest point of the swath and back before the next, so the highest ping rate is<sup class="fn"><a href="#r3">3</a></sup></p>
+<pre class="f">f_max = c / (2 R),     R = d / cos θmax         d = 25 m, 60°: R = 50 m, f_max = 15 Hz</pre>
+<p>At speed <i>v</i> the pings are Δx = v / f apart along the track, and the along-track footprint at nadir is about <i>d</i> · β (β = along-track beamwidth in radians)<sup class="fn"><a href="#r3">3</a></sup>. To make sure a small feature is hit by several pings, SwathPlan uses the rule that NOAA set for side-scan sonar: an object must be ensonified at least three times per pass, which gives a maximum speed<sup class="fn"><a href="#r4">4</a></sup></p>
+<pre class="f">v_max = f · T / 3          (T = smallest feature size of the chosen S-44 order)</pre>
+<p>Applied to multibeam it is a planning guide, not an S-44 requirement.</p>
+
+<h2>4 Uncertainty budget (a priori TPU)</h2>
+<p>The total propagated uncertainty of a sounding combines many independent error sources: range and beam angle, sound speed, vessel motion, heading, positioning, water level and draft<sup class="fn"><a href="#r5">5</a></sup>. SwathPlan uses a simplified a priori model after Hare (1995)<sup class="fn"><a href="#r5">5</a></sup>, with σ for the 1σ input of each source, all angles in radians, x = d tan θ the across-track distance and l = d / cos θ the slant range:</p>
+<pre class="f">σα  = √( σroll² + σpointing² )          beam angle
+Δθ  = tan θ · σc0 / c                  refraction from the sound speed at the transducer
+
+σz² = (σR cos θ)² + (d tan θ σα)² + σheave² + σtide² + σdraft²
+      + (d σc / c)² + (d tan θ Δθ)²
+σh² = σpos² + (x σhdg)² + (d σα)² + (l σpitch)²
+      + (x σc / c)² + (d Δθ)² + (σR sin θ)² + σdraft²
+
+TVU = 1.96 σz        THU = 2.45 σh</pre>
+<p>Here σc0 is the uncertainty of the sound speed at the transducer and σc that of the mean sound-speed profile. TVU and THU are computed for every beam angle from nadir to the sensor's maximum, at the design depth, and compared with the S-44 limits of section 2<sup class="fn"><a href="#r1">1</a></sup>. The widest angle that still meets the order is offered as the swath angle. The model leaves out cross-terms, time latency, lever-arm errors and the sonar's own bottom-detection uncertainty, which grows at the outer beams<sup class="fn"><a href="#r3">3</a></sup>, so check it against your system's own uncertainty model.</p>
+
+<h2>5 Single-beam surveys</h2>
+<p>A single-beam transducer with full beam width β ensonifies a footprint of diameter about</p>
+<pre class="f">w = 2 d tan(β / 2)</pre>
+<p>on a flat seabed. The main lines alone cover the fraction w / S of the area, and SwathPlan estimates the bathymetric coverage as (Σ main line length + Σ cross line length) · w / area. S-44 accepts less than full coverage only for Order 2 and Order 1b. These need at least 5 % bathymetric coverage, and S-44 6.2.0 asks that registered depth positions be no more than 3 times the water depth, or 25 m, apart, whichever is greater (sections 1.1 and 3.5.2)<sup class="fn"><a href="#r1">1</a></sup>. <i>Use the S-44 maximum</i> applies this rule at the design depth. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full bathymetric coverage, which a single beam cannot give<sup class="fn"><a href="#r1">1</a></sup>.</p>
+<p>The transducer presets are typical beam widths for 200 kHz and 33 kHz survey transducers, not values of a particular model.</p>
+
+<h2>6 Geophysical surveys</h2>
+<h3>6.1 Side-scan sonar</h3>
+<p>A side-scan sonar images a strip on each side of the towfish out to its range <i>R</i>, with a gap under the towfish about as wide as its height above the seabed on each side<sup class="fn"><a href="#r6">6</a></sup>. For a seabed coverage <i>C</i> (100 % = every point seen once, 200 % = twice<sup class="fn"><a href="#r4">4</a></sup>) and an overlap margin <i>m</i>:</p>
+<pre class="f">S = 2R / (C / 100) · (1 − m)</pre>
+<p>200 % coverage, with alternate lines filling each other's nadir gap, is the usual practice for object detection<sup class="fn"><a href="#r4">4</a></sup><sup class="fn"><a href="#r6">6</a></sup>. The ping rate is limited by the two-way travel to the range, f = c / (2R), and the speed by the three-ping rule<sup class="fn"><a href="#r4">4</a></sup>:</p>
+<pre class="f">v_max = L_target · f / n_pings          (NOAA: 1 m object, 3 pings)</pre>
+<p>The model and frequency list gives each system's longest range per side from its datasheet: EdgeTech 4125 (150 m at 400 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r22">22</a></sup>, EdgeTech 4200 (230 m at 300 kHz, 120 m at 600 kHz)<sup class="fn"><a href="#r23">23</a></sup>, Klein 3900 (150 m at 445 kHz, 50 m at 900 kHz)<sup class="fn"><a href="#r24">24</a></sup> and Klein 4900 (200 m at 455 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r25">25</a></sup>. These are maximum operating ranges. The usable range in a given survey also depends on the towfish height, the water conditions and the target size, so the range field stays editable.</p>
+<h3>6.2 Magnetometer</h3>
+<p>The anomaly of a ferrous object falls off quickly with distance (with the cube of the distance for a dipole)<sup class="fn"><a href="#r7">7</a></sup>. So the planner asks for the distance <i>D</i> at which your target can still be detected, and the sensor height <i>h</i> above the seabed. A seabed point is within reach if it is within <i>D</i> of the sensor, so the lines can be up to</p>
+<pre class="f">S = 2 √( D² − h² )              (only when D &gt; h)</pre>
+<p>apart. At speed <i>v</i> and sample rate <i>f</i>, samples are v / f apart along the line. Choosing <i>D</i> for a target is a matter of the target's magnetic moment and the site's noise. The planner does not model it.</p>
+<h3>6.3 Sub-bottom profiler and UHR seismic</h3>
+<p>Both use the grid spacing you enter. For 2D seismic, a line only reaches full fold once the whole streamer has passed over the start of the target area<sup class="fn"><a href="#r8">8</a></sup>, so the planner extends seismic lines by half the active streamer length at each end. Towed sensors add their layback behind the antenna to the run-in. The spacing used is the smallest of the ticked sensors.</p>
+
+<h2>7 Drone photogrammetry</h2>
+<p>For a nadir camera with sensor width S<sub>w</sub> and height S<sub>h</sub> (mm), focal length F (mm, the real focal length, not the 35 mm equivalent), image width N pixels, at height H above ground<sup class="fn"><a href="#r9">9</a></sup><sup class="fn"><a href="#r10">10</a></sup>:</p>
+<pre class="f">footprint across = H · Sw / F       footprint along = H · Sh / F
+GSD = footprint across / N           (ground sample distance, m per pixel)
+line spacing     = footprint across · (1 − side overlap)
+photo distance   = footprint along  · (1 − forward overlap)
+photo interval   = photo distance / v</pre>
+<p>For example, the DJI Mavic 3 Enterprise wide camera (17.3 × 13 mm, 12.3 mm, 5280 px)<sup class="fn"><a href="#r26">26</a></sup> at 100 m gives a 140.7 m footprint across, a GSD of 2.66 cm, 49.2 m line spacing at 65 % side overlap and a photo every 26.4 m at 75 % forward overlap. The defaults, 75 % forward and 65 % side, follow common practice: Pix4D recommends at least 75 % forward and 60 % side for general mapping<sup class="fn"><a href="#r10">10</a></sup>. The plan check compares the photo interval with the camera's shortest interval: 0.7 s for the Mavic 3 Enterprise<sup class="fn"><a href="#r26">26</a></sup> and the Zenmuse P1<sup class="fn"><a href="#r29">29</a></sup>, 0.5 s for the Matrice 4E<sup class="fn"><a href="#r27">27</a></sup> and 2.5 s for the Phantom 4 RTK<sup class="fn"><a href="#r28">28</a></sup>.</p>
+<p>Photos are counted as Σ line length / photo distance plus one per line. Batteries are the flight time divided by the time per battery, rounded up, and each change adds its time to the plan. The height warning uses 120 m, the limit for the EU open category<sup class="fn"><a href="#r11">11</a></sup>; the US limit is 400 ft above ground level<sup class="fn"><a href="#r12">12</a></sup>. Local rules and permissions decide.</p>
+<p>The waypoint exports switch distance-based triggering on after the first waypoint with MAVLink command 206, <code>MAV_CMD_DO_SET_CAM_TRIGG_DIST</code> (parameter 1 the distance, parameter 3 one picture at once), and off at the end with a distance of 0<sup class="fn"><a href="#r13">13</a></sup>.</p>
+
+<h2>8 Turns, time and cost</h2>
+<h3>8.1 Williamson-style and U-turns</h3>
+<p>The vessel runs the next line in the opposite direction. With line spacing <i>S</i> and turning radius <i>R</i>:</p>
+<ul>
+<li>If S ≥ 2R, a U-turn: two quarter circles and a straight connector of length S − 2R.</li>
+<li>If S &lt; 2R, a bulb turn named after the Williamson man-overboard manoeuvre: turn away from the next line by an angle α, then the opposite way by 180° + α, ending on the reciprocal heading on the next line.</li>
+</ul>
+<pre class="f">S = 2R cos α  →  α = arccos( S / 2R )
+path length = Rα + R(π + α) = R(π + 2α)
+overshoot beyond the line end = 2R sin α          R = 35 m, S = 60.6 m: α = 30°, 146.6 m, 35 m</pre>
+<p>This is geometry with a constant radius. Real vessels have a limited rate of turn and slow down in turns, so enter a measured radius. <i>Recommend R from LOA</i> uses 2.5 × the vessel length as a first guess, a rule of thumb of SwathPlan, not a published value.</p>
+<h3>8.2 Time and cost (SwathPlan's model)</h3>
+<pre class="f">on-line time   = Σ line lengths / v
+turn time      = Σ turn and transit lengths / v_turn
+productive     = on-line + turns
+total project  = (productive + SVP casts + calibration) / (1 − w) + mobilisation
+cost           = total project (days) × day rate</pre>
+<p>Here <i>w</i> is the weather and downtime allowance. SVP time is the number of casts (productive time divided by the cast interval) times the cast duration. Days are the total divided by the operating hours per day. On-line efficiency is on-line time over productive time; a low value means turns dominate. Pings are the ping rate times the on-line time, and soundings are pings times beams. For drones, battery changes take the place of SVP casts and there is no slow-down in turns.</p>
+
+<h2>9 Corridors and segments (SwathPlan's method)</h2>
+<p>Corridor lines are offsets of the route centreline at fixed distances (starboard positive), cut to the route ends and extended for run-in and run-out. KP is the distance along the route from its first point plus the starting KP. A route of length L is split into n = ⌈L / L<sub>seg</sub>⌉ segments, and segment <i>i</i> (from 0) runs from</p>
+<pre class="f">max(0, i·Lseg − O/2)   to   min(L, (i+1)·Lseg + O/2)</pre>
+<p>so neighbouring segments overlap by O. Each segment gets its own offset lines from the cut piece of the route and its own outline; between segments the vessel transits in a straight line. When exporting one file per segment, a cross line goes to the first segment whose outline holds its middle.</p>
+
+<h2>10 Coordinates and datums</h2>
+<p>The map works in a local metric frame around the area's centre (an equirectangular approximation, accurate for areas of some tens of kilometres). Conversion to UTM or a custom Transverse Mercator, and back, uses the series formulas of Snyder (1987)<sup class="fn"><a href="#r14">14</a></sup>. Datum shifts use the abridged Molodensky transformation with three translation parameters<sup class="fn"><a href="#r15">15</a></sup>, accurate to a few metres with published parameters. EPSG codes are converted with the proj4js library<sup class="fn"><a href="#r16">16</a></sup>; datum grid files are not supported.</p>
+
+<h2>11 Coastlines and land avoidance</h2>
+<p>OpenStreetMap coastlines are drawn with the land on the left and the water on the right of the line<sup class="fn"><a href="#r17">17</a></sup>. SwathPlan intersects each survey line with the coastline, cuts it at the crossings, decides which side is water from the nearest segment, and removes a clearance zone, a capsule with the radius of the safety distance around each coastline segment. Land polygons use an inside/outside test (even-odd) instead, which does not depend on the direction of the rings.</p>
+<p>The built-in coastline is Natural Earth, a public-domain dataset<sup class="fn"><a href="#r18">18</a></sup>. For land avoidance SwathPlan uses the 1:10m land polygons with minor islands, cut to the area. The 1:10m coastline lines are not used for this: their direction is not consistent, and most continental coasts are open pieces, so the land side cannot be told from them. The 1:50m coastline, kept inside each page as a fallback, has closed rings stored in both directions, so SwathPlan turns every closed ring counter-clockwise (land on the left) before use. Natural Earth is generalised for small-scale maps: expect errors of a few hundred metres at 1:10m and about a kilometre at 1:50m. For detailed work, load GSHHG (full resolution)<sup class="fn"><a href="#r19">19</a></sup> or OpenStreetMap land polygons as GeoJSON.</p>
+
+<h2>12 Bathymetry sources</h2>
+<table><tr><th>Source</th><th>Coverage</th><th>Resolution</th><th>Reference</th></tr>
+<tr><td>GMRT (Global Multi-Resolution Topography)</td><td>Global</td><td>Native multibeam resolution where surveyed, GEBCO elsewhere</td><td>Ryan et al. (2009)<sup class="fn"><a href="#r20">20</a></sup></td></tr>
+<tr><td>NOAA NCEI DEM mosaic</td><td>Global</td><td>Coastal DEMs where available, ETOPO 2022 (15″) elsewhere</td><td>NOAA NCEI (2022)<sup class="fn"><a href="#r21">21</a></sup></td></tr>
+<tr><td>EMODnet Digital Bathymetry</td><td>European seas</td><td>1/16 arc-minute (≈ 115 m)</td><td>EMODnet Bathymetry Consortium<sup class="fn"><a href="#r30">30</a></sup></td></tr>
+<tr><td>GEBCO 2020 Grid, via Open Topo Data</td><td>Global</td><td>15 arc-seconds (≈ 450 m)</td><td>GEBCO Compilation Group (2020)<sup class="fn"><a href="#r31">31</a></sup>; Open Topo Data<sup class="fn"><a href="#r32">32</a></sup></td></tr></table>
+<p>These grids blend surveys of very different age and quality and are referenced roughly to mean sea level. They are good for sizing a plan, but cannot meet S-44 depth uncertainty and may miss shoals, wrecks and dredged channels. None of them may be used for navigation<sup class="fn"><a href="#r20">20</a></sup><sup class="fn"><a href="#r31">31</a></sup>.</p>
+
+<h2>13 Infill planning</h2>
+<p>The infill planner rasterises the area into cells (the grid cell size). From a processed GeoTIFF<sup class="fn"><a href="#r33">33</a></sup>, a cell is covered when the grid or mosaic has data there. From track lines, a cell is covered when it falls inside a track's swath. For multibeam the swath comes from the depth and swath angles; for side-scan it runs from the nadir gap to the range on each side<sup class="fn"><a href="#r6">6</a></sup>. At 200 % coverage a cell counts as covered only when two tracks see it<sup class="fn"><a href="#r4">4</a></sup>. Uncovered cells are grouped into gaps, gaps smaller than the chosen minimum are ignored, and lines are planned across each gap with the spacing of the chosen coverage.</p>
+
+<h2>14 Equipment values</h2>
+<p>The catalogues give approximate values from manufacturers' published specifications and stay editable:</p>
+<table><tr><th>Item</th><th>Values used</th><th>Source</th></tr>
+<tr><td>EdgeTech 4125</td><td>150 m @ 400 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r22">22</a></sup></td></tr>
+<tr><td>EdgeTech 4200</td><td>230 m @ 300 kHz, 120 m @ 600 kHz per side</td><td><sup class="fn"><a href="#r23">23</a></sup></td></tr>
+<tr><td>Klein 3900</td><td>150 m @ 445 kHz, 50 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r24">24</a></sup></td></tr>
+<tr><td>Klein 4900</td><td>200 m @ 455 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r25">25</a></sup></td></tr>
+<tr><td>DJI Mavic 3 Enterprise (wide)</td><td>17.3 × 13 mm, 12.3 mm, 5280 px, 0.7 s</td><td><sup class="fn"><a href="#r26">26</a></sup></td></tr>
+<tr><td>DJI Matrice 4E (wide)</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent (12.3 mm), 5280 px, 0.5 s</td><td><sup class="fn"><a href="#r27">27</a></sup></td></tr>
+<tr><td>DJI Phantom 4 RTK</td><td>1″ (13.2 × 8.8 mm), 8.8 mm, 5472 px, 2.5 s</td><td><sup class="fn"><a href="#r28">28</a></sup></td></tr>
+<tr><td>DJI Zenmuse P1, 35 mm lens</td><td>35.9 × 24 mm, 35 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr></table>
+<p>The multibeam catalogue in the survey planner is compiled from public lists and marked approximate in the planner; check your sensor's datasheet.</p>
+
+<h2>15 Assumptions and limitations</h2>
+<ul>
+<li>Flat seabed under each swath or footprint; no refraction or beam-angle limits other than those you enter.</li>
+<li>A single nominal sound speed (1500 m/s) for ping rates.</li>
+<li>Straight, parallel lines for areas; offset lines for corridors. Contour-following lines are not generated.</li>
+<li>Constant speeds; currents, traffic and port calls are not modelled.</li>
+<li>Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.</li>
+</ul>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li id="r1">International Hydrographic Organization (2024). <i>S-44: IHO Standards for Hydrographic Surveys</i>, Edition 6.2.0, October 2024. Monaco: IHO. <a href="https://iho.int/en/standards-and-specifications">iho.int/en/standards-and-specifications</a></li>
+<li id="r2">International Hydrographic Organization (2025). Circular Letter 21/2025: Adoption of Edition 6.2.0 of S-44, 24 April 2025. <a href="https://iho.int/uploads/user/circular_letters/eng_2025/CL21_2025_EN_v1.pdf">iho.int</a></li>
+<li id="r3">Lurton, X. (2010). <i>An Introduction to Underwater Acoustics: Principles and Applications</i>, 2nd edition. Berlin: Springer / Chichester: Praxis.</li>
+<li id="r4">NOAA Office of Coast Survey (2003). <i>NOS Hydrographic Surveys Specifications and Deliverables</i>, March 2003, chapter 6, Towed Side Scan Sonar (coverage; speed so that a 1 m object is ensonified at least three times per pass). Current edition: <i>Hydrographic Survey Specifications and Deliverables</i>, version 2024. <a href="https://nauticalcharts.noaa.gov/publications/documents/HSSD_2024-1-01.pdf">nauticalcharts.noaa.gov</a></li>
+<li id="r5">Hare, R. (1995). Depth and position error budgets for multibeam echosounding. <i>International Hydrographic Review</i> LXXII(2), 37–69. <a href="https://journals.lib.unb.ca/index.php/ihr/article/view/23178">journals.lib.unb.ca</a></li>
+<li id="r6">Blondel, P. (2009). <i>The Handbook of Sidescan Sonar</i>. Berlin: Springer / Chichester: Praxis.</li>
+<li id="r7">Breiner, S. (1999). <i>Applications Manual for Portable Magnetometers</i>. San Jose: Geometrics (first published 1973).</li>
+<li id="r8">Yilmaz, Ö. (2001). <i>Seismic Data Analysis: Processing, Inversion, and Interpretation of Seismic Data</i>. Investigations in Geophysics 10. Tulsa: Society of Exploration Geophysicists.</li>
+<li id="r9">Wolf, P. R., Dewitt, B. A. and Wilkinson, B. E. (2014). <i>Elements of Photogrammetry with Applications in GIS</i>, 4th edition. New York: McGraw-Hill.</li>
+<li id="r10">Pix4D. Image acquisition (PIX4Dmapper): general case, at least 75 % frontal and 60 % side overlap; and Ground sampling distance (GSD) in photogrammetry. <a href="https://support.pix4d.com/hc/en-us/articles/115002471546">support.pix4d.com</a></li>
+<li id="r11">Commission Implementing Regulation (EU) 2019/947 of 24 May 2019 on the rules and procedures for the operation of unmanned aircraft, Annex Part A, UAS.OPEN.010 (maximum height 120 m). <a href="https://www.easa.europa.eu/en/the-agency/faqs/open-category">easa.europa.eu</a></li>
+<li id="r12">United States Code of Federal Regulations, 14 CFR § 107.51, Operating limitations for small unmanned aircraft (400 feet above ground level).</li>
+<li id="r13">MAVLink. Camera Protocol v1: <code>MAV_CMD_DO_SET_CAM_TRIGG_DIST</code> (206). <a href="https://mavlink.io/en/services/camera_v1.html">mavlink.io</a></li>
+<li id="r14">Snyder, J. P. (1987). <i>Map Projections: A Working Manual</i>. U.S. Geological Survey Professional Paper 1395. Washington: USGS.</li>
+<li id="r15">National Imagery and Mapping Agency (2000). <i>Department of Defense World Geodetic System 1984: Its Definition and Relationships with Local Geodetic Systems</i>, Technical Report 8350.2, 3rd edition (Molodensky transformation formulas).</li>
+<li id="r16">proj4js contributors. proj4js: JavaScript library to transform coordinates. <a href="https://github.com/proj4js/proj4js">github.com/proj4js/proj4js</a></li>
+<li id="r17">OpenStreetMap Wiki. Tag:natural=coastline (land on the left, water on the right of the way). <a href="https://wiki.openstreetmap.org/wiki/Tag:natural%3Dcoastline">wiki.openstreetmap.org</a></li>
+<li id="r18">Natural Earth (Kelso, N. V. and Patterson, T.). Free vector and raster map data at 1:10m, 1:50m and 1:110m, public domain; 1:10m land and minor islands from natural-earth-vector, version 5.2.0 pre-release, commit ca96624 (2022). <a href="https://www.naturalearthdata.com/">naturalearthdata.com</a></li>
+<li id="r19">Wessel, P. and Smith, W. H. F. (1996). A global, self-consistent, hierarchical, high-resolution shoreline database. <i>Journal of Geophysical Research</i> 101(B4), 8741–8743. <a href="https://doi.org/10.1029/96JB00104">doi:10.1029/96JB00104</a></li>
+<li id="r20">Ryan, W. B. F., Carbotte, S. M., Coplan, J. O., O'Hara, S., Melkonian, A., Arko, R., Weissel, R. A., Ferrini, V., Goodwillie, A., Nitsche, F., Bonczkowski, J. and Zemsky, R. (2009). Global Multi-Resolution Topography synthesis. <i>Geochemistry, Geophysics, Geosystems</i> 10, Q03014. <a href="https://doi.org/10.1029/2008GC002332">doi:10.1029/2008GC002332</a></li>
+<li id="r21">NOAA National Centers for Environmental Information (2022). <i>ETOPO 2022 15 Arc-Second Global Relief Model</i>. <a href="https://doi.org/10.25921/fd45-gt74">doi:10.25921/fd45-gt74</a></li>
+<li id="r22">EdgeTech. <i>4125 Side Scan Sonar System</i>, product datasheet (operating range 150 m @ 400 kHz, 75 m @ 900 kHz). <a href="https://www.macartney.com/media/6145/4125-side-scan-sonar-system.pdf">macartney.com</a></li>
+<li id="r23">EdgeTech. <i>4200 Series Side Scan Sonar System</i>, product datasheet (operating range per side 300 kHz: 230 m, 600 kHz: 120 m). <a href="https://macartney.com/media/6146/4200-series-side-scan-sonar-system.pdf">macartney.com</a></li>
+<li id="r24">Klein Marine Systems. <i>System 3900 Side Scan Sonar</i>, product datasheet (maximum range 150 m @ 445 kHz, 50 m @ 900 kHz). <a href="https://www.subseatechnologies.com/media/files/page/d79beb64/klein-system-3900-rev0718.pdf">subseatechnologies.com</a></li>
+<li id="r25">Klein Marine Systems. <i>System 4900 Side Scan Sonar</i>, product datasheet (maximum operating range per side 200 m @ 455 kHz, 75 m @ 900 kHz).</li>
+<li id="r26">DJI. Mavic 3 Enterprise specifications and custom camera parameters (wide camera: 4/3 CMOS 17.3 × 13 mm, true focal length 12.3 mm, 5280 × 3956, 0.7 s interval shooting). <a href="https://sdk-forum.dji.net/hc/en-us/articles/12325496609689-What-is-the-custom-camera-parameters-for-Mavic-3-Enterprise-series-">sdk-forum.dji.net</a></li>
+<li id="r27">DJI. Matrice 4 Series specifications (Matrice 4E wide camera: 4/3 CMOS 20 MP, 24 mm equivalent, 5280 × 3956; minimum photo interval 0.5 s). <a href="https://www.dji.com/support/product/matrice-4-series">dji.com</a></li>
+<li id="r28">DJI. Phantom 4 RTK specifications (1″ CMOS 20 MP, 8.8 mm, 5472 × 3648); minimum photo interval 2.5 s, from DJI's comparison of the Mavic 3 Enterprise with the Phantom 4 RTK. <a href="https://enterprise.dji.com/phantom-4-rtk/specs">enterprise.dji.com</a></li>
+<li id="r29">DJI. Zenmuse P1 specifications (35.9 × 24 mm full frame, 8192 × 5460, minimum photo interval 0.7 s, DL 35 mm lens). <a href="https://www.dji.com/zenmuse-p1/info">dji.com</a></li>
+<li id="r30">EMODnet Bathymetry Consortium (2022). <i>EMODnet Digital Bathymetry (DTM 2022)</i>, 1/16 × 1/16 arc-minute grid. <a href="https://emodnet.ec.europa.eu/en/bathymetry">emodnet.ec.europa.eu</a></li>
+<li id="r31">GEBCO Compilation Group (2020). <i>GEBCO 2020 Grid</i>. <a href="https://doi.org/10.5285/a29c5465-b138-234d-e053-6c86abc040b9">doi:10.5285/a29c5465-b138-234d-e053-6c86abc040b9</a></li>
+<li id="r32">Open Topo Data: an open elevation API (GEBCO 2020 dataset; 1 request per second, 1000 per day on the public API). <a href="https://www.opentopodata.org/">opentopodata.org</a></li>
+<li id="r33">Open Geospatial Consortium (2019). <i>OGC GeoTIFF Standard</i>, version 1.1, OGC 19-008r4.</li>
+</ol>
+<p class="ver">© 2026 Aldwin Syahperdana. Last checked against the sources: November 2026.</p>
+</article></main>
+<footer dir="ltr">© 2026 Aldwin Syahperdana</footer>
+<script id="langpack" type="application/json"><!--@langpack subset--></script>
+<script><!--@include js/core/i18n-langs.js-->
+<!--@include js/docs/docs.js-->
+<!--@include js/core/pwa.js-->
+</script></body></html>
