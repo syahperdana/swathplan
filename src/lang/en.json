@@ -1153,7 +1153,6 @@
  "Long routes in segments",
  "One sheet per segment, plus an overview",
  "The whole route on one sheet",
- "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.",
  "Overview: whole route",
  "Sheet {0} of {1}",
  "{0}, KP {1} to {2}",
@@ -1162,5 +1161,8 @@
  "Loading…",
  "Built-in coastline loaded: Natural Earth 1:10m land, {0} land areas here. Accurate to a few hundred metres: good for offshore and coastal planning, not for harbours or close inshore work.",
  "The detailed 1:10m file (data/coast10m.js) was not found next to this page.",
- "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land."
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land.",
+ "One file per segment, for every format (in a zip)",
+ "One sheet per segment: PDFs get a page per segment, images one per sheet in a zip, DXF one file with each segment on its own layers and a named view per segment; other formats one file. One file per segment: every format is saved once per segment, with only that segment's lines, outline and statistics, all in one zip; map sheets and the report also get an overview. Whole route: one file, on one sheet.",
+ "Saved {0} files in one zip: one per segment."
 ]

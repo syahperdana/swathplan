@@ -1090,7 +1090,6 @@
  "Long routes in segments": "长路由分段出图",
  "One sheet per segment, plus an overview": "每段一张图，另加总图",
  "The whole route on one sheet": "整条路由一张图",
- "PDF: all sheets in one file. Images: one image per sheet, together in a zip. DXF: one file, each segment on its own layers, with a named view per segment.": "PDF：所有图纸在一个文件中。图片：每张图纸一张图片，打包为 zip。DXF：一个文件，每段在各自图层上，并为每段建立命名视图。",
  "Overview: whole route": "总图：整条路由",
  "Sheet {0} of {1}": "第 {0} 张，共 {1} 张",
  "{0}, KP {1} to {2}": "{0}，KP {1} 至 {2}",
@@ -1099,5 +1098,8 @@
  "Loading…": "正在加载…",
  "Built-in coastline loaded: Natural Earth 1:10m land, {0} land areas here. Accurate to a few hundred metres: good for offshore and coastal planning, not for harbours or close inshore work.": "已加载内置海岸线：Natural Earth 1:10m 陆地，此处 {0} 块陆地。精度为数百米：适合离岸和沿岸规划，不适合港口或贴岸作业。",
  "The detailed 1:10m file (data/coast10m.js) was not found next to this page.": "在此页面旁未找到详细的 1:10m 文件（data/coast10m.js）。",
- "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land.": "加载的海岸线会随项目保存，包括自动保存和 .SPL 文件：联网时下载一次 OSM 海岸线，之后离线也能使用。OSM 海岸线详细且覆盖全球，但由用户贡献：请与官方海图核对。内置海岸线为 Natural Earth 1:10m，精度为数百米（单独使用页面而没有其数据文件夹时为 1:50m，约 1 公里）：适合离岸和沿岸规划，并设置相应的安全距离，但不适合港口。如需详细的离线工作，请加载 GSHHG（full）或 OSM 陆地多边形的 GeoJSON 导出文件。转弯路径不检查是否穿越陆地。"
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:10m, accurate to a few hundred metres (1:50m, about 1 km, when the page is used on its own without its data folder): fine for offshore and coastal planning, with a clearance to match, but not for harbours. For detailed offline work, load a GeoJSON export of GSHHG (full) or OSM land polygons. Turn paths are not checked against land.": "加载的海岸线会随项目保存，包括自动保存和 .SPL 文件：联网时下载一次 OSM 海岸线，之后离线也能使用。OSM 海岸线详细且覆盖全球，但由用户贡献：请与官方海图核对。内置海岸线为 Natural Earth 1:10m，精度为数百米（单独使用页面而没有其数据文件夹时为 1:50m，约 1 公里）：适合离岸和沿岸规划，并设置相应的安全距离，但不适合港口。如需详细的离线工作，请加载 GSHHG（full）或 OSM 陆地多边形的 GeoJSON 导出文件。转弯路径不检查是否穿越陆地。",
+ "One file per segment, for every format (in a zip)": "每段一个文件，适用于所有格式（zip）",
+ "One sheet per segment: PDFs get a page per segment, images one per sheet in a zip, DXF one file with each segment on its own layers and a named view per segment; other formats one file. One file per segment: every format is saved once per segment, with only that segment's lines, outline and statistics, all in one zip; map sheets and the report also get an overview. Whole route: one file, on one sheet.": "每段一张图：PDF 每段一页，图片每张图纸一张并打包为 zip，DXF 为一个文件、每段在各自图层并有命名视图；其他格式一个文件。每段一个文件：每种格式按段分别保存，只含该段的测线、轮廓和统计，全部放在一个 zip 中；图纸和报告还附带一张总图。整条路由：一个文件，一张图。",
+ "Saved {0} files in one zip: one per segment.": "已将 {0} 个文件保存到一个 zip：每段一个。"
 }
