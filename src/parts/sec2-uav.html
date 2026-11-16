@@ -34,6 +34,16 @@
 <div class="kv"><span>Line spacing</span><b id="uvLLs">-</b></div>
 <div class="kv"><span>Point density (with overlap)</span><b id="uvLDn">-</b></div>
 <div class="kv"><span>Flight time, batteries</span><b id="uvLTot">-</b></div></div>
+<div class="uv-ter"><label><input type="checkbox" id="uvTF"> Follow the terrain</label>
+<div class="r2"><div><label>Terrain model</label><select id="uvTS"><option value="otd">SRTM 30 m (Open Topo Data, online)</option><option value="ncei">NOAA NCEI DEM mosaic (online)</option><option value="file">GeoTIFF or ESRI ASCII file (elevation)</option></select></div>
+<div><label>Waypoint spacing along lines (m)</label><input type="number" id="uvTD" value="50" min="5" step="5"></div>
+<div><label>Take-off ground elevation (m, blank = first waypoint)</label><input type="number" id="uvTO" step="1"></div><div><label>&nbsp;</label><button id="uvTB" type="button">Load terrain</button><input type="file" id="uvTFile" accept=".tif,.tiff,.asc,.txt" hidden></div></div>
+<p class="note" id="uvTSt"></p>
+<div class="kv"><span>Ground along the lines</span><b id="uvTG">-</b></div>
+<div class="kv"><span>Height above ground</span><b id="uvTA">-</b></div>
+<div class="kv"><span>Waypoints, highest above take-off</span><b id="uvTW">-</b></div>
+<div id="uvTP"></div>
+<p class="note">With terrain following, each waypoint is set high enough that the legs to its neighbours stay at least the flight height above the terrain model. Waypoints are added along the lines and dropped where the ground is even; the exports give each one its height above the take-off point. A 30 m model misses trees, buildings and masts: keep a margin and check the route before flying.</p></div>
 <p class="note uv-lid" hidden>Lines are flown at the set height with tight turns. The waypoint exports (QGroundControl, Mission Planner) carry the height and the speed; the LiDAR records all the time, so no camera trigger is set. Many countries limit drones to 120 m above ground: check your local rules and permissions.</p>
 <p class="note uv-cam">Lines are flown at the set height with tight turns. The waypoint exports (QGroundControl, Mission Planner) carry the height, the speed and a camera trigger distance. Many countries limit drones to 120 m above ground: check your local rules and permissions.</p>
 </div></details>

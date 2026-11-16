@@ -112,8 +112,10 @@ The section is `parts/sec2-uav.html` (camera preset `uvCam`, sensor `uvSW`/`uvSH
 - `params()`: `S` = across-track footprint × (1 − side overlap), `W` the footprint, `Rr` = S/2 (tight turns).
 - `gen()`: lines are not trimmed to water.
 - `stats()` and `summary()`: run with no turn slow-down, and with battery changes standing in for SVP casts (`uvWith`); the plan checks become height (120 m warning), photo interval against the camera, and GSD.
-- Exports read `window.SWP_UAV` (`{h, trig, v}`): QGroundControl gets the height on every waypoint and `MAV_CMD_DO_SET_CAM_TRIGG_DIST` (206) on after the first waypoint and off at the end; Mission Planner the same. With `trig` 0 (LiDAR) no 206 commands are written.
+- Exports read `window.SWP_UAV` (`{h, trig, v, wp}`): QGroundControl gets the height on every waypoint and `MAV_CMD_DO_SET_CAM_TRIGG_DIST` (206) on after the first waypoint and off at the end; Mission Planner the same. With `trig` 0 (LiDAR) no 206 commands are written.
 - **LiDAR payload** (`#uvPay` = `lidar`; presets `UV_LID` = [FOV across °, single-return point rate pts/s, range at 10 % m]; inputs `uvLid`, `uvLF`, `uvLR`, `uvLX`, side overlap `uvLSO`, target density `uvLT`): `uvGeo()` returns `uvLGeo()` (swath 2H·tan(FOV/2), `S` = swath × (1 − overlap), density P/(v·swath) per pass and ÷(1 − overlap)), with `lidar:true`, `dPh` 0. Elements with class `uv-cam` / `uv-lid` inside `#uvBox` are shown by `uvPayShow()`. The plan checks become height, slant range at the swath edge against the detection range, and density against the target (with the highest speed that meets it).
+
+- **Terrain following** (`js/uav/terrain.js`, included after `js/uav/app.js`; inputs `uvTF` on/off, `uvTS` source, `uvTD` waypoint spacing, `uvTO` take-off ground elevation, `uvTB`/`uvTFile` load; results `uvTG`, `uvTA`, `uvTW`, profile `uvTP`): `TG` is a regular lat/lon grid of ground elevations (NaN = none), sampled bilinearly by `tgZ(la,lo)` / `tgAt(p)`. It is built by `tgNodes` over `tgBox()` (lines, turns, area plus half a swath) and filled by `tgBin` from SRTM 30 m (Open Topo Data, 100 points a request, 1.1 s apart), the NCEI mosaic (`getSamples`, 250 points) or a file (`parseTIFF`/`parseASC` from `io/bathy-global.js`, projected grids through `mkConv`). `tgSet` turns `uvTF` on. `tgPlan()` (cached on `R`, `R.lines`, `TG` and the inputs) builds the waypoints as `wpts()` does, densified every `uvTD` m. Each waypoint gets H + max ground on its two legs − z₀. Waypoints the leg from the last kept one passes within 0.5 m are dropped. It returns the kept indices `K`, heights `AI`, the height-above-ground and ground ranges along the lines, and the profile of the line over the most relief. `uvMission().wp` = `tgWp()` ([lat, lon, height above take-off] per kept waypoint) when terrain following is on; `export-basic.js` uses `SWP_UAV.wp` in place of `wpts()` and the constant height when it is present. `stats()` and `summary()` wraps fall through when `tgPlan()` is null (no drone mode, no terrain or no lines). The terrain grid is not saved in the state or `.SPL`. Test: `test/terrain_check.py`.
 
 Camera presets in `UV_CAM` are approximate values.
 
@@ -217,6 +219,8 @@ Corridor mode: `node test/corridor_engine.test.mjs` (geometry) and `python3 test
 Equipment lists: `python3 test/equipment_check.py planner/index.html`.
 
 Drone mode: `python3 test/uav_check.py planner/index.html` (GSD, spacing, photo distance, warnings, waypoint exports with height and camera trigger; LiDAR swath, density, range and density checks, no trigger, presets, reload; switching back).
+
+Terrain following: `python3 -I test/terrain_check.py planner/index.html` (a synthetic hill: never below the flight height, waypoints dropped on even ground, QGroundControl and Mission Planner heights, flat ground gives the plain waypoints, fixed-height warnings, take-off elevation, LiDAR, an ESRI ASCII file, multibeam mode unaffected).
 
 Single-beam mode: `python3 test/sbes_check.py planner/index.html` (spacing and footprint, S-44 checks per order, sheet and report text, scenarios, corridor, switching back).
 
