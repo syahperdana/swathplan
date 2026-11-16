@@ -1080,5 +1080,12 @@
  "Transducer": "Schwinger",
  "Typical 200 kHz narrow beam (about 3°)": "Typischer 200-kHz-Schmalstrahl (etwa 3°)",
  "Typical 200 kHz beam (about 8°)": "Typischer 200-kHz-Strahl (etwa 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Typischer 33-kHz-Niederfrequenzstrahl (etwa 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Typischer 33-kHz-Niederfrequenzstrahl (etwa 20°)",
+ "Use built-in coastline (offline, approximate)": "Eingebaute Küstenlinie verwenden (offline, ungefähr)",
+ "Save coastline as GeoJSON": "Küstenlinie als GeoJSON speichern",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "Eine geladene Küstenlinie wird mit dem Projekt gespeichert, in der automatischen Sicherung und in gespeicherten .SPL-Dateien. Die OSM-Küstenlinie also einmal online laden, danach funktioniert sie offline. Die OSM-Küstenlinie ist detailliert und weltweit, aber von Nutzern beigetragen: mit amtlichen Seekarten abgleichen. Die eingebaute Küstenlinie ist Natural Earth 1:50m, auf etwa 1 km genau: nur für Planung auf See verwenden, mit passendem Abstand. Für detaillierte Offline-Arbeit einen GeoJSON-Export von GSHHG (full), Natural Earth 10m oder OSM-Landpolygonen laden. Wendewege werden nicht gegen Land geprüft.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Zu groß, um mit dem Projekt gespeichert zu werden: als GeoJSON speichern und die Datei beim nächsten Mal laden.",
+ "Kept with the project, so it works offline.": "Mit dem Projekt gespeichert, funktioniert also offline.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Eingebaute Küstenlinie geladen: {0} Linien. Es ist Natural Earth 1:50m, auf etwa 1 km genau: geeignet, um Linien auf See vom Land fernzuhalten, nicht für küstennahe Arbeit.",
+ "No built-in coastline in this area (open water or inland)": "Keine eingebaute Küstenlinie in diesem Gebiet (offenes Wasser oder Binnenland)"
 }

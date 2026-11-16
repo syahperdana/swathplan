@@ -1079,5 +1079,12 @@
  "Transducer": "ट्रांसड्यूसर",
  "Typical 200 kHz narrow beam (about 3°)": "सामान्य 200 kHz संकरी बीम (लगभग 3°)",
  "Typical 200 kHz beam (about 8°)": "सामान्य 200 kHz बीम (लगभग 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "सामान्य 33 kHz कम-आवृत्ति बीम (लगभग 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "सामान्य 33 kHz कम-आवृत्ति बीम (लगभग 20°)",
+ "Use built-in coastline (offline, approximate)": "अंतर्निहित तटरेखा उपयोग करें (ऑफ़लाइन, अनुमानित)",
+ "Save coastline as GeoJSON": "तटरेखा को GeoJSON के रूप में सहेजें",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "लोड की गई तटरेखा प्रोजेक्ट के साथ, ऑटोसेव और सहेजी गई .SPL फ़ाइलों में रखी जाती है: OSM तटरेखा एक बार ऑनलाइन डाउनलोड करें और वह ऑफ़लाइन भी काम करती रहेगी। OSM तटरेखा विस्तृत और विश्वव्यापी है पर उपयोगकर्ताओं द्वारा बनाई गई है: आधिकारिक चार्ट से मिलाएँ। अंतर्निहित तटरेखा Natural Earth 1:50m है, लगभग 1 किमी तक सटीक: इसे केवल अपतटीय योजना के लिए, उचित दूरी के साथ उपयोग करें। विस्तृत ऑफ़लाइन काम के लिए GSHHG (full), Natural Earth 10m या OSM भूमि बहुभुजों का GeoJSON निर्यात लोड करें। मोड़ पथ भूमि के विरुद्ध नहीं जाँचे जाते।",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "प्रोजेक्ट के साथ रखने के लिए बहुत बड़ी: इसे GeoJSON के रूप में सहेजें और अगली बार वह फ़ाइल लोड करें।",
+ "Kept with the project, so it works offline.": "प्रोजेक्ट के साथ रखी गई, इसलिए ऑफ़लाइन काम करती है।",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "अंतर्निहित तटरेखा लोड हुई: {0} रेखाएँ। यह Natural Earth 1:50m है, लगभग 1 किमी तक सटीक: अपतटीय लाइनों को भूमि से दूर रखने के लिए ठीक, तटीय काम के लिए नहीं।",
+ "No built-in coastline in this area (open water or inland)": "इस क्षेत्र में कोई अंतर्निहित तटरेखा नहीं (खुला पानी या अंतर्देशीय)"
 }

@@ -1079,5 +1079,12 @@
  "Transducer": "Đầu dò",
  "Typical 200 kHz narrow beam (about 3°)": "Chùm hẹp 200 kHz điển hình (khoảng 3°)",
  "Typical 200 kHz beam (about 8°)": "Chùm 200 kHz điển hình (khoảng 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Chùm tần số thấp 33 kHz điển hình (khoảng 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Chùm tần số thấp 33 kHz điển hình (khoảng 20°)",
+ "Use built-in coastline (offline, approximate)": "Dùng đường bờ biển tích hợp (ngoại tuyến, gần đúng)",
+ "Save coastline as GeoJSON": "Lưu đường bờ biển thành GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "Đường bờ biển đã nạp được lưu cùng dự án, trong bản tự lưu và trong tệp .SPL: tải đường bờ biển OSM một lần khi có mạng và sau đó vẫn dùng được khi ngoại tuyến. Đường bờ biển OSM chi tiết và phủ toàn cầu nhưng do người dùng đóng góp: hãy đối chiếu với hải đồ chính thức. Đường bờ biển tích hợp là Natural Earth 1:50m, chính xác khoảng 1 km: chỉ dùng cho lập kế hoạch ngoài khơi, với khoảng cách an toàn tương ứng. Để làm việc ngoại tuyến chi tiết, hãy nạp tệp GeoJSON xuất từ GSHHG (full), Natural Earth 10m hoặc đa giác đất liền của OSM. Đường quay không được kiểm tra với đất liền.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Quá lớn để lưu cùng dự án: hãy lưu thành GeoJSON và nạp tệp đó lần sau.",
+ "Kept with the project, so it works offline.": "Đã lưu cùng dự án nên dùng được khi ngoại tuyến.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Đã nạp đường bờ biển tích hợp: {0} đường. Đây là Natural Earth 1:50m, chính xác khoảng 1 km: phù hợp để giữ các tuyến ngoài khơi tránh xa đất liền, không dùng cho công việc ven bờ.",
+ "No built-in coastline in this area (open water or inland)": "Không có đường bờ biển tích hợp trong khu vực này (biển mở hoặc nội địa)"
 }

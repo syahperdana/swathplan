@@ -1080,5 +1080,12 @@
  "Transducer": "Trasduttore",
  "Typical 200 kHz narrow beam (about 3°)": "Fascio stretto tipico a 200 kHz (circa 3°)",
  "Typical 200 kHz beam (about 8°)": "Fascio tipico a 200 kHz (circa 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Fascio tipico a bassa frequenza 33 kHz (circa 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Fascio tipico a bassa frequenza 33 kHz (circa 20°)",
+ "Use built-in coastline (offline, approximate)": "Usa la linea di costa integrata (offline, approssimata)",
+ "Save coastline as GeoJSON": "Salva la linea di costa come GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "La linea di costa caricata resta con il progetto, nel salvataggio automatico e nei file .SPL: scarica la linea di costa OSM una volta online e continuerà a funzionare offline. La linea di costa OSM è dettagliata e mondiale, ma fornita dagli utenti: verificala sulle carte ufficiali. La linea di costa integrata è Natural Earth 1:50m, precisa a circa 1 km: usala solo per la pianificazione al largo, con un margine adeguato. Per un lavoro offline dettagliato, carica un’esportazione GeoJSON di GSHHG (full), Natural Earth 10m o dei poligoni terrestri OSM. Le traiettorie di virata non sono verificate rispetto alla terra.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Troppo grande per restare con il progetto: salvala come GeoJSON e carica il file la prossima volta.",
+ "Kept with the project, so it works offline.": "Resta con il progetto, quindi funziona offline.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Linea di costa integrata caricata: {0} linee. È Natural Earth 1:50m, precisa a circa 1 km: adatta a tenere lontane da terra le linee al largo, non al lavoro costiero.",
+ "No built-in coastline in this area (open water or inland)": "Nessuna linea di costa integrata in quest’area (mare aperto o entroterra)"
 }

@@ -1,8 +1,9 @@
 <details data-sec="coast"><summary>Coastline &amp; land avoidance</summary><div>
 <label>Safety clearance from coast (m)</label><input type="number" id="clr" value="30" min="0">
 <label><input type="checkbox" id="trim" checked> Trim survey and cross lines to navigable water</label>
+<button id="cNE">Use built-in coastline (offline, approximate)</button>
 <button id="cOSM">Load OSM coastline for area (online)</button>
-<label>Or load land polygons / coastline lines (GeoJSON, WGS84 lon/lat)</label><input type="file" id="cF" accept=".geojson,.json"><button id="cClr">Remove coastline</button>
+<label>Or load land polygons / coastline lines (GeoJSON, WGS84 lon/lat)</label><input type="file" id="cF" accept=".geojson,.json"><button id="cSave">Save coastline as GeoJSON</button><button id="cClr">Remove coastline</button>
 <div id="cSt" class="note">No coastline loaded. Close an area first.</div>
-<p class="note">OSM coastline is worldwide, full detail, user-contributed, so check it against official charts. For offline work, export GSHHG (full), Natural Earth 10m or OSM land polygons to GeoJSON and load the file. Turn paths are not checked against land.</p>
+<p class="note">A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.</p>
 </div></details>

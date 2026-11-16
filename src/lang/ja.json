@@ -1080,5 +1080,12 @@
  "Transducer": "送受波器",
  "Typical 200 kHz narrow beam (about 3°)": "一般的な200 kHz狭ビーム（約3°）",
  "Typical 200 kHz beam (about 8°)": "一般的な200 kHzビーム（約8°）",
- "Typical 33 kHz low-frequency beam (about 20°)": "一般的な33 kHz低周波ビーム（約20°）"
+ "Typical 33 kHz low-frequency beam (about 20°)": "一般的な33 kHz低周波ビーム（約20°）",
+ "Use built-in coastline (offline, approximate)": "内蔵の海岸線を使う（オフライン・概略）",
+ "Save coastline as GeoJSON": "海岸線をGeoJSONで保存",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "読み込んだ海岸線はプロジェクトと一緒に、自動保存と.SPLファイルに保存されます。OSMの海岸線はオンライン時に一度ダウンロードすれば、その後はオフラインで使えます。OSMの海岸線は詳細で全世界をカバーしますが、利用者の投稿によるものです：公式海図と照合してください。内蔵の海岸線はNatural Earth 1:50mで精度は約1 kmです：沖合の計画にのみ、それに見合った離隔で使ってください。詳細なオフライン作業には、GSHHG（full）、Natural Earth 10m、OSMの陸域ポリゴンをGeoJSONで書き出して読み込んでください。旋回経路は陸地と照合されません。",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "プロジェクトに保存するには大きすぎます：GeoJSONで保存し、次回はそのファイルを読み込んでください。",
+ "Kept with the project, so it works offline.": "プロジェクトに保存済みのため、オフラインで使えます。",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "内蔵の海岸線を読み込みました：{0}本。Natural Earth 1:50mで精度は約1 kmです：沖合の測線を陸地から離すには十分ですが、沿岸作業には向きません。",
+ "No built-in coastline in this area (open water or inland)": "この範囲に内蔵の海岸線はありません（外洋または内陸）"
 }

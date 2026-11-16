@@ -1080,5 +1080,12 @@
  "Transducer": "换能器",
  "Typical 200 kHz narrow beam (about 3°)": "典型 200 kHz 窄波束（约 3°）",
  "Typical 200 kHz beam (about 8°)": "典型 200 kHz 波束（约 8°）",
- "Typical 33 kHz low-frequency beam (about 20°)": "典型 33 kHz 低频波束（约 20°）"
+ "Typical 33 kHz low-frequency beam (about 20°)": "典型 33 kHz 低频波束（约 20°）",
+ "Use built-in coastline (offline, approximate)": "使用内置海岸线（离线，近似）",
+ "Save coastline as GeoJSON": "将海岸线另存为 GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "加载的海岸线会随项目保存，包括自动保存和 .SPL 文件：联网时下载一次 OSM 海岸线，之后离线也能使用。OSM 海岸线详细且覆盖全球，但由用户贡献：请与官方海图核对。内置海岸线为 Natural Earth 1:50m，精度约 1 公里：仅用于离岸规划，并设置相应的安全距离。如需详细的离线工作，请加载 GSHHG（full）、Natural Earth 10m 或 OSM 陆地多边形的 GeoJSON 导出文件。转弯路径不检查是否穿越陆地。",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "太大，无法随项目保存：请另存为 GeoJSON，下次加载该文件。",
+ "Kept with the project, so it works offline.": "已随项目保存，可离线使用。",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "已加载内置海岸线：{0} 条。它是 Natural Earth 1:50m，精度约 1 公里：适合让离岸测线避开陆地，不适合近岸作业。",
+ "No built-in coastline in this area (open water or inland)": "该区域没有内置海岸线（开阔水域或内陆）"
 }

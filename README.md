@@ -24,7 +24,7 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - Line azimuth to **3 decimals**, plus an **Auto optimal** button that searches for the fewest lines.
 - **Cross lines**: choose how many, spaced evenly across the area, with their own name prefix.
 - Williamson and U-turn paths, time and distance estimates, and a cost and operations summary.
-- Coastline and land avoidance, and trimming of lines to navigable water.
+- Coastline and land avoidance, and trimming of lines to navigable water. Works offline: use the built-in coastline (Natural Earth, about 1 km detail, for offshore work), or download the detailed OSM coastline once while online. A loaded coastline is kept between sessions and saved in `.SPL` project files, and can be saved as GeoJSON.
 - **Compare scenarios** for a tender: sensor, overlap, swath angle, speed, turn radius, day rate, hours and vessels side by side, with time and cost, exported as CSV.
 
 **Quality checks**

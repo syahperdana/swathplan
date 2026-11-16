@@ -1080,5 +1080,12 @@
  "Transducer": "Transductor",
  "Typical 200 kHz narrow beam (about 3°)": "Haz estrecho típico de 200 kHz (unos 3°)",
  "Typical 200 kHz beam (about 8°)": "Haz típico de 200 kHz (unos 8°)",
- "Typical 33 kHz low-frequency beam (about 20°)": "Haz típico de baja frecuencia de 33 kHz (unos 20°)"
+ "Typical 33 kHz low-frequency beam (about 20°)": "Haz típico de baja frecuencia de 33 kHz (unos 20°)",
+ "Use built-in coastline (offline, approximate)": "Usar la línea de costa integrada (sin conexión, aproximada)",
+ "Save coastline as GeoJSON": "Guardar la línea de costa como GeoJSON",
+ "A loaded coastline is kept with the project, in the autosave and in saved .SPL files, so download the OSM coastline once while online and it keeps working offline. The OSM coastline is detailed and worldwide but user-contributed: check it against official charts. The built-in coastline is Natural Earth 1:50m, accurate to about 1 km: use it for offshore planning only, with a clearance to match. For detailed offline work, load a GeoJSON export of GSHHG (full), Natural Earth 10m or OSM land polygons. Turn paths are not checked against land.": "La línea de costa cargada se guarda con el proyecto, en el autoguardado y en los archivos .SPL: descargue la línea de costa de OSM una vez con conexión y seguirá funcionando sin ella. La línea de costa de OSM es detallada y mundial, pero aportada por usuarios: contrástela con las cartas oficiales. La línea de costa integrada es Natural Earth 1:50m, precisa a 1 km aproximadamente: úsela solo para planificar en alta mar, con un margen acorde. Para trabajo detallado sin conexión, cargue una exportación GeoJSON de GSHHG (full), Natural Earth 10m o polígonos de tierra de OSM. Los giros no se comprueban contra tierra.",
+ "Too large to keep with the project: save it as GeoJSON and load the file next time.": "Demasiado grande para guardarla con el proyecto: guárdela como GeoJSON y cargue el archivo la próxima vez.",
+ "Kept with the project, so it works offline.": "Guardada con el proyecto: funciona sin conexión.",
+ "Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.": "Línea de costa integrada cargada: {0} líneas. Es Natural Earth 1:50m, precisa a 1 km aproximadamente: sirve para alejar de tierra las líneas en alta mar, no para trabajos costeros.",
+ "No built-in coastline in this area (open water or inland)": "No hay línea de costa integrada en esta zona (aguas abiertas o interior)"
 }
