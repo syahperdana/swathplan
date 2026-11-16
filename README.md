@@ -85,7 +85,11 @@ Some features need internet when you use them: map background tiles, global bath
 
 ## One planner for every survey
 
-The survey planner starts with two choices: **what you survey with** (multibeam, or a geophysical spread) and **the shape of the job** (an area, or a corridor along a cable or pipeline route). It then shows only the sections that survey needs, numbered in the order you see them. Any combination works, including a geophysical survey along a route, and switching keeps your area, route and settings.
+The survey planner starts with two choices: **what you survey with** (multibeam, single-beam, or a geophysical spread) and **the shape of the job** (an area, or a corridor along a cable or pipeline route). It then shows only the sections that survey needs, numbered in the order you see them. Any combination works, including a geophysical survey along a route, and switching keeps your area, route and settings.
+
+## Single-beam surveys
+
+Choose *Hydrographic: single-beam (SBES)* for shallow or partial-coverage work. Set the beam width and the line spacing, or use the S-44 maximum (3 × depth, or 25 m). The planner shows the footprint and coverage, checks the spacing and the 5 % coverage that S-44 allows for Order 2 and 1b, and warns that Order 1a needs a feature search and Special and Exclusive Order need full coverage.
 
 ## Corridor surveys
 
