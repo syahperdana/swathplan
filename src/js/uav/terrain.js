@@ -19,16 +19,24 @@ for(let it=0;it<3;it++){const Z=G.z.slice();for(let j=0;j<G.ny;j++)for(let i=0;i
 for(let b=-1;b<=1;b++)for(let a=-1;a<=1;a++){const p=i+a,q=j+b;if(p<0||q<0||p>=G.nx||q>=G.ny)continue;const v=Z[q*G.nx+p];if(isFinite(v)){t+=v;n++}}if(n)G.z[j*G.nx+i]=t/n}}return G}
 function tgSet(G,src){let lo=1e9,hi=-1e9,n=0;G.z.forEach(v=>{if(isFinite(v)){lo=Math.min(lo,v);hi=Math.max(hi,v);n++}});if(!n)throw new Error(i18("no terrain values in this area"));
 G.src=src;TG=G;TGC=null;$("uvTF").checked=true;$("uvTSt").textContent=i18("{0}: {1} terrain points, ground {2} to {3} m. Terrain following is on.",src,n,Math.round(lo),Math.round(hi));gen();saveSoon()}
+// AWS Terrain Tiles (Tilezen terrarium PNG, open CORS): elevation = R·256 + G + B/256 − 32768 m; SRTM 30 m on land from 60° N to 56° S,
+// national DEMs in places, ETOPO1 at sea. Up to 36 tiles at zoom 13 or lower, sampled bilinearly at the grid nodes.
+async function tgTiles(G,prog){const T=(la,lo,z)=>{const n=2**z,s=Math.sin(Math.max(-85,Math.min(85,la))*D);return[(lo+180)/360*n,(.5-Math.log((1+s)/(1-s))/(4*Math.PI))*n]},
+la1=G.la0+(G.ny-1)*G.dla,lo1=G.lo0+(G.nx-1)*G.dlo;let z=13,a,b;for(;z>3;z--){a=T(la1,G.lo0,z);b=T(G.la0,lo1,z);if((Math.floor(b[0])-Math.floor(a[0])+1)*(Math.floor(b[1])-Math.floor(a[1])+1)<=36)break}
+const tl=[];for(let ty=Math.floor(a[1]);ty<=Math.floor(b[1]);ty++)for(let tx=Math.floor(a[0]);tx<=Math.floor(b[0]);tx++)tl.push([tx,ty]);const TD=new Map(),n2=2**z;let done=0,ok=0,err="";
+await Promise.all([0,1,2,3,4,5].map(async w=>{for(let k=w;k<tl.length;k+=6){const[tx,ty]=tl[k];try{const r=await fetch("https://s3.amazonaws.com/elevation-tiles-prod/terrarium/"+z+"/"+((tx%n2+n2)%n2)+"/"+ty+".png");if(!r.ok)throw new Error("HTTP "+r.status);
+const bm=await createImageBitmap(await r.blob()),c=document.createElement("canvas");c.width=c.height=256;const x=c.getContext("2d");x.drawImage(bm,0,0);const d=x.getImageData(0,0,256,256).data,e=new Float32Array(65536);
+for(let i=0;i<65536;i++)e[i]=d[4*i]*256+d[4*i+1]+d[4*i+2]/256-32768;TD.set(tx+","+ty,e);ok++}catch(er){err=er.message}prog(++done/tl.length)}}));
+if(!ok)throw new Error(err||"no tiles");const px=(gx,gy)=>{const e=TD.get(Math.floor(gx/256)+","+Math.floor(gy/256));return e?e[(gy%256)*256+gx%256]:NaN};
+for(let j=0;j<G.ny;j++)for(let i=0;i<G.nx;i++){const q=T(G.la0+j*G.dla,G.lo0+i*G.dlo,z),fx=q[0]*256-.5,fy=q[1]*256-.5,x0=Math.floor(fx),y0=Math.floor(fy),u=fx-x0,v=fy-y0;let s=0,w=0;
+[[x0,y0,(1-u)*(1-v)],[x0+1,y0,u*(1-v)],[x0,y0+1,(1-u)*v],[x0+1,y0+1,u*v]].forEach(([X,Y,k])=>{const h=px(X,Y);if(isFinite(h)&&k>0){s+=h*k;w+=k}});G.z[j*G.nx+i]=w>1e-9?s/w:NaN}return G}
 async function tgLoad(){const st=$("uvTSt"),src=$("uvTS").value;if(src=="file"){$("uvTFile").click();return}const B=tgBox();if(!B){st.textContent=i18("Close an area first (draw, preset or import).");return}
 try{st.textContent=i18("Downloading the terrain… {0} %",0);
 if(src=="ncei"){const G=tgNodes(B,70,30),pts=[];for(let j=0;j<G.ny;j++)for(let i=0;i<G.nx;i++)pts.push([G.lo0+i*G.dlo,G.la0+j*G.dla]);const P=[];
 for(let a=0;a<pts.length;a+=250){const ch=pts.slice(a,a+250),r=JSON.parse(await gbGet("https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_global_mosaic/ImageServer/getSamples",{method:"POST",body:new URLSearchParams({geometry:JSON.stringify({points:ch,spatialReference:{wkid:4326}}),geometryType:"esriGeometryMultipoint",returnFirstValueOnly:"true",interpolation:"RSP_BilinearInterpolation",f:"json"})}));
 if(r.error)throw new Error(r.error.message||"service error");(r.samples||[]).forEach((q,i)=>{const p=ch[q.locationId!=null?q.locationId:i];if(p)P.push([p[1],p[0],parseFloat(q.value)])});st.textContent=i18("Downloading the terrain… {0} %",Math.round(100*Math.min(1,(a+250)/pts.length)))}
 tgSet(tgBin(G,P),"NOAA NCEI")}
-else{const G=tgNodes(B,50,30),pts=[];for(let j=0;j<G.ny;j++)for(let i=0;i<G.nx;i++)pts.push([G.la0+j*G.dla,G.lo0+i*G.dlo]);const P=[];
-for(let a=0;a<pts.length;a+=100){if(a)await new Promise(r=>setTimeout(r,1100));const ch=pts.slice(a,a+100),r=JSON.parse(await gbGet("https://api.opentopodata.org/v1/srtm30m?locations="+ch.map(q=>q[0].toFixed(6)+","+q[1].toFixed(6)).join("|")));
-if(r.status!="OK")throw new Error(r.error||"service error");r.results.forEach((q,i)=>{if(q.elevation!=null)P.push([ch[i][0],ch[i][1],q.elevation])});st.textContent=i18("Downloading the terrain… {0} %",Math.round(100*Math.min(1,(a+100)/pts.length)))}
-tgSet(tgBin(G,P),"SRTM 30 m")}}
+else{const G=tgNodes(B,200,10);await tgTiles(G,f=>st.textContent=i18("Downloading the terrain… {0} %",Math.round(100*f)));tgSet(G,"SRTM 30 m (AWS Terrain Tiles)")}}
 catch(err){st.textContent=i18("Could not download the terrain: {0}. The service may be offline, blocked by the browser or busy: try the other source or a file.",err.message)}}
 // a GeoTIFF or ESRI ASCII elevation grid, in lat/lon or in the coordinate system of section {§crs}
 async function tgFile(f){const st=$("uvTSt");try{st.textContent=i18("Reading {0}…",f.name);const B=tgBox();if(!B)throw new Error(i18("Close an area first (draw, preset or import)."));

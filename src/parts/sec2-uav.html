@@ -35,7 +35,7 @@
 <div class="kv"><span>Point density (with overlap)</span><b id="uvLDn">-</b></div>
 <div class="kv"><span>Flight time, batteries</span><b id="uvLTot">-</b></div></div>
 <div class="uv-ter"><label><input type="checkbox" id="uvTF"> Follow the terrain</label>
-<div class="r2"><div><label>Terrain model</label><select id="uvTS"><option value="otd">SRTM 30 m (Open Topo Data, online)</option><option value="ncei">NOAA NCEI DEM mosaic (online)</option><option value="file">GeoTIFF or ESRI ASCII file (elevation)</option></select></div>
+<div class="r2"><div><label>Terrain model</label><select id="uvTS"><option value="tiles">SRTM 30 m (AWS Terrain Tiles, online)</option><option value="ncei">NOAA NCEI DEM mosaic (online)</option><option value="file">GeoTIFF or ESRI ASCII file (elevation)</option></select></div>
 <div><label>Waypoint spacing along lines (m)</label><input type="number" id="uvTD" value="50" min="5" step="5"></div>
 <div><label>Take-off ground elevation (m, blank = first waypoint)</label><input type="number" id="uvTO" step="1"></div><div><label>&nbsp;</label><button id="uvTB" type="button">Load terrain</button><input type="file" id="uvTFile" accept=".tif,.tiff,.asc,.txt" hidden></div></div>
 <p class="note" id="uvTSt"></p>
