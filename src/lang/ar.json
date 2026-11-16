@@ -909,7 +909,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "استخدام الحد الأقصى في S-44 (3 × العمق أو 25 م)",
  "Footprint at the design depth": "البصمة عند عمق التصميم",
  "Coverage by the main lines": "التغطية بالخطوط الرئيسية",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "يسمح S-44 بتغطية غير كاملة للدرجة 2 والدرجة 1b فقط: تغطية عمقية لا تقل عن 5 %، مع ألا تزيد المسافة بين الأعماق على 3 × متوسط العمق أو 25 م، أيهما أكبر. تتطلب الدرجة 1a بحثًا عن المعالم بنسبة 100 %، وتتطلب الدرجتان الخاصة والحصرية تغطية كاملة: استخدم متعدد الحزم أو أضف سونار المسح الجانبي للبحث عن المعالم.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "تتطلب {0} تغطية عمقية كاملة لا يستطيع المسح أحادي الحزمة توفيرها. استخدم متعدد الحزم.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "تتطلب {0} بحثًا عن المعالم بنسبة 100 %: أضف سونار المسح الجانبي أو استخدم متعدد الحزم.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "تباعد الخطوط {0} م ضمن الحد الأقصى في S-44 البالغ {1} م (3 × العمق أو 25 م).",
@@ -1041,5 +1040,6 @@
  "This page is in English for now. Translations will follow.": "هذه الصفحة بالإنجليزية حاليًا. الترجمات قادمة.",
  "How to use the tools, and the science behind every number with its original references.": "كيفية استخدام الأدوات، والعلم وراء كل رقم مع مراجعه الأصلية.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "كيفية استخدام مخطط المسح ومخطط الاستكمال، خطوة بخطوة، مع لقطات شاشة.",
- "The formulas, standards and data behind every number, with their original references.": "الصيغ والمعايير والبيانات وراء كل رقم، مع مراجعها الأصلية."
+ "The formulas, standards and data behind every number, with their original references.": "الصيغ والمعايير والبيانات وراء كل رقم، مع مراجعها الأصلية.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "يسمح S-44 بتغطية غير كاملة للدرجة 2 والدرجة 1b فقط: تغطية عمقية لا تقل عن 5 %، مع ألا تزيد المسافة بين الأعماق على 3 × عمق الماء أو 25 م، أيهما أكبر. تتطلب الدرجة 1a بحثًا عن المعالم بنسبة 100 %، وتتطلب الدرجتان الخاصة والحصرية تغطية كاملة: استخدم متعدد الحزم أو أضف سونار المسح الجانبي للبحث عن المعالم."
 }

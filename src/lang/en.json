@@ -965,7 +965,7 @@
  "Use the S-44 maximum (3 × depth or 25 m)",
  "Footprint at the design depth",
  "Coverage by the main lines",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).",

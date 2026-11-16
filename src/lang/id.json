@@ -911,7 +911,6 @@
  "Use the S-44 maximum (3 × depth or 25 m)": "Gunakan batas maksimum S-44 (3 × kedalaman atau 25 m)",
  "Footprint at the design depth": "Footprint pada kedalaman rancangan",
  "Coverage by the main lines": "Cakupan oleh lajur utama",
- "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the average depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 mengizinkan cakupan tidak penuh hanya untuk Orde 2 dan Orde 1b: cakupan batimetri minimal 5 %, dengan jarak antar-kedalaman tidak lebih dari 3 × kedalaman rata-rata atau 25 m, mana yang lebih besar. Orde 1a memerlukan pencarian fitur 100 %, dan Orde Khusus serta Eksklusif memerlukan cakupan penuh: gunakan multibeam, atau tambahkan sonar side-scan untuk pencarian fitur.",
  "{0} requires full bathymetric coverage, which a single-beam survey cannot give. Use multibeam.": "{0} memerlukan cakupan batimetri penuh, yang tidak dapat diberikan survei single-beam. Gunakan multibeam.",
  "{0} requires a 100 % feature search: add side-scan sonar or use multibeam.": "{0} memerlukan pencarian fitur 100 %: tambahkan sonar side-scan atau gunakan multibeam.",
  "Line spacing {0} m is within the S-44 maximum of {1} m (3 × depth or 25 m).": "Jarak lajur {0} m masih dalam batas maksimum S-44 {1} m (3 × kedalaman atau 25 m).",
@@ -1043,5 +1042,6 @@
  "This page is in English for now. Translations will follow.": "Halaman ini masih dalam bahasa Inggris. Terjemahan akan menyusul.",
  "How to use the tools, and the science behind every number with its original references.": "Cara menggunakan alat, dan sains di balik setiap angka beserta referensi aslinya.",
  "How to use the survey planner and the infill planner, step by step, with screenshots.": "Cara menggunakan perencana survei dan perencana infill, langkah demi langkah, dengan tangkapan layar.",
- "The formulas, standards and data behind every number, with their original references.": "Rumus, standar, dan data di balik setiap angka, beserta referensi aslinya."
+ "The formulas, standards and data behind every number, with their original references.": "Rumus, standar, dan data di balik setiap angka, beserta referensi aslinya.",
+ "S-44 allows less than full coverage only for Order 2 and Order 1b: at least 5 % bathymetric coverage, with depths no more than 3 × the water depth or 25 m apart, whichever is greater. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full coverage: use multibeam, or add side-scan sonar for the feature search.": "S-44 mengizinkan cakupan tidak penuh hanya untuk Orde 2 dan Orde 1b: cakupan batimetri minimal 5 %, dengan jarak antar-kedalaman tidak lebih dari 3 × kedalaman air atau 25 m, mana yang lebih besar. Orde 1a memerlukan pencarian fitur 100 %, dan Orde Khusus serta Eksklusif memerlukan cakupan penuh: gunakan multibeam, atau tambahkan sonar side-scan untuk pencarian fitur."
 }
