@@ -10,8 +10,9 @@ function dxfLayer(SG){if(SG.length<2)return x=>x.k;return x=>{let n=x.seg;if(!n)
 // and a named view per segment (VIEW table entries), to jump to it in CAD
 function dxfViews(SG){if(SG.length<2)return[];return SG.map(sg=>{const c=sg.pts.map(oc),xs=c.map(q=>q[0]),ys=c.map(q=>q[1]),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
 return`0\nVIEW\n2\nSEG${String(sg.n).padStart(2,"0")}\n70\n0\n40\n${(y1-y0)*1.1}\n10\n${(x0+x1)/2}\n20\n${(y0+y1)/2}\n41\n${(x1-x0)*1.1}\n11\n0\n21\n0\n31\n1\n12\n0\n22\n0\n32\n0\n42\n50\n43\n0\n44\n0\n50\n0\n71\n0\n`})}
-// layer colours (AutoCAD colour index), as on the map sheet: lines teal, cross lines orange, turns pink, boundary white/black, segment borders purple
-const DXF_ACI={boundary:7,segments:190,line:4,cross:30,turn:6};
+// layer colours (AutoCAD colour index), each kind clearly different
+// survey lines cyan, cross lines orange, turns red, segment borders violet, boundary white (black on a white background)
+const DXF_ACI={boundary:7,segments:190,line:4,cross:30,turn:1};
 const dxfTable=(name,rows)=>`0\nTABLE\n2\n${name}\n70\n${rows.length}\n${rows.join("")}0\nENDTAB\n`;
 $("eDxf").onclick=()=>{if(!needs())return;const SG=segPolys(),lay=dxfLayer(SG),E=[];
 // a closed polyline (R12 POLYLINE with VERTEX entries) for the boundary and each segment border, so each is one object in CAD
@@ -20,7 +21,9 @@ E.push(`0\nPOLYLINE\n8\n${ly}\n66\n1\n10\n0\n20\n0\n30\n0\n70\n1\n`+Q.map(q=>{co
 if(closed&&poly.length>=3)ring(poly,"boundary");
 SG.forEach(sg=>{ring(sg.pts,"segments");let cx0=0,cy0=0;sg.pts.forEach(p=>{cx0+=p[0]/sg.pts.length;cy0+=p[1]/sg.pts.length});const c=oc([cx0,cy0]);
 E.push(`0\nTEXT\n8\nsegments\n10\n${c[0]}\n20\n${c[1]}\n30\n0\n40\n${Math.max(5,g("coHW")/4)}\n1\n${sg.name} KP ${sg.kp0.toFixed(3)}-${sg.kp1.toFixed(3)}\n`)});
-paths().forEach(x=>{const ly=lay(x);for(let i=1;i<x.p.length;i++){const a=oc(x.p[i-1]),b=oc(x.p[i]);E.push(`0\nLINE\n8\n${ly}\n10\n${a[0]}\n20\n${a[1]}\n30\n0\n11\n${b[0]}\n21\n${b[1]}\n31\n0\n`)}});
+// a straight survey or cross line stays one LINE; every turn or transit, and every bent (corridor) line, is one open polyline
+paths().forEach(x=>{const ly=lay(x);if(x.p.length<2)return;if(x.p.length==2&&x.k!="turn"){const a=oc(x.p[0]),b=oc(x.p[1]);E.push(`0\nLINE\n8\n${ly}\n10\n${a[0]}\n20\n${a[1]}\n30\n0\n11\n${b[0]}\n21\n${b[1]}\n31\n0\n`);return}
+E.push(`0\nPOLYLINE\n8\n${ly}\n66\n1\n10\n0\n20\n0\n30\n0\n70\n0\n`+x.p.map(q=>{const a=oc(q);return`0\nVERTEX\n8\n${ly}\n10\n${a[0]}\n20\n${a[1]}\n30\n0\n`}).join("")+`0\nSEQEND\n8\n${ly}\n`)});
 // tables: line type, every layer used with its colour, the segment views
 const L=[...new Set(E.map(e=>e.match(/\n8\n([^\n]+)\n/)[1]))],V=dxfViews(SG);
 let h="0\nSECTION\n2\nHEADER\n9\n$ACADVER\n1\nAC1009\n0\nENDSEC\n0\nSECTION\n2\nTABLES\n"+dxfTable("LTYPE",["0\nLTYPE\n2\nCONTINUOUS\n70\n0\n3\nSolid line\n72\n65\n73\n0\n40\n0.0\n"])
