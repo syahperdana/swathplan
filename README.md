@@ -87,6 +87,14 @@ Some features need internet when you use them: map background tiles, global bath
 
 The survey planner starts with two choices: **what you survey with** (multibeam, single-beam, a geophysical spread, or a drone camera) and **the shape of the job** (an area, or a corridor along a cable or pipeline route). It then shows only the sections that survey needs, numbered in the order you see them. Any combination works, including a geophysical survey along a route, and switching keeps your area, route and settings.
 
+## Equipment lists
+
+To save typing, the planner has short lists of common equipment, always with a *Custom* option. Values are approximate: check the maker's datasheet.
+
+- **Side-scan sonar:** EdgeTech 4125 and 4200, Klein 3900 and 4900, each at its frequencies. Choosing one sets the range per side to the longest that frequency reaches, and the planner warns if you set a longer range. The model is named on the map sheet and in the report.
+- **Single-beam transducers:** typical 200 kHz narrow (about 3°), 200 kHz (about 8°) and 33 kHz (about 20°) beams.
+- **Drone cameras:** see *Drone surveys* below.
+
 ## Single-beam surveys
 
 Choose *Hydrographic: single-beam (SBES)* for shallow or partial-coverage work. Set the beam width and the line spacing, or use the S-44 maximum (3 × depth, or 25 m). The planner shows the footprint and coverage, checks the spacing and the 5 % coverage that S-44 allows for Order 2 and 1b, and warns that Order 1a needs a feature search and Special and Exclusive Order need full coverage.

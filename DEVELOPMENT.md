@@ -93,6 +93,14 @@ The route section is `parts/sec3-corridor.html`. `gen()` makes the corridor line
 
 Offsets are positive to starboard; lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
 
+### Equipment lists
+
+- Side-scan models are `<optgroup>`s in `parts/sec2-geophys.html` (`gSM`), one `<option data-f data-r>` per frequency with its longest range per side. They must be in the page, not added by script: `initApp()` restores the saved state before `js/geophys/app.js` runs. The groups carry `data-i18n="off"`; `sssFill()` labels the options in the current language. Choosing one sets `gSR`; `sssNote()` warns when `gSR` is beyond it. `geoSensorRow` names the model.
+- Single-beam transducers: `sbM` in `parts/sec2-sbes.html`, value = beam width; typing a beam width switches it to custom.
+- Drone cameras: `UV_CAM` (see below).
+
+To add a model, add an option with its published figures. Values are approximate and labelled so.
+
 ### Drone mode
 
 The section is `parts/sec2-uav.html` (camera preset `uvCam`, sensor `uvSW`/`uvSH`, focal `uvF`, image width `uvIW`, shortest interval `uvMI`, height `uvH`, overlaps `uvFO`/`uvSO`, battery `uvBat`/`uvSwap`). While the drone is chosen, `applyMode` hides the vessel sections (turn, IHO, coastline, bathymetry, profile) and the SVP inputs, and moves the speed input into the drone section; a comment node marks where it goes back. The drone and the vessel keep separate speeds (`uvV`, `spdV`, swapped in `setMode`). `js/uav/app.js` wraps, each falling through when `MODE().uav` is off:
@@ -195,6 +203,8 @@ Infill planner: `python3 test/infill_check.py infill/index.html` (track import, 
 The snapshot runs the planner in its default mode (multibeam, area), so its exports are those of the original MBES planner.
 
 Corridor mode: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py planner/index.html` (route import, layouts, every export, `.SPL` round trip, switching to area and back).
+
+Equipment lists: `python3 test/equipment_check.py planner/index.html`.
 
 Drone mode: `python3 test/uav_check.py planner/index.html` (GSD, spacing, photo distance, warnings, waypoint exports with height and camera trigger, switching back).
 

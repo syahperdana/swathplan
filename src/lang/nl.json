@@ -958,6 +958,7 @@
  "Export the lines (section {§exp}).": "Exporteer de lijnen (sectie {§exp}).",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "Geofysisch: side-scan, magnetometer, sub-bottom, seismiek",
  "Hydrographic: multibeam (MBES)": "Hydrografisch: multibeam (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Plan multibeam-, singlebeam-, geofysische of dronemeetlijnen over een gebied of langs een kabel- of pijpleidingtracé: IHO S-44-controles, bochten, tijd en kosten, en exports voor acquisitiesoftware en drone-apps.",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "Secties die niet gelden voor de gekozen survey zijn verborgen, dus de sectienummers volgen wat u ziet.",
  "Set the coordinate system (section {§crs}) before importing files without one.": "Stel het coördinatensysteem in (sectie {§crs}) voordat u bestanden zonder systeem importeert.",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "Stel de apparatuur in: de multibeam en swath, of de geofysische sensoren in de opstelling.",
@@ -1072,5 +1073,12 @@
  "{0} cm/px at {1} m": "{0} cm/px op {1} m",
  "{0} m ({1} s at {2} m/s)": "{0} m ({1} s bij {2} m/s)",
  "{0} photos · {1} min · {2} batteries": "{0} foto’s · {1} min · {2} accu’s",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Plan multibeam-, singlebeam-, geofysische of dronemeetlijnen over een gebied of langs een kabel- of pijpleidingtracé: IHO S-44-controles, bochten, tijd en kosten, en exports voor acquisitiesoftware en drone-apps."
+ "Side-scan model and frequency": "Side-scanmodel en frequentie",
+ "{0} kHz, up to {1} m per side": "{0} kHz, tot {1} m per zijde",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "Het bereik van {0} m ligt voorbij de {1} m die deze frequentie haalt: verkort het bereik of kies een lagere frequentie.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "Tot {0} m per zijde op deze frequentie. Waarden zijn bij benadering: controleer het gegevensblad van de fabrikant en de omstandigheden ter plaatse.",
+ "Transducer": "Transducer",
+ "Typical 200 kHz narrow beam (about 3°)": "Typische smalle bundel van 200 kHz (ongeveer 3°)",
+ "Typical 200 kHz beam (about 8°)": "Typische bundel van 200 kHz (ongeveer 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "Typische laagfrequente bundel van 33 kHz (ongeveer 20°)"
 }

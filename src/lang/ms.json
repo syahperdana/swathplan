@@ -966,6 +966,7 @@
  "Export the lines (section {§exp}).": "Eksport garisan (bahagian {§exp}).",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "Geofizik: imbasan sisi, magnetometer, sub-dasar, seismik",
  "Hydrographic: multibeam (MBES)": "Hidrografi: multialur (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Rancang garisan ukur multibim, bim tunggal, geofizik atau dron di suatu kawasan atau sepanjang laluan kabel atau paip: semakan IHO S-44, belokan, masa dan kos, serta eksport untuk perisian perolehan dan aplikasi dron.",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "Bahagian yang tidak berkaitan dengan ukur yang dipilih disembunyikan, jadi nombor bahagian mengikut apa yang anda lihat.",
  "Set the coordinate system (section {§crs}) before importing files without one.": "Tetapkan sistem koordinat (bahagian {§crs}) sebelum mengimport fail tanpa sistem koordinat.",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "Tetapkan peralatan: multialur dan sapuan, atau sensor geofizik dalam susunan.",
@@ -1080,5 +1081,12 @@
  "{0} cm/px at {1} m": "{0} cm/px pada {1} m",
  "{0} m ({1} s at {2} m/s)": "{0} m ({1} s pada {2} m/s)",
  "{0} photos · {1} min · {2} batteries": "{0} foto · {1} min · {2} bateri",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Rancang garisan ukur multibim, bim tunggal, geofizik atau dron di suatu kawasan atau sepanjang laluan kabel atau paip: semakan IHO S-44, belokan, masa dan kos, serta eksport untuk perisian perolehan dan aplikasi dron."
+ "Side-scan model and frequency": "Model dan frekuensi sonar imbasan sisi",
+ "{0} kHz, up to {1} m per side": "{0} kHz, hingga {1} m setiap sisi",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "Julat {0} m melebihi {1} m yang dicapai frekuensi ini: pendekkan julat atau pilih frekuensi lebih rendah.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "Hingga {0} m setiap sisi pada frekuensi ini. Nilai adalah anggaran: semak helaian data pengeluar dan keadaan di tapak.",
+ "Transducer": "Transduser",
+ "Typical 200 kHz narrow beam (about 3°)": "Alur sempit 200 kHz biasa (kira-kira 3°)",
+ "Typical 200 kHz beam (about 8°)": "Alur 200 kHz biasa (kira-kira 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "Alur frekuensi rendah 33 kHz biasa (kira-kira 20°)"
 }

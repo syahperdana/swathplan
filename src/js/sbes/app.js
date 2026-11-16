@@ -25,3 +25,7 @@ const sbSensorTxt=()=>i18("Single-beam echosounder, {0}° beam",g("sbBW"));
 const sbSensorRow=()=>[i18("Sensor"),sbSensorTxt()];
 const sbSwathRow=()=>[i18("Footprint / coverage"),sbFoot().toFixed(1)+" m / "+(sbFoot()/Math.max(1,g("sbSp"))*100).toFixed(1)+" %"];
 const _sbSetLang=setLang;setLang=function(){const r=_sbSetLang.apply(this,arguments);try{sbShow()}catch(e){}return r};
+
+/* typical transducers: the beam width (approximate) */
+$("sbM").addEventListener("change",()=>{const v=+$("sbM").value;if(v){$("sbBW").value=v;$("sbBW").dispatchEvent(new Event("input"))}saveSoon()});
+$("sbBW").addEventListener("input",e=>{if(e.isTrusted&&+$("sbM").value!==g("sbBW"))$("sbM").value="custom"});

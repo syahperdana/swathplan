@@ -965,6 +965,7 @@
  "Export the lines (section {§exp}).": "Экспортируйте галсы (раздел {§exp}).",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "Геофизическая: ГБО, магнитометр, профилограф, сейсмика",
  "Hydrographic: multibeam (MBES)": "Гидрографическая: многолучевой эхолот (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Планируйте многолучевые, однолучевые, геофизические или дроновые галсы по площади или вдоль трассы кабеля или трубопровода: проверки IHO S-44, развороты, время и стоимость, экспорт для ПО сбора данных и приложений для дронов.",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "Разделы, не относящиеся к выбранной съёмке, скрыты, поэтому номера разделов идут по видимому порядку.",
  "Set the coordinate system (section {§crs}) before importing files without one.": "Задайте систему координат (раздел {§crs}) до импорта файлов без неё.",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "Настройте оборудование: многолучевой эхолот и полосу или геофизические датчики комплекса.",
@@ -1079,5 +1080,12 @@
  "{0} cm/px at {1} m": "{0} см/пкс на {1} м",
  "{0} m ({1} s at {2} m/s)": "{0} м ({1} с при {2} м/с)",
  "{0} photos · {1} min · {2} batteries": "{0} снимков · {1} мин · {2} аккумуляторов",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "Планируйте многолучевые, однолучевые, геофизические или дроновые галсы по площади или вдоль трассы кабеля или трубопровода: проверки IHO S-44, развороты, время и стоимость, экспорт для ПО сбора данных и приложений для дронов."
+ "Side-scan model and frequency": "Модель и частота ГБО",
+ "{0} kHz, up to {1} m per side": "{0} кГц, до {1} м на борт",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "Дальность {0} м больше {1} м, доступных на этой частоте: уменьшите дальность или выберите более низкую частоту.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "До {0} м на борт на этой частоте. Значения приблизительны: сверьтесь с паспортом производителя и условиями на месте.",
+ "Transducer": "Антенна",
+ "Typical 200 kHz narrow beam (about 3°)": "Типичный узкий луч 200 кГц (около 3°)",
+ "Typical 200 kHz beam (about 8°)": "Типичный луч 200 кГц (около 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "Типичный низкочастотный луч 33 кГц (около 20°)"
 }

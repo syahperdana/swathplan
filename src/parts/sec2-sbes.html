@@ -1,4 +1,5 @@
 <details data-sec="sbes" open><summary>Single-beam echosounder &amp; line spacing</summary><div>
+<label>Transducer</label><select id="sbM"><option value="custom">Custom</option><option value="3">Typical 200 kHz narrow beam (about 3°)</option><option value="8">Typical 200 kHz beam (about 8°)</option><option value="20">Typical 33 kHz low-frequency beam (about 20°)</option></select>
 <div class="r2"><div><label>Beam width (°)</label><input type="number" id="sbBW" value="8" min="0.5" max="60" step="0.5"></div><div id="sbDepth"></div></div>
 <label>Line spacing (m)</label><input type="number" id="sbSp" value="75" min="1" step="1">
 <button id="sbMax" type="button">Use the S-44 maximum (3 × depth or 25 m)</button>

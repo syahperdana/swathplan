@@ -1135,5 +1135,13 @@
  "{0} battery changes · {1}",
  "{0} cm/px at {1} m",
  "{0} m ({1} s at {2} m/s)",
- "{0} photos · {1} min · {2} batteries"
+ "{0} photos · {1} min · {2} batteries",
+ "Side-scan model and frequency",
+ "{0} kHz, up to {1} m per side",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.",
+ "Transducer",
+ "Typical 200 kHz narrow beam (about 3°)",
+ "Typical 200 kHz beam (about 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)"
 ]

@@ -957,6 +957,7 @@
  "Export the lines (section {§exp}).": "लाइनें निर्यात करें (मद {§exp})।",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "भूभौतिकीय: साइड-स्कैन, मैग्नेटोमीटर, सब-बॉटम, भूकंपीय",
  "Hydrographic: multibeam (MBES)": "जलसर्वेक्षण: मल्टीबीम (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "किसी क्षेत्र में या केबल या पाइपलाइन मार्ग के साथ मल्टीबीम, सिंगल-बीम, भूभौतिकीय या ड्रोन सर्वे लाइनें बनाएँ: IHO S-44 जाँच, मोड़, समय और लागत, तथा अधिग्रहण सॉफ़्टवेयर और ड्रोन ऐप के लिए निर्यात।",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "चुने गए सर्वे पर लागू न होने वाले मद छिपे रहते हैं, इसलिए मद संख्याएँ दिखने वाले क्रम के अनुसार होती हैं।",
  "Set the coordinate system (section {§crs}) before importing files without one.": "बिना निर्देशांक प्रणाली वाली फ़ाइलें आयात करने से पहले निर्देशांक प्रणाली सेट करें (मद {§crs})।",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "उपकरण सेट करें: मल्टीबीम और स्वाथ, या स्प्रेड में भूभौतिकीय सेंसर।",
@@ -1071,5 +1072,12 @@
  "{0} cm/px at {1} m": "{0} सेमी/पिक्सेल, {1} मी पर",
  "{0} m ({1} s at {2} m/s)": "{0} मी ({2} मी/से पर {1} से)",
  "{0} photos · {1} min · {2} batteries": "{0} फ़ोटो · {1} मिनट · {2} बैटरी",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "किसी क्षेत्र में या केबल या पाइपलाइन मार्ग के साथ मल्टीबीम, सिंगल-बीम, भूभौतिकीय या ड्रोन सर्वे लाइनें बनाएँ: IHO S-44 जाँच, मोड़, समय और लागत, तथा अधिग्रहण सॉफ़्टवेयर और ड्रोन ऐप के लिए निर्यात।"
+ "Side-scan model and frequency": "साइड-स्कैन मॉडल और आवृत्ति",
+ "{0} kHz, up to {1} m per side": "{0} kHz, प्रति ओर {1} मी तक",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "{0} मी की रेंज इस आवृत्ति की पहुँच {1} मी से अधिक है: रेंज घटाएँ या कम आवृत्ति चुनें।",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "इस आवृत्ति पर प्रति ओर {0} मी तक। मान अनुमानित हैं: निर्माता की डेटाशीट और साइट की स्थितियाँ जाँचें।",
+ "Transducer": "ट्रांसड्यूसर",
+ "Typical 200 kHz narrow beam (about 3°)": "सामान्य 200 kHz संकरी बीम (लगभग 3°)",
+ "Typical 200 kHz beam (about 8°)": "सामान्य 200 kHz बीम (लगभग 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "सामान्य 33 kHz कम-आवृत्ति बीम (लगभग 20°)"
 }

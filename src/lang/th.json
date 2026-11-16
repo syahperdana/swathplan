@@ -966,6 +966,7 @@
  "Export the lines (section {§exp}).": "ส่งออกแนวสำรวจ (ข้อ {§exp})",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "ธรณีฟิสิกส์: โซนาร์กวาดข้าง แมกนีโตมิเตอร์ ซับบอททอม คลื่นไหวสะเทือน",
  "Hydrographic: multibeam (MBES)": "อุทกศาสตร์: มัลติบีม (MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "วางแนวสำรวจมัลติบีม ซิงเกิลบีม ธรณีฟิสิกส์ หรือโดรน ทั่วพื้นที่หรือตามแนวสายเคเบิลหรือท่อ: ตรวจตาม IHO S-44 การเลี้ยว เวลาและต้นทุน และส่งออกสำหรับซอฟต์แวร์เก็บข้อมูลและแอปโดรน",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "ข้อที่ไม่เกี่ยวกับการสำรวจที่เลือกจะถูกซ่อน หมายเลขข้อจึงเรียงตามที่เห็น",
  "Set the coordinate system (section {§crs}) before importing files without one.": "ตั้งระบบพิกัด (ข้อ {§crs}) ก่อนนำเข้าไฟล์ที่ไม่มีระบบพิกัด",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "ตั้งค่าอุปกรณ์: มัลติบีมและความกว้างการกวาด หรือเซนเซอร์ธรณีฟิสิกส์ในชุดอุปกรณ์",
@@ -1080,5 +1081,12 @@
  "{0} cm/px at {1} m": "{0} ซม./พิกเซล ที่ {1} ม.",
  "{0} m ({1} s at {2} m/s)": "{0} ม. ({1} วินาทีที่ {2} ม./วินาที)",
  "{0} photos · {1} min · {2} batteries": "{0} ภาพ · {1} นาที · แบตเตอรี่ {2} ก้อน",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "วางแนวสำรวจมัลติบีม ซิงเกิลบีม ธรณีฟิสิกส์ หรือโดรน ทั่วพื้นที่หรือตามแนวสายเคเบิลหรือท่อ: ตรวจตาม IHO S-44 การเลี้ยว เวลาและต้นทุน และส่งออกสำหรับซอฟต์แวร์เก็บข้อมูลและแอปโดรน"
+ "Side-scan model and frequency": "รุ่นและความถี่ของไซด์สแกนโซนาร์",
+ "{0} kHz, up to {1} m per side": "{0} kHz สูงสุด {1} ม. ต่อข้าง",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "ระยะ {0} ม. เกินกว่า {1} ม. ที่ความถี่นี้ทำได้: ลดระยะหรือเลือกความถี่ที่ต่ำลง",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "สูงสุด {0} ม. ต่อข้างที่ความถี่นี้ ค่าเป็นค่าประมาณ: ตรวจสอบเอกสารข้อมูลของผู้ผลิตและสภาพหน้างาน",
+ "Transducer": "ทรานสดิวเซอร์",
+ "Typical 200 kHz narrow beam (about 3°)": "ลำคลื่นแคบ 200 kHz ทั่วไป (ประมาณ 3°)",
+ "Typical 200 kHz beam (about 8°)": "ลำคลื่น 200 kHz ทั่วไป (ประมาณ 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "ลำคลื่นความถี่ต่ำ 33 kHz ทั่วไป (ประมาณ 20°)"
 }

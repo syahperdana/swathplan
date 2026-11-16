@@ -958,6 +958,7 @@
  "Export the lines (section {§exp}).": "导出测线（第{§exp}节）。",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "地球物理：侧扫声呐、磁力仪、浅地层剖面仪、地震",
  "Hydrographic: multibeam (MBES)": "水文：多波束（MBES）",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "在区域内或沿电缆、管道路由规划多波束、单波束、物探或无人机测线：IHO S-44 检查、转弯、时间和成本，并可导出到采集软件和无人机应用。",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "与所选测量无关的章节会被隐藏，章节编号按显示内容排列。",
  "Set the coordinate system (section {§crs}) before importing files without one.": "导入不含坐标系的文件前，请先设置坐标系（第{§crs}节）。",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "设置设备：多波束和条带，或测量组合中的地球物理传感器。",
@@ -1072,5 +1073,12 @@
  "{0} cm/px at {1} m": "{0} 厘米/像素，高度 {1} 米",
  "{0} m ({1} s at {2} m/s)": "{0} 米（{2} 米/秒时 {1} 秒）",
  "{0} photos · {1} min · {2} batteries": "{0} 张照片 · {1} 分钟 · {2} 块电池",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "在区域内或沿电缆、管道路由规划多波束、单波束、物探或无人机测线：IHO S-44 检查、转弯、时间和成本，并可导出到采集软件和无人机应用。"
+ "Side-scan model and frequency": "侧扫声呐型号与频率",
+ "{0} kHz, up to {1} m per side": "{0} kHz，单侧最大 {1} 米",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "量程 {0} 米超出该频率可达的 {1} 米：请缩短量程或选择更低频率。",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "该频率下单侧最大 {0} 米。数值为近似值：请核对厂家规格书和现场条件。",
+ "Transducer": "换能器",
+ "Typical 200 kHz narrow beam (about 3°)": "典型 200 kHz 窄波束（约 3°）",
+ "Typical 200 kHz beam (about 8°)": "典型 200 kHz 波束（约 8°）",
+ "Typical 33 kHz low-frequency beam (about 20°)": "典型 33 kHz 低频波束（约 20°）"
 }

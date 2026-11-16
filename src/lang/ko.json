@@ -957,6 +957,7 @@
  "Export the lines (section {§exp}).": "측선을 내보내세요({§exp}번 항목).",
  "Geophysical: side-scan, magnetometer, sub-bottom, seismic": "지구물리: 사이드스캔, 자력계, 천부지층탐사기, 탄성파",
  "Hydrographic: multibeam (MBES)": "수로: 멀티빔(MBES)",
+ "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "구역 또는 케이블·파이프라인 노선을 따라 멀티빔, 싱글빔, 지구물리 또는 드론 측선을 계획합니다: IHO S-44 점검, 선회, 시간과 비용, 수집 소프트웨어와 드론 앱용 내보내기.",
  "Sections that do not apply to the chosen survey are hidden, so the section numbers follow what you see.": "선택한 측량에 해당하지 않는 항목은 숨겨지며, 항목 번호는 보이는 순서를 따릅니다.",
  "Set the coordinate system (section {§crs}) before importing files without one.": "좌표계가 없는 파일을 가져오기 전에 좌표계를 설정하세요({§crs}번 항목).",
  "Set the equipment: the multibeam and swath, or the geophysical sensors in the spread.": "장비를 설정하세요: 멀티빔과 스와스, 또는 구성의 지구물리 센서.",
@@ -1071,5 +1072,12 @@
  "{0} cm/px at {1} m": "{0} cm/px, 고도 {1} m",
  "{0} m ({1} s at {2} m/s)": "{0} m({2} m/s에서 {1}초)",
  "{0} photos · {1} min · {2} batteries": "사진 {0}장 · {1}분 · 배터리 {2}개",
- "Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.": "구역 또는 케이블·파이프라인 노선을 따라 멀티빔, 싱글빔, 지구물리 또는 드론 측선을 계획합니다: IHO S-44 점검, 선회, 시간과 비용, 수집 소프트웨어와 드론 앱용 내보내기."
+ "Side-scan model and frequency": "사이드스캔 기종과 주파수",
+ "{0} kHz, up to {1} m per side": "{0} kHz, 한쪽 최대 {1} m",
+ "The range {0} m is beyond the {1} m this frequency reaches: shorten the range or pick a lower frequency.": "거리 {0} m는 이 주파수가 닿는 {1} m를 넘습니다: 거리를 줄이거나 더 낮은 주파수를 고르세요.",
+ "Up to {0} m per side at this frequency. Values are approximate: check the maker's datasheet and the conditions on site.": "이 주파수에서 한쪽 최대 {0} m. 값은 근사값입니다: 제조사 사양서와 현장 조건을 확인하세요.",
+ "Transducer": "송수파기",
+ "Typical 200 kHz narrow beam (about 3°)": "일반적인 200 kHz 협빔(약 3°)",
+ "Typical 200 kHz beam (about 8°)": "일반적인 200 kHz 빔(약 8°)",
+ "Typical 33 kHz low-frequency beam (about 20°)": "일반적인 33 kHz 저주파 빔(약 20°)"
 }
