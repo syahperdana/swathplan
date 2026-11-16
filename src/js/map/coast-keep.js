@@ -19,16 +19,25 @@ $("cSt").textContent=i18("{0} ({1} segments)",CK_MSG||i18("Coastline"),cst.seg.l
 const ckForget=()=>{try{IDB.del(IDK("coast")).catch(()=>{})}catch(e){}};
 {const _clr=$("cClr").onclick;$("cClr").onclick=function(){_clr.apply(this,arguments);CK_MSG="";ckForget();saveSoon()}}
 // built-in coastline (Natural Earth 1:50m, in the page): closed rings turned counter-clockwise so land is on the left, as in OSM; cut to the area
-$("cNE").onclick=()=>{if(!closed)return $("cSt").textContent=i18("Close an area first.");const N=neLoad();if(!N)return;
+$("cNE").onclick=async()=>{if(!closed)return $("cSt").textContent=i18("Close an area first.");$("cSt").textContent=i18("Loading…");const N10=await neLoad10(),N=N10||neLoad();if(!N)return;
 const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),m=Math.max(10000,g("clr")*5),lo=toLL([Math.min(...xs)-m,Math.min(...ys)-m]),hi=toLL([Math.max(...xs)+m,Math.max(...ys)+m]),
 a0=Math.min(lo[0],hi[0]),a1=Math.max(lo[0],hi[0]),o0=Math.min(lo[1],hi[1]),o1=Math.max(lo[1],hi[1]),inB=(la,ln)=>la>=a0&&la<=a1&&ln>=o0&&ln<=o1,out=[];
+if(N10){
+// 1:10m land polygons: each ring cut to the box (Sutherland-Hodgman); a point inside a ring is land, whatever its direction
+const clip=(R,inside,cut)=>{const o=[];for(let i=0;i<R.length;i++){const p=R[i],q=R[(i+1)%R.length],pi=inside(p),qi=inside(q);if(pi)o.push(p);if(pi!=qi)o.push(cut(p,q))}return o};
+const E=[[p=>p[0]>=o0,(p,q)=>[o0,p[1]+(q[1]-p[1])*(o0-p[0])/(q[0]-p[0])]],[p=>p[0]<=o1,(p,q)=>[o1,p[1]+(q[1]-p[1])*(o1-p[0])/(q[0]-p[0])]],
+[p=>p[1]>=a0,(p,q)=>[p[0]+(q[0]-p[0])*(a0-p[1])/(q[1]-p[1]),a0]],[p=>p[1]<=a1,(p,q)=>[p[0]+(q[0]-p[0])*(a1-p[1])/(q[1]-p[1]),a1]]];
+N.forEach(l=>{if(l.a1<a0||l.a0>a1||l.o1<o0||l.o0>o1)return;let R=[];for(let k=0;k<l.a.length;k+=2)R.push([l.a[k+1],l.a[k]]);
+if(R.length>1&&R[0][0]==R[R.length-1][0]&&R[0][1]==R[R.length-1][1])R.pop();for(const[f,c]of E){R=clip(R,f,c);if(R.length<3)return}out.push(R.concat([R[0]]))})}
+else{
 const area=a=>{let s=0;for(let k=0;k<a.length-2;k+=2)s+=a[k+1]*a[k+2]-a[k+3]*a[k];return s/2};
 N.forEach(l=>{if(l.a1<a0||l.a0>a1||l.o1<o0||l.o0>o1)return;let a=l.a;const n=a.length;
 if(Math.abs(a[0]-a[n-2])<.0015&&Math.abs(a[1]-a[n-1])<.0015&&area(a)<0){const r=[];for(let k=n-2;k>=0;k-=2)r.push(a[k],a[k+1]);a=r}
 let run=[];const flush=()=>{if(run.length>1)out.push(run);run=[]};
 for(let k=0;k<n;k+=2){const on=inB(a[k],a[k+1]),prevOn=k>0&&inB(a[k-2],a[k-1]),nextOn=k+2<n&&inB(a[k+2],a[k+3]);
 if(on||prevOn||nextOn)run.push([a[k+1],a[k]]);else flush()}flush()});
-setCst(out,[],out.length?i18("Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.",out.length):i18("No built-in coastline in this area (open water or inland)"))};
+}
+setCst(N10?[]:out,N10?out:[],!out.length?i18("No built-in coastline in this area (open water or inland)"):N10?i18("Built-in coastline loaded: Natural Earth 1:10m land, {0} land areas here. Accurate to a few hundred metres: good for offshore and coastal planning, not for harbours or close inshore work.",out.length):i18("Built-in coastline loaded: {0} lines. It is Natural Earth 1:50m, accurate to about 1 km: fine for keeping offshore lines off land, not for inshore work.",out.length)+" "+i18("The detailed 1:10m file (data/coast10m.js) was not found next to this page."))};
 // save the loaded coastline as a file, to keep or to load elsewhere
 $("cSave").onclick=()=>{if(!cst||!cst.seg||!cst.seg.length)return $("cSt").textContent=i18("No coastline loaded.");const P=cst.mode=="polys";
 const fc={type:"FeatureCollection",features:(P?cst.polys:cst.lines).map(c=>({type:"Feature",properties:{source:CK_MSG},geometry:P?{type:"Polygon",coordinates:[c]}:{type:"LineString",coordinates:c}}))};

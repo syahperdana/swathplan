@@ -55,13 +55,21 @@ $("saSt").textContent=run.cors?i18("This tile server does not allow saving tiles
 if(WEB&&window.caches){$("offBox").hidden=false;tcShow()}else $("offNo").hidden=false;
 
 // ---- built-in world coastline (Natural Earth 1:50m), drawn under the tiles ----
-let NE=null;
-function neLoad(){if(NE||typeof COAST_NE!="string")return NE;
-NE=COAST_NE.split(" ").map(s=>{const a=[];let i=0,la=0,lo=0;const rd=()=>{let r=0,sh=0,b;do{b=s.charCodeAt(i++)-63;r|=(b&31)<<sh;sh+=5}while(b>=32);return r&1?~(r>>1):r>>1};
-while(i<s.length){la+=rd();lo+=rd();a.push(la/1e3,lo/1e3)}let a0=90,a1=-90,o0=360,o1=-360;for(let k=0;k<a.length;k+=2){a0=Math.min(a0,a[k]);a1=Math.max(a1,a[k]);o0=Math.min(o0,a[k+1]);o1=Math.max(o1,a[k+1])}return{a,a0,a1,o0,o1}});return NE}
+let NE=null,NE10=null,NE10p=null;
+// encoded polylines (lat, lon x q) -> [{a:[lat,lon,…], bounding box}]
+function neDec(str,q){return str.split(" ").map(s=>{const a=[];let i=0,la=0,lo=0;const rd=()=>{let r=0,sh=0,b;do{b=s.charCodeAt(i++)-63;r|=(b&31)<<sh;sh+=5}while(b>=32);return r&1?~(r>>1):r>>1};
+while(i<s.length){la+=rd();lo+=rd();a.push(la/q,lo/q)}let a0=90,a1=-90,o0=360,o1=-360;for(let k=0;k<a.length;k+=2){a0=Math.min(a0,a[k]);a1=Math.max(a1,a[k]);o0=Math.min(o0,a[k+1]);o1=Math.max(o1,a[k+1])}return{a,a0,a1,o0,o1}})}
+function neLoad(){if(NE||typeof COAST_NE!="string")return NE;NE=neDec(COAST_NE,1e3);return NE}
+// Natural Earth 1:10m: a separate file (data/coast10m.js, 1.7 MB), loaded when first needed; null when it is not there (a page saved on its own)
+function neLoad10(){if(NE10)return Promise.resolve(NE10);if(NE10p)return NE10p;
+NE10p=new Promise(res=>{const done=()=>{if(typeof window.COAST_NE10=="string"){NE10=neDec(window.COAST_NE10,1e4);window.COAST_NE10=null}if(!NE10)NE10p=null;res(NE10)};
+if(typeof window.COAST_NE10=="string")return done();const s=document.createElement("script");s.src=new URL("../data/coast10m.js",location.href).href;s.onload=done;s.onerror=()=>{NE10p=null;res(null)};document.head.append(s)});return NE10p}
 let neDrawn=false;
-function drawNE(){neDrawn=false;if(typeof noTiles!="undefined"&&noTiles)return;const ck=document.getElementById("neC");if(ck&&!ck.checked)return;const L=neLoad();if(!L)return;
-const tl=toLL(wc(0,0)),br=toLL(wc(cv.width,cv.height)),dl=Math.abs(tl[0]-br[0]),m=dl*.2+.05,la0=Math.min(tl[0],br[0])-m,la1=Math.max(tl[0],br[0])+m,lo0=Math.min(tl[1],br[1])-2*m,lo1=Math.max(tl[1],br[1])+2*m;
+function drawNE(){neDrawn=false;if(typeof noTiles!="undefined"&&noTiles)return;const ck=document.getElementById("neC");if(ck&&!ck.checked)return;
+const tl=toLL(wc(0,0)),br=toLL(wc(cv.width,cv.height)),dl=Math.abs(tl[0]-br[0]);
+// zoomed in to a few degrees: the 1:10m coastline (loaded once, then redrawn); farther out, or until it arrives: 1:50m
+if(dl<8&&!NE10&&!NE10p)neLoad10().then(r=>{if(r)rq()});const L=dl<8&&NE10?NE10:neLoad();if(!L)return;
+const m=dl*.2+.05,la0=Math.min(tl[0],br[0])-m,la1=Math.max(tl[0],br[0])+m,lo0=Math.min(tl[1],br[1])-2*m,lo1=Math.max(tl[1],br[1])+2*m;
 if(dl>70)return;// the local map frame is for survey areas, not whole oceans
 const r=DPR();cx.save();cx.strokeStyle="#8a6d3b";cx.lineWidth=1.1*r;cx.globalAlpha=.85;cx.beginPath();
 L.forEach(l=>{if(l.a1<la0||l.a0>la1||l.o1<lo0||l.o0>lo1)return;for(let k=0;k<l.a.length;k+=2){const s=sc(fromLL(l.a[k],l.a[k+1]));k?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])}neDrawn=true});

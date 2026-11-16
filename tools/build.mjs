@@ -26,7 +26,7 @@ const CHECK = process.argv.includes("--check");
 // the hub is the home page; hub/ only redirects there (old links)
 const PAGES = { "hub.html": "index.html", "planner.html": "planner/index.html", "infill.html": "infill/index.html", "mbes-redirect.html": "mbes/index.html", "corridor-redirect.html": "corridor/index.html", "geophys-redirect.html": "geophys/index.html", "hub-redirect.html": "hub/index.html" };
 // files the offline app keeps (relative to the site root); the pages above are added first
-const STATIC = ["manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
+const STATIC = ["data/coast10m.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/maskable-512.png", "icons/apple-touch-icon.png"];
 
 const read = (p) => readFileSync(p, "utf8");
 const problems = [], notes = [];
