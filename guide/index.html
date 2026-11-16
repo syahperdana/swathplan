@@ -283,7 +283,7 @@ ol.refs a.back{text-decoration:none;margin-left:4px}
 <p>First choose the <b>coordinate system</b> for the exported coordinates: UTM, WGS 84 degrees, or the EPSG/custom system you loaded. Tick <i>Include Williamson turn trajectories</i> if your software should get the turns too. <i>USV acceptance radius</i> goes into the waypoint files.</p>
 <table><tr><th>Format</th><th>For</th><th>Contents and notes</th></tr>
 <tr><td>HYPACK (.LNX)</td><td>HYPACK</td><td>Planned lines. The layout has not been verified in HYPACK yet: test-import before field use.</td></tr>
-<tr><td>AutoCAD DXF</td><td>CAD, GIS, Qinsy</td><td>Lines (teal), turns (pink), cross lines (orange) and the boundary (white), each on its own layer and colour. Split corridors: each segment border as a purple closed polyline on layer <code>segments</code> with its name and KP range, the lines on layers per segment, and a named view per segment.</td></tr>
+<tr><td>AutoCAD DXF</td><td>CAD, GIS, Qinsy</td><td>Survey lines (cyan), cross lines (orange), turns (red, each turn one polyline) and the boundary (white), each on its own layer and colour. Split corridors: each segment border as a purple closed polyline on layer <code>segments</code> with its name and KP range, the lines on layers per segment, and a named view per segment.</td></tr>
 <tr><td>Shapefile (.zip)</td><td>GIS</td><td>Lines, boundary and corridor segments, with .prj.</td></tr>
 <tr><td>EIVA RLN</td><td>EIVA NaviPac / Helmsman</td><td>Runlines with E, N and KP.</td></tr>
 <tr><td>Qinsy QGF line (.qgfline)</td><td>Qinsy</td><td>Straight lines in WGS 84 UTM. Rebuilt from a sample file: test-import first.</td></tr>

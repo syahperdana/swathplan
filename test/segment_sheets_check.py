@@ -27,6 +27,8 @@ with sync_playwright() as p:
     ok({'line_S01','line_S03','cross_S02','turn_S02','segments','boundary'}<=ly and 'line' not in ly,'DXF: each segment on its own layers')
     ok(re.findall(r'\nVIEW\n2\n(\w+)',t)==['SEG01','SEG02','SEG03'] and t.index('TABLES')<t.index('ENTITIES'),'DXF: a named view per segment')
     ok(t.count('\nPOLYLINE\n8\nsegments\n')==3,'DXF: each segment border is one closed polyline on layer segments')
+    ok(len(re.findall(r'\nPOLYLINE\n8\nturn_S\d+\n66\n1\n10\n0\n20\n0\n30\n0\n70\n0\n',t))>0 and not re.search(r'\nLINE\n8\nturn',t),'DXF: every turn is one open polyline')
+    ok(len(set(re.findall(r'\nLAYER\n2\n(?:line|cross|turn|segments)_?(?:S\d+)?\n70\n0\n62\n(\d+)\n',t)))==4,'DXF: survey lines, cross lines, turns and segment borders in four different colours')
     ok(bool(re.search(r'\nLAYER\n2\nsegments\n70\n0\n62\n190\n',t)) and bool(re.search(r'\nLAYER\n2\nboundary\n70\n0\n62\n7\n',t)),'DXF: layer table gives segment borders their own colour')
     # one file per segment, for every format
     ev("$('xpSegs').value='file'");before=ev("[$('hL').textContent,R.lines.length,R.cross.length,poly.length]")
