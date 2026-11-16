@@ -5,11 +5,13 @@ let MODE_LAST=null,AREA_LL=null;// the survey area is kept while a corridor is p
 {const st=loadState();if(st&&Array.isArray(st.areaLL))AREA_LL=st.areaLL}
 const _mdSnap=snapshot;snapshot=function(){const s=_mdSnap();if(MODE().corr&&AREA_LL)s.areaLL=AREA_LL;return s};
 const _mdApply=applyState;applyState=function(st){if(st&&Array.isArray(st.areaLL))AREA_LL=st.areaLL;return _mdApply(st)};
-function applyMode(){const m=MODE(),mb=!m.geo||$("gMB").checked,sec=k=>document.querySelector('details[data-sec="'+k+'"]'),show=(e,v)=>{if(e)e.hidden=!v};
-show(sec("geo"),m.geo);show(sec("sensor"),mb);show(sec("swath"),mb);show($("tpuD"),mb);
+function applyMode(){const m=MODE(),mb=!m.sbes&&(!m.geo||$("gMB").checked),sec=k=>document.querySelector('details[data-sec="'+k+'"]'),show=(e,v)=>{if(e)e.hidden=!v};
+show(sec("geo"),m.geo);show(sec("sbes"),m.sbes);show(sec("sensor"),mb);show(sec("swath"),mb);show($("tpuD"),mb);
 show(sec("bound"),!m.corr);show(sec("dir"),!m.corr);show(sec("route"),m.corr);
 // adaptive spacing belongs to multibeam area surveys; tie lines by spacing to geophysical areas
-const adp=$("adp"),ar=!m.corr&&!m.geo;if(adp){const d=adp.closest("div");[adp.closest("label"),$("mxS")&&$("mxS").closest(".r2"),$("spR")&&$("spR").closest(".kv"),d&&d.querySelector("p.note")].forEach(e=>show(e,ar));if(!ar&&adp.checked){adp.checked=false}}
+// single beam: the design depth input moves into the single-beam section, and back
+const dp=$("depth"),dl=dp.previousElementSibling,home=$("sens").closest("div");if(m.sbes&&dp.parentElement!==$("sbDepth")){$("sbDepth").append(dl,dp)}else if(!m.sbes&&dp.parentElement===$("sbDepth")){home.append(dl,dp)}
+const adp=$("adp"),ar=!m.corr&&!m.geo&&!m.sbes;if(adp){const d=adp.closest("div");[adp.closest("label"),$("mxS")&&$("mxS").closest(".r2"),$("spR")&&$("spR").closest(".kv"),d&&d.querySelector("p.note")].forEach(e=>show(e,ar));if(!ar&&adp.checked){adp.checked=false}}
 const ti=$("gTI");if(ti){show(ti,!m.corr);show(ti.previousElementSibling,!m.corr)}
 unitKey($("bDraw"),m.corr?"Draw route":"Draw area");unitKey($("bClose"),m.corr?"Finish route":"Close polygon");
 unitKey($("hud"),m.corr?"Drag to pan · wheel to zoom · click to add route points":"Drag to pan · wheel to zoom · click to add vertices")}

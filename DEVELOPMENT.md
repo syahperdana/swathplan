@@ -77,9 +77,9 @@ A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follow
 
 `js/core/shared-project.js`, included right after `app-state.js`. Each planner keeps its own autosave; on top of that, a list of fields (`SH_F`: project details, sensor, depth, order, speed, turn radius, vessel length, CRS) plus `crsDef` and, in area planners, the closed survey area (WGS 84) are written to `swp_shared` whenever the planner saves and they differ. On load and when the tab becomes visible, a newer `swp_shared` written by another planner is applied (with a toast). `<SWP_STATE_KEY>_shseen` remembers the last version seen. `window.SWP_TOOL` names the planner (default "MBES line planner"); `window.SWP_SHARE_AREA=false` (corridor) shares the details but not the area. The checkbox `#shOn` (stored as `swp_share`, not in the autosave) turns sharing off. The hub shows the current project from `swp_shared`.
 
-## The survey planner: one page, four kinds of survey
+## The survey planner: one page, every kind of survey
 
-`planner/index.html` holds every section. Two selects in the setup section choose the survey: `svT` (`mbes` or `geo`) and `svG` (`area` or `corr`). They are ordinary inputs, so they are autosaved and stored in `.SPL` files. `MODE()` (in `js/planner/pre.js`) returns `{geo, corr}` from them, and everything mode-specific asks it at call time.
+`planner/index.html` holds every section. Two selects in the setup section choose the survey: `svT` (`mbes`, `sbes` or `geo`) and `svG` (`area` or `corr`). They are ordinary inputs, so they are autosaved and stored in `.SPL` files. `MODE()` (in `js/planner/pre.js`) returns `{geo, sbes, corr}` from them, and everything mode-specific asks it at call time.
 
 - **`js/planner/pre.js`** runs first: `MODE()`, the autosave key `swp_state` (the old MBES key, so MBES sessions carry over) and the `SWP_*` values as getters that depend on the mode (sheet title, boundary label, report subtitle, map sheet rows).
 - **`js/corridor/app.js`** and **`js/geophys/app.js`** wrap the shared functions as before, but each wrapper does nothing unless its mode is on (`if(!MODE().corr) return original()`). They combine: in a geophysical corridor, `params()` comes from the sensors and `gen()` from the corridor, and the geophysical run-in lengthens the first and last segment of every corridor line before the turns are redone (`coTurns`).
@@ -90,6 +90,14 @@ A line is `{name, a, b}` (straight) or `{name, a, b, p:[points]}` when it follow
 ### Corridor mode
 
 The route section is `parts/sec3-corridor.html`. `gen()` makes the corridor lines, turns, cross lines at KP and the outline as `poly`; the drawing buttons and presets act on the route; route import, the KP table and route RLN; the route and KP labels on the map; the route in autosave and in `.SPL` files (`[ROUTE]`, corridor mode only). Offsets are positive to starboard; lines are named by side and offset (`RL_C`, `RL_P050`, `RL_S050`), sailed port to starboard with alternating direction. `engine.js` is pure geometry and has its own tests.
+
+### Single-beam mode
+
+The section is `parts/sec2-sbes.html` (beam width, line spacing `sbSp`); the design depth input is moved into it while single beam is chosen (`applyMode`), and back. `js/sbes/app.js` wraps:
+
+- `params()`: `S` is the line spacing, `W` the footprint `2·d·tan(beam/2)`.
+- `summary()`: the multibeam checks (overlap, swath angle, ping rate, spacing cap) are removed and the S-44 rules for partial coverage added: Order 1a needs a feature search, Special and Exclusive need full coverage; spacing at most `max(3·depth, 25 m)`; coverage `(main + cross line length) × footprint / area` at least 5 %.
+- Map sheet rows and the reports: `SWP_SENSORTXT` (sensor in words, also used for geophysical spreads) and `SWP_MBROWS` (false hides swath angles and overlap in both reports, and the PDF summary uses a sentence without them).
 
 ### Geophysical mode
 
@@ -102,7 +110,7 @@ The sensor section is `parts/sec2-geophys.html`; the multibeam sensor and swath 
 - `gen()`: run-in (towed layback + seismic + extra) and run-out applied to the lines, turns redone, tie lines by spacing (areas only).
 - `summary()`: sensor checks added to the plan checks. `stats()`: the multibeam block keeps showing multibeam values.
 
-**Compare scenarios** follows the survey type: multibeam scenarios vary sensor, overlap and swath angle; geophysical ones vary side-scan range and coverage; both vary speed, turn radius, day rate, hours and vessels. Each scenario remembers its type.
+**Compare scenarios** follows the survey type: multibeam scenarios vary sensor, overlap and swath angle; single-beam ones the line spacing; geophysical ones side-scan range and coverage; both vary speed, turn radius, day rate, hours and vessels. Each scenario remembers its type.
 
 ## The infill planner
 
@@ -162,6 +170,8 @@ Infill planner: `python3 test/infill_check.py infill/index.html` (track import, 
 The snapshot runs the planner in its default mode (multibeam, area), so its exports are those of the original MBES planner.
 
 Corridor mode: `node test/corridor_engine.test.mjs` (geometry) and `python3 test/corridor_check.py planner/index.html` (route import, layouts, every export, `.SPL` round trip, switching to area and back).
+
+Single-beam mode: `python3 test/sbes_check.py planner/index.html` (spacing and footprint, S-44 checks per order, sheet and report text, scenarios, corridor, switching back).
 
 Geophysical mode: `python3 test/geophys_check.py planner/index.html` (sensor spacing, run-in, tie lines, exports, and a geophysical corridor).
 
