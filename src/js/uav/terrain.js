@@ -71,19 +71,21 @@ function tgWp(){const P=tgPlan();return P&&P.tf?P.K.map(k=>{const l=toLL(P.W[k])
 // profile of one line: ground (filled) and flight path
 function tgProf(P){const p=P.pr;if(p.s.length<2)return"";const w=320,h=96,s1=p.s[p.s.length-1]-p.s[0]||1,g0=Math.min(...p.g),a1=Math.max(...p.a),lo=g0-.08*((a1-g0)||1),hi=a1,r=(hi-lo)||1,
 X=s=>((s-p.s[0])/s1*w).toFixed(1),Y=z=>(h-4-(z-lo)/r*(h-14)).toFixed(1),st=Math.max(1,Math.floor(p.s.length/300)),ix=p.s.map((_,i)=>i).filter(i=>i%st==0||i==p.s.length-1);
-return'<svg viewBox="0 0 '+w+' '+h+'" width="100%" role="img" aria-label="'+i18("Profile of the line over the most relief: ground and flight path")+'"><polygon fill="#d9c7a3" points="0,'+h+" "+ix.map(i=>X(p.s[i])+","+Y(p.g[i])).join(" ")+" "+w+","+h+'"/>'
-+'<polyline fill="none" stroke="#1f6fb2" stroke-width="1.6" points="'+ix.map(i=>X(p.s[i])+","+Y(p.a[i])).join(" ")+'"/><text x="2" y="10" font-size="9" fill="currentColor">'+Math.round(hi)+' m</text><text x="2" y="'+(h-6)+'" font-size="9" fill="currentColor">'+Math.round(g0)+" m</text></svg>"}
+return'<div style="position:relative"><svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="display:block;width:100%;height:110px" role="img" aria-label="'+i18("Profile of the line over the most relief: ground and flight path")+'"><polygon fill="#d9c7a3" points="0,'+h+" "+ix.map(i=>X(p.s[i])+","+Y(p.g[i])).join(" ")+" "+w+","+h+'"/>'+'<polyline fill="none" stroke="#1f6fb2" stroke-width="1.6" vector-effect="non-scaling-stroke" points="'+ix.map(i=>X(p.s[i])+","+Y(p.a[i])).join(" ")+'"/></svg>'+'<span style="position:absolute;left:3px;top:0;font-size:11px">'+Math.round(hi)+' m</span><span style="position:absolute;left:3px;bottom:2px;font-size:11px">'+Math.round(g0)+" m</span></div>"}
 function tgShow(){if(!MODE().uav)return;const P=tgPlan(),f=(a,b)=>i18("{0} to {1} m",Math.round(a),Math.round(b));
 $("uvTG").textContent=P?f(P.gmin,P.gmax):"-";$("uvTA").textContent=P?f(P.amin,P.amax):"-";$("uvTW").textContent=P&&P.tf?P.K.length+" · "+Math.round(P.hi)+" m":"-";$("uvTP").innerHTML=P?tgProf(P):""}
 const _tgStats=stats;stats=function(){const r=_tgStats.apply(this,arguments);tgShow();return r};
 // plan checks over the terrain
-const _tgSum=summary;summary=function(){const r=_tgSum.apply(this,arguments);const P=tgPlan();if(!P)return r;const U=uvGeo(),C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>"),R0=x=>Math.round(x);
+const _tgSum=summary;summary=function(){const r=_tgSum.apply(this,arguments);const P=tgPlan();
+// a terrain loaded for another place: none of the waypoints is on it
+if(!P){if(MODE().uav&&TG&&R.lines.length)$("chk").insertAdjacentHTML("afterbegin",'<li class="bad">'+i18("{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.",wpts().length)+"</li>");return r}const U=uvGeo(),C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>"),R0=x=>Math.round(x);
 if(P.tf){add("ok",i18("Terrain following: the drone stays {0} to {1} m above the terrain model; ground from {2} to {3} m.",R0(P.amin),R0(P.amax),R0(P.gmin),R0(P.gmax)));
 if(!U.lidar&&P.amax>1.05*P.H)add("inf",i18("Ground sample distance {0} to {1} cm/pixel as the height above ground changes.",(U.gsd*100*P.amin/P.H).toFixed(2),(U.gsd*100*P.amax/P.H).toFixed(2)));
 if(U.lidar&&P.amax/Math.cos(U.fov/2*D)>U.rng)add("bad",i18("Where the drone is highest above the ground ({0} m), the slant range at the swath edge is {1} m, beyond the {2} m detection range on dark (10 %) ground.",R0(P.amax),R0(P.amax/Math.cos(U.fov/2*D)),U.rng));
 if(P.K.length>700)add("bad",i18("{0} waypoints: some autopilots hold fewer (often about 700 on ArduPilot boards). Raise the waypoint spacing or split the mission.",P.K.length))}
 else{P.amin<=0?add("bad",i18("The terrain rises {0} m above the flight altitude: turn on terrain following or fly higher.",R0(-P.amin))):P.amin<.8*P.H||P.amax>1.2*P.H?add("bad",i18("Over the terrain the height above ground varies from {0} to {1} m, so the image scale and side overlap change: turn on terrain following.",R0(P.amin),R0(P.amax))):add("ok",i18("Height above ground {0} to {1} m over the terrain model.",R0(P.amin),R0(P.amax)));
-if(P.amax>120&&P.H<=120)add("bad",i18("Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.",R0(P.amax)))}
+}
+if(P.amax>120&&P.H<=120)add("bad",i18("Over low ground the drone is up to {0} m above it, above the 120 m limit in many countries.",R0(P.amax)));
 if(P.miss)add("bad",i18("{0} waypoints are outside the terrain model and keep the take-off height: load the terrain for a larger area.",P.miss));
 $("chk").insertAdjacentHTML("afterbegin",C.join(""));return r};
 $("uvTB").onclick=tgLoad;$("uvTFile").onchange=e=>{const f=e.target.files[0];if(f)tgFile(f);e.target.value=""};
