@@ -1049,5 +1049,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "تتبع الخطوط كنتور {0} م: {1} خطًا، بتباعد {2} م.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "حمّل قياسات الأعماق أولًا (القسم {§gbath} أو {§xyz})؛ تُستخدم خطوط مستقيمة حتى ذلك الحين.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "لا يعبر المنطقة أي كنتور {0} م؛ تُستخدم خطوط مستقيمة. الأعماق في المنطقة: من {1} إلى {2} م.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "خطوط كنتور كثيرة جدًا لهذه المنطقة بهذا التباعد؛ تُستخدم خطوط مستقيمة."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "خطوط كنتور كثيرة جدًا لهذه المنطقة بهذا التباعد؛ تُستخدم خطوط مستقيمة.",
+ "Checked against the manufacturer's datasheet: {0}.": "تم التحقق منها مقابل نشرة بيانات الشركة المصنعة: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "لم يُتحقق منها بعد مقابل نشرة بيانات: اعتبر هذه القيم تقريبية."
 }

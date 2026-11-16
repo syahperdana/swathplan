@@ -1049,5 +1049,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "測線は{0} mの等深線に沿います：{1}本、間隔{2} m。",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "先に水深データを読み込んでください（セクション{§gbath}または{§xyz}）。それまでは直線の測線を使います。",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "{0} mの等深線が範囲を通っていないため、直線の測線を使います。範囲内の水深：{1}～{2} m。",
- "Too many contour lines for this area at this spacing; straight lines are used.": "この間隔ではこの範囲の等深線測線が多すぎるため、直線の測線を使います。"
+ "Too many contour lines for this area at this spacing; straight lines are used.": "この間隔ではこの範囲の等深線測線が多すぎるため、直線の測線を使います。",
+ "Checked against the manufacturer's datasheet: {0}.": "メーカーのデータシートで確認済み：{0}。",
+ "Not yet checked against a datasheet: treat these values as approximate.": "データシートでの確認はまだです：値は概算として扱ってください。"
 }

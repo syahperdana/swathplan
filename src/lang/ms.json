@@ -1057,5 +1057,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "Garisan mengikut kontur {0} m: {1} garisan, {2} m jaraknya.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "Muatkan batimetri dahulu (bahagian {§gbath} atau {§xyz}); sehingga itu garisan lurus digunakan.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "Tiada kontur {0} m merentas kawasan; garisan lurus digunakan. Kedalaman di kawasan: {1} hingga {2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "Terlalu banyak garisan kontur untuk kawasan ini pada jarak ini; garisan lurus digunakan."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "Terlalu banyak garisan kontur untuk kawasan ini pada jarak ini; garisan lurus digunakan.",
+ "Checked against the manufacturer's datasheet: {0}.": "Disemak dengan lembaran data pengeluar: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "Belum disemak dengan lembaran data: anggap nilai ini anggaran."
 }

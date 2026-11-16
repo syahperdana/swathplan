@@ -1049,5 +1049,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "测线沿 {0} 米等深线：{1} 条，间距 {2} 米。",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "请先加载水深数据（第 {§gbath} 或 {§xyz} 节）；在此之前使用直线测线。",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "没有 {0} 米等深线穿过测区；使用直线测线。测区内水深：{1} 至 {2} 米。",
- "Too many contour lines for this area at this spacing; straight lines are used.": "按此间距该测区的等深线测线过多；使用直线测线。"
+ "Too many contour lines for this area at this spacing; straight lines are used.": "按此间距该测区的等深线测线过多；使用直线测线。",
+ "Checked against the manufacturer's datasheet: {0}.": "已对照制造商数据表核实：{0}。",
+ "Not yet checked against a datasheet: treat these values as approximate.": "尚未对照数据表核实：请将这些数值视为近似值。"
 }

@@ -1048,5 +1048,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "측선이 {0} m 등심선을 따릅니다: {1}개, 간격 {2} m.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "먼저 수심 데이터를 불러오세요(섹션 {§gbath} 또는 {§xyz}). 그전까지는 직선 측선을 사용합니다.",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "{0} m 등심선이 구역을 지나지 않아 직선 측선을 사용합니다. 구역 내 수심: {1}~{2} m.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "이 간격으로는 이 구역의 등심선 측선이 너무 많아 직선 측선을 사용합니다."
+ "Too many contour lines for this area at this spacing; straight lines are used.": "이 간격으로는 이 구역의 등심선 측선이 너무 많아 직선 측선을 사용합니다.",
+ "Checked against the manufacturer's datasheet: {0}.": "제조사 데이터시트로 확인함: {0}.",
+ "Not yet checked against a datasheet: treat these values as approximate.": "아직 데이터시트로 확인하지 않음: 이 값은 근사치로 보세요."
 }

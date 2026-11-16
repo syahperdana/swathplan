@@ -24,5 +24,13 @@ with sync_playwright() as p:
     ok(ev("$('sbBW').value")=='3','single-beam transducer sets the beam width')
     pg.fill('#sbBW','5');pg.wait_for_timeout(300)
     ok(ev("$('sbM').value")=='custom','typing a beam width switches to custom')
+    # multibeam catalogue: checked models carry their datasheet, and the panel says so
+    chk=ev("SENS.filter(m=>m[5])")
+    ok(len(chk)>=20 and all(isinstance(m[4],(int,float)) and 0<m[4]<=90 and len(m[5])>10 for m in chk),f'{len(chk)} multibeam models checked against datasheets, half-angles 0-90')
+    ok(not ev("SENS.some(m=>m[0]=='SeaBat T51-P')") and ev("SENS.some(m=>m[0]=='SeaBat T51-S')"),'T51-S listed instead of the non-existent T51-P')
+    ev("$('sens').value=SENS.findIndex(m=>m[0]=='EM 2040C');$('sens').dispatchEvent(new Event('change'))")
+    ok('EM 2040C MKII data sheet' in ev("$('sSrc').textContent") and ev("$('sAn').textContent")=='70°','checked model: the source is shown')
+    ev("$('sens').value=SENS.findIndex(m=>m[0]=='EM 302');$('sens').dispatchEvent(new Event('change'))")
+    ok('Not yet checked' in ev("$('sSrc').textContent"),'unchecked model: marked approximate')
     ok(not e,'no page errors '+str(e));b.close()
 print('ALL OK' if not bad else f'{len(bad)} FAILED');sys.exit(1 if bad else 0)

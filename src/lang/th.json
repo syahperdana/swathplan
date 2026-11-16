@@ -1057,5 +1057,7 @@
  "Lines follow the {0} m contour: {1} lines, {2} m apart.": "แนวสำรวจตามเส้นชั้นความลึก {0} ม.: {1} แนว ห่างกัน {2} ม.",
  "Load bathymetry first (section {§gbath} or {§xyz}); straight lines are used until then.": "โหลดข้อมูลความลึกก่อน (ส่วน {§gbath} หรือ {§xyz}) ระหว่างนี้ใช้แนวตรง",
  "No {0} m contour crosses the area; straight lines are used. Depths in the area: {1} to {2} m.": "ไม่มีเส้นชั้นความลึก {0} ม. ผ่านพื้นที่ จึงใช้แนวตรง ความลึกในพื้นที่: {1} ถึง {2} ม.",
- "Too many contour lines for this area at this spacing; straight lines are used.": "แนวตามเส้นชั้นความลึกมากเกินไปสำหรับพื้นที่นี้ที่ระยะห่างนี้ จึงใช้แนวตรง"
+ "Too many contour lines for this area at this spacing; straight lines are used.": "แนวตามเส้นชั้นความลึกมากเกินไปสำหรับพื้นที่นี้ที่ระยะห่างนี้ จึงใช้แนวตรง",
+ "Checked against the manufacturer's datasheet: {0}.": "ตรวจสอบกับเอกสารข้อมูลของผู้ผลิตแล้ว: {0}",
+ "Not yet checked against a datasheet: treat these values as approximate.": "ยังไม่ได้ตรวจสอบกับเอกสารข้อมูล: ให้ถือว่าค่าเหล่านี้เป็นค่าประมาณ"
 }
