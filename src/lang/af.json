@@ -1154,5 +1154,9 @@
  "Along each gap (best fit)": "Langs elke gaping (beste passing)",
  "One direction for all gaps": "Een rigting vir alle gapings",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Langs elke gaping kry elke gaping sy eie lyne: hulle loop langs die gaping se lang as, aangepas by sy vorm, van een punt na die ander, sodat ’n lang gaping tussen twee spore met een lyn gevul word. Geboë of L-vormige gapings word in reguiter dele verdeel, elk met sy eie rigting; ’n gaping wyer as een swath kry parallelle lyne. Stroke langs die grens loop langs hul rand.",
- "{0} lines (adaptive, by segment)": "{0} lyne (aanpasbaar, per segment)"
+ "{0} lines (adaptive, by segment)": "{0} lyne (aanpasbaar, per segment)",
+ "No depths deeper than {0} m inside the area.": "Geen dieptes dieper as {0} m binne die gebied nie.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % hiervan is vlakker as {1} m (droogvallende grond of baie vlak water); die knoppies hieronder laat hulle uit.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Die ontwerpdiepte moet meer as 0 m wees: voer dit in, of gebruik die knoppies onder die gelaaide dieptes.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} van die gapings lê op droogvallende grond of water vlakker as {1} m (uit die gelaaide dieptes) en kry geen lyne nie."
 }

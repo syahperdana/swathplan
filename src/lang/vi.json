@@ -1153,5 +1153,9 @@
  "Along each gap (best fit)": "Theo từng lỗ hổng (khớp nhất)",
  "One direction for all gaps": "Một hướng cho mọi lỗ hổng",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Theo từng lỗ hổng, mỗi lỗ hổng có tuyến riêng: tuyến chạy dọc trục dài của lỗ hổng, khớp với hình dạng của nó, từ đầu này đến đầu kia, nên một khoảng trống dài giữa hai tuyến đã chạy được lấp bằng một tuyến. Lỗ hổng cong hoặc hình chữ L được chia thành các phần thẳng hơn, mỗi phần có hướng riêng; lỗ hổng rộng hơn một dải quét có các tuyến song song. Các dải dọc ranh giới chạy theo cạnh của chúng.",
- "{0} lines (adaptive, by segment)": "{0} tuyến (thích ứng, theo phân đoạn)"
+ "{0} lines (adaptive, by segment)": "{0} tuyến (thích ứng, theo phân đoạn)",
+ "No depths deeper than {0} m inside the area.": "Không có độ sâu nào lớn hơn {0} m trong khu vực.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % trong số này nông hơn {1} m (bãi lộ khi triều rút hoặc nước rất nông); các nút bên dưới bỏ qua chúng.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Độ sâu thiết kế phải lớn hơn 0 m: hãy nhập, hoặc dùng các nút dưới độ sâu đã tải.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} khoảng trống nằm trên bãi lộ khi triều rút hoặc vùng nước nông hơn {1} m (theo độ sâu đã tải) và không có tuyến nào."
 }

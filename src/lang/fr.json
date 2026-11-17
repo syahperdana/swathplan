@@ -1154,5 +1154,9 @@
  "Along each gap (best fit)": "Le long de chaque trou (meilleur ajustement)",
  "One direction for all gaps": "Une seule direction pour tous les trous",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Le long de chaque trou, chaque trou reçoit ses propres lignes : elles suivent le grand axe du trou, ajusté à sa forme, d’un bout à l’autre, si bien qu’un long manque entre deux profils est comblé par une seule ligne. Les trous courbes ou en L sont découpés en parties plus droites, chacune avec sa direction ; un trou plus large qu’une fauchée reçoit des lignes parallèles. Les bandes le long du contour suivent leur bord.",
- "{0} lines (adaptive, by segment)": "{0} lignes (adaptatif, par segment)"
+ "{0} lines (adaptive, by segment)": "{0} lignes (adaptatif, par segment)",
+ "No depths deeper than {0} m inside the area.": "Aucune profondeur supérieure à {0} m dans la zone.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % d'entre elles sont inférieures à {1} m (estran découvrant ou eau très peu profonde) ; les boutons ci-dessous les écartent.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "La profondeur de conception doit être supérieure à 0 m : saisissez-la ou utilisez les boutons sous les profondeurs chargées.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} des trous se trouvent sur l'estran découvrant ou dans une eau de moins de {1} m (d'après les profondeurs chargées) et ne reçoivent aucune ligne."
 }

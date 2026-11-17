@@ -1161,5 +1161,9 @@
  "Along each gap (best fit)": "Вдоль каждого пропуска (лучшее соответствие)",
  "One direction for all gaps": "Одно направление для всех пропусков",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "При варианте «вдоль каждого пропуска» каждый пропуск получает свои галсы: они идут вдоль длинной оси пропуска, подобранной по его форме, от одного конца до другого, так что длинный пропуск между двумя галсами заполняется одним галсом. Изогнутые или Г-образные пропуски делятся на более прямые части, каждая со своим направлением; пропуск шире одной полосы получает параллельные галсы. Полосы вдоль границы идут вдоль её края.",
- "{0} lines (adaptive, by segment)": "{0} галсов (адаптивно, по сегментам)"
+ "{0} lines (adaptive, by segment)": "{0} галсов (адаптивно, по сегментам)",
+ "No depths deeper than {0} m inside the area.": "В области нет глубин больше {0} м.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % из них мельче {1} м (осыхающий грунт или очень мелкая вода); кнопки ниже их не учитывают.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Расчётная глубина должна быть больше 0 м: введите её или воспользуйтесь кнопками под загруженными глубинами.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} пропусков лежат на осыхающем грунте или в воде мельче {1} м (по загруженным глубинам) и не получают галсов."
 }

@@ -1154,5 +1154,9 @@
  "Along each gap (best fit)": "Entlang jeder Lücke (beste Anpassung)",
  "One direction for all gaps": "Eine Richtung für alle Lücken",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Entlang jeder Lücke bekommt jede Lücke eigene Linien: Sie laufen entlang der Längsachse der Lücke, an ihre Form angepasst, von einem Ende zum anderen, sodass eine lange Lücke zwischen zwei Spuren mit einer Linie gefüllt wird. Gebogene oder L-förmige Lücken werden in geradere Teile mit jeweils eigener Richtung geteilt; eine Lücke, die breiter als ein Fächer ist, bekommt parallele Linien. Streifen entlang der Grenze laufen entlang ihrer Kante.",
- "{0} lines (adaptive, by segment)": "{0} Linien (adaptiv, je Segment)"
+ "{0} lines (adaptive, by segment)": "{0} Linien (adaptiv, je Segment)",
+ "No depths deeper than {0} m inside the area.": "Keine Tiefen größer als {0} m innerhalb des Gebiets.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % davon sind flacher als {1} m (trockenfallender Grund oder sehr flaches Wasser); die Schaltflächen unten lassen sie weg.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Die Planungstiefe muss größer als 0 m sein: Geben Sie sie ein oder verwenden Sie die Schaltflächen unter den geladenen Tiefen.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} der Lücken liegen auf trockenfallendem Grund oder in Wasser flacher als {1} m (aus den geladenen Tiefen) und erhalten keine Linien."
 }

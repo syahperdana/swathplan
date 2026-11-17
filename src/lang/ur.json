@@ -1153,5 +1153,9 @@
  "Along each gap (best fit)": "ہر خلا کے ساتھ (بہترین مطابقت)",
  "One direction for all gaps": "تمام خلاؤں کے لیے ایک سمت",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "ہر خلا کے ساتھ والے انتخاب میں ہر خلا کو اپنی لائنیں ملتی ہیں: یہ خلا کی شکل کے مطابق لمبے محور پر ایک سرے سے دوسرے سرے تک چلتی ہیں، اس لیے دو ٹریکوں کے درمیان لمبا خلا ایک لائن سے بھر جاتا ہے۔ خمدار یا L شکل کے خلا کو زیادہ سیدھے حصوں میں بانٹا جاتا ہے، ہر ایک کی اپنی سمت؛ ایک سواتھ سے چوڑے خلا کو متوازی لائنیں ملتی ہیں۔ حد کے ساتھ والی پٹیاں اپنے کنارے کے ساتھ چلتی ہیں۔",
- "{0} lines (adaptive, by segment)": "{0} لائنیں (موافق، فی حصہ)"
+ "{0} lines (adaptive, by segment)": "{0} لائنیں (موافق، فی حصہ)",
+ "No depths deeper than {0} m inside the area.": "علاقے کے اندر {0} میٹر سے زیادہ گہرائی نہیں ہے۔",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "ان میں سے {0} % {1} میٹر سے کم گہرے ہیں (خشک ہونے والی زمین یا بہت کم گہرا پانی)؛ نیچے کے بٹن انہیں شامل نہیں کرتے۔",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "ڈیزائن گہرائی 0 میٹر سے زیادہ ہونی چاہیے: اسے درج کریں، یا لوڈ شدہ گہرائیوں کے نیچے کے بٹن استعمال کریں۔",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} خلا خشک ہونے والی زمین یا {1} میٹر سے کم گہرے پانی پر ہیں (لوڈ شدہ گہرائیوں سے) اور انہیں کوئی لائن نہیں ملتی۔"
 }

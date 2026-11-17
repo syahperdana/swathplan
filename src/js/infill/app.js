@@ -6,7 +6,7 @@ const ifKey=IDK("tracks");
 const _ifXYZ=loadXYZ;loadXYZ=async function(t){await _ifXYZ(t);if(bath&&!bath.xyz){bath.xyz=1;try{IDB.set(IDK("bath"),bath).catch(()=>{})}catch(e){}savedBath=bath;gen()}};
 // what was surveyed: multibeam bathymetry or side-scan sonar
 const ifSSS=()=>$("ifK").value=="sss";
-const ifXYZ=()=>!ifSSS()&&$("ifX").checked&&bath&&bath.xyz&&bath.z.length?bath:null;
+const ifXYZ=()=>!ifSSS()&&$("ifX").checked&&bath&&(bath.xyz||bath.src=="XYZ")&&bath.z.length?bath:null;// soundings loaded here, also when restored from a session
 // processed grids and mosaics (GeoTIFF) as "has data" masks, kept on the device
 let IFG=[];const ifGKey=IDK("grids");
 const ifGrids=()=>IFG.filter(x=>(x.kind=="mosaic")==ifSSS());
@@ -95,30 +95,36 @@ for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){const k=j*nx+i;if(!ins[k])continue;co
 g2.putImageData(im,0,0);IF.img=cvs}
 
 // ---- infill lines: across each gap at the planned spacing ----
-gen=function(){R={lines:[],turns:[],cross:[],tl:0,ol:0};IF.regions=[];
+gen=function(){R={lines:[],turns:[],cross:[],tl:0,ol:0};IF.regions=[];IF.dry=null;
 if(!closed||poly.length<3){ifShow();return stats()}
 ifGrid();const G=IF.g;if(!G||!ifHas()){IF.regions=G?IF.regions:[];ifShow();return stats()}
 const{Rr}=params(),S=ifSpacing(),az=g("az"),U0=[Math.sin(az*D),Math.cos(az*D)],ext=Math.max(0,g("ifExt")),c=G.c,pre=$("pre").value;
 // gaps inside the area run at the line direction; margin strips outside the boundary run along their edge
 const dirOf=r=>{if(r.edge<0)return U0;const P=poly,b=P[r.edge],a=P[(r.edge-1+P.length)%P.length],l=Math.hypot(b[0]-a[0],b[1]-a[1])||1;let u=[(b[0]-a[0])/l,(b[1]-a[1])/l];if(u[0]*U0[0]+u[1]*U0[1]<0)u=[-u[0],-u[1]];return u};
+// with depths loaded, each gap (or part) gets the multibeam spacing of its own depth: the shallowest share #adpTol of its
+// cells, leaving out drying ground; without depths, or for side-scan, the planned spacing
+const ifLocS=xy=>{if(ifSSS()||!bath||!bath.z||!bath.z.length||typeof depthRaw!="function")return S;const st=Math.max(1,Math.floor(xy.length/1500)),z=[],wl=xyzWetLim();
+let known=0;for(let i=0;i<xy.length;i+=st){const d=depthRaw(xy[i][0],xy[i][1]);if(d!=null){known++;if(d>=wl)z.push(d)}}if(!z.length)return known?-1:S;/* -1: all on drying ground */z.sort((a,b)=>a-b);const d=z[Math.min(z.length-1,Math.floor(z.length*(typeof adpTol=="function"?adpTol():.1)))],
+tp=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D),mw=g("mxW")>0?g("mxW"):1e18;return Math.max(.5,Math.min(d*(tp+ts),mw)*(1-g("ov")/100))};
 // best fit: each gap (or part of one) runs along its own long axis (principal axis of its cells); a curved or L-shaped gap,
 // much wider across that axis than it is thick, is split at the middle of its length and each half fitted again
 const fit=$("ifMode").value!="one",pieces=[];
 const pca=xy=>{let mx=0,my=0;xy.forEach(p=>{mx+=p[0];my+=p[1]});mx/=xy.length;my/=xy.length;let a=0,b=0,d=0;xy.forEach(p=>{const x=p[0]-mx,y=p[1]-my;a+=x*x;b+=y*y;d+=x*y});const th=.5*Math.atan2(2*d,a-b);let u=[Math.cos(th),Math.sin(th)];if(u[0]*U0[0]+u[1]*U0[1]<0)u=[-u[0],-u[1]];return u};
 const split=(xy,gi,lv)=>{const u=pca(xy),n=[u[1],-u[0]];let s0=1e30,s1=-1e30,t0=1e30,t1=-1e30;xy.forEach(p=>{const s=p[0]*n[0]+p[1]*n[1],t=p[0]*u[0]+p[1]*u[1];s0=Math.min(s0,s);s1=Math.max(s1,s);t0=Math.min(t0,t);t1=Math.max(t1,t)});
-const w=s1-s0+c,thick=xy.length*c*c/(t1-t0+c);if(lv<6&&xy.length>=16&&w>S&&w>1.6*thick){const tm=(t0+t1)/2,A=[],B=[];xy.forEach(p=>(p[0]*u[0]+p[1]*u[1]<tm?A:B).push(p));if(A.length&&B.length){split(A,gi,lv+1);split(B,gi,lv+1);return}}pieces.push({xy,u,gi})};
+const w=s1-s0+c,thick=xy.length*c*c/(t1-t0+c);if(lv<6&&xy.length>=16&&w>ifLocS(xy)&&w>1.6*thick){const tm=(t0+t1)/2,A=[],B=[];xy.forEach(p=>(p[0]*u[0]+p[1]*u[1]<tm?A:B).push(p));if(A.length&&B.length){split(A,gi,lv+1);split(B,gi,lv+1);return}}pieces.push({xy,u,gi})};
 IF.regions.forEach((r,gi)=>{const xy=r.cells.map(k=>{const i=k%G.nx,j=(k-i)/G.nx;return[G.x0+(i+.5)*c,G.y0+(j+.5)*c]});if(fit&&r.edge<0)split(xy,gi,0);else pieces.push({xy,u:dirOf(r),gi})});
-const regs=pieces.map(pc=>{const u=pc.u,n=[u[1],-u[0]];let s0=1e30,s1=-1e30,ss=0,cx0=0,cy0=0;const P=pc.xy.map(p=>{const s=p[0]*n[0]+p[1]*n[1],t=p[0]*u[0]+p[1]*u[1];s0=Math.min(s0,s);s1=Math.max(s1,s);ss+=s;cx0+=p[0];cy0+=p[1];return[s,t]});return{gi:pc.gi,P,s0,s1,sm:ss/P.length,u,n,cx:cx0/P.length/c,cy:cy0/P.length/c}});
+IF.dry=new Set();for(let i=pieces.length-1;i>=0;i--){const pc=pieces[i];if(IF.regions[pc.gi].edge<0&&ifLocS(pc.xy)<0){IF.dry.add(pc.gi);pieces.splice(i,1)}}
+const regs=pieces.map(pc=>{const u=pc.u,n=[u[1],-u[0]],Sp=Math.max(.5,ifLocS(pc.xy))||S;let s0=1e30,s1=-1e30,ss=0,cx0=0,cy0=0;const P=pc.xy.map(p=>{const s=p[0]*n[0]+p[1]*n[1],t=p[0]*u[0]+p[1]*u[1];s0=Math.min(s0,s);s1=Math.max(s1,s);ss+=s;cx0+=p[0];cy0+=p[1];return[s,t]});return{gi:pc.gi,P,s0,s1,sm:ss/P.length,u,n,S:Sp,cx:cx0/P.length/c,cy:cy0/P.length/c}});
 {const n0=[U0[1],-U0[0]];regs.sort((a,b)=>(a.cx*n0[0]+a.cy*n0[1])-(b.cx*n0[0]+b.cy*n0[1]));
 // then nearest gap next, from the first one across the line direction
 for(let i=1;i<regs.length;i++){const p=regs[i-1];let bi=i,bd=1e30;for(let j=i;j<regs.length;j++){const d=Math.hypot(regs[j].cx-p.cx,regs[j].cy-p.cy);if(d<bd){bd=d;bi=j}}if(bi!=i){const t=regs[i];regs[i]=regs[bi];regs[bi]=t}}}const segs=[],brk=Math.max(4*c,2*ext+2*c);let ln=0;
 // each line runs only where its strip has gap cells: it is split where it would cross covered ground (a ring-shaped gap, an L-shaped edge strip)
-regs.forEach((G2,ri)=>{const w=G2.s1-G2.s0+c,nl=Math.max(1,Math.ceil(w/S-1e-9)),mid=(G2.s0+G2.s1)/2;
+regs.forEach((G2,ri)=>{const S=G2.S,w=G2.s1-G2.s0+c,nl=Math.max(1,Math.ceil(w/S-1e-9)),mid=(G2.s0+G2.s1)/2;
 for(let k=0;k<nl;k++){const s=mid+(k-(nl-1)/2)*S,half=Math.min(S,w)/2+c/2,T=[];G2.P.forEach(q=>{if(Math.abs(q[0]-s)<=half)T.push(q[1])});if(!T.length)continue;T.sort((p,q)=>p-q);
 const runs=[[T[0],T[0]]];for(let i=1;i<T.length;i++){const r=runs[runs.length-1];if(T[i]-r[1]>brk)runs.push([T[i],T[i]]);else r[1]=T[i]}
 const rev=ln++%2;(rev?runs.reverse():runs).forEach((r,m)=>segs.push({s,t0:r[0]-c/2-ext,t1:r[1]+c/2+ext,ri,k,rev,first:m==0,last:m==runs.length-1,u:G2.u,n:G2.n}))}});
 segs.forEach((sg,i)=>{const rev=sg.rev,a=rev?sg.t1:sg.t0,b=rev?sg.t0:sg.t1,u=sg.u,n=sg.n;sg.a=[n[0]*sg.s+u[0]*a,n[1]*sg.s+u[1]*a];sg.b=[n[0]*sg.s+u[0]*b,n[1]*sg.s+u[1]*b];sg.f=rev?[-u[0],-u[1]]:u});
-R.lines=segs.map((s,i)=>({name:pre+(i+1),a:s.a,b:s.b,gap:regs[s.ri].gi+1}));R.sp=segs.slice(1).filter((s,i)=>s.ri==segs[i].ri&&s.k==segs[i].k+1).map((s,i)=>S);
+R.lines=segs.map((s,i)=>({name:pre+(i+1),a:s.a,b:s.b,gap:regs[s.ri].gi+1}));R.sp=segs.slice(1).filter((s,i)=>s.ri==segs[i].ri&&s.k==segs[i].k+1).map(s=>regs[s.ri].S);
 for(let i=0;i+1<segs.length;i++){const A=segs[i],B=segs[i+1],adj=B.ri==A.ri&&B.k==A.k+1&&A.last&&B.first;let pts=[A.b],len=0;
 if(adj){const t=turnPts(A.b,A.f,A.n,B.s-A.s,Rr);pts=pts.concat(t.pts)}pts.push(B.a);for(let j=1;j<pts.length;j++)len+=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);
 R.turns.push({pts,len,ty:adj?((B.s-A.s)<2*Rr?"w":"u"):"t"});R.tl+=len}
@@ -129,8 +135,9 @@ $("ifGap").textContent=G&&has?i18("{0} ({1} m²)",IF.regions.length,Math.round(I
 let t;if(!closed||poly.length<3)t=IFT.length?i18("Use the coverage extent as the area, or draw or import the area (section {§bound})."):i18("Draw or import the survey area (section {§bound}) and load the coverage.");
 else if(!G)t=i18("The area is too large for this grid cell. Enter a larger grid cell.");
 else if(!has)t=i18("No coverage loaded yet: load a processed grid or mosaic, XYZ soundings or the acquired tracks.");
+else if(g("depth")<=0)t=i18("The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.");
 else if(!IF.regions.length)t=i18("No gaps larger than {0} m²: the area is covered.",g("ifMin"));
-else{const km=R.lines.reduce((s,l)=>s+L(l),0)/1000;t=i18("{0} infill lines, {1} km, across {2} gaps. Grid cell {3} m.",R.lines.length,km.toFixed(2),IF.regions.length,G.c)}
+else{const km=R.lines.reduce((s,l)=>s+L(l),0)/1000;t=i18("{0} infill lines, {1} km, across {2} gaps. Grid cell {3} m.",R.lines.length,km.toFixed(2),IF.regions.length,G.c);if(IF.dry&&IF.dry.size)t+=" "+i18("{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.",IF.dry.size,xyzWetLim().toFixed(1))}
 if(G&&has&&ifSSS()&&ifNeed()>1&&!IFT.length)t+=" "+i18("A mosaic cannot show where the seabed was seen twice: load the side-scan tracks to check 200 % coverage.");
 $("ifSt").textContent=t}
 // draw the coverage under the lines and the tracks over it
@@ -191,3 +198,5 @@ $("ifK").addEventListener("change",()=>{ifApplyKind();setLang(LANG);gen();render
 ["ifSR","ifSA","ifReq","ifSM"].forEach(id=>$(id).addEventListener("change",()=>{gen();render()}));
 (async()=>{try{const t=await IDB.get(ifGKey);if(Array.isArray(t)&&t.length){IFG=t.filter(x=>x&&x.mask&&x.A);ifGStatus();gen();render()}}catch(e){}})();
 setTimeout(()=>{ifApplyKind();setLang(LANG);ifTStatus();gen();render()},0);
+// a design depth of 0 m or less gives no lines: the gaps stay on the map and the status says why
+{const _ifG=gen;gen=function(){const r=_ifG.apply(this,arguments);if(!(g("depth")>0)&&R.lines.length){R={lines:[],turns:[],cross:[],tl:0,ol:0};ifShow();stats()}return r}}

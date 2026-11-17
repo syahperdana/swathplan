@@ -1154,5 +1154,9 @@
  "Along each gap (best fit)": "各欠測に沿う（最適フィット）",
  "One direction for all gaps": "すべての欠測で同じ向き",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "「各欠測に沿う」では、欠測ごとに専用の測線を引きます。測線は欠測の形に合わせた長軸に沿って端から端まで走るので、2本の航跡の間の細長い欠測は1本の測線で埋まります。曲がった欠測やL字形の欠測は、それぞれ向きを持つ直線に近い部分に分けられます。スワス幅より広い欠測には平行な測線を引きます。境界沿いの帯はその辺に沿います。",
- "{0} lines (adaptive, by segment)": "{0} 本（適応、セグメントごと）"
+ "{0} lines (adaptive, by segment)": "{0} 本（適応、セグメントごと）",
+ "No depths deeper than {0} m inside the area.": "区域内に {0} m より深い水深はありません。",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "このうち {0} % は {1} m より浅い(干出域またはごく浅い水域)ため、下のボタンでは除外されます。",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "計画水深は 0 m より大きくする必要があります。入力するか、読み込んだ水深の下にあるボタンを使ってください。",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} 個の空白は干出域または {1} m より浅い水域(読み込んだ水深による)にあり、測線は引かれません。"
 }

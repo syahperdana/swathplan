@@ -1153,5 +1153,9 @@
  "Along each gap (best fit)": "각 공백을 따라 (최적 맞춤)",
  "One direction for all gaps": "모든 공백에 같은 방향",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "각 공백을 따라 선택 시 공백마다 자체 측선을 갖습니다. 측선은 공백의 모양에 맞춘 긴 축을 따라 한쪽 끝에서 다른 쪽 끝까지 이어지므로, 두 항적 사이의 긴 공백은 측선 하나로 채워집니다. 휘어지거나 L자형인 공백은 각자 방향을 가진 더 곧은 부분으로 나뉘며, 스와스 하나보다 넓은 공백에는 평행 측선을 배치합니다. 경계를 따라가는 띠는 그 가장자리를 따릅니다.",
- "{0} lines (adaptive, by segment)": "{0}개 측선 (적응형, 세그먼트별)"
+ "{0} lines (adaptive, by segment)": "{0}개 측선 (적응형, 세그먼트별)",
+ "No depths deeper than {0} m inside the area.": "구역 안에 {0} m보다 깊은 수심이 없습니다.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "이 중 {0} %는 {1} m보다 얕습니다(간출지 또는 매우 얕은 수역). 아래 버튼은 이를 제외합니다.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "설계 수심은 0 m보다 커야 합니다. 직접 입력하거나 불러온 수심 아래의 버튼을 사용하세요.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "공백 중 {0}개는 간출지 또는 {1} m보다 얕은 수역(불러온 수심 기준)에 있어 측선이 생성되지 않습니다."
 }

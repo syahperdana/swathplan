@@ -1214,5 +1214,9 @@
  "Along each gap (best fit)",
  "One direction for all gaps",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.",
- "{0} lines (adaptive, by segment)"
+ "{0} lines (adaptive, by segment)",
+ "No depths deeper than {0} m inside the area.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines."
 ]

@@ -8,7 +8,7 @@ function params(){const d=g("depth"),W=d*(Math.tan(g("ap")*D)+Math.tan(g("as")*D
 function turnPts(P,f,n,S,Rr){const al=S>=2*Rr?0:Math.acos(S/(2*Rr)),pts=[],w=(F,L)=>[P[0]+f[0]*F+n[0]*L,P[1]+f[1]*F+n[1]*L];let F=0,L=0,ph=0,len=0;
 const arc=(p1,sg)=>{const N=Math.max(2,Math.ceil(Math.abs(p1-ph)/(5*D)));const F0=F,L0=L,p0=ph;for(let i=1;i<=N;i++){const q=p0+(p1-p0)*i/N;F=F0+sg*Rr*(Math.sin(q)-Math.sin(p0));L=L0-sg*Rr*(Math.cos(q)-Math.cos(p0));pts.push(w(F,L))}ph=p1;len+=Rr*Math.abs(p1-p0)};
 if(al>0)arc(-al,-1);arc(Math.PI,1);return{pts,len}}
-function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3){return stats()}
+function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3||!(g("depth")>0)){return stats()}
 const{S,Rr}=params(),az=g("az"),u=[Math.sin(az*D),Math.cos(az*D)],n=[Math.cos(az*D),-Math.sin(az*D)],sv=poly.map(p=>p[0]*n[0]+p[1]*n[1]),tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]);
 const s0=arrMin(sv),s1=arrMax(sv);const ss=linePositions(s0,s1,n,u,S);R.sp=ss.slice(1).map((v,i)=>v-ss[i]);
 let segs=[];ss.forEach((s,k)=>chords(poly,n,u,s).flatMap(c=>wr(s,c,n,u)).forEach(c=>segs.push({s,c,k})));

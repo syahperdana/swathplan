@@ -1156,5 +1156,9 @@
  "Along each gap (best fit)": "Mengikuti tiap celah (paling pas)",
  "One direction for all gaps": "Satu arah untuk semua celah",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Dengan mengikuti tiap celah, setiap celah mendapat lajurnya sendiri: lajur berjalan di sepanjang sumbu panjang celah, disesuaikan dengan bentuknya, dari ujung ke ujung, sehingga holiday panjang di antara dua lintasan diisi oleh satu lajur. Celah yang melengkung atau berbentuk L dipecah menjadi bagian-bagian yang lebih lurus, masing-masing dengan arahnya sendiri; celah yang lebih lebar dari satu sapuan mendapat lajur sejajar. Jalur di sepanjang batas mengikuti tepinya.",
- "{0} lines (adaptive, by segment)": "{0} lajur (adaptif, per segmen)"
+ "{0} lines (adaptive, by segment)": "{0} lajur (adaptif, per segmen)",
+ "No depths deeper than {0} m inside the area.": "Tidak ada kedalaman lebih dari {0} m di dalam area.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % di antaranya lebih dangkal dari {1} m (daratan pasang surut atau perairan sangat dangkal); tombol di bawah tidak menyertakannya.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Kedalaman desain harus lebih dari 0 m: isikan, atau gunakan tombol di bawah kedalaman yang dimuat.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} celah berada di daratan pasang surut atau perairan lebih dangkal dari {1} m (dari kedalaman yang dimuat) dan tidak diberi lajur."
 }

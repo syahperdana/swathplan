@@ -49,6 +49,12 @@ with sync_playwright() as p:
     px2 = ev("(()=>{const s=bathShade(),d=s.c.getContext('2d').getImageData(5,5,1,1).data;return [...d]})()")
     ok(px1[:3] != px2[:3] and abs(px2[0] - px2[1]) < 6 and abs(px2[1] - px2[2]) < 6, f'colour scale changes the shading ({px1[:3]} → {px2[:3]})')
     pg.select_option('#bPal', 'rainbow')
+    # design-depth buttons leave out drying ground (a quarter of the area is shallower than 2 m)
+    st = ev("$('sndR').textContent"); ok('shallower than 2.0 m (drying ground' in st, 'statistics say how much is drying ground')
+    ev("$('sMin').click()"); dmin = float(ev("$('depth').value")); ok(1.99 <= dmin <= 2.2, f'Apply shallowest skips drying ground ({dmin} m, not {S["min"]:.1f})')
+    ev("$('depth').value=-5;$('depth').dispatchEvent(new Event('input'));gen()"); chk = ev("[...document.querySelectorAll('#chk li')].map(l=>l.textContent).join('|')")
+    ok(ev("R.lines.length") == 0 and 'must be more than 0 m' in chk, 'a design depth of 0 m or less: the plan check says so')
+    ev("$('depth').value=10;$('depth').dispatchEvent(new Event('input'));gen()")
     # adaptive spacing: the drying third of the area is left out, so the line count stays near the deep-water spacing
     ev("$('adp').checked=true;gen()"); na = ev("R.lines.length"); sp = ev("[Math.min(...R.sp),Math.max(...R.sp)]")
     ok(na < 60 and sp[0] >= 1.5, f'adaptive spacing with drying ground: {na} lines, spacing {sp[0]:.1f}–{sp[1]:.1f} m')

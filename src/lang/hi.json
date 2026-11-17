@@ -1153,5 +1153,9 @@
  "Along each gap (best fit)": "हर अंतराल के साथ (सर्वोत्तम मिलान)",
  "One direction for all gaps": "सभी अंतरालों के लिए एक दिशा",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "हर अंतराल के साथ विकल्प में हर अंतराल को अपनी लाइनें मिलती हैं: वे अंतराल के आकार के अनुसार उसकी लंबी धुरी पर एक सिरे से दूसरे सिरे तक चलती हैं, इसलिए दो ट्रैकों के बीच का लंबा अंतराल एक लाइन से भर जाता है। घुमावदार या L आकार के अंतराल अधिक सीधे हिस्सों में बाँटे जाते हैं, हर हिस्से की अपनी दिशा होती है; एक स्वाथ से चौड़े अंतराल को समानांतर लाइनें मिलती हैं। सीमा के साथ वाली पट्टियाँ अपने किनारे के साथ चलती हैं।",
- "{0} lines (adaptive, by segment)": "{0} लाइनें (अनुकूली, प्रति खंड)"
+ "{0} lines (adaptive, by segment)": "{0} लाइनें (अनुकूली, प्रति खंड)",
+ "No depths deeper than {0} m inside the area.": "क्षेत्र के अंदर {0} मी से अधिक गहराई नहीं है।",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "इनमें से {0} % {1} मी से उथले हैं (सूखने वाली भूमि या बहुत उथला पानी); नीचे के बटन इन्हें छोड़ देते हैं।",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "डिज़ाइन गहराई 0 मी से अधिक होनी चाहिए: इसे दर्ज करें, या लोड की गई गहराइयों के नीचे के बटन इस्तेमाल करें।",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} अंतराल सूखने वाली भूमि या {1} मी से उथले पानी पर हैं (लोड की गई गहराइयों से) और उन्हें कोई लाइन नहीं मिलती।"
 }
