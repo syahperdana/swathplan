@@ -1148,5 +1148,10 @@
  "Allow less coverage over (% of each line)": "커버리지 부족 허용 구간 (각 측선의 %)",
  "Below target coverage": "목표 커버리지 미달",
  "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "각 측선은 이 비율을 뺀 전체 길이에서 목표 커버리지를 만족하도록 배치됩니다. 이 비율은 측선에서 가장 얕은 부분입니다(경사면이나 천퇴 근처에서는 흔히 양 끝). 이것이 없으면 측선 끝의 몇 미터 얕은 물이 측선 전체의 간격을 정합니다. 부족한 구간은 지도에 주황색으로 표시되고 계획 점검에서 합산됩니다. 0 %는 모든 측선 전 길이에서 목표를 만족합니다.",
- "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "구역의 약 {0} %({1} km²)가 측선의 가장 얕은 부분에서 목표 커버리지 {2} %에 미달합니다(지도의 주황색). 추가 측선으로 조사하거나(보완 측량 계획기), {§swath}절에서 허용 비율을 낮추십시오."
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "구역의 약 {0} %({1} km²)가 측선의 가장 얕은 부분에서 목표 커버리지 {2} %에 미달합니다(지도의 주황색). 추가 측선으로 조사하거나(보완 측량 계획기), {§swath}절에서 허용 비율을 낮추십시오.",
+ "Infill line direction": "보완 측선 방향",
+ "Along each gap (best fit)": "각 공백을 따라 (최적 맞춤)",
+ "One direction for all gaps": "모든 공백에 같은 방향",
+ "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "각 공백을 따라 선택 시 공백마다 자체 측선을 갖습니다. 측선은 공백의 모양에 맞춘 긴 축을 따라 한쪽 끝에서 다른 쪽 끝까지 이어지므로, 두 항적 사이의 긴 공백은 측선 하나로 채워집니다. 휘어지거나 L자형인 공백은 각자 방향을 가진 더 곧은 부분으로 나뉘며, 스와스 하나보다 넓은 공백에는 평행 측선을 배치합니다. 경계를 따라가는 띠는 그 가장자리를 따릅니다.",
+ "{0} lines (adaptive, by segment)": "{0}개 측선 (적응형, 세그먼트별)"
 }

@@ -1149,5 +1149,10 @@
  "Allow less coverage over (% of each line)": "允许较低覆盖的部分（每条测线的 %）",
  "Below target coverage": "低于目标覆盖率",
  "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "每条测线的间距按“除这一比例外全长都满足目标覆盖率”来确定，这一比例是测线最浅的部分（在斜坡上或浅滩附近往往是两端）。否则，测线两端几米的浅水就会决定整条测线的间距。覆盖不足的区段在地图上以橙色显示，并在计划检查中汇总；0 % 表示每条测线全长都满足目标。",
- "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "约 {0} % 的区域（{1} 平方千米）在测线最浅的部分覆盖率低于目标 {2} %（地图上的橙色）。请用补充测线测量（补测规划器），或在第 {§swath} 节降低允许比例。"
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "约 {0} % 的区域（{1} 平方千米）在测线最浅的部分覆盖率低于目标 {2} %（地图上的橙色）。请用补充测线测量（补测规划器），或在第 {§swath} 节降低允许比例。",
+ "Infill line direction": "补测测线方向",
+ "Along each gap (best fit)": "沿每个漏测区（最佳拟合）",
+ "One direction for all gaps": "所有漏测区同一方向",
+ "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "选择沿每个漏测区时，每个漏测区都有自己的测线：测线沿按其形状拟合的长轴，从一端延伸到另一端，因此两条航迹之间的狭长漏测只需一条测线即可补上。弯曲或 L 形的漏测区会被分成较直的几段，每段有各自的方向；宽于一个条带的漏测区布设平行测线。沿边界的条带沿其边布设。",
+ "{0} lines (adaptive, by segment)": "{0} 条测线（自适应，按分段）"
 }

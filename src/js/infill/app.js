@@ -101,7 +101,14 @@ ifGrid();const G=IF.g;if(!G||!ifHas()){IF.regions=G?IF.regions:[];ifShow();retur
 const{Rr}=params(),S=ifSpacing(),az=g("az"),U0=[Math.sin(az*D),Math.cos(az*D)],ext=Math.max(0,g("ifExt")),c=G.c,pre=$("pre").value;
 // gaps inside the area run at the line direction; margin strips outside the boundary run along their edge
 const dirOf=r=>{if(r.edge<0)return U0;const P=poly,b=P[r.edge],a=P[(r.edge-1+P.length)%P.length],l=Math.hypot(b[0]-a[0],b[1]-a[1])||1;let u=[(b[0]-a[0])/l,(b[1]-a[1])/l];if(u[0]*U0[0]+u[1]*U0[1]<0)u=[-u[0],-u[1]];return u};
-const regs=IF.regions.map(r=>{const u=dirOf(r),n=[u[1],-u[0]];let s0=1e30,s1=-1e30,ss=0;const P=r.cells.map(k=>{const i=k%G.nx,j=(k-i)/G.nx,x=G.x0+(i+.5)*c,y=G.y0+(j+.5)*c,s=x*n[0]+y*n[1],t=x*u[0]+y*u[1];s0=Math.min(s0,s);s1=Math.max(s1,s);ss+=s;return[s,t]});return{r,P,s0,s1,sm:ss/P.length,u,n,cx:r.cells.reduce((q,k)=>q+k%G.nx,0)/r.cells.length,cy:r.cells.reduce((q,k)=>q+Math.floor(k/G.nx),0)/r.cells.length}});
+// best fit: each gap (or part of one) runs along its own long axis (principal axis of its cells); a curved or L-shaped gap,
+// much wider across that axis than it is thick, is split at the middle of its length and each half fitted again
+const fit=$("ifMode").value!="one",pieces=[];
+const pca=xy=>{let mx=0,my=0;xy.forEach(p=>{mx+=p[0];my+=p[1]});mx/=xy.length;my/=xy.length;let a=0,b=0,d=0;xy.forEach(p=>{const x=p[0]-mx,y=p[1]-my;a+=x*x;b+=y*y;d+=x*y});const th=.5*Math.atan2(2*d,a-b);let u=[Math.cos(th),Math.sin(th)];if(u[0]*U0[0]+u[1]*U0[1]<0)u=[-u[0],-u[1]];return u};
+const split=(xy,gi,lv)=>{const u=pca(xy),n=[u[1],-u[0]];let s0=1e30,s1=-1e30,t0=1e30,t1=-1e30;xy.forEach(p=>{const s=p[0]*n[0]+p[1]*n[1],t=p[0]*u[0]+p[1]*u[1];s0=Math.min(s0,s);s1=Math.max(s1,s);t0=Math.min(t0,t);t1=Math.max(t1,t)});
+const w=s1-s0+c,thick=xy.length*c*c/(t1-t0+c);if(lv<6&&xy.length>=16&&w>S&&w>1.6*thick){const tm=(t0+t1)/2,A=[],B=[];xy.forEach(p=>(p[0]*u[0]+p[1]*u[1]<tm?A:B).push(p));if(A.length&&B.length){split(A,gi,lv+1);split(B,gi,lv+1);return}}pieces.push({xy,u,gi})};
+IF.regions.forEach((r,gi)=>{const xy=r.cells.map(k=>{const i=k%G.nx,j=(k-i)/G.nx;return[G.x0+(i+.5)*c,G.y0+(j+.5)*c]});if(fit&&r.edge<0)split(xy,gi,0);else pieces.push({xy,u:dirOf(r),gi})});
+const regs=pieces.map(pc=>{const u=pc.u,n=[u[1],-u[0]];let s0=1e30,s1=-1e30,ss=0,cx0=0,cy0=0;const P=pc.xy.map(p=>{const s=p[0]*n[0]+p[1]*n[1],t=p[0]*u[0]+p[1]*u[1];s0=Math.min(s0,s);s1=Math.max(s1,s);ss+=s;cx0+=p[0];cy0+=p[1];return[s,t]});return{gi:pc.gi,P,s0,s1,sm:ss/P.length,u,n,cx:cx0/P.length/c,cy:cy0/P.length/c}});
 {const n0=[U0[1],-U0[0]];regs.sort((a,b)=>(a.cx*n0[0]+a.cy*n0[1])-(b.cx*n0[0]+b.cy*n0[1]));
 // then nearest gap next, from the first one across the line direction
 for(let i=1;i<regs.length;i++){const p=regs[i-1];let bi=i,bd=1e30;for(let j=i;j<regs.length;j++){const d=Math.hypot(regs[j].cx-p.cx,regs[j].cy-p.cy);if(d<bd){bd=d;bi=j}}if(bi!=i){const t=regs[i];regs[i]=regs[bi];regs[bi]=t}}}const segs=[],brk=Math.max(4*c,2*ext+2*c);let ln=0;
@@ -111,7 +118,7 @@ for(let k=0;k<nl;k++){const s=mid+(k-(nl-1)/2)*S,half=Math.min(S,w)/2+c/2,T=[];G
 const runs=[[T[0],T[0]]];for(let i=1;i<T.length;i++){const r=runs[runs.length-1];if(T[i]-r[1]>brk)runs.push([T[i],T[i]]);else r[1]=T[i]}
 const rev=ln++%2;(rev?runs.reverse():runs).forEach((r,m)=>segs.push({s,t0:r[0]-c/2-ext,t1:r[1]+c/2+ext,ri,k,rev,first:m==0,last:m==runs.length-1,u:G2.u,n:G2.n}))}});
 segs.forEach((sg,i)=>{const rev=sg.rev,a=rev?sg.t1:sg.t0,b=rev?sg.t0:sg.t1,u=sg.u,n=sg.n;sg.a=[n[0]*sg.s+u[0]*a,n[1]*sg.s+u[1]*a];sg.b=[n[0]*sg.s+u[0]*b,n[1]*sg.s+u[1]*b];sg.f=rev?[-u[0],-u[1]]:u});
-R.lines=segs.map((s,i)=>({name:pre+(i+1),a:s.a,b:s.b,gap:s.ri+1}));R.sp=segs.slice(1).filter((s,i)=>s.ri==segs[i].ri&&s.k==segs[i].k+1).map((s,i)=>S);
+R.lines=segs.map((s,i)=>({name:pre+(i+1),a:s.a,b:s.b,gap:regs[s.ri].gi+1}));R.sp=segs.slice(1).filter((s,i)=>s.ri==segs[i].ri&&s.k==segs[i].k+1).map((s,i)=>S);
 for(let i=0;i+1<segs.length;i++){const A=segs[i],B=segs[i+1],adj=B.ri==A.ri&&B.k==A.k+1&&A.last&&B.first;let pts=[A.b],len=0;
 if(adj){const t=turnPts(A.b,A.f,A.n,B.s-A.s,Rr);pts=pts.concat(t.pts)}pts.push(B.a);for(let j=1;j<pts.length;j++)len+=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);
 R.turns.push({pts,len,ty:adj?((B.s-A.s)<2*Rr?"w":"u"):"t"});R.tl+=len}
@@ -149,7 +156,9 @@ function ifHull(P){P=P.slice().sort((a,b)=>a[0]-b[0]||a[1]-b[1]);const cr=(o,a,b
 for(const p of P){while(lo.length>=2&&cr(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p)}for(let i=P.length-1;i>=0;i--){const p=P[i];while(up.length>=2&&cr(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p)}
 up.pop();lo.pop();return lo.concat(up)}
 $("ifArea").onclick=ifExtent;$("ifAz").onclick=()=>{const a=ifTrackAz();if(a==null)return toast(i18("No tracks loaded."),3000);ifSetAz(a)};
-["ifWM","ifWF","ifX","ifC","ifMin","ifExt","ifBuf"].forEach(id=>$(id).addEventListener("change",()=>{gen();render()}));$("ifShow").addEventListener("change",()=>render());
+["ifWM","ifWF","ifX","ifC","ifMin","ifExt","ifBuf","ifMode"].forEach(id=>$(id).addEventListener("change",()=>{gen();render()}));
+// the track-direction button only matters when all gaps share one direction
+const ifModeShow=()=>{$("ifAzB").hidden=$("ifMode").value!="one"};$("ifMode").addEventListener("change",ifModeShow);setTimeout(ifModeShow,0);$("ifShow").addEventListener("change",()=>render());
 $("ifCsv").onclick=()=>{const G=IF.g;if(!G||!IF.regions.length)return toast(i18("No gaps to export."),3000);
 let t="Gap,Area_m2,Cells,Centre_lat,Centre_lon,Centre_E,Centre_N\n";
 IF.regions.forEach((r,i)=>{let x=0,y=0;r.cells.forEach(k=>{const ii=k%G.nx,jj=(k-ii)/G.nx;x+=G.x0+(ii+.5)*G.c;y+=G.y0+(jj+.5)*G.c});x/=r.cells.length;y/=r.cells.length;const ll=toLL([x,y]);let en=["",""];try{const q=oc([x,y]);if(q&&isFinite(q[0]))en=[q[0].toFixed(2),q[1].toFixed(2)]}catch(e){}

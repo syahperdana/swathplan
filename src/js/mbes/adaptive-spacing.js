@@ -12,27 +12,38 @@ function depthAt(x,y){const d=depthRaw(x,y);return d==null?g("depth"):Math.max(.
 // the mean depth of the nearest model cell (null without a model); may be zero or negative over drying ground
 function depthRaw(x,y){if(!DG||DG.stamp!=dgStamp())buildDG();if(!DG||!DG.cells.size)return null;const ix=Math.floor((x-DG.x0)/DG.cs),iy=Math.floor((y-DG.y0)/DG.cs);
 for(let r=0;r<=8;r++){let m=1e30;for(let a=-r;a<=r;a++)for(let b=-r;b<=r;b++){if(Math.max(Math.abs(a),Math.abs(b))!=r)continue;const c=DG.cells.get((ix+a)*100000+iy+b);if(c)m=Math.min(m,c[0]/c[1])}if(m<1e29)return m}return null}
-function linePositions(s0,s1,n,u,S,fast){const ov=g("ov")/100,W=params().W,ad=$("adp").checked&&bath&&bath.z.length;
+// adaptive spacing used? (multibeam areas and corridors; geophysical spreads when the multibeam is one of the sensors)
+function adpOn(){if(!$("adp").checked||!bath||!bath.z.length)return false;const m=MODE();if(m.sbes||m.uav)return false;if(m.geo&&!($("gMB")&&$("gMB").checked))return false;if(m.corr&&$("coMode").value=="fixed")return false;return true}
+// the spacing limit other sensors set in a geophysical spread (the multibeam then adapts below it)
+function adpCap(){if(!MODE().geo)return Infinity;const G=params().geo;if(!G)return Infinity;let m=Infinity;G.rows.forEach(r=>{if(r.k!="mbes"&&r.ok&&r.S>0)m=Math.min(m,r.S)});return m}
+function linePositions(s0,s1,n,u,S,fast){const ov=g("ov")/100,W=params().W,ad=adpOn();
 if(!ad){if(!fast)ADP_SHORT=null;S=Math.max(S,.05,(s1-s0)/3000);const out=[];let s=s0+S/2;if(s>s1)return[(s0+s1)/2];out.push(s);for(;out.length<4000;){const nx=s+S;if(nx<=s1){out.push(nx);s=nx;continue}if(s+W/2<s1){const f=Math.min(nx,s1-.05*S);if(f>s+1e-6)out.push(f)}break}return out}
-const tp=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D),mw=g("mxW")>0?g("mxW"):1e18,tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]),stp=Math.max(5,(arrMax(tv)-arrMin(tv))/(fast?60:150)),
-hw=(d,k,plus)=>Math.min(d*((k%2==0)==plus?ts:tp),mw/2),Wt=d=>Math.min(d*(tp+ts),mw),dmn=Math.max(.1,adpMin()),dep=(q,t)=>{const d=depthRaw(n[0]*q+u[0]*t,n[1]*q+u[1]*t);return d==null?g("depth"):d>=dmn?d:null},
+const tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]),stp=Math.max(5,(arrMax(tv)-arrMin(tv))/(fast?60:150)),
 prof=q=>{const a=[];chords(poly,n,u,q).forEach(c=>{const m=Math.max(2,Math.ceil((c[1]-c[0])/stp)+1);for(let i=0;i<m;i++)a.push(c[0]+(c[1]-c[0])*i/(m-1))});return a};
-if(!DG||DG.stamp!=dgStamp())buildDG();const zmax=DG?DG.zmax:g("depth"),Smax=g("mxS")>0?g("mxS"):Math.min(zmax*(tp+ts),mw)*(1-ov),Smin=.5;
+const r=adaptCore({s0,s1,S,prof,raw:(q,t)=>depthRaw(n[0]*q+u[0]*t,n[1]*q+u[1]*t),stp,fast,cap:adpCap()});
+if(!fast)ADP_SHORT={A:r.A,polys:r.sh.map(z=>[[z[0],z[2]],[z[1],z[2]],[z[1],z[3]],[z[0],z[3]]].map(([q,t])=>[n[0]*q+u[0]*t,n[1]*q+u[1]*t]))};
+return r.out}
+// The adaptive core, in a frame of positions q across the lines and t along them: prof(q) gives the t samples of a line at q,
+// raw(q,t) the model depth there (null without a model). Each pair of neighbouring lines is placed as far apart as the
+// depths allow for the coverage target, over all but the shallowest share (#adpTol) of the line. o.first fixes the first
+// line, o.swap swaps the port and starboard angles (a mirrored frame), o.cap limits the spacing.
+function adaptCore(o){const{s0,s1,S,prof,raw,stp,fast}=o,ov=g("ov")/100;let tp=Math.tan(g("ap")*D),ts=Math.tan(g("as")*D);if(o.swap){const x=tp;tp=ts;ts=x}
+const mw=g("mxW")>0?g("mxW"):1e18,hw=(d,k,plus)=>Math.min(d*((k%2==0)==plus?ts:tp),mw/2),Wt=d=>Math.min(d*(tp+ts),mw),dmn=Math.max(.1,adpMin()),
+dep=(q,t)=>{const d=raw(q,t);return d==null?g("depth"):d>=dmn?d:null};
+if(!DG||DG.stamp!=dgStamp())buildDG();const zmax=DG?DG.zmax:g("depth"),Smax=Math.min(o.cap||Infinity,g("mxS")>0?g("mxS"):Math.min(zmax*(tp+ts),mw)*(1-ov)),Smin=.5;
 const tq=adpTol(),qv=a=>{if(!a.length)return null;if(tq<=0)return Math.min(...a);const b=a.slice().sort((x,y)=>x-y);return b[Math.min(b.length-1,Math.floor(b.length*tq))]};
-let T=prof(s0+S/2);if(!T.length)T=prof(s0+S);const D0=T.map(t=>dep(s0+S/2,t)).filter(d=>d!=null),dmin=D0.length?qv(D0):zmax,Sf=Math.max(Smin,Math.min(Smax,Math.min(dmin*(tp+ts),mw)*(1-ov)));
-let s=s0+Sf/2;if(s>s1)return[(s0+s1)/2];const out=[s];let k=0;
+let s,out;if(o.first!=null){s=o.first;out=[s]}else{let T=prof(s0+S/2);if(!T.length)T=prof(s0+S);const D0=T.map(t=>dep(s0+S/2,t)).filter(d=>d!=null),dmin=D0.length?qv(D0):zmax,Sf=Math.max(Smin,Math.min(Smax,Math.min(dmin*(tp+ts),mw)*(1-ov)));
+s=s0+Sf/2;if(s>s1)return{out:[(s0+s1)/2],sh:[],A:0};out=[s]}let k=0;
 for(let it=0;it<3000;it++){const Tp=prof(s),Dp=Tp.map(t=>dep(s,t)).filter(d=>d!=null),mh=Dp.length?qv(Dp.map(d=>hw(d,k,true))):hw(Tp.length?zmax:g("depth"),k,true);if(s+mh>=s1)break;
 const F=sn=>{const T=prof(sn);if(!T.length)return 1;const v=[];for(const t of T){const dp=dep(s,t),dn=dep(sn,t);if(dp==null||dn==null)continue;v.push(hw(dp,k,true)+hw(dn,k+1,false)-ov*(Wt(dp)+Wt(dn))/2)}return v.length?qv(v)-(sn-s):Smax-(sn-s)};
 let hi=Math.min(s+Smax,s1-Math.max(.5,.01*Smax));if(hi<=s+1e-6)break;let lo=Math.min(s+Smin,hi);
 if(!prof(hi).length)for(let j=19;j>=1;j--){const q=s+(hi-s)*j/20;if(prof(q).length){hi=q;break}}
 let sn;if(F(hi)>=0)sn=hi;else if(F(lo)<0)sn=lo;else{for(let i=0,ni=fast?13:28;i<ni;i++){const mid=(lo+hi)/2;if(F(mid)>=0)lo=mid;else hi=mid}sn=lo}
 out.push(sn);s=sn;k++}
-// where the allowance leaves a pair of neighbouring lines short of the coverage: stretches [s, s', t0, t1] for the map and the plan checks
-if(!fast){const sh=[];let A=0;for(let i=0;i+1<out.length;i++){const sa=out[i],sb=out[i+1],T=prof((sa+sb)/2);let run=null;
+const sh=[];let A=0;if(!fast){for(let i=0;i+1<out.length;i++){const sa=out[i],sb=out[i+1],T=prof((sa+sb)/2);let run=null;
 const close=()=>{if(run){sh.push([sa,sb,run[0]-stp/2,run[1]+stp/2]);A+=(sb-sa)*(run[1]-run[0]+stp);run=null}};
-for(const t of T){const da=dep(sa,t),db=dep(sb,t),bad=da!=null&&db!=null&&hw(da,i,true)+hw(db,i+1,false)-ov*(Wt(da)+Wt(db))/2<sb-sa-1e-6;if(bad){if(run&&t-run[1]<=stp*1.5)run[1]=t;else{close();run=[t,t]}}else close()}close()}
-ADP_SHORT={sh,A,n:n.slice(),u:u.slice()}}
-return out}
+for(const t of T){const da=dep(sa,t),db=dep(sb,t),bad=da!=null&&db!=null&&hw(da,i,true)+hw(db,i+1,false)-ov*(Wt(da)+Wt(db))/2<sb-sa-1e-6;if(bad){if(run&&t-run[1]<=stp*1.5)run[1]=t;else{close();run=[t,t]}}else close()}close()}}
+return{out,sh,A}}
 
 // adaptive spacing leaves out depths shallower than this (drying ground, water too shallow to cover): without it one
 // shoal or drying bank along a line would set the spacing of the whole line
