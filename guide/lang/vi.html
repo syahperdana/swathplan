@@ -29,6 +29,7 @@
 <li><b>Thanh bên</b>: các thiết lập, nhóm thành các mục đánh số có thể mở ra và thu lại. Các nút tròn ở trên cùng nhảy đến một mục, và <i>Mở rộng tất cả</i> cùng <i>Thu gọn tất cả</i> mở hoặc đóng mọi mục. Công cụ chỉ hiện các mục mà loại khảo sát của bạn cần, vì vậy <b>số thứ tự mục thay đổi theo loại khảo sát</b>. Do đó hướng dẫn này gọi các mục theo tên.</li>
 <li><b>Bản đồ</b>: kéo để di chuyển, dùng con lăn chuột (hoặc chụm ngón trên màn hình cảm ứng) để thu phóng. Tọa độ dưới con trỏ hiện ở góc.</li>
 <li><b>Kết quả</b>: phân tích thời gian, khoảng cách và thống kê, kiểm soát chất lượng IHO S-44 và các kiểm tra kế hoạch, được cập nhật mỗi khi bạn thay đổi bất cứ điều gì.</li>
+<li><b>Chú giải và các lớp bản đồ</b>: các ô đánh dấu trong chú giải ở góc trên bên phải bật hoặc tắt tuyến khảo sát, vòng quay và tuyến cắt. <i>Lớp</i> mở phần còn lại: ranh giới khảo sát, độ sâu, đường bờ, nền bản đồ và thang độ sâu, cùng các nút xóa dữ liệu độ sâu đã tải hoặc ranh giới khảo sát mà không đặt lại dự án. Trên điện thoại, chú giải nằm ở góc dưới bên phải và mở từ <i>Lớp</i>.</li>
 </ol>
 
 <h3 id="2-3-the-header">2.3 Thanh tiêu đề</h3>
@@ -100,6 +101,7 @@
 <li><b>Góc mạn trái và mạn phải</b>: nửa góc dải quét bạn thực sự sẽ ghi. Chúng xác định độ rộng dải quét W = độ sâu × (tan trái + tan phải).</li>
 <li><b>Chồng phủ ngang</b>: mức chồng lên nhau của các dải quét kề nhau, thường 20–30 %. Khoảng cách tuyến là S = W × (1 − chồng phủ).</li>
 <li><b>Khoảng cách tuyến thích ứng</b>: khi đã tải dữ liệu độ sâu, mỗi tuyến được đặt xa tuyến trước nhất mà độ sâu tại chỗ cho phép trong khi vẫn giữ chồng phủ trên toàn chiều dài, nên các tuyến thưa hơn ở vùng nước sâu.</li>
+<li><b>Bỏ qua độ sâu nông hơn</b> (mặc định 2 m): bãi bồi lộ khi triều rút và vùng nước rất nông không được dùng cho khoảng cách thích ứng, nên một bãi cạn ở một đầu tuyến không kéo mọi tuyến sát lại gần nhau. Phần kiểm tra kế hoạch cho biết phần đó chiếm bao nhiêu diện tích; hãy khảo sát riêng phần đó (chẳng hạn bằng các tuyến theo đường đẳng sâu) hoặc hạ giới hạn.</li>
 <li><b>Khoảng cách tuyến tối đa</b> và <b>độ rộng dải quét tối đa</b> giới hạn kết quả (0 = không giới hạn).</li>
 </ul>
 <h3 id="6-2-single-beam">6.2 Đơn tia</h3>
@@ -156,6 +158,7 @@
 <h3 id="9-1-global-bathymetry-and-your-own-soundings">9.1 Độ sâu toàn cầu và số liệu đo sâu của bạn</h3>
 <p><i>Độ sâu toàn cầu</i> lấy độ sâu cho khu vực khép kín từ GMRT, NOAA NCEI hoặc EMODnet, ở độ phân giải bạn chọn. Chỉ phần đáy gần khu vực hoặc hành lang được tải, theo từng mảnh, nên một tuyến dài không phải tải cả khung bao quanh; nếu một mảnh bị lỗi, trạng thái cho biết bao nhiêu mảnh và đưa liên kết để tải. Bạn cũng có thể tải lưới GeoTIFF hoặc ESRI ASCII đã tải về. Các lưới này là mô hình 100–450 m có chất lượng không đồng đều, quy chiếu gần đúng về mực nước biển trung bình, không phải số 0 hải đồ. Chúng đủ để xác định quy mô kế hoạch, nhưng bỏ sót bãi cạn và xác tàu.</p>
 <p><i>Độ sâu từ tệp XYZ</i> tải số liệu đo sâu của bạn (số dòng tiêu đề cần bỏ qua, dương hướng xuống hoặc độ cao, mét, feet hoặc sải, và độ lệch thẳng đứng cho datum hoặc thủy triều). Chúng thay thế mọi dữ liệu toàn cầu. Hiển thị chúng trên bản đồ dạng điểm hoặc nền tô bóng, rồi áp dụng giá trị nông nhất, phân vị thứ 5 hoặc trung bình làm độ sâu thiết kế.</p>
+<p>Tệp lớn được đọc theo từng bước và hiển thị tiến độ, nên trang vẫn dùng được trong khi tải; một lưới 1 m có một triệu điểm chỉ mất vài giây. Lưới tới 0,5 m được hiển thị từng ô khi phóng to. Với khu vực lớn hơn khoảng 1 km², lưới 1 m lập tuyến tốt như vậy và tải nhanh hơn. Thang độ sâu ở góc dưới bên trái bản đồ cho biết thang màu (cầu vồng, xanh lam, viridis, đại dương hoặc xám), số điểm và khoảng cách giữa chúng, cùng giá trị nhỏ nhất, trung bình, trung vị, lớn nhất và độ lệch chuẩn trong khu vực. <i>Xóa độ sâu</i> xóa dữ liệu độ sâu đã tải và giữ nguyên mọi thứ khác.</p>
 <h3 id="9-2-map-background-and-offline-maps">9.2 Nền bản đồ và bản đồ ngoại tuyến</h3>
 <p>Chọn bản đồ nền (bản đồ Esri đường phố, địa hình, xám, vệ tinh và đại dương, OpenStreetMap, OpenTopoMap), tệp bản đồ PMTiles của bạn, hoặc URL ô bản đồ tùy chỉnh (ví dụ từ tài khoản Google hoặc Bing của bạn). Lớp OpenSeaMap thêm báo hiệu hàng hải. Các ô bạn đã xem được lưu trên thiết bị để dùng ngoại tuyến, vì vậy hãy di chuyển và thu phóng khắp khu vực trước khi ngắt mạng. <i>Lưu khu vực</i> tải một dải mức thu phóng cho URL ô tùy chỉnh. Khi không có ô bản đồ, bản đồ hiển thị lưới và đường bờ thế giới tích hợp.</p>
 <h3 id="9-3-coastline-and-land-avoidance">9.3 Đường bờ &amp; tránh đất liền</h3>

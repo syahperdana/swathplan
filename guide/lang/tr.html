@@ -29,6 +29,7 @@
 <li><b>Kenar çubuğu</b>: açılıp kapanan numaralı bölümlerde gruplanmış ayarlar. Üstteki yuvarlak düğmeler bir bölüme atlar; <i>Tümünü aç</i> ve <i>Tümünü daralt</i> tüm bölümleri açar veya kapatır. Planlayıcı yalnızca ölçüm türünüzün gerektirdiği bölümleri gösterir, bu yüzden <b>bölüm numaraları ölçüm türüyle değişir</b>. Bu nedenle kılavuz bölümlere adlarıyla atıfta bulunur.</li>
 <li><b>Harita</b>: kaydırmak için sürükleyin, yakınlaştırmak için fare tekerleğini (veya dokunmatik ekranda iki parmağı) kullanın. İmlecin altındaki koordinatlar köşede gösterilir.</li>
 <li><b>Sonuçlar</b>: zaman analizi, mesafeler ve istatistikler, IHO S-44 kalite kontrolü ve plan kontrolleri; bunlar herhangi bir şeyi değiştirdiğinizde güncellenir.</li>
+<li><b>Harita göstergesi ve katmanlar</b>: sağ üstteki göstergede bulunan kutular ölçüm hatlarını, dönüşleri ve çapraz hatları gösterir ya da gizler. <i>Katmanlar</i> geri kalanını açar: ölçüm sınırı, batimetri, kıyı çizgisi, harita arka planı ve derinlik ölçeği; ayrıca projeyi sıfırlamadan yüklenen batimetriyi ya da ölçüm sınırını kaldıran düğmeler. Telefonda gösterge sağ alttadır ve <i>Katmanlar</i>’dan açılır.</li>
 </ol>
 
 <h3 id="2-3-the-header">2.3 Başlık</h3>
@@ -100,6 +101,7 @@
 <li><b>İskele ve sancak açısı</b>: gerçekten kaydedeceğiniz yarım tarama açıları. Tarama genişliğini belirler: W = derinlik × (tan iskele + tan sancak).</li>
 <li><b>Yanal bindirme</b>: komşu taramaların ne kadar örtüştüğü, genellikle %20–30. Aralık S = W × (1 − bindirme) olur.</li>
 <li><b>Uyarlanabilir hat aralığı</b>: derinlik verisi yüklüyken her hat, tüm uzunluğu boyunca bindirmeyi koruyarak yerel derinliğin izin verdiği kadar öncekinden uzağa yerleştirilir; böylece derin suda hatlar daha seyrek olur.</li>
+<li><b>Şundan sığ derinlikleri yok say</b> (varsayılan 2 m): kuruyan sığlıklar ve çok sığ su uyarlanabilir aralığa katılmaz; böylece bir hattın bir ucundaki sığlık tüm hatları birbirine yaklaştırmaz. Plan kontrolleri bunun alanın ne kadarı olduğunu söyler; o kısmı ayrıca ölçün (örneğin bir eş derinlik eğrisini izleyen hatlarla) ya da sınırı düşürün.</li>
 <li><b>En büyük hat aralığı</b> ve <b>en büyük tarama genişliği</b> sonucu sınırlar (0 = sınır yok).</li>
 </ul>
 <h3 id="6-2-single-beam">6.2 Tek ışınlı</h3>
@@ -156,6 +158,7 @@
 <h3 id="9-1-global-bathymetry-and-your-own-soundings">9.1 Küresel batimetri ve kendi sondajlarınız</h3>
 <p><i>Küresel batimetri</i>, kapalı alan için derinlikleri seçtiğiniz çözünürlükte GMRT, NOAA NCEI veya EMODnet'ten indirir. Yalnızca alanın veya koridorun yakınındaki taban parçalar hâlinde indirilir, böylece uzun bir güzergâh çevresindeki tüm kutuyu indirmez; bir parça başarısız olursa durum satırı kaç tane olduğunu söyler ve indirmek için bir bağlantı verir. İndirilmiş bir GeoTIFF veya ESRI ASCII grid de yükleyebilirsiniz. Bu gridler karışık kalitede 100–450 m'lik modellerdir ve harita datumuna değil yaklaşık olarak ortalama deniz seviyesine dayanır. Bir planı boyutlandırmaya yeterlidir ama sığlıkları ve batıkları kaçırır.</p>
 <p><i>XYZ dosyasından batimetri</i> kendi sondajlarınızı yükler (atlanacak başlık satırları, aşağı pozitif veya yükseklik, metre, fit veya kulaç ve datum veya gelgit için düşey öteleme). Bunlar tüm küresel verilerin yerini alır. Onları haritada nokta veya gölgeli arka plan olarak gösterin, ardından en sığı, 5. yüzdeliği veya ortalamayı tasarım derinliği olarak uygulayın.</p>
+<p>Büyük dosyalar ilerleme gösterilerek adım adım okunur, bu yüzden sayfa yüklenirken kullanılabilir kalır; bir milyon noktalı 1 m ızgara birkaç saniye sürer. 0,5 m’ye kadar ızgaralar yakınlaştırıldığında hücre hücre gösterilir. Yaklaşık 1 km²’den büyük alanlarda 1 m ızgara aynı iyilikte plan verir ve daha hızlı yüklenir. Haritanın sol altındaki derinlik ölçeği renk ölçeğini (gökkuşağı, maviler, viridis, okyanus veya gri), nokta sayısını ve aralığını, alan içindeki en az, ortalama, medyan, en çok ve standart sapmayı verir. <i>Batimetriyi kaldır</i> yüklenen derinlikleri siler ve geri kalan her şeyi korur.</p>
 <h3 id="9-2-map-background-and-offline-maps">9.2 Harita arka planı ve çevrimdışı haritalar</h3>
 <p>Bir altlık harita (Esri sokak, topografik, gri, uydu ve okyanus haritaları, OpenStreetMap, OpenTopoMap), kendi PMTiles harita dosyanızı veya özel bir karo URL'si (örneğin kendi Google veya Bing hesabınızdan) seçin. OpenSeaMap katmanı deniz işaretlerini ekler. Görüntülediğiniz karolar çevrimdışı kullanım için cihazda saklanır; bu yüzden çevrimdışı olmadan önce alanınızı kaydırıp yakınlaştırın. <i>Alanı kaydet</i>, özel bir karo URL'si için bir yakınlaştırma aralığını indirir. Karo yoksa harita bir grid ve yerleşik dünya kıyı çizgisini gösterir.</p>
 <h3 id="9-3-coastline-and-land-avoidance">9.3 Kıyı çizgisi ve karadan kaçınma</h3>

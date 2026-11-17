@@ -2,7 +2,12 @@
 <div id="mapwrap"><canvas id="cv"></canvas>
 <div id="tools"><button id="bDraw" class="p">Draw area</button><button id="bClose">Close polygon</button><button id="bClr">Clear</button><button id="bFit">Fit</button><button id="bLoc" title="Go to the area preset nearest to my location">My location</button>
 <select id="pre2" style="width:auto;max-width:210px;margin:4px 0 0"></select></div>
-<div id="leg"><div><i style="background:#0b6f6a"></i>Survey lines</div><div><i style="background:#b0237a"></i>Williamson turns</div><div><i style="background:#d98a00"></i>Cross lines</div></div>
+<div id="leg"><label><input type="checkbox" id="lyLines" checked><i style="background:#0b6f6a"></i>Survey lines</label><label><input type="checkbox" id="lyTurns" checked><i style="background:#b0237a"></i>Williamson turns</label><label><input type="checkbox" id="lyCross" checked><i style="background:#d98a00"></i>Cross lines</label>
+<details id="lyMore"><summary>Layers</summary><label><input type="checkbox" id="lyBnd" checked><i class="dash"></i>Survey border</label><label><input type="checkbox" id="lyBath" checked><i style="background:linear-gradient(90deg,#c81e2d,#f5d737,#2896cd,#55289a)"></i>Bathymetry</label>
+<label><input type="checkbox" id="lyCoast" checked><i style="background:#7a5a3a"></i>Coastline</label><label><input type="checkbox" id="lyBase" checked><i style="background:#9fc3cf"></i>Map background</label><label><input type="checkbox" id="lyLeg" checked><i style="background:#555"></i>Depth scale</label>
+<div class="lyClr"><button type="button" id="lyClrB">Remove bathymetry</button><button type="button" id="lyClrP">Remove survey border</button></div></details></div>
+<div id="bLeg" hidden><div class="bl1"><b>Depth (m)</b><select id="bPal" title="Colour scale"><option value="rainbow">Rainbow</option><option value="blues">Blues</option><option value="viridis">Viridis</option><option value="ocean">Ocean</option><option value="grey">Grey</option></select></div>
+<div id="bLegBar"></div><div class="bl2"><span id="bLegMin"></span><span id="bLegMid"></span><span id="bLegMax"></span></div><div id="bLegSt" class="bl3"></div><div id="bLegIn" class="bl3"></div></div>
 <div id="mapSrc" hidden></div><div id="attr"></div><div id="hud">Drag to pan · wheel to zoom · click to add vertices</div></div>
 <div class="grid" id="sumWrap">
 <div class="card"><h3>Time analysis</h3>
