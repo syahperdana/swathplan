@@ -1162,5 +1162,9 @@
  "Along each gap (best fit)": "ตามแต่ละช่องว่าง (เข้ากันที่สุด)",
  "One direction for all gaps": "ทิศทางเดียวสำหรับทุกช่องว่าง",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "เมื่อเลือกตามแต่ละช่องว่าง แต่ละช่องว่างจะได้แนวของตัวเอง แนววิ่งตามแกนยาวของช่องว่างที่ปรับตามรูปร่างจากปลายหนึ่งถึงอีกปลาย ช่องว่างยาวระหว่างสองแนวที่แล่นแล้วจึงเติมด้วยแนวเดียว ช่องว่างที่โค้งหรือเป็นรูปตัว L จะแบ่งเป็นส่วนที่ตรงกว่า แต่ละส่วนมีทิศทางของตัวเอง ช่องว่างที่กว้างกว่าหนึ่งสวาธจะได้แนวขนานกัน แถบตามขอบเขตวิ่งตามขอบของมัน",
- "{0} lines (adaptive, by segment)": "{0} แนว (ปรับตัว ตามช่วง)"
+ "{0} lines (adaptive, by segment)": "{0} แนว (ปรับตัว ตามช่วง)",
+ "No depths deeper than {0} m inside the area.": "ไม่มีความลึกมากกว่า {0} ม. ภายในพื้นที่",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % ของค่าเหล่านี้ตื้นกว่า {1} ม. (พื้นที่โผล่พ้นน้ำหรือน้ำตื้นมาก) ปุ่มด้านล่างจะไม่นำมาคิด",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "ความลึกออกแบบต้องมากกว่า 0 ม.: กรอกค่า หรือใช้ปุ่มใต้ความลึกที่โหลดไว้",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "ช่องว่าง {0} แห่งอยู่บนพื้นที่โผล่พ้นน้ำหรือน้ำตื้นกว่า {1} ม. (จากความลึกที่โหลดไว้) และไม่มีแนวสำรวจ"
 }

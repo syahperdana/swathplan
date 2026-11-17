@@ -1153,5 +1153,9 @@
  "Along each gap (best fit)": "Her boşluk boyunca (en iyi uyum)",
  "One direction for all gaps": "Tüm boşluklar için tek yön",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Her boşluk boyunca seçeneğinde her boşluk kendi hatlarını alır: hatlar boşluğun şekline uydurulmuş uzun ekseni boyunca bir uçtan öbürüne uzanır, böylece iki iz arasındaki uzun bir boşluk tek hatla doldurulur. Eğri ya da L biçimli boşluklar, her biri kendi yönüne sahip daha düz parçalara bölünür; bir şeritten geniş boşluk paralel hatlar alır. Sınır boyunca uzanan şeritler kendi kenarlarını izler.",
- "{0} lines (adaptive, by segment)": "{0} hat (uyarlanabilir, bölüm başına)"
+ "{0} lines (adaptive, by segment)": "{0} hat (uyarlanabilir, bölüm başına)",
+ "No depths deeper than {0} m inside the area.": "Alan içinde {0} m'den derin derinlik yok.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "Bunların % {0}'i {1} m'den sığ (kuruyan zemin veya çok sığ su); aşağıdaki düğmeler bunları dışarıda bırakır.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Tasarım derinliği 0 m'den büyük olmalıdır: girin veya yüklenen derinliklerin altındaki düğmeleri kullanın.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "Boşlukların {0} tanesi kuruyan zeminde veya {1} m'den sığ suda (yüklenen derinliklere göre) ve hat almıyor."
 }

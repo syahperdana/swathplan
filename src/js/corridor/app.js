@@ -14,6 +14,7 @@ function coOffsets(){const p=params();return $("coMode").value=="fixed"?CG.parse
 const _coArea=gen;gen=function(){if(!MODE().corr){CO.P=null;CO.L=0;CO.segs=[];return _coArea()}R={lines:[],turns:[],cross:[],tl:0,ol:0};CO.P=null;CO.L=0;CO.segs=[];
 if(draw&&!closed){coStatus();return stats()}// a new route is being drawn: only its points are shown
 const P=coRoute();if(P.length<2){poly=[];closed=false;draw=true;coStatus();return stats()}
+if(!(g("depth")>0)){coStatus();return stats()}
 const{Rr}=params(),hw=Math.max(1,g("coHW")),ext=Math.max(0,g("coExt")),offs=coOffsets(),pre=$("coPre").value;
 poly=CG.outline(P,hw);closed=poly.length>=3;draw=false;
 const C=CG.chain(P),Lr=C[C.length-1];CO.P=P;CO.C=C;CO.L=Lr;CO.off=offs;

@@ -1154,5 +1154,9 @@
  "Along each gap (best fit)": "Ao longo de cada falha (melhor ajuste)",
  "One direction for all gaps": "Uma direção para todas as falhas",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Ao longo de cada falha, cada falha recebe as suas próprias linhas: seguem o eixo longo da falha, ajustado à sua forma, de uma ponta à outra, para que uma falha longa entre duas passagens seja preenchida por uma linha. Falhas curvas ou em L são divididas em partes mais retas, cada uma com a sua direção; uma falha mais larga que uma faixa recebe linhas paralelas. As faixas ao longo do limite seguem a sua borda.",
- "{0} lines (adaptive, by segment)": "{0} linhas (adaptativo, por segmento)"
+ "{0} lines (adaptive, by segment)": "{0} linhas (adaptativo, por segmento)",
+ "No depths deeper than {0} m inside the area.": "Não há profundidades maiores que {0} m dentro da área.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "{0} % delas são mais rasas que {1} m (terreno que seca ou água muito rasa); os botões abaixo as deixam de fora.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "A profundidade de projeto deve ser maior que 0 m: digite-a ou use os botões sob as profundidades carregadas.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} das lacunas estão em terreno que seca ou em água mais rasa que {1} m (pelas profundidades carregadas) e não recebem linhas."
 }

@@ -1153,5 +1153,9 @@
  "Along each gap (best fit)": "Ayon sa bawat puwang (pinakaangkop)",
  "One direction for all gaps": "Iisang direksyon para sa lahat ng puwang",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "Ayon sa bawat puwang, may sariling linya ang bawat puwang: tumatakbo ang mga ito sa mahabang axis ng puwang, iniangkop sa hugis nito, mula sa isang dulo hanggang sa kabila, kaya isang linya lang ang pupuno sa mahabang puwang sa pagitan ng dalawang track. Hinahati sa mas tuwid na bahagi ang mga puwang na kurbado o hugis-L, bawat isa may sariling direksyon; ang puwang na mas malapad sa isang swath ay may magkakaagapay na linya. Ang mga piraso sa gilid ng hangganan ay sumusunod sa gilid nito.",
- "{0} lines (adaptive, by segment)": "{0} linya (adaptive, bawat segment)"
+ "{0} lines (adaptive, by segment)": "{0} linya (adaptive, bawat segment)",
+ "No depths deeper than {0} m inside the area.": "Walang lalim na higit sa {0} m sa loob ng lugar.",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "Ang {0} % ng mga ito ay mas mababaw sa {1} m (lupang natutuyo o napakababaw na tubig); hindi isinasama ng mga button sa ibaba.",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "Dapat higit sa 0 m ang design depth: ilagay ito, o gamitin ang mga button sa ilalim ng mga na-load na lalim.",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "{0} sa mga puwang ay nasa lupang natutuyo o tubig na mas mababaw sa {1} m (mula sa mga na-load na lalim) at walang linya."
 }

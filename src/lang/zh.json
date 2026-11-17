@@ -1154,5 +1154,9 @@
  "Along each gap (best fit)": "沿每个漏测区（最佳拟合）",
  "One direction for all gaps": "所有漏测区同一方向",
  "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "选择沿每个漏测区时，每个漏测区都有自己的测线：测线沿按其形状拟合的长轴，从一端延伸到另一端，因此两条航迹之间的狭长漏测只需一条测线即可补上。弯曲或 L 形的漏测区会被分成较直的几段，每段有各自的方向；宽于一个条带的漏测区布设平行测线。沿边界的条带沿其边布设。",
- "{0} lines (adaptive, by segment)": "{0} 条测线（自适应，按分段）"
+ "{0} lines (adaptive, by segment)": "{0} 条测线（自适应，按分段）",
+ "No depths deeper than {0} m inside the area.": "区域内没有深于 {0} 米的水深。",
+ "{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.": "其中 {0} % 浅于 {1} 米(干出滩或极浅水域);下面的按钮会将其排除。",
+ "The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths.": "设计水深必须大于 0 米:请输入,或使用已加载水深下方的按钮。",
+ "{0} of the gaps lie on drying ground or water shallower than {1} m (from the loaded depths) and get no lines.": "有 {0} 个空白位于干出滩或浅于 {1} 米的水域(根据已加载水深),不生成测线。"
 }

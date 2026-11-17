@@ -59,16 +59,20 @@ bath=B;DG=null;if(!closed){reorigin((a0+a1)/2,(o0+o1)/2);const dx=Math.max(50,(o
 xyzMsg(i18("Analysing {0} points…",n.toLocaleString()));await xyzPause();const _gen=gen;gen=()=>{};try{analyse()}finally{gen=_gen}const st=$("sndR").textContent;
 xyzMsg(st+" "+i18("Planning lines…"));await xyzPause();buildDG();await xyzPause();gen();await xyzPause();try{bathShade()}catch(e){}$("sndR").textContent=st;B.ms=Math.round(performance.now()-t0);render();return B}
 // depth statistics, inside the area when there is one (a fast polygon test and a typed sort: a few hundred ms for a million points)
+// depths shallower than this are left out of the design-depth buttons (the adaptive limit where there is one, at least 0.5 m)
+const xyzWetLim=()=>Math.max(.5,typeof adpMin=="function"?adpMin():.5);
 function analyse(){if(!bath){sdp=null;bathLegend();return}const N=bath.z.length,T=closed&&poly.length>2?polyTester(poly):null;let m=0,s=0,s2=0,z0=1e30,z1=-1e30;
 // percentiles from a fine histogram (4096 steps over the depth range: within a few millimetres) instead of sorting millions of values
-const NB=4096,lo=bath.zmin,hi=bath.zmax,w=(hi-lo)/NB||1,Hf=new Uint32Array(NB),kx=111320*Math.cos(o.lat*D),ky=111132.9,LA=bath.la,LO=bath.lo,ZZ=bath.z;
-for(let i=0;i<N;i++){if(T&&!T((LO[i]-o.lon)*kx,(LA[i]-o.lat)*ky))continue;const v=ZZ[i];m++;s+=v;s2+=v*v;if(v<z0)z0=v;if(v>z1)z1=v;Hf[Math.min(NB-1,Math.max(0,Math.floor((v-lo)/w)))]++}
+const NB=4096,lo=bath.zmin,hi=bath.zmax,w=(hi-lo)/NB||1,Hf=new Uint32Array(NB),kx=111320*Math.cos(o.lat*D),ky=111132.9,LA=bath.la,LO=bath.lo,ZZ=bath.z,wl=xyzWetLim();let wm=0,ws=0,w0=1e30;
+for(let i=0;i<N;i++){if(T&&!T((LO[i]-o.lon)*kx,(LA[i]-o.lat)*ky))continue;const v=ZZ[i];m++;s+=v;s2+=v*v;if(v<z0)z0=v;if(v>z1)z1=v;if(v>=wl){wm++;ws+=v;if(v<w0)w0=v}Hf[Math.min(NB-1,Math.max(0,Math.floor((v-lo)/w)))]++}
 if(!m){sdp=null;$("sndR").textContent=i18("{0} points loaded, none inside the area.",N);bathLegend();return}const mean=s/m;
 const q=f=>{const t=f*m;let c=0;for(let k=0;k<NB;k++){c+=Hf[k];if(c>=t)return Math.min(z1,Math.max(z0,lo+(k+.5)*w))}return z1};
 const nb=12,hist=new Array(nb).fill(0);for(let k=0;k<NB;k++)if(Hf[k]){const v=lo+(k+.5)*w;hist[Math.min(nb-1,Math.max(0,Math.floor((v-z0)/((z1-z0)||1)*nb)))]+=Hf[k]}
 sdp={min:z0,max:z1,p5:q(.05),med:q(.5),mean,sd:Math.sqrt(Math.max(0,s2/m-mean*mean)),n:m,hist};
+// for the design-depth buttons: the same without drying ground and very shallow water (a design depth must be positive)
+if(wm&&wm<m){const qw=f=>{const t=f*wm;let c=0;for(let k=0;k<NB;k++){const v=lo+(k+.5)*w;if(v<wl)continue;c+=Hf[k];if(c>=t)return Math.max(w0,v)}return z1};sdp.wet={min:w0,p5:qw(.05),mean:ws/wm,lim:wl,f:1-wm/m}}
 $("sndR").textContent=i18("{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.",N.toLocaleString(),bath.bad,closed?i18("Inside area"):i18("All"),m.toLocaleString(),sdp.min.toFixed(1),sdp.p5.toFixed(1),sdp.mean.toFixed(1),sdp.max.toFixed(1))+
-(bath.res?" "+i18("Point spacing about {0} m.",bath.res<1?bath.res.toFixed(2):bath.res.toFixed(1)):"")+(bath.res&&bath.res<.5?" "+i18("Finer than 0.5 m: grid the data to 0.5–1 m before loading for a quicker planner."):"");bathLegend()}
+(bath.res?" "+i18("Point spacing about {0} m.",bath.res<1?bath.res.toFixed(2):bath.res.toFixed(1)):"")+(bath.res&&bath.res<.5?" "+i18("Finer than 0.5 m: grid the data to 0.5–1 m before loading for a quicker planner."):"")+(sdp.wet?" "+i18("{0} % of these are shallower than {1} m (drying ground or very shallow water); the buttons below leave them out.",(sdp.wet.f*100).toFixed(0),sdp.wet.lim.toFixed(1)):"");bathLegend()}
 // soundings as dots when the shaded background is off: colour from the chosen scale
 function drawBath(){if(!bath||!$("sb").checked)return;const n=bath.z.length,st=Math.max(1,Math.floor(n/5000)),r=DPR(),sp=(bath.zmax-bath.zmin)||1;
 for(let i=0;i<n;i+=st){const s=sc(fromLL(bath.la[i],bath.lo[i]));if(s[0]<0||s[1]<0||s[0]>cv.width||s[1]>cv.height)continue;const c=palCol((bath.z[i]-bath.zmin)/sp);cx.fillStyle="rgb("+c.map(Math.round).join(",")+")";cx.fillRect(s[0]-2*r,s[1]-2*r,4*r,4*r)}}
@@ -81,4 +85,6 @@ $("bLegSt").textContent=t.join(" · ");$("bLegIn").textContent=S?(closed?i18("In
 function clearBath(){bath=null;sdp=null;DG=null;try{BSC.clear()}catch(e){}try{savedBath=null;IDB.del(IDK("bath")).catch(()=>{})}catch(e){}$("sndR").textContent=i18("Bathymetry removed.");try{$("gbSt").textContent=""}catch(e){}bathLegend();gen();render();try{saveSoon()}catch(e){}}
 $("xl").onclick=async()=>{if($("xcrs").value=="epsg"){if(!crsDef)return alert(i18("Load an EPSG code or definition first."));try{await ensureP4()}catch(e){return alert(i18("The proj4 library is not available. Connect to the internet once, or load proj4.js from a file."))}}const f=$("xf").files[0];
 if(f){xyzMsg(i18("Reading XYZ… {0} %",0));loadXYZ(f)}else loadXYZ($("snd").value)};
-const ap=v=>{if(sdp&&isFinite(v)){$("depth").value=v.toFixed(1);$("qd").value=v.toFixed(1);gen()}};$("sMin").onclick=()=>ap(sdp&&sdp.min);$("sP5").onclick=()=>ap(sdp&&sdp.p5);$("sMean").onclick=()=>ap(sdp&&sdp.mean);
+// the design depth from the depths inside the area, leaving out drying ground and very shallow water
+const ap=k=>{if(!sdp)return;const W=sdp.wet,v=W?W[k]:sdp[k];if(!isFinite(v)||v<=0)return toast(i18("No depths deeper than {0} m inside the area.",(W?W.lim:.5).toFixed(1)),4000);$("depth").value=v.toFixed(1);$("qd").value=v.toFixed(1);gen()};
+$("sMin").onclick=()=>ap("min");$("sP5").onclick=()=>ap("p5");$("sMean").onclick=()=>ap("mean");
