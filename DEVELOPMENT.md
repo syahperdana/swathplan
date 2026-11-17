@@ -199,6 +199,12 @@ All in `src/js/map/offline-maps.js` (with `pmtiles.js` and small hooks in `tiles
 - **Changing the English wording of a string changes its key.** Update the key in every language file too, or the translations are lost (the build reports these as "no longer exists").
 - Translations of newer strings need native review. Hindi, Urdu, Russian, Korean, Tagalog, Vietnamese, Turkish, Polish, Thai and Malay are the least certain.
 
+## Versions and releases
+
+The version lives in one place, `src/version.json` (`"version": "1.1.0"`). The build replaces `__SWP_VERSION__` everywhere in the pages and scripts with it, shortened to `1.1` when the patch number is 0. It appears in the page footers (linked to the GitHub releases page), the About text in the planners, the map sheet, the PDF and HTML reports (and the PDF metadata), the `# Saved … with SwathPlan 1.1` comment line of .SPL files, and on the covers and running headers of the PDF guides (`tools/make_docs_pdf.py` reads the same file). Write the token, never a literal version number. Test: `python3 -I test/version_check.py`.
+
+To release: raise the version in `src/version.json` (minor for features, patch for fixes only), add a section to `CHANGELOG.md`, run the build and `tools/make_docs_pdf.py`, and deploy to `main` as usual. Then fast-forward `beta` to `main` (the deploy merge commit) and create the GitHub release on `main` with tag `vX.Y.Z` and the changelog section as its notes. Tags and releases have to be made by the owner on GitHub; this sandbox cannot create them.
+
 ## Testing
 
 The snapshot test drives the page in headless Chromium (Python Playwright) with a frozen clock and no network. It plans a fixed area and records every export, the page text in all 22 languages and three layouts.

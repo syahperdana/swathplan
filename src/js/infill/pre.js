@@ -2,7 +2,7 @@
 window.SWP_STATE_KEY="swp_state_infill";window.SWP_TOOL="Infill planner";window.SWP_TITLE="SwathPlan – Infill Planner (Offline)";window.SWP_SHEET_TITLE="INFILL SURVEY LINE PLAN";window.SWP_REPORT_SUB="Infill survey line plan and IHO S-44 summary";
 (()=>{const q=s=>document.querySelector(s),t=(s,v)=>{const e=q(s);if(e)e.textContent=v};
 t(".brand small","Infill planner · coverage gaps · infill lines");
-const f=q("footer");if(f)f.innerHTML="© 2026 <b>Aldwin Syahperdana</b>. All rights reserved. · SwathPlan Infill Planner · A planning aid only: verify all results against your equipment specifications, the current IHO S-44 and your client's requirements.";
+const f=q("footer");if(f)f.innerHTML="© 2026 <b>Aldwin Syahperdana</b>. All rights reserved. · <a href='https://github.com/syahperdana/swathplan/releases' target='_blank' rel='noopener' title='Release notes'>SwathPlan Infill Planner __SWP_VERSION__</a> · A planning aid only: verify all results against your equipment specifications, the current IHO S-44 and your client's requirements.";
 // infill lines run across the gaps only: no cross lines here
 const cr=document.getElementById("cross");if(cr){cr.checked=false;[cr.closest("label"),document.getElementById("nx"),document.getElementById("crossPre")].forEach(e=>{if(!e)return;e.hidden=true;const l=e.previousElementSibling;if(l&&l.tagName=="LABEL"&&e.tagName!="LABEL")l.hidden=true})}
 const au=document.getElementById("auto");if(au)au.hidden=true;

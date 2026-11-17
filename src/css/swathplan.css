@@ -60,3 +60,5 @@ details[data-sec]>summary::before{content:attr(data-n)}
 #bLegBar,#bLeg .bl2{direction:ltr}
 .covRow{display:flex;align-items:center;gap:8px;margin-top:2px}.covRow input{width:90px;margin:0}.covRow span{font-size:12px;color:#4a5d63}
 @media(max-width:560px){#leg{display:block;top:auto;bottom:58px;padding:4px 8px;max-height:calc(100% - 66px);overflow:auto}#leg:has(#lyMore:not([open]))>label{display:none}#lyMore summary{margin:0}#bLeg{width:170px;bottom:46px;font-size:10.5px;padding:5px 7px}#bLeg .bl3{display:none}#bLeg select{font-size:10.5px}}
+
+footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}

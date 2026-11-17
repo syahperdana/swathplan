@@ -7,6 +7,7 @@ Draw the area, set your sensor, get the lines, check them against IHO S-44, and 
 
 ▶ **All tools:** https://syahperdana.github.io/swathplan/  ·  **Survey planner:** https://syahperdana.github.io/swathplan/planner/
 🎬 **Demo video (2 min):** [docs/demo.mp4](docs/demo.mp4)
+🏷️ **Version 1.1**: what's new is in the [release notes](https://github.com/syahperdana/swathplan/releases) and [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

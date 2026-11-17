@@ -38,6 +38,7 @@ document.querySelectorAll('img').forEach(i=>i.loading='eager');return [...a.quer
 def run(langs):
     os.makedirs(OUT, exist_ok=True); srv = serve(); base = f'http://127.0.0.1:{srv.server_port}/'
     today = datetime.date.today().isoformat()
+    ver = json.load(open(os.path.join(ROOT, 'src/version.json')))['version']; ver = ver[:-2] if ver.endswith('.0') else ver
     with sync_playwright() as p:
         br = p.chromium.launch(); ctx = br.new_context(service_workers='block'); pg = ctx.new_page()
         for code in langs:
@@ -47,7 +48,7 @@ def run(langs):
                 pg.goto(f'{base}{doc}/?lang={code}'); pg.wait_for_function(f"document.querySelector('article').lang=='{code}'", timeout=20000)
                 pg.wait_for_load_state('networkidle'); pg.emulate_media(media='print')
                 ttl = T(title.replace('&', '&amp;')).replace('&amp;', '&')
-                head = f'<div style="width:100%;font:7.5pt Inter,sans-serif;color:#5b6e75;padding:0 17mm;display:flex;justify-content:space-between;direction:{"rtl" if rtl else "ltr"}"><span>SwathPlan · {ttl}</span><span>{today}</span></div>'
+                head = f'<div style="width:100%;font:7.5pt Inter,sans-serif;color:#5b6e75;padding:0 17mm;display:flex;justify-content:space-between;direction:{"rtl" if rtl else "ltr"}"><span>SwathPlan {ver} · {ttl}</span><span>{today}</span></div>'
                 foot = '<div style="width:100%;font:7.5pt Inter,sans-serif;color:#5b6e75;padding:0 17mm;display:flex;justify-content:space-between"><span>© 2026 Aldwin Syahperdana</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>'
                 opt = dict(format='A4', print_background=True, display_header_footer=True, header_template=head, footer_template=foot, margin={'top': '20mm', 'bottom': '18mm', 'left': '17mm', 'right': '17mm'})
                 # pass 1: where each heading lands; pass 2: the same layout with the page numbers filled in
@@ -63,7 +64,7 @@ def run(langs):
                 lede = pg.evaluate("(document.querySelector('article .lede')||{}).textContent||''")
                 h1 = pg.evaluate("document.querySelector('article h1').textContent")
                 cover = f'''<div class="cover" dir="{'rtl' if rtl else 'ltr'}" lang="{code}"><div class="band"><div class="brand"><img src="../icons/icon-192.png" alt=""><div>Swath<span>Plan</span></div></div>
-<h1>{h1}</h1><div class="sub">{lede}</div></div><div class="meta"><b>{T(LBL[0])}</b><span>{NAMES.get(code, code)}</span><b>{T(LBL[1])}</b><span>{today}</span><b>{T(LBL[2])}</b><span>syahperdana.github.io/swathplan</span></div>
+<h1>{h1}</h1><div class="sub">{lede}</div></div><div class="meta"><b>{T(LBL[0])}</b><span>{NAMES.get(code, code)}</span><b>{T(LBL[1])}</b><span>SwathPlan {ver} · {today}</span><b>{T(LBL[2])}</b><span>syahperdana.github.io/swathplan</span></div>
 <div class="foot">{T(LBL[4])}<br>© 2026 Aldwin Syahperdana</div></div>'''
                 pg.evaluate("h=>{document.querySelector('main').innerHTML=h;document.documentElement.classList.add('pdf')}", cover)
                 pg.wait_for_timeout(200)
