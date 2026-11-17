@@ -1,3 +1,5 @@
+// map layers the user can hide (the checkboxes in the map legend); a missing checkbox counts as shown
+const lyOn=id=>{const e=document.getElementById(id);return !e||e.checked};
 function fit(){const P=poly.length?poly:[[-1000,-1000],[1000,1000]],xs=P.map(p=>p[0]),ys=P.map(p=>p[1]),w=cv.clientWidth,h=cv.clientHeight,dx=arrMax(xs)-arrMin(xs)||100,dy=arrMax(ys)-arrMin(ys)||100;
 V.cx=(arrMax(xs)+arrMin(xs))/2;V.cy=(arrMax(ys)+arrMin(ys))/2;V.k=Math.min(w/dx,h/dy)*.8}
 const cv=$("cv"),cx=cv.getContext("2d");
@@ -10,9 +12,13 @@ for(let x=Math.ceil(a[0]/st)*st;x<b[0];x+=st){const s=sc([x,0])[0];cx.beginPath(
 for(let y=Math.ceil(a[1]/st)*st;y<b[1];y+=st){const s=sc([0,y])[1];cx.beginPath();cx.moveTo(0,s);cx.lineTo(cv.width,s);cx.stroke()}
 cx.fillText(i18("grid {0} m",st),cv.width-80*r,cv.height-10*r);
 const path=(P,cl)=>{cx.beginPath();P.forEach((p,i)=>{const s=sc(p);i?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])});if(cl)cx.closePath()};
-if(poly.length){path(poly,closed);if(closed){cx.fillStyle="#ffffff40";cx.fill()}cx.strokeStyle="#12262d";cx.lineWidth=2*r;cx.setLineDash([8*r,4*r]);cx.stroke();cx.setLineDash([]);poly.forEach(p=>{const s=sc(p);cx.fillStyle="#12262d";cx.fillRect(s[0]-3*r,s[1]-3*r,6*r,6*r)})}
-drawBath();drawCoast();cx.lineWidth=1.6*r;cx.strokeStyle="#b0237a";R.turns.forEach(t=>{path(t.pts);cx.stroke()});
-cx.strokeStyle="#d98a00";R.cross.forEach(l=>{path(LP(l));cx.stroke()});
-cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;R.lines.forEach(l=>{path(LP(l));cx.stroke()});
+if(poly.length&&lyOn("lyBnd")){path(poly,closed);if(closed){cx.fillStyle="#ffffff40";cx.fill()}cx.strokeStyle="#12262d";cx.lineWidth=2*r;cx.setLineDash([8*r,4*r]);cx.stroke();cx.setLineDash([]);poly.forEach(p=>{const s=sc(p);cx.fillStyle="#12262d";cx.fillRect(s[0]-3*r,s[1]-3*r,6*r,6*r)})}
+drawBath();if(lyOn("lyCoast"))drawCoast();cx.lineWidth=1.6*r;cx.strokeStyle="#b0237a";if(lyOn("lyTurns"))R.turns.forEach(t=>{path(t.pts);cx.stroke()});
+cx.strokeStyle="#d98a00";if(lyOn("lyCross"))R.cross.forEach(l=>{path(LP(l));cx.stroke()});
+cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;if(lyOn("lyLines"))R.lines.forEach(l=>{path(LP(l));cx.stroke()});drawShort();
 }
 
+
+// adaptive spacing: the stretches between neighbouring lines that get less than the coverage target (orange)
+function drawShort(){const A=typeof ADP_SHORT!="undefined"?ADP_SHORT:null;if(!A||!A.polys||!A.polys.length||!closed||!$("adp").checked||R.ctr||!lyOn("lyShort"))return;
+cx.save();cx.fillStyle="rgba(240,140,0,.38)";cx.strokeStyle="rgba(200,100,0,.8)";cx.lineWidth=DPR();A.polys.forEach(P=>{cx.beginPath();P.forEach((p,k)=>{const q=sc(p);k?cx.lineTo(q[0],q[1]):cx.moveTo(q[0],q[1])});cx.closePath();cx.fill();cx.stroke()});cx.restore()}

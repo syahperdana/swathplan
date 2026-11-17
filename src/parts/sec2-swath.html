@@ -1,10 +1,14 @@
-<details data-sec="swath" open><summary>Swath &amp; overlap</summary><div>
+<details data-sec="swath" open><summary>Swath &amp; coverage</summary><div>
 <div class="r2"><div><label>Port angle (°)</label><input type="number" id="ap" value="60" min="5" max="85"></div>
 <div><label>Starboard angle (°)</label><input type="number" id="as" value="60" min="5" max="85"></div></div>
-<label>Lateral overlap: <b id="ovT">30</b>%</label><input type="range" id="ov" min="0" max="80" value="30">
+<label>Seabed coverage (%)</label><input type="range" id="cov" min="100" max="500" step="5" value="143"><input type="hidden" id="ov" value="30">
+<div class="covRow"><input type="number" id="covN" min="100" max="1000" step="1" value="143"><span id="covX"></span></div>
+<p class="note">100 % = neighbouring swaths just meet; 200 % = every point of the seabed is in two swaths. Line spacing = swath width × 100 / coverage.</p>
 <div class="kv"><span>Total swath width (W)</span><b id="W">-</b></div><div class="kv"><span>Line spacing (S), at design depth</span><b id="S">-</b></div>
 <label><input type="checkbox" id="adp"> Adaptive line spacing from loaded bathymetry (wider lines in deeper water)</label>
-<div class="r2"><div><label>Max line spacing (m, 0 = auto)</label><input type="number" id="mxS" value="0" min="0"></div><div><label>Max swath width (m, 0 = none)</label><input type="number" id="mxW" value="0" min="0"></div></div>
+<div class="r2"><div><label>Max line spacing (m, 0 = auto)</label><input type="number" id="mxS" value="0" min="0"></div><div><label>Max swath width (m, 0 = none)</label><input type="number" id="mxW" value="0" min="0"></div><div><label>Ignore depths shallower than (m)</label><input type="number" id="adpMin" value="2" min="0" step="0.5"></div><div><label>Allow less coverage over (% of each line)</label><input type="number" id="adpTol" value="10" min="0" max="50" step="1"></div></div>
 <div class="kv"><span>Actual spacing (min – max, mean)</span><b id="spR">-</b></div>
 <p class="note">Adaptive mode needs depth data: global bathymetry (section {§gbath}) or your own XYZ soundings (section {§xyz}). Each line is placed as far from the previous one as the local depth allows while keeping the chosen overlap along its whole length. The swath is assumed to see flat seabed at the depth under the line, and the lines alternate direction (port/starboard angles swap).</p>
+<p class="note" id="adpTolNote">Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.</p>
+<p class="note" id="adpNote">Depths shallower than the limit above (drying banks, very shallow water) are left out of the adaptive spacing, so a shoal at one end of a line does not pull every line close together. The plan checks say how much of the area that is.</p>
 </div></details>

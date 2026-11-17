@@ -1,20 +1,31 @@
 /* ===== corridor mode of the survey planner: route, lines, KP, exports (active when MODE().corr) ===== */
 let RT=[];const CO={P:null,C:null,L:0,off:[],segs:[]};// RT: route points [lat, lon] from the first to the last KP
 const coRoute=()=>CG.clean(RT.map(q=>fromLL(q[0],q[1])));
+// adaptive offsets for one stretch of the route (chainage a to b): the adaptive core in the corridor frame (q = offset to
+// starboard, t = chainage), so each segment gets the spacing its own depths allow. With a centre line it grows outwards from it.
+function coAdaptOffs(P,C,a,b,hw,centre){const L=Math.max(1,b-a),stp=Math.max(5,L/150),T=[];for(let t=a;t<b;t+=stp)T.push(t);T.push(b);
+const F=T.map(t=>CG.at(P,C,t)),fi=t=>F[Math.max(0,Math.min(F.length-1,Math.round((t-a)/stp)))],raw=(q,t)=>{const f=fi(t);return depthRaw(f.p[0]+f.u[1]*q,f.p[1]-f.u[0]*q)},prof=()=>T,S=params().S,cap=adpCap();
+let out,sh,A;if(!centre){const r=adaptCore({s0:-hw,s1:hw,S,prof,raw,stp,cap});out=r.out;sh=r.sh;A=r.A}
+else{const rp=adaptCore({s0:0,s1:hw,S,prof,raw,stp,cap,first:0}),rn=adaptCore({s0:0,s1:hw,S,prof,raw:(q,t)=>raw(-q,t),stp,cap,first:0,swap:true});
+out=rn.out.slice(1).map(v=>-v).reverse().concat(rp.out);sh=rp.sh.concat(rn.sh.map(z=>[-z[1],-z[0],z[2],z[3]]));A=rp.A+rn.A}
+const polys=sh.map(z=>{const e=[],w=[];for(let t=z[2];t<z[3]+stp/2;t+=stp){const f=CG.at(P,C,Math.min(t,z[3]));e.push([f.p[0]+f.u[1]*z[0],f.p[1]-f.u[0]*z[0]]);w.push([f.p[0]+f.u[1]*z[1],f.p[1]-f.u[0]*z[1]])}return e.concat(w.reverse())});
+return{off:[...new Set(out.map(v=>Math.round(v*100)/100))].sort((x,y)=>x-y),polys,A}}
 function coOffsets(){const p=params();return $("coMode").value=="fixed"?CG.parseOffsets($("coOff").value):CG.swathOffsets(Math.max(1,g("coHW")),p.W,p.S,$("coCtr").checked)}
 const _coArea=gen;gen=function(){if(!MODE().corr){CO.P=null;CO.L=0;CO.segs=[];return _coArea()}R={lines:[],turns:[],cross:[],tl:0,ol:0};CO.P=null;CO.L=0;CO.segs=[];
 if(draw&&!closed){coStatus();return stats()}// a new route is being drawn: only its points are shown
 const P=coRoute();if(P.length<2){poly=[];closed=false;draw=true;coStatus();return stats()}
+if(!(g("depth")>0)){coStatus();return stats()}
 const{Rr}=params(),hw=Math.max(1,g("coHW")),ext=Math.max(0,g("coExt")),offs=coOffsets(),pre=$("coPre").value;
 poly=CG.outline(P,hw);closed=poly.length>=3;draw=false;
 const C=CG.chain(P),Lr=C[C.length-1];CO.P=P;CO.C=C;CO.L=Lr;CO.off=offs;
 // lines across the corridor from port to starboard, alternating direction so each turn is short
 // long routes in segments (KP ranges overlapping by coSegO); each segment has its own lines and outline
-const SG=CG.segments(Lr,Math.max(0,g("coSeg"))*1000,Math.max(0,g("coSegO"))),multi=SG.length>1;
+const SG=CG.segments(Lr,Math.max(0,g("coSeg"))*1000,Math.max(0,g("coSegO"))),multi=SG.length>1,ad=adpOn();ADP_SHORT=ad?{A:0,polys:[]}:null;CO.segOff=[];let sp=[];
 SG.forEach((sg,si)=>{const Ps=multi?CG.subpath(P,C,sg.a,sg.b):P,tag=multi?pre+String(si+1).padStart(2,"0")+"_":pre;
 if(multi)CO.segs.push({n:si+1,a:sg.a,b:sg.b,poly:CG.outline(Ps,hw)});
-offs.forEach((d,i)=>{let q=CG.extend(CG.offset(Ps,d),ext);if(i%2)q=q.slice().reverse();if(q.length>1)R.lines.push({name:CG.offName(tag,d),a:q[0],b:q[q.length-1],p:q,off:d,seg:si+1})})});
-R.sp=offs.slice(1).map((v,i)=>v-offs[i]);coTurns(Rr);
+let so=offs;if(ad){const r=coAdaptOffs(P,C,sg.a,sg.b,hw,$("coCtr").checked);so=r.off;ADP_SHORT.A+=r.A;ADP_SHORT.polys.push(...r.polys)}CO.segOff.push(so);sp=sp.concat(so.slice(1).map((v,i)=>v-so[i]));
+so.forEach((d,i)=>{let q=CG.extend(CG.offset(Ps,d),ext);if(i%2)q=q.slice().reverse();if(q.length>1)R.lines.push({name:CG.offName(tag,d),a:q[0],b:q[q.length-1],p:q,off:d,seg:si+1})})});
+R.sp=sp;if(ad)CO.off=CO.segOff[0]||[];coTurns(Rr);
 const XI=g("coXI"),k0=g("coKP0")*1000;
 if(XI>0){const xe=hw+Math.max(0,g("coXE"));for(let k=Math.ceil(k0/XI-1e-9)*XI;k<=k0+Lr+1e-6&&R.cross.length<2000;k+=XI){const a=CG.at(P,C,k-k0),nv=[a.u[1],-a.u[0]];
 R.cross.push({name:$("coXP").value+(k/1000).toFixed(3),a:[a.p[0]-nv[0]*xe,a.p[1]-nv[1]*xe],b:[a.p[0]+nv[0]*xe,a.p[1]+nv[1]*xe],kp:k/1000})}}
@@ -26,7 +37,7 @@ let pts=[A.b].concat(turnPts(A.b,f,nn,S,Rr).pts);pts.push(B.a);let len=0;for(let
 R.turns.push({pts,len,ty:S<2*Rr?"w":"u"});R.tl+=len}
 }
 function coStatus(){const k0=g("coKP0");$("coOffB").hidden=$("coMode").value!="fixed";$("coCtrL").hidden=$("coMode").value=="fixed";
-$("coLn").textContent=CO.off.length&&CO.P?CO.off.length+" · "+CO.off.map(v=>(v>0?"+":"")+(v%1?v.toFixed(1):v.toFixed(0))).join(", ")+" m":"-";
+$("coLn").textContent=CO.P&&adpOn()&&CO.segOff&&CO.segOff.length?i18("{0} lines (adaptive, by segment)",CO.segOff.map(o=>o.length).join(" / ")):CO.off.length&&CO.P?CO.off.length+" · "+CO.off.map(v=>(v>0?"+":"")+(v%1?v.toFixed(1):v.toFixed(0))).join(", ")+" m":"-";
 $("coSt").textContent=draw&&!closed&&poly.length?i18("Drawing the route: {0} points. Press Finish route when done.",poly.length):CO.P?i18("Route {0} km, KP {1} to {2}. {3} survey lines, {4} cross lines.",(CO.L/1000).toFixed(3),k0.toFixed(3),(k0+CO.L/1000).toFixed(3),R.lines.length,R.cross.length)+(CO.segs.length?" "+i18("{0} segments of up to {1} km, overlapping {2} m.",CO.segs.length,g("coSeg"),g("coSegO")):""):i18("No route yet. Draw it on the map or import it.")}
 
 // ---- drawing the route on the map ----

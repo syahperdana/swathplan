@@ -11,7 +11,7 @@ $("sbMax").onclick=()=>{$("sbSp").value=Math.round(sbMaxS());gen();saveSoon()};
 const _sbSum=summary;summary=function(){_sbSum.apply(this,arguments);if(!MODE().sbes||!R.lines.length)return;
 const oi=+$("ord").value,on=ordN(oi),S=Math.max(1,g("sbSp")),W=sbFoot(),mx=sbMaxS(),A=closed&&poly.length>=3?area(poly):0,
 Lm=R.lines.reduce((s,l)=>s+L(l),0),Lx=R.cross.reduce((s,l)=>s+L(l),0),cov=A>0?Math.min(1,(Lm+Lx)*W/A):W/S;
-const pre=t=>i18(t).split("{0}")[0],drop=["Mean achieved overlap {0} % meets the {1} % target.","Achieved overlap {0} % is below the {1} % target.","Swath angle {0}° exceeds the catalogue maximum of {1}° for this sensor.","Swath angle {0}° is within the sensor maximum ({1}°).",
+const pre=t=>i18(t).split("{0}")[0],drop=["Mean achieved coverage {0} % meets the {1} % target.","Achieved coverage {0} % is below the {1} % target.","Swath angle {0}° exceeds the catalogue maximum of {1}° for this sensor.","Swath angle {0}° is within the sensor maximum ({1}°).",
 "Survey speed {0} kn is below the {1} kn limit for 3 pings on the smallest {2} feature.","Survey speed {0} kn exceeds {1} kn (3 pings on the smallest {2} feature). Slow down or raise the ping rate.","Maximum line spacing is capped at {0} m."].map(pre);
 const ul=$("chk");[...ul.children].forEach(li=>{const t=li.textContent;if(drop.some(d=>d&&t.startsWith(d)))li.remove()});
 const C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>");

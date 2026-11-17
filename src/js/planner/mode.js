@@ -15,7 +15,7 @@ show(sec("bound"),!m.corr);show(sec("dir"),!m.corr);show(sec("route"),m.corr);
 // adaptive spacing belongs to multibeam area surveys; tie lines by spacing to geophysical areas
 // single beam: the design depth input moves into the single-beam section, and back
 const dp=$("depth"),dl=dp.previousElementSibling,home=$("sens").closest("div");if(m.sbes&&dp.parentElement!==$("sbDepth")){$("sbDepth").append(dl,dp)}else if(!m.sbes&&dp.parentElement===$("sbDepth")){home.append(dl,dp)}
-const adp=$("adp"),ar=!m.corr&&!m.geo&&!m.sbes&&!m.uav;if(adp){const d=adp.closest("div");[adp.closest("label"),$("mxS")&&$("mxS").closest(".r2"),$("spR")&&$("spR").closest(".kv"),d&&d.querySelector("p.note")].forEach(e=>show(e,ar));if(!ar&&adp.checked){adp.checked=false}}
+const adp=$("adp"),ar=!m.sbes&&!m.uav;if(adp){const d=adp.closest("div");[adp.closest("label"),$("mxS")&&$("mxS").closest(".r2"),$("spR")&&$("spR").closest(".kv"),d&&d.querySelector("p.note"),$("adpNote"),$("adpTolNote")].forEach(e=>show(e,ar));if(!ar&&adp.checked){adp.checked=false}}
 const ti=$("gTI");if(ti){show(ti,!m.corr);show(ti.previousElementSibling,!m.corr)}
 unitKey($("bDraw"),m.corr?"Draw route":"Draw area");unitKey($("bClose"),m.corr?"Finish route":"Close polygon");
 unitKey($("hud"),m.corr?"Drag to pan · wheel to zoom · click to add route points":"Drag to pan · wheel to zoom · click to add vertices")}

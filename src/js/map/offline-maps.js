@@ -74,7 +74,7 @@ if(dl>70)return;// the local map frame is for survey areas, not whole oceans
 const r=DPR();cx.save();cx.strokeStyle="#8a6d3b";cx.lineWidth=1.1*r;cx.globalAlpha=.85;cx.beginPath();
 L.forEach(l=>{if(l.a1<la0||l.a0>la1||l.o1<lo0||l.o0>lo1)return;for(let k=0;k<l.a.length;k+=2){const s=sc(fromLL(l.a[k],l.a[k+1]));k?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])}neDrawn=true});
 cx.stroke();cx.restore()}
-const _neTiles=drawTiles;drawTiles=function(){drawNE();return _neTiles.apply(this,arguments)};
+const _neTiles=drawTiles;drawTiles=function(){if(lyOn("lyBase"))drawNE();return _neTiles.apply(this,arguments)};
 {const ck=document.getElementById("neC");if(ck)ck.addEventListener("change",rq)}
 
 // ---- map source label ------------------------------------------------------------------------
@@ -86,34 +86,50 @@ if(neDrawn&&(b=="none"||(navigator.onLine===false&&!tileOK)||(b=="pmtiles"&&!PM)
 const s=P.join(" + "),e=$("mapSrc");if(s!==_ms){_ms=s;e.textContent=s;e.hidden=!s}
 const hd=$("hud");e.style.bottom=(innerWidth<=700&&hd&&hd.offsetParent?hd.offsetHeight+16:30)+"px"}
 // texts written by this module follow a language change (setLang is defined later, so wrap it after load)
-setTimeout(()=>{if(typeof setLang!="function")return;const _sl=setLang;setLang=function(){const r=_sl.apply(this,arguments);try{_ms="";mapSrc();pmStatus();tcShow();saCheck()}catch(e){}return r}},0);
+setTimeout(()=>{if(typeof setLang!="function")return;const _sl=setLang;setLang=function(){const r=_sl.apply(this,arguments);try{_ms="";mapSrc();pmStatus();tcShow();saCheck()}catch(e){}try{if(bath)analyse()}catch(e){}return r}},0);
 addEventListener("online",()=>{rq();tcShow()});addEventListener("offline",rq);
 
 // ---- shaded bathymetry -------------------------------------------------------------------------
-// The depth points are turned once into a small shaded image (light = shallow, dark = deep, lit from
-// the north-west), which is then just scaled on screen: smooth to pan, light on a phone.
-let BS=null;
+// The depth points are turned once into a shaded image (coloured by the chosen scale, lit from the north-west), which is
+// then just scaled on screen: smooth to pan. On the map the image follows the data's own spacing (a 0.5 m grid shows its
+// 0.5 m cells) up to 4096 pixels a side and 12 million pixels; the sheet asks for a smaller one. One image is kept per size.
+const BSC=new Map();
 function hsl2rgb(h,s,l){s/=100;l/=100;const k=n=>(n+h/30)%12,a=s*Math.min(l,1-l),f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));return[f(0)*255,f(8)*255,f(4)*255]}
-function bathShade(Nmax){Nmax=Nmax||512;if(BS&&BS.b===bath&&BS.N==Nmax)return BS;const B=bath,n=B.z.length;let a0=90,a1=-90,o0=360,o1=-360;
+function bathShade(Nmax){Nmax=Nmax||4096;const pal=($("bPal")||{}).value||"rainbow",key=Nmax+":"+pal;let c=BSC.get(key);if(c&&c.b===bath)return c;if(BSC.size&&[...BSC.values()][0].b!==bath)BSC.clear();
+c=bathShadeBuild(Nmax,pal);BSC.set(key,c);return c}
+function bathShadeBuild(Nmax,pal){const B=bath,n=B.z.length;let a0=90,a1=-90,o0=360,o1=-360;
 for(let i=0;i<n;i++){const la=B.la[i],lo=B.lo[i];if(la<a0)a0=la;if(la>a1)a1=la;if(lo<o0)o0=lo;if(lo>o1)o1=lo}
-if(!(a1>a0&&o1>o0))return BS={b:B,N:Nmax,c:null};
-const asp=(o1-o0)*Math.cos((a0+a1)/2*D)/(a1-a0),N=Math.max(32,Math.min(Nmax,Math.round(Math.sqrt(n)*1.2))),W=Math.max(8,Math.round(asp>=1?N:N*asp)),H=Math.max(8,Math.round(asp>=1?N/asp:N));
-const S=new Float32Array(W*H),C=new Uint16Array(W*H);
-for(let i=0;i<n;i++){const x=Math.min(W-1,Math.floor((B.lo[i]-o0)/(o1-o0)*W)),y=Math.min(H-1,Math.floor((a1-B.la[i])/(a1-a0)*H)),k=y*W+x;S[k]+=B.z[i];C[k]++}
+if(!(a1>a0&&o1>o0))return{b:B,N:Nmax,c:null};
+const mx=(o1-o0)*111320*Math.cos((a0+a1)/2*D),my=(a1-a0)*111132.9,asp=mx/my;
+// pixel size: the point spacing when known (one pixel per grid cell), otherwise from the number of points
+let W,H;if(B.res>0){const px=Math.max(B.res,Math.max(mx,my)/Nmax,Math.sqrt(mx*my/12e6));W=Math.max(8,Math.round(mx/px)+1);H=Math.max(8,Math.round(my/px)+1)}
+else{const N=Math.max(32,Math.min(Math.min(Nmax,512),Math.round(Math.sqrt(n)*1.2)));W=Math.max(8,Math.round(asp>=1?N:N*asp));H=Math.max(8,Math.round(asp>=1?N/asp:N))}
+// pixel centres on the data: the outer points fall in the middle of the edge pixels
+const pa=(a1-a0)/(H-1||1),po=(o1-o0)/(W-1||1);a0-=pa/2;a1+=pa/2;o0-=po/2;o1+=po/2;
+const S=new Float32Array(W*H),C=new Uint16Array(W*H),ka=H/(a1-a0),ko=W/(o1-o0);
+for(let i=0;i<n;i++){const x=Math.min(W-1,Math.floor((B.lo[i]-o0)*ko)),y=Math.min(H-1,Math.floor((a1-B.la[i])*ka)),k=y*W+x;S[k]+=B.z[i];C[k]++}
 let Z=new Float32Array(W*H).fill(NaN);for(let k=0;k<W*H;k++)if(C[k])Z[k]=S[k]/C[k];
-for(let pass=0;pass<3;pass++){const Y=Z.slice();for(let y=0;y<H;y++)for(let x=0;x<W;x++){const k=y*W+x;if(!isNaN(Z[k]))continue;let s=0,m=0;
-for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const xx=x+dx,yy=y+dy;if(xx<0||yy<0||xx>=W||yy>=H)continue;const v=Z[yy*W+xx];if(!isNaN(v)){s+=v;m++}}if(m>=2)Y[k]=s/m}Z=Y}
-const cvs=document.createElement("canvas");cvs.width=W;cvs.height=H;const g=cvs.getContext("2d"),im=g.createImageData(W,H),sp=(B.zmax-B.zmin)||1,rel=sp/Math.max(W,H)*3;
-const at=(x,y)=>{x=Math.max(0,Math.min(W-1,x));y=Math.max(0,Math.min(H-1,y));const v=Z[y*W+x];return isNaN(v)?null:v};
-for(let y=0;y<H;y++)for(let x=0;x<W;x++){const v=Z[y*W+x];if(isNaN(v))continue;const k=(v-B.zmin)/sp,e=at(x+1,y),w=at(x-1,y),s=at(x,y+1),nn=at(x,y-1);
-const gx=e!=null&&w!=null?(w-e)/2:0,gy=nn!=null&&s!=null?(s-nn)/2:0,sh=Math.max(-1,Math.min(1,(gy-gx)/rel)),[r,gg,bb]=hsl2rgb(215,75,Math.max(18,Math.min(90,82-k*55+sh*9)));
-const p=(y*W+x)*4;im.data[p]=r;im.data[p+1]=gg;im.data[p+2]=bb;im.data[p+3]=220}
-g.putImageData(im,0,0);return BS={b:B,N:Nmax,c:cvs,a0,a1,o0,o1,Z,W,H,zmin:B.zmin,zmax:B.zmax,kind:"depth"}}
+// close small gaps (rounding of a grid onto the pixels, sparse soundings): one pass on a fine grid, three on a coarse one
+for(let pass=0,np=B.res>0?1:3;pass<np;pass++){const Y=Z.slice();for(let y=0;y<H;y++)for(let x=0;x<W;x++){const k=y*W+x;if(!isNaN(Z[k]))continue;let s=0,m=0;
+for(let dy=-1;dy<=1;dy++){const yy=y+dy;if(yy<0||yy>=H)continue;for(let dx=-1;dx<=1;dx++){const xx=x+dx;if(xx<0||xx>=W)continue;const v=Z[yy*W+xx];if(v===v){s+=v;m++}}}if(m>=2)Y[k]=s/m}Z=Y}
+const cvs=document.createElement("canvas");cvs.width=W;cvs.height=H;const g=cvs.getContext("2d"),im=g.createImageData(W,H),sp=(B.zmax-B.zmin)||1,pxm=Math.max(mx/W,my/H),rel=Math.max(sp/Math.max(W,H)*3,pxm*.35);
+// the colour scale as a 256-step table
+const LUT=new Uint8Array(256*3);for(let i=0;i<256;i++){const c=palCol(i/255,pal);LUT[i*3]=c[0];LUT[i*3+1]=c[1];LUT[i*3+2]=c[2]}
+for(let y=0;y<H;y++)for(let x=0;x<W;x++){const k=y*W+x,v=Z[k];if(v!==v)continue;const e=x<W-1?Z[k+1]:v,w=x>0?Z[k-1]:v,s=y<H-1?Z[k+W]:v,nn=y>0?Z[k-W]:v;
+const gx=e===e&&w===w?(w-e)/2:0,gy=nn===nn&&s===s?(s-nn)/2:0,sh=Math.max(-1,Math.min(1,(gy-gx)/rel)),f=1+sh*.22,li=Math.max(0,Math.min(255,Math.round((v-B.zmin)/sp*255)))*3,p=k*4;
+im.data[p]=Math.min(255,LUT[li]*f);im.data[p+1]=Math.min(255,LUT[li+1]*f);im.data[p+2]=Math.min(255,LUT[li+2]*f);im.data[p+3]=225}
+g.putImageData(im,0,0);return{b:B,N:Nmax,c:cvs,a0,a1,o0,o1,Z,W,H,zmin:B.zmin,zmax:B.zmax,kind:"depth"}}
 const _drawBath=drawBath;
 drawBath=function(){if(!bath||!$("sb").checked)return;if(!$("sbS").checked)return _drawBath();const s=bathShade();if(!s.c)return _drawBath();
-const p=sc(fromLL(s.a1,s.o0)),q=sc(fromLL(s.a0,s.o1));cx.save();cx.imageSmoothingEnabled=true;cx.drawImage(s.c,p[0],p[1],q[0]-p[0],q[1]-p[1]);cx.restore();
-if(poly.length){const r=DPR();cx.beginPath();poly.forEach((pt,i)=>{const t=sc(pt);i?cx.lineTo(t[0],t[1]):cx.moveTo(t[0],t[1])});if(closed)cx.closePath();cx.strokeStyle="#12262d";cx.lineWidth=2*r;cx.setLineDash([8*r,4*r]);cx.stroke();cx.setLineDash([])}};
-$("sbS").addEventListener("change",rq);$("sb").addEventListener("change",rq);
+const p=sc(fromLL(s.a1,s.o0)),q=sc(fromLL(s.a0,s.o1));cx.save();cx.imageSmoothingEnabled=(q[0]-p[0])<s.W*3;cx.drawImage(s.c,p[0],p[1],q[0]-p[0],q[1]-p[1]);cx.restore();
+if(poly.length&&lyOn("lyBnd")){const r=DPR();cx.beginPath();poly.forEach((pt,i)=>{const t=sc(pt);i?cx.lineTo(t[0],t[1]):cx.moveTo(t[0],t[1])});if(closed)cx.closePath();cx.strokeStyle="#12262d";cx.lineWidth=2*r;cx.setLineDash([8*r,4*r]);cx.stroke();cx.setLineDash([])}};
+$("sbS").addEventListener("change",rq);$("sb").addEventListener("change",()=>{$("lyBath").checked=$("sb").checked;bathLegend();rq()});
+// map layer checkboxes: Bathymetry is the same switch as "Show soundings on map"; the colour scale redraws the shading
+$("lyBath").addEventListener("change",()=>{$("sb").checked=$("lyBath").checked;bathLegend();rq();saveSoon()});
+["lyLines","lyTurns","lyCross","lyBnd","lyShort","lyCoast","lyBase","lyLeg"].forEach(id=>$(id).addEventListener("change",()=>{bathLegend();rq();saveSoon()}));
+$("bPal").addEventListener("change",()=>{bathLegend();rq();saveSoon()});
+$("lyClrB").onclick=$("xClr").onclick=$("gbClr").onclick=()=>{if(bath)clearBath()};$("lyClrP").onclick=$("bClr2").onclick=()=>{clear();analyse()};
+setTimeout(()=>{$("lyBath").checked=$("sb").checked;bathLegend()},0);
 
 // ---- bathymetry and coastline kept between sessions (IndexedDB) ---------------------------------
 const IDK=k=>(window.SWP_STATE_KEY?window.SWP_STATE_KEY+":":"")+k;// saved data per tool

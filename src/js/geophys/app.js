@@ -9,7 +9,7 @@ rows.push({k:"mag",n:i18("Magnetometer"),S,W:S,ok,info:ok?i18("targets within {0
 if(on("gSB"))rows.push({k:"sbp",n:i18("Sub-bottom profiler"),S:Math.max(1,v("gBS")),W:Math.max(1,v("gBS")),ok:true,info:i18("grid spacing")});
 if(on("gSE")){towed=true;const Ls=Math.max(0,v("gEL"));runIn=Math.max(runIn,Ls/2);runOut=Math.max(runOut,Ls/2);
 rows.push({k:"uhr",n:i18("UHR seismic (2D)"),S:Math.max(1,v("gES")),W:Math.max(1,v("gES")),ok:true,info:i18("lines extended {0} m at each end for full fold (half the streamer)",(Ls/2).toFixed(0))})}
-if(on("gMB"))rows.push({k:"mbes",n:i18("Multibeam"),S:mb.S,W:mb.W,ok:true,info:i18("{0} m swath at {1} m design depth, {2} % overlap",mb.W.toFixed(1),mb.d,g("ov"))});
+if(on("gMB"))rows.push({k:"mbes",n:i18("Multibeam"),S:mb.S,W:mb.W,ok:true,info:i18("{0} m swath at {1} m design depth, {2} % coverage",mb.W.toFixed(1),mb.d,covS())});
 if(towed)runIn+=Math.max(0,v("gLB"));const ex=Math.max(0,v("gEX"));runIn+=ex;runOut+=ex;
 const ok=rows.filter(r=>r.ok&&r.S>0);let drv=null;ok.forEach(r=>{if(!drv||r.S<drv.S)drv=r});
 return{rows,drv,S:drv?drv.S:mb.S,W:drv?(drv.k=="mbes"?mb.W:drv.k=="sss"?drv.W:drv.S/(1-g("ov")/100)):mb.W,runIn,runOut}}

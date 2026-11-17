@@ -1,17 +1,19 @@
 /* ===== compare scenarios (tender): the same plan with different settings and rates ===== */
 const TEN_KEY=(window.SWP_STATE_KEY||"swp_state")+"_scen";
 let TEN=[];try{TEN=JSON.parse(localStorage.getItem(TEN_KEY)||"[]")}catch(e){TEN=[]}
+// scenarios saved before the coverage control stored the overlap (0–80 %): turn it into seabed coverage (100 % and up)
+TEN.forEach(s=>{if(typeof s.ov=="number"&&s.ov<100){const c=100/(1-Math.min(s.ov,99)/100);s.ov=Math.abs(c-Math.round(c))<.05?Math.round(c):+c.toFixed(1)}});
 const tenSave=()=>{try{localStorage.setItem(TEN_KEY,JSON.stringify(TEN))}catch(e){}};
 // what can be compared depends on what sets the lines: the multibeam, or the geophysical spread
 const tenType=()=>typeof MODE!="function"?"mbes":MODE().uav?"uav":MODE().geo?"geo":MODE().sbes?"sbes":"mbes";
 const TEN_COMMON=[{k:"spd",l:"Survey speed (kn)",id:["spd"],c:"Speed_kn"},{k:"R",l:"Turn radius (m)",id:["R"],c:"Turn_radius_m"},{k:"rate",l:"Day rate",id:["rate"],c:"Day_rate"},{k:"opH",l:"Hours per day",id:["opH"],c:"Hours_per_day"},{k:"ves",l:"Vessels",id:[],c:"Vessels"}];
-const TEN_DEF={mbes:[{k:"sens",l:"Sensor",id:["sens"],sel:1,c:"Sensor"},{k:"ov",l:"Overlap (%)",id:["ov"],c:"Overlap_pct"},{k:"ang",l:"Swath half-angle (°)",id:["ap","as"],c:"Swath_half_angle_deg"}].concat(TEN_COMMON),
+const TEN_DEF={mbes:[{k:"sens",l:"Sensor",id:["sens"],sel:1,c:"Sensor"},{k:"ov",l:"Seabed coverage (%)",id:["ov"],c:"Coverage_pct"},{k:"ang",l:"Swath half-angle (°)",id:["ap","as"],c:"Swath_half_angle_deg"}].concat(TEN_COMMON),
 uav:[{k:"uvH",l:"Flight height above ground (m)",id:["uvH"],c:"Height_m"},{k:"uvSO",l:"Side overlap (%)",id:["uvSO"],c:"Side_overlap_pct"},{k:"uvFO",l:"Forward overlap (%)",id:["uvFO"],c:"Forward_overlap_pct"}].concat(TEN_COMMON),
 sbes:[{k:"sbSp",l:"Line spacing (m)",id:["sbSp"],c:"Line_spacing_m"}].concat(TEN_COMMON),
 geo:[{k:"gSR",l:"Range per side (m)",id:["gSR"],c:"Sidescan_range_m"},{k:"gSC",l:"Seabed coverage",id:["gSC"],sel:1,c:"Sidescan_coverage_pct"}].concat(TEN_COMMON)};
 const tenF=()=>TEN_DEF[tenType()],tenList=()=>TEN.filter(s=>(s.type||"mbes")==tenType());
-const tenGet=f=>f.k=="ves"?1:f.k=="ang"?Math.max(g("ap"),g("as")):f.sel?$(f.id[0]).value:g(f.id[0]);
-const tenPut=(f,v)=>f.id.forEach(i=>{$(i).value=v});
+const tenGet=f=>f.k=="ov"?+covS():f.k=="ves"?1:f.k=="ang"?Math.max(g("ap"),g("as")):f.sel?$(f.id[0]).value:g(f.id[0]);
+const tenPut=(f,v)=>f.k=="ov"?($("ov").value=+(100*(1-100/Math.max(100,+v||100))).toFixed(4)):f.id.forEach(i=>{$(i).value=v});
 function tenNow(){const s={type:tenType(),name:i18("Scenario {0}",String.fromCharCode(65+tenList().length%26))};tenF().forEach(f=>s[f.k]=tenGet(f));return s}
 // plan one scenario with the planner itself, then put the settings back
 function tenRun(s){const F=tenF(),ids=[].concat(...F.map(f=>f.id)),keep={};ids.forEach(i=>keep[i]=$(i).value);

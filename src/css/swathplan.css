@@ -20,7 +20,13 @@ canvas{width:100%;height:100%;display:block;touch-action:none}
 #hud{position:absolute;left:8px;bottom:8px;background:#fffd;padding:3px 8px;border-radius:4px;font-size:12px}
 #tools{position:absolute;left:8px;top:8px;display:flex;flex-wrap:wrap;gap:0}#tools button{background:#fffe}#tools button.p{background:var(--ac);color:#fff}
 #leg{position:absolute;right:8px;top:8px;background:#fffd;padding:6px 9px;border-radius:4px;font-size:12px}
-#leg i{display:inline-block;width:18px;height:3px;margin-right:6px;vertical-align:middle}
+#leg i{display:inline-block;width:18px;height:3px;margin-right:6px;vertical-align:middle}#leg i.dash{height:0;border-top:2px dashed #12262d}
+#leg label{display:flex;align-items:center;gap:0;margin:0;font-size:12px;font-weight:400;cursor:pointer;white-space:nowrap}#leg input{width:auto;margin:0 6px 0 0}
+#lyMore summary{cursor:pointer;font-size:12px;color:var(--ac);margin-top:3px;list-style:none}#lyMore summary::before{content:"▸ "}#lyMore[open] summary::before{content:"▾ "}
+.lyClr{display:flex;flex-direction:column;gap:3px;margin-top:5px}.lyClr button{font-size:11px;padding:3px 6px;margin:0}
+#bLeg{position:absolute;left:8px;bottom:36px;background:#fffe;padding:6px 9px;border-radius:4px;font-size:11.5px;width:250px;max-width:calc(100% - 16px);box-shadow:0 1px 4px #0002}
+#bLeg .bl1{display:flex;align-items:center;justify-content:space-between;gap:8px}#bLeg select{width:auto;margin:0;padding:1px 4px;font-size:11.5px}
+#bLegBar{height:11px;border-radius:2px;margin:5px 0 2px;border:1px solid #0003}#bLeg .bl2{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}#bLeg .bl3{color:#4a5d63;margin-top:2px;line-height:1.3}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:12px}
 .card{background:var(--pn);border:1px solid var(--bd);border-radius:6px;padding:10px 14px}.card h3{margin:0 0 6px;font-size:14px}
 [hidden]{display:none!important}
@@ -51,3 +57,6 @@ details[data-sec]>summary::before{content:attr(data-n)}
 .gcard:hover{box-shadow:0 0 0 2px #16c4b4 inset}
 .gcard b{font-size:16px;color:#0b6f6a}
 .gcard span{color:#5b6e75;font-size:14px}
+#bLegBar,#bLeg .bl2{direction:ltr}
+.covRow{display:flex;align-items:center;gap:8px;margin-top:2px}.covRow input{width:90px;margin:0}.covRow span{font-size:12px;color:#4a5d63}
+@media(max-width:560px){#leg{display:block;top:auto;bottom:58px;padding:4px 8px;max-height:calc(100% - 66px);overflow:auto}#leg:has(#lyMore:not([open]))>label{display:none}#lyMore summary{margin:0}#bLeg{width:170px;bottom:46px;font-size:10.5px;padding:5px 7px}#bLeg .bl3{display:none}#bLeg select{font-size:10.5px}}
