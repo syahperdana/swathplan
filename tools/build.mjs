@@ -67,6 +67,9 @@ function langpack(L, only) {
 }
 
 // ---- templates -----------------------------------------------------------------------
+// ---- version: src/version.json ("1.1.0"), shown as "1.1" (a .0 patch is left out) wherever __SWP_VERSION__ appears
+const VER = JSON.parse(read(join(SRC, "version.json")));
+const SHOWV = VER.version.replace(/\.0$/, "");
 function buildPage(tplName, L) {
   let html = read(join(SRC, "pages", tplName));
   // parts may include other parts (up to 5 levels deep)
@@ -74,6 +77,7 @@ function buildPage(tplName, L) {
     html = html.replace(/<!--@include ([^\s>]+)-->(\r?\n)?/g, (_, p) => read(join(SRC, p)));
   html = html.replace("<!--@langpack-->", () => langpack(L));
   html = html.replace("<!--@langpack subset-->", () => langpack(L, html));
+  html = html.replace(/__SWP_VERSION__/g, SHOWV);
   if (/<!--@(include|langpack)/.test(html)) problems.push(`${tplName}: unresolved marker`);
   // element ids are global in this code base: a duplicate silently breaks a control
   const ids = new Map();

@@ -88,3 +88,5 @@ html.pdf *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .cover .meta b{color:#5b6e75;font-weight:600}
 .cover .foot{margin-top:auto;font-size:8.6pt;color:#5b6e75;border-top:0.6pt solid #cfd9d8;padding-top:4mm;line-height:1.5}
 html[dir=rtl] .ptoc a.l3{padding-left:0;padding-right:16pt}
+
+footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}

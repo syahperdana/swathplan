@@ -28,3 +28,5 @@ footer{background:#12262d;color:#9fc2bd;font-size:12px;padding:10px 18px;text-al
 [hidden]{display:none!important}
 @media (max-width:520px){.intro h1{font-size:23px}main{padding-top:20px}}
 .nw{white-space:nowrap}
+
+footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
