@@ -1149,5 +1149,10 @@
  "Allow less coverage over (% of each line)": "カバー率不足を許す範囲（各測線の %）",
  "Below target coverage": "目標カバー率未満",
  "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "各測線は、この割合を除く全長で目標カバー率を満たすように配置されます。この割合は測線のいちばん浅い部分です（斜面や浅所の近くでは多くの場合両端）。これがないと、測線の端にある数メートルの浅い水域が測線全体の間隔を決めてしまいます。不足する区間は地図上でオレンジ色に塗られ、プランチェックで合計されます。0 % ならすべての測線の全長で目標を満たします。",
- "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "範囲の約 {0} %（{1} km²）が、測線のいちばん浅い部分で目標カバー率 {2} % を下回ります（地図上のオレンジ色）。追加測線（補測プランナー）で測るか、セクション {§swath} の許容値を下げてください。"
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "範囲の約 {0} %（{1} km²）が、測線のいちばん浅い部分で目標カバー率 {2} % を下回ります（地図上のオレンジ色）。追加測線（補測プランナー）で測るか、セクション {§swath} の許容値を下げてください。",
+ "Infill line direction": "補測測線の向き",
+ "Along each gap (best fit)": "各欠測に沿う（最適フィット）",
+ "One direction for all gaps": "すべての欠測で同じ向き",
+ "Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.": "「各欠測に沿う」では、欠測ごとに専用の測線を引きます。測線は欠測の形に合わせた長軸に沿って端から端まで走るので、2本の航跡の間の細長い欠測は1本の測線で埋まります。曲がった欠測やL字形の欠測は、それぞれ向きを持つ直線に近い部分に分けられます。スワス幅より広い欠測には平行な測線を引きます。境界沿いの帯はその辺に沿います。",
+ "{0} lines (adaptive, by segment)": "{0} 本（適応、セグメントごと）"
 }

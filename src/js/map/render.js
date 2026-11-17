@@ -20,5 +20,5 @@ cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;if(lyOn("lyLines"))R.lines.forEach(l=>
 
 
 // adaptive spacing: the stretches between neighbouring lines that get less than the coverage target (orange)
-function drawShort(){const A=typeof ADP_SHORT!="undefined"?ADP_SHORT:null;if(!A||!A.sh.length||!closed||!$("adp").checked||R.ctr||!lyOn("lyShort"))return;const n=A.n,u=A.u,P=(q,t)=>sc([n[0]*q+u[0]*t,n[1]*q+u[1]*t]);
-cx.save();cx.fillStyle="rgba(240,140,0,.38)";cx.strokeStyle="rgba(200,100,0,.8)";cx.lineWidth=DPR();A.sh.forEach(r=>{const a=P(r[0],r[2]),b=P(r[1],r[2]),c=P(r[1],r[3]),d=P(r[0],r[3]);cx.beginPath();cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1]);cx.lineTo(c[0],c[1]);cx.lineTo(d[0],d[1]);cx.closePath();cx.fill();cx.stroke()});cx.restore()}
+function drawShort(){const A=typeof ADP_SHORT!="undefined"?ADP_SHORT:null;if(!A||!A.polys||!A.polys.length||!closed||!$("adp").checked||R.ctr||!lyOn("lyShort"))return;
+cx.save();cx.fillStyle="rgba(240,140,0,.38)";cx.strokeStyle="rgba(200,100,0,.8)";cx.lineWidth=DPR();A.polys.forEach(P=>{cx.beginPath();P.forEach((p,k)=>{const q=sc(p);k?cx.lineTo(q[0],q[1]):cx.moveTo(q[0],q[1])});cx.closePath();cx.fill();cx.stroke()});cx.restore()}

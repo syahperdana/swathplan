@@ -27,7 +27,9 @@
 <div><label>Ignore gaps smaller than (m²)</label><input type="number" id="ifMin" value="50" min="0" step="any"></div>
 <div><label>Extend infill lines at each end (m)</label><input type="number" id="ifExt" value="20" min="0" step="any"></div>
 <div><label>Also cover outside the boundary (m)</label><input type="number" id="ifBuf" value="0" min="0" step="any"></div>
-<div><label>Line direction</label><button id="ifAz" type="button">Same direction as the tracks</button></div></div>
+<div><label>Infill line direction</label><select id="ifMode"><option value="fit">Along each gap (best fit)</option><option value="one">One direction for all gaps</option></select></div>
+<div id="ifAzB"><label>Line direction</label><button id="ifAz" type="button">Same direction as the tracks</button></div></div>
+<p class="note" id="ifModeN">Along each gap, every gap gets its own lines: they run along the gap's long axis, fitted to its shape, from one end to the other, so a long holiday between two tracks is filled by one line. Curved or L-shaped gaps are split into straighter parts, each with its own direction; a gap wider than one swath gets parallel lines. Strips along the boundary run along their edge.</p>
 <p class="note">Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.</p>
 <div class="kv"><span>Coverage of the area</span><b id="ifCov">-</b></div>
 <div class="kv"><span>Gaps</span><b id="ifGap">-</b></div>
