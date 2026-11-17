@@ -1140,5 +1140,11 @@
  "Bathymetry removed.": "Inalis ang batimetriya.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "Hindi isinasama ng adaptive na pagitan ang mga lalim na mas mababaw sa {0} m ({1} % ng lugar): hindi buo ang saklaw ng mga linya roon. I-survey nang hiwalay ang bahaging iyon o ibaba ang limitasyon.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} puntos ang na-load ({1} nilaktawan). {2}: {3} puntos, min {4} m, ika-5 pct {5} m, average {6} m, max {7} m.",
- "Williamson turns": "Mga Williamson turn"
+ "Williamson turns": "Mga Williamson turn",
+ "Seabed coverage from the overlap": "Saklaw ng sahig-dagat mula sa overlap",
+ "{0} % (each point in about {1} swaths)": "{0} % (bawat punto ay nasa mga {1} swath)",
+ "depth {0} m": "lalim {0} m",
+ "elevation {0} m": "taas {0} m",
+ "Searching… {0} %": "Naghahanap… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "Tinatawid ng mga linya ang mga contour ng lalim (nasa mga {0}° ang mga ito). Sa adaptive na pagitan, bawat linya ay inaayos sa pinakamababaw nitong punto, kaya mas kakaunting kilometro ang kailangan ng mga linyang sumusunod sa mga contour: subukan ang azimuth na malapit sa {0}°, Awtomatikong pinakamainam, o Sundan ang isang depth contour."
 }

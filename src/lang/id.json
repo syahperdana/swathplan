@@ -1143,5 +1143,11 @@
  "Bathymetry removed.": "Batimetri dihapus.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "Jarak adaptif tidak memakai kedalaman lebih dangkal dari {0} m ({1} % area): lajur di sana tidak memberi cakupan penuh. Survei bagian itu secara terpisah atau turunkan batasnya.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} titik dimuat ({1} dilewati). {2}: {3} titik, min {4} m, persentil ke-5 {5} m, rata-rata {6} m, maks {7} m.",
- "Williamson turns": "Putaran Williamson"
+ "Williamson turns": "Putaran Williamson",
+ "Seabed coverage from the overlap": "Cakupan dasar laut dari overlap",
+ "{0} % (each point in about {1} swaths)": "{0} % (setiap titik ada di sekitar {1} sapuan)",
+ "depth {0} m": "kedalaman {0} m",
+ "elevation {0} m": "elevasi {0} m",
+ "Searching… {0} %": "Mencari… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "Lajur memotong kontur kedalaman (kontur berarah sekitar {0}°). Dengan jarak adaptif, setiap lajur diatur menurut titik terdangkalnya, jadi lajur yang searah kontur membutuhkan jauh lebih sedikit kilometer: coba azimut sekitar {0}°, Otomatis optimal, atau Ikuti garis kontur kedalaman."
 }

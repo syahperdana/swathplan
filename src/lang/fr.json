@@ -1141,5 +1141,11 @@
  "Bathymetry removed.": "Bathymétrie supprimée.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "L’espacement adaptatif ignore les profondeurs inférieures à {0} m ({1} % de la zone) : les lignes n’y donnent pas une couverture complète. Levez cette partie séparément ou abaissez la limite.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} points chargés ({1} ignorés). {2} : {3} points, min {4} m, 5e centile {5} m, moyenne {6} m, max {7} m.",
- "Williamson turns": "Virages Williamson"
+ "Williamson turns": "Virages Williamson",
+ "Seabed coverage from the overlap": "Couverture du fond due au recouvrement",
+ "{0} % (each point in about {1} swaths)": "{0} % (chaque point dans environ {1} fauchées)",
+ "depth {0} m": "profondeur {0} m",
+ "elevation {0} m": "altitude {0} m",
+ "Searching… {0} %": "Recherche… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "Les lignes coupent les isobathes (orientées à environ {0}°). Avec l’espacement adaptatif, chaque ligne est espacée selon son point le moins profond : des lignes le long des isobathes demandent beaucoup moins de kilomètres. Essayez un azimut proche de {0}°, Optimal automatique ou Suivre une isobathe."
 }

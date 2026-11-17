@@ -1201,5 +1201,11 @@
  "min {0} · mean {1} · median {2} · max {3} · σ {4} m",
  "Bathymetry removed.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.",
- "Williamson turns"
+ "Williamson turns",
+ "Seabed coverage from the overlap",
+ "{0} % (each point in about {1} swaths)",
+ "depth {0} m",
+ "elevation {0} m",
+ "Searching… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour."
 ]

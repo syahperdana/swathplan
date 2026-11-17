@@ -1141,5 +1141,11 @@
  "Bathymetry removed.": "Batimetrie verwyder.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "Aanpasbare spasiëring laat dieptes vlakker as {0} m uit ({1} % van die gebied): lyne daar gee nie volle dekking nie. Meet daardie deel apart op of verlaag die grens.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} punte gelaai ({1} oorgeslaan). {2}: {3} punte, min {4} m, 5de pers. {5} m, gemiddeld {6} m, maks. {7} m.",
- "Williamson turns": "Williamson-draaie"
+ "Williamson turns": "Williamson-draaie",
+ "Seabed coverage from the overlap": "Seebodemdekking uit die oorvleueling",
+ "{0} % (each point in about {1} swaths)": "{0} % (elke punt in sowat {1} swaths)",
+ "depth {0} m": "diepte {0} m",
+ "elevation {0} m": "hoogte {0} m",
+ "Searching… {0} %": "Soek… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "Die lyne loop dwars oor die dieptekontoere (wat sowat {0}° loop). Met aanpasbare spasiëring word elke lyn vir sy vlakste punt gespasieer, dus het lyne langs die kontoere baie minder kilometer nodig: probeer ’n asimut naby {0}°, Outomaties optimaal of Volg ’n dieptelyn."
 }

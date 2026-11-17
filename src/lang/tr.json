@@ -1140,5 +1140,11 @@
  "Bathymetry removed.": "Batimetri kaldırıldı.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "Uyarlanabilir aralık {0} m’den sığ derinlikleri dışarıda bırakır (alanın %{1}’i): oradaki hatlar tam kapsama vermez. O kısmı ayrıca ölçün ya da sınırı düşürün.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} nokta yüklendi ({1} atlandı). {2}: {3} nokta, en az {4} m, 5. yüzdelik {5} m, ortalama {6} m, en çok {7} m.",
- "Williamson turns": "Williamson dönüşleri"
+ "Williamson turns": "Williamson dönüşleri",
+ "Seabed coverage from the overlap": "Örtüşmeden deniz tabanı kapsaması",
+ "{0} % (each point in about {1} swaths)": "%{0} (her nokta yaklaşık {1} şeritte)",
+ "depth {0} m": "derinlik {0} m",
+ "elevation {0} m": "yükseklik {0} m",
+ "Searching… {0} %": "Aranıyor… %{0}",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "Hatlar eş derinlik eğrilerini kesiyor (eğriler yaklaşık {0}° yönünde). Uyarlanabilir aralıkta her hat en sığ noktasına göre aralanır, bu yüzden eğriler boyunca uzanan hatlar çok daha az kilometre gerektirir: {0}° civarında bir azimut, Otomatik en uygun ya da Bir eş derinlik eğrisini izle seçeneğini deneyin."
 }

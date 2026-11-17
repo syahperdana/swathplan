@@ -1141,5 +1141,11 @@
  "Bathymetry removed.": "Batimetria rimossa.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "La spaziatura adattiva esclude le profondità inferiori a {0} m ({1} % dell’area): lì le linee non danno copertura completa. Rileva quella parte separatamente o abbassa il limite.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} punti caricati ({1} saltati). {2}: {3} punti, min {4} m, 5° perc. {5} m, media {6} m, max {7} m.",
- "Williamson turns": "Virate Williamson"
+ "Williamson turns": "Virate Williamson",
+ "Seabed coverage from the overlap": "Copertura del fondale dalla sovrapposizione",
+ "{0} % (each point in about {1} swaths)": "{0} % (ogni punto in circa {1} strisciate)",
+ "depth {0} m": "profondità {0} m",
+ "elevation {0} m": "quota {0} m",
+ "Searching… {0} %": "Ricerca… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "Le linee tagliano le isobate (orientate a circa {0}°). Con la spaziatura adattiva ogni linea è spaziata secondo il suo punto più basso, quindi linee lungo le isobate richiedono molti meno chilometri: prova un azimut vicino a {0}°, Ottimale automatico o Segui un’isobata."
 }
