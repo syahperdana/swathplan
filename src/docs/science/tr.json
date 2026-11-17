@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Sabit hızlar; akıntılar, trafik ve liman uğrakları modellenmez.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Dönüşler yalnızca yüklü kıyı çizgisine göre denetlenir; sığlıklar, yapılar ve trafik dikkate alınmaz.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Kıyı çizgileri ve küresel batimetri seyir verisi değildir. Resmî haritalar ve yerel duyurularla planlayın.",
- "References": "Kaynaklar"
+ "References": "Kaynaklar",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "Planlayıcı örtüşme yerine deniz tabanı kapsaması <i>C</i>’yi ister: %100 komşu şeritlerin ancak birbirine değdiği, %200 deniz tabanının her noktasının iki şeritte olduğu anlamına gelir. İkisi <i>C</i> = %100 / (1 − <i>o</i>) ile bağlıdır: %50 örtüşme %200 kapsama, %80 örtüşme %500 kapsamadır."
 }

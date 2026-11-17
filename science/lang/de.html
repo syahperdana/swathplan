@@ -32,6 +32,7 @@
 <p>Mit dem Überlappungsanteil <i>o</i> (Überlappungsbreite geteilt durch Fächerbreite) liegen benachbarte Linien</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Die Überlappung stützt die verrauschten äußeren Strahlen durch gute innere Strahlen der Nachbarlinie und fängt Steuer- und Tiefenfehler auf. Da W mit der Tiefe wächst, bestimmt die flachste Tiefe im Gebiet den Abstand, der überall volle Abdeckung ergibt; das 5. Perzentil ist ein üblicher Kompromiss.</p>
+<p>Der Planer fragt nach der Meeresbodenabdeckung <i>C</i> statt nach der Überlappung: 100 % bedeutet, dass benachbarte Fächer gerade aneinanderstoßen, 200 %, dass jeder Punkt des Meeresbodens in zwei Fächern liegt. Beide hängen über <i>C</i> = 100 % / (1 − <i>o</i>) zusammen; 50 % Überlappung sind also 200 % Abdeckung und 80 % Überlappung 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Adaptiver Linienabstand (SwathPlans Methode)</h3>
 <p>Mit geladenen Tiefendaten legt SwathPlan jede Linie so weit von der vorherigen, wie die örtliche Tiefe erlaubt. Für aufeinanderfolgende Linien an den Querpositionen <i>s</i> und <i>s′</i>, mit den einander zugewandten Halbfächern <i>h(t)</i> und <i>h′(t)</i>, berechnet aus der Tiefe unter jeder Linie entlang der Linienkoordinate <i>t</i>, lautet die Bedingung</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

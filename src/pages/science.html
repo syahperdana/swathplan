@@ -47,6 +47,7 @@
 <p>With overlap fraction <i>o</i> (the overlap width divided by the swath width), neighbouring lines are</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Overlap backs up the noisy outer beams with good inner beams of the next line and absorbs steering and depth errors. Because W grows with depth, the shallowest depth in the area sets the spacing that gives full coverage everywhere; the 5th percentile is a common compromise.</p>
+<p>The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Adaptive line spacing (SwathPlan's method)</h3>
 <p>With depth data loaded, SwathPlan places each line as far from the previous one as the local depth allows. For consecutive lines at across-track positions <i>s</i> and <i>s′</i>, with the half-swaths facing each other <i>h(t)</i> and <i>h′(t)</i> computed from the depth under each line along the line coordinate <i>t</i>, the condition is</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

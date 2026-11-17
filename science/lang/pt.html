@@ -32,6 +32,7 @@
 <p>Com a fração de sobreposição <i>o</i> (largura da sobreposição dividida pela largura da faixa), as linhas vizinhas ficam a</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>A sobreposição reforça os feixes externos ruidosos com os bons feixes internos da linha seguinte e absorve erros de governo e de profundidade. Como W cresce com a profundidade, a profundidade mínima da área fixa o espaçamento que dá cobertura completa em toda parte; o percentil 5 é um meio-termo comum.</p>
+<p>O planejador pede a cobertura do fundo <i>C</i> em vez da sobreposição: 100 % significa que faixas vizinhas apenas se tocam e 200 % que cada ponto do fundo está em duas faixas. As duas relacionam-se por <i>C</i> = 100 % / (1 − <i>o</i>): 50 % de sobreposição são 200 % de cobertura e 80 % de sobreposição são 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Espaçamento adaptativo (método do SwathPlan)</h3>
 <p>Com profundidades carregadas, o SwathPlan coloca cada linha o mais longe da anterior que a profundidade local permite. Para linhas consecutivas nas posições transversais <i>s</i> e <i>s′</i>, com as semifaixas voltadas uma para a outra <i>h(t)</i> e <i>h′(t)</i> calculadas a partir da profundidade sob cada linha ao longo da coordenada de linha <i>t</i>, a condição é</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

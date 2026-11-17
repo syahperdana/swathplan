@@ -32,6 +32,7 @@
 <p>Với tỷ lệ chồng phủ <i>o</i> (độ rộng phần chồng chia cho độ rộng dải quét), các tuyến kề nhau cách nhau</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Chồng phủ hỗ trợ các tia ngoài nhiễu bằng các tia trong tốt của tuyến kế tiếp và bù cho sai số lái và độ sâu. Vì W tăng theo độ sâu, độ sâu nông nhất trong khu vực quyết định khoảng cách cho độ phủ kín mọi nơi; phân vị thứ 5 là một thỏa hiệp phổ biến.</p>
+<p>Công cụ hỏi độ phủ đáy biển <i>C</i> thay vì độ chồng phủ: 100 % nghĩa là các dải quét kề nhau vừa chạm nhau và 200 % là mỗi điểm đáy biển nằm trong hai dải quét. Hai đại lượng liên hệ qua <i>C</i> = 100 % / (1 − <i>o</i>): chồng phủ 50 % là độ phủ 200 % và chồng phủ 80 % là 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Khoảng cách tuyến thích ứng (phương pháp của SwathPlan)</h3>
 <p>Khi đã tải độ sâu, SwathPlan đặt mỗi tuyến xa tuyến trước nhất mà độ sâu tại chỗ cho phép. Với hai tuyến liên tiếp ở vị trí ngang <i>s</i> và <i>s′</i>, các nửa dải quét hướng vào nhau <i>h(t)</i> và <i>h′(t)</i> được tính từ độ sâu dưới mỗi tuyến dọc tọa độ tuyến <i>t</i>, điều kiện là</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

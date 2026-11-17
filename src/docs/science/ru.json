@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Постоянные скорости; течения, движение судов и заходы в порт не моделируются.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Развороты проверяются только по загруженной береговой линии; банки, сооружения и движение судов не учитываются.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Береговые линии и глобальная батиметрия не являются навигационными данными. Планируйте по официальным картам и местным извещениям.",
- "References": "Источники"
+ "References": "Источники",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "Планировщик запрашивает покрытие дна <i>C</i>, а не перекрытие: 100 % означает, что соседние полосы только смыкаются, а 200 % — что каждая точка дна попадает в две полосы. Они связаны соотношением <i>C</i> = 100 % / (1 − <i>o</i>): перекрытие 50 % — это покрытие 200 %, а перекрытие 80 % — 500 %."
 }

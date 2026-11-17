@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Stałe prędkości; prądy, ruch statków i zawinięcia do portów nie są modelowane.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Zwroty są sprawdzane tylko względem wczytanej linii brzegowej; mielizny, konstrukcje i ruch statków nie są uwzględniane.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Linie brzegowe i batymetria globalna nie są danymi nawigacyjnymi. Planuj z oficjalnymi mapami i lokalnymi ostrzeżeniami.",
- "References": "Źródła"
+ "References": "Źródła",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "Planer pyta o pokrycie dna <i>C</i> zamiast o nakładanie: 100 % oznacza, że sąsiednie pasy ledwo się stykają, a 200 %, że każdy punkt dna jest w dwóch pasach. Oba wiąże wzór <i>C</i> = 100 % / (1 − <i>o</i>): 50 % nakładania to 200 % pokrycia, a 80 % nakładania to 500 %."
 }

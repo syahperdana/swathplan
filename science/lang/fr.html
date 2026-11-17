@@ -32,6 +32,7 @@
 <p>Avec la fraction de recouvrement <i>o</i> (largeur de recouvrement divisée par la largeur de fauchée), les lignes voisines sont espacées de</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Le recouvrement double les faisceaux extrêmes bruités par les bons faisceaux intérieurs de la ligne suivante et absorbe les erreurs de cap et de profondeur. Comme W croît avec la profondeur, la profondeur la plus faible de la zone fixe l’espacement qui donne une couverture complète partout ; le 5e centile est un compromis courant.</p>
+<p>Le planificateur demande la couverture du fond <i>C</i> plutôt que le recouvrement : 100 % signifie que les fauchées voisines se touchent juste et 200 % que chaque point du fond est dans deux fauchées. Les deux sont liés par <i>C</i> = 100 % / (1 − <i>o</i>) : 50 % de recouvrement font 200 % de couverture et 80 % de recouvrement 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Espacement adaptatif des lignes (méthode de SwathPlan)</h3>
 <p>Avec des profondeurs chargées, SwathPlan place chaque ligne aussi loin de la précédente que la profondeur locale le permet. Pour des lignes consécutives aux positions transversales <i>s</i> et <i>s′</i>, avec les demi-fauchées en vis-à-vis <i>h(t)</i> et <i>h′(t)</i> calculées d’après la profondeur sous chaque ligne le long de la coordonnée <i>t</i>, la condition est</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

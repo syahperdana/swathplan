@@ -32,6 +32,7 @@
 <p>Con la fracción de solape <i>o</i> (ancho del solape dividido entre el ancho de franja), las líneas vecinas están a</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>El solape respalda los haces exteriores ruidosos con los buenos haces interiores de la línea siguiente y absorbe errores de gobierno y de profundidad. Como W crece con la profundidad, la profundidad más somera del área fija la separación que da cobertura completa en todas partes; el percentil 5 es un compromiso habitual.</p>
+<p>El planificador pide la cobertura del fondo <i>C</i> en lugar del solape: 100 % significa que las pasadas vecinas apenas se tocan y 200 % que cada punto del fondo está en dos pasadas. Ambas se relacionan por <i>C</i> = 100 % / (1 − <i>o</i>): un solape del 50 % es una cobertura del 200 % y uno del 80 %, del 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Separación de líneas adaptativa (método de SwathPlan)</h3>
 <p>Con profundidades cargadas, SwathPlan coloca cada línea tan lejos de la anterior como permite la profundidad local. Para líneas consecutivas en las posiciones transversales <i>s</i> y <i>s′</i>, con las semifranjas enfrentadas <i>h(t)</i> y <i>h′(t)</i> calculadas a partir de la profundidad bajo cada línea a lo largo de la coordenada de línea <i>t</i>, la condición es</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

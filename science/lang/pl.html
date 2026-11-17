@@ -32,6 +32,7 @@
 <p>Przy udziale zakładki <i>o</i> (szerokość zakładki podzielona przez szerokość pasa) sąsiednie linie są odległe o</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Zakładka wspiera zaszumione skrajne wiązki dobrymi wiązkami wewnętrznymi następnej linii i kompensuje błędy sterowania i głębokości. Ponieważ W rośnie z głębokością, najpłytsza głębokość obszaru wyznacza odstęp dający pełne pokrycie wszędzie; 5. percentyl to częsty kompromis.</p>
+<p>Planer pyta o pokrycie dna <i>C</i> zamiast o nakładanie: 100 % oznacza, że sąsiednie pasy ledwo się stykają, a 200 %, że każdy punkt dna jest w dwóch pasach. Oba wiąże wzór <i>C</i> = 100 % / (1 − <i>o</i>): 50 % nakładania to 200 % pokrycia, a 80 % nakładania to 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Adaptacyjny odstęp linii (metoda SwathPlan)</h3>
 <p>Po wczytaniu głębokości SwathPlan umieszcza każdą linię tak daleko od poprzedniej, jak pozwala lokalna głębokość. Dla kolejnych linii w położeniach poprzecznych <i>s</i> i <i>s′</i>, z półpasami zwróconymi ku sobie <i>h(t)</i> i <i>h′(t)</i> obliczonymi z głębokości pod każdą linią wzdłuż współrzędnej linii <i>t</i>, warunek ma postać</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

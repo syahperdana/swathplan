@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "ความเร็วคงที่ ไม่จำลองกระแสน้ำ การจราจรทางน้ำ และการแวะท่าเรือ",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "การเลี้ยวตรวจสอบกับแนวชายฝั่งที่โหลดเท่านั้น ไม่ตรวจกับที่ตื้น สิ่งก่อสร้าง หรือการจราจรทางน้ำ",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "แนวชายฝั่งและความลึกทั่วโลกไม่ใช่ข้อมูลสำหรับการเดินเรือ ควรวางแผนโดยใช้แผนที่เดินเรือทางการและประกาศชาวเรือในท้องถิ่น",
- "References": "เอกสารอ้างอิง"
+ "References": "เอกสารอ้างอิง",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "เครื่องมือวางแผนรับค่าความครอบคลุมพื้นท้องทะเล <i>C</i> แทนการซ้อนทับ 100 % หมายถึงสวาธข้างเคียงชนกันพอดี และ 200 % หมายถึงทุกจุดของพื้นท้องทะเลอยู่ในสองสวาธ ทั้งสองสัมพันธ์กันด้วย <i>C</i> = 100 % / (1 − <i>o</i>) การซ้อนทับ 50 % จึงเท่ากับความครอบคลุม 200 % และการซ้อนทับ 80 % เท่ากับ 500 %"
 }

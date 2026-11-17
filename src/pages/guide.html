@@ -70,7 +70,7 @@
 <li><b>Set the coordinate system</b> in <i>Coordinate system for imported files</i>, if you import files that carry no coordinate system (DXF, WKT, text, XYZ).</li>
 <li><b>Get the depth.</b> Type a design depth, or load your own soundings (<i>Bathymetry from XYZ file</i>), or fetch free global bathymetry (<i>Global bathymetry</i>). Then press <i>Apply shallowest</i>, <i>Apply 5th percentile</i> or <i>Apply mean</i>.</li>
 <li><b>Set up the sensor</b>: the multibeam model and swath angles, the single-beam transducer, the geophysical sensors or the drone camera.</li>
-<li><b>Set the overlap or spacing</b>, and tick <i>Adaptive line spacing</i> if you loaded depth data and want wider lines in deeper water.</li>
+<li><b>Set the seabed coverage or spacing</b>, and tick <i>Adaptive line spacing</i> if you loaded depth data and want wider lines in deeper water.</li>
 <li><b>Choose the line direction</b> in <i>Line direction</i>. <i>Auto optimal</i> finds the azimuth with the fewest lines.</li>
 <li><b>Enter the vessel</b>: turning radius in <i>Williamson turn</i>, speeds and IHO order in <i>IHO S-44 &amp; speed</i>.</li>
 <li><b>Fill in Project &amp; operations</b>: dates, working hours, weather allowance, SVP casts, calibration, mobilisation and the day rate.</li>
@@ -80,7 +80,7 @@
 <h2 id="4-survey-type-and-shape">4 Survey type and shape</h2>
 <figure class="half"><img src="../docs/guide/setup.jpg" alt="The Survey type section" loading="lazy"><figcaption>Figure 4. <i>Survey type</i>: one survey type per project, over an area or along a route.</figcaption></figure>
 <table><tr><th>Survey type</th><th>Line spacing comes from</th><th>Sections it shows</th></tr>
-<tr><td>Hydrographic: multibeam (MBES)</td><td>Swath width at the design depth and the overlap</td><td>Sensor &amp; design depth, Swath &amp; overlap, Williamson turn, IHO S-44 &amp; speed, Uncertainty budget</td></tr>
+<tr><td>Hydrographic: multibeam (MBES)</td><td>Swath width at the design depth and the seabed coverage</td><td>Sensor &amp; design depth, Swath &amp; coverage, Williamson turn, IHO S-44 &amp; speed, Uncertainty budget</td></tr>
 <tr><td>Hydrographic: single-beam (SBES)</td><td>The spacing you enter, checked against S-44</td><td>Single-beam echosounder &amp; line spacing</td></tr>
 <tr><td>Geophysical</td><td>The sensor that needs the closest lines (side-scan, magnetometer, sub-bottom, UHR seismic, optional multibeam)</td><td>Geophysical sensors &amp; line spacing</td></tr>
 <tr><td>Aerial: drone (camera or LiDAR)</td><td>Camera footprint or LiDAR swath, and side overlap</td><td>Drone payload &amp; flight (vessel sections hidden)</td></tr></table>
@@ -109,15 +109,15 @@
 <p>Choose <i>Geographic lon/lat</i>, a UTM zone (WGS 84 or other datums), <i>Custom (Transverse Mercator)</i> with your own parameters and a 3-parameter datum shift, or an EPSG code. EPSG definitions are looked up online (epsg.io or spatialreference.org) and then kept in the browser, so codes you have used once work offline. For fully offline EPSG work, load a definitions file and proj4.js in <i>Offline helpers</i>. Datum grid files (NTv2 and similar) are not supported. <i>X / Y order</i> handles files written northing first or latitude first.</p>
 
 <h2 id="6-survey-types-in-detail">6 Survey types in detail</h2>
-<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Multibeam: sensor, swath and overlap</h3>
-<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Figure 6. <i>Sensor &amp; design depth</i> and <i>Swath &amp; overlap</i>.</figcaption></figure>
+<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Multibeam: sensor, swath and coverage</h3>
+<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & coverage sections" loading="lazy"><figcaption>Figure 6. <i>Sensor &amp; design depth</i> and <i>Swath &amp; coverage</i>.</figcaption></figure>
 <ul>
 <li><b>MBES model</b>: a catalogue of common multibeam systems with beams, frequency and maximum swath half-angle. Current models from Kongsberg, Teledyne RESON, R2Sonic and NORBIT have been checked against the maker's datasheet, and the line under the values names it; the others say they are not yet checked and are approximate. Either way, check your own system's datasheet. Add your own models, or import a catalogue as CSV with the same columns.</li>
 <li><b>Design depth</b>: the depth the spacing is designed for. Use the shallowest depth for full coverage everywhere; the 5th percentile is a common compromise.</li>
 <li><b>Port and starboard angle</b>: the swath half-angles you will actually log. They set the swath width W = depth × (tan port + tan starboard).</li>
-<li><b>Lateral overlap</b>: how much neighbouring swaths overlap, typically 20–30 %. The spacing is S = W × (1 − overlap).</li>
+<li><b>Seabed coverage</b>: how much of the seabed the swaths cover together. 100 % means neighbouring swaths just meet, 200 % that every point is in two swaths; 110–150 % is usual for full coverage with a margin. The spacing is S = W × 100 / coverage. Use the slider, or type the value in the box below it.</li>
 <li><b>Adaptive line spacing</b>: with depth data loaded, each line is placed as far from the previous one as the local depth allows while keeping the overlap along its whole length, so lines are wider apart in deeper water.</li>
-<li><b>Overlap, line direction and adaptive spacing</b>: <i>Seabed coverage from the overlap</i> shows what the overlap means: at 80 % each point of the seabed is in about 5 swaths, so the lines are 5 times closer than at 0 %. With adaptive spacing each line is spaced for the shallowest point along it, so lines that run across the depth contours, from deep into shallow water, end up close together all the way. Lines along the contours need far fewer kilometres: the plan checks say when the lines cross the contours and in which direction the contours run, and <i>Auto optimal</i> then looks for the shortest survey time (lines and turns) instead of the fewest lines.</li>
+<li><b>Coverage, line direction and adaptive spacing</b>: lines get closer in proportion to the coverage (500 % puts them 5 times closer than 100 %). With adaptive spacing each line is spaced for the shallowest point along it, so lines that run across the depth contours, from deep into shallow water, end up close together all the way. Lines along the contours need far fewer kilometres: the plan checks say when the lines cross the contours and in which direction the contours run, and <i>Auto optimal</i> then looks for the shortest survey time (lines and turns) instead of the fewest lines.</li>
 <li><b>Ignore depths shallower than</b> (default 2 m): drying banks and very shallow water are left out of the adaptive spacing, so a shoal at one end of a line does not pull every line close together. The plan checks say how much of the area that is; survey it separately (for example with lines that follow a contour) or lower the limit.</li>
 <li><b>Max line spacing</b> and <b>Max swath width</b> cap the result (0 = no cap).</li>
 </ul>

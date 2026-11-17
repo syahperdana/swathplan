@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "स्थिर गति; धाराओं, यातायात और बंदरगाह पर रुकने का मॉडल नहीं बनाया जाता।",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "मोड़ केवल लोड की गई तटरेखा के सामने जाँचे जाते हैं; उथले स्थान, संरचनाएँ और यातायात शामिल नहीं।",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "तटरेखाएँ और वैश्विक बैथिमेट्री नौवहन डेटा नहीं हैं। आधिकारिक चार्टों और स्थानीय सूचनाओं के साथ योजना बनाएँ।",
- "References": "संदर्भ"
+ "References": "संदर्भ",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "प्लानर ओवरलैप के बजाय समुद्र तल कवरेज <i>C</i> माँगता है: 100 % का अर्थ है पास के स्वाथ बस मिलते हैं और 200 % का अर्थ समुद्र तल का हर बिंदु दो स्वाथ में है। दोनों का संबंध <i>C</i> = 100 % / (1 − <i>o</i>) है: 50 % ओवरलैप 200 % कवरेज है और 80 % ओवरलैप 500 %।"
 }

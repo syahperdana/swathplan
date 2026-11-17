@@ -55,7 +55,7 @@
 <li><b>Đặt hệ tọa độ</b> trong <i>Hệ tọa độ cho tệp nhập</i>, nếu bạn nhập các tệp không có hệ tọa độ (DXF, WKT, văn bản, XYZ).</li>
 <li><b>Lấy độ sâu.</b> Nhập độ sâu thiết kế, tải số liệu đo sâu của bạn (<i>Độ sâu từ tệp XYZ</i>) hoặc lấy độ sâu toàn cầu miễn phí (<i>Độ sâu toàn cầu</i>). Sau đó bấm <i>Áp dụng nông nhất</i>, <i>Áp dụng phân vị thứ 5</i> hoặc <i>Áp dụng trung bình</i>.</li>
 <li><b>Thiết lập cảm biến</b>: mẫu máy đa tia và góc dải quét, đầu dò đơn tia, các cảm biến địa vật lý hoặc máy ảnh drone.</li>
-<li><b>Đặt độ chồng phủ hoặc khoảng cách tuyến</b>, và đánh dấu <i>Khoảng cách tuyến thích ứng</i> nếu bạn đã tải dữ liệu độ sâu và muốn tuyến thưa hơn ở vùng nước sâu.</li>
+<li><b>Đặt độ phủ đáy biển hoặc khoảng cách</b>, và đánh dấu <i>Khoảng cách tuyến thích ứng</i> nếu bạn đã tải dữ liệu độ sâu và muốn tuyến thưa hơn ở vùng nước sâu.</li>
 <li><b>Chọn hướng tuyến</b> trong <i>Hướng tuyến</i>. <i>Tối ưu tự động</i> tìm phương vị cho ít tuyến nhất.</li>
 <li><b>Nhập thông số tàu</b>: bán kính quay trong <i>Quay vòng Williamson</i>, tốc độ và cấp IHO trong <i>IHO S-44 &amp; tốc độ</i>.</li>
 <li><b>Điền Dự án &amp; vận hành</b>: ngày tháng, giờ làm việc, dự phòng thời tiết, số lần đo SVP, hiệu chuẩn, huy động và đơn giá ngày.</li>
@@ -65,7 +65,7 @@
 <h2 id="4-survey-type-and-shape">4 Loại và hình dạng khảo sát</h2>
 <figure class="half"><img src="../docs/guide/setup.jpg" alt="The Survey type section" loading="lazy"><figcaption>Hình 4. <i>Loại khảo sát</i>: mỗi dự án một loại khảo sát, trên một khu vực hoặc dọc một tuyến.</figcaption></figure>
 <table><tr><th>Loại khảo sát</th><th>Khoảng cách tuyến lấy từ</th><th>Các mục hiển thị</th></tr>
-<tr><td>Thủy đạc: đa tia (MBES)</td><td>Độ rộng dải quét ở độ sâu thiết kế và độ chồng phủ</td><td>Cảm biến &amp; độ sâu thiết kế, Dải quét &amp; chồng phủ, Quay vòng Williamson, IHO S-44 &amp; tốc độ, Ngân sách độ bất định</td></tr>
+<tr><td>Thủy đạc: đa tia (MBES)</td><td>Độ rộng dải quét ở độ sâu thiết kế và độ phủ đáy biển</td><td>Cảm biến &amp; độ sâu thiết kế, Dải quét &amp; độ phủ, Quay vòng Williamson, IHO S-44 &amp; tốc độ, Ngân sách độ bất định</td></tr>
 <tr><td>Thủy đạc: đơn tia (SBES)</td><td>Khoảng cách bạn nhập, được kiểm tra theo S-44</td><td>Máy đo sâu đơn tia &amp; khoảng cách tuyến</td></tr>
 <tr><td>Địa vật lý</td><td>Cảm biến cần tuyến dày nhất (sonar quét sườn, từ kế, địa tầng nông, địa chấn UHR, đa tia tùy chọn)</td><td>Cảm biến địa vật lý và khoảng cách tuyến</td></tr>
 <tr><td>Trên không: drone (máy ảnh hoặc LiDAR)</td><td>Vết ảnh của máy ảnh hoặc dải quét LiDAR, và chồng phủ ngang</td><td>Tải trọng và bay của drone (ẩn các mục về tàu)</td></tr></table>
@@ -94,15 +94,15 @@
 <p>Chọn <i>Kinh/vĩ độ địa lý</i>, một múi UTM (WGS 84 hoặc datum khác), <i>Tùy chỉnh (Mercator ngang)</i> với tham số riêng và phép chuyển datum 3 tham số, hoặc một mã EPSG. Định nghĩa EPSG được tra cứu trực tuyến (epsg.io hoặc spatialreference.org) rồi lưu trong trình duyệt, nên mã đã dùng một lần sẽ hoạt động ngoại tuyến. Để làm việc với EPSG hoàn toàn ngoại tuyến, hãy tải tệp định nghĩa và proj4.js trong <i>Công cụ ngoại tuyến</i>. Không hỗ trợ tệp lưới datum (NTv2 và tương tự). <i>Thứ tự X / Y</i> xử lý các tệp ghi tọa độ bắc hoặc vĩ độ trước.</p>
 
 <h2 id="6-survey-types-in-detail">6 Chi tiết từng loại khảo sát</h2>
-<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Đa tia: cảm biến, dải quét và chồng phủ</h3>
-<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Hình 6. <i>Cảm biến &amp; độ sâu thiết kế</i> và <i>Dải quét &amp; chồng phủ</i>.</figcaption></figure>
+<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Đa tia: cảm biến, dải quét và độ phủ</h3>
+<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & coverage sections" loading="lazy"><figcaption>Hình 6. <i>Cảm biến &amp; độ sâu thiết kế</i> và <i>Dải quét &amp; độ phủ</i>.</figcaption></figure>
 <ul>
 <li><b>Mẫu MBES</b>: danh mục các hệ thống đa tia phổ biến với số tia, tần số và nửa góc dải quét tối đa. Các mẫu hiện hành của Kongsberg, Teledyne RESON, R2Sonic và NORBIT đã được đối chiếu với bảng thông số của nhà sản xuất, được nêu ở dòng bên dưới các giá trị; các mẫu khác ghi là chưa được kiểm tra và chỉ gần đúng. Dù thế nào, hãy kiểm tra bảng thông số của hệ thống của bạn. Thêm mẫu riêng, hoặc nhập danh mục dạng CSV với cùng các cột.</li>
 <li><b>Độ sâu thiết kế</b>: độ sâu dùng để thiết kế khoảng cách tuyến. Dùng độ sâu nông nhất để phủ kín mọi nơi; phân vị thứ 5 là một thỏa hiệp phổ biến.</li>
 <li><b>Góc mạn trái và mạn phải</b>: nửa góc dải quét bạn thực sự sẽ ghi. Chúng xác định độ rộng dải quét W = độ sâu × (tan trái + tan phải).</li>
-<li><b>Chồng phủ ngang</b>: mức chồng lên nhau của các dải quét kề nhau, thường 20–30 %. Khoảng cách tuyến là S = W × (1 − chồng phủ).</li>
+<li><b>Độ phủ đáy biển</b>: phần đáy biển mà các dải quét cùng phủ. 100 % nghĩa là các dải quét kề nhau vừa chạm nhau, 200 % là mỗi điểm nằm trong hai dải quét; 110–150 % là thông thường cho phủ kín có dự phòng. Khoảng cách là S = W × 100 / độ phủ. Dùng thanh trượt hoặc gõ giá trị vào ô bên dưới.</li>
 <li><b>Khoảng cách tuyến thích ứng</b>: khi đã tải dữ liệu độ sâu, mỗi tuyến được đặt xa tuyến trước nhất mà độ sâu tại chỗ cho phép trong khi vẫn giữ chồng phủ trên toàn chiều dài, nên các tuyến thưa hơn ở vùng nước sâu.</li>
-<li><b>Độ chồng phủ, hướng tuyến và khoảng cách thích ứng</b>: <i>Độ phủ đáy biển theo độ chồng phủ</i> cho biết ý nghĩa của độ chồng phủ: ở 80 %, mỗi điểm đáy biển nằm trong khoảng 5 dải quét, nên các tuyến dày gấp 5 lần so với 0 %. Với khoảng cách thích ứng, mỗi tuyến được giãn theo điểm nông nhất dọc theo nó, nên các tuyến cắt ngang đường đẳng sâu, từ nước sâu vào nước nông, sẽ sát nhau suốt chiều dài. Các tuyến dọc theo đường đẳng sâu cần ít kilômét hơn nhiều: phần kiểm tra kế hoạch báo khi các tuyến cắt đường đẳng sâu và hướng của chúng, và <i>Tối ưu tự động</i> khi đó tìm thời gian khảo sát ngắn nhất (tuyến và vòng quay) thay vì ít tuyến nhất.</li>
+<li><b>Độ phủ, hướng tuyến và khoảng cách thích ứng</b>: các tuyến sát lại theo tỷ lệ với độ phủ (500 % làm chúng dày gấp 5 lần so với 100 %). Với khoảng cách thích ứng, mỗi tuyến được giãn theo điểm nông nhất dọc theo nó, nên các tuyến cắt ngang đường đẳng sâu, từ nước sâu vào nước nông, sẽ sát nhau suốt chiều dài. Các tuyến dọc theo đường đẳng sâu cần ít kilômét hơn nhiều: phần kiểm tra kế hoạch báo khi các tuyến cắt đường đẳng sâu và hướng của chúng, và <i>Tối ưu tự động</i> khi đó tìm thời gian khảo sát ngắn nhất (tuyến và vòng quay) thay vì ít tuyến nhất.</li>
 <li><b>Bỏ qua độ sâu nông hơn</b> (mặc định 2 m): bãi bồi lộ khi triều rút và vùng nước rất nông không được dùng cho khoảng cách thích ứng, nên một bãi cạn ở một đầu tuyến không kéo mọi tuyến sát lại gần nhau. Phần kiểm tra kế hoạch cho biết phần đó chiếm bao nhiêu diện tích; hãy khảo sát riêng phần đó (chẳng hạn bằng các tuyến theo đường đẳng sâu) hoặc hạ giới hạn.</li>
 <li><b>Khoảng cách tuyến tối đa</b> và <b>độ rộng dải quét tối đa</b> giới hạn kết quả (0 = không giới hạn).</li>
 </ul>
