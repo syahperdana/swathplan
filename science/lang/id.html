@@ -32,6 +32,7 @@
 <p>Dengan fraksi tampalan <i>o</i> (lebar tampalan dibagi lebar sapuan), lajur bersebelahan berjarak</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Tampalan menopang beam terluar yang bising dengan beam bagian dalam yang baik dari lajur berikutnya, serta menyerap galat kemudi dan kedalaman. Karena W bertambah dengan kedalaman, kedalaman terdangkal di area menentukan jarak lajur yang memberi cakupan penuh di mana pun; persentil ke-5 adalah kompromi yang umum.</p>
+<p>Perencana meminta cakupan dasar laut <i>C</i>, bukan overlap: 100 % berarti sapuan bersebelahan tepat bertemu dan 200 % berarti setiap titik dasar laut ada di dua sapuan. Keduanya berhubungan lewat <i>C</i> = 100 % / (1 − <i>o</i>), jadi overlap 50 % sama dengan cakupan 200 % dan overlap 80 % sama dengan 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Jarak lajur adaptif (metode SwathPlan)</h3>
 <p>Dengan data kedalaman dimuat, SwathPlan menempatkan setiap lajur sejauh mungkin dari lajur sebelumnya sesuai kedalaman setempat. Untuk lajur berurutan pada posisi melintang <i>s</i> dan <i>s′</i>, dengan setengah sapuan yang saling berhadapan <i>h(t)</i> dan <i>h′(t)</i> dihitung dari kedalaman di bawah tiap lajur sepanjang koordinat lajur <i>t</i>, syaratnya adalah</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

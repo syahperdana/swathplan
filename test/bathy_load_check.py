@@ -58,7 +58,7 @@ with sync_playwright() as p:
     ok(n0 > na, f'limit 0: very shallow water pulls the lines together ({n0} lines)')
     ev("$('adpMin').value=2;$('adpMin').dispatchEvent(new Event('input'))"); pg.wait_for_timeout(500)
     # overlap meaning, line direction, depth under the pointer
-    ok(ev("$('covX').textContent").startswith('200 %'), f"coverage from 50 % overlap: {ev('$(\'covX\').textContent')}")
+    ok(ev("$('covN').value") == '200' and 'about 2 swaths' in ev("$('covX').textContent"), f"50 % overlap shows as 200 % seabed coverage: {ev('$(\'covX\').textContent')}")
     ev("$('az').value=90;gen()"); chk = ev("[...document.querySelectorAll('#chk li')].map(l=>l.textContent).join('|')")
     ok('run across the depth contours' in chk and ('about 0°' in chk or 'about 180°' in chk), 'lines across the contours: plan check names the contour direction')
     km90 = ev("R.lines.reduce((s,l)=>s+L(l),0)"); ev("$('auto').click()"); pg.wait_for_function("!autoBusy", timeout=120000); az = ev("g('az')")

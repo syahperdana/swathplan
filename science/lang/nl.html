@@ -32,6 +32,7 @@
 <p>Met de overlapfractie <i>o</i> (breedte van de overlap gedeeld door de swathbreedte) liggen naburige lijnen op</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>De overlap ondersteunt de ruisige buitenste bundels met de goede binnenste bundels van de volgende lijn en vangt stuur- en dieptefouten op. Omdat W met de diepte groeit, bepaalt de ondiepste diepte in het gebied de lijnafstand die overal volledige dekking geeft; het 5e percentiel is een gangbaar compromis.</p>
+<p>De planner vraagt om de bodemdekking <i>C</i> in plaats van de overlap: 100 % betekent dat naburige swaths elkaar net raken en 200 % dat elk punt van de bodem in twee swaths ligt. Ze hangen samen via <i>C</i> = 100 % / (1 − <i>o</i>): 50 % overlap is 200 % dekking en 80 % overlap 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Adaptieve lijnafstand (methode van SwathPlan)</h3>
 <p>Met geladen dieptes legt SwathPlan elke lijn zo ver van de vorige als de plaatselijke diepte toelaat. Voor opeenvolgende lijnen op de dwarsposities <i>s</i> en <i>s′</i>, met de naar elkaar gekeerde halve swaths <i>h(t)</i> en <i>h′(t)</i> berekend uit de diepte onder elke lijn langs de lijncoördinaat <i>t</i>, is de voorwaarde</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

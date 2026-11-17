@@ -55,7 +55,7 @@
 <li><b>Stel die koördinaatstelsel</b> in <i>Koördinaatstelsel vir ingevoerde lêers</i>, as u lêers sonder koördinaatstelsel invoer (DXF, WKT, teks, XYZ).</li>
 <li><b>Kry die diepte.</b> Tik ’n ontwerpdiepte, laai u eie peilings (<i>Batimetrie uit XYZ-lêer</i>) of haal gratis wêreldwye batimetrie (<i>Wêreldwye batimetrie</i>). Druk dan <i>Pas vlakste toe</i>, <i>Pas 5de persentiel toe</i> of <i>Pas gemiddelde toe</i>.</li>
 <li><b>Stel die sensor op</b>: die multistraalmodel en swaaihoeke, die enkelstraal-transduktor, die geofisiese sensors of die hommeltuigkamera.</li>
-<li><b>Stel die oorvleueling of spasiëring</b>, en merk <i>Aanpasbare lynspasiëring</i> as u dieptedata gelaai het en wyer lyne in dieper water wil hê.</li>
+<li><b>Stel die seebodemdekking of spasiëring</b>, en merk <i>Aanpasbare lynspasiëring</i> as u dieptedata gelaai het en wyer lyne in dieper water wil hê.</li>
 <li><b>Kies die lynrigting</b> in <i>Lynrigting</i>. <i>Outomaties optimaal</i> vind die asimut met die minste lyne.</li>
 <li><b>Voer die vaartuig in</b>: draairadius in <i>Williamson-draai</i>, spoed en IHO-orde in <i>IHO S-44 &amp; spoed</i>.</li>
 <li><b>Vul Projek &amp; bedrywighede in</b>: datums, werksure, weertoelae, SVP-profiele, kalibrasie, mobilisasie en die dagtarief.</li>
@@ -65,7 +65,7 @@
 <h2 id="4-survey-type-and-shape">4 Opmetingsoort en vorm</h2>
 <figure class="half"><img src="../docs/guide/setup.jpg" alt="The Survey type section" loading="lazy"><figcaption>Figuur 4. <i>Opmetingsoort</i>: een opmetingsoort per projek, oor ’n gebied of langs ’n roete.</figcaption></figure>
 <table><tr><th>Opmetingsoort</th><th>Lynspasiëring kom van</th><th>Afdelings wat dit wys</th></tr>
-<tr><td>Hidrografies: multistraal (MBES)</td><td>Swaaibreedte by die ontwerpdiepte en die oorvleueling</td><td>Sensor &amp; ontwerpdiepte, Swath &amp; oorvleueling, Williamson-draai, IHO S-44 &amp; spoed, Onsekerheidsbegroting</td></tr>
+<tr><td>Hidrografies: multistraal (MBES)</td><td>Swathwydte by die ontwerpdiepte en die seebodemdekking</td><td>Sensor &amp; ontwerpdiepte, Swath en dekking, Williamson-draai, IHO S-44 &amp; spoed, Onsekerheidsbegroting</td></tr>
 <tr><td>Hidrografies: enkelstraal (SBES)</td><td>Die spasiëring wat u invoer, getoets teen S-44</td><td>Enkelstraal-eggolood &amp; lynspasiëring</td></tr>
 <tr><td>Geofisies</td><td>Die sensor wat die digste lyne nodig het (sykyker, magnetometer, sub-bodem, UHR-seismiek, opsionele multistraal)</td><td>Geofisiese sensors &amp; lynspasiëring</td></tr>
 <tr><td>Lug: hommeltuig (kamera of LiDAR)</td><td>Kameravoetspoor of LiDAR-swaai, en syoorvleueling</td><td>Hommeltuig-vrag &amp; vlug (vaartuigafdelings versteek)</td></tr></table>
@@ -94,15 +94,15 @@
 <p>Kies <i>Geografies lon/lat</i>, ’n UTM-sone (WGS 84 of ander datums), <i>Eie (Transversale Mercator)</i> met u eie parameters en ’n datumverskuiwing met 3 parameters, of ’n EPSG-kode. EPSG-definisies word aanlyn opgesoek (epsg.io of spatialreference.org) en dan in die blaaier bewaar, dus werk kodes wat u een keer gebruik het vanlyn. Om heeltemal vanlyn met EPSG te werk, laai ’n definisielêer en proj4.js in <i>Vanlyn hulpmiddels</i>. Datumroosterlêers (NTv2 en soortgelyk) word nie ondersteun nie. <i>X / Y-volgorde</i> hanteer lêers wat met die noordkoördinaat of breedte eerste geskryf is.</p>
 
 <h2 id="6-survey-types-in-detail">6 Opmetingsoorte in besonderhede</h2>
-<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Multistraal: sensor, swaai en oorvleueling</h3>
-<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Figuur 6. <i>Sensor &amp; ontwerpdiepte</i> en <i>Swath &amp; oorvleueling</i>.</figcaption></figure>
+<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Multistraal: sensor, swath en dekking</h3>
+<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & coverage sections" loading="lazy"><figcaption>Figuur 6. <i>Sensor &amp; ontwerpdiepte</i> en <i>Swath en dekking</i>.</figcaption></figure>
 <ul>
 <li><b>MBES-model</b>: ’n katalogus van algemene multistraalstelsels met strale, frekwensie en maksimum halwe swaaihoek. Huidige modelle van Kongsberg, Teledyne RESON, R2Sonic en NORBIT is teen die vervaardiger se datablad nagegaan, wat die reël onder die waardes noem; die ander sê dat hulle nog nie nagegaan is nie en is benaderd. Gaan in elk geval u eie stelsel se datablad na. Voeg u eie modelle by, of voer ’n katalogus as CSV met dieselfde kolomme in.</li>
 <li><b>Ontwerpdiepte</b>: die diepte waarvoor die spasiëring ontwerp word. Gebruik die vlakste diepte vir volle dekking oral; die 5de persentiel is ’n algemene kompromie.</li>
 <li><b>Bakboord- en stuurboordhoek</b>: die halwe swaaihoeke wat u werklik gaan aanteken. Hulle bepaal die swaaibreedte W = diepte × (tan bakboord + tan stuurboord).</li>
-<li><b>Syoorvleueling</b>: hoeveel naburige swaaie oorvleuel, gewoonlik 20–30 %. Die spasiëring is S = W × (1 − oorvleueling).</li>
+<li><b>Seebodemdekking</b>: hoeveel van die seebodem die swaths saam dek. 100 % beteken naburige swaths raak net, 200 % dat elke punt in twee swaths is; 110–150 % is gewoon vir volle dekking met ’n marge. Die spasiëring is S = W × 100 / dekking. Gebruik die skuifbalk, of tik die waarde in die blokkie daaronder.</li>
 <li><b>Aanpasbare lynspasiëring</b>: met dieptedata gelaai word elke lyn so ver van die vorige een geplaas as wat die plaaslike diepte toelaat, terwyl die oorvleueling oor die hele lengte behou word, sodat lyne in dieper water verder uitmekaar is.</li>
-<li><b>Oorvleueling, lynrigting en aanpasbare spasiëring</b>: <i>Seebodemdekking uit die oorvleueling</i> wys wat die oorvleueling beteken: by 80 % is elke punt van die seebodem in sowat 5 swaths, dus lê die lyne 5 keer nader as by 0 %. Met aanpasbare spasiëring word elke lyn vir die vlakste punt daarlangs gespasieer, dus lê lyne wat dwars oor die kontoere van diep na vlak water loop, oor hul hele lengte naby mekaar. Lyne langs die kontoere het baie minder kilometer nodig: die plantoetse sê wanneer die lyne die kontoere kruis en in watter rigting die kontoere loop, en <i>Outomaties optimaal</i> soek dan die kortste opmetingstyd (lyne en draaie) eerder as die minste lyne.</li>
+<li><b>Dekking, lynrigting en aanpasbare spasiëring</b>: die lyne kom nader in verhouding tot die dekking (500 % sit hulle 5 keer nader as 100 %). Met aanpasbare spasiëring word elke lyn vir die vlakste punt daarlangs gespasieer, dus lê lyne wat dwars oor die kontoere van diep na vlak water loop, oor hul hele lengte naby mekaar. Lyne langs die kontoere het baie minder kilometer nodig: die plantoetse sê wanneer die lyne die kontoere kruis en in watter rigting die kontoere loop, en <i>Outomaties optimaal</i> soek dan die kortste opmetingstyd (lyne en draaie) eerder as die minste lyne.</li>
 <li><b>Ignoreer dieptes vlakker as</b> (verstek 2 m): banke wat droogval en baie vlak water word uit die aanpasbare spasiëring gelaat, sodat ’n vlakte aan een kant van ’n lyn nie al die lyne nader aan mekaar trek nie. Die plantoetse sê hoeveel van die gebied dit is; meet daardie deel apart op (byvoorbeeld met lyne wat ’n kontoer volg) of verlaag die grens.</li>
 <li><b>Maksimum lynspasiëring</b> en <b>maksimum swaaibreedte</b> beperk die resultaat (0 = geen beperking).</li>
 </ul>

@@ -161,7 +161,7 @@ const _ifLang=setLang;setLang=function(){const r=_ifLang.apply(this,arguments);t
 const _ifSum=summary;summary=function(){_ifSum.apply(this,arguments);if(!R.lines.length)return;
 const W=ifSwathW(),wS=R.lines.reduce((s,l)=>s+L(l),0)*W,gA=IF.gapA,ov=gA>0&&wS>0?1-gA/wS:NaN;
 if($("dCov"))$("dCov").textContent=gA>0&&wS>0?(wS/gA).toFixed(2)+" ×":"–";if($("dOv"))$("dOv").textContent="–";
-const pre=t=>i18(t).split("{0}")[0],drop=[pre("Achieved overlap {0} % is below the {1} % target."),pre("Mean achieved overlap {0} % meets the {1} % target."),i18("No cross lines: tick the option in section {§dir} for QC.")];
+const pre=t=>i18(t).split("{0}")[0],drop=[pre("Achieved coverage {0} % is below the {1} % target."),pre("Mean achieved coverage {0} % meets the {1} % target."),i18("No cross lines: tick the option in section {§dir} for QC.")];
 const ul=$("chk");[...ul.children].forEach(li=>{const t=li.textContent;if(drop.some(d=>d&&t.startsWith(d)))li.remove()});
 const li=document.createElement("li");li.className=wS>=gA?"ok":"bad";li.textContent=i18("Coverage {0} % of the area; the infill lines sweep {1} × the gap area ({2} gaps).",(IF.cov*100).toFixed(1),isFinite(ov)?(wS/gA).toFixed(1):"–",IF.regions.length);ul.prepend(li)};
 // restore the tracks saved on this device

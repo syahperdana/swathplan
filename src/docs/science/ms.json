@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Kelajuan malar; arus, trafik dan persinggahan pelabuhan tidak dimodelkan.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Pusingan hanya disemak terhadap garis pantai yang dimuatkan; beting, struktur dan trafik tidak diambil kira.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Garis pantai dan batimetri global bukan data navigasi. Rancang dengan carta rasmi dan notis tempatan.",
- "References": "Rujukan"
+ "References": "Rujukan",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "Perancang meminta liputan dasar laut <i>C</i>, bukan pertindihan: 100 % bermaksud sapuan bersebelahan baru bertemu dan 200 % bahawa setiap titik dasar laut berada dalam dua sapuan. Kedua-duanya berkait melalui <i>C</i> = 100 % / (1 − <i>o</i>): pertindihan 50 % ialah liputan 200 % dan pertindihan 80 % ialah 500 %."
 }

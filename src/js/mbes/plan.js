@@ -2,6 +2,8 @@ function chords(P,a,b,s){const r=[];for(let i=0;i<P.length;i++){const p=P[i],q=P
 if((s1<=s)!=(s2<=s)){const t1=p[0]*b[0]+p[1]*b[1],t2=q[0]*b[0]+q[1]*b[1];r.push(t1+(t2-t1)*(s-s1)/(s2-s1))}}r.sort((x,y)=>x-y);const o=[];for(let i=0;i+1<r.length;i+=2)if(r[i+1]-r[i]>1)o.push([r[i],r[i+1]]);return o}
 function area(P){let s=0;for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length];s+=p[0]*q[1]-q[0]*p[1]}return Math.abs(s)/2}
 function nLines(az,S){const n=[Math.cos(az*D),-Math.sin(az*D)],u=[Math.sin(az*D),Math.cos(az*D)],v=poly.map(p=>p[0]*n[0]+p[1]*n[1]);return linePositions(arrMin(v),arrMax(v),n,u,S).length}
+// seabed coverage (100 % = neighbouring swaths just meet) from the overlap input "ov" (%), which stays the internal value
+const covOf=ov=>100/(1-Math.min(+ov||0,99)/100),covF=c=>(c=Math.min(9999,c),Math.abs(c-Math.round(c))<.05?String(Math.round(c)):c.toFixed(1)),covS=()=>covF(covOf(g("ov")));
 function params(){const d=g("depth"),W=d*(Math.tan(g("ap")*D)+Math.tan(g("as")*D)),S=W*(1-g("ov")/100),Rr=g("R"),od=ORD[$("ord").value],tvu=Math.sqrt(od[1]**2+(od[2]*d)**2);return{d,W,S,Rr,od,tvu}}
 function turnPts(P,f,n,S,Rr){const al=S>=2*Rr?0:Math.acos(S/(2*Rr)),pts=[],w=(F,L)=>[P[0]+f[0]*F+n[0]*L,P[1]+f[1]*F+n[1]*L];let F=0,L=0,ph=0,len=0;
 const arc=(p1,sg)=>{const N=Math.max(2,Math.ceil(Math.abs(p1-ph)/(5*D)));const F0=F,L0=L,p0=ph;for(let i=1;i<=N;i++){const q=p0+(p1-p0)*i/N;F=F0+sg*Rr*(Math.sin(q)-Math.sin(p0));L=L0-sg*Rr*(Math.cos(q)-Math.cos(p0));pts.push(w(F,L))}ph=p1;len+=Rr*Math.abs(p1-p0)};
@@ -21,9 +23,9 @@ const LP=l=>l.p||[l.a,l.b],L=l=>{const q=LP(l);let s=0;for(let i=1;i<q.length;i+
 function stats(){const p=params(),ln=R.lines,ol=ln.reduce((s,l)=>s+L(l),0),cl=R.cross.reduce((s,l)=>s+L(l),0),sp=g("spd"),ts=Math.max(1,sp-($("slow").checked?2:0));
 $("tsp").value=ts;const to=(ol+cl)/(sp*NM),tt=R.tl/(ts*NM),A=closed?area(poly):0;
 $("hD").textContent=f1(p.d);$("hL").textContent=ln.length+(R.cross.length?" + "+R.cross.length+" cross":"");$("hT").textContent=hm(to+tt);
-$("W").textContent=f1(p.W);$("S").textContent=f1(p.S);if($("covX")){const ov=Math.min(99,g("ov"));$("covX").textContent=i18("{0} % (each point in about {1} swaths)",Math.round(100/(1-ov/100)),(1/(1-ov/100)).toFixed(ov%10?1:0).replace(/\.0$/,""))}$("dia").textContent=f1(2*p.Rr,"m",0);$("tT").textContent=hm(to+tt);$("tO").textContent=hm(to);$("tR").textContent=hm(tt);
+$("W").textContent=f1(p.W);$("S").textContent=f1(p.S);if($("covX")){const c=covOf(g("ov"));if(document.activeElement!==$("covN"))$("covN").value=covS();$("cov").value=Math.min(500,c);$("covX").textContent=i18("each point in about {0} swaths",(c/100).toFixed(1).replace(/\.0$/,""))}$("dia").textContent=f1(2*p.Rr,"m",0);$("tT").textContent=hm(to+tt);$("tO").textContent=hm(to);$("tR").textContent=hm(tt);
 $("lt").textContent=cst.seg&&cst.seg.length?i18("{0} segments, {1} m clearance",cst.seg.length/4,g("clr")):i18("off");$("nL").textContent=ln.length;$("nT").textContent=R.turns.length;const km=m=>(m/1000).toFixed(2)+" km ("+(m/NM).toFixed(2)+" NM)";
 $("dL").textContent=km(ol);$("dT").textContent=km(R.tl);$("dG").textContent=km(ol+cl+R.tl);$("ar").textContent=(A/1e6).toFixed(3)+" km²";
-$("qW").textContent=f1(p.W);$("qS").textContent=f1(p.S)+" ("+g("ov")+"%)";$("qT").textContent="±"+p.tvu.toFixed(3)+" m";
+$("qW").textContent=f1(p.W);$("qS").textContent=f1(p.S)+" ("+covS()+" %)";$("qT").textContent="±"+p.tvu.toFixed(3)+" m";
 const sl=p.d/Math.cos(Math.max(g("ap"),g("as"))*D);$("ping").textContent=(1500/(2*sl)).toFixed(1)+" Hz";$("tvu").textContent="±"+p.tvu.toFixed(3)+" m";$("spdHint").textContent=i18("Suggested for {0}: about {1} kts (check along-track density).",ordN(+$("ord").value),p.od[3]);
-$("azT").textContent=g("az").toFixed(3);$("ovT").textContent=g("ov");summary();render();saveSoon()}
+$("azT").textContent=g("az").toFixed(3);summary();render();saveSoon()}

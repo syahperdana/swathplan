@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Velocità costanti; non sono modellati correnti, traffico né scali in porto.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Le virate sono verificate solo rispetto alla linea di costa caricata; secche, strutture e traffico non sono considerati.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Le linee di costa e la batimetria globale non sono dati di navigazione. Pianifica con le carte ufficiali e gli avvisi locali.",
- "References": "Riferimenti"
+ "References": "Riferimenti",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "Il pianificatore chiede la copertura del fondale <i>C</i> invece della sovrapposizione: 100 % significa che le strisciate vicine si toccano appena e 200 % che ogni punto del fondale è in due strisciate. Le due sono legate da <i>C</i> = 100 % / (1 − <i>o</i>): il 50 % di sovrapposizione equivale al 200 % di copertura e l’80 % al 500 %."
 }

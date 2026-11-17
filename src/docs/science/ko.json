@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "속력은 일정. 해류, 선박 통항, 기항은 모델링하지 않음.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "선회는 불러온 해안선과만 대조하며 천퇴, 구조물, 선박 통항은 고려하지 않음.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "해안선과 전 지구 수심 자료는 항해용 자료가 아닙니다. 공식 해도와 현지 항행 통보를 바탕으로 계획하십시오.",
- "References": "참고문헌"
+ "References": "참고문헌",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "플래너는 오버랩 대신 해저 커버리지 <i>C</i>를 입력으로 받습니다. 100 %는 이웃 스와스가 딱 맞닿는 것, 200 %는 해저의 각 점이 두 스와스에 들어가는 것입니다. 둘은 <i>C</i> = 100 % / (1 − <i>o</i>)로 연결되어, 오버랩 50 %는 커버리지 200 %, 오버랩 80 %는 500 %입니다."
 }

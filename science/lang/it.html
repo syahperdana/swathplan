@@ -32,6 +32,7 @@
 <p>Con la frazione di sovrapposizione <i>o</i> (larghezza della sovrapposizione divisa per la larghezza della strisciata), le linee vicine distano</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>La sovrapposizione affianca ai fasci esterni rumorosi i buoni fasci interni della linea successiva e assorbe errori di governo e di profondità. Poiché W cresce con la profondità, la profondità minima dell'area fissa l'interlinea che dà copertura completa ovunque; il 5° percentile è un compromesso comune.</p>
+<p>Il pianificatore chiede la copertura del fondale <i>C</i> invece della sovrapposizione: 100 % significa che le strisciate vicine si toccano appena e 200 % che ogni punto del fondale è in due strisciate. Le due sono legate da <i>C</i> = 100 % / (1 − <i>o</i>): il 50 % di sovrapposizione equivale al 200 % di copertura e l’80 % al 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Interlinea adattiva (metodo di SwathPlan)</h3>
 <p>Con profondità caricate, SwathPlan pone ogni linea il più lontano possibile dalla precedente che la profondità locale consente. Per linee consecutive nelle posizioni trasversali <i>s</i> e <i>s′</i>, con le semistrisciate affacciate <i>h(t)</i> e <i>h′(t)</i> calcolate dalla profondità sotto ciascuna linea lungo la coordinata di linea <i>t</i>, la condizione è</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

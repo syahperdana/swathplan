@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "سرعات ثابتة؛ لا تُنمذج التيارات وحركة الملاحة والتوقف في الموانئ.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "تُفحص الدورانات مقابل خط الساحل المحمّل فقط؛ ولا تؤخذ المياه الضحلة والمنشآت وحركة الملاحة في الحسبان.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "خطوط الساحل والقياسات العمقية العالمية ليست بيانات ملاحية. خطّط بالاعتماد على الخرائط الرسمية والإشعارات المحلية.",
- "References": "المراجع"
+ "References": "المراجع",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "يطلب المخطِّط تغطية القاع <i>C</i> بدلًا من التداخل: 100 % تعني أن الأشرطة المتجاورة تتلامس بالكاد، و200 % أن كل نقطة من القاع في شريطين. وترتبطان بالعلاقة <i>C</i> = 100 % / (1 − <i>o</i>)، فتداخل 50 % يساوي تغطية 200 %، وتداخل 80 % يساوي 500 %."
 }

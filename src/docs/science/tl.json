@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Palagiang bilis; hindi minomodelo ang agos, trapiko at pagdaong sa pantalan.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Sinusuri lang ang mga liko laban sa na-load na baybayin; hindi isinasaalang-alang ang mga mababaw, istruktura at trapiko.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Hindi navigation data ang mga baybayin at global bathymetry. Magplano gamit ang mga opisyal na chart at lokal na abiso.",
- "References": "Mga sanggunian"
+ "References": "Mga sanggunian",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "Hinihingi ng planner ang saklaw ng sahig-dagat na <i>C</i> sa halip na ang overlap: ang 100 % ay nangangahulugang halos nagdidikit lang ang magkatabing swath at ang 200 % na bawat punto ng sahig-dagat ay nasa dalawang swath. Magkaugnay ang dalawa sa <i>C</i> = 100 % / (1 − <i>o</i>): ang 50 % overlap ay 200 % saklaw at ang 80 % overlap ay 500 %."
 }

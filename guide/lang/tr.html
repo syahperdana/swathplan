@@ -55,7 +55,7 @@
 <li><b>Koordinat sistemini ayarlayın</b> (<i>İçe aktarılan dosyalar için koordinat sistemi</i>), koordinat sistemi taşımayan dosyalar (DXF, WKT, metin, XYZ) içe aktarıyorsanız.</li>
 <li><b>Derinliği alın.</b> Bir tasarım derinliği yazın, kendi sondajlarınızı yükleyin (<i>XYZ dosyasından batimetri</i>) veya ücretsiz küresel batimetri indirin (<i>Küresel batimetri</i>). Ardından <i>En sığı uygula</i>, <i>5. yüzdeliği uygula</i> veya <i>Ortalamayı uygula</i>'ya basın.</li>
 <li><b>Sensörü ayarlayın</b>: çok ışınlı model ve tarama açıları, tek ışınlı dönüştürücü, jeofizik sensörler veya drone kamerası.</li>
-<li><b>Bindirmeyi veya aralığı ayarlayın</b>; derinlik verisi yüklediyseniz ve derin suda daha geniş aralıklı hatlar istiyorsanız <i>Uyarlanabilir hat aralığı</i>'nı işaretleyin.</li>
+<li><b>Deniz tabanı kapsamasını veya aralığı ayarlayın</b>; derinlik verisi yüklediyseniz ve derin suda daha geniş aralıklı hatlar istiyorsanız <i>Uyarlanabilir hat aralığı</i>'nı işaretleyin.</li>
 <li><b>Hat yönünü seçin</b> (<i>Hat yönü</i>). <i>Otomatik en uygun</i> en az hatla sonuçlanan azimutu bulur.</li>
 <li><b>Gemiyi girin</b>: <i>Williamson dönüşü</i> içinde dönüş yarıçapı, <i>IHO S-44 ve hız</i> içinde hızlar ve IHO sınıfı.</li>
 <li><b>Proje ve operasyonlar'ı doldurun</b>: tarihler, çalışma saatleri, hava payı, SVP ölçümleri, kalibrasyon, mobilizasyon ve günlük ücret.</li>
@@ -65,7 +65,7 @@
 <h2 id="4-survey-type-and-shape">4 Ölçüm türü ve biçimi</h2>
 <figure class="half"><img src="../docs/guide/setup.jpg" alt="The Survey type section" loading="lazy"><figcaption>Şekil 4. <i>Ölçüm türü</i>: proje başına bir ölçüm türü, bir alan üzerinde veya bir güzergâh boyunca.</figcaption></figure>
 <table><tr><th>Ölçüm türü</th><th>Hat aralığını belirleyen</th><th>Gösterilen bölümler</th></tr>
-<tr><td>Hidrografik: çok ışınlı (MBES)</td><td>Tasarım derinliğindeki tarama genişliği ve bindirme</td><td>Sensör ve tasarım derinliği, Tarama ve bindirme, Williamson dönüşü, IHO S-44 ve hız, Belirsizlik bütçesi</td></tr>
+<tr><td>Hidrografik: çok ışınlı (MBES)</td><td>Tasarım derinliğindeki şerit genişliği ve deniz tabanı kapsaması</td><td>Sensör ve tasarım derinliği, Şerit ve kapsama, Williamson dönüşü, IHO S-44 ve hız, Belirsizlik bütçesi</td></tr>
 <tr><td>Hidrografik: tek ışınlı (SBES)</td><td>Girdiğiniz aralık, S-44'e göre denetlenir</td><td>Tek ışınlı iskandil ve hat aralığı</td></tr>
 <tr><td>Jeofizik</td><td>En sık hatları gerektiren sensör (yan taramalı, manyetometre, sığ sismik, UHR sismik, isteğe bağlı çok ışınlı)</td><td>Jeofizik sensörler ve hat aralığı</td></tr>
 <tr><td>Hava: drone (kamera veya LiDAR)</td><td>Kamera izdüşümü veya LiDAR taraması ve yanal bindirme</td><td>Drone yükü ve uçuş (gemi bölümleri gizli)</td></tr></table>
@@ -94,15 +94,15 @@
 <p><i>Coğrafi boylam/enlem</i>, bir UTM dilimi (WGS 84 veya başka datumlar), kendi parametreleriniz ve 3 parametreli datum dönüşümüyle <i>Özel (Transverse Mercator)</i> ya da bir EPSG kodu seçin. EPSG tanımları çevrimiçi aranır (epsg.io veya spatialreference.org) ve ardından tarayıcıda saklanır; böylece bir kez kullandığınız kodlar çevrimdışı çalışır. Tamamen çevrimdışı EPSG çalışması için <i>Çevrimdışı yardımcılar</i> içinde bir tanım dosyası ve proj4.js yükleyin. Datum grid dosyaları (NTv2 ve benzerleri) desteklenmez. <i>X / Y sırası</i>, kuzey değeri veya enlemi önce yazılmış dosyaları işler.</p>
 
 <h2 id="6-survey-types-in-detail">6 Ayrıntılı ölçüm türleri</h2>
-<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Çok ışınlı: sensör, tarama ve bindirme</h3>
-<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Şekil 6. <i>Sensör ve tasarım derinliği</i> ve <i>Tarama ve bindirme</i>.</figcaption></figure>
+<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Çok ışınlı: sensör, şerit ve kapsama</h3>
+<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & coverage sections" loading="lazy"><figcaption>Şekil 6. <i>Sensör ve tasarım derinliği</i> ve <i>Şerit ve kapsama</i>.</figcaption></figure>
 <ul>
 <li><b>MBES modeli</b>: ışın sayısı, frekans ve en büyük yarım tarama açısıyla yaygın çok ışınlı sistemlerin kataloğu. Kongsberg, Teledyne RESON, R2Sonic ve NORBIT'in güncel modelleri üreticinin veri sayfasıyla karşılaştırılmıştır ve değerlerin altındaki satır bu sayfayı belirtir; diğerleri henüz kontrol edilmediklerini belirtir ve yaklaşıktır. Her durumda kendi sisteminizin veri sayfasını kontrol edin. Kendi modellerinizi ekleyin veya aynı sütunlarla CSV olarak bir katalog içe aktarın.</li>
 <li><b>Tasarım derinliği</b>: aralığın tasarlandığı derinlik. Her yerde tam kapsama için en sığ derinliği kullanın; 5. yüzdelik yaygın bir uzlaşıdır.</li>
 <li><b>İskele ve sancak açısı</b>: gerçekten kaydedeceğiniz yarım tarama açıları. Tarama genişliğini belirler: W = derinlik × (tan iskele + tan sancak).</li>
-<li><b>Yanal bindirme</b>: komşu taramaların ne kadar örtüştüğü, genellikle %20–30. Aralık S = W × (1 − bindirme) olur.</li>
+<li><b>Deniz tabanı kapsaması</b>: şeritlerin birlikte deniz tabanının ne kadarını kapsadığı. %100 komşu şeritlerin ancak birbirine değdiği, %200 her noktanın iki şeritte olduğu anlamına gelir; payla tam kapsama için %110–150 olağandır. Aralık S = W × 100 / kapsamadır. Kaydırıcıyı kullanın ya da değeri altındaki kutuya yazın.</li>
 <li><b>Uyarlanabilir hat aralığı</b>: derinlik verisi yüklüyken her hat, tüm uzunluğu boyunca bindirmeyi koruyarak yerel derinliğin izin verdiği kadar öncekinden uzağa yerleştirilir; böylece derin suda hatlar daha seyrek olur.</li>
-<li><b>Örtüşme, hat yönü ve uyarlanabilir aralık</b>: <i>Örtüşmeden deniz tabanı kapsaması</i> örtüşmenin ne anlama geldiğini gösterir: %80’de deniz tabanının her noktası yaklaşık 5 şeritte yer alır, yani hatlar %0’a göre 5 kat sıktır. Uyarlanabilir aralıkta her hat boyunca uzandığı en sığ noktaya göre aralanır; eş derinlik eğrilerini derinden sığa doğru kesen hatlar bu yüzden tüm uzunlukları boyunca sık olur. Eğriler boyunca uzanan hatlar çok daha az kilometre gerektirir: plan kontrolleri hatların eğrileri ne zaman kestiğini ve eğrilerin yönünü söyler, <i>Otomatik en uygun</i> de bu durumda en az hat yerine en kısa ölçüm süresini (hatlar ve dönüşler) arar.</li>
+<li><b>Kapsama, hat yönü ve uyarlanabilir aralık</b>: hatlar kapsamayla orantılı olarak sıklaşır (%500, %100’e göre 5 kat sık hat demektir). Uyarlanabilir aralıkta her hat boyunca uzandığı en sığ noktaya göre aralanır; eş derinlik eğrilerini derinden sığa doğru kesen hatlar bu yüzden tüm uzunlukları boyunca sık olur. Eğriler boyunca uzanan hatlar çok daha az kilometre gerektirir: plan kontrolleri hatların eğrileri ne zaman kestiğini ve eğrilerin yönünü söyler, <i>Otomatik en uygun</i> de bu durumda en az hat yerine en kısa ölçüm süresini (hatlar ve dönüşler) arar.</li>
 <li><b>Şundan sığ derinlikleri yok say</b> (varsayılan 2 m): kuruyan sığlıklar ve çok sığ su uyarlanabilir aralığa katılmaz; böylece bir hattın bir ucundaki sığlık tüm hatları birbirine yaklaştırmaz. Plan kontrolleri bunun alanın ne kadarı olduğunu söyler; o kısmı ayrıca ölçün (örneğin bir eş derinlik eğrisini izleyen hatlarla) ya da sınırı düşürün.</li>
 <li><b>En büyük hat aralığı</b> ve <b>en büyük tarama genişliği</b> sonucu sınırlar (0 = sınır yok).</li>
 </ul>

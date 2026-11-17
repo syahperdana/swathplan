@@ -55,7 +55,7 @@
 <li><b>Ustaw układ współrzędnych</b> w <i>Układ współrzędnych importowanych plików</i>, jeśli importujesz pliki bez układu współrzędnych (DXF, WKT, tekst, XYZ).</li>
 <li><b>Uzyskaj głębokość.</b> Wpisz głębokość projektową, wczytaj własne sondowania (<i>Batymetria z pliku XYZ</i>) lub pobierz bezpłatną batymetrię globalną (<i>Batymetria globalna</i>). Następnie naciśnij <i>Zastosuj najpłytszą</i>, <i>Zastosuj 5. percentyl</i> lub <i>Zastosuj średnią</i>.</li>
 <li><b>Skonfiguruj czujnik</b>: model echosondy wielowiązkowej i kąty pasa, przetwornik jednowiązkowy, czujniki geofizyczne lub kamerę drona.</li>
-<li><b>Ustaw zakładkę lub odstęp</b> i zaznacz <i>Adaptacyjny odstęp linii</i>, jeśli wczytałeś dane głębokości i chcesz rzadszych linii na większej głębokości.</li>
+<li><b>Ustaw pokrycie dna lub odstęp</b> i zaznacz <i>Adaptacyjny odstęp linii</i>, jeśli wczytałeś dane głębokości i chcesz rzadszych linii na większej głębokości.</li>
 <li><b>Wybierz kierunek linii</b> w <i>Kierunek linii</i>. <i>Optymalny automatycznie</i> znajduje azymut z najmniejszą liczbą linii.</li>
 <li><b>Wprowadź dane statku</b>: promień zwrotu w <i>Zwrot Williamsona</i>, prędkości i rząd IHO w <i>IHO S-44 i prędkość</i>.</li>
 <li><b>Wypełnij Projekt i operacje</b>: daty, godziny pracy, rezerwę pogodową, profile SVP, kalibrację, mobilizację i stawkę dzienną.</li>
@@ -65,7 +65,7 @@
 <h2 id="4-survey-type-and-shape">4 Rodzaj i kształt pomiaru</h2>
 <figure class="half"><img src="../docs/guide/setup.jpg" alt="The Survey type section" loading="lazy"><figcaption>Rysunek 4. <i>Rodzaj pomiaru</i>: jeden rodzaj pomiaru na projekt, na obszarze lub wzdłuż trasy.</figcaption></figure>
 <table><tr><th>Rodzaj pomiaru</th><th>Odstęp linii wynika z</th><th>Pokazywane sekcje</th></tr>
-<tr><td>Hydrograficzny: wielowiązkowy (MBES)</td><td>Szerokość pasa na głębokości projektowej i zakładka</td><td>Czujnik i głębokość projektowa, Pas pomiarowy i zakładka, Zwrot Williamsona, IHO S-44 i prędkość, Budżet niepewności</td></tr>
+<tr><td>Hydrograficzny: wielowiązkowy (MBES)</td><td>Szerokość pasa przy głębokości projektowej i pokrycie dna</td><td>Czujnik i głębokość projektowa, Pas i pokrycie, Zwrot Williamsona, IHO S-44 i prędkość, Budżet niepewności</td></tr>
 <tr><td>Hydrograficzny: jednowiązkowy (SBES)</td><td>Wprowadzony odstęp, sprawdzany względem S-44</td><td>Echosonda jednowiązkowa i odstęp linii</td></tr>
 <tr><td>Geofizyczny</td><td>Czujnik wymagający najgęstszych linii (sonar boczny, magnetometr, profilograf osadów, sejsmika UHR, opcjonalnie wielowiązkowy)</td><td>Czujniki geofizyczne i odstęp linii</td></tr>
 <tr><td>Lotniczy: dron (kamera lub LiDAR)</td><td>Pokrycie zdjęcia lub pas LiDAR oraz zakładka boczna</td><td>Ładunek i lot drona (sekcje statku ukryte)</td></tr></table>
@@ -94,15 +94,15 @@
 <p>Wybierz <i>Geograficzny dł./szer.</i>, strefę UTM (WGS 84 lub inne układy odniesienia), <i>Własny (Transverse Mercator)</i> z własnymi parametrami i 3-parametrową transformacją układu odniesienia albo kod EPSG. Definicje EPSG są wyszukiwane online (epsg.io lub spatialreference.org), a następnie przechowywane w przeglądarce, więc raz użyte kody działają offline. Aby pracować z EPSG całkowicie offline, wczytaj plik definicji i proj4.js w <i>Pomocnicze pliki offline</i>. Pliki siatek transformacji (NTv2 i podobne) nie są obsługiwane. <i>Kolejność X / Y</i> obsługuje pliki zapisane z północną lub szerokością jako pierwszą.</p>
 
 <h2 id="6-survey-types-in-detail">6 Rodzaje pomiarów w szczegółach</h2>
-<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Wielowiązkowy: czujnik, pas i zakładka</h3>
-<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & overlap sections" loading="lazy"><figcaption>Rysunek 6. <i>Czujnik i głębokość projektowa</i> oraz <i>Pas pomiarowy i zakładka</i>.</figcaption></figure>
+<h3 id="6-1-multibeam-sensor-swath-and-overlap">6.1 Wielowiązkowy: czujnik, pas i pokrycie</h3>
+<figure class="half"><img src="../docs/guide/sensor-swath.jpg" alt="Sensor & design depth and Swath & coverage sections" loading="lazy"><figcaption>Rysunek 6. <i>Czujnik i głębokość projektowa</i> oraz <i>Pas i pokrycie</i>.</figcaption></figure>
 <ul>
 <li><b>Model MBES</b>: katalog popularnych systemów wielowiązkowych z liczbą wiązek, częstotliwością i maksymalnym półkątem pasa. Aktualne modele firm Kongsberg, Teledyne RESON, R2Sonic i NORBIT zostały sprawdzone z kartą katalogową producenta, którą wskazuje wiersz pod wartościami; pozostałe są oznaczone jako jeszcze niesprawdzone i przybliżone. W każdym przypadku sprawdź kartę katalogową własnego systemu. Dodaj własne modele albo zaimportuj katalog jako CSV z tymi samymi kolumnami.</li>
 <li><b>Głębokość projektowa</b>: głębokość, dla której projektowany jest odstęp. Użyj najpłytszej głębokości, aby uzyskać pełne pokrycie wszędzie; 5. percentyl to częsty kompromis.</li>
 <li><b>Kąt lewej i prawej burty</b>: półkąty pasa, które faktycznie będziesz rejestrować. Wyznaczają szerokość pasa W = głębokość × (tg lewej + tg prawej).</li>
-<li><b>Zakładka boczna</b>: na ile sąsiednie pasy się pokrywają, zwykle 20–30 %. Odstęp wynosi S = W × (1 − zakładka).</li>
+<li><b>Pokrycie dna</b>: ile dna pokrywają łącznie pasy. 100 % oznacza, że sąsiednie pasy ledwo się stykają, 200 %, że każdy punkt jest w dwóch pasach; 110–150 % to zwykła wartość dla pełnego pokrycia z zapasem. Odstęp wynosi S = W × 100 / pokrycie. Użyj suwaka albo wpisz wartość w polu pod nim.</li>
 <li><b>Adaptacyjny odstęp linii</b>: po wczytaniu danych głębokości każda linia jest umieszczana tak daleko od poprzedniej, jak pozwala lokalna głębokość, przy zachowaniu zakładki na całej długości, więc na większej głębokości linie są rzadsze.</li>
-<li><b>Nakładanie, kierunek linii i odstęp adaptacyjny</b>: <i>Pokrycie dna wynikające z nakładania</i> pokazuje, co oznacza nakładanie: przy 80 % każdy punkt dna leży w około 5 pasach, więc linie są 5 razy gęściej niż przy 0 %. Przy odstępie adaptacyjnym każda linia jest dobrana do najpłytszego punktu na swojej długości, więc linie przecinające izobaty, z głębokiej wody na płytką, są gęsto na całej długości. Linie wzdłuż izobat wymagają znacznie mniej kilometrów: kontrole planu informują, gdy linie przecinają izobaty i w jakim kierunku one biegną, a <i>Optymalny automatycznie</i> szuka wtedy najkrótszego czasu pomiaru (linie i zwroty) zamiast najmniejszej liczby linii.</li>
+<li><b>Pokrycie, kierunek linii i odstęp adaptacyjny</b>: linie zbliżają się proporcjonalnie do pokrycia (500 % daje linie 5 razy gęściej niż 100 %). Przy odstępie adaptacyjnym każda linia jest dobrana do najpłytszego punktu na swojej długości, więc linie przecinające izobaty, z głębokiej wody na płytką, są gęsto na całej długości. Linie wzdłuż izobat wymagają znacznie mniej kilometrów: kontrole planu informują, gdy linie przecinają izobaty i w jakim kierunku one biegną, a <i>Optymalny automatycznie</i> szuka wtedy najkrótszego czasu pomiaru (linie i zwroty) zamiast najmniejszej liczby linii.</li>
 <li><b>Pomijaj głębokości mniejsze niż</b> (domyślnie 2 m): osuchy i bardzo płytka woda są pomijane w odstępie adaptacyjnym, więc mielizna na jednym końcu linii nie zbliża do siebie wszystkich linii. Kontrole planu podają, jaką część obszaru to obejmuje; zmierz ją osobno (na przykład liniami wzdłuż izobaty) lub obniż próg.</li>
 <li><b>Maksymalny odstęp linii</b> i <b>maksymalna szerokość pasa</b> ograniczają wynik (0 = bez ograniczenia).</li>
 </ul>

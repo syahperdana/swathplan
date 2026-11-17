@@ -32,6 +32,7 @@
 <p>Sa overlap fraction na <i>o</i> (lapad ng overlap na hinati sa lapad ng swath), ang magkatabing linya ay may layong</p>
 <pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
 <p>Sinusuportahan ng overlap ang maingay na panlabas na beam gamit ang magagandang panloob na beam ng susunod na linya at sinasalo ang mga error sa pagmamaneho at lalim. Dahil lumalaki ang W kasabay ng lalim, ang pinakamababaw na lalim sa lugar ang nagtatakda ng pagitan na nagbibigay ng buong sakop saanman; ang ika-5 percentile ay karaniwang kompromiso.</p>
+<p>Hinihingi ng planner ang saklaw ng sahig-dagat na <i>C</i> sa halip na ang overlap: ang 100 % ay nangangahulugang halos nagdidikit lang ang magkatabing swath at ang 200 % na bawat punto ng sahig-dagat ay nasa dalawang swath. Magkaugnay ang dalawa sa <i>C</i> = 100 % / (1 − <i>o</i>): ang 50 % overlap ay 200 % saklaw at ang 80 % overlap ay 500 %.</p>
 <h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Adaptive na pagitan ng linya (paraan ng SwathPlan)</h3>
 <p>Kapag may na-load na lalim, inilalagay ng SwathPlan ang bawat linya nang kasinglayo ng pinapayagan ng lokal na lalim mula sa nauna. Para sa magkasunod na linya sa mga pahalang na posisyong <i>s</i> at <i>s′</i>, na ang magkaharap na kalahating swath na <i>h(t)</i> at <i>h′(t)</i> ay kinuwenta mula sa lalim sa ilalim ng bawat linya sa kahabaan ng line coordinate na <i>t</i>, ang kondisyon ay</p>
 <pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>

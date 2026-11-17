@@ -195,5 +195,6 @@
  "Constant speeds; currents, traffic and port calls are not modelled.": "Constante snelheden; stroming, verkeer en havenbezoeken worden niet gemodelleerd.",
  "Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.": "Bochten worden alleen getoetst aan de geladen kustlijn; ondiepten, constructies en verkeer worden niet meegenomen.",
  "Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.": "Kustlijnen en wereldwijde bathymetrie zijn geen navigatiegegevens. Plan met officiële zeekaarten en lokale berichten.",
- "References": "Bronnen"
+ "References": "Bronnen",
+ "The planner asks for the seabed coverage <i>C</i> rather than the overlap: 100 % means neighbouring swaths just meet and 200 % that every point of the seabed is in two swaths. The two are related by <i>C</i> = 100 % / (1 − <i>o</i>), so 50 % overlap is 200 % coverage and 80 % overlap is 500 %.": "De planner vraagt om de bodemdekking <i>C</i> in plaats van de overlap: 100 % betekent dat naburige swaths elkaar net raken en 200 % dat elk punt van de bodem in twee swaths ligt. Ze hangen samen via <i>C</i> = 100 % / (1 − <i>o</i>): 50 % overlap is 200 % dekking en 80 % overlap 500 %."
 }
