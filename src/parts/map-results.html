@@ -1,0 +1,26 @@
+<section>
+<div id="mapwrap"><canvas id="cv"></canvas>
+<div id="tools"><button id="bDraw" class="p">Draw area</button><button id="bClose">Close polygon</button><button id="bClr">Clear</button><button id="bFit">Fit</button><button id="bLoc" title="Go to the area preset nearest to my location">My location</button>
+<select id="pre2" style="width:auto;max-width:210px;margin:4px 0 0"></select></div>
+<div id="leg"><div><i style="background:#0b6f6a"></i>Survey lines</div><div><i style="background:#b0237a"></i>Williamson turns</div><div><i style="background:#d98a00"></i>Cross lines</div></div>
+<div id="mapSrc" hidden></div><div id="attr"></div><div id="hud">Drag to pan · wheel to zoom · click to add vertices</div></div>
+<div class="grid" id="sumWrap">
+<div class="card"><h3>Time analysis</h3>
+<h4>Production</h4><div class="kv"><span>On-line time (survey + cross lines)</span><b id="tO">-</b></div><div class="kv"><span>Turns &amp; transits</span><b id="tR">-</b></div><div class="kv"><span>Productive time</span><b id="tT">-</b></div>
+<div class="kv"><span>On-line efficiency</span><b id="tEff">-</b></div><div class="kv"><span>Coverage rate (on-line)</span><b id="tRate">-</b></div>
+<h4>Allowances</h4><div class="kv"><span>SVP casts</span><b id="tSvp">-</b></div><div class="kv"><span>Patch test / calibration</span><b id="tCal">-</b></div><div class="kv"><span>Weather / downtime</span><b id="tWx">-</b></div><div class="kv"><span>Mob / demob</span><b id="tMob">-</b></div>
+<h4>Project</h4><div class="kv"><span><b>Total project time</b></span><b id="tTot">-</b></div><div class="kv"><span>Duration at operating hours/day</span><b id="tDays">-</b></div><div class="kv"><span>Estimated completion</span><b id="tEnd">-</b></div><div class="kv"><span>Production per calendar day</span><b id="tPD">-</b></div><div class="kv"><span>Estimated vessel cost</span><b id="tCost">-</b></div></div>
+<div class="card"><h3>Distance &amp; statistics</h3>
+<h4>Lines</h4><div class="kv"><span>Survey lines</span><b id="nL">0</b></div><div class="kv"><span>Cross lines</span><b id="nX">0</b></div><div class="kv"><span>Survey line length</span><b id="dL">-</b></div><div class="kv"><span>Cross line length</span><b id="dX">-</b></div>
+<div class="kv"><span>Line length (min / mean / max)</span><b id="dLs">-</b></div><div class="kv"><span>Line spacing (min / mean / max)</span><b id="dSp">-</b></div>
+<h4>Turns</h4><div class="kv"><span>Turns (Williamson / U-turn / transit)</span><b id="nT">0</b></div><div class="kv"><span>Turn guideline length</span><b id="dT">-</b></div><div class="kv"><span><b>Grand total distance</b></span><b id="dG">-</b></div>
+<h4>Coverage</h4><div class="kv"><span>Area</span><b id="ar">-</b></div><div class="kv"><span>Swath width (min / mean / max)</span><b id="dW">-</b></div><div class="kv"><span>Swath area / area covered</span><b id="dCov">-</b></div><div class="kv"><span>Mean achieved overlap</span><b id="dOv">-</b></div><div class="kv"><span>Line-km per km²</span><b id="dLk">-</b></div><div class="kv"><span>Land trimming</span><b id="lt">off</b></div>
+<h4>Data</h4><div class="kv"><span>Depth range used (min / mean / max)</span><b id="dDz">-</b></div><div class="kv"><span>Estimated pings</span><b id="dPg">-</b></div><div class="kv"><span>Estimated soundings</span><b id="dSn">-</b></div><div class="kv"><span>Sounding density</span><b id="dDn">-</b></div></div>
+<div class="card"><h3>IHO S-44 &amp; quality control</h3>
+<h4>Order requirements</h4><div class="kv"><span>Survey order</span><b id="qOrd">-</b></div><div class="kv"><span>Design swath W / spacing S (design depth)</span><b id="qW">-</b></div><div class="kv"><span>Overlap / design spacing</span><b id="qS">-</b></div>
+<div class="kv"><span>TVU max (design depth)</span><b id="qT">-</b></div><div class="kv"><span>TVU max at min / mean / max depth</span><b id="qTv">-</b></div><div class="kv"><span>THU max (mean depth)</span><b id="qTH">-</b></div><div class="kv"><span>Feature detection (mean depth)</span><b id="qCube">-</b></div><div class="kv"><span>Full seafloor search</span><b id="qFS">-</b></div>
+<h4>Cross-line check</h4><div class="kv"><span>Allowed depth difference at crossings (95%)</span><b id="qXL">-</b></div>
+<h4>Ping &amp; speed</h4><div class="kv"><span>Ping-rate limit at deepest part</span><b id="qPf">-</b></div><div class="kv"><span>Ping rate assumed</span><b id="qPu">-</b></div><div class="kv"><span>Ping spacing at survey speed</span><b id="qPs">-</b></div><div class="kv"><span>Along-track footprint (nadir)</span><b id="qFp">-</b></div><div class="kv"><span>Max speed for 3 pings on smallest feature</span><b id="qVm">-</b></div>
+<p class="note">If QC fails: check tide and draft, then SVP / ray refraction, then motion-heading alignment and patch-test offsets. Orders and limits follow IHO S-44 (verify against the current edition).</p></div>
+<div class="card"><h3>Plan checks</h3><ul id="chk"></ul></div>
+</div></section></main>

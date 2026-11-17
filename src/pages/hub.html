@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwathPlan – Survey planning tools</title>
+<meta name="description" content="Free tools for hydrographic and geophysical survey planning. They run in your browser and work offline.">
+<meta name="author" content="Aldwin Syahperdana">
+<meta name="swp-root" content="./"><meta name="theme-color" content="#12262d">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+<!--@include css/hub.css-->
+</style></head><body>
+<header><a class="brand" href="./"><img src="icons/icon-192.png" width="40" height="40" alt=""><span class="nm">Swath<span>Plan</span></span></a>
+<select id="langSel" aria-label="Language" title="Language"></select></header>
+<main>
+<section class="intro"><h1 data-t>Survey planning tools</h1>
+<p data-t>Free tools for hydrographic and geophysical survey planning. They run in your browser, keep your data on your device and work offline.</p></section>
+
+<p id="curPrj" class="note" hidden></p>
+<section class="tools">
+<article class="tool live"><h2 data-t>Survey planner</h2>
+<p data-t>Plan multibeam, single-beam, geophysical or drone survey lines over an area or along a cable or pipeline route: IHO S-44 checks, turns, time and cost, and exports for acquisition software and drone apps.</p>
+<div class="act"><a class="btn" href="planner/" data-t>Open</a><a class="btn alt" href="planner/index.html" download="swathplan-planner.html" data-t>Download offline copy</a></div></article>
+<article class="tool live"><h2 data-t>Infill planner</h2><p data-t>Find coverage gaps in your acquired data and plan infill lines.</p>
+<div class="act"><a class="btn" href="infill/" data-t>Open</a><a class="btn alt" href="infill/index.html" download="swathplan-infill.html" data-t>Download offline copy</a></div></article>
+</section>
+
+<section class="offline"><h2 data-t>Learn</h2><p data-t>How to use the tools, and the science behind every number with its original references.</p>
+<div class="act"><a class="btn alt" href="guide/" data-t>User guide</a><a class="btn alt" href="science/" data-t>Science &amp; references</a></div></section>
+
+<section class="offline"><h2 data-t>Use it offline</h2>
+<p id="instOk" hidden data-t>You are using the installed app.</p>
+<div id="instBox"><p data-t>Install SwathPlan as an app. Once installed, it opens and works without internet.</p>
+<button id="instBtn" type="button" class="btn" hidden data-t>Install app</button>
+<p id="instIos" class="note" hidden data-t>On iPhone or iPad: open this page in Safari, tap Share, then Add to Home Screen.</p></div>
+<p class="note" data-t>The downloaded copy is a single HTML file. Open it in any browser, no installation needed.</p>
+<p id="store" class="note"></p></section>
+</main>
+<footer dir="ltr">© 2026 Aldwin Syahperdana</footer>
+<script id="langpack" type="application/json"><!--@langpack subset--></script>
+<script><!--@include js/core/i18n-langs.js-->
+<!--@include js/hub/hub.js-->
+<!--@include js/core/pwa.js-->
+</script></body></html>

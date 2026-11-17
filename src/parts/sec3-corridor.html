@@ -1,0 +1,21 @@
+<details data-sec="route" open><summary>Route &amp; corridor</summary><div>
+<p class="note">Draw the route centreline on the map (Draw route, click the points, then Finish route), or import it below. KP runs from the first point to the last.</p>
+<label>Import route (CSV/TXT, KML, GPX, GeoJSON, SHP, DXF, WKT)</label><input type="file" id="coF" multiple accept=".csv,.txt,.kml,.kmz,.gpx,.json,.geojson,.shp,.dbf,.prj,.zip,.dxf,.wkt">
+<textarea id="coT" rows="3" placeholder="…or paste route points, one per line (x y, or lat, lon)"></textarea>
+<button id="coImp">Import route</button><div id="coImpSt" class="note"></div>
+<div class="r2"><div><label>KP at route start (km)</label><input type="number" id="coKP0" value="0" step="0.001"></div><div><label>&nbsp;</label><button id="coRev" type="button">Reverse route</button></div></div>
+<label>Corridor width each side of the route (m)</label><input type="number" id="coHW" value="100" min="1" step="1">
+<label>Line layout</label><select id="coMode"><option value="swath">Fit lines to the swath (sections {§sensor} and {§swath})</option><option value="fixed">Fixed offsets from the route</option></select>
+<label id="coCtrL"><input type="checkbox" id="coCtr" checked> Run a line on the route centreline</label>
+<div id="coOffB" hidden><label>Offsets from the route (m, starboard positive, port negative)</label><input type="text" id="coOff" value="0, ±25, ±50, ±75, ±100"></div>
+<div class="kv"><span>Survey lines and offsets</span><b id="coLn">-</b></div>
+<div class="r2"><div><label>Split into segments every (km, 0 = no split)</label><input type="number" id="coSeg" value="20" min="0" step="1"></div><div><label>Overlap between segments (m)</label><input type="number" id="coSegO" value="100" min="0" step="10"></div></div>
+<p class="note">Long routes are surveyed in segments. Each segment has its own lines and boundary, and lines are named by segment (for example RL_02_S050 is segment 2, 50 m to starboard). Adjacent segments overlap so the data join without a gap.</p>
+<label>Line extension at each end, run-in and run-out (m)</label><input type="number" id="coExt" value="50" min="0" step="1">
+<div class="r2"><div><label>Cross line every (m of KP, 0 = none)</label><input type="number" id="coXI" value="500" min="0" step="10"></div><div><label>Cross line beyond the corridor (m)</label><input type="number" id="coXE" value="25" min="0" step="1"></div></div>
+<div class="r2"><div><label>Line name prefix</label><input type="text" id="coPre" value="RL_"></div><div><label>Cross line prefix</label><input type="text" id="coXP" value="XL_"></div></div>
+<div id="coSt" class="note"></div>
+<label>KP table interval (m)</label><input type="number" id="coKI" value="100" min="1" step="1">
+<button id="coKPx" type="button">KP table (CSV)</button><button id="coRln" type="button">Route with KP (EIVA RLN)</button>
+<p class="note">Line names show the side and offset: C = centreline, P = port, S = starboard (for example RL_S050 is 50 m to starboard). Lines are sailed in order across the corridor, turning at the route ends. All other exports are in section {§exp}.</p>
+</div></details>

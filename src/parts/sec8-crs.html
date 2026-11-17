@@ -1,0 +1,19 @@
+<details data-sec="crs"><summary>Coordinate system for imported files</summary><div>
+<label>Coordinate system</label><select id="xcrs"><option value="geo">Geographic lon/lat (degrees)</option><option value="utmN">UTM north</option><option value="utmS">UTM south</option><option value="tm">Custom (Transverse Mercator)</option><option value="epsg">EPSG database / pasted definition</option></select>
+<div id="epBox" hidden>
+<div id="epSt" class="note">No EPSG CRS loaded.</div>
+<div class="r2"><input id="epC" type="text" placeholder="EPSG code, e.g. 32652"><button id="epB">Load code</button><input id="epQ" type="text" placeholder="Search name, e.g. UTM 52N"><button id="epS">Search</button></div>
+<select id="epR" style="display:none"></select>
+<textarea id="epT" rows="2" placeholder="…or paste a PROJ string or WKT" style="margin-top:4px"></textarea><button id="epA">Use pasted definition</button>
+<label>Offline helpers: definitions file (JSON {"32652":"+proj=…"} or lines "32652 TAB +proj=…"), and proj4.js</label><input type="file" id="epF"><input type="file" id="p4f" accept=".js" style="margin-top:4px">
+<p class="note">Lookups use epsg.io or spatialreference.org and are cached in this browser, so codes you have used work offline later. The full EPSG dataset is not embedded. Datum grid files (NTv2 etc.) are not supported.</p></div>
+<label>Projection</label><input type="text" id="pjN" readonly>
+<div class="r2"><div><label>UTM zone</label><input type="text" id="zone" value="52" readonly></div><div><label>Central meridian (°)</label><input type="text" id="tl0" readonly></div>
+<div><label>Latitude of origin (°)</label><input type="text" id="tp0" readonly></div><div><label>Scale factor k0</label><input type="text" id="tk" readonly></div>
+<div><label>False easting (m)</label><input type="text" id="tfe" readonly></div><div><label>False northing (m)</label><input type="text" id="tfn" readonly></div>
+<div><label>Ellipsoid a (m)</label><input type="text" id="da" readonly></div><div><label>Inverse flattening</label><input type="text" id="dif" readonly></div>
+<div><label>Datum shift ΔX (m)</label><input type="text" id="dx" readonly></div><div><label>ΔY (m)</label><input type="text" id="dy" readonly></div><div><label>ΔZ (m)</label><input type="text" id="dz" readonly></div></div>
+<div id="qfBox" hidden><label>Quick-fill ellipsoid / datum (Custom only)</label><select id="qf"><option value="">Choose…</option><option value="wgs">WGS84</option><option value="grs80">GRS80 (NAD83, ETRS89)</option><option value="tokyo">Tokyo (Bessel + 3-param shift)</option><option value="nad27">NAD27 CONUS (Clarke 1866 + shift)</option><option value="bessel">Bessel 1841</option><option value="clrk66">Clarke 1866</option><option value="intl">International 1924</option><option value="krass">Krassovsky 1940</option><option value="airy">Airy 1830</option></select></div>
+<label>X / Y order in imported files</label><select id="xord"><option value="xy">X Y (easting, northing or lon, lat)</option><option value="yx">Y X (northing first, or lat first)</option></select>
+<p class="note">Values in the grey boxes come from the selected system; choose Custom to edit them. Shifts use a 3-parameter Molodensky transform (about a metre).</p>
+</div></details>

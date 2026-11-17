@@ -1,0 +1,37 @@
+<details data-sec="infill" id="ifD" open><summary>Coverage and gaps (infill)</summary><div>
+<p class="note">Load what has been surveyed so far. The planner marks the covered parts of the area, finds the gaps (holidays) and plans infill lines across them.</p>
+<p><b>Processed data (recommended)</b></p>
+<label class="if-mbes">Processed bathymetry grid (GeoTIFF): empty cells are holidays</label>
+<label class="if-sss">Side-scan mosaic (GeoTIFF): empty pixels are gaps</label>
+<input type="file" id="ifGF" multiple accept=".tif,.tiff">
+<div class="if-sss"><label><input type="checkbox" id="ifBk" checked> Black pixels are empty (mosaic background)</label><label><input type="checkbox" id="ifWh"> White pixels are empty</label></div>
+<p class="note" id="ifGSt">No grid loaded.</p>
+<button id="ifGClr" type="button">Remove grids</button>
+<p class="note">GeoTIFFs in WGS 84 or WGS 84 / UTM are placed from their own EPSG code; other files use the coordinate system of section {§crs}. Use LZW, Deflate or no compression (not JPEG). Large files are read at reduced resolution.</p>
+<div id="ifXYZ" class="if-mbes"></div>
+<label class="if-mbes"><input type="checkbox" id="ifX" checked> Count these XYZ soundings as covered</label>
+<p><b>Track lines (estimate before processing)</b></p>
+<label>Acquired tracks (vessel or towfish positions)</label>
+<input type="file" id="ifF" multiple accept=".csv,.txt,.pos,.nav,.shp,.dbf,.prj,.zip,.kml,.kmz,.gpx,.geojson,.json,.dxf,.wkt">
+<textarea id="ifT" rows="3" placeholder="…or paste positions: lat lon or E N, one per line; a blank line or a line name starts a new track" style="margin-top:4px"></textarea>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px"><button id="ifImp" type="button" class="p">Add tracks</button><button id="ifClr" type="button">Clear tracks</button><button id="ifArea" type="button">Use the coverage extent as the area</button></div>
+<p class="note" id="ifTSt">No tracks loaded.</p>
+<div class="if-mbes"><div class="r2"><div><label>Swath width of the tracks</label><select id="ifWM"><option value="depth">From depth and swath angles</option><option value="fixed">Fixed width</option></select></div>
+<div><label>Fixed swath width (m)</label><input type="number" id="ifWF" value="100" min="1" step="any"></div></div>
+<p class="note">From depth: the swath angles of section {§swath} and the depth along each track (loaded bathymetry, or the design depth). Port is left of the direction of travel.</p></div>
+<div class="if-sss"><div class="r2"><div><label>Range per side (m)</label><input type="number" id="ifSR" value="75" min="5" step="5"></div><div><label>Towfish height above seabed (m)</label><input type="number" id="ifSA" value="7.5" min="0" step="0.5"></div>
+<div><label>Seabed coverage</label><select id="ifReq"><option value="100">100 %</option><option value="200" selected>200 %</option></select></div><div><label>Overlap margin (%)</label><input type="number" id="ifSM" value="10" min="0" max="50"></div></div>
+<p class="note">Each track sees from the nadir gap under the towfish (about its height on each side) out to the range. At 200 %, every point must be seen by two tracks; points seen once show in yellow. Infill lines are spaced for the chosen coverage.</p></div>
+<p><b>Grid and gaps</b></p>
+<div class="r2"><div><label>Grid cell (m, blank = auto)</label><input type="number" id="ifC" min="0.2" step="any" placeholder="auto"></div>
+<div><label>Ignore gaps smaller than (m²)</label><input type="number" id="ifMin" value="50" min="0" step="any"></div>
+<div><label>Extend infill lines at each end (m)</label><input type="number" id="ifExt" value="20" min="0" step="any"></div>
+<div><label>Also cover outside the boundary (m)</label><input type="number" id="ifBuf" value="0" min="0" step="any"></div>
+<div><label>Line direction</label><button id="ifAz" type="button">Same direction as the tracks</button></div></div>
+<p class="note">Everything inside the boundary that the loaded data does not cover is a gap: holes between tracks and the strips still missing along the edges. A margin outside the boundary counts too, so the swath edges reach past it; the coverage percentage is of the area itself.</p>
+<div class="kv"><span>Coverage of the area</span><b id="ifCov">-</b></div>
+<div class="kv"><span>Gaps</span><b id="ifGap">-</b></div>
+<p class="note" id="ifSt"></p>
+<label><input type="checkbox" id="ifShow" checked> Show coverage on the map (green = covered, red = gap)</label>
+<button id="ifCsv" type="button">Export gaps (CSV)</button>
+</div></details>

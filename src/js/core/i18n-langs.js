@@ -1,0 +1,2 @@
+/* ===== SwathPlan i18n engine ===== */
+const LANGS=[["en","English"],["id","Bahasa Indonesia"],["ja","日本語"],["zh","中文（简体）"],["de","Deutsch"],["fr","Français"],["it","Italiano"],["ar","العربية"],["es","Español"],["nl","Nederlands"],["af","Afrikaans"],["pt","Português"],["hi","हिन्दी"],["ur","اردو"],["ru","Русский"],["ko","한국어"],["tl","Tagalog (Filipino)"],["vi","Tiếng Việt"],["tr","Türkçe"],["pl","Polski"],["th","ไทย"],["ms","Bahasa Melayu"]];

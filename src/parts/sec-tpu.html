@@ -1,0 +1,12 @@
+<details id="tpuD"><summary>Uncertainty budget (a priori TPU)</summary><div>
+<p class="note">Enter the 1σ uncertainty of each part of the system. The planner combines them for every beam angle at the design depth and compares the 95 % result with the IHO S-44 order in section {§iho}.</p>
+<div class="r2"><div><label>Positioning, horizontal (m)</label><input type="number" id="tPos" value="0.05" min="0" step="0.01"></div><div><label>Heading (°)</label><input type="number" id="tHdg" value="0.02" min="0" step="0.01"></div></div>
+<div class="r2"><div><label>Roll and pitch (°)</label><input type="number" id="tRP" value="0.02" min="0" step="0.01"></div><div><label>Beam pointing and calibration (°)</label><input type="number" id="tBA" value="0.05" min="0" step="0.01"></div></div>
+<div class="r2"><div><label>Heave (m)</label><input type="number" id="tHv" value="0.05" min="0" step="0.01"></div><div><label>Water level / tide (m)</label><input type="number" id="tTide" value="0.05" min="0" step="0.01"></div></div>
+<div class="r2"><div><label>Draft, squat and offsets (m)</label><input type="number" id="tDr" value="0.03" min="0" step="0.01"></div><div><label>Range (m)</label><input type="number" id="tRng" value="0.02" min="0" step="0.01"></div></div>
+<div class="r2"><div><label>Sound speed at the transducer (m/s)</label><input type="number" id="tSVs" value="0.5" min="0" step="0.1"></div><div><label>Sound speed profile, mean (m/s)</label><input type="number" id="tSVp" value="1" min="0" step="0.1"></div></div>
+<canvas id="tpuC" width="600" height="260" style="width:100%;height:auto;margin-top:8px;background:#fff;border:1px solid var(--bd);border-radius:4px"></canvas>
+<div id="tpuR" class="note"></div>
+<button id="tpuUse" type="button">Use this swath angle</button>
+<p class="note">A simplified a priori model after Hare (1995): range, angle (roll plus pointing), heave, water level, draft and sound speed for depth; positioning, heading, angle, pitch and sound speed for position. 95 % = 1.96σ vertical, 2.45σ horizontal. Check it against your own uncertainty model before you commit to a specification.</p>
+</div></details>

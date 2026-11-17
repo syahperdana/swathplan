@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwathPlan – Science &amp; references</title>
+<meta name="description" content="The formulas, standards and data behind SwathPlan, with their original references.">
+<meta name="author" content="Aldwin Syahperdana">
+<meta name="swp-root" content="../"><meta name="theme-color" content="#12262d">
+<link rel="manifest" href="../manifest.webmanifest"><link rel="icon" href="../icons/icon-192.png"><link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<style>
+:root{--bg:#eef2f1;--pn:#fff;--ink:#12262d;--mu:#5b6e75;--ac:#0b6f6a;--tl:#16c4b4;--pk:#ff6fc0;--bd:#cfd9d8}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 "Segoe UI","Noto Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+header{background:#12262d;color:#e6f2f0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+.brand img{border-radius:9px;display:block}
+.nm{font-size:22px;font-weight:700;letter-spacing:.2px}.nm span{color:var(--pk)}
+#langSel{background:#1d3a44;color:#e6f2f0;border:1px solid #3d6a73;border-radius:5px;padding:5px 6px;font:inherit;font-size:13px;max-width:46vw}
+main{flex:1;width:100%;max-width:1040px;margin:0 auto;padding:28px 18px 36px}
+.intro h1{font-size:28px;line-height:1.2;margin:0 0 8px}
+.intro p{color:var(--mu);margin:0 0 26px;max-width:62ch;font-size:16px}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.tool{background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column}
+.tool h2{font-size:18px;margin:0 0 6px}
+.tool p{margin:0 0 14px;color:var(--mu);flex:1}
+.tool.live{border-color:var(--tl);box-shadow:0 0 0 1px var(--tl) inset}
+.tool.soon{opacity:.78}
+.act{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-block;background:var(--ac);color:#fff;border:0;border-radius:7px;padding:8px 14px;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.alt{background:transparent;color:var(--ac);box-shadow:0 0 0 1px var(--ac) inset}
+.tag{align-self:flex-start;font-size:12px;font-weight:600;color:var(--mu);background:#e3eaea;border-radius:99px;padding:3px 10px}
+.offline{margin-top:30px;background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:18px}
+.offline h2{font-size:18px;margin:0 0 6px}
+.offline p{margin:0 0 10px}
+.note{color:var(--mu);font-size:14px}
+footer{background:#12262d;color:#9fc2bd;font-size:12px;padding:10px 18px;text-align:center}
+[hidden]{display:none!important}
+@media (max-width:520px){.intro h1{font-size:23px}main{padding-top:20px}}
+.nw{white-space:nowrap}
+/* ===== docs pages (guide, science): on top of hub.css ===== */
+header nav.dn{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;margin-right:8px}
+header nav.dn a{color:#cfe6e2;text-decoration:none;font-size:14px;padding:5px 9px;border-radius:6px}
+header nav.dn a:hover{background:#1d3a44;color:#fff}
+header nav.dn a.on{background:#0b6f6a;color:#fff}
+main.doc{max-width:1180px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;align-items:start}
+#toc{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;font-size:13.5px;background:var(--pn);border:1px solid var(--bd);border-radius:10px;padding:12px 12px 10px}
+#toc a.pdfl{display:flex;align-items:center;gap:6px;justify-content:center;background:var(--ac);color:#fff;font-weight:600;margin:0 0 12px;padding:7px 8px;border-radius:7px}#toc a.pdfl:hover{background:#0b6f6a;color:#fff}#toc a.pdfl::before{content:"⤓";font-size:15px}
+#toc b{display:block;font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+#toc a{display:block;color:var(--ink);text-decoration:none;padding:3px 6px;border-radius:5px;line-height:1.3}
+#toc a.l3{padding-left:18px;color:var(--mu);font-size:13px}
+#toc a:hover,#toc a.on{background:#e3f1ef;color:var(--ac)}
+article{min-width:0;background:var(--pn);border:1px solid var(--bd);border-radius:12px;padding:26px 30px 30px}
+article h1{font-size:28px;line-height:1.2;margin:0 0 6px}
+article .lede{color:var(--mu);font-size:16px;margin:0 0 18px;max-width:72ch}
+article h2{font-size:21px;margin:34px 0 10px;padding-top:12px;border-top:1px solid var(--bd);scroll-margin-top:12px}
+article h3{font-size:17px;margin:24px 0 8px;scroll-margin-top:12px}
+article h4{font-size:15px;margin:18px 0 6px}
+article p,article li{max-width:78ch}
+article li{margin:3px 0}
+article a{color:var(--ac)}
+article code,article kbd{font:13px/1.4 ui-monospace,Consolas,monospace;background:#eef3f2;border:1px solid #dde6e5;border-radius:4px;padding:1px 5px}
+article pre.f{font:14px/1.55 ui-monospace,Consolas,monospace;background:#f3f7f6;border-left:3px solid var(--tl);border-radius:4px;padding:10px 14px;overflow:auto;max-width:100%}
+article table{border-collapse:collapse;margin:10px 0 14px;font-size:14px;display:block;overflow:auto;max-width:100%}
+article th,article td{border:1px solid var(--bd);padding:5px 9px;text-align:left;vertical-align:top}
+article th{background:#eef3f2}
+figure{margin:14px 0 20px;max-width:100%}
+figure img{display:block;max-width:100%;height:auto;border:1px solid var(--bd);border-radius:8px;box-shadow:0 2px 10px #12262d14}
+figure.half{max-width:520px}
+figcaption{color:var(--mu);font-size:13.5px;margin-top:6px;max-width:78ch}
+.tip,.warn{border-radius:8px;padding:10px 14px;margin:12px 0;max-width:78ch;font-size:14.5px}
+.tip{background:#e7f6f3;border:1px solid #b5e3db}
+.warn{background:#fff4e5;border:1px solid #f3cf95}
+.tip b:first-child,.warn b:first-child{margin-right:4px}
+ol.steps{counter-reset:s;list-style:none;padding-left:0}
+ol.steps>li{counter-increment:s;position:relative;padding-left:38px;margin:10px 0}
+ol.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+sup.fn a{text-decoration:none;font-weight:600;padding:0 1px}
+ol.refs{font-size:14px;padding-left:24px}
+ol.refs li{margin:6px 0;scroll-margin-top:12px}
+ol.refs li:target{background:#fff6c9;border-radius:4px}
+ol.refs a.back{text-decoration:none;margin-left:4px}
+.ver{color:var(--mu);font-size:13px}
+@media (max-width:900px){main.doc{grid-template-columns:1fr}#toc{position:static;max-height:none}article{padding:18px 16px 22px}header nav.dn{order:3;width:100%;margin:6px 0 0}header{flex-wrap:wrap}}
+@media print{header,footer,#toc{display:none}main.doc{display:block;padding:0}article{border:0;padding:0}figure img{box-shadow:none}}
+/* the PDF editions (tools/make_docs_pdf.py sets html.pdf): A4, numbered sections on new pages, printed contents, no screen chrome */
+@page{size:A4;margin:20mm 17mm 18mm}
+html.pdf,html.pdf body{background:#fff}
+html.pdf body{font:10pt/1.5 Inter,"Noto Sans","Noto Sans CJK SC","Noto Sans CJK JP","Noto Sans CJK KR",Loma,"DejaVu Sans",FreeSans,FreeSerif,sans-serif;color:#1a2b31}
+html.pdf header,html.pdf footer,html.pdf #toc{display:none}
+html.pdf main.doc{display:block;max-width:none;margin:0;padding:0}
+html.pdf article{border:0;border-radius:0;padding:0;background:none}
+html.pdf article h1{font-size:22pt;color:#0a2f4d;margin:0 0 4pt}
+html.pdf article .lede{font-size:11pt;max-width:none}
+html.pdf article h2{break-before:page;font-size:17pt;color:#0a2f4d;border-top:0;margin:0 0 10pt;padding:0 0 6pt;border-bottom:2pt solid #16c4b4}
+html.pdf article h2:first-of-type{break-before:auto}
+html.pdf article h3{font-size:12.5pt;color:#0b6f6a;margin:16pt 0 5pt;break-after:avoid}
+html.pdf article h4{break-after:avoid}
+html.pdf article p,html.pdf article li{max-width:none;orphans:3;widows:3}
+html.pdf article a{color:#0b6f6a;text-decoration:none}
+html.pdf article pre.f{font-size:8.6pt;white-space:pre-wrap;break-inside:avoid;background:#f3f7f6}
+html.pdf article table{display:table;width:100%;font-size:8.6pt;break-inside:auto}
+html.pdf article tr{break-inside:avoid}
+html.pdf article th{background:#e3f1ef;color:#0a2f4d}
+html.pdf figure{break-inside:avoid;margin:8pt 0 12pt}
+html.pdf figure img{box-shadow:none;border:0.5pt solid #cfd9d8;max-height:150mm;width:auto;max-width:100%}
+html.pdf figure.half img{max-width:62%}
+html.pdf figcaption{font-size:8.6pt}
+html.pdf .tip,html.pdf .warn{break-inside:avoid;max-width:none;font-size:9.4pt}
+html.pdf ol.refs{font-size:8.4pt;padding-left:18pt}html.pdf ol.refs a.back{display:none}
+html.pdf ol.refs a{word-break:break-all}
+html.pdf ol.steps>li::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html.pdf *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+/* printed contents, first page after the cover */
+.ptoc{break-after:page}
+.ptoc h2{font-size:17pt;color:#0a2f4d;margin:0 0 12pt;padding:0 0 6pt;border-bottom:2pt solid #16c4b4}
+.ptoc a{display:flex;align-items:baseline;gap:6pt;color:#1a2b31;text-decoration:none;padding:2.2pt 0;font-size:10pt}
+.ptoc a.l2{font-weight:600;margin-top:5pt}.ptoc a.l3{padding-left:16pt;color:#3d5259;font-size:9.4pt}
+.ptoc a i{flex:1;border-bottom:0.8pt dotted #9bb0b4;transform:translateY(-3pt)}
+.ptoc a b{font-weight:600;min-width:18pt;text-align:right}
+/* cover (rendered on its own page, no running header) */
+.cover{position:relative;height:257mm;display:flex;flex-direction:column;font-family:Inter,"Noto Sans","Noto Sans CJK SC","Noto Sans CJK JP","Noto Sans CJK KR",Loma,"DejaVu Sans",FreeSans,FreeSerif,sans-serif}
+.cover .band{background:linear-gradient(135deg,#0a2f4d,#0b6f6a 70%,#16c4b4);color:#fff;border-radius:6mm;padding:16mm 14mm 14mm}
+.cover .brand{display:flex;align-items:center;gap:5mm;font-size:22pt;font-weight:700}.cover .brand img{width:18mm;height:18mm;border-radius:4mm}.cover .brand span{color:#ff6fc0}
+.cover h1{font-size:34pt;line-height:1.1;margin:22mm 0 6mm;font-weight:700}
+.cover .sub{font-size:12.5pt;line-height:1.45;opacity:.92;max-width:150mm}
+.cover .meta{margin-top:16mm;display:grid;grid-template-columns:max-content 1fr;gap:3mm 8mm;font-size:10.5pt;color:#1a2b31}
+.cover .meta b{color:#5b6e75;font-weight:600}
+.cover .foot{margin-top:auto;font-size:8.6pt;color:#5b6e75;border-top:0.6pt solid #cfd9d8;padding-top:4mm;line-height:1.5}
+html[dir=rtl] .ptoc a.l3{padding-left:0;padding-right:16pt}
+</style></head><body data-doc="science" data-title="Science &amp; references">
+<header><a class="brand" href="../"><img src="../icons/icon-192.png" width="40" height="40" alt=""><span class="nm">Swath<span>Plan</span></span></a>
+<nav class="dn"><a href="../" data-t>All tools</a><a href="../planner/" data-t>Survey planner</a><a href="../infill/" data-t>Infill planner</a><a href="../guide/" data-t>User guide</a><a href="./" class="on" data-t>Science &amp; references</a></nav>
+<select id="langSel" aria-label="Language" title="Language"></select></header>
+<main class="doc">
+<nav id="toc"><a id="pdfL" class="pdfl" href="../docs/pdf/swathplan-science-en.pdf" download="swathplan-science-en.pdf"><span data-t>Download PDF</span></a><b data-t>Contents</b></nav>
+<article dir="ltr">
+<h1>Science and background</h1>
+<p class="lede">The formulas SwathPlan uses, where they come from, and what they assume. Each statement taken from a standard, paper, dataset or datasheet carries a numbered footnote to the original source in the <a href="#references">references</a>. Methods without a footnote are SwathPlan's own, and the text says so. How to use the tools is in the <a href="../guide/">user guide</a>.</p>
+
+<h2 id="1-conventions">1 Conventions</h2>
+<ul>
+<li>Distances in metres, speeds in knots on screen (1 kn = 0.5144 m/s in the formulas), angles from the vertical for beams and from north for azimuths.</li>
+<li><i>d</i> is the depth below the transducer, <i>θ</i> a beam angle, <i>c</i> the sound speed. Where one value is needed, <i>c</i> = 1500 m/s, the usual nominal value for seawater<sup class="fn"><a href="#r3">3</a></sup>.</li>
+<li>Uncertainties are given at the 95 % confidence level, as in IHO S-44: 1.96σ for one-dimensional (vertical) quantities and 2.45σ for two-dimensional (horizontal) ones<sup class="fn"><a href="#r1">1</a></sup>.</li>
+<li>Unless stated, the seabed under each swath or footprint is taken as flat at the depth under the line. This is the usual planning approximation; real slopes widen or narrow the swath.</li>
+</ul>
+
+<h2 id="2-iho-s-44-the-survey-standard">2 IHO S-44, the survey standard</h2>
+<p>SwathPlan checks plans against IHO S-44 <i>Standards for Hydrographic Surveys</i>, Edition 6.2.0 (October 2024)<sup class="fn"><a href="#r1">1</a></sup>, adopted unanimously by the IHO Member States in April 2025<sup class="fn"><a href="#r2">2</a></sup>. The orders and their requirements (S-44 Table 1) are:</p>
+<table><tr><th>Criterion</th><th>Order 2</th><th>Order 1b</th><th>Order 1a</th><th>Special Order</th><th>Exclusive Order</th></tr>
+<tr><td>THU (95 %)</td><td>20 m + 10 % of depth</td><td>5 m + 5 % of depth</td><td>5 m + 5 % of depth</td><td>2 m</td><td>1 m</td></tr>
+<tr><td>TVU <i>a</i></td><td>1.0 m</td><td>0.5 m</td><td>0.5 m</td><td>0.25 m</td><td>0.15 m</td></tr>
+<tr><td>TVU <i>b</i></td><td>0.023</td><td>0.013</td><td>0.013</td><td>0.0075</td><td>0.0075</td></tr>
+<tr><td>Feature detection</td><td>Not specified</td><td>Not specified</td><td>Cubic features &gt; 2 m to 40 m depth; 10 % of depth beyond</td><td>Cubic features &gt; 1 m</td><td>Cubic features &gt; 0.5 m</td></tr>
+<tr><td>Feature search</td><td>Recommended</td><td>Recommended</td><td>100 %</td><td>100 %</td><td>200 %</td></tr>
+<tr><td>Bathymetric coverage</td><td>5 %</td><td>5 %</td><td>≤ 100 %</td><td>100 %</td><td>200 %</td></tr></table>
+<p>The maximum allowed total vertical uncertainty at depth <i>d</i> is<sup class="fn"><a href="#r1">1</a></sup></p>
+<pre class="f">TVU_max(d) = √( a² + (b · d)² )</pre>
+<p>For example, Exclusive Order at 25 m gives √(0.15² + (0.0075 × 25)²) = 0.24 m.</p>
+<p><b>Cross-line check.</b> Where a cross line meets a main line, the same seabed is measured twice. If both soundings meet TVU_max independently, their difference has a standard deviation √2 times larger, so at 95 % the difference should stay within about √2 · TVU_max(d). The results show this value for the depth range; it follows from the propagation of independent errors and is a guide, not an S-44 rule.</p>
+
+<h2 id="3-multibeam-line-planning">3 Multibeam line planning</h2>
+<h3 id="3-1-swath-width-and-line-spacing">3.1 Swath width and line spacing</h3>
+<p>A multibeam echosounder ensonifies a fan of beams across the track<sup class="fn"><a href="#r3">3</a></sup>. On a flat seabed at depth <i>d</i>, with the outer beams at θ<sub>p</sub> (port) and θ<sub>s</sub> (starboard) from the vertical, the swath width is</p>
+<pre class="f">W = d · ( tan θp + tan θs )</pre>
+<p>With overlap fraction <i>o</i> (the overlap width divided by the swath width), neighbouring lines are</p>
+<pre class="f">S = W · ( 1 − o )                e.g. d = 25 m, ±60°, o = 30 %: W = 86.6 m, S = 60.6 m</pre>
+<p>Overlap backs up the noisy outer beams with good inner beams of the next line and absorbs steering and depth errors. Because W grows with depth, the shallowest depth in the area sets the spacing that gives full coverage everywhere; the 5th percentile is a common compromise.</p>
+<h3 id="3-2-adaptive-line-spacing-swathplan-s-method">3.2 Adaptive line spacing (SwathPlan's method)</h3>
+<p>With depth data loaded, SwathPlan places each line as far from the previous one as the local depth allows. For consecutive lines at across-track positions <i>s</i> and <i>s′</i>, with the half-swaths facing each other <i>h(t)</i> and <i>h′(t)</i> computed from the depth under each line along the line coordinate <i>t</i>, the condition is</p>
+<pre class="f">s′ − s ≤ min over t of [ h(t) + h′(t) − o · ( W(t) + W′(t) ) / 2 ]</pre>
+<p>The largest <i>s′</i> that meets it is found by bisection. Lines alternate direction, so port and starboard angles swap from one line to the next, and the code accounts for this. The first and last lines are placed so that the swath reaches the boundary. Like the uniform case, it assumes a flat seabed under each swath at the depth under the line.</p>
+<h3 id="3-3-contour-following-lines-swathplan-s-method">3.3 Contour-following lines (SwathPlan's method)</h3>
+<p>With <i>Follow a depth contour</i> on, the main lines run parallel to one isobath instead of being straight. On a sloping seabed a line along an isobath keeps an even depth, so its swath width stays even.</p>
+<ol>
+<li>The depth is sampled on a regular grid over the area (about 300 cells across) and the isobath at the chosen depth is traced with marching squares<sup class="fn"><a href="#r34">34</a></sup>. Saddle cells are resolved with the mean of the four corners. Where several pieces exist, the one with the most length inside the area is used.</li>
+<li>The isobath is smoothed with two passes of Chaikin's corner cutting<sup class="fn"><a href="#r35">35</a></sup>, simplified with the Douglas–Peucker algorithm<sup class="fn"><a href="#r36">36</a></sup>, and extended straight at both ends so that it spans the area.</li>
+<li>A signed distance to this base line (positive to starboard) is computed on the grid, and every line is the level set at <i>k · S</i>, again traced with marching squares, for whole numbers <i>k</i>. Level sets of a distance field are the exact offset curves without the loops that offsetting a curve point by point produces on its concave side, so neighbouring lines never cross and stay one spacing <i>S</i> apart.</li>
+<li>Each line is cut to the area and, with trimming on, to water outside the safety clearance; the cut ends are refined by bisection. Pieces shorter than the smaller of 50 m and <i>S</i> are dropped.</li>
+<li>Lines are run row by row in alternating directions. Between rows the turn is built as in section 8.1, from the heading at the end of the line; along a row, a straight transit joins the pieces.</li>
+</ol>
+<p>The spacing is the design spacing <i>S</i> of section 3.1 at the design depth: only the line on the base isobath has exactly that depth, and the others are offset curves, not isobaths. Choose the base depth near the shallow side of the area so that the spacing holds where the swath is narrowest. Adaptive spacing (3.2) is not applied.</p>
+<h3 id="3-4-ping-rate-along-track-sampling-and-speed">3.4 Ping rate, along-track sampling and speed</h3>
+<p>Each ping must travel to the farthest point of the swath and back before the next, so the highest ping rate is<sup class="fn"><a href="#r3">3</a></sup></p>
+<pre class="f">f_max = c / (2 R),     R = d / cos θmax         d = 25 m, 60°: R = 50 m, f_max = 15 Hz</pre>
+<p>At speed <i>v</i> the pings are Δx = v / f apart along the track, and the along-track footprint at nadir is about <i>d</i> · β (β = along-track beamwidth in radians)<sup class="fn"><a href="#r3">3</a></sup>. To make sure a small feature is hit by several pings, SwathPlan uses the rule that NOAA set for side-scan sonar: an object must be ensonified at least three times per pass, which gives a maximum speed<sup class="fn"><a href="#r4">4</a></sup></p>
+<pre class="f">v_max = f · T / 3          (T = smallest feature size of the chosen S-44 order)</pre>
+<p>Applied to multibeam it is a planning guide, not an S-44 requirement.</p>
+
+<h2 id="4-uncertainty-budget-a-priori-tpu">4 Uncertainty budget (a priori TPU)</h2>
+<p>The total propagated uncertainty of a sounding combines many independent error sources: range and beam angle, sound speed, vessel motion, heading, positioning, water level and draft<sup class="fn"><a href="#r5">5</a></sup>. SwathPlan uses a simplified a priori model after Hare (1995)<sup class="fn"><a href="#r5">5</a></sup>, with σ for the 1σ input of each source, all angles in radians, x = d tan θ the across-track distance and l = d / cos θ the slant range:</p>
+<pre class="f">σα  = √( σroll² + σpointing² )          beam angle
+Δθ  = tan θ · σc0 / c                  refraction from the sound speed at the transducer
+
+σz² = (σR cos θ)² + (d tan θ σα)² + σheave² + σtide² + σdraft²
+      + (d σc / c)² + (d tan θ Δθ)²
+σh² = σpos² + (x σhdg)² + (d σα)² + (l σpitch)²
+      + (x σc / c)² + (d Δθ)² + (σR sin θ)² + σdraft²
+
+TVU = 1.96 σz        THU = 2.45 σh</pre>
+<p>Here σc0 is the uncertainty of the sound speed at the transducer and σc that of the mean sound-speed profile. TVU and THU are computed for every beam angle from nadir to the sensor's maximum, at the design depth, and compared with the S-44 limits of section 2<sup class="fn"><a href="#r1">1</a></sup>. The widest angle that still meets the order is offered as the swath angle. The model leaves out cross-terms, time latency, lever-arm errors and the sonar's own bottom-detection uncertainty, which grows at the outer beams<sup class="fn"><a href="#r3">3</a></sup>, so check it against your system's own uncertainty model.</p>
+
+<h2 id="5-single-beam-surveys">5 Single-beam surveys</h2>
+<p>A single-beam transducer with full beam width β ensonifies a footprint of diameter about</p>
+<pre class="f">w = 2 d tan(β / 2)</pre>
+<p>on a flat seabed. The main lines alone cover the fraction w / S of the area, and SwathPlan estimates the bathymetric coverage as (Σ main line length + Σ cross line length) · w / area. S-44 accepts less than full coverage only for Order 2 and Order 1b. These need at least 5 % bathymetric coverage, and S-44 6.2.0 asks that registered depth positions be no more than 3 times the water depth, or 25 m, apart, whichever is greater (sections 1.1 and 3.5.2)<sup class="fn"><a href="#r1">1</a></sup>. <i>Use the S-44 maximum</i> applies this rule at the design depth. Order 1a needs a 100 % feature search, and Special and Exclusive Order need full bathymetric coverage, which a single beam cannot give<sup class="fn"><a href="#r1">1</a></sup>.</p>
+<p>The transducer presets are typical beam widths for 200 kHz and 33 kHz survey transducers, not values of a particular model.</p>
+
+<h2 id="6-geophysical-surveys">6 Geophysical surveys</h2>
+<h3 id="6-1-side-scan-sonar">6.1 Side-scan sonar</h3>
+<p>A side-scan sonar images a strip on each side of the towfish out to its range <i>R</i>, with a gap under the towfish about as wide as its height above the seabed on each side<sup class="fn"><a href="#r6">6</a></sup>. For a seabed coverage <i>C</i> (100 % = every point seen once, 200 % = twice<sup class="fn"><a href="#r4">4</a></sup>) and an overlap margin <i>m</i>:</p>
+<pre class="f">S = 2R / (C / 100) · (1 − m)</pre>
+<p>200 % coverage, with alternate lines filling each other's nadir gap, is the usual practice for object detection<sup class="fn"><a href="#r4">4</a></sup><sup class="fn"><a href="#r6">6</a></sup>. The ping rate is limited by the two-way travel to the range, f = c / (2R), and the speed by the three-ping rule<sup class="fn"><a href="#r4">4</a></sup>:</p>
+<pre class="f">v_max = L_target · f / n_pings          (NOAA: 1 m object, 3 pings)</pre>
+<p>The model and frequency list gives each system's longest range per side from its datasheet: EdgeTech 4125 (150 m at 400 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r22">22</a></sup>, EdgeTech 4200 (230 m at 300 kHz, 120 m at 600 kHz)<sup class="fn"><a href="#r23">23</a></sup>, Klein 3900 (150 m at 445 kHz, 50 m at 900 kHz)<sup class="fn"><a href="#r24">24</a></sup> and Klein 4900 (200 m at 455 kHz, 75 m at 900 kHz)<sup class="fn"><a href="#r25">25</a></sup>; section 14 lists the other models and their sources. These are maximum operating ranges. The usable range in a given survey also depends on the towfish height, the water conditions and the target size, so the range field stays editable.</p>
+<h3 id="6-2-magnetometer">6.2 Magnetometer</h3>
+<p>The anomaly of a ferrous object falls off quickly with distance (with the cube of the distance for a dipole)<sup class="fn"><a href="#r7">7</a></sup>. So the planner asks for the distance <i>D</i> at which your target can still be detected, and the sensor height <i>h</i> above the seabed. A seabed point is within reach if it is within <i>D</i> of the sensor, so the lines can be up to</p>
+<pre class="f">S = 2 √( D² − h² )              (only when D &gt; h)</pre>
+<p>apart. At speed <i>v</i> and sample rate <i>f</i>, samples are v / f apart along the line. Choosing <i>D</i> for a target is a matter of the target's magnetic moment and the site's noise. The planner does not model it.</p>
+<h3 id="6-3-sub-bottom-profiler-and-uhr-seismic">6.3 Sub-bottom profiler and UHR seismic</h3>
+<p>Both use the grid spacing you enter. For 2D seismic, a line only reaches full fold once the whole streamer has passed over the start of the target area<sup class="fn"><a href="#r8">8</a></sup>, so the planner extends seismic lines by half the active streamer length at each end. Towed sensors add their layback behind the antenna to the run-in. The spacing used is the smallest of the ticked sensors.</p>
+
+<h2 id="7-drone-photogrammetry-and-lidar">7 Drone photogrammetry and LiDAR</h2>
+<p>For a nadir camera with sensor width S<sub>w</sub> and height S<sub>h</sub> (mm), focal length F (mm, the real focal length, not the 35 mm equivalent), image width N pixels, at height H above ground<sup class="fn"><a href="#r9">9</a></sup><sup class="fn"><a href="#r10">10</a></sup>:</p>
+<pre class="f">footprint across = H · Sw / F       footprint along = H · Sh / F
+GSD = footprint across / N           (ground sample distance, m per pixel)
+line spacing     = footprint across · (1 − side overlap)
+photo distance   = footprint along  · (1 − forward overlap)
+photo interval   = photo distance / v</pre>
+<p>For example, the DJI Mavic 3 Enterprise wide camera (17.3 × 13 mm, 12.3 mm, 5280 px)<sup class="fn"><a href="#r26">26</a></sup> at 100 m gives a 140.7 m footprint across, a GSD of 2.66 cm, 49.2 m line spacing at 65 % side overlap and a photo every 26.4 m at 75 % forward overlap. The defaults, 75 % forward and 65 % side, follow common practice: Pix4D recommends at least 75 % forward and 60 % side for general mapping<sup class="fn"><a href="#r10">10</a></sup>. The plan check compares the photo interval with the camera's shortest interval: 0.7 s for the Mavic 3 Enterprise<sup class="fn"><a href="#r26">26</a></sup> and the Zenmuse P1<sup class="fn"><a href="#r29">29</a></sup>, 0.5 s for the Matrice 4E<sup class="fn"><a href="#r27">27</a></sup> and 2.5 s for the Phantom 4 RTK<sup class="fn"><a href="#r28">28</a></sup>.</p>
+<p>Photos are counted as Σ line length / photo distance plus one per line. Batteries are the flight time divided by the time per battery, rounded up, and each change adds its time to the plan. The height warning uses 120 m, the limit for the EU open category<sup class="fn"><a href="#r11">11</a></sup>; the US limit is 400 ft above ground level<sup class="fn"><a href="#r12">12</a></sup>. Local rules and permissions decide.</p>
+<p>The waypoint exports switch distance-based triggering on after the first waypoint with MAVLink command 206, <code>MAV_CMD_DO_SET_CAM_TRIGG_DIST</code> (parameter 1 the distance, parameter 3 one picture at once), and off at the end with a distance of 0<sup class="fn"><a href="#r13">13</a></sup>.</p>
+<p><b>LiDAR.</b> A scanner with across-track field of view FOV, point rate P (points per second, single return), at height H and ground speed v, over flat ground:</p>
+<pre class="f">swath          = 2 · H · tan(FOV / 2)
+line spacing   = swath · (1 − side overlap)
+density, 1 pass = P / (v · swath)                (points per m²)
+density        = density, 1 pass / (1 − side overlap)
+slant range at the swath edge = H / cos(FOV / 2)
+highest speed for a target density D = P / (D · (1 − side overlap) · swath)</pre>
+<p>The average density counts every emitted point once on the ground; with side overlap each point of the ground is swept 1 / (1 − overlap) times on average. The detection range is the maker's figure for 10 % reflectivity in bright light, which is about the darkest common ground (asphalt, wet soil). The plan check compares it with the height and with the slant range at the swath edge. For example, the DJI Zenmuse L2 (70° across, 240,000 points/s single return, 250 m at 10 % reflectivity and 100 klx)<sup class="fn"><a href="#r38">38</a></sup> at 100 m and 10 m/s sweeps 140 m and gives 171 points/m² per pass, 343 with 50 % side overlap; the edge slant range is 122 m. The L1 has a 70.4° field of view in repetitive scanning, the same 240,000 points/s single return and 190 m at 10 %<sup class="fn"><a href="#r39">39</a></sup>. The L3 scans up to 80°, its pulse rate is adjustable from 100 kHz to 2 MHz, and it detects 700 m at 10 % reflectivity at 350 kHz (950 m at 100 kHz)<sup class="fn"><a href="#r40">40</a></sup>. In non-repetitive scanning the pattern also spreads along track, but the average density per pass is the same, since it depends only on the point rate and the area swept per second.</p>
+
+<h3 id="7-1-terrain-following-swathplan-s-method">7.1 Terrain following (SwathPlan's method)</h3>
+<p>Over sloping ground a fixed flight altitude changes the height above ground, and with it the image scale, the footprint, the overlaps and the LiDAR swath and density. With terrain following, the planner samples a terrain model (SRTM 30 m from the AWS Terrain Tiles<sup class="fn"><a href="#r64">64</a></sup><sup class="fn"><a href="#r32">32</a></sup>, the NOAA NCEI DEM mosaic<sup class="fn"><a href="#r21">21</a></sup>, or a GeoTIFF or ESRI ASCII elevation grid) on a regular grid over the plan and interpolates it bilinearly. Each line is split into waypoints every d metres (the waypoint spacing). With z(·) the terrain, z₀ the ground at the take-off point and H the flight height:</p>
+<pre class="f">leg maximum   m_k = max z along the leg from waypoint k to k+1   (sampled every min(10 m, d/4))
+height of waypoint k above take-off = H + max(m_k−1, m_k) − z₀</pre>
+<p>Both ends of every leg are then at least H above the highest sampled ground on that leg, and so is every point of the straight leg between them. A waypoint is dropped when the straight leg from the last kept waypoint to the next one passes between 0.5 m below and 2 m above it, so waypoints remain only where the slope changes; line ends are always kept. The plan check reports the range of heights above ground along the lines, the resulting range of GSD (camera) or the slant range at the highest point (LiDAR), and warns above 700 waypoints, the mission size of many ArduPilot boards. Without terrain following, a loaded model is used to warn where the ground rises above the flight altitude or where the height above ground changes by more than 20 %. The exports give each waypoint its height relative to the take-off point (MAVLink frame 3, <code>MAV_FRAME_GLOBAL_RELATIVE_ALT</code>)<sup class="fn"><a href="#r13">13</a></sup>.</p>
+<p>A terrain model gives bare-earth or surface heights at its own resolution and accuracy: SRTM was specified to 16 m absolute height error at 90 % confidence, and it smooths away objects smaller than its 30 m cells<sup class="fn"><a href="#r64">64</a></sup>. Trees, buildings, masts and wires are not in the plan. The margin is the pilot's.</p>
+
+<h2 id="8-turns-time-and-cost">8 Turns, time and cost</h2>
+<h3 id="8-1-williamson-style-and-u-turns">8.1 Williamson-style and U-turns</h3>
+<p>The vessel runs the next line in the opposite direction. With line spacing <i>S</i> and turning radius <i>R</i>:</p>
+<ul>
+<li>If S ≥ 2R, a U-turn: two quarter circles and a straight connector of length S − 2R.</li>
+<li>If S &lt; 2R, a bulb turn named after the Williamson man-overboard manoeuvre: turn away from the next line by an angle α, then the opposite way by 180° + α, ending on the reciprocal heading on the next line.</li>
+</ul>
+<pre class="f">S = 2R cos α  →  α = arccos( S / 2R )
+path length = Rα + R(π + α) = R(π + 2α)
+overshoot beyond the line end = 2R sin α          R = 35 m, S = 60.6 m: α = 30°, 146.6 m, 35 m</pre>
+<p>This is geometry with a constant radius. Real vessels have a limited rate of turn and slow down in turns, so enter a measured radius. <i>Recommend R from LOA</i> uses 2.5 × the vessel length as a first guess, a rule of thumb of SwathPlan, not a published value.</p>
+<h3 id="8-2-time-and-cost-swathplan-s-model">8.2 Time and cost (SwathPlan's model)</h3>
+<pre class="f">on-line time   = Σ line lengths / v
+turn time      = Σ turn and transit lengths / v_turn
+productive     = on-line + turns
+total project  = (productive + SVP casts + calibration) / (1 − w) + mobilisation
+cost           = total project (days) × day rate</pre>
+<p>Here <i>w</i> is the weather and downtime allowance. SVP time is the number of casts (productive time divided by the cast interval) times the cast duration. Days are the total divided by the operating hours per day. On-line efficiency is on-line time over productive time; a low value means turns dominate. Pings are the ping rate times the on-line time, and soundings are pings times beams. For drones, battery changes take the place of SVP casts and there is no slow-down in turns.</p>
+
+<h2 id="9-corridors-and-segments-swathplan-s-method">9 Corridors and segments (SwathPlan's method)</h2>
+<p>Corridor lines are offsets of the route centreline at fixed distances (starboard positive), cut to the route ends and extended for run-in and run-out. KP is the distance along the route from its first point plus the starting KP. A route of length L is split into n = ⌈L / L<sub>seg</sub>⌉ segments, and segment <i>i</i> (from 0) runs from</p>
+<pre class="f">max(0, i·Lseg − O/2)   to   min(L, (i+1)·Lseg + O/2)</pre>
+<p>so neighbouring segments overlap by O. Each segment gets its own offset lines from the cut piece of the route and its own outline; between segments the vessel transits in a straight line. When exporting one file per segment, a cross line goes to the first segment whose outline holds its middle.</p>
+
+<h2 id="10-coordinates-and-datums">10 Coordinates and datums</h2>
+<p>The map works in a local metric frame around the area's centre (an equirectangular approximation, accurate for areas of some tens of kilometres). Conversion to UTM or a custom Transverse Mercator, and back, uses the series formulas of Snyder (1987)<sup class="fn"><a href="#r14">14</a></sup>. Datum shifts use the abridged Molodensky transformation with three translation parameters<sup class="fn"><a href="#r15">15</a></sup>, accurate to a few metres with published parameters. EPSG codes are converted with the proj4js library<sup class="fn"><a href="#r16">16</a></sup>; datum grid files are not supported.</p>
+
+<h2 id="11-coastlines-and-land-avoidance">11 Coastlines and land avoidance</h2>
+<p>OpenStreetMap coastlines are drawn with the land on the left and the water on the right of the line<sup class="fn"><a href="#r17">17</a></sup>. SwathPlan intersects each survey line with the coastline, cuts it at the crossings, decides which side is water from the nearest segment, and removes a clearance zone, a capsule with the radius of the safety distance around each coastline segment. Land polygons use an inside/outside test (even-odd) instead, which does not depend on the direction of the rings.</p>
+<p>The built-in coastline is Natural Earth, a public-domain dataset<sup class="fn"><a href="#r18">18</a></sup>. For land avoidance SwathPlan uses the 1:10m land polygons with minor islands, cut to the area. The 1:10m coastline lines are not used for this: their direction is not consistent, and most continental coasts are open pieces, so the land side cannot be told from them. The 1:50m coastline, kept inside each page as a fallback, has closed rings stored in both directions, so SwathPlan turns every closed ring counter-clockwise (land on the left) before use. Natural Earth is generalised for small-scale maps: expect errors of a few hundred metres at 1:10m and about a kilometre at 1:50m. For detailed work, load GSHHG (full resolution)<sup class="fn"><a href="#r19">19</a></sup> or OpenStreetMap land polygons as GeoJSON.</p>
+<p>Turn paths are checked against the same coastline. Each turn is a polyline of points along its arcs. A turn is flagged when any of its straight pieces crosses a coastline segment (a proper intersection, found with orientation tests) or comes closer to one than the safety clearance (the shortest segment-to-segment distance, the least of the four point-to-segment distances), or when its middle point lies on land, which catches a turn wholly inside a land polygon. A grid of the coastline segments, with cells of at least 200 m and four times the clearance, keeps the test fast for thousands of turns.</p>
+
+<h2 id="12-bathymetry-sources">12 Bathymetry sources</h2>
+<table><tr><th>Source</th><th>Coverage</th><th>Resolution</th><th>Reference</th></tr>
+<tr><td>GMRT (Global Multi-Resolution Topography)</td><td>Global</td><td>Native multibeam resolution where surveyed, GEBCO elsewhere</td><td>Ryan et al. (2009)<sup class="fn"><a href="#r20">20</a></sup></td></tr>
+<tr><td>NOAA NCEI DEM mosaic</td><td>Global</td><td>Coastal DEMs where available, ETOPO 2022 (15″) elsewhere</td><td>NOAA NCEI (2022)<sup class="fn"><a href="#r21">21</a></sup></td></tr>
+<tr><td>EMODnet Digital Bathymetry</td><td>European seas</td><td>1/16 arc-minute (≈ 115 m)</td><td>EMODnet Bathymetry Consortium<sup class="fn"><a href="#r30">30</a></sup></td></tr>
+</table>
+<p>Only the part of the box near the survey area is fetched. GMRT and EMODnet are requested in pieces of about 300 × 300 cells that come within 500 m (or three cells) of the area or corridor, at most 40 pieces; with more, the resolution is coarsened by 1.4 until 40 suffice. NOAA NCEI is sampled at points near the area, at most 12,000. A piece that fails or comes back cut short is reported and left out, never read as zero depth.</p>
+<p>These grids blend surveys of very different age and quality and are referenced roughly to mean sea level. They are good for sizing a plan, but cannot meet S-44 depth uncertainty and may miss shoals, wrecks and dredged channels. None of them may be used for navigation<sup class="fn"><a href="#r20">20</a></sup><sup class="fn"><a href="#r31">31</a></sup>.</p>
+
+<h2 id="13-infill-planning">13 Infill planning</h2>
+<p>The infill planner rasterises the area into cells (the grid cell size). From a processed GeoTIFF<sup class="fn"><a href="#r33">33</a></sup>, a cell is covered when the grid or mosaic has data there. From track lines, a cell is covered when it falls inside a track's swath. For multibeam the swath comes from the depth and swath angles; for side-scan it runs from the nadir gap to the range on each side<sup class="fn"><a href="#r6">6</a></sup>. At 200 % coverage a cell counts as covered only when two tracks see it<sup class="fn"><a href="#r4">4</a></sup>. Uncovered cells are grouped into gaps, gaps smaller than the chosen minimum are ignored, and lines are planned across each gap with the spacing of the chosen coverage. Each line is cut into runs where its strip has gap cells; a covered stretch longer than four cells (or twice the line extension) splits it. With a margin outside the boundary, cells within that distance of an edge or a corner are added, each assigned to its edge. Margin gaps are grouped per edge and planned along it, and gaps are visited nearest first. The coverage percentage counts only the cells inside the boundary.</p>
+
+<h2 id="14-equipment-values">14 Equipment values</h2>
+<p>The catalogues give values from manufacturers' published specifications, accessed November 2026, and stay editable. Where a maker publishes no shortest photo interval, the planner uses 1 s.</p>
+<table><tr><th>Item</th><th>Values used</th><th>Source</th></tr>
+<tr><td>EdgeTech 4125</td><td>150 m @ 400 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r22">22</a></sup></td></tr>
+<tr><td>EdgeTech 4200</td><td>230 m @ 300 kHz, 120 m @ 600 kHz per side</td><td><sup class="fn"><a href="#r23">23</a></sup></td></tr>
+<tr><td>Klein 3900</td><td>150 m @ 445 kHz, 50 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r24">24</a></sup></td></tr>
+<tr><td>Klein 4900</td><td>200 m @ 455 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r25">25</a></sup></td></tr>
+<tr><td>EdgeTech 4200 (also)</td><td>500 m @ 100 kHz, 150 m @ 400 kHz, 75 m @ 900 kHz per side</td><td><sup class="fn"><a href="#r41">41</a></sup></td></tr>
+<tr><td>EdgeTech 4205</td><td>600 m @ 120, 350 m @ 230, 200 m @ 410, 150 m @ 540, 90 m @ 850 kHz per side</td><td><sup class="fn"><a href="#r42">42</a></sup></td></tr>
+<tr><td>EdgeTech 2205 (AUV/ROV)</td><td>1000 m @ 75, 500 m @ 120, 300 m @ 230, 200 m @ 410, 150 m @ 540, 75 m @ 850, 35 m @ 1600 kHz per side</td><td><sup class="fn"><a href="#r43">43</a></sup></td></tr>
+<tr><td>Klein UUV 3500, HydroScan</td><td>150 m @ 455 kHz, 75 m @ 900 kHz (typical) per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Klein System 4000</td><td>200 m @ 400 kHz per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Klein MA-X VIEW 600 / 4K-MAX</td><td>120 m @ 600 kHz per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Klein MANTIS UUV</td><td>150 m @ 600, 100 m @ 720, 75 m @ 850 kHz per side</td><td><sup class="fn"><a href="#r44">44</a></sup></td></tr>
+<tr><td>Kraken KATFISH (SAS)</td><td>200 m per side, 337 kHz centre per side</td><td><sup class="fn"><a href="#r45">45</a></sup></td></tr>
+<tr><td>StarFish 452F, 990F</td><td>100 m @ 450 kHz, 35 m @ 1 MHz per side</td><td><sup class="fn"><a href="#r46">46</a></sup></td></tr>
+<tr><td>Imagenex 872 YellowFin</td><td>200 m range scale @ 260 kHz per side</td><td><sup class="fn"><a href="#r47">47</a></sup></td></tr>
+<tr><td>DeepVision DE340D, DE680SAR</td><td>200 m @ 340 kHz, 50 m @ 680 kHz per side</td><td><sup class="fn"><a href="#r48">48</a></sup></td></tr>
+<tr><td>JW Fishers SSS-100K, 600K, 1200K</td><td>600 m @ 100, 75 m @ 600, 25 m @ 1200 kHz per side</td><td><sup class="fn"><a href="#r49">49</a></sup></td></tr>
+<tr><td>DJI Mavic 3 Enterprise (wide)</td><td>17.3 × 13 mm, 12.3 mm, 5280 px, 0.7 s</td><td><sup class="fn"><a href="#r26">26</a></sup></td></tr>
+<tr><td>DJI Matrice 4E (wide)</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent (12.3 mm), 5280 px, 0.5 s</td><td><sup class="fn"><a href="#r27">27</a></sup></td></tr>
+<tr><td>DJI Phantom 4 RTK</td><td>1″ (13.2 × 8.8 mm), 8.8 mm, 5472 px, 2.5 s</td><td><sup class="fn"><a href="#r28">28</a></sup></td></tr>
+<tr><td>DJI Zenmuse P1, 35 mm lens</td><td>35.9 × 24 mm, 35 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr>
+<tr><td>DJI Zenmuse L2 (LiDAR)</td><td>70° across, 240,000 points/s, 250 m at 10 %</td><td><sup class="fn"><a href="#r38">38</a></sup></td></tr>
+<tr><td>DJI Zenmuse L1 (LiDAR)</td><td>70.4° across, 240,000 points/s, 190 m at 10 %</td><td><sup class="fn"><a href="#r39">39</a></sup></td></tr>
+<tr><td>DJI Zenmuse L3 (LiDAR, 350 kHz)</td><td>80° across, 350,000 points/s, 700 m at 10 %</td><td><sup class="fn"><a href="#r40">40</a></sup></td></tr>
+<tr><td>DJI Zenmuse P1, 24 and 50 mm lenses</td><td>35.9 × 24 mm, 24 / 50 mm, 8192 px, 0.7 s</td><td><sup class="fn"><a href="#r29">29</a></sup></td></tr>
+<tr><td>DJI Mavic 3M, Matrice 3D (wide), Zenmuse L2 RGB</td><td>4/3″ (17.3 × 13 mm), 24 mm equivalent, 5280 px; L2: 0.7 s</td><td><sup class="fn"><a href="#r50">50</a></sup></td></tr>
+<tr><td>Autel EVO II Pro RTK V3</td><td>1″ (13.2 × 8.8 mm), 29 mm equivalent (10.6 mm), 5472 px</td><td><sup class="fn"><a href="#r51">51</a></sup></td></tr>
+<tr><td>senseFly S.O.D.A., Aeria X</td><td>1″, 10.6 mm, 5472 px; APS-C, 18.5 mm, 6000 px</td><td><sup class="fn"><a href="#r52">52</a></sup></td></tr>
+<tr><td>Sony RX1R II, a6100, ILX-LR1 (Wingtra, Quantum Systems)</td><td>35.9 × 24 mm, 35 mm, 42 MP; 23.5 × 15.6 mm, 20 mm, 6000 px; 35.7 × 23.8 mm, 24 mm, 61 MP</td><td><sup class="fn"><a href="#r53">53</a></sup></td></tr>
+<tr><td>Phase One iXM-100</td><td>43.9 × 32.9 mm, 35 / 80 mm, 11664 px, 3 frames/s</td><td><sup class="fn"><a href="#r54">54</a></sup></td></tr>
+<tr><td>Livox Avia; YellowScan Mapper+; CHCNAV AlphaAir 450 (LiDAR)</td><td>70.4° across, 240,000 points/s, 190 m at 10 %</td><td><sup class="fn"><a href="#r55">55</a></sup></td></tr>
+<tr><td>YellowScan Surveyor Ultra (LiDAR)</td><td>360° scanner, 640,000 points/s (160,000 within 90° downward), 140 m at 10 %</td><td><sup class="fn"><a href="#r55">55</a></sup></td></tr>
+<tr><td>RIEGL miniVUX-3UAV (LiDAR)</td><td>100,000 measurements/s at 120° (300 kHz), 170 m at 20 %</td><td><sup class="fn"><a href="#r56">56</a></sup></td></tr>
+<tr><td>Klein System 4000 (also), D3500TF</td><td>600 m @ 100 kHz; D3500TF: 600 m @ 100, 200 m @ 400 kHz per side</td><td><sup class="fn"><a href="#r57">57</a></sup></td></tr>
+<tr><td>Klein 4K-SVY, System 5000 V2</td><td>250 m @ 300, 120 m @ 600 kHz; 5000 V2: 250 m @ 455 kHz per side</td><td><sup class="fn"><a href="#r57">57</a></sup></td></tr>
+<tr><td>EdgeTech 4125i</td><td>200 m @ 400, 120 m @ 600, 75 m @ 900, 35 m @ 1600 kHz per side</td><td><sup class="fn"><a href="#r58">58</a></sup></td></tr>
+<tr><td>Marine Sonic Sea Scan HDS</td><td>200 m @ 300, 75 m @ 600, 50 m @ 900, 25 m @ 1200, 15 m @ 1800 kHz per side</td><td><sup class="fn"><a href="#r58">58</a></sup></td></tr>
+<tr><td>Tritech SeaKing towfish; Imagenex SportScan, 878; Cerulean Omniscan 450 SS</td><td>200 m @ 325, 75 m @ 675 kHz; 120 m @ 330 kHz; 300 m @ 260 kHz; 150 m @ 450 kHz per side</td><td><sup class="fn"><a href="#r58">58</a></sup></td></tr>
+<tr><td>C-MAX CM2 DF, CM2 EDF</td><td>500 m @ 100, 150 m @ 325 kHz; 150 m @ 325, 50 m @ 780 kHz per side</td><td><sup class="fn"><a href="#r59">59</a></sup></td></tr>
+<tr><td>Humminbird Side Imaging, MEGA SI, MEGA SI+</td><td>122 m @ 455, 38 m @ 800 kHz; 38 m @ 1.2 MHz; 61 m @ about 1.1 MHz per side (half the published side-to-side range)</td><td><sup class="fn"><a href="#r60">60</a></sup></td></tr>
+<tr><td>Garmin SideVü, UHD SideVü</td><td>152 m @ 455 kHz, 61 m @ 1 MHz; GT34UHD: 38 m @ 1.2 MHz per side</td><td><sup class="fn"><a href="#r60">60</a></sup></td></tr>
+<tr><td>Lowrance / Simrad Active Imaging, Raymarine SideVision</td><td>91 m @ 455 kHz, 46 m @ 800 kHz or 1.2 MHz (HD); 91 m @ 350 kHz per side</td><td><sup class="fn"><a href="#r60">60</a></sup></td></tr>
+<tr><td>Hi-Target / SatLab HydroScan 1400, 4900; ZHD SS3060, SS4090; HMS-624</td><td>450 m @ 100, 150 m @ 400 kHz; 150 m @ 400, 75 m @ 900 kHz; 250 m @ 300, 150 m @ 600 kHz; 200 m @ 400 kHz; 600 m @ 100, 200 m @ 400 kHz per side</td><td><sup class="fn"><a href="#r61">61</a></sup></td></tr>
+<tr><td>Phase One P5</td><td>128 MP, 3.45 µm pixels (46.2 × 32.9 mm, 13,392 px), 35 / 80 mm, 4 frames/s</td><td><sup class="fn"><a href="#r62">62</a></sup></td></tr>
+<tr><td>DJI Matrice 4T (wide); Parrot ANAFI Ai; Skydio X10 (wide)</td><td>1/1.3″ 48 MP, 24 mm equivalent (6.7 mm), 8064 px, 0.7 s; 1/2″ 48 MP, 24 mm equivalent (4.4 mm), 8000 px, 1 frame/s; 1″ 50 MP, 20 mm equivalent (7.6 mm), 8192 px</td><td><sup class="fn"><a href="#r62">62</a></sup></td></tr>
+<tr><td>RIEGL VUX-120²³; Phoenix RANGER-U120; YellowScan Voyager (LiDAR)</td><td>100°, up to 2,000,000 measurements/s (Voyager: 1.8 MHz, 1,500,000), 760 m at 20 %</td><td><sup class="fn"><a href="#r63">63</a></sup></td></tr>
+<tr><td>Quantum Systems Qube 240 (LiDAR)</td><td>70°, 240,000 shots/s, 140 m maximum height</td><td><sup class="fn"><a href="#r63">63</a></sup></td></tr>
+<tr><td>Hesai XT32 scanners: Qube 640, Wingtra LIDAR, ROCK R3 Pro V2, GreenValley LiAir X3C-H (LiDAR)</td><td>360°, 640,000 points/s single return, counted within 120° (Qube 640) or 90° downward; 80 m at 10 %</td><td><sup class="fn"><a href="#r63">63</a></sup></td></tr>
+<tr><td>GreenValley LiAir V70 / X3 (LiDAR)</td><td>Livox Avia: 70.4°, 240,000 points/s, 190 m at 10 %</td><td><sup class="fn"><a href="#r63">63</a></sup></td></tr></table>
+<p>Multibeam models checked against the manufacturer's published datasheet or manual in November 2026<sup class="fn"><a href="#r37">37</a></sup>. The half-angle is half the swath sector the maker states for a flat seabed (for NORBIT, half the sector it gives for IHO Special Order quality); "n/a" means the datasheet does not give a single-swath beam count.</p>
+<table><tr><th>Model</th><th>Beams</th><th>Frequency</th><th>Max half-angle</th><th>Source</th></tr>
+<tr><td>Kongsberg EM 2040C</td><td>512</td><td>200–400 kHz + 700 kHz</td><td>70°</td><td>Kongsberg EM 2040C MKII data sheet 443809</td></tr>
+<tr><td>Kongsberg EM 2040P</td><td>n/a</td><td>200–700 kHz</td><td>85°</td><td>Kongsberg EM 2040P MKII data sheet 437136</td></tr>
+<tr><td>Kongsberg EM 2040-04 Single RX (MKII)</td><td>n/a</td><td>200–700 kHz</td><td>85°</td><td>Kongsberg EM 2040 MKII data sheet 443810</td></tr>
+<tr><td>Kongsberg EM 2040-07 Dual RX (MKII)</td><td>n/a</td><td>200–700 kHz</td><td>85°</td><td>Kongsberg EM 2040 MKII data sheet 443810</td></tr>
+<tr><td>Kongsberg EM 2042</td><td>1024</td><td>150–700 kHz</td><td>85°</td><td>Kongsberg EM2042 data sheets 496233 and 110-0132023</td></tr>
+<tr><td>Kongsberg EM 712</td><td>n/a</td><td>40–100 kHz</td><td>70°</td><td>Kongsberg EM 712 data sheet</td></tr>
+<tr><td>Kongsberg EM 124</td><td>1024</td><td>10.5–13.5 kHz</td><td>75°</td><td>Kongsberg EM 124 presentation (Lobecker, IRSO 2023)</td></tr>
+<tr><td>Teledyne RESON SeaBat T20-P</td><td>1024</td><td>190–420 kHz</td><td>70°</td><td>Teledyne RESON SeaBat T20-P product leaflet</td></tr>
+<tr><td>Teledyne RESON SeaBat T20-R</td><td>1024</td><td>190–420 kHz</td><td>70°</td><td>Teledyne RESON SeaBat T20-R/T20-P product leaflets</td></tr>
+<tr><td>Teledyne RESON SeaBat T50-P</td><td>1024</td><td>190–420 kHz</td><td>75°</td><td>Teledyne RESON SeaBat T50-P/T50-R/T50-S product leaflets</td></tr>
+<tr><td>Teledyne RESON SeaBat T50-R</td><td>1024</td><td>190–420 kHz</td><td>75°</td><td>Teledyne RESON SeaBat T50-R/T50-S product leaflets</td></tr>
+<tr><td>Teledyne RESON SeaBat T51-S</td><td>1024</td><td>400/800 kHz</td><td>85°</td><td>Teledyne RESON SeaBat T51-S product leaflet</td></tr>
+<tr><td>Teledyne RESON SeaBat T51-R</td><td>1024</td><td>350–800 kHz</td><td>75°</td><td>Teledyne RESON SeaBat T51-R product leaflet and launch release (2021)</td></tr>
+<tr><td>R2Sonic Sonic 2020</td><td>256</td><td>200–400 kHz + 700 kHz</td><td>65°</td><td>R2Sonic Sonic 2020 brochure</td></tr>
+<tr><td>R2Sonic Sonic 2022</td><td>256</td><td>200–400 kHz</td><td>80°</td><td>R2Sonic Sonic 2024/2022 operation manual</td></tr>
+<tr><td>R2Sonic Sonic 2024</td><td>256</td><td>200–400 kHz</td><td>80°</td><td>R2Sonic Sonic 2024/2022 operation manual</td></tr>
+<tr><td>R2Sonic Sonic 2026</td><td>256</td><td>n/a</td><td>80°</td><td>R2Sonic Sonic 2026/2024/2022 operation manual V6.3</td></tr>
+<tr><td>NORBIT iWBMS</td><td>1024</td><td>200–700 kHz</td><td>77°</td><td>NORBIT iWBMS data sheets (IHO Special Order sector >155°)</td></tr>
+<tr><td>NORBIT WINGHEAD i77h</td><td>1024</td><td>200–700 kHz</td><td>77°</td><td>NORBIT WINGHEAD i77h data sheet PS-200004 (IHO Special Order sector >155°)</td></tr>
+<tr><td>NORBIT WINGHEAD i80s</td><td>1024</td><td>200–700 kHz</td><td>70°</td><td>NORBIT WINGHEAD i80S LR data sheet PS-230008</td></tr>
+</table>
+<p>The other multibeam entries, mostly discontinued models, are compiled from public lists and marked in the planner as not yet checked; check your sensor's datasheet.</p>
+
+<h2 id="15-assumptions-and-limitations">15 Assumptions and limitations</h2>
+<ul>
+<li>Flat seabed under each swath or footprint; no refraction or beam-angle limits other than those you enter.</li>
+<li>A single nominal sound speed (1500 m/s) for ping rates.</li>
+<li>Straight, parallel lines for areas, or offsets of one isobath when following a contour; offset lines for corridors.</li>
+<li>Constant speeds; currents, traffic and port calls are not modelled.</li>
+<li>Turns are checked against the loaded coastline only; shoals, structures and traffic are not considered.</li>
+<li>Coastlines and global bathymetry are not navigation data. Plan against official charts and local notices.</li>
+</ul>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li id="r1">International Hydrographic Organization (2024). <i>S-44: IHO Standards for Hydrographic Surveys</i>, Edition 6.2.0, October 2024. Monaco: IHO. <a href="https://iho.int/en/standards-and-specifications">iho.int/en/standards-and-specifications</a></li>
+<li id="r2">International Hydrographic Organization (2025). Circular Letter 21/2025: Adoption of Edition 6.2.0 of S-44, 24 April 2025. <a href="https://iho.int/uploads/user/circular_letters/eng_2025/CL21_2025_EN_v1.pdf">iho.int</a></li>
+<li id="r3">Lurton, X. (2010). <i>An Introduction to Underwater Acoustics: Principles and Applications</i>, 2nd edition. Berlin: Springer / Chichester: Praxis.</li>
+<li id="r4">NOAA Office of Coast Survey (2003). <i>NOS Hydrographic Surveys Specifications and Deliverables</i>, March 2003, chapter 6, Towed Side Scan Sonar (coverage; speed so that a 1 m object is ensonified at least three times per pass). Current edition: <i>Hydrographic Survey Specifications and Deliverables</i>, version 2024. <a href="https://nauticalcharts.noaa.gov/publications/documents/HSSD_2024-1-01.pdf">nauticalcharts.noaa.gov</a></li>
+<li id="r5">Hare, R. (1995). Depth and position error budgets for multibeam echosounding. <i>International Hydrographic Review</i> LXXII(2), 37–69. <a href="https://journals.lib.unb.ca/index.php/ihr/article/view/23178">journals.lib.unb.ca</a></li>
+<li id="r6">Blondel, P. (2009). <i>The Handbook of Sidescan Sonar</i>. Berlin: Springer / Chichester: Praxis.</li>
+<li id="r7">Breiner, S. (1999). <i>Applications Manual for Portable Magnetometers</i>. San Jose: Geometrics (first published 1973).</li>
+<li id="r8">Yilmaz, Ö. (2001). <i>Seismic Data Analysis: Processing, Inversion, and Interpretation of Seismic Data</i>. Investigations in Geophysics 10. Tulsa: Society of Exploration Geophysicists.</li>
+<li id="r9">Wolf, P. R., Dewitt, B. A. and Wilkinson, B. E. (2014). <i>Elements of Photogrammetry with Applications in GIS</i>, 4th edition. New York: McGraw-Hill.</li>
+<li id="r10">Pix4D. Image acquisition (PIX4Dmapper): general case, at least 75 % frontal and 60 % side overlap; and Ground sampling distance (GSD) in photogrammetry. <a href="https://support.pix4d.com/hc/en-us/articles/115002471546">support.pix4d.com</a></li>
+<li id="r11">Commission Implementing Regulation (EU) 2019/947 of 24 May 2019 on the rules and procedures for the operation of unmanned aircraft, Annex Part A, UAS.OPEN.010 (maximum height 120 m). <a href="https://www.easa.europa.eu/en/the-agency/faqs/open-category">easa.europa.eu</a></li>
+<li id="r12">United States Code of Federal Regulations, 14 CFR § 107.51, Operating limitations for small unmanned aircraft (400 feet above ground level).</li>
+<li id="r13">MAVLink. Camera Protocol v1: <code>MAV_CMD_DO_SET_CAM_TRIGG_DIST</code> (206). <a href="https://mavlink.io/en/services/camera_v1.html">mavlink.io</a></li>
+<li id="r14">Snyder, J. P. (1987). <i>Map Projections: A Working Manual</i>. U.S. Geological Survey Professional Paper 1395. Washington: USGS.</li>
+<li id="r15">National Imagery and Mapping Agency (2000). <i>Department of Defense World Geodetic System 1984: Its Definition and Relationships with Local Geodetic Systems</i>, Technical Report 8350.2, 3rd edition (Molodensky transformation formulas).</li>
+<li id="r16">proj4js contributors. proj4js: JavaScript library to transform coordinates. <a href="https://github.com/proj4js/proj4js">github.com/proj4js/proj4js</a></li>
+<li id="r17">OpenStreetMap Wiki. Tag:natural=coastline (land on the left, water on the right of the way). <a href="https://wiki.openstreetmap.org/wiki/Tag:natural%3Dcoastline">wiki.openstreetmap.org</a></li>
+<li id="r18">Natural Earth (Kelso, N. V. and Patterson, T.). Free vector and raster map data at 1:10m, 1:50m and 1:110m, public domain; 1:10m land and minor islands from natural-earth-vector, version 5.2.0 pre-release, commit ca96624 (2022). <a href="https://www.naturalearthdata.com/">naturalearthdata.com</a></li>
+<li id="r19">Wessel, P. and Smith, W. H. F. (1996). A global, self-consistent, hierarchical, high-resolution shoreline database. <i>Journal of Geophysical Research</i> 101(B4), 8741–8743. <a href="https://doi.org/10.1029/96JB00104">doi:10.1029/96JB00104</a></li>
+<li id="r20">Ryan, W. B. F., Carbotte, S. M., Coplan, J. O., O'Hara, S., Melkonian, A., Arko, R., Weissel, R. A., Ferrini, V., Goodwillie, A., Nitsche, F., Bonczkowski, J. and Zemsky, R. (2009). Global Multi-Resolution Topography synthesis. <i>Geochemistry, Geophysics, Geosystems</i> 10, Q03014. <a href="https://doi.org/10.1029/2008GC002332">doi:10.1029/2008GC002332</a></li>
+<li id="r21">NOAA National Centers for Environmental Information (2022). <i>ETOPO 2022 15 Arc-Second Global Relief Model</i>. <a href="https://doi.org/10.25921/fd45-gt74">doi:10.25921/fd45-gt74</a></li>
+<li id="r22">EdgeTech. <i>4125 Side Scan Sonar System</i>, product datasheet (operating range 150 m @ 400 kHz, 75 m @ 900 kHz). <a href="https://www.macartney.com/media/6145/4125-side-scan-sonar-system.pdf">macartney.com</a></li>
+<li id="r23">EdgeTech. <i>4200 Series Side Scan Sonar System</i>, product datasheet (operating range per side 300 kHz: 230 m, 600 kHz: 120 m). <a href="https://macartney.com/media/6146/4200-series-side-scan-sonar-system.pdf">macartney.com</a></li>
+<li id="r24">Klein Marine Systems. <i>System 3900 Side Scan Sonar</i>, product datasheet (maximum range 150 m @ 445 kHz, 50 m @ 900 kHz). <a href="https://www.subseatechnologies.com/media/files/page/d79beb64/klein-system-3900-rev0718.pdf">subseatechnologies.com</a></li>
+<li id="r25">Klein Marine Systems. <i>System 4900 Side Scan Sonar</i>, product datasheet (maximum operating range per side 200 m @ 455 kHz, 75 m @ 900 kHz).</li>
+<li id="r26">DJI. Mavic 3 Enterprise specifications and custom camera parameters (wide camera: 4/3 CMOS 17.3 × 13 mm, true focal length 12.3 mm, 5280 × 3956, 0.7 s interval shooting). <a href="https://sdk-forum.dji.net/hc/en-us/articles/12325496609689-What-is-the-custom-camera-parameters-for-Mavic-3-Enterprise-series-">sdk-forum.dji.net</a></li>
+<li id="r27">DJI. Matrice 4 Series specifications (Matrice 4E wide camera: 4/3 CMOS 20 MP, 24 mm equivalent, 5280 × 3956; minimum photo interval 0.5 s). <a href="https://www.dji.com/support/product/matrice-4-series">dji.com</a></li>
+<li id="r28">DJI. Phantom 4 RTK specifications (1″ CMOS 20 MP, 8.8 mm, 5472 × 3648); minimum photo interval 2.5 s, from DJI's comparison of the Mavic 3 Enterprise with the Phantom 4 RTK. <a href="https://enterprise.dji.com/phantom-4-rtk/specs">enterprise.dji.com</a></li>
+<li id="r29">DJI. Zenmuse P1 specifications (35.9 × 24 mm full frame, 8192 × 5460, minimum photo interval 0.7 s, DL 35 mm lens). <a href="https://www.dji.com/zenmuse-p1/info">dji.com</a></li>
+<li id="r30">EMODnet Bathymetry Consortium (2022). <i>EMODnet Digital Bathymetry (DTM 2022)</i>, 1/16 × 1/16 arc-minute grid. <a href="https://emodnet.ec.europa.eu/en/bathymetry">emodnet.ec.europa.eu</a></li>
+<li id="r31">GEBCO Compilation Group (2020). <i>GEBCO 2020 Grid</i>. <a href="https://doi.org/10.5285/a29c5465-b138-234d-e053-6c86abc040b9">doi:10.5285/a29c5465-b138-234d-e053-6c86abc040b9</a></li>
+<li id="r32">Tilezen (Mapzen). <i>Terrain Tiles</i> on the AWS Registry of Open Data: terrarium PNG tiles, elevation = R × 256 + G + B / 256 − 32768 m; sources SRTM (30 m, 60° N to 56° S), national DEMs where available, ETOPO1 at sea. <a href="https://registry.opendata.aws/terrain-tiles/">registry.opendata.aws/terrain-tiles</a>, <a href="https://github.com/tilezen/joerd/blob/master/docs/data-sources.md">data sources</a>. Accessed November 2026.</li>
+<li id="r33">Open Geospatial Consortium (2019). <i>OGC GeoTIFF Standard</i>, version 1.1, OGC 19-008r4.</li>
+<li id="r34">Lorensen, W. E. and Cline, H. E. (1987). Marching cubes: a high resolution 3D surface construction algorithm. <i>ACM SIGGRAPH Computer Graphics</i>, 21(4), 163–169. <a href="https://doi.org/10.1145/37402.37422">doi:10.1145/37402.37422</a> (marching squares is its two-dimensional form).</li>
+<li id="r35">Chaikin, G. M. (1974). An algorithm for high-speed curve generation. <i>Computer Graphics and Image Processing</i>, 3(4), 346–349. <a href="https://doi.org/10.1016/0146-664X(74)90028-8">doi:10.1016/0146-664X(74)90028-8</a></li>
+<li id="r36">Douglas, D. H. and Peucker, T. K. (1973). Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. <i>Cartographica</i>, 10(2), 112–122. <a href="https://doi.org/10.3138/FM57-6770-U75U-7727">doi:10.3138/FM57-6770-U75U-7727</a></li>
+<li id="r37">Manufacturer datasheets and manuals, as named in the table: Kongsberg Discovery (kongsberg.com/discovery/seafloor-mapping), Teledyne RESON (teledynemarine.com/reson), R2Sonic (r2sonic.com), NORBIT Subsea (norbit.com). Accessed November 2026.</li>
+<li id="r38">DJI (2023). <i>Zenmuse L2 specifications</i> and <i>Zenmuse L2 operation guide</i>. <a href="https://enterprise.dji.com/zenmuse-l2/specs">enterprise.dji.com/zenmuse-l2/specs</a>. Accessed November 2026.</li>
+<li id="r39">DJI (2020). <i>Zenmuse L1 specifications</i>. <a href="https://www.dji.com/zenmuse-l1/info">dji.com/zenmuse-l1/info</a>. Accessed November 2026.</li>
+<li id="r40">DJI (2025). <i>Zenmuse L3 specifications</i>. <a href="https://enterprise.dji.com/zenmuse-l3/specs">enterprise.dji.com/zenmuse-l3/specs</a>. Accessed November 2026.</li>
+<li id="r41">EdgeTech. <i>4200 MP</i> specifications (operating range per side 100 kHz: 500 m, 300 kHz: 230 m, 400 kHz: 150 m, 600 kHz: 120 m, 900 kHz: 75 m), via Unique Group product page. Accessed November 2026.</li>
+<li id="r42">EdgeTech. <i>4205 Tri-Frequency / Motion Tolerant Side Scan Sonar System</i>, datasheet (operating range per side 120 kHz: 600 m, 230 kHz: 350 m, 410 kHz: 200 m, 540 kHz: 150 m, 850 kHz: 90 m). Accessed November 2026.</li>
+<li id="r43">EdgeTech. <i>2205 AUV-based sonar</i>, datasheet (side scan frequencies and ranges, 75 kHz: 1000 m to 1600 kHz: 35 m). Accessed November 2026.</li>
+<li id="r44">Klein (MIND Technology). Datasheets: <i>UUV-3500</i> and <i>HydroScan</i> (typical range 150 m @ 455 kHz, 75 m @ 900 kHz); <i>System 4000</i> (200 m per side @ 400 kHz); <i>MA-X VIEW 600</i> (up to 120 m per side @ 600 kHz); <i>MANTIS UUV</i> (150 m @ 600 kHz, 100 m @ 720 kHz, 75 m @ 850 kHz). <a href="https://www.klein.com">klein.com</a> Accessed November 2026.</li>
+<li id="r45">Kraken Robotics. <i>KATFISH</i> brochure and flyer (ranges up to 200 m per side; SAS centre frequencies 337 and 105 kHz). <a href="https://krakenrobotics.com">krakenrobotics.com</a> Accessed November 2026.</li>
+<li id="r46">Tritech / Blueprint Subsea. <i>StarFish</i> side scan range (452F: 450 kHz, up to 100 m per channel; 990F: 1 MHz, up to 35 m per channel). Accessed November 2026.</li>
+<li id="r47">Imagenex. <i>872 YellowFin Sidescan Sonar</i> specifications, rev. 7 (260/330/800 kHz; range scales 10 to 200 m). <a href="https://imagenex.com/products/yellowfin">imagenex.com</a> Accessed November 2026.</li>
+<li id="r48">DeepVision. <i>DeepEye DE340D</i> (340 kHz, range 15 to 200 m) and <i>DE680SAR</i> (680 kHz, range 5 to 50 m) specifications. Accessed November 2026.</li>
+<li id="r49">JW Fishers. Side scan sonar specifications: SSS-600K range settings to 75 m per side, SSS-1200K to 25 m, 100 kHz up to 2,000 ft (about 600 m) per side. Accessed November 2026.</li>
+<li id="r50">DJI. <i>Mavic 3M</i>, <i>Dock 2 (Matrice 3D)</i> and <i>Zenmuse L2</i> specifications (4/3 CMOS 20 MP wide cameras, 24 mm equivalent; L2 JPEG timed interval 0.7 s). <a href="https://enterprise.dji.com">enterprise.dji.com</a> Accessed November 2026.</li>
+<li id="r51">Autel Robotics. <i>EVO II Pro RTK V3</i> specifications (1-inch CMOS, 20 MP, 29 mm equivalent focal length). <a href="https://www.autelrobotics.com">autelrobotics.com</a> Accessed November 2026.</li>
+<li id="r52">AgEagle (senseFly). <i>S.O.D.A.</i> (1″, 10.6 mm, 5,472 × 3,648 px) and <i>Aeria X</i> (APS-C, 18.5 mm, 6,000 × 4,000 px) specifications. <a href="https://ageagle.com">ageagle.com</a> Accessed November 2026.</li>
+<li id="r53">Wingtra. <i>WingtraOne GEN II</i> sensor specifications (Sony RX1R II: full frame, 42 MP, 35 mm; Sony a6100: APS-C 23.5 × 15.6 mm, 6,000 px, 20 mm). Quantum Systems. <i>Trinity Pro</i> cameras overview (Sony ILX-LR1: 35.7 × 23.8 mm, 24 mm lens). <a href="https://wingtra.com">wingtra.com</a>, <a href="https://quantum-systems.com">quantum-systems.com</a> Accessed November 2026.</li>
+<li id="r54">Phase One. <i>iXM Series</i> brochure (iXM-100: 11,664 × 8,750 px, 43.9 × 32.9 mm, 3 frames/s; 35 and 80 mm RSM lenses). Accessed November 2026.</li>
+<li id="r55">Livox. <i>Avia</i> specifications (70.4° × 4.5° repetitive, 240,000 points/s first return, 190 m at 10 %). <a href="https://www.livoxtech.com/avia/specs">livoxtech.com</a>. YellowScan. <i>Mapper+</i> and <i>Surveyor Ultra</i> specifications (Surveyor Ultra: 360° × 40.3°, 640,000 shots/s, 140 m at 10 %). <a href="https://www.yellowscan.com">yellowscan.com</a>. CHCNAV. <i>AlphaAir 450</i> datasheet (70.4°, 240,000 points/s, 190 m at 10 %). Accessed November 2026.</li>
+<li id="r56">RIEGL. <i>miniVUX-3UAV</i> data sheet (100/200/300 kHz PRR; at 300 kHz up to 100,000 measurements/s at 120° field of view). Phoenix LiDAR Systems. <i>miniRANGER-3 LITE</i> specification (miniVUX-3UAV; maximum range 170 m at 20 % reflectivity). <a href="https://www.riegl.com">riegl.com</a> Accessed November 2026.</li>
+<li id="r57">Klein (MIND Technology). Datasheets: <i>System D3500TF</i> (2024; 600 m per side @ 100 kHz, 200 m @ 400 kHz); <i>4K-SVY</i> (250 m @ 300 kHz, 120 m @ 600 kHz per side); <i>System 4000</i> (100 kHz, 600 m per side); <i>System 5000 V2</i> (455 kHz, 250 m per side). <a href="https://klein.com">klein.com</a> Accessed November 2026.</li>
+<li id="r58">EdgeTech. <i>4125i</i> brochure, Macartney (2025; 400 kHz: 200 m, 600 kHz: 120 m, 900 kHz: 75 m, 1600 kHz: 35 m per side). Marine Sonic. <i>Sea Scan HDS</i> specifications. Tritech. <i>SeaKing towfish</i> side scan (325 / 675 kHz). Imagenex. <i>SportScan</i> and <i>878</i> specifications. Cerulean Sonar. <i>Omniscan 450 SS</i> (450 kHz, 150 m maximum range). Accessed November 2026.</li>
+<li id="r59">C-MAX. <i>CM2</i> side scan sonar, DF (100 / 325 kHz) and EDF (325 / 780 kHz) transducer range specifications, via dealer data sheets. <a href="http://www.cmaxsonar.com">cmaxsonar.com</a> Accessed November 2026.</li>
+<li id="r60">Humminbird. <i>Side Imaging</i>, <i>MEGA Side Imaging</i> and <i>MEGA SI+</i> transducer specifications (side-to-side range). Garmin. <i>GT52HW-TM / GT54UHD-TM</i> transducer specifications (SideVü 152 m @ 455 kHz, 61 m @ 1 MHz per side) and <i>GPSMAP</i> sonar specifications (UHD SideVü 1.2 MHz). Lowrance / Simrad. <i>Active Imaging</i> and <i>Active Imaging HD</i> transducer specifications. Raymarine. <i>RealVision 3D</i> transducer specifications. Accessed November 2026.</li>
+<li id="r61">Hi-Target / SatLab. <i>HydroScan</i> side scan sonar specifications. ZHD (Hydro-Tech). <i>SS3060</i> and <i>SS4090</i> side scan sonar specifications. <i>HMS-624</i> dual-frequency side scan sonar specifications. Accessed November 2026.</li>
+<li id="r62">Phase One / Quantum Systems. <i>Phase One P5</i> specifications (128 MP medium format, electronic global shutter, 3.45 µm pixels, 4 frames/s, 35 mm lens: 1.16 cm at 120 m). DJI. <i>Matrice 4 series</i> specifications (4T wide: 1/1.3″ 48 MP, 24 mm equivalent, 8064 × 6048, minimum interval 0.7 s). Parrot. <i>ANAFI Ai</i> product sheet (1/2″ 48 MP, 24 mm equivalent, photogrammetry at 1 frame/s). Skydio. <i>X10</i> technical specifications (wide: 1″ 50 MP, 20 mm equivalent). Accessed November 2026.</li>
+<li id="r63">RIEGL. <i>VUX-120²³</i> (100°, up to 2.4 MHz, 2,000,000 measurements/s). Phoenix LiDAR Systems. <i>RANGER-U120</i> spec sheet (VUX-120²³, 760 m at 20 % reflectivity). YellowScan. <i>Voyager</i> data sheet (VUX-120, up to 1.8 MHz, 100°). Quantum Systems. <i>Qube 240</i> (70°, 240,000 shots/s, maximum 140 m above ground) and <i>Qube 640</i> (Hesai XT32M2X) data sheets. Wingtra. <i>LIDAR</i> technical specifications (XT32M2X, 90°). ROCK Robotic. <i>R3 Pro V2</i> (Hesai XT32, 360°). GreenValley. <i>LiAir V70</i>, <i>X3</i> and <i>X3C-H</i> specifications. Hesai. <i>XT32M2X</i> user manual (640,000 points/s single return, 80 m at 10 %). Accessed November 2026.</li>
+<li id="r64">Farr, T. G. et al. (2007). The Shuttle Radar Topography Mission. <i>Reviews of Geophysics</i> 45, RG2004 (absolute height error 16 m at 90 % confidence). <a href="https://doi.org/10.1029/2005RG000183">doi:10.1029/2005RG000183</a></li>
+</ol>
+<p class="ver">© 2026 Aldwin Syahperdana. Last checked against the sources: November 2026.</p>
+</article></main>
+<footer dir="ltr">© 2026 Aldwin Syahperdana</footer>
+<script id="langpack" type="application/json">{"en": ["Swath<span>Plan<\/span>", "Manufacturer", "Beams", "Frequency", "Recommend R from LOA", "Client", "Go", "Search", "Projection", "Source", "metres", "feet", "Lines", "GeoJSON", "Paper", "Resolution", "On-line efficiency", "SVP casts", "Project", "Turns", "Coverage", "off", "Data", "Cross-line check", "Plan checks", "© 2026 Aldwin Syahperdana", "Order", "Feature detection", "Exclusive", "Special", "5 m + 5 % of depth", "20 m + 10 % of depth", "GMRT", "Global", "Ryan et al. (2009)", "NOAA NCEI DEM mosaic", "EMODnet Bathymetry", "European seas", "GEBCO 2020", "All", "mean", "Surveyor", "Coastline", "on", "Bathymetry", "None", "Time", "Swath", "Overlap", "SVP", "Adaptive spacing", "main", "cross", "Line", "Exclusive Order", "Special Order", "Order 1a", "Order 1b", "Order 2", "Open", "Infill planner", "Close", "A new version of SwathPlan is ready.", "Update", "SwathPlan is ready to work offline.", "All tools", "Magnetometer", "Multibeam", "Side-scan sonar", "Sub-bottom profiler", "grid spacing", "TVU", "THU", "Uncertainty budget (a priori TPU)", "Days", "auto", "Survey planner", "Geophysical", "DJI Mavic 3 Enterprise (wide)", "DJI Matrice 4E (wide)", "DJI Phantom 4 RTK", "DJI Zenmuse P1, 35 mm lens", "Camera", "User guide", "Science &amp; references", "Contents", "LiDAR", "LiDAR swath", "Download PDF", "Language", "Edition"], "id": ["", "Produsen", "Jumlah beam", "Frekuensi", "Rekomendasikan R dari LOA", "Klien", "Cari", "Cari", "Proyeksi", "Sumber", "meter", "kaki", "Lajur", "", "Kertas", "Resolusi", "Efisiensi on-line", "Pengambilan SVP", "Proyek", "Putaran", "Cakupan", "mati", "Data", "Pemeriksaan lajur silang", "Pemeriksaan rencana", "", "Orde", "Deteksi objek", "Exclusive", "Special", "5 m + 5 % dari kedalaman", "20 m + 10 % dari kedalaman", "", "Global", "", "", "", "Laut Eropa", "", "Semua", "rata-rata", "Surveyor", "Garis pantai", "aktif", "Batimetri", "Tidak ada", "Waktu", "Swath", "Tumpang tindih", "SVP", "Jarak adaptif", "utama", "silang", "Lajur", "", "", "", "", "", "Buka", "Perencana infill", "Tutup", "Versi baru SwathPlan sudah siap.", "Perbarui", "SwathPlan siap dipakai secara offline.", "Semua alat", "Magnetometer", "Multibeam", "Side-scan sonar", "Sub-bottom profiler", "jarak grid", "", "", "Anggaran ketidakpastian (TPU a priori)", "Hari", "otomatis", "Perencana survei", "Geofisika", "", "", "", "", "Kamera", "Panduan pengguna", "Sains &amp; referensi", "Daftar isi", "LiDAR", "Lebar sapuan LiDAR", "Unduh PDF", "Bahasa", "Edisi"], "de": ["", "Hersteller", "Beams", "Frequenz", "R aus LÜA empfehlen", "Auftraggeber", "Los", "Suchen", "Projektion", "Quelle", "Meter", "Fuß", "Linien", "", "Papier", "Auflösung", "Linieneffizienz", "SVP-Messungen", "Projekt", "Wenden", "Abdeckung", "aus", "Daten", "Querlinienprüfung", "Plan-Prüfungen", "", "Ordnung", "Objekterkennung", "", "", "5 m + 5 % der Tiefe", "20 m + 10 % der Tiefe", "", "Global", "", "", "", "Europäische Meere", "", "Alle", "Mittel", "Vermesser", "Küstenlinie", "an", "Bathymetrie", "Keine", "Zeit", "Schwad", "Überlappung", "SVP", "Adaptiver Abstand", "Haupt", "Quer", "Linie", "", "", "", "", "", "Öffnen", "Infill-Planer", "Schließen", "Eine neue Version von SwathPlan ist bereit.", "Aktualisieren", "SwathPlan ist bereit für die Offline-Nutzung.", "Alle Werkzeuge", "Magnetometer", "Fächerecholot", "Seitensichtsonar", "Sedimentecholot", "Rasterabstand", "", "", "Unsicherheitsbudget (A-priori-TPU)", "Tage", "automatisch", "Vermessungsplaner", "Geophysik", "", "", "", "", "Kamera", "Benutzerhandbuch", "Wissenschaft &amp; Quellen", "Inhalt", "LiDAR", "LiDAR-Streifenbreite", "PDF herunterladen", "Sprache", "Ausgabe"], "fr": ["", "Fabricant", "Faisceaux", "Fréquence", "Recommander R à partir de la longueur", "Client", "Aller", "Rechercher", "Projection", "Source", "mètres", "pieds", "Lignes", "", "Papier", "Résolution", "Efficacité en ligne", "Bathycélérimétries (SVP)", "Projet", "Virages", "Couverture", "désactivé", "Données", "Contrôle par lignes transversales", "Contrôles du plan", "", "Ordre", "Détection d'objets", "", "", "5 m + 5 % de la profondeur", "20 m + 10 % de la profondeur", "", "Global", "", "", "", "Mers européennes", "", "Tout", "moyenne", "Hydrographe", "Trait de côte", "activé", "Bathymétrie", "Aucun", "Temps", "Fauchée", "Recouvrement", "SVP", "Espacement adaptatif", "principale", "transv.", "Ligne", "", "", "", "", "", "Ouvrir", "Planificateur de compléments", "Fermer", "Une nouvelle version de SwathPlan est prête.", "Mettre à jour", "SwathPlan est prêt à fonctionner hors ligne.", "Tous les outils", "Magnétomètre", "Multifaisceau", "Sonar latéral", "Sondeur de sédiments", "espacement de la grille", "", "", "Bilan d’incertitude (TPU a priori)", "Jours", "auto", "Planificateur de levé", "Géophysique", "", "", "", "", "Appareil photo", "Guide d’utilisation", "Science &amp; références", "Sommaire", "LiDAR", "Fauchée LiDAR", "Télécharger le PDF", "Langue", "Édition"], "es": ["", "Fabricante", "Haces", "Frecuencia", "Recomendar R según la eslora", "Cliente", "Ir", "Buscar", "Proyección", "Fuente", "metros", "pies", "Líneas", "", "Papel", "Resolución", "Eficiencia en línea", "Lanzamientos de SVP", "Proyecto", "Giros", "Cobertura", "desactivado", "Datos", "Comprobación con líneas transversales", "Comprobaciones del plan", "", "Orden", "Detección de objetos", "", "", "5 m + 5 % de la profundidad", "20 m + 10 % de la profundidad", "", "Global", "", "", "", "Mares europeos", "", "Todo", "media", "Hidrógrafo", "Línea de costa", "activado", "Batimetría", "Ninguno", "Tiempo", "Franja", "Solape", "SVP", "Espaciado adaptativo", "principal", "transv.", "Línea", "", "", "", "", "", "Abrir", "Planificador de relleno", "Cerrar", "Hay una nueva versión de SwathPlan lista.", "Actualizar", "SwathPlan está listo para trabajar sin conexión.", "Todas las herramientas", "Magnetómetro", "Multihaz", "Sonar de barrido lateral", "Perfilador de subfondo", "espaciado de malla", "", "", "Presupuesto de incertidumbre (TPU a priori)", "Días", "auto", "Planificador de levantamientos", "Geofísico", "", "", "", "", "Cámara", "Guía de uso", "Ciencia &amp; referencias", "Contenido", "LiDAR", "Franja LiDAR", "Descargar PDF", "Idioma", "Edición"], "it": ["", "Produttore", "Fasci", "Frequenza", "Suggerisci R dalla lunghezza", "Cliente", "Vai", "Cerca", "Proiezione", "Sorgente", "metri", "piedi", "Linee", "", "Carta", "Risoluzione", "Efficienza in linea", "Lanci SVP", "Progetto", "Virate", "Copertura", "off", "Dati", "Verifica con linee trasversali", "Verifiche del piano", "", "Ordine", "Rilevamento oggetti", "", "", "5 m + 5 % della profondità", "20 m + 10 % della profondità", "", "Globale", "", "", "", "Mari europei", "", "Tutto", "media", "Rilevatore", "Linea di costa", "attivo", "Batimetria", "Nessuna", "Tempo", "Fascia", "Sovrapposizione", "SVP", "Spaziatura adattiva", "princ.", "trasv.", "Linea", "", "", "", "", "", "Apri", "Pianificatore di infill", "Chiudi", "È pronta una nuova versione di SwathPlan.", "Aggiorna", "SwathPlan è pronto per funzionare offline.", "Tutti gli strumenti", "Magnetometro", "Multibeam", "Sonar a scansione laterale", "Sub-bottom profiler", "maglia della griglia", "", "", "Bilancio di incertezza (TPU a priori)", "Giorni", "auto", "Pianificatore di rilievi", "Geofisico", "", "", "", "", "Fotocamera", "Guida utente", "Scienza &amp; riferimenti", "Indice", "LiDAR", "Strisciata LiDAR", "Scarica il PDF", "Lingua", "Edizione"], "pt": ["", "Fabricante", "Feixes", "Frequência", "Recomendar R pelo comprimento", "Cliente", "Ir", "Buscar", "Projeção", "Fonte", "metros", "pés", "Linhas", "", "Papel", "Resolução", "Eficiência em linha", "Lançamentos de SVP", "Projeto", "Curvas", "Cobertura", "desligado", "Dados", "Verificação com linhas transversais", "Verificações do plano", "", "Ordem", "Detecção de feições", "", "", "5 m + 5 % da profundidade", "20 m + 10 % da profundidade", "", "Global", "", "", "", "Mares europeus", "", "Tudo", "média", "Hidrógrafo", "Linha de costa", "ligado", "Batimetria", "Nenhum", "Tempo", "Faixa", "Sobreposição", "SVP", "Espaçamento adaptativo", "principal", "transv.", "Linha", "", "", "", "", "", "Abrir", "Planejador de preenchimento", "Fechar", "Uma nova versão do SwathPlan está pronta.", "Atualizar", "O SwathPlan está pronto para funcionar offline.", "Todas as ferramentas", "Magnetômetro", "Multifeixe", "Sonar de varredura lateral", "Perfilador de subfundo", "espaçamento da malha", "", "", "Orçamento de incerteza (TPU a priori)", "Dias", "auto", "Planejador de levantamentos", "Geofísico", "", "", "", "", "Câmera", "Guia do usuário", "Ciência &amp; referências", "Conteúdo", "LiDAR", "Faixa LiDAR", "Descarregar PDF", "Idioma", "Edição"], "nl": ["", "Fabrikant", "Bundels", "Frequentie", "R aanbevelen op basis van LOA", "Opdrachtgever", "Ga", "Zoeken", "Projectie", "Bron", "meter", "voet", "Lijnen", "", "Papier", "Resolutie", "Efficiëntie op de lijn", "SVP-metingen", "Project", "Bochten", "Dekking", "uit", "Gegevens", "Dwarslijncontrole", "Plancontroles", "", "Klasse", "Objectdetectie", "", "", "5 m + 5 % van de diepte", "20 m + 10 % van de diepte", "", "Wereldwijd", "", "", "", "Europese zeeën", "", "Alles", "gemiddeld", "Landmeter", "Kustlijn", "aan", "Bathymetrie", "Geen", "Tijd", "Zwath", "Overlap", "SVP", "Adaptieve afstand", "hoofd", "dwars", "Lijn", "", "", "", "", "", "Openen", "Infill-planner", "Sluiten", "Er is een nieuwe versie van SwathPlan klaar.", "Bijwerken", "SwathPlan is klaar om offline te werken.", "Alle hulpmiddelen", "Magnetometer", "Multibeam", "Side-scan sonar", "Sub-bottom profiler", "rasterafstand", "", "", "Onzekerheidsbudget (a-priori TPU)", "Dagen", "auto", "Surveyplanner", "Geofysisch", "", "", "", "", "Camera", "Handleiding", "Wetenschap &amp; bronnen", "Inhoud", "LiDAR", "LiDAR-strook", "PDF downloaden", "Taal", "Uitgave"], "af": ["", "Vervaardiger", "Bundels", "Frekwensie", "Beveel R aan vanaf LOA", "Kliënt", "Gaan", "Soek", "Projeksie", "Bron", "meter", "voet", "Lyne", "", "Papier", "Resolusie", "Doeltreffendheid op lyn", "SVP-metings", "Projek", "Draaie", "Dekking", "af", "Data", "Kruislyn-kontrole", "Plankontroles", "", "Orde", "Voorwerpbespeuring", "", "", "5 m + 5 % van diepte", "20 m + 10 % van diepte", "", "Wêreldwyd", "", "", "", "Europese seë", "", "Alles", "gemiddeld", "Landmeter", "Kuslyn", "aan", "Batimetrie", "Geen", "Tyd", "Swath", "Oorvleueling", "SVP", "Aanpasbare spasiëring", "hoof", "kruis", "Lyn", "", "", "", "", "", "Maak oop", "Invulbeplanner", "Maak toe", "’n Nuwe weergawe van SwathPlan is gereed.", "Werk by", "SwathPlan is gereed om vanlyn te werk.", "Alle gereedskap", "Magnetometer", "Multistraal", "Sykykersonar", "Sub-bodemprofileerder", "roosterspasiëring", "", "", "Onsekerheidsbegroting (a priori TPU)", "Dae", "outo", "Opmetingsbeplanner", "Geofisies", "", "", "", "", "Kamera", "Gebruikersgids", "Wetenskap &amp; bronne", "Inhoud", "LiDAR", "LiDAR-swad", "Laai PDF af", "Taal", "Uitgawe"], "ar": ["", "الشركة المصنّعة", "عدد الحزم", "التردد", "اقتراح R من الطول الكلي", "العميل", "اذهب", "بحث", "الإسقاط", "المصدر", "متر", "قدم", "الخطوط", "", "الورق", "الدقة", "الكفاءة على الخط", "قياسات SVP", "المشروع", "الدورانات", "التغطية", "معطل", "البيانات", "فحص الخطوط العرضية", "فحوص الخطة", "", "الرتبة", "كشف الأجسام", "", "", "5 م + 5% من العمق", "20 م + 10% من العمق", "", "عالمي", "", "", "", "البحار الأوروبية", "", "الكل", "المتوسط", "المساح", "خط الساحل", "مفعّل", "القياسات العمقية", "لا شيء", "الزمن", "الشريط (Swath)", "التداخل", "SVP", "التباعد التكيّفي", "رئيسي", "عرضي", "الخط", "", "", "", "", "", "فتح", "مخطِّط خطوط الاستكمال", "إغلاق", "إصدار جديد من SwathPlan جاهز.", "تحديث", "SwathPlan جاهز للعمل دون اتصال.", "كل الأدوات", "مقياس المغناطيسية", "متعدد الحزم", "سونار المسح الجانبي", "مقطع ما تحت القاع", "تباعد الشبكة", "", "", "ميزانية الارتياب (TPU مسبق)", "الأيام", "تلقائي", "مخطِّط المسح", "جيوفيزيائي", "", "", "", "", "الكاميرا", "دليل المستخدم", "العلوم &amp; المراجع", "المحتويات", "LiDAR", "عرض مسح LiDAR", "تنزيل PDF", "اللغة", "الإصدار"], "ja": ["", "メーカー", "ビーム数", "周波数", "LOAからRを推奨", "発注者", "移動", "検索", "投影法", "データソース", "メートル", "フィート", "測線", "", "用紙", "解像度", "測線上効率", "SVP観測", "プロジェクト", "旋回", "カバレッジ", "オフ", "データ", "クロスライン検査", "計画チェック", "", "等級", "物体検出", "", "", "5 m + 水深の5%", "20 m + 水深の10%", "", "全球", "", "", "", "ヨーロッパの海域", "", "すべて", "平均", "測量技師", "海岸線", "オン", "水深データ", "なし", "時間", "スワス", "オーバーラップ", "SVP", "適応間隔", "本線", "クロス", "測線", "", "", "", "", "", "開く", "補測プランナー", "閉じる", "SwathPlanの新しいバージョンの準備ができました。", "更新", "SwathPlanはオフラインで使えるようになりました。", "すべてのツール", "磁力計", "マルチビーム", "サイドスキャンソナー", "サブボトムプロファイラー", "グリッド間隔", "", "", "不確かさの予算（事前TPU）", "日数", "自動", "測量プランナー", "物理探査", "", "", "", "", "カメラ", "ユーザーガイド", "科学 &amp; 参考文献", "目次", "LiDAR", "LiDARスワス幅", "PDFをダウンロード", "言語", "版"], "zh": ["", "制造商", "波束数", "频率", "根据船长推荐 R", "委托方", "前往", "搜索", "投影", "数据源", "米", "英尺", "测线", "", "纸张", "分辨率", "测线效率", "声速剖面测量", "项目", "回转", "覆盖", "关", "数据", "检查线核对", "计划检查", "", "等级", "目标探测", "", "", "5 m + 水深的 5%", "20 m + 水深的 10%", "", "全球", "", "", "", "欧洲海域", "", "全部", "平均", "测量员", "海岸线", "开", "水深数据", "无", "时间", "条带", "重叠", "SVP", "自适应间距", "主", "检查", "测线", "", "", "", "", "", "打开", "补测规划器", "关闭", "SwathPlan 新版本已就绪。", "更新", "SwathPlan 已可离线使用。", "全部工具", "磁力仪", "多波束", "侧扫声呐", "浅地层剖面仪", "网格间距", "", "", "不确定度预算（先验 TPU）", "天数", "自动", "测量规划器", "地球物理", "", "", "", "", "相机", "用户指南", "科学 &amp; 参考文献", "目录", "激光雷达", "激光雷达条带宽度", "下载 PDF", "语言", "版本"], "hi": ["", "निर्माता", "बीम", "आवृत्ति", "LOA से R सुझाएँ", "ग्राहक", "जाएँ", "खोजें", "प्रक्षेपण", "स्रोत", "मीटर", "फ़ुट", "रेखाएँ", "", "कागज़", "रिज़ॉल्यूशन", "रेखा पर दक्षता", "SVP कास्ट", "परियोजना", "मोड़", "कवरेज", "बंद", "डेटा", "क्रॉस-लाइन जाँच", "योजना जाँच", "", "श्रेणी", "वस्तु पहचान", "", "", "5 m + गहराई का 5 %", "20 m + गहराई का 10 %", "", "वैश्विक", "", "", "", "यूरोपीय समुद्र", "", "सभी", "औसत", "सर्वेयर", "तटरेखा", "चालू", "बैथिमेट्री", "कोई नहीं", "समय", "स्वाथ", "ओवरलैप", "SVP", "अनुकूली अंतराल", "मुख्य", "क्रॉस", "रेखा", "", "", "", "", "", "खोलें", "इनफ़िल प्लानर", "बंद करें", "SwathPlan का नया संस्करण तैयार है।", "अपडेट करें", "SwathPlan ऑफ़लाइन काम करने के लिए तैयार है।", "सभी टूल", "मैग्नेटोमीटर", "मल्टीबीम", "साइड-स्कैन सोनार", "सब-बॉटम प्रोफ़ाइलर", "ग्रिड अंतराल", "", "", "अनिश्चितता बजट (a priori TPU)", "दिन", "स्वतः", "सर्वे प्लानर", "भूभौतिकीय", "", "", "", "", "कैमरा", "उपयोगकर्ता गाइड", "विज्ञान &amp; संदर्भ", "विषय-सूची", "LiDAR", "LiDAR स्वाथ", "PDF डाउनलोड करें", "भाषा", "संस्करण"], "ur": ["", "ساز", "بیم", "فریکوئنسی", "LOA سے R تجویز کریں", "کلائنٹ", "جائیں", "تلاش", "پروجیکشن", "ماخذ", "میٹر", "فٹ", "لائنیں", "", "کاغذ", "ریزولوشن", "لائن پر کارکردگی", "SVP کاسٹ", "منصوبہ", "موڑ", "کوریج", "بند", "ڈیٹا", "کراس لائن جانچ", "منصوبہ جانچ", "", "درجہ", "شے کی شناخت", "", "", "5 m + گہرائی کا 5 %", "20 m + گہرائی کا 10 %", "", "عالمی", "", "", "", "یورپی سمندر", "", "سب", "اوسط", "سروئیر", "ساحلی لکیر", "آن", "بیتھیمیٹری", "کوئی نہیں", "وقت", "سویتھ", "اوورلیپ", "SVP", "موافق فاصلہ", "مرکزی", "کراس", "لائن", "", "", "", "", "", "کھولیں", "انفل پلانر", "بند کریں", "SwathPlan کا نیا ورژن تیار ہے۔", "اپ ڈیٹ کریں", "SwathPlan آف لائن کام کے لیے تیار ہے۔", "تمام ٹولز", "میگنیٹومیٹر", "ملٹی بیم", "سائیڈ اسکین سونار", "سب باٹم پروفائلر", "گرڈ وقفہ", "", "", "غیر یقینی بجٹ (a priori TPU)", "دن", "خودکار", "سروے پلانر", "جیو فزیکل", "", "", "", "", "کیمرا", "صارف گائیڈ", "سائنس &amp; حوالہ جات", "فہرست", "LiDAR", "LiDAR سواتھ", "PDF ڈاؤن لوڈ کریں", "زبان", "ایڈیشن"], "ru": ["", "Производитель", "Лучи", "Частота", "Рекомендовать R по LOA", "Заказчик", "Найти", "Поиск", "Проекция", "Источник", "метры", "футы", "Галсы", "", "Бумага", "Разрешение", "Эффективность на галсах", "Измерения ПРЗ", "Проект", "Развороты", "Покрытие", "выкл.", "Данные", "Проверка по контрольным галсам", "Проверки плана", "", "Порядок", "Обнаружение объектов", "Exclusive", "Special", "5 м + 5 % глубины", "20 м + 10 % глубины", "", "Весь мир", "", "", "", "Моря Европы", "", "Все", "среднее", "Съёмщик", "Береговая линия", "вкл.", "Батиметрия", "Нет", "Время", "Полоса обзора", "Перекрытие", "ПРЗ", "Адаптивное расстояние", "осн.", "контр.", "Галс", "", "", "", "", "", "Открыть", "Планировщик досъёмки", "Закрыть", "Новая версия SwathPlan готова.", "Обновить", "SwathPlan готов к работе без интернета.", "Все инструменты", "Магнитометр", "МЛЭ", "Гидролокатор бокового обзора", "Профилограф", "шаг сетки", "", "", "Бюджет неопределённости (априорная TPU)", "Сутки", "авто", "Планировщик съёмки", "Геофизическая", "", "", "", "", "Камера", "Руководство пользователя", "Наука &amp; источники", "Содержание", "LiDAR", "Полоса LiDAR", "Скачать PDF", "Язык", "Издание"], "ko": ["", "제조사", "빔 수", "주파수", "LOA로부터 R 추천", "발주처", "이동", "검색", "투영", "출처", "미터", "피트", "측선 수", "", "용지", "해상도", "측선상 효율", "SVP 측정", "프로젝트", "선회", "커버리지", "꺼짐", "자료", "교차선 검사", "계획 점검", "", "등급", "지형지물 탐지", "", "", "5 m + 수심의 5 %", "20 m + 수심의 10 %", "", "전 지구", "", "", "", "유럽 해역", "", "전체", "평균", "측량사", "해안선", "켜짐", "수심 자료", "없음", "시간", "스와스", "중첩", "SVP", "적응형 간격", "주", "교차", "측선", "", "", "", "", "", "열기", "보완 측량 계획기", "닫기", "SwathPlan 새 버전이 준비되었습니다.", "업데이트", "SwathPlan을 오프라인으로 사용할 준비가 되었습니다.", "모든 도구", "자력계", "멀티빔", "사이드스캔 소나", "천부지층탐사기", "격자 간격", "", "", "불확도 예산(사전 TPU)", "일수", "자동", "측량 계획기", "지구물리", "", "", "", "", "카메라", "사용자 안내서", "과학 &amp; 참고문헌", "목차", "LiDAR", "LiDAR 스와스", "PDF 내려받기", "언어", "판"], "tl": ["", "Tagagawa", "Mga beam", "Frequency", "Magrekomenda ng R mula sa LOA", "Kliyente", "Pumunta", "Hanapin", "Projection", "Pinagmulan", "metro", "talampakan", "Mga linya", "", "Papel", "Resolusyon", "Episyensya sa linya", "Mga SVP cast", "Proyekto", "Mga liko", "Coverage", "patay", "Datos", "Pagsusuri ng cross line", "Mga pagsusuri sa plano", "", "Order", "Pagtukoy ng bagay", "", "", "5 m + 5 % ng lalim", "20 m + 10 % ng lalim", "", "Global", "", "", "", "Mga dagat ng Europa", "", "Lahat", "average", "Surveyor", "Baybayin", "naka-on", "Bathymetry", "Wala", "Oras", "Swath", "Overlap", "SVP", "Adaptive na layo", "pangunahin", "cross", "Linya", "", "", "", "", "", "Buksan", "Infill planner", "Isara", "Handa na ang bagong bersyon ng SwathPlan.", "I-update", "Handa nang gumana offline ang SwathPlan.", "Lahat ng kasangkapan", "Magnetometer", "Multibeam", "Side-scan sonar", "Sub-bottom profiler", "pagitan ng grid", "", "", "Badyet ng uncertainty (a priori TPU)", "Araw", "auto", "Survey planner", "Geophysical", "", "", "", "", "Camera", "Gabay sa paggamit", "Agham &amp; sanggunian", "Nilalaman", "LiDAR", "Swath ng LiDAR", "I-download ang PDF", "Wika", "Edisyon"], "vi": ["", "Nhà sản xuất", "Số chùm tia", "Tần số", "Gợi ý R theo LOA", "Khách hàng", "Đi", "Tìm", "Phép chiếu", "Nguồn", "mét", "feet", "Số tuyến", "", "Khổ giấy", "Độ phân giải", "Hiệu suất trên tuyến", "Đo SVP", "Dự án", "Quay vòng", "Độ phủ", "tắt", "Dữ liệu", "Kiểm tra tuyến chéo", "Kiểm tra kế hoạch", "", "Cấp", "Phát hiện vật thể", "", "", "5 m + 5 % độ sâu", "20 m + 10 % độ sâu", "", "Toàn cầu", "", "", "", "Biển châu Âu", "", "Tất cả", "trung bình", "Kỹ sư khảo sát", "Đường bờ", "bật", "Độ sâu", "Không", "Thời gian", "Dải quét", "Chồng phủ", "SVP", "Khoảng cách thích ứng", "chính", "chéo", "Tuyến", "", "", "", "", "", "Mở", "Lập tuyến bổ sung", "Đóng", "Đã có phiên bản SwathPlan mới.", "Cập nhật", "SwathPlan đã sẵn sàng hoạt động ngoại tuyến.", "Tất cả công cụ", "Từ kế", "Đa tia", "Sonar quét sườn", "Máy đo địa tầng nông", "khoảng cách lưới", "", "", "Ngân sách độ bất định (TPU tiên nghiệm)", "Ngày", "tự động", "Công cụ lập kế hoạch khảo sát", "Địa vật lý", "", "", "", "", "Camera", "Hướng dẫn sử dụng", "Khoa học &amp; tài liệu tham khảo", "Mục lục", "LiDAR", "Dải quét LiDAR", "Tải PDF", "Ngôn ngữ", "Phiên bản"], "tr": ["", "Üretici", "Işın sayısı", "Frekans", "LOA'dan R öner", "Müşteri", "Git", "Ara", "Projeksiyon", "Kaynak", "metre", "fit", "Hatlar", "", "Kağıt", "Çözünürlük", "Hat üzerindeki verimlilik", "SVP ölçümleri", "Proje", "Dönüşler", "Kapsama", "kapalı", "Veri", "Çapraz hat kontrolü", "Plan kontrolleri", "", "Sınıf", "Nesne tespiti", "", "", "5 m + derinliğin %5'i", "20 m + derinliğin %10'u", "", "Küresel", "", "", "", "Avrupa denizleri", "", "Tümü", "ortalama", "Sörveyör", "Kıyı çizgisi", "açık", "Batimetri", "Yok", "Süre", "Tarama (Swath)", "Bindirme", "SVP", "Uyarlanabilir aralık", "ana", "çapraz", "Hat", "", "", "", "", "", "Aç", "Tamamlama planlayıcı", "Kapat", "SwathPlan’ın yeni sürümü hazır.", "Güncelle", "SwathPlan çevrimdışı çalışmaya hazır.", "Tüm araçlar", "Manyetometre", "Çok ışınlı", "Yan taramalı sonar", "Sığ sismik profilleyici", "ızgara aralığı", "", "", "Belirsizlik bütçesi (a priori TPU)", "Gün", "otomatik", "Ölçüm planlayıcı", "Jeofizik", "", "", "", "", "Kamera", "Kullanım kılavuzu", "Bilim &amp; kaynaklar", "İçindekiler", "LiDAR", "LiDAR tarama genişliği", "PDF indir", "Dil", "Baskı"], "pl": ["Swath<span>Plan<\/span>", "Producent", "Liczba wiązek", "Częstotliwość", "Zaproponuj R na podstawie LOA", "Zleceniodawca", "Idź", "Szukaj", "Odwzorowanie", "Źródło", "metry", "stopy", "Linie", "", "Papier", "Rozdzielczość", "Wydajność na linii", "Pomiary SVP", "Projekt", "Zwroty", "Pokrycie", "wył.", "Dane", "Kontrola linii poprzecznych", "Kontrole planu", "", "Rząd", "Wykrywanie obiektów", "", "", "5 m + 5 % głębokości", "20 m + 10 % głębokości", "", "Globalna", "", "", "", "Morza europejskie", "", "Wszystkie", "średnia", "Hydrograf", "Linia brzegowa", "wł.", "Batymetria", "Brak", "Czas", "Pas pomiarowy", "Zakładka", "SVP", "Odstęp adaptacyjny", "główna", "poprzeczna", "Linia", "", "", "", "", "", "Otwórz", "Planer uzupełnień", "Zamknij", "Nowa wersja SwathPlan jest gotowa.", "Aktualizuj", "SwathPlan jest gotowy do pracy offline.", "Wszystkie narzędzia", "Magnetometr", "Wielowiązkowy", "Sonar boczny", "Profilograf osadów", "odstęp siatki", "", "", "Budżet niepewności (TPU a priori)", "Dni", "auto", "Planer pomiarów", "Geofizyczny", "", "", "", "", "Aparat", "Instrukcja obsługi", "Nauka &amp; źródła", "Spis treści", "LiDAR", "Pas LiDAR", "Pobierz PDF", "Język", "Wydanie"], "th": ["Swath<span>Plan<\/span>", "ผู้ผลิต", "จำนวนบีม", "ความถี่", "แนะนำ R จาก LOA", "ลูกค้า", "ไป", "ค้นหา", "การฉาย", "แหล่งข้อมูล", "เมตร", "ฟุต", "แนว", "", "กระดาษ", "ความละเอียด", "ประสิทธิภาพบนแนว", "การวัด SVP", "โครงการ", "การเลี้ยว", "การครอบคลุม", "ปิด", "ข้อมูล", "การตรวจสอบแนวตัดขวาง", "การตรวจสอบแผน", "", "ลำดับ", "การตรวจจับวัตถุ", "", "", "5 ม. + 5 % ของความลึก", "20 ม. + 10 % ของความลึก", "", "ทั่วโลก", "", "", "", "ทะเลยุโรป", "", "ทั้งหมด", "ค่าเฉลี่ย", "นักสำรวจ", "แนวชายฝั่ง", "เปิด", "ความลึก", "ไม่มี", "เวลา", "สวาธ", "การซ้อนทับ", "SVP", "ระยะห่างแบบปรับตัว", "หลัก", "ตัดขวาง", "แนว", "", "", "", "", "", "เปิด", "เครื่องมือวางแนวเติมเต็ม", "ปิด", "SwathPlan เวอร์ชันใหม่พร้อมแล้ว", "อัปเดต", "SwathPlan พร้อมใช้งานแบบออฟไลน์แล้ว", "เครื่องมือทั้งหมด", "แมกนีโตมิเตอร์", "มัลติบีม", "โซนาร์กวาดข้าง", "เครื่องหยั่งชั้นตะกอน", "ระยะห่างกริด", "", "", "งบความไม่แน่นอน (TPU ล่วงหน้า)", "วัน", "อัตโนมัติ", "เครื่องมือวางแผนการสำรวจ", "ธรณีฟิสิกส์", "", "", "", "", "กล้อง", "คู่มือการใช้งาน", "วิทยาศาสตร์ &amp; เอกสารอ้างอิง", "สารบัญ", "LiDAR", "แนวกวาด LiDAR", "ดาวน์โหลด PDF", "ภาษา", "ฉบับ"], "ms": ["Swath<span>Plan<\/span>", "Pengilang", "Alur", "Frekuensi", "Cadangkan R daripada LOA", "Pelanggan", "Pergi", "Cari", "Unjuran", "Sumber", "meter", "kaki", "Garisan", "", "Kertas", "Resolusi", "Kecekapan atas garisan", "Lakaran SVP", "Projek", "Pusingan", "Liputan", "mati", "Data", "Semakan garisan silang", "Semakan pelan", "", "Tertib", "Pengesanan ciri", "", "", "5 m + 5 % kedalaman", "20 m + 10 % kedalaman", "", "Global", "", "", "", "Laut Eropah", "", "Semua", "purata", "Juruukur", "Garis pantai", "hidup", "Batimetri", "Tiada", "Masa", "Swath", "Pertindihan", "SVP", "Jarak adaptif", "utama", "silang", "Garisan", "", "", "", "", "", "Buka", "Perancang isian", "Tutup", "Versi baharu SwathPlan sudah sedia.", "Kemas kini", "SwathPlan sedia digunakan di luar talian.", "Semua alat", "Magnetometer", "Multibeam", "Sonar imbasan sisi", "Pemprofil sub-dasar", "jarak grid", "", "", "Belanjawan ketidakpastian (TPU a priori)", "Hari", "auto", "Perancang ukur", "Geofizik", "", "", "", "", "Kamera", "Panduan pengguna", "Sains &amp; rujukan", "Kandungan", "LiDAR", "Sapuan LiDAR", "Muat turun PDF", "Bahasa", "Edisi"]}</script>
+<script>/* ===== SwathPlan i18n engine ===== */
+const LANGS=[["en","English"],["id","Bahasa Indonesia"],["ja","日本語"],["zh","中文（简体）"],["de","Deutsch"],["fr","Français"],["it","Italiano"],["ar","العربية"],["es","Español"],["nl","Nederlands"],["af","Afrikaans"],["pt","Português"],["hi","हिन्दी"],["ur","اردو"],["ru","Русский"],["ko","한국어"],["tl","Tagalog (Filipino)"],["vi","Tiếng Việt"],["tr","Türkçe"],["pl","Polski"],["th","ไทย"],["ms","Bahasa Melayu"]];
+/* ===== docs pages (guide, science): the page follows the chosen language. The frame comes from the language pack; the article
+   is loaded from lang/<code>.html (generated from src/docs/<page>/<code>.json), and stays English if that file cannot be read ===== */
+const LS=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}};
+const PK=(()=>{try{return JSON.parse(document.getElementById("langpack").textContent)}catch(e){return{en:[]}}})(),EN=PK.en,DICT=new Map(),RTL=new Set(["ar","ur"]);
+const i18=(s,...a)=>{let t=DICT.get(s);if(t===undefined)t=s;return a.length?t.replace(/\{(\d+)\}/g,(m,i)=>a[+i]!==undefined?a[+i]:m):t};
+const UNITS=[...document.querySelectorAll("[data-t]")].map(el=>({el,key:el.innerHTML.replace(/\s+/g," ").trim()}));
+const TITLE=document.body.dataset.title||"";
+function setLang(l){if(!PK[l])l="en";loadArt(l);DICT.clear();if(l!="en")EN.forEach((k,i)=>{const t=PK[l][i];if(t)DICT.set(k,t)});
+const de=document.documentElement;de.lang=l;const rtl=RTL.has(l);document.querySelectorAll("header,#toc,footer").forEach(e=>e.dir=rtl?"rtl":"ltr");const pl=document.getElementById("pdfL");if(pl){const nm="swathplan-"+(document.body.dataset.doc||"guide")+"-"+l+".pdf";pl.href="../docs/pdf/"+nm;pl.setAttribute("download",nm)}
+UNITS.forEach(u=>{u.el.innerHTML=i18(u.key)});
+// the page keeps its strings in their HTML form ("&amp;"), so the title is looked up that way
+const tk=TITLE.replace(/&/g,"&amp;"),tt=i18(tk);document.title="SwathPlan – "+(tt!==tk?tt.replace(/&amp;/g,"&"):i18(TITLE));document.getElementById("langSel").value=l}
+function firstLang(){const q=new URLSearchParams(location.search).get("lang");if(q&&PK[q])return q;const m=LS("swp_lang")||LS("swp_langauto");if(m&&PK[m])return m;
+for(const n of navigator.languages||[navigator.language||"en"]){const c=String(n).toLowerCase().split("-")[0];if(c=="fil"&&PK.tl)return"tl";if(PK[c])return c}return"en"}
+const sel=document.getElementById("langSel");LANGS.forEach(([c,n])=>{if(c=="en"||PK[c])sel.add(new Option(n,c))});
+sel.onchange=()=>{LS("swp_lang",sel.value);setLang(sel.value)};
+// the article in the chosen language: English is in the page; others are fetched once and kept
+const ART=document.querySelector("article"),ARTS={en:ART?ART.innerHTML:""};let artWant="en";
+async function loadArt(l){artWant=l;if(!ART)return;if(!ARTS[l]){try{const r=await fetch("lang/"+l+".html");if(!r.ok)throw 0;ARTS[l]=await r.text()}catch(e){ARTS[l]=null}}
+if(artWant!=l)return;const h=ARTS[l]||ARTS.en,sy=scrollY,hash=location.hash;ART.innerHTML=h;ART.lang=ARTS[l]?l:"en";ART.dir=ARTS[l]&&RTL.has(l)?"rtl":"ltr";buildToc();backLinks();
+if(hash&&document.getElementById(hash.slice(1)))document.getElementById(hash.slice(1)).scrollIntoView();else scrollTo(0,sy);document.dispatchEvent(new Event("swp-article"))}
+// contents: from the h2 and h3 of the article
+let spy=()=>{};addEventListener("scroll",()=>spy(),{passive:true});
+function buildToc(){const toc=document.getElementById("toc");if(!toc||!ART)return;toc.querySelectorAll("a:not(#pdfL)").forEach(a=>a.remove());const used=new Set();
+ART.querySelectorAll("h2,h3").forEach(h=>{if(!h.id){let id=h.textContent.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");while(used.has(id))id+="-";h.id=id}used.add(h.id);
+const a=document.createElement("a");a.href="#"+h.id;a.textContent=h.textContent;if(h.tagName=="H3")a.className="l3";toc.appendChild(a)});
+// mark where the reader is
+const links=[...toc.querySelectorAll("a:not(#pdfL)")],hs=links.map(a=>document.getElementById(a.hash.slice(1)));
+spy=()=>{let k=0;hs.forEach((h,i)=>{if(h&&h.getBoundingClientRect().top<80)k=i});links.forEach((a,i)=>a.classList.toggle("on",i==k))};spy()}
+// footnotes: <sup class="fn"><a href="#r3">3</a></sup>; each reference gets a link back to where it was first cited
+function backLinks(){document.querySelectorAll("sup.fn a").forEach((a,i)=>{if(!a.id)a.id="c"+i});
+document.querySelectorAll("ol.refs li[id]").forEach(li=>{if(li.querySelector("a.back"))return;const c=document.querySelector('sup.fn a[href="#'+li.id+'"]');if(c){const b=document.createElement("a");b.href="#"+c.id;b.className="back";b.textContent="↩";b.title="Back to the text";li.appendChild(b)}})}
+buildToc();backLinks();
+setLang(firstLang());
+/* ===== offline app (PWA): service worker, update banner, install ===== */
+(()=>{
+const web=/^https?:$/.test(location.protocol),T=(s,...a)=>typeof i18=="function"?i18(s,...a):s;
+const root=(document.querySelector('meta[name="swp-root"]')||{}).content||"./";
+// The hub only exists on the website: a downloaded copy links to the online hub.
+// Manifest and icons are added on the website only, so a downloaded copy does not look for missing files.
+if(web&&!document.querySelector('link[rel="manifest"]')){[["manifest","manifest.webmanifest"],["icon","icons/icon-192.png"],["apple-touch-icon","icons/apple-touch-icon.png"]].forEach(([r,h])=>{const l=document.createElement("link");l.rel=r;l.href=root+h;document.head.appendChild(l)});
+const tc=document.createElement("meta");tc.name="theme-color";tc.content="#12262d";document.head.appendChild(tc)}
+{const a=document.getElementById("logoHub");if(a){if(web)a.href=root;else{a.href="https://syahperdana.github.io/swathplan/";a.target="_blank";a.rel="noopener"}}}
+// tools menu: the current page is marked; a downloaded copy links to the live site
+document.querySelectorAll("#tmenu .tml a,a.swp-doc[data-p]").forEach(a=>{const p=a.dataset.p;if(web)a.href=root+p;else{a.href="https://syahperdana.github.io/swathplan/"+p;a.target="_blank";a.rel="noopener"}if(web&&p&&location.pathname.indexOf("/"+p)>=0)a.classList.add("on")});
+{const m=document.getElementById("tmenu");if(m)document.addEventListener("click",e=>{if(m.open&&!m.contains(e.target))m.open=false})}
+if(!document.getElementById("swpBarCss")){const st=document.createElement("style");st.id="swpBarCss";
+st.textContent="#swpBar{position:fixed;left:50%;top:calc(var(--hh,0px) + 10px);transform:translateX(-50%);background:#12262d;color:#fff;border:1px solid #16c4b4;border-radius:8px;padding:7px 8px 7px 14px;display:flex;gap:10px;align-items:center;z-index:100;font-size:13px;box-shadow:0 4px 18px #0006;max-width:92vw}#swpBar button{background:#16c4b4;color:#06202b;border:0;border-radius:5px;padding:5px 11px;font-weight:600;cursor:pointer;margin:0;font-size:13px}#swpBar button.x{background:transparent;color:#9fc2bd;font-size:18px;line-height:1;padding:0 4px}@media print{#swpBar{display:none}}";
+document.head.appendChild(st)}
+let hideT;
+function bar(msg,btn,fn,ms){let b=document.getElementById("swpBar");if(!b){b=document.createElement("div");b.id="swpBar";b.setAttribute("role","status");document.body.appendChild(b)}
+b.textContent="";const m=document.createElement("span");m.textContent=msg;b.appendChild(m);
+if(btn){const k=document.createElement("button");k.type="button";k.textContent=btn;k.onclick=fn;b.appendChild(k)}
+const x=document.createElement("button");x.type="button";x.className="x";x.textContent="×";x.title=T("Close");x.setAttribute("aria-label",T("Close"));x.onclick=()=>b.remove();b.appendChild(x);
+clearTimeout(hideT);if(ms)hideT=setTimeout(()=>b.remove(),ms)}
+window.swpBar=bar;
+// Chrome and Android offer installation through this event; the hub shows an Install button.
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();window.swpInstall=e;dispatchEvent(new Event("swp-installable"))});
+const keep=()=>{try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persisted().then(p=>p||navigator.storage.persist())}catch(e){}};
+addEventListener("appinstalled",keep);
+if(!web||!("serviceWorker" in navigator))return;
+// Installed apps ask the browser not to clear their offline data (no prompt in Chrome, Edge or Safari).
+if(matchMedia("(display-mode: standalone)").matches||navigator.standalone)keep();
+let wantReload=false;
+navigator.serviceWorker.addEventListener("controllerchange",()=>{if(wantReload){wantReload=false;location.reload()}});
+addEventListener("load",()=>{navigator.serviceWorker.register(root+"sw.js",{scope:root}).then(reg=>{
+const offer=w=>bar(T("A new version of SwathPlan is ready."),T("Update"),()=>{wantReload=true;w.postMessage("skipWaiting")});
+if(reg.waiting&&navigator.serviceWorker.controller)offer(reg.waiting);
+reg.addEventListener("updatefound",()=>{const w=reg.installing;if(w)w.addEventListener("statechange",()=>{if(w.state!="installed")return;
+if(navigator.serviceWorker.controller)offer(w);else bar(T("SwathPlan is ready to work offline."),null,null,7000)})});
+// look for a new version whenever the app comes back to the screen
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState=="visible")reg.update().catch(()=>{})});
+}).catch(e=>console.warn("Offline mode unavailable:",e))});
+})();
+</script></body></html>
