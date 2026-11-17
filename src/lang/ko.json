@@ -1140,5 +1140,11 @@
  "Bathymetry removed.": "수심 자료를 제거했습니다.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "적응형 간격은 {0} m보다 얕은 수심을 제외합니다(구역의 {1} %). 그곳의 측선은 전체를 덮지 못합니다. 그 부분을 따로 조사하거나 한계를 낮추십시오.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0}개 점을 불러왔습니다 ({1}개 건너뜀). {2}: {3}개 점, 최소 {4} m, 5번째 백분위 {5} m, 평균 {6} m, 최대 {7} m.",
- "Williamson turns": "윌리엄슨 선회"
+ "Williamson turns": "윌리엄슨 선회",
+ "Seabed coverage from the overlap": "오버랩에 의한 해저 커버리지",
+ "{0} % (each point in about {1} swaths)": "{0} % (각 점이 약 {1}개 스와스에 들어감)",
+ "depth {0} m": "수심 {0} m",
+ "elevation {0} m": "표고 {0} m",
+ "Searching… {0} %": "찾는 중… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "측선이 등심선을 가로지릅니다(등심선 방향 약 {0}°). 적응형 간격에서는 각 측선을 가장 얕은 지점에 맞춰 배치하므로, 등심선을 따라가는 측선이 훨씬 짧은 거리로 끝납니다. {0}° 근처의 방위, 자동 최적 또는 등심선 따라가기를 사용해 보십시오."
 }

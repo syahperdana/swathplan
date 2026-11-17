@@ -1140,5 +1140,11 @@
  "Bathymetry removed.": "گہرائی کا ڈیٹا ہٹا دیا گیا۔",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "موافق فاصلہ {0} میٹر سے کم گہرائیاں چھوڑ دیتا ہے (علاقے کا {1} %): وہاں کی لائنیں پوری کوریج نہیں دیتیں۔ اس حصے کا الگ سروے کریں یا حد کم کریں۔",
  "Williamson turns": "ولیمسن موڑ",
- "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} نقاط لوڈ ہوئے ({1} چھوڑے گئے)۔ {2}: {3} نقاط، کم از کم {4} m، 5واں فیصد {5} m، اوسط {6} m، زیادہ سے زیادہ {7} m۔"
+ "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} نقاط لوڈ ہوئے ({1} چھوڑے گئے)۔ {2}: {3} نقاط، کم از کم {4} m، 5واں فیصد {5} m، اوسط {6} m، زیادہ سے زیادہ {7} m۔",
+ "Seabed coverage from the overlap": "اوورلیپ سے سمندری تہہ کی کوریج",
+ "{0} % (each point in about {1} swaths)": "{0} % (ہر نقطہ تقریباً {1} سواتھ میں)",
+ "depth {0} m": "گہرائی {0} میٹر",
+ "elevation {0} m": "بلندی {0} میٹر",
+ "Searching… {0} %": "تلاش جاری… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "لائنیں گہرائی کی کنٹور لائنوں کو کاٹ رہی ہیں (جو تقریباً {0}° پر چلتی ہیں)۔ موافق فاصلے میں ہر لائن کا فاصلہ اس کے سب سے کم گہرے نقطے کے مطابق ہوتا ہے، اس لیے کنٹور کے ساتھ چلنے والی لائنوں کو بہت کم کلومیٹر درکار ہوتے ہیں: {0}° کے قریب سمت، خودکار بہترین، یا گہرائی کی کنٹور لکیر کی پیروی کریں آزمائیں۔"
 }

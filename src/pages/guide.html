@@ -43,6 +43,7 @@
 <li><b>Header</b>: project files, language, the tools menu, and a live summary (design depth, number of lines, estimated project time).</li>
 <li><b>Sidebar</b>: the settings, grouped in numbered sections that fold open and closed. The round buttons at the top jump to a section, and <i>Expand all</i> and <i>Collapse all</i> open or close every section. The planner shows only the sections your survey type needs, so <b>the section numbers change with the survey type</b>. This guide therefore refers to sections by name.</li>
 <li><b>Map</b>: drag to pan, use the mouse wheel (or pinch on a touch screen) to zoom. The coordinates under the pointer are shown in the corner.</li>
+<li><b>Depth under the pointer</b>: with bathymetry loaded, the corner also shows the depth under the pointer, read from the loaded grid at its own spacing (for drones, the ground height of the loaded terrain).</li>
 <li><b>Results</b>: time analysis, distances and statistics, IHO S-44 quality control, and the plan checks, which update as you change anything.</li>
 <li><b>Map legend and layers</b>: the checkboxes in the legend at the top right show or hide the survey lines, turns and cross lines. <i>Layers</i> opens the rest: survey border, bathymetry, coastline, map background and the depth scale, with buttons that remove the loaded bathymetry or the survey border without resetting the project. On a phone the legend sits at the bottom right and opens from <i>Layers</i>.</li>
 </ol>
@@ -116,6 +117,7 @@
 <li><b>Port and starboard angle</b>: the swath half-angles you will actually log. They set the swath width W = depth × (tan port + tan starboard).</li>
 <li><b>Lateral overlap</b>: how much neighbouring swaths overlap, typically 20–30 %. The spacing is S = W × (1 − overlap).</li>
 <li><b>Adaptive line spacing</b>: with depth data loaded, each line is placed as far from the previous one as the local depth allows while keeping the overlap along its whole length, so lines are wider apart in deeper water.</li>
+<li><b>Overlap, line direction and adaptive spacing</b>: <i>Seabed coverage from the overlap</i> shows what the overlap means: at 80 % each point of the seabed is in about 5 swaths, so the lines are 5 times closer than at 0 %. With adaptive spacing each line is spaced for the shallowest point along it, so lines that run across the depth contours, from deep into shallow water, end up close together all the way. Lines along the contours need far fewer kilometres: the plan checks say when the lines cross the contours and in which direction the contours run, and <i>Auto optimal</i> then looks for the shortest survey time (lines and turns) instead of the fewest lines.</li>
 <li><b>Ignore depths shallower than</b> (default 2 m): drying banks and very shallow water are left out of the adaptive spacing, so a shoal at one end of a line does not pull every line close together. The plan checks say how much of the area that is; survey it separately (for example with lines that follow a contour) or lower the limit.</li>
 <li><b>Max line spacing</b> and <b>Max swath width</b> cap the result (0 = no cap).</li>
 </ul>

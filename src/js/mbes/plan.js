@@ -21,7 +21,7 @@ const LP=l=>l.p||[l.a,l.b],L=l=>{const q=LP(l);let s=0;for(let i=1;i<q.length;i+
 function stats(){const p=params(),ln=R.lines,ol=ln.reduce((s,l)=>s+L(l),0),cl=R.cross.reduce((s,l)=>s+L(l),0),sp=g("spd"),ts=Math.max(1,sp-($("slow").checked?2:0));
 $("tsp").value=ts;const to=(ol+cl)/(sp*NM),tt=R.tl/(ts*NM),A=closed?area(poly):0;
 $("hD").textContent=f1(p.d);$("hL").textContent=ln.length+(R.cross.length?" + "+R.cross.length+" cross":"");$("hT").textContent=hm(to+tt);
-$("W").textContent=f1(p.W);$("S").textContent=f1(p.S);$("dia").textContent=f1(2*p.Rr,"m",0);$("tT").textContent=hm(to+tt);$("tO").textContent=hm(to);$("tR").textContent=hm(tt);
+$("W").textContent=f1(p.W);$("S").textContent=f1(p.S);if($("covX")){const ov=Math.min(99,g("ov"));$("covX").textContent=i18("{0} % (each point in about {1} swaths)",Math.round(100/(1-ov/100)),(1/(1-ov/100)).toFixed(ov%10?1:0).replace(/\.0$/,""))}$("dia").textContent=f1(2*p.Rr,"m",0);$("tT").textContent=hm(to+tt);$("tO").textContent=hm(to);$("tR").textContent=hm(tt);
 $("lt").textContent=cst.seg&&cst.seg.length?i18("{0} segments, {1} m clearance",cst.seg.length/4,g("clr")):i18("off");$("nL").textContent=ln.length;$("nT").textContent=R.turns.length;const km=m=>(m/1000).toFixed(2)+" km ("+(m/NM).toFixed(2)+" NM)";
 $("dL").textContent=km(ol);$("dT").textContent=km(R.tl);$("dG").textContent=km(ol+cl+R.tl);$("ar").textContent=(A/1e6).toFixed(3)+" km²";
 $("qW").textContent=f1(p.W);$("qS").textContent=f1(p.S)+" ("+g("ov")+"%)";$("qT").textContent="±"+p.tvu.toFixed(3)+" m";

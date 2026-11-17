@@ -1141,5 +1141,11 @@
  "Bathymetry removed.": "已移除水深数据。",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "自适应间距未计入浅于 {0} 米的水深（占区域的 {1} %）：那里的测线无法全覆盖。请单独测量该部分，或降低限值。",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "已加载 {0} 个点（跳过 {1} 个）。{2}：{3} 个点，最小 {4} m，第5百分位 {5} m，平均 {6} m，最大 {7} m。",
- "Williamson turns": "威廉森回转"
+ "Williamson turns": "威廉森回转",
+ "Seabed coverage from the overlap": "由重叠得到的海底覆盖率",
+ "{0} % (each point in about {1} swaths)": "{0} %（每个点约在 {1} 条条带内）",
+ "depth {0} m": "水深 {0} 米",
+ "elevation {0} m": "高程 {0} 米",
+ "Searching… {0} %": "正在搜索… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "测线横穿等深线（等深线走向约 {0}°）。使用自适应间距时，每条测线按其最浅点确定间距，因此沿等深线布设的测线所需里程要少得多：可试试接近 {0}° 的方位角、自动最优，或沿等深线布线。"
 }

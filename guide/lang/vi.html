@@ -28,6 +28,7 @@
 <li><b>Thanh tiêu đề</b>: tệp dự án, ngôn ngữ, menu công cụ và bản tóm tắt trực tiếp (độ sâu thiết kế, số tuyến, thời gian dự án ước tính).</li>
 <li><b>Thanh bên</b>: các thiết lập, nhóm thành các mục đánh số có thể mở ra và thu lại. Các nút tròn ở trên cùng nhảy đến một mục, và <i>Mở rộng tất cả</i> cùng <i>Thu gọn tất cả</i> mở hoặc đóng mọi mục. Công cụ chỉ hiện các mục mà loại khảo sát của bạn cần, vì vậy <b>số thứ tự mục thay đổi theo loại khảo sát</b>. Do đó hướng dẫn này gọi các mục theo tên.</li>
 <li><b>Bản đồ</b>: kéo để di chuyển, dùng con lăn chuột (hoặc chụm ngón trên màn hình cảm ứng) để thu phóng. Tọa độ dưới con trỏ hiện ở góc.</li>
+<li><b>Độ sâu dưới con trỏ</b>: khi đã tải độ sâu, góc bản đồ cũng hiện độ sâu dưới con trỏ, đọc từ lưới đã tải theo đúng khoảng cách của nó (với drone là độ cao mặt đất của mô hình địa hình đã tải).</li>
 <li><b>Kết quả</b>: phân tích thời gian, khoảng cách và thống kê, kiểm soát chất lượng IHO S-44 và các kiểm tra kế hoạch, được cập nhật mỗi khi bạn thay đổi bất cứ điều gì.</li>
 <li><b>Chú giải và các lớp bản đồ</b>: các ô đánh dấu trong chú giải ở góc trên bên phải bật hoặc tắt tuyến khảo sát, vòng quay và tuyến cắt. <i>Lớp</i> mở phần còn lại: ranh giới khảo sát, độ sâu, đường bờ, nền bản đồ và thang độ sâu, cùng các nút xóa dữ liệu độ sâu đã tải hoặc ranh giới khảo sát mà không đặt lại dự án. Trên điện thoại, chú giải nằm ở góc dưới bên phải và mở từ <i>Lớp</i>.</li>
 </ol>
@@ -101,6 +102,7 @@
 <li><b>Góc mạn trái và mạn phải</b>: nửa góc dải quét bạn thực sự sẽ ghi. Chúng xác định độ rộng dải quét W = độ sâu × (tan trái + tan phải).</li>
 <li><b>Chồng phủ ngang</b>: mức chồng lên nhau của các dải quét kề nhau, thường 20–30 %. Khoảng cách tuyến là S = W × (1 − chồng phủ).</li>
 <li><b>Khoảng cách tuyến thích ứng</b>: khi đã tải dữ liệu độ sâu, mỗi tuyến được đặt xa tuyến trước nhất mà độ sâu tại chỗ cho phép trong khi vẫn giữ chồng phủ trên toàn chiều dài, nên các tuyến thưa hơn ở vùng nước sâu.</li>
+<li><b>Độ chồng phủ, hướng tuyến và khoảng cách thích ứng</b>: <i>Độ phủ đáy biển theo độ chồng phủ</i> cho biết ý nghĩa của độ chồng phủ: ở 80 %, mỗi điểm đáy biển nằm trong khoảng 5 dải quét, nên các tuyến dày gấp 5 lần so với 0 %. Với khoảng cách thích ứng, mỗi tuyến được giãn theo điểm nông nhất dọc theo nó, nên các tuyến cắt ngang đường đẳng sâu, từ nước sâu vào nước nông, sẽ sát nhau suốt chiều dài. Các tuyến dọc theo đường đẳng sâu cần ít kilômét hơn nhiều: phần kiểm tra kế hoạch báo khi các tuyến cắt đường đẳng sâu và hướng của chúng, và <i>Tối ưu tự động</i> khi đó tìm thời gian khảo sát ngắn nhất (tuyến và vòng quay) thay vì ít tuyến nhất.</li>
 <li><b>Bỏ qua độ sâu nông hơn</b> (mặc định 2 m): bãi bồi lộ khi triều rút và vùng nước rất nông không được dùng cho khoảng cách thích ứng, nên một bãi cạn ở một đầu tuyến không kéo mọi tuyến sát lại gần nhau. Phần kiểm tra kế hoạch cho biết phần đó chiếm bao nhiêu diện tích; hãy khảo sát riêng phần đó (chẳng hạn bằng các tuyến theo đường đẳng sâu) hoặc hạ giới hạn.</li>
 <li><b>Khoảng cách tuyến tối đa</b> và <b>độ rộng dải quét tối đa</b> giới hạn kết quả (0 = không giới hạn).</li>
 </ul>

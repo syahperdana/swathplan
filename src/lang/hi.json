@@ -1140,5 +1140,11 @@
  "Bathymetry removed.": "गहराई डेटा हटा दिया गया।",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "अनुकूली अंतराल {0} मीटर से उथली गहराइयाँ छोड़ देता है (क्षेत्र का {1} %): वहाँ की लाइनें पूरा कवरेज नहीं देतीं। उस हिस्से का अलग से सर्वेक्षण करें या सीमा घटाएँ।",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} बिंदु लोड हुए ({1} छोड़े गए)। {2}: {3} बिंदु, न्यूनतम {4} m, 5वाँ प्रतिशतक {5} m, औसत {6} m, अधिकतम {7} m।",
- "Williamson turns": "विलियमसन मोड़"
+ "Williamson turns": "विलियमसन मोड़",
+ "Seabed coverage from the overlap": "ओवरलैप से समुद्र तल कवरेज",
+ "{0} % (each point in about {1} swaths)": "{0} % (हर बिंदु लगभग {1} स्वाथ में)",
+ "depth {0} m": "गहराई {0} मीटर",
+ "elevation {0} m": "ऊँचाई {0} मीटर",
+ "Searching… {0} %": "खोज जारी… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "लाइनें गहराई की समोच्च रेखाओं को काट रही हैं (जो लगभग {0}° पर चलती हैं)। अनुकूली अंतराल में हर लाइन का अंतर उसके सबसे उथले बिंदु के अनुसार तय होता है, इसलिए समोच्च के साथ चलने वाली लाइनों के लिए बहुत कम किलोमीटर चाहिए: {0}° के आसपास दिगंश, स्वचालित इष्टतम, या गहराई समोच्च रेखा का अनुसरण करें आज़माएँ।"
 }

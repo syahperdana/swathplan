@@ -73,7 +73,7 @@ $("sndR").textContent=i18("{0} points loaded ({1} skipped). {2}: {3} points, min
 function drawBath(){if(!bath||!$("sb").checked)return;const n=bath.z.length,st=Math.max(1,Math.floor(n/5000)),r=DPR(),sp=(bath.zmax-bath.zmin)||1;
 for(let i=0;i<n;i+=st){const s=sc(fromLL(bath.la[i],bath.lo[i]));if(s[0]<0||s[1]<0||s[0]>cv.width||s[1]>cv.height)continue;const c=palCol((bath.z[i]-bath.zmin)/sp);cx.fillStyle="rgb("+c.map(Math.round).join(",")+")";cx.fillRect(s[0]-2*r,s[1]-2*r,4*r,4*r)}}
 // the depth legend on the map: colour scale, range and statistics
-function bathLegend(){const e=$("bLeg");if(!e)return;const on=!!(bath&&bath.z&&bath.z.length&&$("sb").checked&&(!$("lyLeg")||$("lyLeg").checked)&&!window.SWP_UAV);e.hidden=!on;if(!on)return;
+function bathLegend(){const e=$("bLeg");if(!e)return;const on=!!(bath&&bath.z&&bath.z.length&&$("sb").checked&&(!$("lyLeg")||$("lyLeg").checked)&&!window.SWP_UAVSHEET);e.hidden=!on;if(!on)return;
 const p=($("bPal")||{}).value||"rainbow";$("bLegBar").style.background=palCss(p);const f=v=>Math.abs(v)<100?v.toFixed(1):v.toFixed(0);$("bLegMin").textContent=f(bath.zmin);$("bLegMid").textContent=f((bath.zmin+bath.zmax)/2);$("bLegMax").textContent=f(bath.zmax);
 const S=sdp,t=[i18("{0} points",bath.z.length.toLocaleString())];if(bath.res)t.push(i18("spacing {0} m",bath.res<1?bath.res.toFixed(2):bath.res.toFixed(1)));
 $("bLegSt").textContent=t.join(" · ");$("bLegIn").textContent=S?(closed?i18("Inside area"):i18("All"))+": "+i18("min {0} · mean {1} · median {2} · max {3} · σ {4} m",f(S.min),f(S.mean),f(S.med),f(S.max),S.sd.toFixed(2)):""}

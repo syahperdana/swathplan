@@ -57,6 +57,14 @@ with sync_playwright() as p:
     ev("$('adpMin').value=0;$('adpMin').dispatchEvent(new Event('input'))"); pg.wait_for_timeout(500); n0 = ev("R.lines.length")
     ok(n0 > na, f'limit 0: very shallow water pulls the lines together ({n0} lines)')
     ev("$('adpMin').value=2;$('adpMin').dispatchEvent(new Event('input'))"); pg.wait_for_timeout(500)
+    # overlap meaning, line direction, depth under the pointer
+    ok(ev("$('covX').textContent").startswith('200 %'), f"coverage from 50 % overlap: {ev('$(\'covX\').textContent')}")
+    ev("$('az').value=90;gen()"); chk = ev("[...document.querySelectorAll('#chk li')].map(l=>l.textContent).join('|')")
+    ok('run across the depth contours' in chk and ('about 0°' in chk or 'about 180°' in chk), 'lines across the contours: plan check names the contour direction')
+    km90 = ev("R.lines.reduce((s,l)=>s+L(l),0)"); ev("$('auto').click()"); pg.wait_for_function("!autoBusy", timeout=120000); az = ev("g('az')")
+    ok(min(az, 180 - az) <= 10 and ev("R.lines.reduce((s,l)=>s+L(l),0)") < km90, f'Auto optimal with adaptive spacing turns the lines along the contours ({az:.0f}°)')
+    bx = pg.locator('#cv').bounding_box(); pg.mouse.move(bx['x'] + bx['width'] / 2, bx['y'] + bx['height'] / 2); pg.wait_for_timeout(200)
+    hud = ev("$('hud').textContent"); ok('depth' in hud and ' m' in hud, f'depth under the pointer: {hud}')
     # layers
     for lid in ['lyLines', 'lyTurns', 'lyCross', 'lyBnd', 'lyBath', 'lyCoast', 'lyBase', 'lyLeg']:
         ok(ev(f"$('{lid}').checked"), f'{lid} on by default') if lid in ('lyLines', 'lyBath') else None

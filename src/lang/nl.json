@@ -1141,5 +1141,11 @@
  "Bathymetry removed.": "Bathymetrie verwijderd.",
  "Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.": "De adaptieve afstand laat diepten ondieper dan {0} m weg ({1} % van het gebied): lijnen daar geven geen volledige dekking. Vaar dat deel apart of verlaag de grens.",
  "{0} points loaded ({1} skipped). {2}: {3} points, min {4} m, 5th pct {5} m, mean {6} m, max {7} m.": "{0} punten geladen ({1} overgeslagen). {2}: {3} punten, min {4} m, 5e perc. {5} m, gemiddeld {6} m, max {7} m.",
- "Williamson turns": "Williamson-bochten"
+ "Williamson turns": "Williamson-bochten",
+ "Seabed coverage from the overlap": "Bodemdekking door de overlap",
+ "{0} % (each point in about {1} swaths)": "{0} % (elk punt in ongeveer {1} swaths)",
+ "depth {0} m": "diepte {0} m",
+ "elevation {0} m": "hoogte {0} m",
+ "Searching… {0} %": "Zoeken… {0} %",
+ "The lines run across the depth contours (they run at about {0}°). With adaptive spacing each line is spaced for its shallowest point, so lines along the contours need far fewer kilometres: try an azimuth near {0}°, Auto optimal, or Follow a depth contour.": "De lijnen lopen dwars op de dieptelijnen (die lopen ongeveer op {0}°). Bij adaptieve afstand wordt elke lijn afgestemd op haar ondiepste punt, dus lijnen langs de dieptelijnen vragen veel minder kilometers: probeer een azimut rond {0}°, Automatisch optimaal of Een dieptelijn volgen."
 }
