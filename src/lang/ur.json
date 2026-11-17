@@ -1112,5 +1112,10 @@
  "Depth (m), light = shallow": "گہرائی (m)، ہلکا = کم گہرا",
  "Ground elevation (m)": "زمین کی بلندی (m)",
  "Depth contours every {0} m": "ہر {0} m پر گہرائی کنٹور",
- "Elevation contours every {0} m": "ہر {0} m پر بلندی کنٹور"
+ "Elevation contours every {0} m": "ہر {0} m پر بلندی کنٹور",
+ "Download PDF": "PDF ڈاؤن لوڈ کریں",
+ "Language": "زبان",
+ "Edition": "ایڈیشن",
+ "Website": "ویب سائٹ",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "صرف منصوبہ بندی میں مدد: یہ سرکاری چارٹس، آلات کی وضاحتوں، موجودہ IHO S-44 یا اہل سروئیر کی جگہ نہیں لیتا۔ نیویگیشن کے لیے نہیں۔"
 }

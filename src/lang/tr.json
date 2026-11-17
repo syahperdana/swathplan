@@ -1112,5 +1112,10 @@
  "Depth (m), light = shallow": "Derinlik (m), açık = sığ",
  "Ground elevation (m)": "Zemin yüksekliği (m)",
  "Depth contours every {0} m": "Her {0} m'de eş derinlik eğrileri",
- "Elevation contours every {0} m": "Her {0} m'de eş yükselti eğrileri"
+ "Elevation contours every {0} m": "Her {0} m'de eş yükselti eğrileri",
+ "Download PDF": "PDF indir",
+ "Language": "Dil",
+ "Edition": "Baskı",
+ "Website": "Web sitesi",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Yalnızca bir planlama yardımcısıdır: resmî haritaların, ekipman özelliklerinin, güncel IHO S-44'ün veya nitelikli bir ölçmecinin yerini tutmaz. Seyir için değildir."
 }

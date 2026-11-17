@@ -1112,5 +1112,10 @@
  "Depth (m), light = shallow": "Lalim (m), maliwanag = mababaw",
  "Ground elevation (m)": "Taas ng lupa (m)",
  "Depth contours every {0} m": "Mga contour ng lalim bawat {0} m",
- "Elevation contours every {0} m": "Mga contour ng taas bawat {0} m"
+ "Elevation contours every {0} m": "Mga contour ng taas bawat {0} m",
+ "Download PDF": "I-download ang PDF",
+ "Language": "Wika",
+ "Edition": "Edisyon",
+ "Website": "Website",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Pantulong lamang sa pagpaplano: hindi nito pinapalitan ang mga opisyal na tsart, ang mga detalye ng kagamitan, ang kasalukuyang IHO S-44 o isang kwalipikadong surveyor. Hindi para sa nabigasyon."
 }

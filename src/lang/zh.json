@@ -1113,5 +1113,10 @@
  "Depth (m), light = shallow": "水深（m），浅色 = 浅",
  "Ground elevation (m)": "地面高程（m）",
  "Depth contours every {0} m": "等深线间隔 {0} m",
- "Elevation contours every {0} m": "等高线间隔 {0} m"
+ "Elevation contours every {0} m": "等高线间隔 {0} m",
+ "Download PDF": "下载 PDF",
+ "Language": "语言",
+ "Edition": "版本",
+ "Website": "网站",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "仅为规划辅助工具：不能替代官方海图、设备规格、现行 IHO S-44 或合格测量人员的判断。不得用于航行。"
 }

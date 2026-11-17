@@ -1113,5 +1113,10 @@
  "Depth (m), light = shallow": "Diepte (m), licht = ondiep",
  "Ground elevation (m)": "Grondhoogte (m)",
  "Depth contours every {0} m": "Dieptelijnen elke {0} m",
- "Elevation contours every {0} m": "Hoogtelijnen elke {0} m"
+ "Elevation contours every {0} m": "Hoogtelijnen elke {0} m",
+ "Download PDF": "PDF downloaden",
+ "Language": "Taal",
+ "Edition": "Uitgave",
+ "Website": "Website",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Alleen een planningshulpmiddel: het vervangt geen officiële kaarten, specificaties van de apparatuur, de geldende IHO S-44 of een bevoegde hydrograaf. Niet voor navigatie."
 }

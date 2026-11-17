@@ -1,7 +1,7 @@
 # SwathPlan
 
-**A free multibeam (MBES) survey line planner that runs in your browser.**
-Draw the area, set your sonar, get the lines, check them against IHO S-44, and export them for your acquisition software. It is one HTML file with nothing to install and no account to create.
+**Free survey line planners that run in your browser: multibeam, single-beam, geophysical and drone surveys, over an area or along a route, plus an infill planner for the gaps.**
+Draw the area, set your sensor, get the lines, check them against IHO S-44, and export them for your acquisition software. Each tool is one HTML file with nothing to install and no account to create, and your data never leaves your device.
 
 ![SwathPlan planner](docs/screenshot-planner.png)
 
@@ -12,7 +12,7 @@ Draw the area, set your sonar, get the lines, check them against IHO S-44, and e
 
 ## Why I built it
 
-Planning MBES lines usually means a spreadsheet for line spacing, a CAD file for the geometry and a calculator for the time estimate. I wanted to do all of that on one page, quickly, and hand clients a sheet that looks like a proper plan.
+Planning survey lines usually means a spreadsheet for line spacing, a CAD file for the geometry and a calculator for the time estimate. I wanted to do all of that on one page, quickly, and hand clients a sheet that looks like a proper plan.
 
 SwathPlan is a **planning aid**. It does not replace your acquisition software or your own judgement (see [Disclaimer](#disclaimer)).
 
@@ -22,26 +22,28 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - Draw the survey area on the map, or import a boundary from a file or pasted coordinates (including plain `x y` or `lon, lat` lists, which it detects automatically).
 - Line spacing from swath angles, overlap and design depth, or adaptive spacing from loaded bathymetry.
 - Line azimuth to **3 decimals**, plus an **Auto optimal** button that searches for the fewest lines.
+- **Follow a depth contour:** with bathymetry loaded, main lines can run parallel to a chosen depth contour instead of straight, so each line keeps an even depth and an even swath.
 - **Cross lines**: choose how many, spaced evenly across the area, with their own name prefix.
-- Williamson and U-turn paths, time and distance estimates, and a cost and operations summary.
-- Coastline and land avoidance, and trimming of lines to navigable water. Works offline: use the built-in coastline (Natural Earth 1:10m, a few hundred metres of detail, for offshore and coastal work), or download the detailed OSM coastline once while online. A loaded coastline is kept between sessions and saved in `.SPL` project files, and can be saved as GeoJSON.
+- Williamson and U-turn paths, time and distance estimates, and a cost and operations summary. With a coastline loaded, every turn and transit is checked against it: turns that cross land or come inside the safety distance are drawn in red and counted in the plan checks.
+- Coastline and land avoidance, and trimming of lines to navigable water. Works offline: use the built-in coastline (Natural Earth 1:10m land, a few hundred metres of detail, for offshore and coastal work; 1:50m in a standalone offline copy), or download the detailed OSM coastline once while online. A loaded coastline is kept between sessions and saved in `.SPL` project files, and can be saved as GeoJSON.
 - **Compare scenarios** for a tender: sensor, overlap, swath angle, speed, turn radius, day rate, hours and vessels side by side, with time and cost, exported as CSV.
 
 **Quality checks**
 - IHO S-44 order requirements: spacing, overlap, TVU/THU, feature detection and a cross-line consistency check.
 - **Uncertainty budget (a priori TPU):** TVU and THU across the swath from your system's uncertainties, the widest angle that still meets the order, and one click to apply it.
-- Sensor catalogue with editable models.
+- Sensor catalogue with editable models. Current Kongsberg, Teledyne RESON, R2Sonic and NORBIT multibeams are checked against the makers' datasheets and marked as such; other entries are marked as approximate.
 
 **Data**
-- Global bathymetry from public sources (GMRT, NOAA NCEI, EMODnet), your own GeoTIFF or ESRI ASCII grid, or your own XYZ file.
+- Global bathymetry from public sources (GMRT, NOAA NCEI, EMODnet), fetched in pieces around the area or corridor only, so a long route does not download its whole bounding box. A failed piece is reported, never read as zero depth. Or load your own GeoTIFF or ESRI ASCII grid, or your own XYZ file.
 - Area presets for many ports and survey regions.
 - Projected coordinate systems: UTM, and EPSG or custom definitions.
 
 **Output**
 - Line exports: HYPACK (LNX, LNW), EIVA RLN, Qinsy `.qgfline`, DXF, Shapefile, KML, GPX, GeoJSON, CSV/TXT/WKT/GML/MIF, NMEA, QGroundControl, Mission Planner.
-- A print-ready **map sheet** (A4 or A3, PNG or PDF) with scale bar, north arrow, legend and title block. The grid can show **projected E/N**, **lat/lon**, or **both**.
+- A print-ready **map sheet** (A4 or A3; PNG, JPEG, WebP, TIFF, BMP, SVG or PDF, or georeferenced GeoTIFF / world file) with scale bar, north arrow, legend and title block. The grid can show **projected E/N**, **lat/lon**, or **both**.
+- **Depth or relief on the sheet:** loaded bathymetry is drawn as a shaded grid with labelled depth contours and a colour bar; in drone mode the loaded terrain is drawn as hillshaded relief with height contours. The contour interval is a round number chosen for the sheet scale, with every fifth contour drawn heavier.
 - A PDF report with the plan, the maths and the line list.
-- Save and reopen your project as a plain-text `.SPL` file. Changes are also autosaved in your browser.
+- Save and reopen your project as a plain-text `.SPL` file. Saving asks for a file name (the project name by default). Old files open in new versions and new files in old ones. Changes are also autosaved in your browser.
 - **One project across the tools:** project details, sensor, order, vessel and coordinate system follow you between the planners, and the survey area is shared between the MBES, geophysical and infill planners.
 
 **Everything else**
@@ -59,7 +61,7 @@ Open the live link above. That is all.
 Open the live link in Chrome, Edge or on Android and choose *Install* (on iPhone or iPad: *Share → Add to Home Screen*). The installed app opens and plans without internet, and offers updates when a new version is out. All tools are listed on the home page, https://syahperdana.github.io/swathplan/.
 
 ### Option C: use the single file offline
-1. On the home page, press *Download offline copy* (or download `mbes/index.html` from this repository).
+1. On the home page, press *Download offline copy* (or download `planner/index.html` or `infill/index.html` from this repository).
 2. Double-click it. It opens in your browser.
 
 Some features need internet when you use them: map background tiles, global bathymetry downloads, and loading EPSG definitions. Planning, S-44 checks and exports work offline.
@@ -68,20 +70,21 @@ Some features need internet when you use them: map background tiles, global bath
 - Map tiles you view are kept on the device. Before leaving port, pan and zoom over your survey area at the scales you need.
 - Load your own **PMTiles** map file (raster) as the basemap. It is read in small pieces, so even a large file stays light, and the app keeps it for next time.
 - Loaded bathymetry is drawn as a **shaded depth background**, and bathymetry and coastline are kept between sessions.
-- A built-in world coastline (Natural Earth, about 1 km detail) is always there when no map tiles are, so you are never looking at an empty grid.
+- A built-in world coastline (Natural Earth) is always there when no map tiles are, so you are never looking at an empty grid.
 - A label on the map shows which map is in use.
 
 ### A first plan in 5 steps
-1. **Set your sensor** (section 1): pick a model or type the swath half-angle, then set the design depth.
-2. **Swath and overlap** (section 2): the line spacing updates immediately.
-3. **Draw the area**: press *Draw area*, click the corners on the map, then *Close polygon*. You can also import a boundary in section 9.
-4. **Set the direction** (section 3): drag the slider, type an azimuth, or press *Auto optimal*. Add cross lines here too.
-5. **Export** (section 13): choose the coordinate system, then export the lines or the map sheet.
+Sections are numbered in the order they are shown, which depends on the survey type, so they are named here.
+1. **Choose the survey** in *Survey type*: what you survey with, and an area or a route.
+2. **Set your sensor**: pick a model or type the swath half-angles, then set the design depth (or load bathymetry and use its shallowest, 5th-percentile or mean depth).
+3. **Draw the area**: press *Draw area*, click the corners on the map, then *Close polygon*. You can also import a boundary in *Survey boundary import*.
+4. **Set the direction** in *Line direction*: drag the slider, type an azimuth, or press *Auto optimal*. Add cross lines here too.
+5. **Export**: choose the coordinate system, then export the lines, the map sheet or the PDF report.
 
 ### Tips
 - The number buttons at the top of the left panel jump to a section. Press one again to close it.
-- Pick the coordinate system in section 13 **before** exporting. EIVA RLN and the sheet grid follow it.
-- If you load a boundary as plain text, the tool tells you whether it read it as degrees or as the coordinate system from section 8.
+- Pick the export coordinate system **before** exporting. EIVA RLN and the sheet grid follow it.
+- If you load a boundary as plain text, the tool tells you whether it read it as degrees or as the coordinate system set for imported files.
 
 ## One planner for every survey
 
@@ -104,15 +107,15 @@ Choose *Hydrographic: single-beam (SBES)* for shallow or partial-coverage work. 
 - **User guide** (`guide/`): every section of the survey planner and the infill planner, step by step, with screenshots.
 - **Science & references** (`science/`): the formulas behind every number, with footnotes to the original standards, papers, datasets and datasheets (IHO S-44 Edition 6.2.0, Hare 1995, NOAA specifications, Natural Earth, GEBCO and others).
 
-Both are in English for now; translations will follow.
+Both are in all 22 languages and follow the language chosen in the planner. Each can be downloaded as a PDF in that language (*Download PDF* above the contents): a cover, a printed table of contents with page numbers, numbered sections, figures and footnotes. The PDFs are in [`docs/pdf/`](docs/pdf/).
 
 ## Drone surveys (camera or LiDAR)
 
 Choose *Aerial: drone (camera or LiDAR)* to plan a mapping flight over an area or along a route. Pick one of 22 cameras (DJI, Autel, senseFly, Parrot, Skydio, the Sony cameras on Wingtra and Quantum Systems drones, Phase One) or enter your own sensor size, focal length and image width, then set the flight height, the forward and side overlap, the speed and the battery time. The planner shows the ground sample distance, the image footprint, the line spacing, the photo interval and the number of photos and batteries, and warns when the height is above 120 m or the photos come faster than the camera allows. The QGroundControl and Mission Planner exports carry the height, the speed and a camera trigger distance. Camera values are approximate: check your camera's datasheet.
 
-With the **LiDAR** payload (DJI Zenmuse L1/L2/L3, Livox Avia, YellowScan, CHCNAV, RIEGL, Phoenix, Quantum Systems, Wingtra, ROCK Robotic, GreenValley, or your own field of view, point rate and detection range), the planner shows the swath, the line spacing from the side overlap and the average point density per pass and with the overlap. It warns when the height or the slant range at the swath edge is beyond the detection range on dark ground, and when the density is below a target, giving the highest speed that meets it. The waypoint exports then carry no camera trigger.
+With the **LiDAR** payload (17 scanners: DJI Zenmuse L1/L2/L3, Livox Avia, YellowScan, CHCNAV, RIEGL, Phoenix, Quantum Systems, Wingtra, ROCK Robotic, GreenValley, or your own field of view, point rate and detection range), the planner shows the swath, the line spacing from the side overlap and the average point density per pass and with the overlap. It warns when the height or the slant range at the swath edge is beyond the detection range on dark ground, and when the density is below a target, giving the highest speed that meets it. The waypoint exports then carry no camera trigger.
 
-**Terrain following:** load a terrain model (SRTM 30 m from the AWS Terrain Tiles or the NOAA NCEI mosaic online, or a GeoTIFF or ESRI ASCII elevation file). The planner then sets each waypoint high enough that the drone stays at least the flight height above the terrain model, adds waypoints along the lines where the ground changes, and drops them where it is even. It shows a profile and the range of heights above ground. The QGroundControl and Mission Planner exports carry each waypoint's height above the take-off point. A loaded model also warns, without terrain following, where the ground rises above a fixed flight altitude.
+**Terrain following:** load a terrain model (SRTM 30 m from the AWS Terrain Tiles or the NOAA NCEI mosaic online, or a GeoTIFF or ESRI ASCII elevation file). The planner then sets each waypoint high enough that the drone stays at least the flight height above the terrain model, adds waypoints along the lines where the ground changes, and drops them where it is even. It shows a profile and the range of heights above ground. The QGroundControl and Mission Planner exports carry each waypoint's height above the take-off point. A loaded model also warns, without terrain following, where the ground rises above a fixed flight altitude, and is drawn on the map and on the map sheet as hillshaded relief with height contours.
 
 ## Corridor surveys
 
@@ -146,6 +149,7 @@ Find the gaps (holidays) in what you have surveyed and plan lines to fill them: 
 - **Processed data (recommended):** load your processed bathymetry grid or side-scan mosaic as a GeoTIFF. Empty cells and pixels are the gaps. WGS 84 and UTM files are placed from their own EPSG code; large files are read at reduced resolution. Multibeam XYZ soundings can be added too.
 - **Track lines (estimate before processing):** vessel or towfish positions (text, CSV, GPX, KML, SHP, DXF or GeoJSON). Multibeam tracks use the swath from depth and angles; side-scan tracks use the range per side and the nadir gap, and can be checked for **200 % coverage** (points seen only once show in yellow).
 - **Infill lines** are planned across each gap at the multibeam spacing, or at the side-scan spacing for the chosen coverage.
+- **Boundary margin:** with a survey boundary, every part of it not covered is a gap, including missing strips along the edge. An optional margin outside the boundary is planned with lines parallel to each edge.
 - **Exports:** every planner format, plus a gaps CSV.
 
 ## Export notes

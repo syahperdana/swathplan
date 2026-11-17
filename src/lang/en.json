@@ -1173,5 +1173,10 @@
  "Depth (m), light = shallow",
  "Ground elevation (m)",
  "Depth contours every {0} m",
- "Elevation contours every {0} m"
+ "Elevation contours every {0} m",
+ "Download PDF",
+ "Language",
+ "Edition",
+ "Website",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation."
 ]

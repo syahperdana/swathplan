@@ -1120,5 +1120,10 @@
  "Depth (m), light = shallow": "Глубина (м), светлее = мельче",
  "Ground elevation (m)": "Высота земли (м)",
  "Depth contours every {0} m": "Изобаты через {0} м",
- "Elevation contours every {0} m": "Горизонтали через {0} м"
+ "Elevation contours every {0} m": "Горизонтали через {0} м",
+ "Download PDF": "Скачать PDF",
+ "Language": "Язык",
+ "Edition": "Издание",
+ "Website": "Сайт",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Только средство планирования: не заменяет официальные карты, спецификации оборудования, действующий стандарт IHO S-44 и квалифицированного гидрографа. Не для навигации."
 }

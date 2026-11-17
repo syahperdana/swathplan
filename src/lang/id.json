@@ -1115,5 +1115,10 @@
  "Depth (m), light = shallow": "Kedalaman (m), terang = dangkal",
  "Ground elevation (m)": "Elevasi tanah (m)",
  "Depth contours every {0} m": "Kontur kedalaman setiap {0} m",
- "Elevation contours every {0} m": "Kontur elevasi setiap {0} m"
+ "Elevation contours every {0} m": "Kontur elevasi setiap {0} m",
+ "Download PDF": "Unduh PDF",
+ "Language": "Bahasa",
+ "Edition": "Edisi",
+ "Website": "Situs web",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Hanya alat bantu perencanaan: tidak menggantikan peta laut resmi, spesifikasi peralatan, IHO S-44 terkini, atau surveyor yang berkualifikasi. Bukan untuk navigasi."
 }

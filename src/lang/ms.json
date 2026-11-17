@@ -1121,5 +1121,10 @@
  "Depth (m), light = shallow": "Kedalaman (m), cerah = cetek",
  "Ground elevation (m)": "Ketinggian tanah (m)",
  "Depth contours every {0} m": "Kontur kedalaman setiap {0} m",
- "Elevation contours every {0} m": "Kontur ketinggian setiap {0} m"
+ "Elevation contours every {0} m": "Kontur ketinggian setiap {0} m",
+ "Download PDF": "Muat turun PDF",
+ "Language": "Bahasa",
+ "Edition": "Edisi",
+ "Website": "Laman web",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Alat bantu perancangan sahaja: ia tidak menggantikan carta rasmi, spesifikasi peralatan, IHO S-44 semasa atau juruukur bertauliah. Bukan untuk navigasi."
 }

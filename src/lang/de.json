@@ -1113,5 +1113,10 @@
  "Depth (m), light = shallow": "Tiefe (m), hell = flach",
  "Ground elevation (m)": "Geländehöhe (m)",
  "Depth contours every {0} m": "Tiefenlinien alle {0} m",
- "Elevation contours every {0} m": "Höhenlinien alle {0} m"
+ "Elevation contours every {0} m": "Höhenlinien alle {0} m",
+ "Download PDF": "PDF herunterladen",
+ "Language": "Sprache",
+ "Edition": "Ausgabe",
+ "Website": "Website",
+ "Planning aid only: it does not replace official charts, the equipment specifications, the current IHO S-44 or a qualified surveyor. Not for navigation.": "Nur eine Planungshilfe: Sie ersetzt keine amtlichen Seekarten, keine Gerätespezifikationen, nicht die aktuelle IHO S-44 und keinen qualifizierten Vermesser. Nicht zur Navigation."
 }
