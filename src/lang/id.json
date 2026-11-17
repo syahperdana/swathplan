@@ -1147,5 +1147,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "Efisiensi on-line hanya {0} %: putaran memakan porsi besar. Pertimbangkan lajur lebih panjang atau cakupan lebih kecil.",
  "Swath / coverage": "Sapuan / cakupan",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "Jaga cakupan dasar laut minimal {0} % di lapangan; ulangi lajur yang bercelah, berderau tinggi, atau posisinya buruk.",
- "{0} m swath at {1} m design depth, {2} % coverage": "sapuan {0} m pada kedalaman rancangan {1} m, cakupan {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "sapuan {0} m pada kedalaman rancangan {1} m, cakupan {2} %",
+ "Allow less coverage over (% of each line)": "Izinkan cakupan lebih kecil pada (% tiap lajur)",
+ "Below target coverage": "Di bawah target cakupan",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "Setiap lajur diberi jarak sehingga target cakupan terpenuhi di sepanjang lajur kecuali bagian ini, yaitu bagian terdangkalnya (sering di ujung lajur, pada lereng atau dekat gosong). Tanpa ini, beberapa meter perairan dangkal di ujung lajur menentukan jarak seluruh lajur. Bagian yang kurang diarsir oranye di peta dan dijumlahkan di pemeriksaan rencana; 0 % memberi cakupan penuh di sepanjang setiap lajur.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "Sekitar {0} % area ({1} km²) mendapat cakupan di bawah target {2} %, pada bagian lajur yang terdangkal (oranye di peta). Survei dengan lajur tambahan (Perencana infill), atau turunkan toleransinya di bagian {§swath}."
 }

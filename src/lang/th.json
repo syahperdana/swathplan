@@ -1153,5 +1153,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "ประสิทธิภาพบนแนวเพียง {0} %: การเลี้ยวใช้เวลามาก ลองใช้แนวที่ยาวขึ้นหรือความครอบคลุมน้อยลง",
  "Swath / coverage": "สวาธ / ความครอบคลุม",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "รักษาความครอบคลุมพื้นท้องทะเลในภาคสนามไม่ต่ำกว่า {0} % และสำรวจซ้ำแนวที่มีช่องว่าง สัญญาณรบกวนสูง หรือตำแหน่งไม่ดี",
- "{0} m swath at {1} m design depth, {2} % coverage": "สวาธ {0} ม. ที่ความลึกออกแบบ {1} ม. ความครอบคลุม {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "สวาธ {0} ม. ที่ความลึกออกแบบ {1} ม. ความครอบคลุม {2} %",
+ "Allow less coverage over (% of each line)": "ยอมให้ความครอบคลุมต่ำกว่าในส่วน (% ของแต่ละแนว)",
+ "Below target coverage": "ต่ำกว่าความครอบคลุมเป้าหมาย",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "แต่ละแนวจะเว้นระยะให้ได้ความครอบคลุมตามเป้าตลอดความยาว ยกเว้นส่วนนี้ซึ่งเป็นช่วงที่ตื้นที่สุดของแนว (มักเป็นปลายแนว บนลาดชันหรือใกล้ที่ตื้น) หากไม่มีค่านี้ น้ำตื้นไม่กี่เมตรที่ปลายแนวจะกำหนดระยะห่างของทั้งแนว ช่วงที่ไม่ถึงเป้าจะแรเงาสีส้มบนแผนที่และรวมไว้ในการตรวจสอบแผน 0 % ให้ความครอบคลุมเต็มตลอดทุกแนว",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "ราว {0} % ของพื้นที่ ({1} ตร.กม.) ได้ความครอบคลุมต่ำกว่าเป้า {2} % ในช่วงที่ตื้นที่สุดของแนว (สีส้มบนแผนที่) ให้สำรวจด้วยแนวเพิ่มเติม (เครื่องมือวางแนวเติมเต็ม) หรือลดค่าที่ยอมให้ในหัวข้อ {§swath}"
 }

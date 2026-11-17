@@ -1153,5 +1153,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "Wydajność na linii to tylko {0} %: zwroty zajmują dużą część. Rozważ dłuższe linie lub mniejsze pokrycie.",
  "Swath / coverage": "Pas / pokrycie",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "Utrzymuj w terenie pokrycie dna co najmniej {0} %; powtórz każdą linię z lukami, dużym szumem lub słabym pozycjonowaniem.",
- "{0} m swath at {1} m design depth, {2} % coverage": "pas {0} m przy głębokości projektowej {1} m, pokrycie {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "pas {0} m przy głębokości projektowej {1} m, pokrycie {2} %",
+ "Allow less coverage over (% of each line)": "Dopuść mniejsze pokrycie na (% każdej linii)",
+ "Below target coverage": "Poniżej docelowego pokrycia",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "Każda linia ma taki odstęp, by docelowe pokrycie było spełnione na całej jej długości poza tą częścią, czyli jej najpłytszym odcinkiem (często końcami, na stoku lub przy mieliźnie). Bez tego kilka metrów płytkiej wody na końcach linii wyznacza odstęp całej linii. Odcinki z niedoborem są zakreskowane na pomarańczowo na mapie i zsumowane w kontrolach planu; 0 % daje pełne pokrycie wzdłuż każdej linii.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "Około {0} % obszaru ({1} km²) ma pokrycie poniżej docelowego {2} %, nad najpłytszą częścią linii (pomarańczowe na mapie). Zmierz je dodatkowymi liniami (Planer uzupełnień) lub zmniejsz dopuszczalną część w sekcji {§swath}."
 }

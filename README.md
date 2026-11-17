@@ -20,7 +20,7 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 
 **Planning**
 - Draw the survey area on the map, or import a boundary from a file or pasted coordinates (including plain `x y` or `lon, lat` lists, which it detects automatically).
-- Line spacing from swath angles, **seabed coverage** (100 % = neighbouring swaths just meet, 200 % = every point in two swaths; slider or typed value) and design depth, or adaptive spacing from loaded bathymetry. Drying banks and very shallow water (below a depth you set, 2 m by default) are left out of the adaptive spacing, and the plan checks say how much of the area that is.
+- Line spacing from swath angles, **seabed coverage** (100 % = neighbouring swaths just meet, 200 % = every point in two swaths; slider or typed value) and design depth, or adaptive spacing from loaded bathymetry. Drying banks and very shallow water (below a depth you set, 2 m by default) are left out of the adaptive spacing, and the plan checks say how much of the area that is. A set share of each line (10 % by default, its shallowest part, typically the ends on a slope) may fall below the coverage target, so a little shallow water at the ends no longer sets the spacing of the whole line; those stretches are shaded orange on the map and summed in the plan checks.
 - Line azimuth to **3 decimals**, plus an **Auto optimal** button that searches for the fewest lines.
 - **Follow a depth contour:** with bathymetry loaded, main lines can run parallel to a chosen depth contour instead of straight, so each line keeps an even depth and an even swath.
 - **Cross lines**: choose how many, spaced evenly across the area, with their own name prefix.

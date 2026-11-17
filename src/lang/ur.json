@@ -1144,5 +1144,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "لائن پر کارکردگی صرف {0} % ہے: موڑ بڑا حصہ لیتے ہیں۔ لمبی لائنوں یا کم کوریج پر غور کریں۔",
  "Swath / coverage": "سواتھ / کوریج",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "میدان میں سمندری تہہ کی کوریج کم از کم {0} % رکھیں؛ جس لائن میں خلا، زیادہ شور یا کمزور پوزیشننگ ہو اسے دوبارہ چلائیں۔",
- "{0} m swath at {1} m design depth, {2} % coverage": "{1} میٹر ڈیزائن گہرائی پر {0} میٹر سواتھ، {2} % کوریج"
+ "{0} m swath at {1} m design depth, {2} % coverage": "{1} میٹر ڈیزائن گہرائی پر {0} میٹر سواتھ، {2} % کوریج",
+ "Allow less coverage over (% of each line)": "اتنے حصے پر کم کوریج کی اجازت (ہر لائن کا %)",
+ "Below target coverage": "ہدف کوریج سے کم",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "ہر لائن کا فاصلہ ایسے رکھا جاتا ہے کہ اس حصے کے سوا پوری لمبائی پر ہدف کوریج پوری ہو؛ یہ حصہ لائن کا سب سے کم گہرا ٹکڑا ہے (اکثر اس کے سرے، ڈھلوان پر یا کم گہری جگہ کے پاس)۔ اس کے بغیر لائن کے سروں پر چند میٹر کم گہرا پانی پوری لائن کا فاصلہ طے کرتا ہے۔ کمی والے ٹکڑے نقشے پر نارنجی رنگ میں دکھائے جاتے ہیں اور منصوبے کی جانچ میں جمع کیے جاتے ہیں؛ 0 % ہر لائن کے ساتھ پوری کوریج دیتا ہے۔",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "علاقے کا تقریباً {0} % ({1} مربع کلومیٹر) لائنوں کے سب سے کم گہرے حصے پر {2} % ہدف کوریج سے کم پاتا ہے (نقشے پر نارنجی)۔ اضافی لائنوں سے سروے کریں (انفل پلانر)، یا حصہ {§swath} میں اجازت کم کریں۔"
 }

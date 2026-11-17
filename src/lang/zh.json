@@ -1145,5 +1145,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "在线效率仅 {0} %：转弯占用很大比例。可考虑加长测线或降低覆盖率。",
  "Swath / coverage": "条带 / 覆盖率",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "外业中保持海底覆盖率不低于 {0} %；有漏测、噪声大或定位差的测线应重测。",
- "{0} m swath at {1} m design depth, {2} % coverage": "设计水深 {1} 米处条带 {0} 米，覆盖率 {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "设计水深 {1} 米处条带 {0} 米，覆盖率 {2} %",
+ "Allow less coverage over (% of each line)": "允许较低覆盖的部分（每条测线的 %）",
+ "Below target coverage": "低于目标覆盖率",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "每条测线的间距按“除这一比例外全长都满足目标覆盖率”来确定，这一比例是测线最浅的部分（在斜坡上或浅滩附近往往是两端）。否则，测线两端几米的浅水就会决定整条测线的间距。覆盖不足的区段在地图上以橙色显示，并在计划检查中汇总；0 % 表示每条测线全长都满足目标。",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "约 {0} % 的区域（{1} 平方千米）在测线最浅的部分覆盖率低于目标 {2} %（地图上的橙色）。请用补充测线测量（补测规划器），或在第 {§swath} 节降低允许比例。"
 }

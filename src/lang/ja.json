@@ -1145,5 +1145,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "測線上の効率は {0} % にすぎず、ターンが大きな割合を占めています。測線を長くするかカバー率を下げることを検討してください。",
  "Swath / coverage": "スワス / カバー率",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "現場では海底カバー率を {0} % 以上に保ち、欠測、強いノイズ、測位不良のある測線は再測してください。",
- "{0} m swath at {1} m design depth, {2} % coverage": "設計水深 {1} m でスワス {0} m、カバー率 {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "設計水深 {1} m でスワス {0} m、カバー率 {2} %",
+ "Allow less coverage over (% of each line)": "カバー率不足を許す範囲（各測線の %）",
+ "Below target coverage": "目標カバー率未満",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "各測線は、この割合を除く全長で目標カバー率を満たすように配置されます。この割合は測線のいちばん浅い部分です（斜面や浅所の近くでは多くの場合両端）。これがないと、測線の端にある数メートルの浅い水域が測線全体の間隔を決めてしまいます。不足する区間は地図上でオレンジ色に塗られ、プランチェックで合計されます。0 % ならすべての測線の全長で目標を満たします。",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "範囲の約 {0} %（{1} km²）が、測線のいちばん浅い部分で目標カバー率 {2} % を下回ります（地図上のオレンジ色）。追加測線（補測プランナー）で測るか、セクション {§swath} の許容値を下げてください。"
 }

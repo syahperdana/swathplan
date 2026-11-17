@@ -1144,5 +1144,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "Hiệu suất trên tuyến chỉ {0} %: vòng quay chiếm phần lớn. Hãy cân nhắc tuyến dài hơn hoặc độ phủ thấp hơn.",
  "Swath / coverage": "Dải quét / độ phủ",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "Giữ độ phủ đáy biển ngoài hiện trường từ {0} % trở lên; chạy lại tuyến nào có lỗ hổng, nhiễu cao hoặc định vị kém.",
- "{0} m swath at {1} m design depth, {2} % coverage": "dải quét {0} m ở độ sâu thiết kế {1} m, độ phủ {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "dải quét {0} m ở độ sâu thiết kế {1} m, độ phủ {2} %",
+ "Allow less coverage over (% of each line)": "Cho phép độ phủ thấp hơn trên (% mỗi tuyến)",
+ "Below target coverage": "Dưới độ phủ mục tiêu",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "Mỗi tuyến được giãn sao cho độ phủ mục tiêu đạt được trên toàn chiều dài trừ phần này, là đoạn nông nhất của nó (thường là hai đầu tuyến, trên sườn dốc hoặc gần bãi cạn). Nếu không, vài mét nước nông ở đầu tuyến sẽ quyết định khoảng cách của cả tuyến. Các đoạn thiếu được tô cam trên bản đồ và cộng lại trong phần kiểm tra kế hoạch; 0 % cho độ phủ đầy đủ dọc mỗi tuyến.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "Khoảng {0} % diện tích ({1} km²) có độ phủ dưới mục tiêu {2} %, trên phần nông nhất của các tuyến (màu cam trên bản đồ). Hãy khảo sát bằng tuyến bổ sung (Lập tuyến bổ sung) hoặc giảm mức cho phép ở mục {§swath}."
 }
