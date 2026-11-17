@@ -126,7 +126,7 @@ if(poly.length&&lyOn("lyBnd")){const r=DPR();cx.beginPath();poly.forEach((pt,i)=
 $("sbS").addEventListener("change",rq);$("sb").addEventListener("change",()=>{$("lyBath").checked=$("sb").checked;bathLegend();rq()});
 // map layer checkboxes: Bathymetry is the same switch as "Show soundings on map"; the colour scale redraws the shading
 $("lyBath").addEventListener("change",()=>{$("sb").checked=$("lyBath").checked;bathLegend();rq();saveSoon()});
-["lyLines","lyTurns","lyCross","lyBnd","lyCoast","lyBase","lyLeg"].forEach(id=>$(id).addEventListener("change",()=>{bathLegend();rq();saveSoon()}));
+["lyLines","lyTurns","lyCross","lyBnd","lyShort","lyCoast","lyBase","lyLeg"].forEach(id=>$(id).addEventListener("change",()=>{bathLegend();rq();saveSoon()}));
 $("bPal").addEventListener("change",()=>{bathLegend();rq();saveSoon()});
 $("lyClrB").onclick=$("xClr").onclick=$("gbClr").onclick=()=>{if(bath)clearBath()};$("lyClrP").onclick=$("bClr2").onclick=()=>{clear();analyse()};
 setTimeout(()=>{$("lyBath").checked=$("sb").checked;bathLegend()},0);

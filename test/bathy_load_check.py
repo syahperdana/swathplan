@@ -57,6 +57,16 @@ with sync_playwright() as p:
     ev("$('adpMin').value=0;$('adpMin').dispatchEvent(new Event('input'))"); pg.wait_for_timeout(500); n0 = ev("R.lines.length")
     ok(n0 > na, f'limit 0: very shallow water pulls the lines together ({n0} lines)')
     ev("$('adpMin').value=2;$('adpMin').dispatchEvent(new Event('input'))"); pg.wait_for_timeout(500)
+    # allowance: lines across the slope (azimuth 90) are spaced for all but their shallowest share
+    ev("$('az').value=90;$('adpTol').value=0;gen()"); n0 = ev("R.lines.length"); a0 = ev("ADP_SHORT?ADP_SHORT.A:0")
+    ev("$('adpTol').value=25;gen()"); n25 = ev("R.lines.length"); a25 = ev("ADP_SHORT.A"); ar = ev("area(poly)")
+    ok(n25 < n0 * 0.8, f'allowance 25 %: fewer lines across the slope ({n0} → {n25})')
+    ok(a25 > a0 and 0.02 < a25 / ar < 0.4, f'short-coverage stretches recorded ({a0/ar*100:.1f} % → {a25/ar*100:.1f} % of the area)')
+    chk = ev("[...document.querySelectorAll('#chk li')].map(l=>l.textContent).join('|')")
+    ok('gets less than the' in chk and 'coverage target' in chk, 'plan check gives the area below the coverage target')
+    h1 = ev("(()=>{render();const d=cx.getImageData(0,0,cv.width,cv.height).data;let h=0;for(let i=0;i<d.length;i+=97)h=(h*31+d[i])|0;return h})()")
+    ev("$('lyShort').checked=false;render()"); h2 = ev("(()=>{const d=cx.getImageData(0,0,cv.width,cv.height).data;let h=0;for(let i=0;i<d.length;i+=97)h=(h*31+d[i])|0;return h})()")
+    ok(h1 != h2, 'orange stretches drawn on the map (layer Below target coverage)'); ev("$('lyShort').checked=true;$('adpTol').value=10;gen()")
     # overlap meaning, line direction, depth under the pointer
     ok(ev("$('covN').value") == '200' and 'about 2 swaths' in ev("$('covX').textContent"), f"50 % overlap shows as 200 % seabed coverage: {ev('$(\'covX\').textContent')}")
     ev("$('az').value=90;gen()"); chk = ev("[...document.querySelectorAll('#chk li')].map(l=>l.textContent).join('|')")

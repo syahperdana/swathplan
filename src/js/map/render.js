@@ -15,6 +15,10 @@ const path=(P,cl)=>{cx.beginPath();P.forEach((p,i)=>{const s=sc(p);i?cx.lineTo(s
 if(poly.length&&lyOn("lyBnd")){path(poly,closed);if(closed){cx.fillStyle="#ffffff40";cx.fill()}cx.strokeStyle="#12262d";cx.lineWidth=2*r;cx.setLineDash([8*r,4*r]);cx.stroke();cx.setLineDash([]);poly.forEach(p=>{const s=sc(p);cx.fillStyle="#12262d";cx.fillRect(s[0]-3*r,s[1]-3*r,6*r,6*r)})}
 drawBath();if(lyOn("lyCoast"))drawCoast();cx.lineWidth=1.6*r;cx.strokeStyle="#b0237a";if(lyOn("lyTurns"))R.turns.forEach(t=>{path(t.pts);cx.stroke()});
 cx.strokeStyle="#d98a00";if(lyOn("lyCross"))R.cross.forEach(l=>{path(LP(l));cx.stroke()});
-cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;if(lyOn("lyLines"))R.lines.forEach(l=>{path(LP(l));cx.stroke()});
+cx.strokeStyle="#0b6f6a";cx.lineWidth=2*r;if(lyOn("lyLines"))R.lines.forEach(l=>{path(LP(l));cx.stroke()});drawShort();
 }
 
+
+// adaptive spacing: the stretches between neighbouring lines that get less than the coverage target (orange)
+function drawShort(){const A=typeof ADP_SHORT!="undefined"?ADP_SHORT:null;if(!A||!A.sh.length||!closed||!$("adp").checked||R.ctr||!lyOn("lyShort"))return;const n=A.n,u=A.u,P=(q,t)=>sc([n[0]*q+u[0]*t,n[1]*q+u[1]*t]);
+cx.save();cx.fillStyle="rgba(240,140,0,.38)";cx.strokeStyle="rgba(200,100,0,.8)";cx.lineWidth=DPR();A.sh.forEach(r=>{const a=P(r[0],r[2]),b=P(r[1],r[2]),c=P(r[1],r[3]),d=P(r[0],r[3]);cx.beginPath();cx.moveTo(a[0],a[1]);cx.lineTo(b[0],b[1]);cx.lineTo(c[0],c[1]);cx.lineTo(d[0],d[1]);cx.closePath();cx.fill();cx.stroke()});cx.restore()}

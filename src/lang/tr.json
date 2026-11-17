@@ -1144,5 +1144,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "Hat üzerinde verim yalnızca %{0}: dönüşler büyük pay alıyor. Daha uzun hatları ya da daha düşük kapsamayı düşünün.",
  "Swath / coverage": "Şerit / kapsama",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "Sahada deniz tabanı kapsamasını en az %{0} tutun; boşluklu, çok gürültülü ya da konumu zayıf hatları yeniden ölçün.",
- "{0} m swath at {1} m design depth, {2} % coverage": "{1} m tasarım derinliğinde {0} m şerit, %{2} kapsama"
+ "{0} m swath at {1} m design depth, {2} % coverage": "{1} m tasarım derinliğinde {0} m şerit, %{2} kapsama",
+ "Allow less coverage over (% of each line)": "Şu kısımda daha az kapsamaya izin ver (her hattın %’si)",
+ "Below target coverage": "Hedef kapsamanın altında",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "Her hat, hedef kapsama bu pay dışında tüm uzunluğu boyunca sağlanacak şekilde aralanır; bu pay hattın en sığ kısmıdır (çoğu zaman uçları, bir eğimde ya da bir sığlığın yanında). Bu olmadan hattın uçlarındaki birkaç metrelik sığ su tüm hattın aralığını belirler. Eksik kalan kısımlar haritada turuncu taranır ve plan kontrollerinde toplanır; %0 her hat boyunca tam kapsama verir.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "Alanın yaklaşık %{0}’i ({1} km²), hatların en sığ kısmında %{2} hedef kapsamanın altında kalıyor (haritada turuncu). Ek hatlarla ölçün (Tamamlama planlayıcı) ya da {§swath} bölümündeki payı düşürün."
 }

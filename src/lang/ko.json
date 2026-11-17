@@ -1144,5 +1144,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "측선 효율이 {0} %에 불과합니다: 회전이 큰 비중을 차지합니다. 측선을 길게 하거나 커버리지를 낮추는 것을 고려하십시오.",
  "Swath / coverage": "스와스 / 커버리지",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "현장에서 해저 커버리지를 {0} % 이상으로 유지하고, 공백, 큰 잡음, 불량 측위가 있는 측선은 다시 조사하십시오.",
- "{0} m swath at {1} m design depth, {2} % coverage": "설계 수심 {1} m에서 스와스 {0} m, 커버리지 {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "설계 수심 {1} m에서 스와스 {0} m, 커버리지 {2} %",
+ "Allow less coverage over (% of each line)": "커버리지 부족 허용 구간 (각 측선의 %)",
+ "Below target coverage": "목표 커버리지 미달",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "각 측선은 이 비율을 뺀 전체 길이에서 목표 커버리지를 만족하도록 배치됩니다. 이 비율은 측선에서 가장 얕은 부분입니다(경사면이나 천퇴 근처에서는 흔히 양 끝). 이것이 없으면 측선 끝의 몇 미터 얕은 물이 측선 전체의 간격을 정합니다. 부족한 구간은 지도에 주황색으로 표시되고 계획 점검에서 합산됩니다. 0 %는 모든 측선 전 길이에서 목표를 만족합니다.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "구역의 약 {0} %({1} km²)가 측선의 가장 얕은 부분에서 목표 커버리지 {2} %에 미달합니다(지도의 주황색). 추가 측선으로 조사하거나(보완 측량 계획기), {§swath}절에서 허용 비율을 낮추십시오."
 }

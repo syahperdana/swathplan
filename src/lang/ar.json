@@ -1145,5 +1145,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.": "كفاءة العمل على الخطوط {0} % فقط: تستهلك الانعطافات جزءًا كبيرًا. فكّر في خطوط أطول أو تغطية أقل.",
  "Swath / coverage": "الشريط / التغطية",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.": "حافظ على تغطية القاع عند {0} % أو أكثر في الميدان؛ أعد أي خط فيه فجوات أو ضوضاء عالية أو تحديد موقع ضعيف.",
- "{0} m swath at {1} m design depth, {2} % coverage": "شريط {0} م عند عمق التصميم {1} م، تغطية {2} %"
+ "{0} m swath at {1} m design depth, {2} % coverage": "شريط {0} م عند عمق التصميم {1} م، تغطية {2} %",
+ "Allow less coverage over (% of each line)": "السماح بتغطية أقل على (% من كل خط)",
+ "Below target coverage": "دون التغطية المستهدفة",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.": "يُحدَّد تباعد كل خط بحيث تتحقق التغطية المستهدفة على طوله كله باستثناء هذه النسبة، وهي أضحل أجزائه (غالبًا طرفاه، على منحدر أو قرب ضحضاح). ومن دونها تحدد بضعة أمتار من المياه الضحلة عند طرفي الخط تباعد الخط كله. تُظلَّل المقاطع الناقصة بالبرتقالي على الخريطة وتُجمع في فحوص الخطة؛ و0 % تعطي تغطية كاملة على طول كل خط.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}.": "نحو {0} % من المنطقة ({1} كم²) تحصل على تغطية أقل من المستهدفة {2} %، فوق أضحل أجزاء الخطوط (بالبرتقالي على الخريطة). امسحها بخطوط إضافية (مخطِّط خطوط الاستكمال) أو اخفض النسبة المسموح بها في القسم {§swath}."
 }

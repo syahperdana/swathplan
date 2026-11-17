@@ -1205,5 +1205,9 @@
  "On-line efficiency is only {0} %: turns take a large share. Consider longer lines or less coverage.",
  "Swath / coverage",
  "Keep the seabed coverage at or above {0} % in the field; re-run any line with gaps, high noise or poor positioning.",
- "{0} m swath at {1} m design depth, {2} % coverage"
+ "{0} m swath at {1} m design depth, {2} % coverage",
+ "Allow less coverage over (% of each line)",
+ "Below target coverage",
+ "Each line is spaced so that the coverage target holds along all but this share of its length, which is the shallowest part (often its ends, on a slope or near a shoal). Without it, a few metres of shallow water at the ends of a line set the spacing of the whole line. The stretches that fall short are shaded orange on the map and summed in the plan checks; 0 % gives full coverage along every line.",
+ "About {0} % of the area ({1} km²) gets less than the {2} % coverage target, over the shallowest part of the lines (orange on the map). Survey it with extra lines (Infill planner), or lower the allowance in section {§swath}."
 ]
