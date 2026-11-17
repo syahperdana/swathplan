@@ -20,7 +20,7 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 
 **Planning**
 - Draw the survey area on the map, or import a boundary from a file or pasted coordinates (including plain `x y` or `lon, lat` lists, which it detects automatically).
-- Line spacing from swath angles, overlap and design depth, or adaptive spacing from loaded bathymetry.
+- Line spacing from swath angles, overlap and design depth, or adaptive spacing from loaded bathymetry. Drying banks and very shallow water (below a depth you set, 2 m by default) are left out of the adaptive spacing, and the plan checks say how much of the area that is.
 - Line azimuth to **3 decimals**, plus an **Auto optimal** button that searches for the fewest lines.
 - **Follow a depth contour:** with bathymetry loaded, main lines can run parallel to a chosen depth contour instead of straight, so each line keeps an even depth and an even swath.
 - **Cross lines**: choose how many, spaced evenly across the area, with their own name prefix.
@@ -34,6 +34,9 @@ SwathPlan is a **planning aid**. It does not replace your acquisition software o
 - Sensor catalogue with editable models. Current Kongsberg, Teledyne RESON, R2Sonic and NORBIT multibeams are checked against the makers' datasheets and marked as such; other entries are marked as approximate.
 
 **Data**
+- **Your own soundings, fast:** XYZ grids of millions of points load in steps with progress shown, so the page stays usable; grids down to 0.5 m are drawn cell by cell (1 m is recommended for areas over about 1 km²).
+- **Depth scale and statistics on the map:** a colour bar (rainbow, blues, viridis, ocean or grey) with the number of points, their spacing, and the minimum, mean, median, maximum and standard deviation inside the area.
+- **Map layers:** checkboxes in the map legend show or hide survey lines, turns, cross lines, survey border, bathymetry, coastline, map background and the depth scale, and remove the loaded bathymetry or survey border without resetting the project.
 - Global bathymetry from public sources (GMRT, NOAA NCEI, EMODnet), fetched in pieces around the area or corridor only, so a long route does not download its whole bounding box. A failed piece is reported, never read as zero depth. Or load your own GeoTIFF or ESRI ASCII grid, or your own XYZ file.
 - Area presets for many ports and survey regions.
 - Projected coordinate systems: UTM, and EPSG or custom definitions.

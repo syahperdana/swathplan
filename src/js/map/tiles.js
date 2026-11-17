@@ -14,7 +14,7 @@ const tl=toLL(wc(0,0)),br=toLL(wc(w,h)),X=lo=>(lo+180)/360*2**z,Y=la=>(1-Math.lo
 for(;;z--){x0=Math.floor(X(tl[1]));x1=Math.floor(X(br[1]));y0=Math.floor(Y(tl[0]));y1=Math.floor(Y(br[0]));if((x1-x0+1)*(y1-y0+1)<=60||z<=(zr?zr[0]:1))break}if(zr&&(x1-x0+1)*(y1-y0+1)>400)return;
 const n=2**z,ll=(x,y)=>[Math.atan(Math.sinh(Math.PI*(1-2*y/n)))/D,x/n*360-180];
 for(let x=x0;x<=x1;x++)for(let y=Math.max(0,y0);y<=Math.min(n-1,y1);y++){const im=tileImg(t,((x%n)+n)%n,y,z);if(!im)continue;const a=ll(x,y),b=ll(x+1,y+1),p=sc(fromLL(a[0],a[1])),q=sc(fromLL(b[0],b[1]));cx.drawImage(im,p[0],p[1],q[0]-p[0]+.6,q[1]-p[1]+.6)}}
-function drawTiles(){if(noTiles)return;const b=$("bm").value;let at="";if(b=="pmtiles"){if(PM){layer(PMT,[PM.h.minZ,PM.h.maxZ]);at=String(PM.meta.attribution||i18("Your map file")).replace(/<[^>]*>/g,"")}}else if(b!="none"){const t=b=="custom"?$("bmU").value.trim():(PROV[b]||PROV.esristreet)[0];if(t){layer(t);at=b=="custom"?"Custom tiles":(PROV[b]||PROV.esristreet)[1]}}
+function drawTiles(){if(noTiles||!lyOn("lyBase"))return;const b=$("bm").value;let at="";if(b=="pmtiles"){if(PM){layer(PMT,[PM.h.minZ,PM.h.maxZ]);at=String(PM.meta.attribution||i18("Your map file")).replace(/<[^>]*>/g,"")}}else if(b!="none"){const t=b=="custom"?$("bmU").value.trim():(PROV[b]||PROV.esristreet)[0];if(t){layer(t);at=b=="custom"?"Custom tiles":(PROV[b]||PROV.esristreet)[1]}}
 if($("sea").checked){layer("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png");at+=" + OpenSeaMap"}$("attr").textContent=at;if(typeof mapSrc=="function")mapSrc()}
 ["bm","bmU","sea","sb"].forEach(i=>$(i).addEventListener("input",rq));
 $("goB").onclick=async()=>{const t=$("goT").value.trim(),m=t.match(/^(-?\d+(?:\.\d+)?)[,\s]+(-?\d+(?:\.\d+)?)$/);let la,lo;

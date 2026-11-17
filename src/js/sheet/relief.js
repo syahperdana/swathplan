@@ -3,7 +3,7 @@
 // ("depth": blue, light = shallow; "elev": green to brown to white, light = high). Pixel centres are at o0 + (x + ½)·(o1 − o0)/W.
 let REL_LAST=null;// the last relief drawn on a sheet (for the legend and the tests)
 const relUav=()=>typeof MODE=="function"&&MODE().uav;
-const relDepthCol=k=>hsl2rgb(215,75,Math.max(18,Math.min(90,82-k*55)));
+const relDepthCol=k=>palCol(k);
 const REL_ELEV=[[0,[96,150,92]],[.3,[196,201,128]],[.6,[178,138,90]],[.85,[140,108,84]],[1,[238,234,228]]];
 function relElevCol(k){k=Math.max(0,Math.min(1,k));for(let i=1;i<REL_ELEV.length;i++){const[a,ca]=REL_ELEV[i-1],[b,cb]=REL_ELEV[i];if(k<=b){const t=(k-a)/(b-a||1);return ca.map((v,j)=>v+(cb[j]-v)*t)}}return REL_ELEV[REL_ELEV.length-1][1]}
 // the drone terrain as a layer, with a hillshade (light from the north-west)

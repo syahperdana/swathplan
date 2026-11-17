@@ -37,6 +37,7 @@ hasB?(bath.src&&/GMRT|NCEI|EMODnet|GEBCO/.test(bath.src)&&oi<=2?add("bad",i18("D
 cst.seg&&cst.seg.length?($("trim").checked?add("ok",i18("Lines are trimmed to water with {0} m clearance.",g("clr"))):add("bad",i18("A coastline is loaded but trimming is switched off."))):add("inf",i18("No coastline loaded: check lines against charts for land and hazards."));
 cl.length?add("ok",i18("{0} cross line(s) available for the S-44 consistency check.",cl.length)):add("bad",i18("No cross lines: tick the option in section {§dir} for QC."));
 if(g("mxS")>0)add("inf",i18("Maximum line spacing is capped at {0} m.",g("mxS")))}
+if(adp&&typeof adpShallowShare=="function"){const sh=adpShallowShare();if(sh&&sh.f>.005)add(sh.f>.25?"bad":"inf",i18("Adaptive spacing leaves out depths shallower than {0} m ({1} % of the area): lines there do not give full coverage. Survey that part separately or lower the limit.",sh.dm,(sh.f*100).toFixed(0)))}
 $("chk").innerHTML=C.join("")}
 $("tabP").onclick=()=>{$("mainP").hidden=false;$("guide").hidden=true;$("tabP").classList.add("on");$("tabG").classList.remove("on");render()};
 $("tabG").onclick=()=>{$("mainP").hidden=true;$("guide").hidden=false;$("tabG").classList.add("on");$("tabP").classList.remove("on");scrollTo(0,0)};

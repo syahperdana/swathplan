@@ -256,6 +256,17 @@ Also check by hand after any visible change: switch languages and look for missi
 - The EPSG path, Firefox and Safari have not been tested by the automated tests.
 - SwathPlan is a planning aid. Results must be checked against equipment specifications, the current IHO S-44 and the client's requirements.
 
+## Loaded depths (XYZ)
+
+- `js/io/xyz.js` reads an XYZ file as a stream (`File.stream()` + `TextDecoderStream`), pausing every 2 MB so the page repaints and shows progress; pasted text is read in one go. `loadXYZ` is `async` (the infill planner awaits it).
+- Projected coordinates go to lat/lon through a lattice of at most 257 × 257 exact conversions and bilinear interpolation (well under a millimetre off); geographic or small files are converted point by point.
+- `bath` holds typed arrays (`la`, `lo`: Float64Array; `z`: Float32Array), plus `res` (point spacing in metres, the 25th percentile of neighbouring gaps). The global-bathymetry loaders still use plain arrays: code reading `bath` must only index and use `.length`.
+- `analyse()` uses `polyTester(poly)` (edges bucketed in horizontal strips) and a 4096-step histogram for the percentiles, so a few million points take a fraction of a second. `sdp` carries min, p5, median, mean, max, σ, count and a 12-bin histogram (used by the PDF report).
+- `bathShade(N)` builds the shaded image once per size and colour scale (`BSC` cache): at the data spacing when `bath.res` is known (up to 4096 px a side and 12 Mpx), otherwise at most 512 px. `palCol(k)` gives the colour of the chosen scale (`#bPal`: rainbow, blues, viridis, ocean, grey); the sheet relief uses it too.
+- Adaptive spacing (`js/mbes/adaptive-spacing.js`) ignores model depths shallower than `#adpMin` (default 2 m); `depthRaw` returns the unclamped depth, `depthAt` keeps the old clamp at 0.5 m for other users. `buildDG` sums into typed arrays.
+- Map layers: `lyOn(id)` in `js/map/render.js`; the checkboxes live in `#leg` (`parts/map-results.html`). `lyBath` mirrors `#sb`. `clearBath()` removes the depths (and their saved copy).
+- Test: `python3 -I test/bathy_load_check.py planner/index.html` (a 480 000-point 1 m grid with a drying third).
+
 ## User guide and science pages
 
 `src/pages/guide.html` → `guide/index.html` and `src/pages/science.html` → `science/index.html` are documentation pages in the style of the home page (`css/hub.css` + `css/docs.css`, script `js/docs/docs.js`). The page frame (header, contents, footer, marked `data-t`) is translated with the `subset` langpack; the article text is translated per language (below). The contents list is built from the article's `h2` and `h3`, and footnotes (`<sup class="fn"><a href="#r3">3</a></sup>`) get a link back from their reference.

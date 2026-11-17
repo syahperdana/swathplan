@@ -29,6 +29,7 @@
 <li><b>Kantstrook</b>: die instellings, gegroepeer in genommerde afdelings wat oop- en toevou. Die ronde knoppies bo spring na ’n afdeling, en <i>Vou alles oop</i> en <i>Vou alles toe</i> maak elke afdeling oop of toe. Die beplanner wys net die afdelings wat u opmetingsoort nodig het, dus <b>verander die afdelingnommers saam met die opmetingsoort</b>. Hierdie gids verwys daarom na afdelings by name.</li>
 <li><b>Kaart</b>: sleep om te skuif, gebruik die muiswiel (of knyp op ’n raakskerm) om te zoem. Die koördinate onder die wyser word in die hoek gewys.</li>
 <li><b>Resultate</b>: tydontleding, afstande en statistiek, IHO S-44-gehaltebeheer en die plankontroles, wat bywerk sodra u iets verander.</li>
+<li><b>Kaartsleutel en lae</b>: die blokkies in die sleutel regs bo wys of verberg die opmetingslyne, draaie en dwarslyne. <i>Lae</i> maak die res oop: opmetingsgrens, batimetrie, kuslyn, kaartagtergrond en die diepteskaal, met knoppies wat die gelaaide batimetrie of die opmetingsgrens verwyder sonder om die projek terug te stel. Op ’n foon is die sleutel regs onder en maak oop by <i>Lae</i>.</li>
 </ol>
 
 <h3 id="2-3-the-header">2.3 Die kopstrook</h3>
@@ -100,6 +101,7 @@
 <li><b>Bakboord- en stuurboordhoek</b>: die halwe swaaihoeke wat u werklik gaan aanteken. Hulle bepaal die swaaibreedte W = diepte × (tan bakboord + tan stuurboord).</li>
 <li><b>Syoorvleueling</b>: hoeveel naburige swaaie oorvleuel, gewoonlik 20–30 %. Die spasiëring is S = W × (1 − oorvleueling).</li>
 <li><b>Aanpasbare lynspasiëring</b>: met dieptedata gelaai word elke lyn so ver van die vorige een geplaas as wat die plaaslike diepte toelaat, terwyl die oorvleueling oor die hele lengte behou word, sodat lyne in dieper water verder uitmekaar is.</li>
+<li><b>Ignoreer dieptes vlakker as</b> (verstek 2 m): banke wat droogval en baie vlak water word uit die aanpasbare spasiëring gelaat, sodat ’n vlakte aan een kant van ’n lyn nie al die lyne nader aan mekaar trek nie. Die plantoetse sê hoeveel van die gebied dit is; meet daardie deel apart op (byvoorbeeld met lyne wat ’n kontoer volg) of verlaag die grens.</li>
 <li><b>Maksimum lynspasiëring</b> en <b>maksimum swaaibreedte</b> beperk die resultaat (0 = geen beperking).</li>
 </ul>
 <h3 id="6-2-single-beam">6.2 Enkelstraal</h3>
@@ -156,6 +158,7 @@
 <h3 id="9-1-global-bathymetry-and-your-own-soundings">9.1 Wêreldwye batimetrie en u eie peilings</h3>
 <p><i>Wêreldwye batimetrie</i> haal dieptes vir die geslote gebied van GMRT, NOAA NCEI of EMODnet, teen die resolusie wat u kies. Net die bodem naby die gebied of korridor word gehaal, in stukke, sodat ’n lang roete nie die hele raam daarom aflaai nie; as ’n stuk misluk, sê die status hoeveel en gee ’n skakel om dit af te laai. U kan ook ’n afgelaaide GeoTIFF- of ESRI ASCII-rooster laai. Hierdie roosters is modelle van 100–450 m van gemengde gehalte, rofweg verwys na gemiddelde seevlak, nie kaartdatum nie. Hulle is goed genoeg om ’n plan te dimensioneer, maar mis vlakke en wrakke.</p>
 <p><i>Batimetrie uit XYZ-lêer</i> laai u eie peilings (kopreëls om oor te slaan, positief afwaarts of hoogte, meter, voet of vaam, en ’n vertikale afstand vir datum of gety). Hulle vervang enige wêreldwye data. Wys hulle op die kaart as punte of ’n geskakeerde agtergrond, en pas dan die vlakste, die 5de persentiel of die gemiddelde as ontwerpdiepte toe.</p>
+<p>Groot lêers word in stappe gelees, met die vordering gewys, sodat die bladsy bruikbaar bly terwyl hulle laai; ’n 1 m-rooster met ’n miljoen punte neem ’n paar sekondes. Roosters tot 0,5 m word sel vir sel gewys as jy inzoem. Vir gebiede groter as sowat 1 km² beplan ’n 1 m-rooster net so goed en laai vinniger. Die diepteskaal links onder op die kaart gee die kleurskaal (reënboog, bloue, viridis, oseaan of grys), die aantal punte en hul spasiëring, en die minimum, gemiddelde, mediaan, maksimum en standaardafwyking binne die gebied. <i>Verwyder batimetrie</i> vee die gelaaide dieptes uit en hou alles anders.</p>
 <h3 id="9-2-map-background-and-offline-maps">9.2 Kaartagtergrond en vanlyn kaarte</h3>
 <p>Kies ’n basiskaart (Esri-straat-, topografiese, grys, satelliet- en oseaankaarte, OpenStreetMap, OpenTopoMap), u eie PMTiles-kaartlêer of ’n eie teël-URL (byvoorbeeld van u eie Google- of Bing-rekening). Die OpenSeaMap-laag voeg seemerke by. Teëls wat u bekyk, word op die toestel bewaar vir vanlyn gebruik, dus skuif en zoem oor u gebied voordat u vanlyn gaan. <i>Stoor gebied</i> laai ’n zoembestek vir ’n eie teël-URL af. Sonder teëls wys die kaart ’n rooster en die ingeboude wêreldkuslyn.</p>
 <h3 id="9-3-coastline-and-land-avoidance">9.3 Kuslyn &amp; landvermyding</h3>

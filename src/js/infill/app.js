@@ -3,7 +3,7 @@ let IFT=[];// acquired tracks: [{n:name, p:[[lat,lon],...]}]
 const IF={g:null,img:null,regions:[],cov:0,gapA:0};
 const ifKey=IDK("tracks");
 // XYZ soundings loaded in section 11 count as coverage; the global bathymetry grid does not
-const _ifXYZ=loadXYZ;loadXYZ=function(t){_ifXYZ(t);if(bath&&!bath.xyz){bath.xyz=1;try{IDB.set(IDK("bath"),bath).catch(()=>{})}catch(e){}savedBath=bath;gen()}};
+const _ifXYZ=loadXYZ;loadXYZ=async function(t){await _ifXYZ(t);if(bath&&!bath.xyz){bath.xyz=1;try{IDB.set(IDK("bath"),bath).catch(()=>{})}catch(e){}savedBath=bath;gen()}};
 // what was surveyed: multibeam bathymetry or side-scan sonar
 const ifSSS=()=>$("ifK").value=="sss";
 const ifXYZ=()=>!ifSSS()&&$("ifX").checked&&bath&&bath.xyz&&bath.z.length?bath:null;
