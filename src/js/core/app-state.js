@@ -20,7 +20,7 @@ if(st.pre&&$("pre2"))$("pre2").value=st.pre;
 if(st.V&&isFinite(st.V.k)&&isFinite(st.V.cx)&&isFinite(st.V.cy))V={cx:+st.V.cx,cy:+st.V.cy,k:+st.V.k};else fit();
 clampV();projC();analyse();gen();return true}catch(e){console.error(e);return false}}
 const escS=s=>String(s).replace(/\\/g,"\\\\").replace(/\r/g,"\\r").replace(/\n/g,"\\n"),unescS=s=>s.replace(/\\(\\|n|r)/g,(m,c)=>c=="n"?"\n":c=="r"?"\r":"\\");
-function splText(){const s=snapshot(),L=["SWATHPLAN-SPL 1","# SwathPlan project file (plain text, UTF-8). Boundary = WGS 84 decimal degrees.","# Saved "+new Date().toISOString(),"","[ORIGIN]","lat = "+o.lat,"lon = "+o.lon,"","[VIEW]","cx = "+V.cx,"cy = "+V.cy,"k = "+V.k,"","[BOUNDARY]","closed = "+(closed?1:0),"# latitude longitude"];
+function splText(){const s=snapshot(),L=["SWATHPLAN-SPL 1","# SwathPlan project file (plain text, UTF-8). Boundary = WGS 84 decimal degrees.","# Saved "+new Date().toISOString()+" with SwathPlan __SWP_VERSION__","","[ORIGIN]","lat = "+o.lat,"lon = "+o.lon,"","[VIEW]","cx = "+V.cx,"cy = "+V.cy,"k = "+V.k,"","[BOUNDARY]","closed = "+(closed?1:0),"# latitude longitude"];
 poly.forEach(p=>{const q=toLL(p);L.push(q[0].toFixed(8)+" "+q[1].toFixed(8))});L.push("","[SETTINGS]");Object.keys(s.ui).forEach(k=>L.push(k+" = "+escS(s.ui[k])));
 if(s.crs)L.push("","[CRSDEF]","def = "+escS(s.crs));L.push("","[END]","");return L.join("\n")}
 function splParse(txt){const lines=txt.replace(/^﻿/,"").split(/\r?\n/);if(!/^SWATHPLAN-SPL\b/i.test((lines[0]||"").trim()))throw new Error("not a SwathPlan .SPL file");
