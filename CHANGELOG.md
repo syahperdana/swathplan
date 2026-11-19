@@ -2,6 +2,11 @@
 
 SwathPlan versions follow [semantic versioning](https://semver.org/): a new feature raises the minor number (1.1 → 1.2), a fix alone raises the patch number (1.1 → 1.1.1). The version is shown in the footer of every page, on the PDF guides, map sheets and reports, and in saved .SPL files. Release notes are on the [GitHub releases page](https://github.com/syahperdana/swathplan/releases).
 
+## 1.1.1 (2026-11-19)
+
+### Fixes
+- Corridor: drawing a route and pressing *Finish route* closed the route points into a polygon instead of making the corridor when the design depth was 0 m or less (multibeam and geophysical surveys). The corridor is now always built; only the lines that depend on the design depth wait for a valid one, and the plan checks say so. Drone surveys, geophysical spreads without the multibeam and corridors with fixed offsets no longer need the design depth at all (#56)
+
 ## 1.1 (2026-11-17)
 
 Working properly with real survey data, thanks to user feedback.
