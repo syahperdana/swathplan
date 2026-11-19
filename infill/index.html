@@ -418,6 +418,9 @@ function utm(lat,lon,z){const a=6378137,f=1/298.257223563,k0=.9996,e2=f*(2-f),ep
 const M=a*((1-e2/4-3*e4/64-5*e6/256)*p-(3*e2/8+3*e4/32+45*e6/1024)*Math.sin(2*p)+(15*e4/256+45*e6/1024)*Math.sin(4*p)-35*e6/3072*Math.sin(6*p));
 const x=k0*N*(A+(1-T+C)*A**3/6+(5-18*T+T*T+72*C-58*ep)*A**5/120)+5e5,y=k0*(M+N*t*(A*A/2+(5-T+9*C+4*C*C)*A**4/24+(61-58*T+T*T+600*C-330*ep)*A**6/720));return[x,lat<0?y+1e7:y]}
 function oc(p){const[la,lo]=toLL(p);if($("crs").value=="epsg"&&window.proj4&&crsDef)return proj4("EPSG:4326",crsDef,[lo,la]).map(v=>+v.toFixed(3));return $("crs").value=="utm"?utm(la,lo,Math.floor((o.lon+180)/6)+1).map(v=>+v.toFixed(2)):[+lo.toFixed(7),+la.toFixed(7)]}
+// lines that depend on the design depth need it above 0 m; drone surveys, geophysical spreads without the multibeam and corridors with fixed offsets do not use it
+function needDepth(){const m=typeof MODE=="function"?MODE():{};if(m.uav)return false;if(m.geo&&!($("gMB")&&$("gMB").checked))return false;if(m.corr&&$("coMode")&&$("coMode").value=="fixed")return false;return true}
+function depthOK(){return g("depth")>0||!needDepth()}
 function chords(P,a,b,s){const r=[];for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length],s1=p[0]*a[0]+p[1]*a[1],s2=q[0]*a[0]+q[1]*a[1];
 if((s1<=s)!=(s2<=s)){const t1=p[0]*b[0]+p[1]*b[1],t2=q[0]*b[0]+q[1]*b[1];r.push(t1+(t2-t1)*(s-s1)/(s2-s1))}}r.sort((x,y)=>x-y);const o=[];for(let i=0;i+1<r.length;i+=2)if(r[i+1]-r[i]>1)o.push([r[i],r[i+1]]);return o}
 function area(P){let s=0;for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length];s+=p[0]*q[1]-q[0]*p[1]}return Math.abs(s)/2}
@@ -428,7 +431,7 @@ function params(){const d=g("depth"),W=d*(Math.tan(g("ap")*D)+Math.tan(g("as")*D
 function turnPts(P,f,n,S,Rr){const al=S>=2*Rr?0:Math.acos(S/(2*Rr)),pts=[],w=(F,L)=>[P[0]+f[0]*F+n[0]*L,P[1]+f[1]*F+n[1]*L];let F=0,L=0,ph=0,len=0;
 const arc=(p1,sg)=>{const N=Math.max(2,Math.ceil(Math.abs(p1-ph)/(5*D)));const F0=F,L0=L,p0=ph;for(let i=1;i<=N;i++){const q=p0+(p1-p0)*i/N;F=F0+sg*Rr*(Math.sin(q)-Math.sin(p0));L=L0-sg*Rr*(Math.cos(q)-Math.cos(p0));pts.push(w(F,L))}ph=p1;len+=Rr*Math.abs(p1-p0)};
 if(al>0)arc(-al,-1);arc(Math.PI,1);return{pts,len}}
-function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3||!(g("depth")>0)){return stats()}
+function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3||!depthOK()){return stats()}
 const{S,Rr}=params(),az=g("az"),u=[Math.sin(az*D),Math.cos(az*D)],n=[Math.cos(az*D),-Math.sin(az*D)],sv=poly.map(p=>p[0]*n[0]+p[1]*n[1]),tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]);
 const s0=arrMin(sv),s1=arrMax(sv);const ss=linePositions(s0,s1,n,u,S);R.sp=ss.slice(1).map((v,i)=>v-ss[i]);
 let segs=[];ss.forEach((s,k)=>chords(poly,n,u,s).flatMap(c=>wr(s,c,n,u)).forEach(c=>segs.push({s,c,k})));
@@ -957,7 +960,7 @@ set("qPf",fmax.toFixed(1)+" Hz");set("qPu",g("pingU")>0?fu.toFixed(1)+" Hz":i18(
 const bm=SENS[$("sens").value][2],pings=fu*to*3600,sn=typeof bm=="number"?pings*bm:null,big=x=>x>=1e6?i18("{0} million",(x/1e6).toFixed(1)):Math.round(x).toLocaleString();
 set("dPg",to>0?big(pings):dash);set("dSn",sn!=null&&to>0?big(sn):i18("needs beam count (sensor n/a)"));set("dDn",sn!=null&&ar>0?i18("{0} per m²",(sn/ar).toFixed(1)):dash);
 const C=[],add=(k,m)=>C.push('<li class="'+k+'">'+m+"</li>");
-if(!ln.length)add(!(g("depth")>0)?"bad":"inf",!(g("depth")>0)?i18("The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths."):i18("Close an area to generate lines and see the checks."));else{
+if(!ln.length)add(!depthOK()?"bad":"inf",!depthOK()?i18("The design depth must be more than 0 m: enter it, or use the buttons under the loaded depths."):i18("Close an area to generate lines and see the checks."));else{
 if(isFinite(ov)){ov*100>=g("ov")-1?add("ok",i18("Mean achieved coverage {0} % meets the {1} % target.",covF(100/Math.max(.0001,1-ov)),covS())):add("bad",i18("Achieved coverage {0} % is below the {1} % target.",covF(100/Math.max(.0001,1-ov)),covS()))}
 const mx=SENS[$("sens").value][4];ang>mx?add("bad",i18("Swath angle {0}° exceeds the catalogue maximum of {1}° for this sensor.",ang,mx)):add("ok",i18("Swath angle {0}° is within the sensor maximum ({1}°).",ang,mx));
 if(cube){vm>=sp?add("ok",i18("Survey speed {0} kn is below the {1} kn limit for 3 pings on the smallest {2} feature.",sp,vm.toFixed(1),ordN(oi))):add("bad",i18("Survey speed {0} kn exceeds {1} kn (3 pings on the smallest {2} feature). Slow down or raise the ping rate.",sp,vm.toFixed(1),ordN(oi)))}else add("inf",i18("S-44 {0} has no feature-detection requirement.",ordN(oi)));
