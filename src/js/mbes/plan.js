@@ -1,3 +1,6 @@
+// lines that depend on the design depth need it above 0 m; drone surveys, geophysical spreads without the multibeam and corridors with fixed offsets do not use it
+function needDepth(){const m=typeof MODE=="function"?MODE():{};if(m.uav)return false;if(m.geo&&!($("gMB")&&$("gMB").checked))return false;if(m.corr&&$("coMode")&&$("coMode").value=="fixed")return false;return true}
+function depthOK(){return g("depth")>0||!needDepth()}
 function chords(P,a,b,s){const r=[];for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length],s1=p[0]*a[0]+p[1]*a[1],s2=q[0]*a[0]+q[1]*a[1];
 if((s1<=s)!=(s2<=s)){const t1=p[0]*b[0]+p[1]*b[1],t2=q[0]*b[0]+q[1]*b[1];r.push(t1+(t2-t1)*(s-s1)/(s2-s1))}}r.sort((x,y)=>x-y);const o=[];for(let i=0;i+1<r.length;i+=2)if(r[i+1]-r[i]>1)o.push([r[i],r[i+1]]);return o}
 function area(P){let s=0;for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length];s+=p[0]*q[1]-q[0]*p[1]}return Math.abs(s)/2}
@@ -8,7 +11,7 @@ function params(){const d=g("depth"),W=d*(Math.tan(g("ap")*D)+Math.tan(g("as")*D
 function turnPts(P,f,n,S,Rr){const al=S>=2*Rr?0:Math.acos(S/(2*Rr)),pts=[],w=(F,L)=>[P[0]+f[0]*F+n[0]*L,P[1]+f[1]*F+n[1]*L];let F=0,L=0,ph=0,len=0;
 const arc=(p1,sg)=>{const N=Math.max(2,Math.ceil(Math.abs(p1-ph)/(5*D)));const F0=F,L0=L,p0=ph;for(let i=1;i<=N;i++){const q=p0+(p1-p0)*i/N;F=F0+sg*Rr*(Math.sin(q)-Math.sin(p0));L=L0-sg*Rr*(Math.cos(q)-Math.cos(p0));pts.push(w(F,L))}ph=p1;len+=Rr*Math.abs(p1-p0)};
 if(al>0)arc(-al,-1);arc(Math.PI,1);return{pts,len}}
-function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3||!(g("depth")>0)){return stats()}
+function gen(){R={lines:[],turns:[],cross:[],tl:0,ol:0};if(!closed||poly.length<3||!depthOK()){return stats()}
 const{S,Rr}=params(),az=g("az"),u=[Math.sin(az*D),Math.cos(az*D)],n=[Math.cos(az*D),-Math.sin(az*D)],sv=poly.map(p=>p[0]*n[0]+p[1]*n[1]),tv=poly.map(p=>p[0]*u[0]+p[1]*u[1]);
 const s0=arrMin(sv),s1=arrMax(sv);const ss=linePositions(s0,s1,n,u,S);R.sp=ss.slice(1).map((v,i)=>v-ss[i]);
 let segs=[];ss.forEach((s,k)=>chords(poly,n,u,s).flatMap(c=>wr(s,c,n,u)).forEach(c=>segs.push({s,c,k})));

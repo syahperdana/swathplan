@@ -14,9 +14,9 @@ function coOffsets(){const p=params();return $("coMode").value=="fixed"?CG.parse
 const _coArea=gen;gen=function(){if(!MODE().corr){CO.P=null;CO.L=0;CO.segs=[];return _coArea()}R={lines:[],turns:[],cross:[],tl:0,ol:0};CO.P=null;CO.L=0;CO.segs=[];
 if(draw&&!closed){coStatus();return stats()}// a new route is being drawn: only its points are shown
 const P=coRoute();if(P.length<2){poly=[];closed=false;draw=true;coStatus();return stats()}
-if(!(g("depth")>0)){coStatus();return stats()}
-const{Rr}=params(),hw=Math.max(1,g("coHW")),ext=Math.max(0,g("coExt")),offs=coOffsets(),pre=$("coPre").value;
-poly=CG.outline(P,hw);closed=poly.length>=3;draw=false;
+const hw=Math.max(1,g("coHW"));poly=CG.outline(P,hw);closed=poly.length>=3;draw=false;
+if(!depthOK()){const C0=CG.chain(P);CO.P=P;CO.C=C0;CO.L=C0[C0.length-1];CO.off=[];coStatus();return stats()}// no design depth: the corridor outline, no lines (the plan checks say why)
+const{Rr}=params(),ext=Math.max(0,g("coExt")),offs=coOffsets(),pre=$("coPre").value;
 const C=CG.chain(P),Lr=C[C.length-1];CO.P=P;CO.C=C;CO.L=Lr;CO.off=offs;
 // lines across the corridor from port to starboard, alternating direction so each turn is short
 // long routes in segments (KP ranges overlapping by coSegO); each segment has its own lines and outline
